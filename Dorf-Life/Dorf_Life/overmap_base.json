@@ -736,7 +736,8 @@
         { "chunks": [ [ "null", 50 ], [ "breach_spawn_standard", 50 ] ], "x": [ 9, 10 ], "y": [ 9, 10 ] },
         { "chunks": [ [ "null", 40 ], [ "breach_chunk_pillar", 60 ] ], "x": [ 0, 2 ], "y": [ 16, 18 ] },
         { "chunks": [ [ "null", 40 ], [ "breach_chunk_pillar", 60 ] ], "x": [ 16, 18 ], "y": [ 16, 18 ] },
-        { "chunks": [ [ "null", 75 ], [ "breach_chunk_1", 25 ] ], "x": [ 0, 19 ], "y": [ 1, 19 ], "repeat": 4 }
+        { "chunks": [ [ "null", 75 ], [ "breach_chunk_1", 25 ] ], "x": [ 0, 19 ], "y": [ 1, 19 ], "repeat": 4 },
+        { "chunks": [ "breach_ramp_down" ], "x": 11, "y": 11 }
       ]
     }
   },
@@ -778,7 +779,8 @@
         { "chunks": [ [ "null", 50 ], [ "breach_spawn_standard", 50 ] ], "x": [ 9, 10 ], "y": [ 9, 10 ] },
         { "chunks": [ [ "null", 40 ], [ "breach_chunk_pillar", 60 ] ], "x": [ 0, 2 ], "y": [ 16, 18 ] },
         { "chunks": [ [ "null", 40 ], [ "breach_chunk_pillar", 60 ] ], "x": [ 16, 18 ], "y": [ 16, 18 ] },
-        { "chunks": [ [ "null", 75 ], [ "breach_chunk_1", 25 ] ], "x": [ 0, 19 ], "y": [ 1, 19 ], "repeat": 4 }
+        { "chunks": [ [ "null", 75 ], [ "breach_chunk_1", 25 ] ], "x": [ 0, 19 ], "y": [ 1, 19 ], "repeat": 4 },
+        { "chunks": [ "breach_ramp_down" ], "x": 11, "y": 11 }
       ]
     }
   },

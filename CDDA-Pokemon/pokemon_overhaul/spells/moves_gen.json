@@ -1,0 +1,1572 @@
+[
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_quick_attack",
+    "name": "Quick Attack",
+    "description": "Lunges at the target at blinding speed.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_normal",
+    "min_damage": {
+      "math": [
+        "7 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 3,
+    "max_range": 3,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_body_slam",
+    "name": "Body Slam",
+    "description": "Slams the target with the full weight of its body.  May leave it paralyzed.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_normal",
+    "min_damage": {
+      "math": [
+        "14 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 1,
+    "max_range": 1,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_paralysis",
+    "min_duration": 300,
+    "max_duration": 300
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_hyper_beam",
+    "name": "Hyper Beam",
+    "description": "Fires a devastating beam of energy.  The user needs a long rest afterwards.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "line",
+    "damage_type": "pkmn_normal",
+    "min_damage": {
+      "math": [
+        "26 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 8,
+    "max_range": 8,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_ember",
+    "name": "Ember",
+    "description": "Spits a small burst of flame that may leave the target burned.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_fire",
+    "min_damage": {
+      "math": [
+        "6 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 6,
+    "max_range": 6,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_burn",
+    "min_duration": 600,
+    "max_duration": 600
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_flamethrower",
+    "name": "Flamethrower",
+    "description": "Scorches the target with a stream of intense flame.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "line",
+    "damage_type": "pkmn_fire",
+    "min_damage": {
+      "math": [
+        "13 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1,
+    "effect_str": "pkmn_burn",
+    "min_duration": 600,
+    "max_duration": 600
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_fire_blast",
+    "name": "Fire Blast",
+    "description": "An all-consuming blast of fire shaped like the character for 'big'.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_fire",
+    "min_damage": {
+      "math": [
+        "22 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 8,
+    "max_range": 8,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1,
+    "effect_str": "pkmn_burn",
+    "min_duration": 900,
+    "max_duration": 900
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_water_gun",
+    "name": "Water Gun",
+    "description": "Squirts a jet of water at the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_water",
+    "min_damage": {
+      "math": [
+        "6 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 6,
+    "max_range": 6,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_bubble_beam",
+    "name": "Bubble Beam",
+    "description": "A spray of bubbles that may slow the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_water",
+    "min_damage": {
+      "math": [
+        "12 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_slowed",
+    "min_duration": 500,
+    "max_duration": 500
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_hydro_pump",
+    "name": "Hydro Pump",
+    "description": "Blasts the target with a huge volume of water at high pressure.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "line",
+    "damage_type": "pkmn_water",
+    "min_damage": {
+      "math": [
+        "22 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 8,
+    "max_range": 8,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_thunder_shock",
+    "name": "Thunder Shock",
+    "description": "A jolt of electricity that may paralyze the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_electric",
+    "min_damage": {
+      "math": [
+        "6 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 6,
+    "max_range": 6,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_paralysis",
+    "min_duration": 200,
+    "max_duration": 200
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_thunderbolt",
+    "name": "Thunderbolt",
+    "description": "A strong electric blast crashes down on the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_electric",
+    "min_damage": {
+      "math": [
+        "13 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 8,
+    "max_range": 8,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_paralysis",
+    "min_duration": 300,
+    "max_duration": 300
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_thunder",
+    "name": "Thunder",
+    "description": "A wicked thunderbolt is dropped on the target and everything near it.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_electric",
+    "min_damage": {
+      "math": [
+        "22 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 10,
+    "max_range": 10,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1,
+    "effect_str": "pkmn_paralysis",
+    "min_duration": 400,
+    "max_duration": 400
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_vine_whip",
+    "name": "Vine Whip",
+    "description": "Strikes the target with slender, whiplike vines.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_grass",
+    "min_damage": {
+      "math": [
+        "6 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 3,
+    "max_range": 3,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_razor_leaf",
+    "name": "Razor Leaf",
+    "description": "Sharp-edged leaves are launched to slash at the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "line",
+    "damage_type": "pkmn_grass",
+    "min_damage": {
+      "math": [
+        "12 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_solar_beam",
+    "name": "Solar Beam",
+    "description": "Gathers light, then blasts a bundled beam.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "line",
+    "damage_type": "pkmn_grass",
+    "min_damage": {
+      "math": [
+        "22 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 9,
+    "max_range": 9,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_aurora_beam",
+    "name": "Aurora Beam",
+    "description": "Fires a rainbow-colored beam that chills the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_ice",
+    "min_damage": {
+      "math": [
+        "7 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_slowed",
+    "min_duration": 300,
+    "max_duration": 300
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_ice_beam",
+    "name": "Ice Beam",
+    "description": "An icy beam that may freeze the target solid.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_ice",
+    "min_damage": {
+      "math": [
+        "13 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 8,
+    "max_range": 8,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_freeze",
+    "min_duration": 200,
+    "max_duration": 200
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_blizzard",
+    "name": "Blizzard",
+    "description": "A howling blizzard is summoned to strike everything near the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_ice",
+    "min_damage": {
+      "math": [
+        "21 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 8,
+    "max_range": 8,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 2,
+    "max_aoe": 2,
+    "effect_str": "pkmn_freeze",
+    "min_duration": 200,
+    "max_duration": 200
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_low_kick",
+    "name": "Low Kick",
+    "description": "A low, tripping kick.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_fighting",
+    "min_damage": {
+      "math": [
+        "7 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 1,
+    "max_range": 1,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_karate_chop",
+    "name": "Karate Chop",
+    "description": "A sharp chop with a high chance of hitting something vital.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_fighting",
+    "min_damage": {
+      "math": [
+        "13 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 1,
+    "max_range": 1,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_submission",
+    "name": "Submission",
+    "description": "Grabs the target and hurls it to the ground with immense force.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_fighting",
+    "min_damage": {
+      "math": [
+        "23 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 1,
+    "max_range": 1,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "downed",
+    "min_duration": 200,
+    "max_duration": 200
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_poison_sting",
+    "name": "Poison Sting",
+    "description": "Stabs with a toxic barb that may poison the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_poison",
+    "min_damage": {
+      "math": [
+        "5 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 4,
+    "max_range": 4,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_poison",
+    "min_duration": 1200,
+    "max_duration": 1200
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_acid",
+    "name": "Acid",
+    "description": "Sprays a hide-melting acid.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_poison",
+    "min_damage": {
+      "math": [
+        "11 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 6,
+    "max_range": 6,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1,
+    "effect_str": "pkmn_poison",
+    "min_duration": 900,
+    "max_duration": 900
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_sludge",
+    "name": "Sludge",
+    "description": "Hurls unsanitary sludge that badly poisons whatever it touches.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_poison",
+    "min_damage": {
+      "math": [
+        "20 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1,
+    "effect_str": "pkmn_poison",
+    "min_duration": 1800,
+    "max_duration": 1800
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_bone_club",
+    "name": "Bone Club",
+    "description": "Clubs or flings a hard object at the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_ground",
+    "min_damage": {
+      "math": [
+        "7 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 3,
+    "max_range": 3,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_dig",
+    "name": "Dig",
+    "description": "Burrows underground, then strikes from below.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_ground",
+    "min_damage": {
+      "math": [
+        "13 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 5,
+    "max_range": 5,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_earthquake",
+    "name": "Earthquake",
+    "description": "A powerful quake that strikes everything around the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_ground",
+    "min_damage": {
+      "math": [
+        "21 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 5,
+    "max_range": 5,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 2,
+    "max_aoe": 2
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_gust",
+    "name": "Gust",
+    "description": "Whips up a gale of wind against the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_flying",
+    "min_damage": {
+      "math": [
+        "6 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 6,
+    "max_range": 6,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_wing_attack",
+    "name": "Wing Attack",
+    "description": "Strikes the target with wings spread wide.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_flying",
+    "min_damage": {
+      "math": [
+        "12 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 2,
+    "max_range": 2,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_sky_attack",
+    "name": "Sky Attack",
+    "description": "Climbs high and dives down on the target with tremendous force.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_flying",
+    "min_damage": {
+      "math": [
+        "23 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 8,
+    "max_range": 8,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_confusion",
+    "name": "Confusion",
+    "description": "A weak telekinetic attack that may leave the target confused.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_psychic",
+    "min_damage": {
+      "math": [
+        "7 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "stunned",
+    "min_duration": 200,
+    "max_duration": 200
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_psybeam",
+    "name": "Psybeam",
+    "description": "A peculiar ray that may confuse the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "line",
+    "damage_type": "pkmn_psychic",
+    "min_damage": {
+      "math": [
+        "13 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 8,
+    "max_range": 8,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "stunned",
+    "min_duration": 300,
+    "max_duration": 300
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_psychic",
+    "name": "Psychic",
+    "description": "A strong telekinetic force crushes the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_psychic",
+    "min_damage": {
+      "math": [
+        "23 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 9,
+    "max_range": 9,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_leech_life",
+    "name": "Leech Life",
+    "description": "Bites into the target and drinks its fluids.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_bug",
+    "min_damage": {
+      "math": [
+        "6 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 1,
+    "max_range": 1,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_twineedle",
+    "name": "Twineedle",
+    "description": "Jabs the target twice with stinging barbs that may poison.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_bug",
+    "min_damage": {
+      "math": [
+        "11 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 3,
+    "max_range": 3,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_poison",
+    "min_duration": 600,
+    "max_duration": 600
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_pin_missile",
+    "name": "Pin Missile",
+    "description": "Fires a volley of sharp spikes at the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_bug",
+    "min_damage": {
+      "math": [
+        "20 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_rock_throw",
+    "name": "Rock Throw",
+    "description": "Picks up and throws a small rock at the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_rock",
+    "min_damage": {
+      "math": [
+        "7 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 6,
+    "max_range": 6,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_rock_slide",
+    "name": "Rock Slide",
+    "description": "Large boulders are hurled at the target and those around it.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_rock",
+    "min_damage": {
+      "math": [
+        "13 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1,
+    "effect_str": "downed",
+    "min_duration": 100,
+    "max_duration": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_stone_edge",
+    "name": "Stone Edge",
+    "description": "Stabs the target with sharpened stones.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_rock",
+    "min_damage": {
+      "math": [
+        "23 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 6,
+    "max_range": 6,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_lick",
+    "name": "Lick",
+    "description": "Licks with a long, ectoplasmic tongue.  May paralyze the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_ghost",
+    "min_damage": {
+      "math": [
+        "5 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 1,
+    "max_range": 1,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "effect_str": "pkmn_paralysis",
+    "min_duration": 300,
+    "max_duration": 300
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_night_shade",
+    "name": "Night Shade",
+    "description": "Makes the target see a frightening mirage that wounds the mind.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_ghost",
+    "min_damage": {
+      "math": [
+        "13 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_shadow_ball",
+    "name": "Shadow Ball",
+    "description": "Hurls a shadowy blob at the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_ghost",
+    "min_damage": {
+      "math": [
+        "22 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 8,
+    "max_range": 8,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_twister",
+    "name": "Twister",
+    "description": "Whips up a vicious twister to tear at the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_dragon",
+    "min_damage": {
+      "math": [
+        "7 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.4,
+    "max_level": 30,
+    "min_range": 6,
+    "max_range": 6,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_dragon_rage",
+    "name": "Dragon Rage",
+    "description": "A shock wave of draconic fury.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_dragon",
+    "min_damage": {
+      "math": [
+        "15 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 0.6,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_outrage",
+    "name": "Outrage",
+    "description": "Rampages and attacks with overwhelming fury.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "damage_type": "pkmn_dragon",
+    "min_damage": {
+      "math": [
+        "26 * (0.5 + value_or(u_pkmn_level, 10) / 50)"
+      ]
+    },
+    "max_damage": 999,
+    "damage_increment": 1.0,
+    "max_level": 30,
+    "min_range": 2,
+    "max_range": 2,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "base_casting_time": 100,
+    "min_aoe": 1,
+    "max_aoe": 1
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_thunder_wave",
+    "name": "Thunder Wave",
+    "description": "A weak electric charge that paralyzes the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "effect_str": "pkmn_paralysis",
+    "min_duration": 1000,
+    "max_duration": 1000,
+    "min_damage": 0,
+    "max_damage": 0,
+    "max_level": 30,
+    "min_range": 6,
+    "max_range": 6,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_sleep_powder",
+    "name": "Sleep Powder",
+    "description": "Scatters a big cloud of sleep-inducing dust.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "effect_str": "pkmn_sleep",
+    "min_duration": 800,
+    "max_duration": 800,
+    "min_damage": 0,
+    "max_damage": 0,
+    "max_level": 30,
+    "min_range": 3,
+    "max_range": 3,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_hypnosis",
+    "name": "Hypnosis",
+    "description": "Hypnotic suggestion puts the target to sleep.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "effect_str": "pkmn_sleep",
+    "min_duration": 800,
+    "max_duration": 800,
+    "min_damage": 0,
+    "max_damage": 0,
+    "max_level": 30,
+    "min_range": 5,
+    "max_range": 5,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_confuse_ray",
+    "name": "Confuse Ray",
+    "description": "A sinister ray that confuses the target.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "effect_str": "stunned",
+    "min_duration": 600,
+    "max_duration": 600,
+    "min_damage": 0,
+    "max_damage": 0,
+    "max_level": 30,
+    "min_range": 7,
+    "max_range": 7,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_string_shot",
+    "name": "String Shot",
+    "description": "Sprays silk to bind the target and slow it down.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "effect_str": "pkmn_slowed",
+    "min_duration": 1000,
+    "max_duration": 1000,
+    "min_damage": 0,
+    "max_damage": 0,
+    "max_level": 30,
+    "min_range": 5,
+    "max_range": 5,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_poison_powder",
+    "name": "Poison Powder",
+    "description": "Scatters a cloud of toxic dust.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "effect_str": "pkmn_poison",
+    "min_duration": 2400,
+    "max_duration": 2400,
+    "min_damage": 0,
+    "max_damage": 0,
+    "max_level": 30,
+    "min_range": 3,
+    "max_range": 3,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_move_sing",
+    "name": "Sing",
+    "description": "A soothing lullaby that lulls the target into a deep sleep.",
+    "valid_targets": [
+      "hostile"
+    ],
+    "effect": "attack",
+    "shape": "blast",
+    "effect_str": "pkmn_sleep",
+    "min_duration": 900,
+    "max_duration": 900,
+    "min_damage": 0,
+    "max_damage": 0,
+    "max_level": 30,
+    "min_range": 5,
+    "max_range": 5,
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  }
+]

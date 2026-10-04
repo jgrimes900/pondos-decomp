@@ -1,0 +1,4590 @@
+[
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV3",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(2, 5)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV5",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(3, 7)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV8",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(6, 10)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV12",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(10, 14)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV16",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(14, 18)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV20",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(18, 22)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV25",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(23, 27)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV30",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(28, 32)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV35",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(33, 37)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV40",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(38, 42)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV45",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(43, 47)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV50",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(48, 52)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV55",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(53, 57)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV60",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(58, 62)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_INIT_LV70",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = rng(68, 72)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = round(u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = 0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_BULBASAUR",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_bulbasaur, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_bulbasaur = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #001 Bulbasaur was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_IVYSAUR",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_ivysaur, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_ivysaur = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #002 Ivysaur was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_VENUSAUR",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_venusaur, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_venusaur = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #003 Venusaur was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_CHARMANDER",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_charmander, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_charmander = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #004 Charmander was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_CHARMELEON",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_charmeleon, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_charmeleon = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #005 Charmeleon was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_CHARIZARD",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_charizard, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_charizard = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #006 Charizard was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SQUIRTLE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_squirtle, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_squirtle = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #007 Squirtle was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_WARTORTLE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_wartortle, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_wartortle = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #008 Wartortle was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_BLASTOISE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_blastoise, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_blastoise = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #009 Blastoise was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_CATERPIE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_caterpie, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_caterpie = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #010 Caterpie was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_METAPOD",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_metapod, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_metapod = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #011 Metapod was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_BUTTERFREE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_butterfree, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_butterfree = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #012 Butterfree was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_WEEDLE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_weedle, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_weedle = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #013 Weedle was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_KAKUNA",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_kakuna, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_kakuna = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #014 Kakuna was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_BEEDRILL",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_beedrill, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_beedrill = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #015 Beedrill was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PIDGEY",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_pidgey, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_pidgey = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #016 Pidgey was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PIDGEOTTO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_pidgeotto, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_pidgeotto = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #017 Pidgeotto was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PIDGEOT",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_pidgeot, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_pidgeot = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #018 Pidgeot was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_RATTATA",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_rattata, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_rattata = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #019 Rattata was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_RATICATE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_raticate, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_raticate = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #020 Raticate was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SPEAROW",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_spearow, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_spearow = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #021 Spearow was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_FEAROW",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_fearow, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_fearow = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #022 Fearow was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_EKANS",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_ekans, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_ekans = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #023 Ekans was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ARBOK",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_arbok, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_arbok = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #024 Arbok was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PIKACHU",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_pikachu, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_pikachu = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #025 Pikachu was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_RAICHU",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_raichu, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_raichu = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #026 Raichu was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SANDSHREW",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_sandshrew, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_sandshrew = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #027 Sandshrew was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SANDSLASH",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_sandslash, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_sandslash = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #028 Sandslash was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_NIDORAN_F",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_nidoran_f, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_nidoran_f = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #029 Nidoran♀ was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_NIDORINA",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_nidorina, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_nidorina = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #030 Nidorina was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_NIDOQUEEN",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_nidoqueen, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_nidoqueen = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #031 Nidoqueen was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_NIDORAN_M",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_nidoran_m, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_nidoran_m = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #032 Nidoran♂ was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_NIDORINO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_nidorino, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_nidorino = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #033 Nidorino was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_NIDOKING",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_nidoking, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_nidoking = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #034 Nidoking was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_CLEFAIRY",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_clefairy, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_clefairy = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #035 Clefairy was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_CLEFABLE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_clefable, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_clefable = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #036 Clefable was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_VULPIX",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_vulpix, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_vulpix = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #037 Vulpix was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_NINETALES",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_ninetales, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_ninetales = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #038 Ninetales was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_JIGGLYPUFF",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_jigglypuff, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_jigglypuff = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #039 Jigglypuff was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_WIGGLYTUFF",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_wigglytuff, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_wigglytuff = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #040 Wigglytuff was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ZUBAT",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_zubat, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_zubat = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #041 Zubat was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GOLBAT",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_golbat, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_golbat = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #042 Golbat was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ODDISH",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_oddish, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_oddish = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #043 Oddish was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GLOOM",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_gloom, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_gloom = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #044 Gloom was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_VILEPLUME",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_vileplume, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_vileplume = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #045 Vileplume was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PARAS",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_paras, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_paras = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #046 Paras was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PARASECT",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_parasect, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_parasect = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #047 Parasect was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_VENONAT",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_venonat, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_venonat = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #048 Venonat was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_VENOMOTH",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_venomoth, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_venomoth = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #049 Venomoth was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DIGLETT",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_diglett, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_diglett = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #050 Diglett was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DUGTRIO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_dugtrio, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_dugtrio = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #051 Dugtrio was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MEOWTH",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_meowth, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_meowth = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #052 Meowth was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PERSIAN",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_persian, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_persian = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #053 Persian was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PSYDUCK",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_psyduck, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_psyduck = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #054 Psyduck was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GOLDUCK",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_golduck, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_golduck = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #055 Golduck was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MANKEY",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_mankey, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_mankey = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #056 Mankey was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PRIMEAPE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_primeape, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_primeape = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #057 Primeape was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GROWLITHE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_growlithe, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_growlithe = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #058 Growlithe was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ARCANINE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_arcanine, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_arcanine = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #059 Arcanine was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_POLIWAG",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_poliwag, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_poliwag = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #060 Poliwag was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_POLIWHIRL",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_poliwhirl, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_poliwhirl = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #061 Poliwhirl was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_POLIWRATH",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_poliwrath, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_poliwrath = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #062 Poliwrath was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ABRA",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_abra, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_abra = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #063 Abra was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_KADABRA",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_kadabra, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_kadabra = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #064 Kadabra was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ALAKAZAM",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_alakazam, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_alakazam = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #065 Alakazam was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MACHOP",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_machop, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_machop = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #066 Machop was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MACHOKE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_machoke, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_machoke = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #067 Machoke was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MACHAMP",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_machamp, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_machamp = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #068 Machamp was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_BELLSPROUT",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_bellsprout, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_bellsprout = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #069 Bellsprout was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_WEEPINBELL",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_weepinbell, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_weepinbell = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #070 Weepinbell was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_VICTREEBEL",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_victreebel, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_victreebel = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #071 Victreebel was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_TENTACOOL",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_tentacool, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_tentacool = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #072 Tentacool was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_TENTACRUEL",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_tentacruel, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_tentacruel = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #073 Tentacruel was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GEODUDE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_geodude, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_geodude = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #074 Geodude was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GRAVELER",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_graveler, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_graveler = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #075 Graveler was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GOLEM",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_golem, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_golem = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #076 Golem was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PONYTA",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_ponyta, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_ponyta = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #077 Ponyta was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_RAPIDASH",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_rapidash, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_rapidash = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #078 Rapidash was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SLOWPOKE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_slowpoke, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_slowpoke = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #079 Slowpoke was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SLOWBRO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_slowbro, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_slowbro = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #080 Slowbro was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MAGNEMITE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_magnemite, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_magnemite = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #081 Magnemite was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MAGNETON",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_magneton, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_magneton = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #082 Magneton was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_FARFETCHD",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_farfetchd, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_farfetchd = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #083 Farfetch'd was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DODUO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_doduo, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_doduo = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #084 Doduo was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DODRIO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_dodrio, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_dodrio = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #085 Dodrio was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SEEL",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_seel, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_seel = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #086 Seel was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DEWGONG",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_dewgong, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_dewgong = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #087 Dewgong was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GRIMER",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_grimer, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_grimer = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #088 Grimer was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MUK",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_muk, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_muk = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #089 Muk was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SHELLDER",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_shellder, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_shellder = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #090 Shellder was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_CLOYSTER",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_cloyster, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_cloyster = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #091 Cloyster was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GASTLY",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_gastly, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_gastly = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #092 Gastly was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_HAUNTER",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_haunter, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_haunter = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #093 Haunter was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GENGAR",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_gengar, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_gengar = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #094 Gengar was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ONIX",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_onix, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_onix = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #095 Onix was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DROWZEE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_drowzee, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_drowzee = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #096 Drowzee was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_HYPNO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_hypno, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_hypno = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #097 Hypno was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_KRABBY",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_krabby, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_krabby = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #098 Krabby was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_KINGLER",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_kingler, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_kingler = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #099 Kingler was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_VOLTORB",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_voltorb, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_voltorb = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #100 Voltorb was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ELECTRODE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_electrode, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_electrode = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #101 Electrode was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_EXEGGCUTE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_exeggcute, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_exeggcute = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #102 Exeggcute was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_EXEGGUTOR",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_exeggutor, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_exeggutor = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #103 Exeggutor was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_CUBONE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_cubone, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_cubone = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #104 Cubone was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MAROWAK",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_marowak, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_marowak = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #105 Marowak was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_HITMONLEE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_hitmonlee, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_hitmonlee = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #106 Hitmonlee was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_HITMONCHAN",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_hitmonchan, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_hitmonchan = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #107 Hitmonchan was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_LICKITUNG",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_lickitung, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_lickitung = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #108 Lickitung was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_KOFFING",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_koffing, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_koffing = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #109 Koffing was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_WEEZING",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_weezing, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_weezing = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #110 Weezing was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_RHYHORN",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_rhyhorn, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_rhyhorn = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #111 Rhyhorn was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_RHYDON",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_rhydon, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_rhydon = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #112 Rhydon was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_CHANSEY",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_chansey, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_chansey = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #113 Chansey was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_TANGELA",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_tangela, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_tangela = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #114 Tangela was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_KANGASKHAN",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_kangaskhan, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_kangaskhan = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #115 Kangaskhan was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_HORSEA",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_horsea, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_horsea = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #116 Horsea was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SEADRA",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_seadra, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_seadra = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #117 Seadra was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GOLDEEN",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_goldeen, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_goldeen = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #118 Goldeen was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SEAKING",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_seaking, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_seaking = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #119 Seaking was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_STARYU",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_staryu, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_staryu = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #120 Staryu was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_STARMIE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_starmie, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_starmie = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #121 Starmie was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MR_MIME",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_mr_mime, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_mr_mime = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #122 Mr. Mime was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SCYTHER",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_scyther, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_scyther = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #123 Scyther was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_JYNX",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_jynx, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_jynx = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #124 Jynx was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ELECTABUZZ",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_electabuzz, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_electabuzz = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #125 Electabuzz was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MAGMAR",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_magmar, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_magmar = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #126 Magmar was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PINSIR",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_pinsir, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_pinsir = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #127 Pinsir was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_TAUROS",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_tauros, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_tauros = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #128 Tauros was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MAGIKARP",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_magikarp, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_magikarp = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #129 Magikarp was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_GYARADOS",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_gyarados, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_gyarados = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #130 Gyarados was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_LAPRAS",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_lapras, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_lapras = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #131 Lapras was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DITTO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_ditto, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_ditto = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #132 Ditto was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_EEVEE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_eevee, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_eevee = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #133 Eevee was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_VAPOREON",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_vaporeon, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_vaporeon = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #134 Vaporeon was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_JOLTEON",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_jolteon, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_jolteon = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #135 Jolteon was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_FLAREON",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_flareon, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_flareon = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #136 Flareon was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_PORYGON",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_porygon, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_porygon = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #137 Porygon was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_OMANYTE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_omanyte, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_omanyte = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #138 Omanyte was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_OMASTAR",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_omastar, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_omastar = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #139 Omastar was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_KABUTO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_kabuto, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_kabuto = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #140 Kabuto was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_KABUTOPS",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_kabutops, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_kabutops = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #141 Kabutops was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_AERODACTYL",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_aerodactyl, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_aerodactyl = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #142 Aerodactyl was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_SNORLAX",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_snorlax, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_snorlax = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #143 Snorlax was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ARTICUNO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_articuno, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_articuno = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #144 Articuno was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_ZAPDOS",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_zapdos, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_zapdos = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #145 Zapdos was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MOLTRES",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_moltres, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_moltres = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #146 Moltres was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DRATINI",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_dratini, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_dratini = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #147 Dratini was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DRAGONAIR",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_dragonair, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_dragonair = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #148 Dragonair was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_DRAGONITE",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_dragonite, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_dragonite = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #149 Dragonite was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MEWTWO",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_mewtwo, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_mewtwo = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #150 Mewtwo was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MEW",
+    "condition": {
+      "math": [
+        "value_or(pkmn_dex_mew, 0) == 0"
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "pkmn_dex_mew = 1"
+        ]
+      },
+      {
+        "math": [
+          "pkmn_dex_count = value_or(pkmn_dex_count, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "Pokédex: data for #151 Mew was added!  (<global_val:pkmn_dex_count>/151 registered)",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_DEX_MILESTONES"
+      }
+    ]
+  }
+]

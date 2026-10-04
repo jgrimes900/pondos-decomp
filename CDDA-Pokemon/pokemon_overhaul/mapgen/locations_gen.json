@@ -1,0 +1,3215 @@
+[
+  {
+    "type": "palette",
+    "id": "pkmn_palette_building",
+    "terrain": {
+      " ": "t_grass",
+      ".": "t_floor",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_floor",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_floor",
+      "X": "t_floor",
+      "a": "t_floor",
+      "L": "t_floor",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large"
+    },
+    "items": {
+      "r": {
+        "item": "pkmn_loot_common",
+        "chance": 25
+      },
+      "l": {
+        "item": "pkmn_loot_common",
+        "chance": 25
+      },
+      "B": {
+        "item": "pkmn_loot_common",
+        "chance": 10
+      },
+      "d": {
+        "item": "pkmn_loot_common",
+        "chance": 20
+      }
+    }
+  },
+  {
+    "type": "palette",
+    "id": "pkmn_palette_cave",
+    "terrain": {
+      " ": "t_rock_floor",
+      ".": "t_floor",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_floor",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_floor",
+      "X": "t_floor",
+      "a": "t_floor",
+      "L": "t_floor",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large"
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_center",
+    "name": "Pokémon Center",
+    "sym": "+",
+    "color": "light_red",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_center",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_center_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      3
+    ],
+    "occurrences": [
+      3,
+      8
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_center",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #p.......,,,,.......p# ",
+        " w....................w ",
+        " #hh..............hh..# ",
+        " #tt..............tt..# ",
+        " #hh..............hh..# ",
+        " w....................w ",
+        " #cccccccccc.ccccccccc# ",
+        " #..........N.........# ",
+        " #..H.................# ",
+        " #rr..bb..bb..bb..ll..# ",
+        " #rr..............ll..# ",
+        " ###################### ",
+        "                        ",
+        "   Y    Y    Y    Y     ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_building"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "N": {
+          "class": "pkmn_npc_nurse_joy"
+        }
+      },
+      "place_monster": [
+        {
+          "monster": "pkmn_chansey",
+          "x": 4,
+          "y": 10,
+          "friendly": true,
+          "chance": 60,
+          "name": "Nurse Joy's Chansey"
+        }
+      ],
+      "place_npcs": [
+        {
+          "class": "pkmn_npc_jenny",
+          "x": 18,
+          "y": 4,
+          "unique_id": "pkmn_jenny"
+        },
+        {
+          "class": "pkmn_npc_rocket_grunt_1",
+          "x": [
+            3,
+            20
+          ],
+          "y": [
+            15,
+            21
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_mart",
+    "name": "Poké Mart",
+    "sym": "$",
+    "color": "light_blue",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_mart",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_mart_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      3
+    ],
+    "occurrences": [
+      3,
+      8
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_mart",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #p.......,,,,.......p# ",
+        " #....................# ",
+        " #..rrrr..rrrr..rrrr..# ",
+        " #....................# ",
+        " #..rrrr..rrrr..rrrr..# ",
+        " #....................# ",
+        " #....................# ",
+        " #cccccccccc..........# ",
+        " #....M...c..........l# ",
+        " #........c..........l# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_building"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "M": {
+          "class": "pkmn_npc_mart_clerk"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_oak_lab",
+    "name": "Professor Oak's Lab",
+    "sym": "L",
+    "color": "white",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_oak_lab",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_oak_lab_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      1,
+      6
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_oak_lab",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #BBBB....,,,,....BBBB# ",
+        " w....................w ",
+        " #dh..dh........C.mmm.# ",
+        " #..............C.....# ",
+        " #tt..........O.......# ",
+        " #tt....t.............# ",
+        " w......t....N........w ",
+        " #......t.............# ",
+        " #rrr.............rrrr# ",
+        " #rrr..ll..bb.....rrrr# ",
+        " ###################### ",
+        "                        ",
+        "   TT              TT   ",
+        "  TTTT     __     TTTT  ",
+        "   TT     ____     TT   ",
+        "          ____          ",
+        "           __           ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_building"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "N": {
+          "class": "pkmn_npc_oak",
+          "unique_id": "pkmn_oak"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_indigo_plateau",
+    "name": "Indigo Plateau",
+    "sym": "I",
+    "color": "yellow",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_indigo_plateau",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_indigo_plateau_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      10,
+      40
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_indigo_plateau",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #S.......,,,,.......S# ",
+        " #........,,,,........# ",
+        " #..xxxxxxxxxxxxxxxx..# ",
+        " #..x..............x..# ",
+        " #..x..............x..# ",
+        " #..x......aa......x..# ",
+        " #..x......aa......x..# ",
+        " #..x..............x..# ",
+        " #..x..............x..# ",
+        " #..xxxxxxxxxxxxxxxx..# ",
+        " #..........L.........# ",
+        " #S..................S# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_building"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "L": {
+          "class": "pkmn_npc_rival",
+          "unique_id": "pkmn_rival"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_pokemon_tower",
+    "name": "Pokémon Tower",
+    "sym": "T",
+    "color": "magenta",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_pokemon_tower",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_pokemon_tower_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      6
+    ],
+    "occurrences": [
+      0,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_pokemon_tower",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #S.S.S.S.,,,,.S.S.S.S# ",
+        " #....................# ",
+        " #.S.S.S.S....S.S.S.S.# ",
+        " #....................# ",
+        " #S.S.S.S......S.S.S.S# ",
+        " #....................# ",
+        " #.S.S.S.S....S.S.S.S.# ",
+        " #....................# ",
+        " #S.S.S.S......S.S.S.S# ",
+        " #..........F.........# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_building"
+      ],
+      "fill_ter": "t_grass",
+      "place_monster": [
+        {
+          "group": "PKMN_GROUP_TOWER",
+          "x": [
+            3,
+            20
+          ],
+          "y": [
+            3,
+            11
+          ],
+          "repeat": [
+            3,
+            6
+          ]
+        }
+      ],
+      "place_loot": [
+        {
+          "group": "pkmn_loot_rare",
+          "x": 11,
+          "y": 11,
+          "chance": 100
+        }
+      ]
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_power_plant",
+    "name": "abandoned power plant",
+    "sym": "P",
+    "color": "yellow",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_power_plant",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_power_plant_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      6,
+      -1
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_power_plant",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########++++######### ",
+        " #mmm.mmm.,,,,.mmm.mmm# ",
+        " #....................# ",
+        " #.m.m.m.m....m.m.m.m.# ",
+        " #....................# ",
+        " #..CCC..........CCC..# ",
+        " #....................# ",
+        " #mm......%%%%......mm# ",
+        " #mm......%%%%......mm# ",
+        " #....................# ",
+        " #m.m.m.m.m..m.m.m.m.m# ",
+        " ###################### ",
+        "    m  m  m  m  m  m    ",
+        "                        ",
+        "    m  m  m  m  m  m    ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_building"
+      ],
+      "fill_ter": "t_grass",
+      "place_monster": [
+        {
+          "monster": "pkmn_zapdos",
+          "x": 11,
+          "y": 9
+        },
+        {
+          "group": "PKMN_GROUP_POWER",
+          "x": [
+            3,
+            20
+          ],
+          "y": [
+            3,
+            11
+          ],
+          "repeat": [
+            4,
+            8
+          ]
+        }
+      ],
+      "place_loot": [
+        {
+          "item": "pkmn_stone_thunder",
+          "x": 12,
+          "y": 9,
+          "chance": 100
+        }
+      ]
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_safari_zone",
+    "name": "Safari Zone",
+    "sym": "S",
+    "color": "green",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_safari_zone",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_safari_zone_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      3,
+      30
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_safari_zone",
+    "object": {
+      "rows": [
+        "ffffffffff,,,,ffffffffff",
+        "f   TT    ,cc,    TT   f",
+        "f  TTTT   ,,,,   TTTT  f",
+        "f   TT     __     TT   f",
+        "f          __          f",
+        "f   Y   ________   Y   f",
+        "f      __      __      f",
+        "f  Y  __  ~~~~  __  Y  f",
+        "f    __  ~~==~~  __    f",
+        "f    _  ~~====~~  _    f",
+        "f    _  ~~====~~  _    f",
+        "f    __  ~~==~~  __    f",
+        "f  Y  __  ~~~~  __  Y  f",
+        "f      __      __      f",
+        "f   Y   ________   Y   f",
+        "f          __          f",
+        "f  TT      __      TT  f",
+        "f TTTT  Y  __  Y  TTTT f",
+        "f  TT      __      TT  f",
+        "f    YY    __    YY    f",
+        "f   TTTT   __   TTTT   f",
+        "f    TT    __    TT    f",
+        "f          __          f",
+        "ffffffffffffffffffffffff"
+      ],
+      "palettes": [
+        "pkmn_palette_building"
+      ],
+      "fill_ter": "t_grass",
+      "place_npcs": [
+        {
+          "class": "pkmn_npc_safari_warden",
+          "x": 12,
+          "y": 2,
+          "unique_id": "pkmn_warden"
+        }
+      ],
+      "place_monster": [
+        {
+          "group": "PKMN_GROUP_SAFARI",
+          "x": [
+            2,
+            21
+          ],
+          "y": [
+            4,
+            21
+          ],
+          "repeat": [
+            6,
+            10
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_rocket_hideout",
+    "name": "Rocket Game Corner",
+    "sym": "R",
+    "color": "red",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_rocket_hideout",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_rocket_hideout_north"
+      },
+      {
+        "point": [
+          0,
+          0,
+          -1
+        ],
+        "overmap": "pkmn_rocket_hideout_b1_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      4
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_rocket_hideout",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #mm.mm.mm.,,.mm.mm.mm# ",
+        " #....................# ",
+        " #h.h.h.h.h..h.h.h.h..# ",
+        " #mm.mm.mm.mm.mm.mm.mm# ",
+        " #....................# ",
+        " #h.h.h.h.h..h.h.h.h..# ",
+        " #....................# ",
+        " #ccccc..........1....# ",
+        " #.....r..........>...# ",
+        " #.....r..............# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_building"
+      ],
+      "fill_ter": "t_grass",
+      "terrain": {
+        "1": "t_floor"
+      },
+      "place_npcs": [
+        {
+          "class": "pkmn_npc_rocket_grunt_2",
+          "x": 17,
+          "y": 9
+        }
+      ]
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_rocket_hideout_b1",
+    "name": "Rocket Hideout",
+    "sym": "R",
+    "color": "red",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_rocket_hideout_b1",
+    "object": {
+      "rows": [
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "R######################R",
+        "R#....2.......#..rr...#R",
+        "R#............#..rr...#R",
+        "R#..C.C.C.....+.......#R",
+        "R#............#...4...#R",
+        "R####+#########.......#R",
+        "R#.......#....#####+###R",
+        "R#.3.....#............#R",
+        "R#.......+.....A......#R",
+        "R#..rr...#............#R",
+        "R#..rr...#..C.C.C.....#R",
+        "R#.......#.........<..#R",
+        "R######################R",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR"
+      ],
+      "palettes": [
+        "pkmn_palette_building"
+      ],
+      "fill_ter": "t_rock_floor",
+      "terrain": {
+        "2": "t_floor",
+        "3": "t_floor",
+        "4": "t_floor",
+        "A": "t_floor"
+      },
+      "place_npcs": [
+        {
+          "class": "pkmn_npc_rocket_grunt_3",
+          "x": 6,
+          "y": 2
+        },
+        {
+          "class": "pkmn_npc_rocket_grunt_4",
+          "x": 3,
+          "y": 8
+        },
+        {
+          "class": "pkmn_npc_rocket_grunt_5",
+          "x": 18,
+          "y": 5
+        },
+        {
+          "class": "pkmn_npc_rocket_admin",
+          "x": 15,
+          "y": 9,
+          "unique_id": "pkmn_rocket_admin"
+        }
+      ],
+      "place_loot": [
+        {
+          "group": "pkmn_loot_rare",
+          "x": 18,
+          "y": 2,
+          "chance": 100
+        },
+        {
+          "group": "pkmn_loot_rare",
+          "x": 4,
+          "y": 10,
+          "chance": 80
+        },
+        {
+          "item": "pkmn_ball_master",
+          "x": 19,
+          "y": 3,
+          "chance": 25
+        }
+      ],
+      "place_monster": [
+        {
+          "monster": "pkmn_porygon",
+          "x": 12,
+          "y": 11,
+          "chance": 50
+        }
+      ]
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_mt_moon",
+    "name": "Mt. Moon cave",
+    "sym": "M",
+    "color": "light_gray",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": [
+      "NO_ROTATE"
+    ]
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_mt_moon",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_mt_moon"
+      }
+    ],
+    "locations": [
+      "wilderness"
+    ],
+    "city_distance": [
+      8,
+      -1
+    ],
+    "occurrences": [
+      1,
+      2
+    ],
+    "flags": [
+      "WILDERNESS"
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_mt_moon",
+    "object": {
+      "rows": [
+        "RRRRRRRRRR%%%%RRRRRRRRRR",
+        "RRRRRRRRR%%%%%%RRRRRRRRR",
+        "RRRRRR%%%%%%%%%%%RRRRRRR",
+        "RRRR%%%%%%%RR%%%%%%RRRRR",
+        "RRR%%%%%%RRRRRR%%%%%RRRR",
+        "RR%%%%%%RRRRRRRR%%%%%RRR",
+        "RR%%%%%RRR~~~RRRR%%%%RRR",
+        "R%%%%%%RR~~=~~RRR%%%%%RR",
+        "R%%%%%RRR~===~RR%%%%%%RR",
+        "R%%%%%%RR~~=~~R%%%%%%%RR",
+        "RR%%%%%%RR~~~R%%%%%%%RRR",
+        "RR%%%%%%%RRRR%%%%%%%%RRR",
+        "RRR%%%%%%%%%%%%%%%%%RRRR",
+        "RRR%%%%%%%%%%%%%%%%%RRRR",
+        "RRRR%%%%%%%%%%%%%%%RRRRR",
+        "RRRR%%%%%%%%%%%%%%%RRRRR",
+        "RRRRR%%%%%%%%%%%%%RRRRRR",
+        "RRRRR%%%%%%%%%%%%%RRRRRR",
+        "RRRRRR%%%%%%%%%%%RRRRRRR",
+        "RRRRRRR%%%%%%%%%RRRRRRRR",
+        "RRRRRRRR%%%%%%%RRRRRRRRR",
+        "RRRRRRRRR%%%%%RRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR"
+      ],
+      "palettes": [
+        "pkmn_palette_cave"
+      ],
+      "fill_ter": "t_rock_floor",
+      "place_monster": [
+        {
+          "group": "PKMN_GROUP_MT_MOON",
+          "x": [
+            3,
+            20
+          ],
+          "y": [
+            2,
+            20
+          ],
+          "repeat": [
+            5,
+            9
+          ]
+        }
+      ],
+      "place_loot": [
+        {
+          "item": "pkmn_fossil_helix",
+          "x": 6,
+          "y": 14,
+          "chance": 60
+        },
+        {
+          "item": "pkmn_fossil_dome",
+          "x": 16,
+          "y": 14,
+          "chance": 60
+        },
+        {
+          "item": "pkmn_stone_moon",
+          "x": 11,
+          "y": 17,
+          "chance": 100
+        },
+        {
+          "item": "pkmn_old_amber",
+          "x": 11,
+          "y": 19,
+          "chance": 30
+        }
+      ],
+      "place_npcs": [
+        {
+          "class": "pkmn_npc_rocket_grunt_1",
+          "x": 11,
+          "y": 13
+        }
+      ],
+      "terrain": {}
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_seafoam",
+    "name": "Seafoam ice cave",
+    "sym": "A",
+    "color": "light_cyan",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": [
+      "NO_ROTATE"
+    ]
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_seafoam",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_seafoam"
+      }
+    ],
+    "locations": [
+      "wilderness"
+    ],
+    "city_distance": [
+      8,
+      -1
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "WILDERNESS"
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_seafoam",
+    "object": {
+      "rows": [
+        "RRRRRRRRRR%%%%RRRRRRRRRR",
+        "RRRRRRRRR%%%%%%RRRRRRRRR",
+        "RRRRRR%%%%%%%%%%%RRRRRRR",
+        "RRRR%%%%%%%RR%%%%%%RRRRR",
+        "RRR%%%%%%RRRRRR%%%%%RRRR",
+        "RR%%%%%%RRRRRRRR%%%%%RRR",
+        "RR%%%%%RRR~~~RRRR%%%%RRR",
+        "R%%%%%%RR~~=~~RRR%%%%%RR",
+        "R%%%%%RRR~===~RR%%%%%%RR",
+        "R%%%%%%RR~~=~~R%%%%%%%RR",
+        "RR%%%%%%RR~~~R%%%%%%%RRR",
+        "RR%%%%%%%RRRR%%%%%%%%RRR",
+        "RRR%%%%%%%%%%%%%%%%%RRRR",
+        "RRR%%%%%%%%%%%%%%%%%RRRR",
+        "RRRR%%%%%%%%%%%%%%%RRRRR",
+        "RRRR%%%%%%%%%%%%%%%RRRRR",
+        "RRRRR%%%%%%%%%%%%%RRRRRR",
+        "RRRRR%%%%%%%%%%%%%RRRRRR",
+        "RRRRRR%%%%%%%%%%%RRRRRRR",
+        "RRRRRRR%%%%%%%%%RRRRRRRR",
+        "RRRRRRRR%%%%%%%RRRRRRRRR",
+        "RRRRRRRRR%%%%%RRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR"
+      ],
+      "palettes": [
+        "pkmn_palette_cave"
+      ],
+      "fill_ter": "t_rock_floor",
+      "place_monster": [
+        {
+          "group": "PKMN_GROUP_SEAFOAM",
+          "x": [
+            3,
+            20
+          ],
+          "y": [
+            2,
+            20
+          ],
+          "repeat": [
+            5,
+            9
+          ]
+        },
+        {
+          "monster": "pkmn_articuno",
+          "x": 11,
+          "y": 12
+        }
+      ],
+      "place_loot": [
+        {
+          "group": "pkmn_loot_rare",
+          "x": 11,
+          "y": 15,
+          "chance": 100
+        }
+      ],
+      "place_npcs": [],
+      "terrain": {
+        "~": "t_water_sh",
+        "=": "t_water_dp"
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_mt_ember",
+    "name": "Mt. Ember volcanic cave",
+    "sym": "E",
+    "color": "light_red",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": [
+      "NO_ROTATE"
+    ]
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_mt_ember",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_mt_ember"
+      }
+    ],
+    "locations": [
+      "wilderness"
+    ],
+    "city_distance": [
+      8,
+      -1
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "WILDERNESS"
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_mt_ember",
+    "object": {
+      "rows": [
+        "RRRRRRRRRR%%%%RRRRRRRRRR",
+        "RRRRRRRRR%%%%%%RRRRRRRRR",
+        "RRRRRR%%%%%%%%%%%RRRRRRR",
+        "RRRR%%%%%%%RR%%%%%%RRRRR",
+        "RRR%%%%%%RRRRRR%%%%%RRRR",
+        "RR%%%%%%RRRRRRRR%%%%%RRR",
+        "RR%%%%%RRR~~~RRRR%%%%RRR",
+        "R%%%%%%RR~~=~~RRR%%%%%RR",
+        "R%%%%%RRR~===~RR%%%%%%RR",
+        "R%%%%%%RR~~=~~R%%%%%%%RR",
+        "RR%%%%%%RR~~~R%%%%%%%RRR",
+        "RR%%%%%%%RRRR%%%%%%%%RRR",
+        "RRR%%%%%%%%%%%%%%%%%RRRR",
+        "RRR%%%%%%%%%%%%%%%%%RRRR",
+        "RRRR%%%%%%%%%%%%%%%RRRRR",
+        "RRRR%%%%%%%%%%%%%%%RRRRR",
+        "RRRRR%%%%%%%%%%%%%RRRRRR",
+        "RRRRR%%%%%%%%%%%%%RRRRRR",
+        "RRRRRR%%%%%%%%%%%RRRRRRR",
+        "RRRRRRR%%%%%%%%%RRRRRRRR",
+        "RRRRRRRR%%%%%%%RRRRRRRRR",
+        "RRRRRRRRR%%%%%RRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR"
+      ],
+      "palettes": [
+        "pkmn_palette_cave"
+      ],
+      "fill_ter": "t_rock_floor",
+      "place_monster": [
+        {
+          "group": "PKMN_GROUP_EMBER",
+          "x": [
+            3,
+            20
+          ],
+          "y": [
+            2,
+            20
+          ],
+          "repeat": [
+            5,
+            9
+          ]
+        },
+        {
+          "monster": "pkmn_moltres",
+          "x": 11,
+          "y": 12
+        }
+      ],
+      "place_loot": [
+        {
+          "item": "pkmn_stone_fire",
+          "x": 11,
+          "y": 15,
+          "chance": 100
+        }
+      ],
+      "place_npcs": [],
+      "terrain": {
+        "~": "t_rock_floor",
+        "=": "t_lava"
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_cerulean_cave",
+    "name": "sealed cave",
+    "sym": "?",
+    "color": "magenta",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": [
+      "NO_ROTATE"
+    ]
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_cerulean_cave",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_cerulean_cave"
+      }
+    ],
+    "locations": [
+      "wilderness"
+    ],
+    "city_distance": [
+      8,
+      -1
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "WILDERNESS"
+    ]
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_cerulean_cave",
+    "object": {
+      "rows": [
+        "RRRRRRRRRR%%%%RRRRRRRRRR",
+        "RRRRRRRRR%%%%%%RRRRRRRRR",
+        "RRRRRR%%%%%%%%%%%RRRRRRR",
+        "RRRR%%%%%%%RR%%%%%%RRRRR",
+        "RRR%%%%%%RRRRRR%%%%%RRRR",
+        "RR%%%%%%RRRRRRRR%%%%%RRR",
+        "RR%%%%%RRR~~~RRRR%%%%RRR",
+        "R%%%%%%RR~~=~~RRR%%%%%RR",
+        "R%%%%%RRR~===~RR%%%%%%RR",
+        "R%%%%%%RR~~=~~R%%%%%%%RR",
+        "RR%%%%%%RR~~~R%%%%%%%RRR",
+        "RR%%%%%%%RRRR%%%%%%%%RRR",
+        "RRR%%%%%%%%%%%%%%%%%RRRR",
+        "RRR%%%%%%%%%%%%%%%%%RRRR",
+        "RRRR%%%%%%%%%%%%%%%RRRRR",
+        "RRRR%%%%%%%%%%%%%%%RRRRR",
+        "RRRRR%%%%%%%%%%%%%RRRRRR",
+        "RRRRR%%%%%%%%%%%%%RRRRRR",
+        "RRRRRR%%%%%%%%%%%RRRRRRR",
+        "RRRRRRR%%%%%%%%%RRRRRRRR",
+        "RRRRRRRR%%%%%%%RRRRRRRRR",
+        "RRRRRRRRR%%%%%RRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR",
+        "RRRRRRRRRRRRRRRRRRRRRRRR"
+      ],
+      "palettes": [
+        "pkmn_palette_cave"
+      ],
+      "fill_ter": "t_rock_floor",
+      "place_monster": [
+        {
+          "group": "PKMN_GROUP_CERULEAN_CAVE",
+          "x": [
+            3,
+            20
+          ],
+          "y": [
+            2,
+            20
+          ],
+          "repeat": [
+            5,
+            9
+          ]
+        },
+        {
+          "monster": "pkmn_mewtwo",
+          "x": 11,
+          "y": 12
+        }
+      ],
+      "place_loot": [
+        {
+          "group": "pkmn_loot_rare",
+          "x": 11,
+          "y": 15,
+          "chance": 100
+        },
+        {
+          "item": "pkmn_ball_ultra",
+          "x": 12,
+          "y": 16,
+          "chance": 100
+        }
+      ],
+      "place_npcs": [],
+      "terrain": {}
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_gym_pewter",
+    "name": "Pewter Gym",
+    "sym": "G",
+    "color": "light_gray",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_gym_pewter",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_gym_pewter_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      4
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "palette",
+    "id": "pkmn_palette_gym_pewter",
+    "terrain": {
+      " ": "t_grass",
+      ".": "t_rock_floor",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_rock_floor",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_rock_floor",
+      "X": "t_rock_floor",
+      "a": "t_dirt",
+      "L": "t_rock_floor",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large",
+      "x": "f_boulder_large",
+      "X": "f_boulder_medium"
+    }
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_gym_pewter",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #xx......,,,,......xx# ",
+        " #x.......,,,,.......x# ",
+        " #..X.....,,,,.....X..# ",
+        " #........,,,,........# ",
+        " #....xxxx....xxxx....# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #....xxxx....xxxx....# ",
+        " #X..................X# ",
+        " #..........L.........# ",
+        " #X.......S..S.......X# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_gym_pewter"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "L": {
+          "class": "pkmn_npc_brock",
+          "unique_id": "pkmn_brock"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_gym_cerulean",
+    "name": "Cerulean Gym",
+    "sym": "G",
+    "color": "light_blue",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_gym_cerulean",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_gym_cerulean_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      4
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "palette",
+    "id": "pkmn_palette_gym_cerulean",
+    "terrain": {
+      " ": "t_grass",
+      ".": "t_floor",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_floor",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_water_pool",
+      "X": "t_floor",
+      "a": "t_floor",
+      "L": "t_floor",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large",
+      "X": "f_indoor_plant"
+    }
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_gym_cerulean",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #xx......,,,,......xx# ",
+        " #x.......,,,,.......x# ",
+        " #..X.....,,,,.....X..# ",
+        " #........,,,,........# ",
+        " #....xxxx....xxxx....# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #....xxxx....xxxx....# ",
+        " #X..................X# ",
+        " #..........L.........# ",
+        " #X.......S..S.......X# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_gym_cerulean"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "L": {
+          "class": "pkmn_npc_misty",
+          "unique_id": "pkmn_misty"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_gym_vermilion",
+    "name": "Vermilion Gym",
+    "sym": "G",
+    "color": "yellow",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_gym_vermilion",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_gym_vermilion_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      4
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "palette",
+    "id": "pkmn_palette_gym_vermilion",
+    "terrain": {
+      " ": "t_grass",
+      ".": "t_floor",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_floor",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_floor",
+      "X": "t_floor",
+      "a": "t_floor",
+      "L": "t_floor",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large",
+      "x": "f_machinery_electronic",
+      "X": "f_console_broken"
+    }
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_gym_vermilion",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #xx......,,,,......xx# ",
+        " #x.......,,,,.......x# ",
+        " #..X.....,,,,.....X..# ",
+        " #........,,,,........# ",
+        " #....xxxx....xxxx....# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #....xxxx....xxxx....# ",
+        " #X..................X# ",
+        " #..........L.........# ",
+        " #X.......S..S.......X# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_gym_vermilion"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "L": {
+          "class": "pkmn_npc_surge",
+          "unique_id": "pkmn_surge"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_gym_celadon",
+    "name": "Celadon Gym",
+    "sym": "G",
+    "color": "light_green",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_gym_celadon",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_gym_celadon_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      4
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "palette",
+    "id": "pkmn_palette_gym_celadon",
+    "terrain": {
+      " ": "t_grass",
+      ".": "t_grass",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_grass",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_shrub",
+      "X": "t_grass",
+      "a": "t_grass",
+      "L": "t_grass",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large",
+      "X": "f_indoor_plant"
+    }
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_gym_celadon",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #xx......,,,,......xx# ",
+        " #x.......,,,,.......x# ",
+        " #..X.....,,,,.....X..# ",
+        " #........,,,,........# ",
+        " #....xxxx....xxxx....# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #....xxxx....xxxx....# ",
+        " #X..................X# ",
+        " #..........L.........# ",
+        " #X.......S..S.......X# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_gym_celadon"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "L": {
+          "class": "pkmn_npc_erika",
+          "unique_id": "pkmn_erika"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_gym_fuchsia",
+    "name": "Fuchsia Gym",
+    "sym": "G",
+    "color": "magenta",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_gym_fuchsia",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_gym_fuchsia_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      4
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "palette",
+    "id": "pkmn_palette_gym_fuchsia",
+    "terrain": {
+      " ": "t_grass",
+      ".": "t_floor",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_floor",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_floor",
+      "X": "t_floor",
+      "a": "t_floor",
+      "L": "t_floor",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large",
+      "x": "f_statue",
+      "X": "f_indoor_plant"
+    }
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_gym_fuchsia",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #xx......,,,,......xx# ",
+        " #x.......,,,,.......x# ",
+        " #..X.....,,,,.....X..# ",
+        " #........,,,,........# ",
+        " #....xxxx....xxxx....# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #....xxxx....xxxx....# ",
+        " #X..................X# ",
+        " #..........L.........# ",
+        " #X.......S..S.......X# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_gym_fuchsia"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "L": {
+          "class": "pkmn_npc_koga",
+          "unique_id": "pkmn_koga"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_gym_saffron",
+    "name": "Saffron Gym",
+    "sym": "G",
+    "color": "pink",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_gym_saffron",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_gym_saffron_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      4
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "palette",
+    "id": "pkmn_palette_gym_saffron",
+    "terrain": {
+      " ": "t_grass",
+      ".": "t_carpet_purple",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_carpet_purple",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_carpet_purple",
+      "X": "t_carpet_purple",
+      "a": "t_carpet_purple",
+      "L": "t_carpet_purple",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large",
+      "x": "f_statue",
+      "X": "f_console_broken"
+    }
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_gym_saffron",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #xx......,,,,......xx# ",
+        " #x.......,,,,.......x# ",
+        " #..X.....,,,,.....X..# ",
+        " #........,,,,........# ",
+        " #....xxxx....xxxx....# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #....xxxx....xxxx....# ",
+        " #X..................X# ",
+        " #..........L.........# ",
+        " #X.......S..S.......X# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_gym_saffron"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "L": {
+          "class": "pkmn_npc_sabrina",
+          "unique_id": "pkmn_sabrina"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_gym_cinnabar",
+    "name": "Cinnabar Gym",
+    "sym": "G",
+    "color": "light_red",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_gym_cinnabar",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_gym_cinnabar_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      4
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "palette",
+    "id": "pkmn_palette_gym_cinnabar",
+    "terrain": {
+      " ": "t_grass",
+      ".": "t_floor",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_floor",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_floor",
+      "X": "t_floor",
+      "a": "t_floor",
+      "L": "t_floor",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large",
+      "x": "f_brazier",
+      "X": "f_brazier"
+    }
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_gym_cinnabar",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #xx......,,,,......xx# ",
+        " #x.......,,,,.......x# ",
+        " #..X.....,,,,.....X..# ",
+        " #........,,,,........# ",
+        " #....xxxx....xxxx....# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #....xxxx....xxxx....# ",
+        " #X..................X# ",
+        " #..........L.........# ",
+        " #X.......S..S.......X# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_gym_cinnabar"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "L": {
+          "class": "pkmn_npc_blaine",
+          "unique_id": "pkmn_blaine"
+        }
+      }
+    }
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "pkmn_gym_viridian",
+    "name": "Viridian Gym",
+    "sym": "G",
+    "color": "green",
+    "see_cost": "high",
+    "mondensity": 0,
+    "flags": []
+  },
+  {
+    "type": "overmap_special",
+    "id": "pkmn_gym_viridian",
+    "overmaps": [
+      {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "overmap": "pkmn_gym_viridian_north"
+      }
+    ],
+    "locations": [
+      "land"
+    ],
+    "city_distance": [
+      0,
+      4
+    ],
+    "occurrences": [
+      1,
+      1
+    ],
+    "flags": [
+      "MAN_MADE"
+    ],
+    "connections": [
+      {
+        "point": [
+          0,
+          -1,
+          0
+        ],
+        "connection": "local_road",
+        "terrain": "road",
+        "existing": true,
+        "from": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "city_sizes": [
+      1,
+      -1
+    ]
+  },
+  {
+    "type": "palette",
+    "id": "pkmn_palette_gym_viridian",
+    "terrain": {
+      " ": "t_grass",
+      ".": "t_floor",
+      ",": "t_concrete",
+      "#": "t_wall",
+      "w": "t_window",
+      "+": "t_door_c",
+      "\"": "t_door_glass_c",
+      "c": "t_floor",
+      "h": "t_floor",
+      "t": "t_floor",
+      "b": "t_floor",
+      "r": "t_floor",
+      "B": "t_floor",
+      "d": "t_floor",
+      "l": "t_floor",
+      "p": "t_floor",
+      "s": "t_floor",
+      "S": "t_floor",
+      "T": "t_tree",
+      "~": "t_water_sh",
+      "=": "t_water_dp",
+      "_": "t_dirt",
+      "f": "t_chainfence",
+      "R": "t_rock",
+      "%": "t_rock_floor",
+      "<": "t_stairs_up",
+      ">": "t_stairs_down",
+      "C": "t_floor",
+      "m": "t_floor",
+      "x": "t_dirt",
+      "X": "t_floor",
+      "a": "t_dirt",
+      "L": "t_floor",
+      "N": "t_floor",
+      "H": "t_floor",
+      "G": "t_floor",
+      "P": "t_floor",
+      "j": "t_floor",
+      "k": "t_floor",
+      "Y": "t_shrub",
+      "O": "t_floor",
+      "M": "t_floor",
+      "F": "t_floor",
+      "1": "t_floor",
+      "2": "t_floor",
+      "3": "t_floor",
+      "4": "t_floor",
+      "A": "t_floor"
+    },
+    "furniture": {
+      "c": "f_counter",
+      "h": "f_chair",
+      "t": "f_table",
+      "b": "f_bed",
+      "r": "f_rack",
+      "B": "f_bookcase",
+      "d": "f_desk",
+      "l": "f_locker",
+      "p": "f_indoor_plant",
+      "s": "f_sofa",
+      "S": "f_statue",
+      "C": "f_console_broken",
+      "m": "f_machinery_electronic",
+      "O": "f_boulder_large",
+      "x": "f_boulder_medium",
+      "X": "f_statue"
+    }
+  },
+  {
+    "type": "mapgen",
+    "om_terrain": "pkmn_gym_viridian",
+    "object": {
+      "rows": [
+        "          ,,,,          ",
+        " #########\"\"\"\"######### ",
+        " #xx......,,,,......xx# ",
+        " #x.......,,,,.......x# ",
+        " #..X.....,,,,.....X..# ",
+        " #........,,,,........# ",
+        " #....xxxx....xxxx....# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x.....aa.....x...# ",
+        " #...x............x...# ",
+        " #...x............x...# ",
+        " #....xxxx....xxxx....# ",
+        " #X..................X# ",
+        " #..........L.........# ",
+        " #X.......S..S.......X# ",
+        " ###################### ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "palettes": [
+        "pkmn_palette_gym_viridian"
+      ],
+      "fill_ter": "t_grass",
+      "npcs": {
+        "L": {
+          "class": "pkmn_npc_giovanni",
+          "unique_id": "pkmn_giovanni"
+        }
+      }
+    }
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_TOWER",
+    "monsters": [
+      {
+        "monster": "pkmn_gastly",
+        "weight": 100
+      },
+      {
+        "monster": "pkmn_haunter",
+        "weight": 30
+      },
+      {
+        "monster": "pkmn_cubone",
+        "weight": 40
+      },
+      {
+        "monster": "pkmn_marowak",
+        "weight": 8
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_MT_MOON",
+    "monsters": [
+      {
+        "monster": "pkmn_zubat",
+        "weight": 100
+      },
+      {
+        "monster": "pkmn_geodude",
+        "weight": 80
+      },
+      {
+        "monster": "pkmn_paras",
+        "weight": 50
+      },
+      {
+        "monster": "pkmn_clefairy",
+        "weight": 15
+      },
+      {
+        "monster": "pkmn_sandshrew",
+        "weight": 30
+      },
+      {
+        "monster": "pkmn_onix",
+        "weight": 8
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_SEAFOAM",
+    "monsters": [
+      {
+        "monster": "pkmn_seel",
+        "weight": 60
+      },
+      {
+        "monster": "pkmn_dewgong",
+        "weight": 15
+      },
+      {
+        "monster": "pkmn_shellder",
+        "weight": 60
+      },
+      {
+        "monster": "pkmn_slowpoke",
+        "weight": 40
+      },
+      {
+        "monster": "pkmn_golbat",
+        "weight": 30
+      },
+      {
+        "monster": "pkmn_horsea",
+        "weight": 30
+      },
+      {
+        "monster": "pkmn_jynx",
+        "weight": 6
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_EMBER",
+    "monsters": [
+      {
+        "monster": "pkmn_ponyta",
+        "weight": 60
+      },
+      {
+        "monster": "pkmn_rapidash",
+        "weight": 15
+      },
+      {
+        "monster": "pkmn_magmar",
+        "weight": 12
+      },
+      {
+        "monster": "pkmn_geodude",
+        "weight": 60
+      },
+      {
+        "monster": "pkmn_graveler",
+        "weight": 20
+      },
+      {
+        "monster": "pkmn_machop",
+        "weight": 30
+      },
+      {
+        "monster": "pkmn_vulpix",
+        "weight": 30
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_CERULEAN_CAVE",
+    "monsters": [
+      {
+        "monster": "pkmn_golbat",
+        "weight": 50
+      },
+      {
+        "monster": "pkmn_kadabra",
+        "weight": 30
+      },
+      {
+        "monster": "pkmn_parasect",
+        "weight": 30
+      },
+      {
+        "monster": "pkmn_rhydon",
+        "weight": 20
+      },
+      {
+        "monster": "pkmn_ditto",
+        "weight": 40
+      },
+      {
+        "monster": "pkmn_electrode",
+        "weight": 20
+      },
+      {
+        "monster": "pkmn_chansey",
+        "weight": 8
+      },
+      {
+        "monster": "pkmn_magneton",
+        "weight": 20
+      },
+      {
+        "monster": "pkmn_wigglytuff",
+        "weight": 15
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_FOREST",
+    "monsters": [
+      {
+        "monster": "pkmn_mew",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_MOUNTAIN",
+    "monsters": [
+      {
+        "monster": "pkmn_hitmonlee",
+        "weight": 2
+      },
+      {
+        "monster": "pkmn_hitmonchan",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_WATER",
+    "monsters": [
+      {
+        "monster": "pkmn_dragonair",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_URBAN",
+    "monsters": [
+      {
+        "monster": "pkmn_eevee",
+        "weight": 8
+      },
+      {
+        "monster": "pkmn_jynx",
+        "weight": 3
+      }
+    ]
+  }
+]

@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "pkmn_alakazam_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_alakazam",
+    "name": {
+      "str_sp": "trainer's Alakazam"
+    },
+    "description": "This Alakazam belongs to another trainer and has been trained for battle.  It cannot be caught.  Its brain never stops growing.  It remembers everything that has happened to it since the moment it was born.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_arbok_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_arbok",
+    "name": {
+      "str_sp": "trainer's Arbok"
+    },
+    "description": "This Arbok belongs to another trainer and has been trained for battle.  It cannot be caught.  A cobra Pokémon with a frightening pattern on its hood that paralyzes foes with fear.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_arcanine_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_arcanine",
+    "name": {
+      "str_sp": "trainer's Arcanine"
+    },
+    "description": "This Arcanine belongs to another trainer and has been trained for battle.  It cannot be caught.  A legendary-looking Pokémon of great beauty.  It can run more than six thousand miles in a single day.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_blastoise_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_blastoise",
+    "name": {
+      "str_sp": "trainer's Blastoise"
+    },
+    "description": "This Blastoise belongs to another trainer and has been trained for battle.  It cannot be caught.  A heavy, armored turtle with pressurized water cannons jutting from its shell.  Its blasts can punch through concrete.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_charizard_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_charizard",
+    "name": {
+      "str_sp": "trainer's Charizard"
+    },
+    "description": "This Charizard belongs to another trainer and has been trained for battle.  It cannot be caught.  A winged, dragon-like Pokémon that breathes fire hot enough to melt boulders.  It only picks fights with opponents worth fighting.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_cubone_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_cubone",
+    "name": {
+      "str_sp": "trainer's Cubone"
+    },
+    "description": "This Cubone belongs to another trainer and has been trained for battle.  It cannot be caught.  A lonely Pokémon that wears the skull of its dead mother.  There are more Cubone than ever.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_drowzee_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_drowzee",
+    "name": {
+      "str_sp": "trainer's Drowzee"
+    },
+    "description": "This Drowzee belongs to another trainer and has been trained for battle.  It cannot be caught.  It puts enemies to sleep and then eats their dreams.  Survivors who wake up feeling drained blame it.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_dugtrio_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_dugtrio",
+    "name": {
+      "str_sp": "trainer's Dugtrio"
+    },
+    "description": "This Dugtrio belongs to another trainer and has been trained for battle.  It cannot be caught.  A team of Diglett triplets.  It triggers huge earthquakes by burrowing a hundred miles underground.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_ekans_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_ekans",
+    "name": {
+      "str_sp": "trainer's Ekans"
+    },
+    "description": "This Ekans belongs to another trainer and has been trained for battle.  It cannot be caught.  A purple snake Pokémon that moves silently through grass and swallows bird eggs whole.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_exeggutor_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_exeggutor",
+    "name": {
+      "str_sp": "trainer's Exeggutor"
+    },
+    "description": "This Exeggutor belongs to another trainer and has been trained for battle.  It cannot be caught.  A walking palm tree Pokémon.  Each of its three heads thinks independently.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_gastly_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_gastly",
+    "name": {
+      "str_sp": "trainer's Gastly"
+    },
+    "description": "This Gastly belongs to another trainer and has been trained for battle.  It cannot be caught.  A Pokémon made almost entirely of poisonous gas.  It haunts abandoned buildings, which there is now no shortage of.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_geodude_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_geodude",
+    "name": {
+      "str_sp": "trainer's Geodude"
+    },
+    "description": "This Geodude belongs to another trainer and has been trained for battle.  It cannot be caught.  A rock Pokémon often found on mountain trails.  People sometimes trip over Geodude, mistaking them for boulders.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_golbat_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_golbat",
+    "name": {
+      "str_sp": "trainer's Golbat"
+    },
+    "description": "This Golbat belongs to another trainer and has been trained for battle.  It cannot be caught.  A bat Pokémon with a huge mouth.  Once it bites, it drains blood until it can barely fly.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_grimer_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_grimer",
+    "name": {
+      "str_sp": "trainer's Grimer"
+    },
+    "description": "This Grimer belongs to another trainer and has been trained for battle.  It cannot be caught.  Sludge exposed to the X-rays of a dead world became this Pokémon.  It thrives in the chemical runoff of the ruined cities.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_growlithe_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_growlithe",
+    "name": {
+      "str_sp": "trainer's Growlithe"
+    },
+    "description": "This Growlithe belongs to another trainer and has been trained for battle.  It cannot be caught.  A loyal puppy Pokémon.  Many were kept by police departments before the end, and some still guard their empty precincts.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_gyarados_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_gyarados",
+    "name": {
+      "str_sp": "trainer's Gyarados"
+    },
+    "description": "This Gyarados belongs to another trainer and has been trained for battle.  It cannot be caught.  Once it begins to rampage, it won't stop until it has destroyed everything nearby.  Avoid the lakes where it lives.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_haunter_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_haunter",
+    "name": {
+      "str_sp": "trainer's Haunter"
+    },
+    "description": "This Haunter belongs to another trainer and has been trained for battle.  It cannot be caught.  Because of its ability to slip through walls, it is said to come from another dimension.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_hypno_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_hypno",
+    "name": {
+      "str_sp": "trainer's Hypno"
+    },
+    "description": "This Hypno belongs to another trainer and has been trained for battle.  It cannot be caught.  It carries a pendulum-like device.  Avoid eye contact when it swings.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_kadabra_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_kadabra",
+    "name": {
+      "str_sp": "trainer's Kadabra"
+    },
+    "description": "This Kadabra belongs to another trainer and has been trained for battle.  It cannot be caught.  It emits powerful alpha waves that cause headaches.  Electronics fail around it.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_koffing_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_koffing",
+    "name": {
+      "str_sp": "trainer's Koffing"
+    },
+    "description": "This Koffing belongs to another trainer and has been trained for battle.  It cannot be caught.  A floating balloon of toxic gas.  It is attracted to the smell of burning garbage.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_machoke_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_machoke",
+    "name": {
+      "str_sp": "trainer's Machoke"
+    },
+    "description": "This Machoke belongs to another trainer and has been trained for battle.  It cannot be caught.  Its muscular body is so powerful it must wear a power-save belt to regulate its strength.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_machop_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_machop",
+    "name": {
+      "str_sp": "trainer's Machop"
+    },
+    "description": "This Machop belongs to another trainer and has been trained for battle.  It cannot be caught.  A superhumanly strong Pokémon that trains by lifting rubble from collapsed buildings.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_meowth_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_meowth",
+    "name": {
+      "str_sp": "trainer's Meowth"
+    },
+    "description": "This Meowth belongs to another trainer and has been trained for battle.  It cannot be caught.  A cat Pokémon that loves shiny coins.  It still hoards them, even though money barely means anything anymore.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_mr_mime_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_mr_mime",
+    "name": {
+      "str_sp": "trainer's Mr. Mime"
+    },
+    "description": "This Mr. Mime belongs to another trainer and has been trained for battle.  It cannot be caught.  A master of pantomime.  It solidifies air into invisible walls with its fingertips.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_muk_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_muk",
+    "name": {
+      "str_sp": "trainer's Muk"
+    },
+    "description": "This Muk belongs to another trainer and has been trained for battle.  It cannot be caught.  A living mass of sludge.  Plants won't grow where it has crawled, and the stench is unbearable.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_nidoking_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_nidoking",
+    "name": {
+      "str_sp": "trainer's Nidoking"
+    },
+    "description": "This Nidoking belongs to another trainer and has been trained for battle.  It cannot be caught.  A brutish Pokémon that swings its thick tail like a club.  Its horn injects potent venom.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_nidoqueen_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_nidoqueen",
+    "name": {
+      "str_sp": "trainer's Nidoqueen"
+    },
+    "description": "This Nidoqueen belongs to another trainer and has been trained for battle.  It cannot be caught.  Its body is covered in hard, needle-like scales.  It is at its most ferocious defending its young.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_onix_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_onix",
+    "name": {
+      "str_sp": "trainer's Onix"
+    },
+    "description": "This Onix belongs to another trainer and has been trained for battle.  It cannot be caught.  A giant rock snake Pokémon that tunnels underground at fifty miles an hour, leaving tunnels behind.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_pidgeot_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_pidgeot",
+    "name": {
+      "str_sp": "trainer's Pidgeot"
+    },
+    "description": "This Pidgeot belongs to another trainer and has been trained for battle.  It cannot be caught.  A magnificent bird Pokémon with glossy plumage.  It can fly at twice the speed of sound.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_pikachu_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_pikachu",
+    "name": {
+      "str_sp": "trainer's Pikachu"
+    },
+    "description": "This Pikachu belongs to another trainer and has been trained for battle.  It cannot be caught.  A mouse Pokémon that stores electricity in the red pouches on its cheeks.  Groups of them gather around the dead power lines, which still hum when they are near.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_ponyta_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_ponyta",
+    "name": {
+      "str_sp": "trainer's Ponyta"
+    },
+    "description": "This Ponyta belongs to another trainer and has been trained for battle.  It cannot be caught.  A horse Pokémon with a fiery mane.  Its hooves are ten times harder than diamonds.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_raichu_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_raichu",
+    "name": {
+      "str_sp": "trainer's Raichu"
+    },
+    "description": "This Raichu belongs to another trainer and has been trained for battle.  It cannot be caught.  When its electricity builds up, its muscles stiffen and it becomes aggressive.  Its tail acts as a ground.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_rapidash_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_rapidash",
+    "name": {
+      "str_sp": "trainer's Rapidash"
+    },
+    "description": "This Rapidash belongs to another trainer and has been trained for battle.  It cannot be caught.  Very competitive, it chases anything that moves fast, even cars, in hopes of racing it.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_raticate_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_raticate",
+    "name": {
+      "str_sp": "trainer's Raticate"
+    },
+    "description": "This Raticate belongs to another trainer and has been trained for battle.  It cannot be caught.  Its whiskers help it keep its balance, and its ever-growing fangs can gnaw through brick and rebar.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_rattata_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_rattata",
+    "name": {
+      "str_sp": "trainer's Rattata"
+    },
+    "description": "This Rattata belongs to another trainer and has been trained for battle.  It cannot be caught.  A small rodent Pokémon with big fangs.  The collapse of the cities has been very good to Rattata.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_rhydon_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_rhydon",
+    "name": {
+      "str_sp": "trainer's Rhydon"
+    },
+    "description": "This Rhydon belongs to another trainer and has been trained for battle.  It cannot be caught.  Protected by armor-like hide, it can live in molten lava.  It walks upright now.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_rhyhorn_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_rhyhorn",
+    "name": {
+      "str_sp": "trainer's Rhyhorn"
+    },
+    "description": "This Rhyhorn belongs to another trainer and has been trained for battle.  It cannot be caught.  Its massive bones are a thousand times harder than human bones.  It charges blindly and can smash through a semi trailer.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_sandshrew_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_sandshrew",
+    "name": {
+      "str_sp": "trainer's Sandshrew"
+    },
+    "description": "This Sandshrew belongs to another trainer and has been trained for battle.  It cannot be caught.  A Pokémon that burrows deep into dry soil and curls into a ball to protect itself.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_starmie_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_starmie",
+    "name": {
+      "str_sp": "trainer's Starmie"
+    },
+    "description": "This Starmie belongs to another trainer and has been trained for battle.  It cannot be caught.  Its central core glows with seven colors.  Some think it is a signal sent into space.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_staryu_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_staryu",
+    "name": {
+      "str_sp": "trainer's Staryu"
+    },
+    "description": "This Staryu belongs to another trainer and has been trained for battle.  It cannot be caught.  A star-shaped Pokémon with a red core that glows at night.  It regenerates lost limbs.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_tangela_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_tangela",
+    "name": {
+      "str_sp": "trainer's Tangela"
+    },
+    "description": "This Tangela belongs to another trainer and has been trained for battle.  It cannot be caught.  Its whole body is swathed in wide vines.  The vines sway as it walks.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_venomoth_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_venomoth",
+    "name": {
+      "str_sp": "trainer's Venomoth"
+    },
+    "description": "This Venomoth belongs to another trainer and has been trained for battle.  It cannot be caught.  A moth Pokémon whose wings are covered in poisonous dust that causes paralysis.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_venusaur_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_venusaur",
+    "name": {
+      "str_sp": "trainer's Venusaur"
+    },
+    "description": "This Venusaur belongs to another trainer and has been trained for battle.  It cannot be caught.  A huge, squat Pokémon crowned with a blooming flower that gives off a soothing scent.  Even the dead seem to hesitate near it.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_victreebel_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_victreebel",
+    "name": {
+      "str_sp": "trainer's Victreebel"
+    },
+    "description": "This Victreebel belongs to another trainer and has been trained for battle.  It cannot be caught.  It lures prey into its gaping mouth with the sweet scent of honey, then melts them down.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_vileplume_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_vileplume",
+    "name": {
+      "str_sp": "trainer's Vileplume"
+    },
+    "description": "This Vileplume belongs to another trainer and has been trained for battle.  It cannot be caught.  Its flower petals are the largest in the world.  It scatters toxic pollen with every step.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_voltorb_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_voltorb",
+    "name": {
+      "str_sp": "trainer's Voltorb"
+    },
+    "description": "This Voltorb belongs to another trainer and has been trained for battle.  It cannot be caught.  Usually found in power plants.  It looks just like a Poké Ball, and has fooled more than one scavenger.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_weezing_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_weezing",
+    "name": {
+      "str_sp": "trainer's Weezing"
+    },
+    "description": "This Weezing belongs to another trainer and has been trained for battle.  It cannot be caught.  Two Koffing fused together.  It feeds on the poison gases rising from decaying matter.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  },
+  {
+    "id": "pkmn_zubat_trainer",
+    "type": "MONSTER",
+    "copy-from": "pkmn_zubat",
+    "name": {
+      "str_sp": "trainer's Zubat"
+    },
+    "description": "This Zubat belongs to another trainer and has been trained for battle.  It cannot be caught.  An eyeless bat Pokémon that navigates using ultrasonic waves.  The tunnels under the cities are full of them.",
+    "extend": {
+      "species": [
+        "PKMN_TRAINER_OWNED"
+      ],
+      "flags": [
+        "PKMN_TRAINER_OWNED"
+      ]
+    },
+    "aggression": 100,
+    "morale": 100,
+    "aggro_character": false,
+    "death_function": {
+      "message": "%s fainted!  Its trainer recalls it.",
+      "corpse_type": "NO_CORPSE"
+    },
+    "harvest": "pkmn_harvest_none"
+  }
+]

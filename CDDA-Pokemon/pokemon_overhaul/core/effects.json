@@ -1,0 +1,98 @@
+[
+  {
+    "type": "effect_type",
+    "id": "pkmn_paralysis",
+    "name": [ "Paralyzed" ],
+    "desc": [ "Its muscles are seized by electricity.  It moves slowly and is easier to catch." ],
+    "apply_message": "",
+    "rating": "bad",
+    "max_duration": "5 m",
+    "base_mods": { "speed_mod": [ -40 ], "dodge_mod": [ -2 ] },
+    "show_in_info": true
+  },
+  {
+    "type": "effect_type",
+    "id": "pkmn_sleep",
+    "name": [ "Asleep" ],
+    "desc": [ "It has fallen into a deep sleep.  A sleeping Pokémon is much easier to catch." ],
+    "apply_message": "",
+    "rating": "bad",
+    "max_duration": "2 m",
+    "base_mods": { "speed_mod": [ -95 ], "dodge_mod": [ -10 ] },
+    "show_in_info": true
+  },
+  {
+    "type": "effect_type",
+    "id": "pkmn_freeze",
+    "name": [ "Frozen" ],
+    "desc": [ "It is encased in ice and can barely move.  A frozen Pokémon is much easier to catch." ],
+    "apply_message": "",
+    "rating": "bad",
+    "max_duration": "1 m",
+    "base_mods": { "speed_mod": [ -90 ], "dodge_mod": [ -10 ] },
+    "show_in_info": true
+  },
+  {
+    "type": "effect_type",
+    "id": "pkmn_burn",
+    "name": [ "Burned" ],
+    "desc": [ "It is badly burned.  It takes damage over time and its attacks are weaker." ],
+    "apply_message": "",
+    "rating": "bad",
+    "max_duration": "10 m",
+    "base_mods": { "hurt_min": [ 2 ], "hurt_tick": [ 4 ], "bash_mod": [ -2 ], "cut_mod": [ -2 ] },
+    "show_in_info": true
+  },
+  {
+    "type": "effect_type",
+    "id": "pkmn_poison",
+    "name": [ "Poisoned" ],
+    "desc": [ "Poison courses through its body, wearing it down." ],
+    "apply_message": "",
+    "rating": "bad",
+    "max_duration": "15 m",
+    "base_mods": { "hurt_min": [ 1 ], "hurt_max": [ 3 ], "hurt_tick": [ 3 ] },
+    "show_in_info": true
+  },
+  {
+    "type": "effect_type",
+    "id": "pkmn_slowed",
+    "name": [ "Slowed" ],
+    "desc": [ "Something is weighing it down." ],
+    "apply_message": "",
+    "rating": "bad",
+    "max_duration": "3 m",
+    "base_mods": { "speed_mod": [ -25 ] },
+    "show_in_info": true
+  },
+  {
+    "type": "effect_type",
+    "id": "pkmn_fainted",
+    "name": [ "Fainted" ],
+    "desc": [ "This Pokémon has fainted and cannot fight.  Recall it to its Poké Ball and revive it, or heal it at a Pokémon Center.  If it takes another hit in this state it will die." ],
+    "apply_message": "",
+    "rating": "bad",
+    "base_mods": { "speed_mod": [ -1000 ], "dodge_mod": [ -20 ], "hit_mod": [ -20 ] },
+    "show_in_info": true
+  },
+  {
+    "type": "effect_type",
+    "id": "pkmn_trained",
+    "name": [ "Trained" ],
+    "desc": [ "Battle experience has made this Pokémon faster and stronger.  The effect grows with its level." ],
+    "rating": "good",
+    "max_intensity": 100,
+    "base_mods": { "speed_mod": [ 0 ] },
+    "scaling_mods": { "speed_mod": [ 0.4 ], "hit_mod": [ 0.06 ], "bash_mod": [ 0.25 ], "dodge_mod": [ 0.04 ] },
+    "show_in_info": true
+  },
+  {
+    "type": "effect_type",
+    "id": "pkmn_pokecenter_heal",
+    "name": [ "Freshly healed" ],
+    "desc": [ "Recently restored at a Pokémon Center." ],
+    "rating": "good",
+    "max_duration": "1 h",
+    "base_mods": { "speed_mod": [ 5 ] }
+  }
+]

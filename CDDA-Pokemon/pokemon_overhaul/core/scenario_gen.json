@@ -1,0 +1,72 @@
+[
+  {
+    "type": "start_location",
+    "id": "sloc_pkmn_oak_lab",
+    "name": "Professor Oak's Lab",
+    "terrain": [
+      "pkmn_oak_lab"
+    ]
+  },
+  {
+    "type": "profession",
+    "id": "pkmn_trainer",
+    "name": "Pokémon Trainer",
+    "description": "You always dreamed of becoming a Pokémon trainer.  The world ending isn't going to stop you now.  Professor Oak is expecting you.",
+    "points": 0,
+    "items": {
+      "both": {
+        "items": [
+          "tshirt",
+          "jeans",
+          "socks",
+          "sneakers",
+          "hat_ball",
+          "backpack",
+          "water_clean",
+          "granola"
+        ],
+        "entries": [
+          {
+            "item": "pkmn_ball_poke",
+            "count": 3
+          },
+          {
+            "item": "pkmn_potion",
+            "count": 1
+          }
+        ]
+      },
+      "male": [
+        "boxer_shorts"
+      ],
+      "female": [
+        "sports_bra",
+        "boy_shorts"
+      ]
+    },
+    "skills": [
+      {
+        "level": 1,
+        "name": "survival"
+      }
+    ]
+  },
+  {
+    "type": "scenario",
+    "id": "pkmn_new_trainer",
+    "name": "Pokémon Journey",
+    "description": "Your journey begins at Professor Oak's lab.  The Professor has a Pokémon for you, and the whole of a ruined world to explore.",
+    "start_name": "Professor Oak's Lab",
+    "allowed_locs": [
+      "sloc_pkmn_oak_lab"
+    ],
+    "professions": [
+      "pkmn_trainer",
+      "unemployed"
+    ],
+    "points": 0,
+    "flags": [
+      "CITY_START"
+    ]
+  }
+]

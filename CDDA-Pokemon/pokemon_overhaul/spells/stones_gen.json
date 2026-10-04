@@ -1,0 +1,268 @@
+[
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_stone_fire",
+    "name": "Use Fire Stone",
+    "description": "Use the Fire Stone on one of your Pokémon that can evolve with it: Vulpix, Growlithe, Eevee.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_ids": [
+      "pkmn_eevee",
+      "pkmn_growlithe",
+      "pkmn_vulpix"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_STONE_FIRE",
+    "shape": "blast",
+    "min_range": 2,
+    "max_range": 2,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_HANDS",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_STONE_FIRE",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_stone_fire = 1"
+        ]
+      },
+      {
+        "u_message": "The Fire Stone begins to glow…",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_stone_leaf",
+    "name": "Use Leaf Stone",
+    "description": "Use the Leaf Stone on one of your Pokémon that can evolve with it: Gloom, Weepinbell, Exeggcute.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_ids": [
+      "pkmn_exeggcute",
+      "pkmn_gloom",
+      "pkmn_weepinbell"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_STONE_LEAF",
+    "shape": "blast",
+    "min_range": 2,
+    "max_range": 2,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_HANDS",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_STONE_LEAF",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_stone_leaf = 1"
+        ]
+      },
+      {
+        "u_message": "The Leaf Stone begins to glow…",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_stone_link",
+    "name": "Use Link Cable",
+    "description": "Use the Link Cable on one of your Pokémon that can evolve with it: Kadabra, Machoke, Graveler, Haunter.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_ids": [
+      "pkmn_graveler",
+      "pkmn_haunter",
+      "pkmn_kadabra",
+      "pkmn_machoke"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_STONE_LINK",
+    "shape": "blast",
+    "min_range": 2,
+    "max_range": 2,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_HANDS",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_STONE_LINK",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_stone_link = 1"
+        ]
+      },
+      {
+        "u_message": "The Link Cable begins to glow…",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_stone_moon",
+    "name": "Use Moon Stone",
+    "description": "Use the Moon Stone on one of your Pokémon that can evolve with it: Nidorina, Nidorino, Clefairy, Jigglypuff.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_ids": [
+      "pkmn_clefairy",
+      "pkmn_jigglypuff",
+      "pkmn_nidorina",
+      "pkmn_nidorino"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_STONE_MOON",
+    "shape": "blast",
+    "min_range": 2,
+    "max_range": 2,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_HANDS",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_STONE_MOON",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_stone_moon = 1"
+        ]
+      },
+      {
+        "u_message": "The Moon Stone begins to glow…",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_stone_thunder",
+    "name": "Use Thunder Stone",
+    "description": "Use the Thunder Stone on one of your Pokémon that can evolve with it: Pikachu, Eevee.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_ids": [
+      "pkmn_eevee",
+      "pkmn_pikachu"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_STONE_THUNDER",
+    "shape": "blast",
+    "min_range": 2,
+    "max_range": 2,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_HANDS",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_STONE_THUNDER",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_stone_thunder = 1"
+        ]
+      },
+      {
+        "u_message": "The Thunder Stone begins to glow…",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_stone_water",
+    "name": "Use Water Stone",
+    "description": "Use the Water Stone on one of your Pokémon that can evolve with it: Poliwhirl, Shellder, Staryu, Eevee.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_ids": [
+      "pkmn_eevee",
+      "pkmn_poliwhirl",
+      "pkmn_shellder",
+      "pkmn_staryu"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_STONE_WATER",
+    "shape": "blast",
+    "min_range": 2,
+    "max_range": 2,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_HANDS",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_STONE_WATER",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_stone_water = 1"
+        ]
+      },
+      {
+        "u_message": "The Water Stone begins to glow…",
+        "type": "good"
+      }
+    ]
+  }
+]

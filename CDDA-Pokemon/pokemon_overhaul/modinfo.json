@@ -1,0 +1,11 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "pokemon_overhaul",
+    "name": "Pokémon Overhaul",
+    "authors": [ "jgrimes900" ],
+    "description": "Brings all 151 original Pokémon to the Cataclysm.  Catch them with Poké Balls, train them through battle until they evolve, take on the eight Kanto Gym Leaders, stop Team Rocket, and complete the Pokédex.  Adds Pokémon Centers, Poké Marts, gyms, Professor Oak's lab and other Kanto landmarks, plus items, NPCs and mission lines.",
+    "category": "content",
+    "dependencies": [ "dda" ]
+  }
+]

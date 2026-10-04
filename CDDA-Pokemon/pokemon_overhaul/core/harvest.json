@@ -1,0 +1,27 @@
+[
+  {
+    "id": "pkmn_harvest_flesh",
+    "type": "harvest",
+    "//": "A dead Pokémon.  Butchering one is grim, but this is the Cataclysm.",
+    "entries": [
+      { "drop": "meat", "type": "flesh", "mass_ratio": 0.25 },
+      { "drop": "bone", "type": "bone", "mass_ratio": 0.08 },
+      { "drop": "animal_blood", "type": "blood", "mass_ratio": 0.05 }
+    ]
+  },
+  {
+    "id": "pkmn_harvest_stone",
+    "type": "harvest",
+    "entries": [ { "drop": "rock", "type": "bone", "mass_ratio": 0.5 } ]
+  },
+  {
+    "id": "pkmn_harvest_steel",
+    "type": "harvest",
+    "entries": [ { "drop": "scrap", "type": "bone", "mass_ratio": 0.3 }, { "drop": "magnet", "type": "offal", "base_num": [ 1, 2 ] } ]
+  },
+  {
+    "id": "pkmn_harvest_none",
+    "type": "harvest",
+    "entries": [  ]
+  }
+]

@@ -3,7 +3,6 @@
     "type": "mapgen",
     "//": "Minetown, alley variant, from Nethack.  Slapped right in the middle of our perfectly normal cave system.",
     "om_terrain": [ [ "breach_finale_1", "breach_finale_2", "breach_finale_3" ] ],
-    
     "weight": 100,
     "object": {
       "rows": [
@@ -73,7 +72,6 @@
   {
     "type": "mapgen",
     "om_terrain": [ [ "breach_finale_4", "breach_finale_5" ] ],
-    
     "weight": 100,
     "object": {
       "rows": [
@@ -121,7 +119,6 @@
   {
     "type": "mapgen",
     "om_terrain": [ [ "breach_finale_6", "breach_finale_7" ] ],
-    
     "weight": 100,
     "object": {
       "rows": [
@@ -193,7 +190,6 @@
   {
     "type": "mapgen",
     "om_terrain": [ [ "breach_finale_8", "breach_finale_9" ] ],
-    
     "weight": 100,
     "object": {
       "rows": [
@@ -227,7 +223,7 @@
       "place_loot": [
         { "group": "gear_soldier_sidearm", "x": 23, "y": 4, "chance": 70, "repeat": 2 },
         { "group": "gear_soldier_sidearm", "x": 36, "y": 4, "chance": 70, "repeat": 2 },
-        { "group": "military", "x": [ 26, 33 ], "y": 4, "chance": 40, "repeat": 8 },
+        { "group": "caveyot_military", "x": [ 26, 33 ], "y": 4, "chance": 40, "repeat": 8 },
         { "group": "teleport", "x": 16, "y": [ 8, 9 ], "chance": 50, "repeat": 6 },
         { "group": "spiral", "x": 43, "y": [ 8, 9 ], "chance": 75, "repeat": 4 },
         { "group": "lab_dorm", "x": 23, "y": [ 0, 2 ], "chance": 50, "repeat": 6 },
@@ -243,7 +239,6 @@
   },
   {
     "type": "mapgen",
-    
     "om_terrain": [ [ "breach_finale_10", "breach_finale_11" ] ],
     "weight": 100,
     "object": {
@@ -282,7 +277,7 @@
       ],
       "place_loot": [
         { "group": "cannedfood", "x": 12, "y": [ 8, 10 ], "chance": 80, "repeat": 5 },
-        { "group": "pasta_ingredients", "x": 12, "y": [ 16, 18 ], "chance": 80, "repeat": 5 },
+        { "group": "pasta", "x": 12, "y": [ 16, 18 ], "chance": 80, "repeat": 5 },
         { "group": "stash_food", "x": [ 8, 10 ], "y": 19, "chance": 80, "repeat": 5 },
         { "group": "tools_common", "x": 9, "y": [ 14, 16 ], "chance": 70, "repeat": 6 },
         { "group": "tools_tailor", "x": 9, "y": [ 10, 11 ], "chance": 70, "repeat": 4 },
@@ -302,7 +297,6 @@
   },
   {
     "type": "mapgen",
-    
     "om_terrain": [ [ "breach_finale_12", "breach_finale_13" ] ],
     "weight": 100,
     "object": {
@@ -342,7 +336,7 @@
       "place_loot": [
         { "group": "tools_mechanic", "x": [ 33, 35 ], "y": 4, "chance": 65, "repeat": 3 },
         { "group": "stash_wood", "x": 36, "y": [ 8, 9 ], "chance": 65, "repeat": 4 },
-        { "group": "wreckage", "x": [ 33, 35 ], "y": 13, "chance": 65, "repeat": 5 },
+        { "group": "caveyot_wreckage", "x": [ 33, 35 ], "y": 13, "chance": 65, "repeat": 5 },
         { "group": "tools_blacksmith", "x": 34, "y": 10, "chance": 65, "repeat": 3 }
       ],
       "place_npcs": [
@@ -363,7 +357,6 @@
       [ "breach_finale_18", "breach_finale_19", "breach_finale_20", "breach_finale_21" ],
       [ "breach_finale_22", "breach_finale_23", "breach_finale_24", "breach_finale_25" ]
     ],
-    
     "weight": 100,
     "object": {
       "rows": [

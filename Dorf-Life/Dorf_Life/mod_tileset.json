@@ -118,7 +118,7 @@
             "rotates": false
           },
           {
-            "id": "t_shrub_bush_quarry_harvest",
+            "id": "t_shrub_bush_quarry_harvested",
             "fg": 20,
             "bg": 0,
             "rotates": false

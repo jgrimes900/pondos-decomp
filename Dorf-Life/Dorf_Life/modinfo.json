@@ -4,7 +4,7 @@
     "id": "Dorf_Life",
     "name": "Dorf Life",
     "authors": [ "Chaosvolt" ],
-    "description": "Adds multi-level caverns hidden away in the underground, breaching the subways to add various strange sights to explore.",
+    "description": "Adds multi-level caverns hidden away in the underground, breaching the subways and opening up beneath caves in the woods, with various strange sights to explore.",
     "version": "DDA 0.I (Ito-1) version, update 10/4/2026",
     "category": "buildings",
     "dependencies": [ "dda" ]

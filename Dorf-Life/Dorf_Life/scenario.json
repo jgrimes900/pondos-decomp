@@ -1,0 +1,129 @@
+[
+  {
+    "type": "start_location",
+    "id": "sloc_caveyot_cavern",
+    "name": "Deep Cavern",
+    "terrain": [ { "om_terrain": "breach_center", "om_terrain_match_type": "TYPE" } ]
+  },
+  {
+    "type": "scenario",
+    "id": "caveyot_strike_the_earth",
+    "name": "Strike the Earth!",
+    "points": 0,
+    "description": "You were part of an expedition charting the caverns that have been breaking into the tunnels beneath the city.  Somewhere along the way the expedition fell apart, and by the time you made it back to your wagon, the radio had gone silent.  Now it's just you, your supplies, and a long way down in every direction.  Whatever is happening up on the surface, there's plenty to explore down here.",
+    "start_name": "Deep Cavern",
+    "allowed_locs": [ "sloc_caveyot_cavern" ],
+    "professions": [ "caveyot_spelunker", "miner", "archaeologist", "survivalist", "park_ranger", "unemployed" ],
+    "map_extra": "mx_caveyot_embark",
+    "flags": [ "LONE_START" ]
+  },
+  {
+    "type": "profession",
+    "id": "caveyot_spelunker",
+    "name": "Spelunker",
+    "description": "You've been crawling through caves since you were a kid, and you were hired on to scout ahead for the expedition.  You know how to find your way through the dark, and how to live off of what grows down here.  You even brought along some spores from the strange cavern plants, in case the expedition needed to set up camp for a while.",
+    "points": 2,
+    "skills": [ { "level": 3, "name": "survival" }, { "level": 2, "name": "swimming" }, { "level": 1, "name": "cooking" } ],
+    "items": {
+      "both": {
+        "entries": [
+          { "item": "socks" },
+          { "item": "boots_hiking" },
+          { "item": "gloves_work" },
+          { "item": "knee_pads" },
+          { "item": "pants_cargo" },
+          { "item": "longshirt" },
+          { "item": "jacket_flannel" },
+          { "item": "backpack_hiking" },
+          { "item": "canteen" },
+          { "item": "e_tool" },
+          { "item": "rope_30" },
+          { "item": "grapnel" },
+          { "item": "knife_folding" },
+          { "item": "glowstick", "count": 4 },
+          { "item": "hardtack", "count": 4 },
+          { "item": "caveyot_spores_helmet_plump", "count": 4 },
+          { "item": "caveyot_spores_wheat_cave", "count": 4 },
+          { "group": "charged_matches" },
+          { "group": "hat_hard_flashlight" },
+          { "item": "light_minus_disposable_cell", "charges": 100 }
+        ]
+      },
+      "male": { "entries": [ { "item": "boxer_shorts" } ] },
+      "female": { "entries": [ { "item": "boy_shorts" }, { "item": "sports_bra" } ] }
+    }
+  },
+  {
+    "id": "mx_caveyot_embark",
+    "type": "map_extra",
+    "name": { "str": "Expedition Wagon" },
+    "description": "The expedition's supply wagon, abandoned deep underground.",
+    "generator": { "generator_method": "update_mapgen", "generator_id": "mx_caveyot_embark" },
+    "min_max_zlevel": [ -10, -1 ],
+    "sym": "W",
+    "color": "brown",
+    "autonote": true,
+    "flags": [ "MAN_MADE" ]
+  },
+  {
+    "type": "mapgen",
+    "update_mapgen_id": "mx_caveyot_embark",
+    "//": "Clears out a camp in the middle of the cavern for the expedition wagon.",
+    "object": {
+      "rows": [
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "       __________       ",
+        "      ____________      ",
+        "      ____________      ",
+        "      ____________      ",
+        "      ____________      ",
+        "      ____________      ",
+        "      ____________      ",
+        "      ____________      ",
+        "      ____________      ",
+        "      ____________      ",
+        "      ____________      ",
+        "      ____________      ",
+        "       __________       ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        ",
+        "                        "
+      ],
+      "terrain": { "_": "t_rock_floor" },
+      "place_vehicles": [ { "vehicle": "embark_wagon", "x": 12, "y": 11, "rotation": 90, "chance": 100, "status": 0 } ],
+      "place_loot": [
+        { "group": "caveyot_embark_supplies", "x": [ 8, 15 ], "y": [ 8, 14 ], "chance": 100, "repeat": 6 },
+        { "group": "caveyot_mine_tools", "x": [ 8, 15 ], "y": [ 8, 14 ], "chance": 100, "repeat": 2 }
+      ],
+      "flags": [ "ERASE_ALL_BEFORE_PLACING_TERRAIN" ]
+    }
+  },
+  {
+    "type": "item_group",
+    "id": "caveyot_embark_supplies",
+    "subtype": "distribution",
+    "entries": [
+      { "item": "hardtack", "prob": 20, "count": [ 2, 6 ] },
+      { "group": "preserved_food", "prob": 20 },
+      { "group": "misc_alcohol", "prob": 10 },
+      { "item": "caveyot_spores_helmet_plump", "prob": 5, "count": [ 2, 4 ] },
+      { "item": "caveyot_spores_pod_sweet", "prob": 5, "count": [ 2, 4 ] },
+      { "item": "caveyot_spores_wheat_cave", "prob": 5, "count": [ 2, 4 ] },
+      { "item": "caveyot_spores_tails_pig", "prob": 5, "count": [ 2, 4 ] },
+      { "item": "caveyot_spores_bush_quarry", "prob": 5, "count": [ 2, 4 ] },
+      { "item": "rope_30", "prob": 5 },
+      { "item": "glowstick", "prob": 10, "count": [ 2, 4 ] },
+      { "item": "bandages", "prob": 10, "count": [ 2, 4 ] },
+      { "item": "sleeping_bag_roll", "prob": 5 },
+      { "item": "tent_kit", "prob": 3 },
+      { "item": "survivormap", "prob": 2 }
+    ]
+  }
+]

@@ -1,0 +1,165 @@
+[
+  {
+    "type": "terrain",
+    "id": "t_caveyot_spire",
+    "name": "glittering spire",
+    "description": "A slender column of some impossibly smooth, faintly glowing blue mineral, rising out of the stone like a frozen fountain.  Veins of the same stuff spider out through the surrounding rock.  Whoever carved this hall walled it away for a reason, but surely there's a fortune to be had in mining it out…",
+    "looks_like": "t_rock",
+    "symbol": "^",
+    "color": "light_cyan",
+    "move_cost": 0,
+    "light_emitted": 40,
+    "roof": "t_rock_roof",
+    "flags": [ "NOITEM", "SUPPORTS_ROOF", "MINEABLE", "BLOCK_WIND" ],
+    "bash": {
+      "str_min": 200,
+      "str_max": 500,
+      "sound": "a deep, resonant chime!",
+      "sound_fail": "a ringing clang!",
+      "ter_set": "t_caveyot_spire_hollow",
+      "items": [ { "item": "caveyot_adamant", "count": [ 3, 6 ] } ]
+    }
+  },
+  {
+    "type": "terrain",
+    "id": "t_caveyot_spire_hollow",
+    "name": "hollow spire",
+    "description": "The spire was hollow all along.  A shaft plunges down through its broken core, and from far below drifts heat, the stink of sulfur, and something that might be laughter.",
+    "looks_like": "t_slope_down",
+    "symbol": ">",
+    "color": "light_cyan",
+    "move_cost": 2,
+    "light_emitted": 20,
+    "roof": "t_rock_roof",
+    "flags": [ "TRANSPARENT", "GOES_DOWN", "PLACE_ITEM" ]
+  },
+  {
+    "type": "terrain",
+    "id": "t_caveyot_spire_shaft_up",
+    "name": "spire shaft",
+    "description": "The underside of the glittering spire, hanging down out of the cavern ceiling like a crystal stalactite.  Its hollow core leads back up towards the world you know.",
+    "looks_like": "t_slope_up",
+    "symbol": "<",
+    "color": "light_cyan",
+    "move_cost": 2,
+    "light_emitted": 20,
+    "flags": [ "TRANSPARENT", "GOES_UP", "PLACE_ITEM" ]
+  },
+  {
+    "type": "terrain",
+    "id": "t_caveyot_adamant_vein",
+    "name": "glittering vein",
+    "description": "Solid rock shot through with threads of a faintly glowing blue mineral.  The strands are finer than hair, and yet your best efforts can barely scratch them.",
+    "looks_like": "t_rock",
+    "symbol": "#",
+    "color": "cyan",
+    "move_cost": 0,
+    "light_emitted": 10,
+    "roof": "t_rock_roof",
+    "flags": [ "NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE", "BLOCK_WIND" ],
+    "bash": {
+      "str_min": 120,
+      "str_max": 400,
+      "sound": "a high, clear chime!",
+      "sound_fail": "a dull ring!",
+      "ter_set": "t_rock_floor",
+      "items": [ { "item": "rock", "count": [ 4, 8 ] }, { "item": "caveyot_adamant", "count": [ 0, 1 ], "prob": 50 } ]
+    }
+  },
+  {
+    "type": "ITEM",
+    "id": "caveyot_adamant",
+    "name": { "str_sp": "glittering strands" },
+    "description": "A bundle of impossibly fine strands of some faintly glowing blue mineral, teased out of the rock deep beneath the city.  They are nearly weightless and yet stronger than any steel you know of.  You have no idea what to do with them, but surely somebody would pay handsomely for such a curiosity.",
+    "weight": "5 g",
+    "volume": "25 ml",
+    "price": "1000 USD",
+    "price_postapoc": "50 USD",
+    "symbol": "*",
+    "color": "light_cyan",
+    "material": [ "crystal" ],
+    "looks_like": "diamond",
+    "flags": [ "TRADER_KEEP" ]
+  },
+  {
+    "type": "item_group",
+    "id": "caveyot_deep_hall_stockpile",
+    "subtype": "distribution",
+    "entries": [
+      { "group": "preserved_food", "prob": 40 },
+      { "group": "misc_alcohol", "prob": 20 },
+      { "item": "hardtack", "prob": 20, "count": [ 2, 6 ] },
+      { "item": "rock", "prob": 20, "count": [ 5, 15 ] },
+      { "item": "steel_lump", "prob": 10, "count": [ 1, 3 ] },
+      { "item": "gold_small", "prob": 5, "count": [ 1, 10 ] },
+      { "item": "silver_small", "prob": 5, "count": [ 1, 10 ] },
+      { "item": "material_rocksalt", "prob": 10, "count": [ 1, 3 ] },
+      { "item": "caveyot_bush_quarry", "prob": 10, "count": [ 1, 4 ] },
+      { "item": "caveyot_wheat_cave", "prob": 10, "count": [ 1, 4 ] },
+      { "item": "caveyot_pod_sweet", "prob": 10, "count": [ 1, 4 ] }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "caveyot_deep_hall_booze",
+    "subtype": "distribution",
+    "entries": [
+      { "group": "misc_alcohol", "prob": 40 },
+      { "group": "liqstore_brew", "prob": 30 },
+      { "group": "keg_beer", "prob": 5 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "caveyot_deep_hall_bedroom",
+    "subtype": "distribution",
+    "entries": [
+      { "group": "jewelry_safe", "prob": 20 },
+      { "group": "antique_rare", "prob": 5 },
+      { "group": "clothing_work_set", "prob": 30 },
+      { "item": "survnote", "prob": 10 },
+      { "item": "gold_small", "prob": 15, "count": [ 1, 20 ] },
+      { "item": "silver_small", "prob": 15, "count": [ 1, 20 ] },
+      { "item": "diamond", "prob": 2 },
+      { "item": "ruby", "prob": 2 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "caveyot_deep_hall_armory",
+    "subtype": "distribution",
+    "entries": [
+      { "group": "museum_armor", "prob": 30 },
+      { "group": "museum_melee", "prob": 20 },
+      { "group": "battleaxes", "prob": 15 },
+      { "group": "medieval", "prob": 20 },
+      { "item": "warhammer", "prob": 10 },
+      { "item": "pickaxe", "prob": 10 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "caveyot_deep_hall_tomb",
+    "subtype": "distribution",
+    "entries": [
+      { "group": "grave_contents", "prob": 40 },
+      { "group": "jewelry_safe", "prob": 25 },
+      { "group": "antique_rare", "prob": 10 },
+      { "group": "museum_melee", "prob": 10 },
+      { "item": "gold_small", "prob": 10, "count": [ 5, 30 ] },
+      { "item": "caveyot_adamant", "prob": 5 }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "caveyot_abyss_trophies",
+    "subtype": "distribution",
+    "entries": [
+      { "group": "jewelry_safe", "prob": 30 },
+      { "group": "antique_rare", "prob": 20 },
+      { "group": "museum_melee", "prob": 15 },
+      { "group": "museum_armor", "prob": 15 },
+      { "item": "caveyot_adamant", "prob": 20, "count": [ 1, 3 ] }
+    ]
+  }
+]

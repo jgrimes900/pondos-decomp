@@ -293,5 +293,95 @@
     "color": "brown",
     "see_cost": "low",
     "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_finale_26",
+    "name": "deep hall",
+    "sym": "#",
+    "color": "light_cyan",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_finale_27",
+    "name": "deep hall",
+    "sym": "#",
+    "color": "light_cyan",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_finale_28",
+    "name": "deep hall",
+    "sym": "#",
+    "color": "light_cyan",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_finale_29",
+    "name": "deep hall",
+    "sym": "#",
+    "color": "light_cyan",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_finale_30",
+    "name": "sealed vault",
+    "sym": "#",
+    "color": "cyan",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_finale_31",
+    "name": "deep hall",
+    "sym": "#",
+    "color": "light_cyan",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_finale_32",
+    "name": "deep hall",
+    "sym": "#",
+    "color": "light_cyan",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_finale_33",
+    "name": "deep hall",
+    "sym": "#",
+    "color": "light_cyan",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_finale_34",
+    "name": "deep hall",
+    "sym": "#",
+    "color": "light_cyan",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP", "KNOWN_DOWN" ]
+  },
+  {
+    "type": "overmap_terrain",
+    "id": "breach_abyss",
+    "name": "abyssal cavern",
+    "sym": "#",
+    "color": "red",
+    "see_cost": "low",
+    "flags": [ "KNOWN_UP" ]
   }
 ]

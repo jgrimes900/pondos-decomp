@@ -1,0 +1,112 @@
+[
+  {
+    "type": "monster_flag",
+    "id": "PKMN_POKEMON",
+    "//": "This monster is a Pokémon."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_LEGENDARY",
+    "//": "Legendary Pokémon; very hard to catch."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TRAINER_OWNED",
+    "//": "Belongs to an NPC trainer and cannot be caught."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_CATCH_1",
+    "//": "Catch difficulty tier 1 (easy)."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_CATCH_2",
+    "//": "Catch difficulty tier 2 (moderate)."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_CATCH_3",
+    "//": "Catch difficulty tier 3 (hard)."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_CATCH_4",
+    "//": "Catch difficulty tier 4 (legendary)."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_NORMAL",
+    "//": "Normal-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_FIRE",
+    "//": "Fire-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_WATER",
+    "//": "Water-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_ELECTRIC",
+    "//": "Electric-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_GRASS",
+    "//": "Grass-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_ICE",
+    "//": "Ice-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_FIGHTING",
+    "//": "Fighting-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_POISON",
+    "//": "Poison-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_GROUND",
+    "//": "Ground-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_FLYING",
+    "//": "Flying-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_PSYCHIC",
+    "//": "Psychic-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_BUG",
+    "//": "Bug-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_ROCK",
+    "//": "Rock-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_GHOST",
+    "//": "Ghost-type Pokémon; used for type immunities."
+  },
+  {
+    "type": "monster_flag",
+    "id": "PKMN_TYPE_DRAGON",
+    "//": "Dragon-type Pokémon; used for type immunities."
+  }
+]

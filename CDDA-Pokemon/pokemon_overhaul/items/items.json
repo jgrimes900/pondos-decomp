@@ -1,0 +1,951 @@
+[
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_ball_poke",
+    "name": {
+      "str": "Poké Ball"
+    },
+    "description": "A red and white capsule for catching wild Pokémon.  Weaken a Pokémon before throwing it.  Activate it to throw it at a Pokémon up to six tiles away.  The ball is used up whether or not the catch succeeds.",
+    "weight": "80 g",
+    "volume": "100 ml",
+    "price": "200 USD",
+    "price_postapoc": "200 USD",
+    "material": [
+      "plastic",
+      "steel"
+    ],
+    "symbol": "o",
+    "color": "red",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_throw_poke_ball",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_ball_great",
+    "name": {
+      "str": "Great Ball"
+    },
+    "description": "A good, high-performance Poké Ball that provides a higher catch rate than a standard Poké Ball.  Activate it to throw it at a Pokémon up to six tiles away.  The ball is used up whether or not the catch succeeds.",
+    "weight": "80 g",
+    "volume": "100 ml",
+    "price": "600 USD",
+    "price_postapoc": "600 USD",
+    "material": [
+      "plastic",
+      "steel"
+    ],
+    "symbol": "o",
+    "color": "blue",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_throw_great_ball",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_ball_ultra",
+    "name": {
+      "str": "Ultra Ball"
+    },
+    "description": "An ultra-high-performance Poké Ball that provides a higher success rate for catching Pokémon than a Great Ball.  Activate it to throw it at a Pokémon up to six tiles away.  The ball is used up whether or not the catch succeeds.",
+    "weight": "80 g",
+    "volume": "100 ml",
+    "price": "1200 USD",
+    "price_postapoc": "1200 USD",
+    "material": [
+      "plastic",
+      "steel"
+    ],
+    "symbol": "o",
+    "color": "yellow",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_throw_ultra_ball",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_ball_safari",
+    "name": {
+      "str": "Safari Ball"
+    },
+    "description": "A special Poké Ball that is used only in the Safari Zone.  It is decorated in a camouflage pattern.  Activate it to throw it at a Pokémon up to six tiles away.  The ball is used up whether or not the catch succeeds.",
+    "weight": "80 g",
+    "volume": "100 ml",
+    "price": "500 USD",
+    "price_postapoc": "500 USD",
+    "material": [
+      "plastic",
+      "steel"
+    ],
+    "symbol": "o",
+    "color": "green",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_throw_safari_ball",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_ball_master",
+    "name": {
+      "str": "Master Ball"
+    },
+    "description": "The best Poké Ball with the ultimate level of performance.  With it, you will catch any wild Pokémon without fail.  Silph Co. only ever made a handful.  Activate it to throw it at a Pokémon up to six tiles away.  The ball is used up whether or not the catch succeeds.",
+    "weight": "80 g",
+    "volume": "100 ml",
+    "price": "100000 USD",
+    "price_postapoc": "100000 USD",
+    "material": [
+      "plastic",
+      "steel"
+    ],
+    "symbol": "o",
+    "color": "magenta",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_throw_master_ball",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_ball_registered",
+    "name": {
+      "str": "Poké Ball (registered)",
+      "str_pl": "Poké Balls (registered)"
+    },
+    "description": "A Poké Ball registered to a Pokémon you own.  Activate it next to one of your Pokémon to recall it into the ball, and activate it again to send the Pokémon back out.  A recalled Pokémon is safe from harm and can be carried anywhere.",
+    "weight": "80 g",
+    "volume": "100 ml",
+    "price": "100 USD",
+    "price_postapoc": "100 USD",
+    "material": [
+      "plastic",
+      "steel"
+    ],
+    "symbol": "o",
+    "color": "light_red",
+    "properties": {
+      "creature_size_capacity": "HUGE"
+    },
+    "use_action": [
+      "CAPTURE_MONSTER_ACT"
+    ],
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_potion",
+    "name": {
+      "str": "Potion"
+    },
+    "description": "A spray-type medicine for treating wounds.  It restores 20 HP to a Pokémon.  Activate it to use it on one of your Pokémon within three tiles.",
+    "weight": "60 g",
+    "volume": "100 ml",
+    "price": "300 USD",
+    "price_postapoc": "300 USD",
+    "material": [
+      "plastic"
+    ],
+    "symbol": "!",
+    "color": "magenta",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_potion",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_super_potion",
+    "name": {
+      "str": "Super Potion"
+    },
+    "description": "A spray-type medicine for treating wounds.  It restores 50 HP to a Pokémon.  Activate it to use it on one of your Pokémon within three tiles.",
+    "weight": "60 g",
+    "volume": "100 ml",
+    "price": "700 USD",
+    "price_postapoc": "700 USD",
+    "material": [
+      "plastic"
+    ],
+    "symbol": "!",
+    "color": "pink",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_super_potion",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_hyper_potion",
+    "name": {
+      "str": "Hyper Potion"
+    },
+    "description": "A spray-type medicine for treating wounds.  It restores 200 HP to a Pokémon.  Activate it to use it on one of your Pokémon within three tiles.",
+    "weight": "60 g",
+    "volume": "100 ml",
+    "price": "1500 USD",
+    "price_postapoc": "1500 USD",
+    "material": [
+      "plastic"
+    ],
+    "symbol": "!",
+    "color": "pink",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_hyper_potion",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_max_potion",
+    "name": {
+      "str": "Max Potion"
+    },
+    "description": "A spray-type medicine for treating wounds.  It completely restores the HP of a Pokémon.  Activate it to use it on one of your Pokémon within three tiles.",
+    "weight": "60 g",
+    "volume": "100 ml",
+    "price": "2500 USD",
+    "price_postapoc": "2500 USD",
+    "material": [
+      "plastic"
+    ],
+    "symbol": "!",
+    "color": "light_blue",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_max_potion",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_revive",
+    "name": {
+      "str": "Revive"
+    },
+    "description": "A medicine that revives a fainted Pokémon and restores half of its HP.  Activate it to use it on one of your Pokémon within three tiles.",
+    "weight": "60 g",
+    "volume": "100 ml",
+    "price": "1500 USD",
+    "price_postapoc": "1500 USD",
+    "material": [
+      "plastic"
+    ],
+    "symbol": "!",
+    "color": "yellow",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_revive",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_max_revive",
+    "name": {
+      "str": "Max Revive"
+    },
+    "description": "A medicine that revives a fainted Pokémon and fully restores its HP.  Activate it to use it on one of your Pokémon within three tiles.",
+    "weight": "60 g",
+    "volume": "100 ml",
+    "price": "4000 USD",
+    "price_postapoc": "4000 USD",
+    "material": [
+      "plastic"
+    ],
+    "symbol": "!",
+    "color": "yellow",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_max_revive",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_full_heal",
+    "name": {
+      "str": "Full Heal"
+    },
+    "description": "A spray-type medicine that heals all status conditions of a Pokémon.  Activate it to use it on one of your Pokémon within three tiles.",
+    "weight": "60 g",
+    "volume": "100 ml",
+    "price": "600 USD",
+    "price_postapoc": "600 USD",
+    "material": [
+      "plastic"
+    ],
+    "symbol": "!",
+    "color": "yellow",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_full_heal",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_full_restore",
+    "name": {
+      "str": "Full Restore"
+    },
+    "description": "A medicine that fully restores the HP and heals any status problems of a Pokémon.  Activate it to use it on one of your Pokémon within three tiles.",
+    "weight": "60 g",
+    "volume": "100 ml",
+    "price": "3000 USD",
+    "price_postapoc": "3000 USD",
+    "material": [
+      "plastic"
+    ],
+    "symbol": "!",
+    "color": "green",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_full_restore",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_rare_candy",
+    "name": {
+      "str": "Rare Candy",
+      "str_pl": "Rare Candies"
+    },
+    "description": "A candy packed with energy.  When consumed, it will instantly raise the level of a Pokémon by one.  Activate it to use it on one of your Pokémon within three tiles.",
+    "weight": "10 g",
+    "volume": "10 ml",
+    "price": "4800 USD",
+    "price_postapoc": "4800 USD",
+    "material": [
+      "veggy"
+    ],
+    "symbol": "*",
+    "color": "light_blue",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_rare_candy",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_stone_fire",
+    "name": {
+      "str": "Fire Stone"
+    },
+    "description": "A peculiar stone that makes certain species of Pokémon evolve.  It is colored orange and feels warm to the touch.  Activate it next to a Pokémon that can use it.",
+    "weight": "250 g",
+    "volume": "100 ml",
+    "price": "2100 USD",
+    "price_postapoc": "2100 USD",
+    "material": [
+      "stone"
+    ],
+    "symbol": "*",
+    "color": "light_red",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_stone_fire",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_stone_water",
+    "name": {
+      "str": "Water Stone"
+    },
+    "description": "A peculiar stone that makes certain species of Pokémon evolve.  It is the blue of a pool of clear water.  Activate it next to a Pokémon that can use it.",
+    "weight": "250 g",
+    "volume": "100 ml",
+    "price": "2100 USD",
+    "price_postapoc": "2100 USD",
+    "material": [
+      "stone"
+    ],
+    "symbol": "*",
+    "color": "light_blue",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_stone_water",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_stone_thunder",
+    "name": {
+      "str": "Thunder Stone"
+    },
+    "description": "A peculiar stone that makes certain species of Pokémon evolve.  It has a distinct thunderbolt pattern.  Activate it next to a Pokémon that can use it.",
+    "weight": "250 g",
+    "volume": "100 ml",
+    "price": "2100 USD",
+    "price_postapoc": "2100 USD",
+    "material": [
+      "stone"
+    ],
+    "symbol": "*",
+    "color": "yellow",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_stone_thunder",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_stone_leaf",
+    "name": {
+      "str": "Leaf Stone"
+    },
+    "description": "A peculiar stone that makes certain species of Pokémon evolve.  It has an unmistakable leaf pattern.  Activate it next to a Pokémon that can use it.",
+    "weight": "250 g",
+    "volume": "100 ml",
+    "price": "2100 USD",
+    "price_postapoc": "2100 USD",
+    "material": [
+      "stone"
+    ],
+    "symbol": "*",
+    "color": "light_green",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_stone_leaf",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_stone_moon",
+    "name": {
+      "str": "Moon Stone"
+    },
+    "description": "A peculiar stone that makes certain species of Pokémon evolve.  It is as black as the night sky.  Activate it next to a Pokémon that can use it.",
+    "weight": "250 g",
+    "volume": "100 ml",
+    "price": "2100 USD",
+    "price_postapoc": "2100 USD",
+    "material": [
+      "stone"
+    ],
+    "symbol": "*",
+    "color": "dark_gray",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_stone_moon",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_link_cable",
+    "name": {
+      "str": "Link Cable"
+    },
+    "description": "An old Game Link cable, hacked together with a Pokémon storage terminal.  Plugging it into the registered Poké Ball of a Kadabra, Machoke, Graveler or Haunter triggers the same evolution a trade once did.  It burns out after one use.",
+    "weight": "150 g",
+    "volume": "250 ml",
+    "price": "3000 USD",
+    "price_postapoc": "3000 USD",
+    "material": [
+      "plastic",
+      "copper"
+    ],
+    "symbol": ",",
+    "color": "light_gray",
+    "charges_per_use": 1,
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_use_stone_link",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": []
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "TOOL"
+    ],
+    "id": "pkmn_pokedex",
+    "name": {
+      "str": "Pokédex",
+      "str_pl": "Pokédexes"
+    },
+    "description": "A high-tech encyclopedia that records data on the Pokémon you catch.  Activate it to scan a Pokémon within twenty tiles: it shows a wild Pokémon's level and health, or your own Pokémon's experience.  Your progress toward completing the Kanto Pokédex is shown each time a new species is registered.",
+    "weight": "300 g",
+    "volume": "250 ml",
+    "price": "5000 USD",
+    "price_postapoc": "500 USD",
+    "material": [
+      "plastic",
+      "aluminum"
+    ],
+    "symbol": ";",
+    "color": "red",
+    "use_action": {
+      "type": "cast_spell",
+      "spell_id": "pkmn_pokedex_scan",
+      "no_fail": true,
+      "level": 0,
+      "mundane": true
+    },
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_badge_boulder",
+    "name": {
+      "str": "Boulder Badge"
+    },
+    "description": "The official Pokémon League badge of the Pewter City Gym, awarded by Brock to trainers who defeat them in battle.  It is proof that the old traditions survived the end of the world.",
+    "weight": "15 g",
+    "volume": "5 ml",
+    "price": "10 USD",
+    "price_postapoc": "10 USD",
+    "material": [
+      "steel"
+    ],
+    "symbol": "*",
+    "color": "light_gray",
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_badge_cascade",
+    "name": {
+      "str": "Cascade Badge"
+    },
+    "description": "The official Pokémon League badge of the Cerulean City Gym, awarded by Misty to trainers who defeat them in battle.  It is proof that the old traditions survived the end of the world.",
+    "weight": "15 g",
+    "volume": "5 ml",
+    "price": "10 USD",
+    "price_postapoc": "10 USD",
+    "material": [
+      "steel"
+    ],
+    "symbol": "*",
+    "color": "light_blue",
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_badge_thunder",
+    "name": {
+      "str": "Thunder Badge"
+    },
+    "description": "The official Pokémon League badge of the Vermilion City Gym, awarded by Lt. Surge to trainers who defeat them in battle.  It is proof that the old traditions survived the end of the world.",
+    "weight": "15 g",
+    "volume": "5 ml",
+    "price": "10 USD",
+    "price_postapoc": "10 USD",
+    "material": [
+      "steel"
+    ],
+    "symbol": "*",
+    "color": "yellow",
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_badge_rainbow",
+    "name": {
+      "str": "Rainbow Badge"
+    },
+    "description": "The official Pokémon League badge of the Celadon City Gym, awarded by Erika to trainers who defeat them in battle.  It is proof that the old traditions survived the end of the world.",
+    "weight": "15 g",
+    "volume": "5 ml",
+    "price": "10 USD",
+    "price_postapoc": "10 USD",
+    "material": [
+      "steel"
+    ],
+    "symbol": "*",
+    "color": "light_green",
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_badge_soul",
+    "name": {
+      "str": "Soul Badge"
+    },
+    "description": "The official Pokémon League badge of the Fuchsia City Gym, awarded by Koga to trainers who defeat them in battle.  It is proof that the old traditions survived the end of the world.",
+    "weight": "15 g",
+    "volume": "5 ml",
+    "price": "10 USD",
+    "price_postapoc": "10 USD",
+    "material": [
+      "steel"
+    ],
+    "symbol": "*",
+    "color": "pink",
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_badge_marsh",
+    "name": {
+      "str": "Marsh Badge"
+    },
+    "description": "The official Pokémon League badge of the Saffron City Gym, awarded by Sabrina to trainers who defeat them in battle.  It is proof that the old traditions survived the end of the world.",
+    "weight": "15 g",
+    "volume": "5 ml",
+    "price": "10 USD",
+    "price_postapoc": "10 USD",
+    "material": [
+      "steel"
+    ],
+    "symbol": "*",
+    "color": "yellow",
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_badge_volcano",
+    "name": {
+      "str": "Volcano Badge"
+    },
+    "description": "The official Pokémon League badge of the Cinnabar City Gym, awarded by Blaine to trainers who defeat them in battle.  It is proof that the old traditions survived the end of the world.",
+    "weight": "15 g",
+    "volume": "5 ml",
+    "price": "10 USD",
+    "price_postapoc": "10 USD",
+    "material": [
+      "steel"
+    ],
+    "symbol": "*",
+    "color": "light_red",
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_badge_earth",
+    "name": {
+      "str": "Earth Badge"
+    },
+    "description": "The official Pokémon League badge of the Viridian City Gym, awarded by Giovanni to trainers who defeat them in battle.  It is proof that the old traditions survived the end of the world.",
+    "weight": "15 g",
+    "volume": "5 ml",
+    "price": "10 USD",
+    "price_postapoc": "10 USD",
+    "material": [
+      "steel"
+    ],
+    "symbol": "*",
+    "color": "green",
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_badge_case",
+    "name": {
+      "str": "badge case"
+    },
+    "description": "A small hinged case with eight badge-shaped slots.",
+    "weight": "100 g",
+    "volume": "200 ml",
+    "price": "20 USD",
+    "price_postapoc": "5 USD",
+    "material": [
+      "plastic"
+    ],
+    "symbol": "[",
+    "color": "red",
+    "pocket_data": [
+      {
+        "pocket_type": "CONTAINER",
+        "max_contains_volume": "100 ml",
+        "max_contains_weight": "500 g",
+        "max_item_length": "5 cm",
+        "moves": 50
+      }
+    ]
+  },
+  {
+    "type": "ITEM",
+    "subtypes": [
+      "COMESTIBLE"
+    ],
+    "id": "pkmn_poke_food",
+    "name": {
+      "str_sp": "Poké Food"
+    },
+    "description": "Kibble pellets formulated for Pokémon.  Edible for people too, if you are desperate.",
+    "weight": "100 g",
+    "volume": "150 ml",
+    "price": "50 USD",
+    "price_postapoc": "5 USD",
+    "material": [
+      "junk"
+    ],
+    "symbol": "%",
+    "color": "brown",
+    "comestible_type": "FOOD",
+    "calories": 250,
+    "fun": -6,
+    "spoils_in": "360 days"
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_fossil_helix",
+    "name": {
+      "str": "Helix Fossil"
+    },
+    "description": "A fossil of an ancient Pokémon that lived in the sea.  It appears to be part of a seashell.  A scientist might be able to revive it.",
+    "weight": "1200 g",
+    "volume": "750 ml",
+    "price": "500 USD",
+    "price_postapoc": "50 USD",
+    "material": [
+      "stone"
+    ],
+    "symbol": "*",
+    "color": "light_blue"
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_fossil_dome",
+    "name": {
+      "str": "Dome Fossil"
+    },
+    "description": "A fossil of an ancient Pokémon that lived in the sea.  It appears to be part of a shell.  A scientist might be able to revive it.",
+    "weight": "1200 g",
+    "volume": "750 ml",
+    "price": "500 USD",
+    "price_postapoc": "50 USD",
+    "material": [
+      "stone"
+    ],
+    "symbol": "*",
+    "color": "brown"
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_old_amber",
+    "name": {
+      "str": "Old Amber"
+    },
+    "description": "A piece of amber that contains the genetic material of an ancient Pokémon.  It is clear with a reddish tint.",
+    "weight": "300 g",
+    "volume": "200 ml",
+    "price": "500 USD",
+    "price_postapoc": "50 USD",
+    "material": [
+      "stone"
+    ],
+    "symbol": "*",
+    "color": "yellow"
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_silph_scope",
+    "name": {
+      "str": "Silph Scope"
+    },
+    "description": "A scope that makes unseeable Pokémon visible.  It was made by Silph Co.  Team Rocket wants it back.",
+    "weight": "400 g",
+    "volume": "500 ml",
+    "price": "3000 USD",
+    "price_postapoc": "200 USD",
+    "material": [
+      "plastic",
+      "glass"
+    ],
+    "symbol": ";",
+    "color": "light_gray",
+    "flags": [
+      "TRADER_AVOID"
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_rocket_orders",
+    "name": {
+      "str_sp": "Team Rocket orders"
+    },
+    "description": "A sheaf of printed orders bearing a big red R.  They mention a hideout, a 'Project M2' at a ruined lab, and the boss: Giovanni.",
+    "weight": "50 g",
+    "volume": "50 ml",
+    "price": "1 USD",
+    "price_postapoc": "1 USD",
+    "material": [
+      "paper"
+    ],
+    "symbol": "?",
+    "color": "red"
+  }
+]

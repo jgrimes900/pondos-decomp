@@ -1,0 +1,289 @@
+[
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_EXPERIENCE",
+    "//": "Your Pokémon earn experience for every point of damage they deal to hostile creatures, plus a bonus for defeating them.  u = victim, npc = attacker.",
+    "eoc_type": "EVENT",
+    "required_event": "monster_takes_damage",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "n_val('friendly') != 0"
+          ]
+        },
+        {
+          "math": [
+            "u_val('friendly') == 0"
+          ]
+        },
+        {
+          "math": [
+            "_damage > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "n_pkmn_level = value_or(n_pkmn_level, 5)"
+        ]
+      },
+      {
+        "math": [
+          "n_pkmn_xp = value_or(n_pkmn_xp, 0) + min(_damage, 60)"
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_dies == 1"
+          ]
+        },
+        "then": [
+          {
+            "if": {
+              "u_has_species": "POKEMON"
+            },
+            "then": {
+              "math": [
+                "n_pkmn_xp = n_pkmn_xp + value_or(u_pkmn_level, 5) * 8"
+              ]
+            },
+            "else": {
+              "math": [
+                "n_pkmn_xp = n_pkmn_xp + max(5, u_hp_max('torso') / 3)"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_CHECK_LEVELUP",
+        "alpha_talker": "npc",
+        "beta_talker": "avatar"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_CHECK_LEVELUP",
+    "//": "u = a Pokémon.  Levels it up as many times as its experience allows.",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_level = value_or(u_pkmn_level, 5)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_xp = value_or(u_pkmn_xp, 0)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_LEVELUP_ONCE",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "u_pkmn_level < 100"
+              ]
+            },
+            {
+              "math": [
+                "u_pkmn_xp >= 20 + u_pkmn_level * u_pkmn_level"
+              ]
+            }
+          ]
+        },
+        "iterations": 20
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_LEVELUP_ONCE",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_xp = u_pkmn_xp - (20 + u_pkmn_level * u_pkmn_level)"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_level = u_pkmn_level + 1"
+        ]
+      },
+      {
+        "math": [
+          "u_hp('ALL') = min(u_hp_max('torso'), u_hp('ALL') + u_hp_max('torso') / 10)"
+        ]
+      },
+      {
+        "u_message": "<u_name> grew to level <u_val:pkmn_level>!",
+        "type": "good"
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_APPLY_LEVEL",
+    "//": "u = a Pokémon.  Refreshes the stat bonus that comes with its level.",
+    "effect": [
+      {
+        "u_lose_effect": "pkmn_trained"
+      },
+      {
+        "u_add_effect": "pkmn_trained",
+        "duration": "PERMANENT",
+        "intensity": {
+          "math": [
+            "max(1, min(100, value_or(u_pkmn_level, 5)))"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_FAINT",
+    "//": "The first time one of your Pokémon is knocked out it faints instead of dying.  A second knockout while fainted is fatal.",
+    "eoc_type": "EVENT",
+    "required_event": "monster_takes_damage",
+    "condition": {
+      "and": [
+        {
+          "u_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "u_val('friendly') != 0"
+          ]
+        },
+        {
+          "math": [
+            "_dies == 1"
+          ]
+        },
+        {
+          "not": {
+            "u_has_effect": "pkmn_fainted"
+          }
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "u_hp('ALL') = 1"
+        ]
+      },
+      {
+        "u_add_effect": "pkmn_fainted",
+        "duration": "PERMANENT"
+      },
+      {
+        "u_message": "<u_name> fainted!  Recall it with its Poké Ball and use a Revive, or take it to a Pokémon Center.",
+        "type": "bad",
+        "popup": false
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_after_evolve",
+    "name": "Evolution complete",
+    "description": "Internal: cleans up after a Pokémon evolves.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_AFTER_EVOLVE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_AFTER_EVOLVE",
+    "//": "u = the freshly evolved Pokémon.",
+    "effect": [
+      {
+        "math": [
+          "u_pkmn_stone_fire = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_stone_water = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_stone_thunder = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_stone_leaf = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_stone_moon = 0"
+        ]
+      },
+      {
+        "math": [
+          "u_pkmn_stone_link = 0"
+        ]
+      },
+      {
+        "u_message": "Congratulations!  Your Pokémon evolved into <u_name>!",
+        "type": "good"
+      },
+      {
+        "math": [
+          "pkmn_evolutions_seen = value_or(pkmn_evolutions_seen, 0) + 1"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_DEX_MILESTONES",
+    "effect": [
+      {
+        "if": {
+          "math": [
+            "pkmn_dex_count == 151"
+          ]
+        },
+        "then": {
+          "u_message": "Your Pokédex is complete!  All 151 Pokémon of Kanto have been registered.  Professor Oak will want to hear about this.",
+          "type": "good",
+          "popup": true
+        }
+      }
+    ]
+  }
+]

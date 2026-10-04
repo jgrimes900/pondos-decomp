@@ -1,0 +1,498 @@
+[
+  {
+    "type": "faction",
+    "id": "pkmn_league",
+    "name": "Pokémon League",
+    "likes_u": 20,
+    "respects_u": 10,
+    "known_by_u": true,
+    "size": 40,
+    "power": 40,
+    "wealth": 10000000,
+    "currency": "pkmn_poke_dollar",
+    "description": "What remains of the Pokémon League: Gym Leaders, Pokémon Center nurses, Poké Mart clerks and Professor Oak.  They keep the old traditions alive and help trainers wherever they can.",
+    "relations": {
+      "pkmn_league": {
+        "kill on sight": false,
+        "watch your back": true,
+        "share my stuff": true,
+        "guard your stuff": true,
+        "lets you in": true,
+        "defends your space": true,
+        "knows your voice": true
+      },
+      "your_followers": {
+        "kill on sight": false,
+        "lets you in": true
+      },
+      "pkmn_team_rocket": {
+        "kill on sight": false
+      }
+    }
+  },
+  {
+    "type": "faction",
+    "id": "pkmn_team_rocket",
+    "name": "Team Rocket",
+    "likes_u": -10,
+    "respects_u": 0,
+    "known_by_u": false,
+    "size": 30,
+    "power": 50,
+    "wealth": 5000000,
+    "description": "A criminal syndicate that uses Pokémon for crime.  It survived the Cataclysm and is trying to seize what's left of Kanto.",
+    "relations": {
+      "pkmn_team_rocket": {
+        "kill on sight": false,
+        "watch your back": true,
+        "share my stuff": true,
+        "guard your stuff": true,
+        "lets you in": true,
+        "defends your space": true,
+        "knows your voice": true
+      }
+    }
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_PKMN_PROFESSOR",
+    "name": {
+      "str": "Pokémon Professor"
+    },
+    "job_description": "I study Pokémon.",
+    "common": false,
+    "worn_override": "pkmn_worn_professor",
+    "carry_override": "pkmn_carry_trainer",
+    "weapon_override": "EMPTY_GROUP",
+    "skills": [
+      {
+        "skill": "ALL",
+        "level": {
+          "constant": 1
+        }
+      },
+      {
+        "skill": "dodge",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_PKMN_NURSE",
+    "name": {
+      "str": "Pokémon nurse"
+    },
+    "job_description": "I heal Pokémon.",
+    "common": false,
+    "worn_override": "pkmn_worn_nurse",
+    "carry_override": "pkmn_carry_trainer",
+    "weapon_override": "EMPTY_GROUP",
+    "skills": [
+      {
+        "skill": "ALL",
+        "level": {
+          "constant": 1
+        }
+      },
+      {
+        "skill": "dodge",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_PKMN_MART",
+    "name": {
+      "str": "Poké Mart clerk"
+    },
+    "job_description": "I run the Poké Mart.",
+    "common": false,
+    "worn_override": "pkmn_worn_casual",
+    "carry_override": "pkmn_carry_trainer",
+    "weapon_override": "EMPTY_GROUP",
+    "skills": [
+      {
+        "skill": "ALL",
+        "level": {
+          "constant": 1
+        }
+      },
+      {
+        "skill": "dodge",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      }
+    ],
+    "shopkeeper_item_group": [
+      {
+        "group": "pkmn_mart_stock"
+      }
+    ],
+    "sells_belongings": false
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_PKMN_GYM_LEADER",
+    "name": {
+      "str": "Gym Leader"
+    },
+    "job_description": "I lead a Pokémon Gym.",
+    "common": false,
+    "worn_override": "pkmn_worn_casual",
+    "carry_override": "pkmn_carry_trainer",
+    "weapon_override": "EMPTY_GROUP",
+    "skills": [
+      {
+        "skill": "ALL",
+        "level": {
+          "constant": 1
+        }
+      },
+      {
+        "skill": "dodge",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_PKMN_OFFICER",
+    "name": {
+      "str": "police officer"
+    },
+    "job_description": "I keep the peace.",
+    "common": false,
+    "worn_override": "pkmn_worn_officer",
+    "carry_override": "pkmn_carry_trainer",
+    "weapon_override": "EMPTY_GROUP",
+    "skills": [
+      {
+        "skill": "ALL",
+        "level": {
+          "constant": 1
+        }
+      },
+      {
+        "skill": "dodge",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_PKMN_WARDEN",
+    "name": {
+      "str": "Safari Zone warden"
+    },
+    "job_description": "I look after the Safari Zone.",
+    "common": false,
+    "worn_override": "pkmn_worn_casual",
+    "carry_override": "pkmn_carry_trainer",
+    "weapon_override": "EMPTY_GROUP",
+    "skills": [
+      {
+        "skill": "ALL",
+        "level": {
+          "constant": 1
+        }
+      },
+      {
+        "skill": "dodge",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      }
+    ],
+    "shopkeeper_item_group": [
+      {
+        "group": "pkmn_safari_stock"
+      }
+    ],
+    "sells_belongings": false
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_PKMN_ROCKET_GRUNT",
+    "name": {
+      "str": "Team Rocket grunt"
+    },
+    "job_description": "I work for Team Rocket.",
+    "common": false,
+    "worn_override": "pkmn_worn_rocket",
+    "carry_override": "pkmn_rocket_loot",
+    "weapon_override": "pkmn_rocket_weapon",
+    "skills": [
+      {
+        "skill": "ALL",
+        "level": {
+          "constant": 1
+        }
+      },
+      {
+        "skill": "dodge",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      },
+      {
+        "skill": "melee",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "npc_class",
+    "id": "NC_PKMN_ROCKET_ADMIN",
+    "name": {
+      "str": "Team Rocket executive"
+    },
+    "job_description": "I run Team Rocket's operations.",
+    "common": false,
+    "worn_override": "pkmn_worn_rocket",
+    "carry_override": "pkmn_rocket_loot",
+    "weapon_override": "pkmn_rocket_weapon",
+    "skills": [
+      {
+        "skill": "ALL",
+        "level": {
+          "constant": 1
+        }
+      },
+      {
+        "skill": "dodge",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      },
+      {
+        "skill": "melee",
+        "bonus": {
+          "rng": [
+            1,
+            3
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_worn_professor",
+    "subtype": "collection",
+    "items": [
+      "coat_lab",
+      "dress_shirt",
+      "pants",
+      "socks",
+      "dress_shoes",
+      "briefs"
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_worn_nurse",
+    "subtype": "collection",
+    "items": [
+      "dress_shirt",
+      "skirt",
+      "socks",
+      "sneakers",
+      "panties",
+      "bra"
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_worn_casual",
+    "subtype": "collection",
+    "items": [
+      "tshirt",
+      "jeans",
+      "socks",
+      "sneakers",
+      "boxer_shorts",
+      "hoodie"
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_worn_officer",
+    "subtype": "collection",
+    "items": [
+      "dress_shirt",
+      "police_breeches",
+      "police_belt",
+      "socks",
+      "boots",
+      "panties",
+      "bra",
+      "hat_ball"
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_worn_rocket",
+    "subtype": "collection",
+    "items": [
+      "tshirt",
+      "pants_cargo",
+      "socks",
+      "boots",
+      "boxer_shorts",
+      "gloves_leather",
+      "hat_ball"
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_carry_trainer",
+    "subtype": "collection",
+    "items": [
+      {
+        "item": "pkmn_ball_poke",
+        "count": [
+          1,
+          3
+        ]
+      },
+      {
+        "item": "pkmn_potion",
+        "prob": 50
+      }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_rocket_weapon",
+    "subtype": "distribution",
+    "items": [
+      {
+        "item": "bat",
+        "prob": 40
+      },
+      {
+        "item": "knife_hunting",
+        "prob": 30
+      },
+      {
+        "item": "crowbar",
+        "prob": 30
+      }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_safari_stock",
+    "subtype": "distribution",
+    "items": [
+      {
+        "item": "pkmn_ball_safari",
+        "prob": 80,
+        "count": [
+          5,
+          10
+        ]
+      },
+      {
+        "item": "pkmn_poke_food",
+        "prob": 20,
+        "count": [
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_poke_dollar",
+    "name": {
+      "str": "Poké Dollar coin"
+    },
+    "description": "A coin minted by the Pokémon League as currency for trainers after the old money stopped meaning anything.  Poké Marts and the League accept it.",
+    "weight": "5 g",
+    "volume": "1 ml",
+    "price": "100 USD",
+    "price_postapoc": "100 USD",
+    "material": [
+      "steel"
+    ],
+    "symbol": "$",
+    "color": "yellow",
+    "stackable": true
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_oaks_parcel",
+    "name": {
+      "str": "Oak's Parcel"
+    },
+    "description": "A small parcel addressed to Professor Oak from the Poké Mart.",
+    "weight": "400 g",
+    "volume": "500 ml",
+    "price": "1 USD",
+    "price_postapoc": "1 USD",
+    "material": [
+      "cardboard"
+    ],
+    "symbol": "#",
+    "color": "brown"
+  },
+  {
+    "type": "ITEM",
+    "id": "pkmn_diploma",
+    "name": {
+      "str": "Pokédex diploma"
+    },
+    "description": "A diploma from Professor Oak certifying that you completed the Kanto Pokédex.  A ridiculous thing to carry in the apocalypse, and you will carry it anyway.",
+    "weight": "20 g",
+    "volume": "50 ml",
+    "price": "1 USD",
+    "price_postapoc": "1 USD",
+    "material": [
+      "paper"
+    ],
+    "symbol": "?",
+    "color": "yellow"
+  }
+]

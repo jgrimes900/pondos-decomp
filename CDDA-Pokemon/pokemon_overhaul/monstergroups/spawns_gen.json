@@ -1,0 +1,1805 @@
+[
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_FOREST",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_bulbasaur",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_ivysaur",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_caterpie",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_metapod",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_butterfree",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_weedle",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_kakuna",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_beedrill",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_pidgey",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_pidgeotto",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_pikachu",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_oddish",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_gloom",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_paras",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_parasect",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_venonat",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_venomoth",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_mankey",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_bellsprout",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_weepinbell",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_exeggcute",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_tangela",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_scyther",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_pinsir",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_FIELD",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_bulbasaur",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_charmander",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_caterpie",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_butterfree",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_pidgey",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_pidgeotto",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_pidgeot",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_rattata",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_spearow",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_fearow",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_ekans",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_arbok",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_sandshrew",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_nidoran_f",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_nidorina",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_nidoran_m",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_nidorino",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_vulpix",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_jigglypuff",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_oddish",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_gloom",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_diglett",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_growlithe",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_bellsprout",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_ponyta",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_rapidash",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_farfetchd",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_doduo",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_drowzee",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_lickitung",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_tauros",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_snorlax",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_WATER",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_squirtle",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_wartortle",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_psyduck",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_golduck",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_poliwag",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_poliwhirl",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_slowpoke",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_krabby",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_goldeen",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_seaking",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_magikarp",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_gyarados",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_dratini",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_dragonair",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_OCEAN",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_tentacool",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_tentacruel",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_slowpoke",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_slowbro",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_seel",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_dewgong",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_shellder",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_krabby",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_kingler",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_horsea",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_seadra",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_staryu",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_magikarp",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_gyarados",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_lapras",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_CAVE",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_clefairy",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_zubat",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_golbat",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_paras",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_parasect",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_diglett",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_dugtrio",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_abra",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_geodude",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_graveler",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_gastly",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_onix",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_cubone",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_marowak",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_MOUNTAIN",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_charmander",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_charmeleon",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_sandshrew",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_sandslash",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_clefairy",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_mankey",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_primeape",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_machop",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_machoke",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_geodude",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_graveler",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_onix",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_rhyhorn",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_rhydon",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_magmar",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_snorlax",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_URBAN",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_pidgey",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_rattata",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_raticate",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_spearow",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_vulpix",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_jigglypuff",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_meowth",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_persian",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_growlithe",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_abra",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_kadabra",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_machop",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_magnemite",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_grimer",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_gastly",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_haunter",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_drowzee",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_hypno",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_cubone",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_koffing",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_weezing",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_mr_mime",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_ditto",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_eevee",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_SEWER",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_rattata",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_raticate",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_zubat",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_grimer",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_muk",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_koffing",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_SWAMP",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_squirtle",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_ekans",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_arbok",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_psyduck",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_poliwag",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_poliwhirl",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_farfetchd",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_lickitung",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_tangela",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_magikarp",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_POWER",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_pikachu",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_magnemite",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_magneton",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_voltorb",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_electrode",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_electabuzz",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_LAB",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_voltorb",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_ditto",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_eevee",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_porygon",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "PKMN_GROUP_SAFARI",
+    "is_animal": true,
+    "monsters": [
+      {
+        "monster": "pkmn_nidoran_f",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_nidorina",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_nidoran_m",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_nidorino",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_doduo",
+        "weight": 100,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          3
+        ]
+      },
+      {
+        "monster": "pkmn_dodrio",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_exeggcute",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_rhyhorn",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_chansey",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_kangaskhan",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_scyther",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_pinsir",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      },
+      {
+        "monster": "pkmn_tauros",
+        "weight": 30,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          2
+        ]
+      },
+      {
+        "monster": "pkmn_dratini",
+        "weight": 7,
+        "cost_multiplier": 1,
+        "pack_size": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_FOREST",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_FOREST",
+        "weight": 380
+      },
+      {
+        "group": "PKMN_GROUP_FIELD",
+        "weight": 280
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_RIVER",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_WATER",
+        "weight": 220
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_POND_ANIMAL",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_WATER",
+        "weight": 90
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_SWAMP",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_SWAMP",
+        "weight": 300
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_OCEAN_SHORE",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_OCEAN",
+        "weight": 30
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_CAVE",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_CAVE",
+        "weight": 450
+      },
+      {
+        "group": "PKMN_GROUP_MOUNTAIN",
+        "weight": 150
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_SEWER",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_SEWER",
+        "weight": 250
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_STRAY_CATS",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_URBAN",
+        "weight": 40
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_STRAY_DOGS",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_URBAN",
+        "weight": 40
+      }
+    ]
+  },
+  {
+    "type": "monstergroup",
+    "id": "GROUP_BIRDFEEDER",
+    "monsters": [
+      {
+        "group": "PKMN_GROUP_FIELD",
+        "weight": 100
+      }
+    ]
+  }
+]

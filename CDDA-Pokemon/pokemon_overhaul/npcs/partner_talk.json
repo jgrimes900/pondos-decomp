@@ -1,0 +1,84 @@
+[
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_PARTNER",
+    "//": "Talking to one of your own Pokémon.  u = you, npc = the Pokémon.",
+    "dynamic_line": {
+      "npc_has_effect": "pkmn_fainted",
+      "yes": "&<npc_name> has fainted.  It barely stirs when you touch it.  It needs a Revive or a Pokémon Center.",
+      "no": "&<npc_name> looks up at you, ready for whatever comes next.  (Level <npc_val:pkmn_level>, experience <npc_val:pkmn_xp>)"
+    },
+    "responses": [
+      {
+        "text": "Let's train together.  [1 hour]",
+        "condition": {
+          "and": [
+            { "not": { "npc_has_effect": "pkmn_fainted" } },
+            {
+              "or": [
+                { "math": [ "time_since(n_pkmn_last_train) == -1" ] },
+                { "math": [ "time_since(n_pkmn_last_train) >= time('6 h')" ] }
+              ]
+            }
+          ]
+        },
+        "effect": [
+          { "math": [ "n_pkmn_last_train = time('now')" ] },
+          { "math": [ "n_pkmn_level = value_or(n_pkmn_level, 5)" ] },
+          { "math": [ "n_pkmn_xp = value_or(n_pkmn_xp, 0) + 10 + n_pkmn_level * 2" ] },
+          { "u_assign_activity": "ACT_PKMN_TRAIN", "duration": "1 h" },
+          { "run_eocs": "EOC_PKMN_CHECK_LEVELUP", "alpha_talker": "npc", "beta_talker": "u" }
+        ],
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "Let's train together.",
+        "condition": {
+          "and": [
+            { "not": { "npc_has_effect": "pkmn_fainted" } },
+            { "math": [ "time_since(n_pkmn_last_train) != -1" ] },
+            { "math": [ "time_since(n_pkmn_last_train) < time('6 h')" ] }
+          ]
+        },
+        "topic": "TALK_PKMN_PARTNER_TIRED"
+      },
+      { "text": "How are you feeling?", "topic": "TALK_PKMN_PARTNER_STATUS" },
+      { "text": "Good job.  (Pat it.)", "effect": { "u_add_morale": "morale_pkmn_partner", "bonus": 3, "max_bonus": 10, "duration": "1 h" }, "topic": "TALK_DONE" },
+      { "text": "Let's go.", "topic": "TALK_DONE" }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_PARTNER_TIRED",
+    "dynamic_line": "&<npc_name> is still worn out from your last training session.  Give it a few hours.",
+    "responses": [ { "text": "Fair enough.", "topic": "TALK_PKMN_PARTNER" } ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_PARTNER_STATUS",
+    "dynamic_line": {
+      "npc_has_any_effect": [ "pkmn_poison", "pkmn_burn", "pkmn_paralysis", "pkmn_sleep", "pkmn_freeze" ],
+      "yes": "&<npc_name> is suffering from a status condition.  A Full Heal or a visit to a Pokémon Center would fix it.",
+      "no": {
+        "math": [ "n_hp('ALL') < n_hp_max('torso') / 2" ],
+        "yes": "&<npc_name> is badly hurt.  A Potion would help.",
+        "no": "&<npc_name> seems healthy and in good spirits."
+      }
+    },
+    "responses": [ { "text": "…", "topic": "TALK_PKMN_PARTNER" } ]
+  },
+  {
+    "type": "activity_type",
+    "id": "ACT_PKMN_TRAIN",
+    "activity_level": "MODERATE_EXERCISE",
+    "verb": "training with your Pokémon",
+    "rooted": true,
+    "based_on": "time",
+    "can_resume": false
+  },
+  {
+    "type": "morale_type",
+    "id": "morale_pkmn_partner",
+    "text": "Bonded with my Pokémon"
+  }
+]

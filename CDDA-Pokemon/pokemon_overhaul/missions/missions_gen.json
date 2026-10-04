@@ -1,0 +1,1089 @@
+[
+  {
+    "id": "MISSION_PKMN_OAK_PARCEL",
+    "type": "mission_definition",
+    "name": {
+      "str": "Deliver Oak's Parcel"
+    },
+    "description": "Professor Oak ordered a parcel from the Poké Mart before the Cataclysm.  Pick it up from any Poké Mart clerk and bring it back to him.",
+    "goal": "MGOAL_FIND_ITEM",
+    "difficulty": 1,
+    "value": 5000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "My parcel from the Poké Mart.",
+      "offer": "Before you go off adventuring, could you do an old man a favor?  I ordered a parcel from the Poké Mart before everything fell apart.  If the clerk is still there, would you fetch it for me?",
+      "accepted": "Splendid!  The Poké Mart is in town.",
+      "rejected": "Ah, maybe later then.",
+      "advice": "Just ask the clerk for Professor Oak's parcel.",
+      "inquire": "Did you get my parcel?",
+      "success": "Ah, this is the custom Poké Ball I ordered!  Thank you.  Now, I have a far bigger request…",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_OAK_DEX_5",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 3
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_mart",
+        "om_special": "pkmn_mart",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "item": "pkmn_oaks_parcel",
+    "count": 1
+  },
+  {
+    "id": "MISSION_PKMN_OAK_DEX_5",
+    "type": "mission_definition",
+    "name": {
+      "str": "Register 5 Pokémon in the Pokédex"
+    },
+    "description": "Professor Oak wants you to register 5 different species of Pokémon in your Pokédex.  A species is registered the first time you have one of your own.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 1,
+    "value": 11000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Pokédex needs more data.",
+      "offer": "The Pokédex is incomplete without field data.  Could you register 5 different kinds of Pokémon?",
+      "accepted": "Wonderful!  Off you go.",
+      "rejected": "Oh, well, I'll keep at it myself.",
+      "advice": "Different Pokémon live in different places.  Forests, rivers, the sea, caves… even the sewers.",
+      "inquire": "How is the Pokédex coming along?",
+      "success": "Splendid work!  5 Pokémon!  Here, take these; you've earned them.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_OAK_DEX_15",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 5
+        },
+        {
+          "u_spawn_item": "pkmn_super_potion",
+          "count": 3
+        }
+      ]
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_dex_count, 0) >= 5"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_OAK_DEX_15",
+    "type": "mission_definition",
+    "name": {
+      "str": "Register 15 Pokémon in the Pokédex"
+    },
+    "description": "Professor Oak wants you to register 15 different species of Pokémon in your Pokédex.  A species is registered the first time you have one of your own.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 1,
+    "value": 13000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Pokédex needs more data.",
+      "offer": "The Pokédex is incomplete without field data.  Could you register 15 different kinds of Pokémon?",
+      "accepted": "Wonderful!  Off you go.",
+      "rejected": "Oh, well, I'll keep at it myself.",
+      "advice": "Different Pokémon live in different places.  Forests, rivers, the sea, caves… even the sewers.",
+      "inquire": "How is the Pokédex coming along?",
+      "success": "Splendid work!  15 Pokémon!  Here, take these; you've earned them.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_OAK_DEX_40",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_rare_candy",
+          "count": 3
+        },
+        {
+          "u_spawn_item": "pkmn_revive",
+          "count": 2
+        }
+      ]
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_dex_count, 0) >= 15"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_OAK_DEX_40",
+    "type": "mission_definition",
+    "name": {
+      "str": "Register 40 Pokémon in the Pokédex"
+    },
+    "description": "Professor Oak wants you to register 40 different species of Pokémon in your Pokédex.  A species is registered the first time you have one of your own.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 2,
+    "value": 18000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Pokédex needs more data.",
+      "offer": "The Pokédex is incomplete without field data.  Could you register 40 different kinds of Pokémon?",
+      "accepted": "Wonderful!  Off you go.",
+      "rejected": "Oh, well, I'll keep at it myself.",
+      "advice": "Different Pokémon live in different places.  Forests, rivers, the sea, caves… even the sewers.",
+      "inquire": "How is the Pokédex coming along?",
+      "success": "Splendid work!  40 Pokémon!  Here, take these; you've earned them.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_OAK_DEX_80",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_ultra",
+          "count": 5
+        },
+        {
+          "u_spawn_item": "pkmn_link_cable"
+        }
+      ]
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_dex_count, 0) >= 40"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_OAK_DEX_80",
+    "type": "mission_definition",
+    "name": {
+      "str": "Register 80 Pokémon in the Pokédex"
+    },
+    "description": "Professor Oak wants you to register 80 different species of Pokémon in your Pokédex.  A species is registered the first time you have one of your own.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 3,
+    "value": 26000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Pokédex needs more data.",
+      "offer": "The Pokédex is incomplete without field data.  Could you register 80 different kinds of Pokémon?",
+      "accepted": "Wonderful!  Off you go.",
+      "rejected": "Oh, well, I'll keep at it myself.",
+      "advice": "Different Pokémon live in different places.  Forests, rivers, the sea, caves… even the sewers.",
+      "inquire": "How is the Pokédex coming along?",
+      "success": "Splendid work!  80 Pokémon!  Here, take these; you've earned them.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_OAK_DEX_151",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_max_revive",
+          "count": 3
+        },
+        {
+          "u_spawn_item": "pkmn_stone_moon"
+        }
+      ]
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_dex_count, 0) >= 80"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_OAK_DEX_151",
+    "type": "mission_definition",
+    "name": {
+      "str": "Register 151 Pokémon in the Pokédex"
+    },
+    "description": "Professor Oak wants you to register 151 different species of Pokémon in your Pokédex.  A species is registered the first time you have one of your own.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 6,
+    "value": 40200,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Pokédex needs more data.",
+      "offer": "The Pokédex is incomplete without field data.  Could you register 151 different kinds of Pokémon?",
+      "accepted": "Wonderful!  Off you go.",
+      "rejected": "Oh, well, I'll keep at it myself.",
+      "advice": "Different Pokémon live in different places.  Forests, rivers, the sea, caves… even the sewers.",
+      "inquire": "How is the Pokédex coming along?",
+      "success": "Splendid work!  151 Pokémon!  Here, take these; you've earned them.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_master"
+        },
+        {
+          "u_spawn_item": "pkmn_diploma"
+        }
+      ]
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_dex_count, 0) >= 151"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_OAK_LEGENDS",
+    "type": "mission_definition",
+    "name": {
+      "str": "The Legendary Birds"
+    },
+    "description": "Articuno, Zapdos and Moltres have been sighted.  Catch all three legendary birds.  Professor Oak marked their roosts on your map.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 8,
+    "value": 80000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The legendary birds.",
+      "offer": "There are reports of three legendary birds: Articuno in an icy sea cave, Zapdos at the old power plant, and Moltres in a volcanic cave.  If you could catch them… well.  I've marked where I think they are.",
+      "accepted": "Be careful!  They're far stronger than anything you've faced.",
+      "rejected": "Not yet?  I understand.",
+      "advice": "Bring Ultra Balls and Pokémon with an advantage.  Put them to sleep if you can.",
+      "inquire": "Any luck with the legendary birds?",
+      "success": "You actually did it!  All three!  History in the making.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_max_revive",
+          "count": 5
+        },
+        {
+          "u_spawn_item": "pkmn_rare_candy",
+          "count": 5
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_power_plant",
+        "om_special": "pkmn_power_plant",
+        "reveal_radius": 2,
+        "random": true,
+        "search_range": 240
+      }
+    },
+    "goal_condition": {
+      "and": [
+        {
+          "math": [
+            "value_or(pkmn_dex_articuno, 0) == 1"
+          ]
+        },
+        {
+          "math": [
+            "value_or(pkmn_dex_zapdos, 0) == 1"
+          ]
+        },
+        {
+          "math": [
+            "value_or(pkmn_dex_moltres, 0) == 1"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_OAK_MEWTWO",
+    "type": "mission_definition",
+    "name": {
+      "str": "The Pokémon in the Cave"
+    },
+    "description": "A Pokémon created in a lab is said to hide in a sealed cave.  Find it and catch it.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 10,
+    "value": 100000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "A cave, and something inside it.",
+      "offer": "There is a cave that was sealed off by the League long ago.  Something terribly powerful lives in there: a Pokémon called Mewtwo, created by human hands.  Only the Champion should even attempt this.",
+      "accepted": "May fortune be with you.",
+      "rejected": "That's probably wise.",
+      "advice": "It is psychic.  Bug and Ghost moves are your best bet, and bring every Ultra Ball you have.",
+      "inquire": "Have you been to the cave?",
+      "success": "Mewtwo… with you.  Treat it kindly.  It has known little kindness.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_full_restore",
+          "count": 5
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_cerulean_cave",
+        "om_special": "pkmn_cerulean_cave",
+        "reveal_radius": 2,
+        "random": true,
+        "search_range": 240
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_dex_mewtwo, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_LEAGUE_1",
+    "type": "mission_definition",
+    "name": {
+      "str": "Defeat Gym Leader Brock"
+    },
+    "description": "Challenge Brock at their gym and win the badge.  The gym is marked on your map.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 2,
+    "value": 20000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Brock badge.",
+      "offer": "Every trainer worth the name collects the eight League badges.  Your next challenge is Brock.  I've marked the gym on your map.",
+      "accepted": "Good luck!",
+      "rejected": "Come back when you're ready.",
+      "advice": "Gym Leaders specialize in one type.  Bring Pokémon that have the advantage.",
+      "inquire": "Did you beat Brock?",
+      "success": "Another badge!  You're becoming a real trainer.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_LEAGUE_2",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 3
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_gym_pewter",
+        "om_special": "pkmn_gym_pewter",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_trainer_brock_won, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_LEAGUE_2",
+    "type": "mission_definition",
+    "name": {
+      "str": "Defeat Gym Leader Misty"
+    },
+    "description": "Challenge Misty at their gym and win the badge.  The gym is marked on your map.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 3,
+    "value": 25000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Misty badge.",
+      "offer": "Every trainer worth the name collects the eight League badges.  Your next challenge is Misty.  I've marked the gym on your map.",
+      "accepted": "Good luck!",
+      "rejected": "Come back when you're ready.",
+      "advice": "Gym Leaders specialize in one type.  Bring Pokémon that have the advantage.",
+      "inquire": "Did you beat Misty?",
+      "success": "Another badge!  You're becoming a real trainer.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_LEAGUE_3",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 3
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_gym_cerulean",
+        "om_special": "pkmn_gym_cerulean",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_trainer_misty_won, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_LEAGUE_3",
+    "type": "mission_definition",
+    "name": {
+      "str": "Defeat Gym Leader Lt. Surge"
+    },
+    "description": "Challenge Lt. Surge at their gym and win the badge.  The gym is marked on your map.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 4,
+    "value": 30000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Lt. Surge badge.",
+      "offer": "Every trainer worth the name collects the eight League badges.  Your next challenge is Lt. Surge.  I've marked the gym on your map.",
+      "accepted": "Good luck!",
+      "rejected": "Come back when you're ready.",
+      "advice": "Gym Leaders specialize in one type.  Bring Pokémon that have the advantage.",
+      "inquire": "Did you beat Lt. Surge?",
+      "success": "Another badge!  You're becoming a real trainer.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_LEAGUE_4",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 3
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_gym_vermilion",
+        "om_special": "pkmn_gym_vermilion",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_trainer_surge_won, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_LEAGUE_4",
+    "type": "mission_definition",
+    "name": {
+      "str": "Defeat Gym Leader Erika"
+    },
+    "description": "Challenge Erika at their gym and win the badge.  The gym is marked on your map.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 5,
+    "value": 35000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Erika badge.",
+      "offer": "Every trainer worth the name collects the eight League badges.  Your next challenge is Erika.  I've marked the gym on your map.",
+      "accepted": "Good luck!",
+      "rejected": "Come back when you're ready.",
+      "advice": "Gym Leaders specialize in one type.  Bring Pokémon that have the advantage.",
+      "inquire": "Did you beat Erika?",
+      "success": "Another badge!  You're becoming a real trainer.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_LEAGUE_5",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 3
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_gym_celadon",
+        "om_special": "pkmn_gym_celadon",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_trainer_erika_won, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_LEAGUE_5",
+    "type": "mission_definition",
+    "name": {
+      "str": "Defeat Gym Leader Koga"
+    },
+    "description": "Challenge Koga at their gym and win the badge.  The gym is marked on your map.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 6,
+    "value": 40000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Koga badge.",
+      "offer": "Every trainer worth the name collects the eight League badges.  Your next challenge is Koga.  I've marked the gym on your map.",
+      "accepted": "Good luck!",
+      "rejected": "Come back when you're ready.",
+      "advice": "Gym Leaders specialize in one type.  Bring Pokémon that have the advantage.",
+      "inquire": "Did you beat Koga?",
+      "success": "Another badge!  You're becoming a real trainer.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_LEAGUE_6",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 3
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_gym_fuchsia",
+        "om_special": "pkmn_gym_fuchsia",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_trainer_koga_won, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_LEAGUE_6",
+    "type": "mission_definition",
+    "name": {
+      "str": "Defeat Gym Leader Sabrina"
+    },
+    "description": "Challenge Sabrina at their gym and win the badge.  The gym is marked on your map.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 7,
+    "value": 45000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Sabrina badge.",
+      "offer": "Every trainer worth the name collects the eight League badges.  Your next challenge is Sabrina.  I've marked the gym on your map.",
+      "accepted": "Good luck!",
+      "rejected": "Come back when you're ready.",
+      "advice": "Gym Leaders specialize in one type.  Bring Pokémon that have the advantage.",
+      "inquire": "Did you beat Sabrina?",
+      "success": "Another badge!  You're becoming a real trainer.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_LEAGUE_7",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 3
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_gym_saffron",
+        "om_special": "pkmn_gym_saffron",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_trainer_sabrina_won, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_LEAGUE_7",
+    "type": "mission_definition",
+    "name": {
+      "str": "Defeat Gym Leader Blaine"
+    },
+    "description": "Challenge Blaine at their gym and win the badge.  The gym is marked on your map.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 8,
+    "value": 50000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Blaine badge.",
+      "offer": "Every trainer worth the name collects the eight League badges.  Your next challenge is Blaine.  I've marked the gym on your map.",
+      "accepted": "Good luck!",
+      "rejected": "Come back when you're ready.",
+      "advice": "Gym Leaders specialize in one type.  Bring Pokémon that have the advantage.",
+      "inquire": "Did you beat Blaine?",
+      "success": "Another badge!  You're becoming a real trainer.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_LEAGUE_8",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 3
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_gym_cinnabar",
+        "om_special": "pkmn_gym_cinnabar",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_trainer_blaine_won, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_LEAGUE_8",
+    "type": "mission_definition",
+    "name": {
+      "str": "Defeat Gym Leader Giovanni"
+    },
+    "description": "Challenge Giovanni at their gym and win the badge.  The gym is marked on your map.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 9,
+    "value": 55000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Giovanni badge.",
+      "offer": "Every trainer worth the name collects the eight League badges.  Your next challenge is Giovanni.  I've marked the gym on your map.",
+      "accepted": "Good luck!",
+      "rejected": "Come back when you're ready.",
+      "advice": "Gym Leaders specialize in one type.  Bring Pokémon that have the advantage.",
+      "inquire": "Did you beat Giovanni?",
+      "success": "Another badge!  You're becoming a real trainer.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_LEAGUE_CHAMPION",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 3
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_gym_viridian",
+        "om_special": "pkmn_gym_viridian",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_trainer_giovanni_won, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_LEAGUE_CHAMPION",
+    "type": "mission_definition",
+    "name": {
+      "str": "Become the Pokémon League Champion"
+    },
+    "description": "With all eight badges, travel to the Indigo Plateau and defeat the reigning Champion.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 9,
+    "value": 100000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Indigo Plateau.",
+      "offer": "You have all eight badges!  The Pokémon League waits at the Indigo Plateau.  The Champion there… well, you'll see.  I've marked it on your map.",
+      "accepted": "Show them what you're made of!",
+      "rejected": "Rest up first.  That's sensible.",
+      "advice": "The Champion uses a balanced team, with a Charizard as the ace.",
+      "inquire": "Have you been to the Indigo Plateau?",
+      "success": "Champion!  I knew it.  Now then, how about that Pokédex…",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_OAK_LEGENDS",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_rare_candy",
+          "count": 5
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_indigo_plateau",
+        "om_special": "pkmn_indigo_plateau",
+        "reveal_radius": 1,
+        "random": true,
+        "search_range": 240
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_champion, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_JOY_SUPPLIES",
+    "type": "mission_definition",
+    "name": {
+      "str": "Medical supplies for the Pokémon Center"
+    },
+    "description": "Nurse Joy needs 10 bandages to keep the Pokémon Center running.",
+    "goal": "MGOAL_FIND_ITEM",
+    "difficulty": 2,
+    "value": 10000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "Bandages.",
+      "offer": "We're running low on everything, but bandages most of all.  Could you bring me ten?  I'll pay you in Pokémon medicine.",
+      "accepted": "Thank you so much!",
+      "rejected": "I understand.",
+      "advice": "Pharmacies and hospitals are dangerous, but houses often have first aid supplies.",
+      "inquire": "Any luck with the bandages?",
+      "success": "These will help so many Pokémon.  Please take these.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_JOY_ANTIBIOTICS",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_super_potion",
+          "count": 4
+        },
+        {
+          "u_spawn_item": "pkmn_revive",
+          "count": 2
+        }
+      ]
+    },
+    "item": "bandages",
+    "count": 10
+  },
+  {
+    "id": "MISSION_PKMN_JOY_ANTIBIOTICS",
+    "type": "mission_definition",
+    "name": {
+      "str": "Antibiotics for the Pokémon Center"
+    },
+    "description": "Nurse Joy needs antibiotics for infected Pokémon.",
+    "goal": "MGOAL_FIND_ITEM",
+    "difficulty": 2,
+    "value": 10000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "Antibiotics.",
+      "offer": "Some of the Pokémon brought in have infected bites from the dead.  I need antibiotics.  Five doses would save a lot of lives.",
+      "accepted": "Thank you!",
+      "rejected": "I'll manage somehow.",
+      "advice": "Hospitals and pharmacies, if you're brave.",
+      "inquire": "Did you find antibiotics?",
+      "success": "This is wonderful.  Here, my Chansey wants you to have these.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_JOY_ZOMBIES",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_full_restore",
+          "count": 2
+        },
+        {
+          "u_spawn_item": "pkmn_max_revive",
+          "count": 1
+        }
+      ]
+    },
+    "item": "antibiotics",
+    "count": 5
+  },
+  {
+    "id": "MISSION_PKMN_JOY_ZOMBIES",
+    "type": "mission_definition",
+    "name": {
+      "str": "Clear the dead around the Pokémon Center"
+    },
+    "description": "The dead keep wandering up to the Pokémon Center.  Destroy 25 zombies.",
+    "goal": "MGOAL_KILL_MONSTER_SPEC",
+    "difficulty": 2,
+    "value": 10000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The zombies outside.",
+      "offer": "The shamblers keep coming to the doors.  The Pokémon are frightened.  Could you thin them out?  Twenty-five should give us some peace.",
+      "accepted": "Please be careful.",
+      "rejected": "I understand.",
+      "advice": "Let your Pokémon fight with you, they'll gain experience too.",
+      "inquire": "How is it going out there?",
+      "success": "It's so much quieter now.  Thank you, truly.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_rare_candy",
+          "count": 3
+        }
+      ]
+    },
+    "monster_species": "ZOMBIE",
+    "monster_kill_goal": 25
+  },
+  {
+    "id": "MISSION_PKMN_JENNY_ROCKET_1",
+    "type": "mission_definition",
+    "name": {
+      "str": "Team Rocket's orders"
+    },
+    "description": "Defeat Team Rocket grunts in Pokémon battles and bring back a copy of their orders.",
+    "goal": "MGOAL_FIND_ITEM",
+    "difficulty": 2,
+    "value": 10000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "Team Rocket's plans.",
+      "offer": "I need to know what Team Rocket is planning.  Their grunts carry orders.  Beat one in a Pokémon battle and bring me the papers.",
+      "accepted": "Good.  They hang around towns, sometimes near Pokémon Centers.",
+      "rejected": "Fine.",
+      "advice": "Grunts use weak Pokémon: Rattata, Zubat, Ekans, Koffing.  Any decent team can beat them.",
+      "inquire": "Got those orders?",
+      "success": "A hideout… and a 'Project M2'.  This is worse than I thought.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_JENNY_ROCKET_2",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_great",
+          "count": 5
+        }
+      ]
+    },
+    "item": "pkmn_rocket_orders",
+    "count": 1
+  },
+  {
+    "id": "MISSION_PKMN_JENNY_ROCKET_2",
+    "type": "mission_definition",
+    "name": {
+      "str": "Raid the Rocket Hideout"
+    },
+    "description": "Find Team Rocket's hideout beneath the old game corner, defeat their executive, and recover what they stole from Silph Co.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 6,
+    "value": 40000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "The Rocket Hideout.",
+      "offer": "The orders point to a hideout under an old game corner.  I've marked it on your map.  Their executive, Archer, runs things there.  Take him down.",
+      "accepted": "Be careful down there.",
+      "rejected": "I can't do this alone, you know.",
+      "advice": "Take the stairs down.  Expect several grunts.",
+      "inquire": "Have you raided the hideout?",
+      "success": "You did it!  With Archer beaten, Team Rocket is on the ropes.  But their boss is still out there… Viridian City, you said?",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "followup": "MISSION_PKMN_JENNY_ROCKET_3",
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_ultra",
+          "count": 5
+        },
+        {
+          "u_spawn_item": "pkmn_full_restore",
+          "count": 2
+        }
+      ]
+    },
+    "start": {
+      "assign_mission_target": {
+        "om_terrain": "pkmn_rocket_hideout",
+        "om_special": "pkmn_rocket_hideout",
+        "reveal_radius": 1,
+        "random": false
+      }
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_rocket_hideout_cleared, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_JENNY_ROCKET_3",
+    "type": "mission_definition",
+    "name": {
+      "str": "Defeat Giovanni"
+    },
+    "description": "Giovanni, the boss of Team Rocket, is the Viridian City Gym Leader.  Beat him once and for all.  He will not accept a challenge until you hold seven badges.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 8,
+    "value": 80000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "Giovanni.",
+      "offer": "The boss of Team Rocket is Giovanni, the Viridian Gym Leader.  Beat him at his own game and Team Rocket falls apart.",
+      "accepted": "Go get him.",
+      "rejected": "I'll wait.",
+      "advice": "He uses Ground-type Pokémon.  Water and Grass moves will serve you well.",
+      "inquire": "Is it done?",
+      "success": "Team Rocket is finished.  The people of Kanto owe you, trainer.  Take this: Silph Co. made it for the police.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_ball_master"
+        }
+      ]
+    },
+    "goal_condition": {
+      "math": [
+        "value_or(pkmn_giovanni_defeated, 0) == 1"
+      ]
+    }
+  },
+  {
+    "id": "MISSION_PKMN_WARDEN_CATCH",
+    "type": "mission_definition",
+    "name": {
+      "str": "Safari Zone survey"
+    },
+    "description": "The Safari Zone warden wants proof that the rare Pokémon still live here: register Chansey, Kangaskhan and Tauros.",
+    "goal": "MGOAL_CONDITION",
+    "difficulty": 4,
+    "value": 30000,
+    "origins": [
+      "ORIGIN_SECONDARY"
+    ],
+    "dialogue": {
+      "describe": "A survey of the Safari Zone.",
+      "offer": "I don't know how many of our rare Pokémon survived.  Catch a Chansey, a Kangaskhan and a Tauros for me, and register them in your Pokédex.",
+      "accepted": "Thanks!  Good hunting.",
+      "rejected": "Too bad.",
+      "advice": "They're skittish.  Safari Balls work better than normal Poké Balls.",
+      "inquire": "Found them?",
+      "success": "They made it!  Here, take this, I found it in the brush years ago.",
+      "success_lie": "That doesn't look right to me.",
+      "failure": "Don't give up.  Come back when you're ready."
+    },
+    "end": {
+      "effect": [
+        {
+          "u_spawn_item": "pkmn_stone_leaf"
+        },
+        {
+          "u_spawn_item": "pkmn_stone_water"
+        },
+        {
+          "u_spawn_item": "pkmn_ball_safari",
+          "count": 10
+        }
+      ]
+    },
+    "goal_condition": {
+      "and": [
+        {
+          "math": [
+            "value_or(pkmn_dex_chansey, 0) == 1"
+          ]
+        },
+        {
+          "math": [
+            "value_or(pkmn_dex_kangaskhan, 0) == 1"
+          ]
+        },
+        {
+          "math": [
+            "value_or(pkmn_dex_tauros, 0) == 1"
+          ]
+        }
+      ]
+    }
+  }
+]

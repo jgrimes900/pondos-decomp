@@ -1,0 +1,242 @@
+[
+  {
+    "type": "item_group",
+    "id": "pkmn_mart_stock",
+    "subtype": "distribution",
+    "items": [
+      {
+        "item": "pkmn_ball_poke",
+        "prob": 60,
+        "count": [
+          2,
+          6
+        ]
+      },
+      {
+        "item": "pkmn_ball_great",
+        "prob": 30,
+        "count": [
+          1,
+          4
+        ]
+      },
+      {
+        "item": "pkmn_ball_ultra",
+        "prob": 12,
+        "count": [
+          1,
+          3
+        ]
+      },
+      {
+        "item": "pkmn_potion",
+        "prob": 50,
+        "count": [
+          2,
+          5
+        ]
+      },
+      {
+        "item": "pkmn_super_potion",
+        "prob": 30,
+        "count": [
+          1,
+          4
+        ]
+      },
+      {
+        "item": "pkmn_hyper_potion",
+        "prob": 10,
+        "count": [
+          1,
+          2
+        ]
+      },
+      {
+        "item": "pkmn_revive",
+        "prob": 20,
+        "count": [
+          1,
+          3
+        ]
+      },
+      {
+        "item": "pkmn_full_heal",
+        "prob": 20,
+        "count": [
+          1,
+          3
+        ]
+      },
+      {
+        "item": "pkmn_poke_food",
+        "prob": 30,
+        "count": [
+          1,
+          4
+        ]
+      },
+      {
+        "item": "pkmn_ball_registered",
+        "prob": 15,
+        "count": [
+          1,
+          3
+        ]
+      },
+      {
+        "item": "pkmn_stone_fire",
+        "prob": 3
+      },
+      {
+        "item": "pkmn_stone_water",
+        "prob": 3
+      },
+      {
+        "item": "pkmn_stone_thunder",
+        "prob": 3
+      },
+      {
+        "item": "pkmn_stone_leaf",
+        "prob": 3
+      },
+      {
+        "item": "pkmn_badge_case",
+        "prob": 4
+      }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_loot_common",
+    "subtype": "distribution",
+    "items": [
+      {
+        "item": "pkmn_ball_poke",
+        "prob": 50,
+        "count": [
+          1,
+          3
+        ]
+      },
+      {
+        "item": "pkmn_potion",
+        "prob": 40,
+        "count": [
+          1,
+          2
+        ]
+      },
+      {
+        "item": "pkmn_ball_great",
+        "prob": 15
+      },
+      {
+        "item": "pkmn_super_potion",
+        "prob": 15
+      },
+      {
+        "item": "pkmn_revive",
+        "prob": 8
+      },
+      {
+        "item": "pkmn_full_heal",
+        "prob": 10
+      },
+      {
+        "item": "pkmn_poke_food",
+        "prob": 20
+      },
+      {
+        "item": "pkmn_rare_candy",
+        "prob": 3
+      },
+      {
+        "item": "pkmn_ball_ultra",
+        "prob": 4
+      }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_loot_rare",
+    "subtype": "distribution",
+    "items": [
+      {
+        "item": "pkmn_rare_candy",
+        "prob": 30
+      },
+      {
+        "item": "pkmn_ball_ultra",
+        "prob": 30,
+        "count": [
+          1,
+          3
+        ]
+      },
+      {
+        "item": "pkmn_max_revive",
+        "prob": 10
+      },
+      {
+        "item": "pkmn_full_restore",
+        "prob": 10
+      },
+      {
+        "item": "pkmn_stone_fire",
+        "prob": 8
+      },
+      {
+        "item": "pkmn_stone_water",
+        "prob": 8
+      },
+      {
+        "item": "pkmn_stone_thunder",
+        "prob": 8
+      },
+      {
+        "item": "pkmn_stone_leaf",
+        "prob": 8
+      },
+      {
+        "item": "pkmn_stone_moon",
+        "prob": 8
+      },
+      {
+        "item": "pkmn_link_cable",
+        "prob": 5
+      }
+    ]
+  },
+  {
+    "type": "item_group",
+    "id": "pkmn_rocket_loot",
+    "subtype": "collection",
+    "items": [
+      {
+        "item": "pkmn_ball_poke",
+        "prob": 60,
+        "count": [
+          1,
+          3
+        ]
+      },
+      {
+        "item": "pkmn_ball_great",
+        "prob": 30
+      },
+      {
+        "item": "pkmn_potion",
+        "prob": 40
+      },
+      {
+        "item": "pkmn_rocket_orders",
+        "prob": 20
+      },
+      {
+        "item": "pkmn_rare_candy",
+        "prob": 5
+      }
+    ]
+  }
+]

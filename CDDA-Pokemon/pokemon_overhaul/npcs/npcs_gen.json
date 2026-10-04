@@ -1,0 +1,808 @@
+[
+  {
+    "type": "npc",
+    "id": "pkmn_npc_oak",
+    "name_unique": "Professor Oak",
+    "name_suffix": "Pokémon Professor",
+    "gender": "male",
+    "class": "NC_PKMN_PROFESSOR",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_OAK",
+    "faction": "pkmn_league",
+    "mission_offered": "MISSION_PKMN_OAK_PARCEL"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_got_starter, 0) == 1"
+      ],
+      "yes": "Ah, <name_g>!  How are you and your Pokémon getting along?",
+      "no": "Hello there!  Welcome to the world of Pokémon!  My name is Oak.  People call me the Pokémon Prof.  This world is inhabited by creatures called Pokémon, and they survived the end of the world far better than we did.  For some people, Pokémon are pets.  Others use them for fights.  Myself, I study Pokémon as a profession.  And now, with the cities overrun, I think they may be our best hope."
+    },
+    "responses": [
+      {
+        "text": "Professor, I'd like a Pokémon of my own.",
+        "condition": {
+          "not": {
+            "math": [
+              "value_or(pkmn_got_starter, 0) == 1"
+            ]
+          }
+        },
+        "topic": "TALK_PKMN_OAK_STARTER"
+      },
+      {
+        "text": "What happened here?",
+        "topic": "TALK_PKMN_OAK_STORY"
+      },
+      {
+        "text": "How do I catch and train Pokémon?",
+        "topic": "TALK_PKMN_OAK_TUTORIAL"
+      },
+      {
+        "text": "How is my Pokédex coming along?",
+        "condition": {
+          "math": [
+            "value_or(pkmn_got_starter, 0) == 1"
+          ]
+        },
+        "topic": "TALK_PKMN_OAK_DEX"
+      },
+      {
+        "text": "Do you have any work for me?",
+        "condition": {
+          "math": [
+            "value_or(pkmn_got_starter, 0) == 1"
+          ]
+        },
+        "topic": "TALK_MISSION_LIST"
+      },
+      {
+        "text": "I found a fossil.  Can you revive it?",
+        "condition": {
+          "or": [
+            {
+              "u_has_item": "pkmn_fossil_helix"
+            },
+            {
+              "u_has_item": "pkmn_fossil_dome"
+            },
+            {
+              "u_has_item": "pkmn_old_amber"
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_OAK_FOSSIL"
+      },
+      {
+        "text": "Could you spare a few Poké Balls?",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(pkmn_got_starter, 0) == 1"
+              ]
+            },
+            {
+              "or": [
+                {
+                  "math": [
+                    "time_since(pkmn_oak_balls) == -1"
+                  ]
+                },
+                {
+                  "math": [
+                    "time_since(pkmn_oak_balls) > time('3 d')"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "pkmn_oak_balls = time('now')"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_ball_poke",
+            "count": 5
+          }
+        ],
+        "topic": "TALK_PKMN_OAK_BALLS"
+      },
+      {
+        "text": "I want to take on the Pokémon League.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(pkmn_league_line_started, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_got_starter, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "pkmn_league_line_started = 1"
+            ]
+          },
+          {
+            "assign_mission": "MISSION_PKMN_LEAGUE_1"
+          }
+        ],
+        "topic": "TALK_PKMN_OAK_MISSION_GIVEN"
+      },
+      {
+        "text": "Is there anything truly dangerous out there?",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(pkmn_mewtwo_line_started, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_got_starter, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_champion, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "pkmn_mewtwo_line_started = 1"
+            ]
+          },
+          {
+            "assign_mission": "MISSION_PKMN_OAK_MEWTWO"
+          }
+        ],
+        "topic": "TALK_PKMN_OAK_MISSION_GIVEN"
+      },
+      {
+        "text": "Goodbye, Professor.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK_STARTER",
+    "dynamic_line": "I kept three Pokémon safe in their Poké Balls through all of this.  Bulbasaur, Charmander, and Squirtle.  Each one is a fine partner.  Which will you choose?  Choose carefully; it will be your friend in a dangerous world.",
+    "responses": [
+      {
+        "text": "I choose Bulbasaur!",
+        "effect": [
+          {
+            "math": [
+              "pkmn_got_starter = 1"
+            ]
+          },
+          {
+            "u_spawn_monster": "pkmn_bulbasaur",
+            "real_count": 1,
+            "min_radius": 1,
+            "max_radius": 3,
+            "friendly": true,
+            "mon_variables": {
+              "pkmn_level": "5",
+              "pkmn_xp": "0"
+            },
+            "spawn_message": "Bulbasaur pops out of its Poké Ball!"
+          },
+          {
+            "u_spawn_item": "pkmn_ball_registered"
+          },
+          {
+            "u_spawn_item": "pkmn_pokedex"
+          },
+          {
+            "u_spawn_item": "pkmn_ball_poke",
+            "count": 5
+          },
+          {
+            "u_spawn_item": "pkmn_potion",
+            "count": 3
+          },
+          {
+            "u_spawn_item": "pkmn_badge_case"
+          },
+          {
+            "run_eocs": "EOC_PKMN_STARTER_SETUP"
+          }
+        ],
+        "topic": "TALK_PKMN_OAK_STARTER_CHOSEN"
+      },
+      {
+        "text": "I choose Charmander!",
+        "effect": [
+          {
+            "math": [
+              "pkmn_got_starter = 1"
+            ]
+          },
+          {
+            "u_spawn_monster": "pkmn_charmander",
+            "real_count": 1,
+            "min_radius": 1,
+            "max_radius": 3,
+            "friendly": true,
+            "mon_variables": {
+              "pkmn_level": "5",
+              "pkmn_xp": "0"
+            },
+            "spawn_message": "Charmander pops out of its Poké Ball!"
+          },
+          {
+            "u_spawn_item": "pkmn_ball_registered"
+          },
+          {
+            "u_spawn_item": "pkmn_pokedex"
+          },
+          {
+            "u_spawn_item": "pkmn_ball_poke",
+            "count": 5
+          },
+          {
+            "u_spawn_item": "pkmn_potion",
+            "count": 3
+          },
+          {
+            "u_spawn_item": "pkmn_badge_case"
+          },
+          {
+            "run_eocs": "EOC_PKMN_STARTER_SETUP"
+          }
+        ],
+        "topic": "TALK_PKMN_OAK_STARTER_CHOSEN"
+      },
+      {
+        "text": "I choose Squirtle!",
+        "effect": [
+          {
+            "math": [
+              "pkmn_got_starter = 1"
+            ]
+          },
+          {
+            "u_spawn_monster": "pkmn_squirtle",
+            "real_count": 1,
+            "min_radius": 1,
+            "max_radius": 3,
+            "friendly": true,
+            "mon_variables": {
+              "pkmn_level": "5",
+              "pkmn_xp": "0"
+            },
+            "spawn_message": "Squirtle pops out of its Poké Ball!"
+          },
+          {
+            "u_spawn_item": "pkmn_ball_registered"
+          },
+          {
+            "u_spawn_item": "pkmn_pokedex"
+          },
+          {
+            "u_spawn_item": "pkmn_ball_poke",
+            "count": 5
+          },
+          {
+            "u_spawn_item": "pkmn_potion",
+            "count": 3
+          },
+          {
+            "u_spawn_item": "pkmn_badge_case"
+          },
+          {
+            "run_eocs": "EOC_PKMN_STARTER_SETUP"
+          }
+        ],
+        "topic": "TALK_PKMN_OAK_STARTER_CHOSEN"
+      },
+      {
+        "text": "Let me think about it.",
+        "topic": "TALK_PKMN_OAK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK_STARTER_CHOSEN",
+    "dynamic_line": "So you've chosen!  That Pokémon is really energetic.  Take this Pokédex too, it records data on every Pokémon you catch.  And here are some Poké Balls and Potions.  Your Pokémon's registered Poké Ball lets you recall it whenever you want; use it next to your Pokémon.  Complete the Pokédex for me.  It's my dream, and the world could use a few more dreams.",
+    "responses": [
+      {
+        "text": "I'll do my best, Professor!",
+        "topic": "TALK_PKMN_OAK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK_STORY",
+    "dynamic_line": "When the dead began to walk, most people fled.  But the Pokémon stayed.  Wild Pokémon are spreading into the empty towns, and trainers who kept their partners have survived where others didn't.  Pokémon Centers still run on generators and the stubbornness of nurses, the Gym Leaders still hold their gyms, and Team Rocket… well, Team Rocket sees an opportunity.  I believe a skilled trainer could make a real difference.",
+    "responses": [
+      {
+        "text": "I see.",
+        "topic": "TALK_PKMN_OAK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK_TUTORIAL",
+    "dynamic_line": "First, weaken a wild Pokémon by battling it with your own.  Use the Pokédex to check its health.  Then activate a Poké Ball to throw it.  The weaker the Pokémon, the better your chances.  Sleep, paralysis, freezing, burns and poison help a great deal too, and Great and Ultra Balls work better still.  Once caught, a Pokémon follows you and fights at your side.  It gains experience from every battle, grows in level, and evolves when the time is right.  Some evolve only with evolution stones, and a few needed a trade in the old days; the Link Cable handles that.  If one of your Pokémon faints, recall it with its Poké Ball immediately!  A fainted Pokémon that takes another hit will not get back up.",
+    "responses": [
+      {
+        "text": "Thanks, Professor.",
+        "topic": "TALK_PKMN_OAK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK_DEX",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_dex_count, 0) >= 151"
+      ],
+      "yes": "Incredible!  You've completed the Pokédex!  All 151 Pokémon of Kanto, even in a world like this.  Congratulations!",
+      "no": "Let me see… You've registered <global_val:pkmn_dex_count> Pokémon so far, and caught <global_val:pkmn_caught_total> in all.  Keep going!  Different Pokémon live in forests, fields, rivers, the coast, caves and even sewers.  Some only live in special places."
+    },
+    "responses": [
+      {
+        "text": "I'll keep at it.",
+        "topic": "TALK_PKMN_OAK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK_BALLS",
+    "dynamic_line": "Of course!  Here are five Poké Balls.  Come back in a few days if you need more.",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_OAK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK_FOSSIL",
+    "dynamic_line": "Oh!  A fossil of an ancient Pokémon!  My lab equipment can extract its DNA and regenerate it.  Which one should I revive?",
+    "responses": [
+      {
+        "text": "The Helix Fossil.",
+        "condition": {
+          "u_has_item": "pkmn_fossil_helix"
+        },
+        "effect": [
+          {
+            "u_consume_item": "pkmn_fossil_helix",
+            "count": 1
+          },
+          {
+            "u_spawn_monster": "pkmn_omanyte",
+            "real_count": 1,
+            "min_radius": 1,
+            "max_radius": 3,
+            "friendly": true,
+            "mon_variables": {
+              "pkmn_level": "30"
+            }
+          },
+          {
+            "u_spawn_item": "pkmn_ball_registered"
+          }
+        ],
+        "topic": "TALK_PKMN_OAK_FOSSIL_DONE"
+      },
+      {
+        "text": "The Dome Fossil.",
+        "condition": {
+          "u_has_item": "pkmn_fossil_dome"
+        },
+        "effect": [
+          {
+            "u_consume_item": "pkmn_fossil_dome",
+            "count": 1
+          },
+          {
+            "u_spawn_monster": "pkmn_kabuto",
+            "real_count": 1,
+            "min_radius": 1,
+            "max_radius": 3,
+            "friendly": true,
+            "mon_variables": {
+              "pkmn_level": "30"
+            }
+          },
+          {
+            "u_spawn_item": "pkmn_ball_registered"
+          }
+        ],
+        "topic": "TALK_PKMN_OAK_FOSSIL_DONE"
+      },
+      {
+        "text": "The Old Amber.",
+        "condition": {
+          "u_has_item": "pkmn_old_amber"
+        },
+        "effect": [
+          {
+            "u_consume_item": "pkmn_old_amber",
+            "count": 1
+          },
+          {
+            "u_spawn_monster": "pkmn_aerodactyl",
+            "real_count": 1,
+            "min_radius": 1,
+            "max_radius": 3,
+            "friendly": true,
+            "mon_variables": {
+              "pkmn_level": "30"
+            }
+          },
+          {
+            "u_spawn_item": "pkmn_ball_registered"
+          }
+        ],
+        "topic": "TALK_PKMN_OAK_FOSSIL_DONE"
+      },
+      {
+        "text": "Never mind.",
+        "topic": "TALK_PKMN_OAK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK_FOSSIL_DONE",
+    "dynamic_line": "There!  It's alive!  An ancient Pokémon, breathing again after millions of years.  Take good care of it.  Here's a registered Poké Ball for it.",
+    "responses": [
+      {
+        "text": "Amazing.  Thank you, Professor.",
+        "topic": "TALK_PKMN_OAK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_NEED_POKEMON",
+    "dynamic_line": "You don't have any Pokémon with you!  Send one out of its Poké Ball first.",
+    "responses": [
+      {
+        "text": "Oh, right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_STARTER_SETUP",
+    "effect": [
+      {
+        "u_run_monster_eocs": [
+          {
+            "id": "EOC_PKMN_STARTER_SETUP_MON",
+            "condition": {
+              "and": [
+                {
+                  "u_has_species": "POKEMON"
+                },
+                {
+                  "math": [
+                    "u_val('friendly') != 0"
+                  ]
+                }
+              ]
+            },
+            "effect": [
+              {
+                "u_add_effect": "pet",
+                "duration": "PERMANENT"
+              },
+              {
+                "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+              }
+            ]
+          }
+        ],
+        "monster_range": 6
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_OAK_MISSION_GIVEN",
+    "dynamic_line": "Then I'm counting on you!  I've marked your destination on your map.",
+    "responses": [
+      {
+        "text": "I won't let you down.",
+        "topic": "TALK_PKMN_OAK"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_nurse_joy",
+    "name_unique": "Nurse Joy",
+    "name_suffix": "Pokémon Center",
+    "gender": "female",
+    "class": "NC_PKMN_NURSE",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_JOY",
+    "faction": "pkmn_league",
+    "mission_offered": "MISSION_PKMN_JOY_SUPPLIES"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_JOY",
+    "dynamic_line": "Hello, and welcome to the Pokémon Center.  We restore your tired Pokémon to full health.  Even now.  Especially now.",
+    "responses": [
+      {
+        "text": "Please heal my Pokémon.",
+        "effect": [
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_CENTER_HEAL_MON",
+                "condition": {
+                  "and": [
+                    {
+                      "u_has_species": "POKEMON"
+                    },
+                    {
+                      "math": [
+                        "u_val('friendly') != 0"
+                      ]
+                    }
+                  ]
+                },
+                "effect": [
+                  {
+                    "math": [
+                      "u_hp('ALL') = u_hp_max('torso')"
+                    ]
+                  },
+                  {
+                    "u_lose_effect": "pkmn_fainted"
+                  },
+                  {
+                    "u_lose_effect": "pkmn_paralysis"
+                  },
+                  {
+                    "u_lose_effect": "pkmn_sleep"
+                  },
+                  {
+                    "u_lose_effect": "pkmn_freeze"
+                  },
+                  {
+                    "u_lose_effect": "pkmn_burn"
+                  },
+                  {
+                    "u_lose_effect": "pkmn_poison"
+                  },
+                  {
+                    "u_lose_effect": "pkmn_slowed"
+                  },
+                  {
+                    "u_lose_effect": "stunned"
+                  },
+                  {
+                    "u_lose_effect": "downed"
+                  },
+                  {
+                    "u_add_effect": "pkmn_pokecenter_heal",
+                    "duration": "1 h"
+                  }
+                ]
+              }
+            ],
+            "monster_range": 15
+          },
+          {
+            "u_assign_activity": "ACT_WAIT",
+            "duration": "5 minutes"
+          }
+        ],
+        "topic": "TALK_PKMN_JOY_HEALED"
+      },
+      {
+        "text": "Can you patch me up too?",
+        "condition": {
+          "math": [
+            "u_hp('ALL') < u_hp_max('torso') + u_hp_max('head') + u_hp_max('arm_l') + u_hp_max('arm_r') + u_hp_max('leg_l') + u_hp_max('leg_r')"
+          ]
+        },
+        "effect": [
+          {
+            "u_spawn_item": "bandages",
+            "count": 2
+          }
+        ],
+        "topic": "TALK_PKMN_JOY_PATCH"
+      },
+      {
+        "text": "Do you need help with anything?",
+        "topic": "TALK_MISSION_LIST"
+      },
+      {
+        "text": "Goodbye.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_JOY_HEALED",
+    "dynamic_line": "Thank you for waiting.  We've restored your Pokémon to full health.  We hope to see you again!",
+    "responses": [
+      {
+        "text": "Thank you!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_JOY_PATCH",
+    "dynamic_line": "We're a Pokémon Center, not a hospital… but here, take some bandages.  Please be careful out there.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_JOY"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_mart_clerk",
+    "name_suffix": "Poké Mart clerk",
+    "class": "NC_PKMN_MART",
+    "attitude": 0,
+    "mission": 3,
+    "chat": "TALK_PKMN_MART",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_MART",
+    "dynamic_line": "Hi there!  May I help you?  We still have Poké Balls, Potions and the rest.  Money's not what it used to be, so we take trades.",
+    "responses": [
+      {
+        "text": "Let's trade.",
+        "effect": "start_trade",
+        "topic": "TALK_PKMN_MART"
+      },
+      {
+        "text": "Professor Oak sent me for a parcel.",
+        "condition": {
+          "and": [
+            {
+              "u_has_mission": "MISSION_PKMN_OAK_PARCEL"
+            },
+            {
+              "not": {
+                "u_has_item": "pkmn_oaks_parcel"
+              }
+            }
+          ]
+        },
+        "effect": {
+          "u_spawn_item": "pkmn_oaks_parcel"
+        },
+        "topic": "TALK_PKMN_MART_PARCEL"
+      },
+      {
+        "text": "Goodbye.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_MART_PARCEL",
+    "dynamic_line": "Oh, you're from Professor Oak's lab?  He ordered this before… everything.  It's been sitting in the back.  Please take it to him.",
+    "responses": [
+      {
+        "text": "Will do.",
+        "topic": "TALK_PKMN_MART"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_jenny",
+    "name_unique": "Officer Jenny",
+    "name_suffix": "Police",
+    "gender": "female",
+    "class": "NC_PKMN_OFFICER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_JENNY",
+    "faction": "pkmn_league",
+    "mission_offered": "MISSION_PKMN_JENNY_ROCKET_1"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_JENNY",
+    "dynamic_line": "Officer Jenny.  What's left of the department, anyway.  If you're a trainer, I could use your help.  Team Rocket is using the chaos to steal Pokémon and loot what's left of Silph Co.",
+    "responses": [
+      {
+        "text": "Tell me about Team Rocket.",
+        "topic": "TALK_PKMN_JENNY_ROCKET"
+      },
+      {
+        "text": "Do you have a job for me?",
+        "topic": "TALK_MISSION_LIST"
+      },
+      {
+        "text": "Goodbye, officer.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_JENNY_ROCKET",
+    "dynamic_line": "A criminal gang that uses Pokémon for crime.  Black uniforms, big red R.  Their grunts carry a couple of Pokémon each and they don't fight fair.  Rumor is their boss is an old Gym Leader.",
+    "responses": [
+      {
+        "text": "I'll keep an eye out.",
+        "topic": "TALK_PKMN_JENNY"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_safari_warden",
+    "name_unique": "Safari Warden",
+    "name_suffix": "Safari Zone",
+    "gender": "male",
+    "class": "NC_PKMN_WARDEN",
+    "attitude": 0,
+    "mission": 3,
+    "chat": "TALK_PKMN_WARDEN",
+    "faction": "pkmn_league",
+    "mission_offered": "MISSION_PKMN_WARDEN_CATCH"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_WARDEN",
+    "dynamic_line": "Welcome to the Safari Zone!  The fences kept most of the dead out and the Pokémon in.  Rare Pokémon live here: Chansey, Kangaskhan, Tauros, Scyther, Pinsir, even Dratini.  You'll want Safari Balls.",
+    "responses": [
+      {
+        "text": "I'll buy some Safari Balls.",
+        "effect": "start_trade",
+        "topic": "TALK_PKMN_WARDEN"
+      },
+      {
+        "text": "Can I help around here?",
+        "topic": "TALK_MISSION_LIST"
+      },
+      {
+        "text": "Goodbye.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  }
+]

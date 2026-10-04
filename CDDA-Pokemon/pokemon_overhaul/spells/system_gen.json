@@ -1,0 +1,5388 @@
+[
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_alakazam",
+    "name": "Evolve into Alakazam",
+    "description": "Evolution: the Pokémon transforms into Alakazam.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_alakazam",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_arbok",
+    "name": "Evolve into Arbok",
+    "description": "Evolution: the Pokémon transforms into Arbok.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_arbok",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_arcanine",
+    "name": "Evolve into Arcanine",
+    "description": "Evolution: the Pokémon transforms into Arcanine.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_arcanine",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_beedrill",
+    "name": "Evolve into Beedrill",
+    "description": "Evolution: the Pokémon transforms into Beedrill.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_beedrill",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_blastoise",
+    "name": "Evolve into Blastoise",
+    "description": "Evolution: the Pokémon transforms into Blastoise.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_blastoise",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_butterfree",
+    "name": "Evolve into Butterfree",
+    "description": "Evolution: the Pokémon transforms into Butterfree.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_butterfree",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_charizard",
+    "name": "Evolve into Charizard",
+    "description": "Evolution: the Pokémon transforms into Charizard.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_charizard",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_charmeleon",
+    "name": "Evolve into Charmeleon",
+    "description": "Evolution: the Pokémon transforms into Charmeleon.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_charmeleon",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_clefable",
+    "name": "Evolve into Clefable",
+    "description": "Evolution: the Pokémon transforms into Clefable.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_clefable",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_cloyster",
+    "name": "Evolve into Cloyster",
+    "description": "Evolution: the Pokémon transforms into Cloyster.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_cloyster",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_dewgong",
+    "name": "Evolve into Dewgong",
+    "description": "Evolution: the Pokémon transforms into Dewgong.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_dewgong",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_dodrio",
+    "name": "Evolve into Dodrio",
+    "description": "Evolution: the Pokémon transforms into Dodrio.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_dodrio",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_dragonair",
+    "name": "Evolve into Dragonair",
+    "description": "Evolution: the Pokémon transforms into Dragonair.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_dragonair",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_dragonite",
+    "name": "Evolve into Dragonite",
+    "description": "Evolution: the Pokémon transforms into Dragonite.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_dragonite",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_dugtrio",
+    "name": "Evolve into Dugtrio",
+    "description": "Evolution: the Pokémon transforms into Dugtrio.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_dugtrio",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_electrode",
+    "name": "Evolve into Electrode",
+    "description": "Evolution: the Pokémon transforms into Electrode.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_electrode",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_exeggutor",
+    "name": "Evolve into Exeggutor",
+    "description": "Evolution: the Pokémon transforms into Exeggutor.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_exeggutor",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_fearow",
+    "name": "Evolve into Fearow",
+    "description": "Evolution: the Pokémon transforms into Fearow.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_fearow",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_flareon",
+    "name": "Evolve into Flareon",
+    "description": "Evolution: the Pokémon transforms into Flareon.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_flareon",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_gengar",
+    "name": "Evolve into Gengar",
+    "description": "Evolution: the Pokémon transforms into Gengar.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_gengar",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_gloom",
+    "name": "Evolve into Gloom",
+    "description": "Evolution: the Pokémon transforms into Gloom.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_gloom",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_golbat",
+    "name": "Evolve into Golbat",
+    "description": "Evolution: the Pokémon transforms into Golbat.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_golbat",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_golduck",
+    "name": "Evolve into Golduck",
+    "description": "Evolution: the Pokémon transforms into Golduck.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_golduck",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_golem",
+    "name": "Evolve into Golem",
+    "description": "Evolution: the Pokémon transforms into Golem.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_golem",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_graveler",
+    "name": "Evolve into Graveler",
+    "description": "Evolution: the Pokémon transforms into Graveler.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_graveler",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_gyarados",
+    "name": "Evolve into Gyarados",
+    "description": "Evolution: the Pokémon transforms into Gyarados.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_gyarados",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_haunter",
+    "name": "Evolve into Haunter",
+    "description": "Evolution: the Pokémon transforms into Haunter.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_haunter",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_hypno",
+    "name": "Evolve into Hypno",
+    "description": "Evolution: the Pokémon transforms into Hypno.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_hypno",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_ivysaur",
+    "name": "Evolve into Ivysaur",
+    "description": "Evolution: the Pokémon transforms into Ivysaur.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_ivysaur",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_jolteon",
+    "name": "Evolve into Jolteon",
+    "description": "Evolution: the Pokémon transforms into Jolteon.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_jolteon",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_kabutops",
+    "name": "Evolve into Kabutops",
+    "description": "Evolution: the Pokémon transforms into Kabutops.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_kabutops",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_kadabra",
+    "name": "Evolve into Kadabra",
+    "description": "Evolution: the Pokémon transforms into Kadabra.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_kadabra",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_kakuna",
+    "name": "Evolve into Kakuna",
+    "description": "Evolution: the Pokémon transforms into Kakuna.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_kakuna",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_kingler",
+    "name": "Evolve into Kingler",
+    "description": "Evolution: the Pokémon transforms into Kingler.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_kingler",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_machamp",
+    "name": "Evolve into Machamp",
+    "description": "Evolution: the Pokémon transforms into Machamp.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_machamp",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_machoke",
+    "name": "Evolve into Machoke",
+    "description": "Evolution: the Pokémon transforms into Machoke.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_machoke",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_magneton",
+    "name": "Evolve into Magneton",
+    "description": "Evolution: the Pokémon transforms into Magneton.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_magneton",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_marowak",
+    "name": "Evolve into Marowak",
+    "description": "Evolution: the Pokémon transforms into Marowak.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_marowak",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_metapod",
+    "name": "Evolve into Metapod",
+    "description": "Evolution: the Pokémon transforms into Metapod.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_metapod",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_muk",
+    "name": "Evolve into Muk",
+    "description": "Evolution: the Pokémon transforms into Muk.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_muk",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_nidoking",
+    "name": "Evolve into Nidoking",
+    "description": "Evolution: the Pokémon transforms into Nidoking.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_nidoking",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_nidoqueen",
+    "name": "Evolve into Nidoqueen",
+    "description": "Evolution: the Pokémon transforms into Nidoqueen.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_nidoqueen",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_nidorina",
+    "name": "Evolve into Nidorina",
+    "description": "Evolution: the Pokémon transforms into Nidorina.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_nidorina",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_nidorino",
+    "name": "Evolve into Nidorino",
+    "description": "Evolution: the Pokémon transforms into Nidorino.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_nidorino",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_ninetales",
+    "name": "Evolve into Ninetales",
+    "description": "Evolution: the Pokémon transforms into Ninetales.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_ninetales",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_omastar",
+    "name": "Evolve into Omastar",
+    "description": "Evolution: the Pokémon transforms into Omastar.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_omastar",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_parasect",
+    "name": "Evolve into Parasect",
+    "description": "Evolution: the Pokémon transforms into Parasect.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_parasect",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_persian",
+    "name": "Evolve into Persian",
+    "description": "Evolution: the Pokémon transforms into Persian.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_persian",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_pidgeot",
+    "name": "Evolve into Pidgeot",
+    "description": "Evolution: the Pokémon transforms into Pidgeot.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_pidgeot",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_pidgeotto",
+    "name": "Evolve into Pidgeotto",
+    "description": "Evolution: the Pokémon transforms into Pidgeotto.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_pidgeotto",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_poliwhirl",
+    "name": "Evolve into Poliwhirl",
+    "description": "Evolution: the Pokémon transforms into Poliwhirl.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_poliwhirl",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_poliwrath",
+    "name": "Evolve into Poliwrath",
+    "description": "Evolution: the Pokémon transforms into Poliwrath.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_poliwrath",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_primeape",
+    "name": "Evolve into Primeape",
+    "description": "Evolution: the Pokémon transforms into Primeape.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_primeape",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_raichu",
+    "name": "Evolve into Raichu",
+    "description": "Evolution: the Pokémon transforms into Raichu.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_raichu",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_rapidash",
+    "name": "Evolve into Rapidash",
+    "description": "Evolution: the Pokémon transforms into Rapidash.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_rapidash",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_raticate",
+    "name": "Evolve into Raticate",
+    "description": "Evolution: the Pokémon transforms into Raticate.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_raticate",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_rhydon",
+    "name": "Evolve into Rhydon",
+    "description": "Evolution: the Pokémon transforms into Rhydon.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_rhydon",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_sandslash",
+    "name": "Evolve into Sandslash",
+    "description": "Evolution: the Pokémon transforms into Sandslash.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_sandslash",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_seadra",
+    "name": "Evolve into Seadra",
+    "description": "Evolution: the Pokémon transforms into Seadra.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_seadra",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_seaking",
+    "name": "Evolve into Seaking",
+    "description": "Evolution: the Pokémon transforms into Seaking.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_seaking",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_slowbro",
+    "name": "Evolve into Slowbro",
+    "description": "Evolution: the Pokémon transforms into Slowbro.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_slowbro",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_starmie",
+    "name": "Evolve into Starmie",
+    "description": "Evolution: the Pokémon transforms into Starmie.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_starmie",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_tentacruel",
+    "name": "Evolve into Tentacruel",
+    "description": "Evolution: the Pokémon transforms into Tentacruel.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_tentacruel",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_vaporeon",
+    "name": "Evolve into Vaporeon",
+    "description": "Evolution: the Pokémon transforms into Vaporeon.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_vaporeon",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_venomoth",
+    "name": "Evolve into Venomoth",
+    "description": "Evolution: the Pokémon transforms into Venomoth.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_venomoth",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_venusaur",
+    "name": "Evolve into Venusaur",
+    "description": "Evolution: the Pokémon transforms into Venusaur.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_venusaur",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_victreebel",
+    "name": "Evolve into Victreebel",
+    "description": "Evolution: the Pokémon transforms into Victreebel.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_victreebel",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_vileplume",
+    "name": "Evolve into Vileplume",
+    "description": "Evolution: the Pokémon transforms into Vileplume.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_vileplume",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_wartortle",
+    "name": "Evolve into Wartortle",
+    "description": "Evolution: the Pokémon transforms into Wartortle.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_wartortle",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_weepinbell",
+    "name": "Evolve into Weepinbell",
+    "description": "Evolution: the Pokémon transforms into Weepinbell.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_weepinbell",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_weezing",
+    "name": "Evolve into Weezing",
+    "description": "Evolution: the Pokémon transforms into Weezing.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_weezing",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_evolve_wigglytuff",
+    "name": "Evolve into Wigglytuff",
+    "description": "Evolution: the Pokémon transforms into Wigglytuff.",
+    "valid_targets": [
+      "self",
+      "ally",
+      "hostile"
+    ],
+    "effect": "targeted_polymorph",
+    "effect_str": "pkmn_wigglytuff",
+    "shape": "blast",
+    "min_damage": 100000,
+    "max_damage": 100000,
+    "min_range": 0,
+    "max_range": 0,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ],
+    "extra_effects": [
+      {
+        "id": "pkmn_after_evolve",
+        "hit_self": true
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv3",
+    "name": "Wild Pokémon level 3",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV3",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv5",
+    "name": "Wild Pokémon level 5",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV5",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv8",
+    "name": "Wild Pokémon level 8",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV8",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv12",
+    "name": "Wild Pokémon level 12",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV12",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv16",
+    "name": "Wild Pokémon level 16",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV16",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv20",
+    "name": "Wild Pokémon level 20",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV20",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv25",
+    "name": "Wild Pokémon level 25",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV25",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv30",
+    "name": "Wild Pokémon level 30",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV30",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv35",
+    "name": "Wild Pokémon level 35",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV35",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv40",
+    "name": "Wild Pokémon level 40",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV40",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv45",
+    "name": "Wild Pokémon level 45",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV45",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv50",
+    "name": "Wild Pokémon level 50",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV50",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv55",
+    "name": "Wild Pokémon level 55",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV55",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv60",
+    "name": "Wild Pokémon level 60",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV60",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_init_lv70",
+    "name": "Wild Pokémon level 70",
+    "description": "Internal: gives a wild Pokémon its level.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_INIT_LV70",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_bulbasaur",
+    "name": "Pokédex: Bulbasaur",
+    "description": "Internal: registers Bulbasaur in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_BULBASAUR",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_ivysaur",
+    "name": "Pokédex: Ivysaur",
+    "description": "Internal: registers Ivysaur in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_IVYSAUR",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_venusaur",
+    "name": "Pokédex: Venusaur",
+    "description": "Internal: registers Venusaur in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_VENUSAUR",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_charmander",
+    "name": "Pokédex: Charmander",
+    "description": "Internal: registers Charmander in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_CHARMANDER",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_charmeleon",
+    "name": "Pokédex: Charmeleon",
+    "description": "Internal: registers Charmeleon in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_CHARMELEON",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_charizard",
+    "name": "Pokédex: Charizard",
+    "description": "Internal: registers Charizard in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_CHARIZARD",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_squirtle",
+    "name": "Pokédex: Squirtle",
+    "description": "Internal: registers Squirtle in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SQUIRTLE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_wartortle",
+    "name": "Pokédex: Wartortle",
+    "description": "Internal: registers Wartortle in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_WARTORTLE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_blastoise",
+    "name": "Pokédex: Blastoise",
+    "description": "Internal: registers Blastoise in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_BLASTOISE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_caterpie",
+    "name": "Pokédex: Caterpie",
+    "description": "Internal: registers Caterpie in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_CATERPIE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_metapod",
+    "name": "Pokédex: Metapod",
+    "description": "Internal: registers Metapod in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_METAPOD",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_butterfree",
+    "name": "Pokédex: Butterfree",
+    "description": "Internal: registers Butterfree in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_BUTTERFREE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_weedle",
+    "name": "Pokédex: Weedle",
+    "description": "Internal: registers Weedle in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_WEEDLE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_kakuna",
+    "name": "Pokédex: Kakuna",
+    "description": "Internal: registers Kakuna in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_KAKUNA",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_beedrill",
+    "name": "Pokédex: Beedrill",
+    "description": "Internal: registers Beedrill in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_BEEDRILL",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_pidgey",
+    "name": "Pokédex: Pidgey",
+    "description": "Internal: registers Pidgey in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PIDGEY",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_pidgeotto",
+    "name": "Pokédex: Pidgeotto",
+    "description": "Internal: registers Pidgeotto in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PIDGEOTTO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_pidgeot",
+    "name": "Pokédex: Pidgeot",
+    "description": "Internal: registers Pidgeot in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PIDGEOT",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_rattata",
+    "name": "Pokédex: Rattata",
+    "description": "Internal: registers Rattata in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_RATTATA",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_raticate",
+    "name": "Pokédex: Raticate",
+    "description": "Internal: registers Raticate in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_RATICATE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_spearow",
+    "name": "Pokédex: Spearow",
+    "description": "Internal: registers Spearow in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SPEAROW",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_fearow",
+    "name": "Pokédex: Fearow",
+    "description": "Internal: registers Fearow in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_FEAROW",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_ekans",
+    "name": "Pokédex: Ekans",
+    "description": "Internal: registers Ekans in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_EKANS",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_arbok",
+    "name": "Pokédex: Arbok",
+    "description": "Internal: registers Arbok in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ARBOK",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_pikachu",
+    "name": "Pokédex: Pikachu",
+    "description": "Internal: registers Pikachu in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PIKACHU",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_raichu",
+    "name": "Pokédex: Raichu",
+    "description": "Internal: registers Raichu in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_RAICHU",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_sandshrew",
+    "name": "Pokédex: Sandshrew",
+    "description": "Internal: registers Sandshrew in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SANDSHREW",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_sandslash",
+    "name": "Pokédex: Sandslash",
+    "description": "Internal: registers Sandslash in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SANDSLASH",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_nidoran_f",
+    "name": "Pokédex: Nidoran♀",
+    "description": "Internal: registers Nidoran♀ in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_NIDORAN_F",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_nidorina",
+    "name": "Pokédex: Nidorina",
+    "description": "Internal: registers Nidorina in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_NIDORINA",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_nidoqueen",
+    "name": "Pokédex: Nidoqueen",
+    "description": "Internal: registers Nidoqueen in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_NIDOQUEEN",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_nidoran_m",
+    "name": "Pokédex: Nidoran♂",
+    "description": "Internal: registers Nidoran♂ in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_NIDORAN_M",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_nidorino",
+    "name": "Pokédex: Nidorino",
+    "description": "Internal: registers Nidorino in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_NIDORINO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_nidoking",
+    "name": "Pokédex: Nidoking",
+    "description": "Internal: registers Nidoking in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_NIDOKING",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_clefairy",
+    "name": "Pokédex: Clefairy",
+    "description": "Internal: registers Clefairy in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_CLEFAIRY",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_clefable",
+    "name": "Pokédex: Clefable",
+    "description": "Internal: registers Clefable in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_CLEFABLE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_vulpix",
+    "name": "Pokédex: Vulpix",
+    "description": "Internal: registers Vulpix in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_VULPIX",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_ninetales",
+    "name": "Pokédex: Ninetales",
+    "description": "Internal: registers Ninetales in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_NINETALES",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_jigglypuff",
+    "name": "Pokédex: Jigglypuff",
+    "description": "Internal: registers Jigglypuff in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_JIGGLYPUFF",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_wigglytuff",
+    "name": "Pokédex: Wigglytuff",
+    "description": "Internal: registers Wigglytuff in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_WIGGLYTUFF",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_zubat",
+    "name": "Pokédex: Zubat",
+    "description": "Internal: registers Zubat in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ZUBAT",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_golbat",
+    "name": "Pokédex: Golbat",
+    "description": "Internal: registers Golbat in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GOLBAT",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_oddish",
+    "name": "Pokédex: Oddish",
+    "description": "Internal: registers Oddish in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ODDISH",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_gloom",
+    "name": "Pokédex: Gloom",
+    "description": "Internal: registers Gloom in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GLOOM",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_vileplume",
+    "name": "Pokédex: Vileplume",
+    "description": "Internal: registers Vileplume in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_VILEPLUME",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_paras",
+    "name": "Pokédex: Paras",
+    "description": "Internal: registers Paras in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PARAS",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_parasect",
+    "name": "Pokédex: Parasect",
+    "description": "Internal: registers Parasect in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PARASECT",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_venonat",
+    "name": "Pokédex: Venonat",
+    "description": "Internal: registers Venonat in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_VENONAT",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_venomoth",
+    "name": "Pokédex: Venomoth",
+    "description": "Internal: registers Venomoth in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_VENOMOTH",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_diglett",
+    "name": "Pokédex: Diglett",
+    "description": "Internal: registers Diglett in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DIGLETT",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_dugtrio",
+    "name": "Pokédex: Dugtrio",
+    "description": "Internal: registers Dugtrio in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DUGTRIO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_meowth",
+    "name": "Pokédex: Meowth",
+    "description": "Internal: registers Meowth in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MEOWTH",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_persian",
+    "name": "Pokédex: Persian",
+    "description": "Internal: registers Persian in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PERSIAN",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_psyduck",
+    "name": "Pokédex: Psyduck",
+    "description": "Internal: registers Psyduck in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PSYDUCK",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_golduck",
+    "name": "Pokédex: Golduck",
+    "description": "Internal: registers Golduck in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GOLDUCK",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_mankey",
+    "name": "Pokédex: Mankey",
+    "description": "Internal: registers Mankey in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MANKEY",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_primeape",
+    "name": "Pokédex: Primeape",
+    "description": "Internal: registers Primeape in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PRIMEAPE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_growlithe",
+    "name": "Pokédex: Growlithe",
+    "description": "Internal: registers Growlithe in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GROWLITHE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_arcanine",
+    "name": "Pokédex: Arcanine",
+    "description": "Internal: registers Arcanine in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ARCANINE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_poliwag",
+    "name": "Pokédex: Poliwag",
+    "description": "Internal: registers Poliwag in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_POLIWAG",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_poliwhirl",
+    "name": "Pokédex: Poliwhirl",
+    "description": "Internal: registers Poliwhirl in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_POLIWHIRL",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_poliwrath",
+    "name": "Pokédex: Poliwrath",
+    "description": "Internal: registers Poliwrath in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_POLIWRATH",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_abra",
+    "name": "Pokédex: Abra",
+    "description": "Internal: registers Abra in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ABRA",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_kadabra",
+    "name": "Pokédex: Kadabra",
+    "description": "Internal: registers Kadabra in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_KADABRA",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_alakazam",
+    "name": "Pokédex: Alakazam",
+    "description": "Internal: registers Alakazam in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ALAKAZAM",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_machop",
+    "name": "Pokédex: Machop",
+    "description": "Internal: registers Machop in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MACHOP",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_machoke",
+    "name": "Pokédex: Machoke",
+    "description": "Internal: registers Machoke in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MACHOKE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_machamp",
+    "name": "Pokédex: Machamp",
+    "description": "Internal: registers Machamp in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MACHAMP",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_bellsprout",
+    "name": "Pokédex: Bellsprout",
+    "description": "Internal: registers Bellsprout in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_BELLSPROUT",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_weepinbell",
+    "name": "Pokédex: Weepinbell",
+    "description": "Internal: registers Weepinbell in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_WEEPINBELL",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_victreebel",
+    "name": "Pokédex: Victreebel",
+    "description": "Internal: registers Victreebel in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_VICTREEBEL",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_tentacool",
+    "name": "Pokédex: Tentacool",
+    "description": "Internal: registers Tentacool in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_TENTACOOL",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_tentacruel",
+    "name": "Pokédex: Tentacruel",
+    "description": "Internal: registers Tentacruel in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_TENTACRUEL",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_geodude",
+    "name": "Pokédex: Geodude",
+    "description": "Internal: registers Geodude in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GEODUDE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_graveler",
+    "name": "Pokédex: Graveler",
+    "description": "Internal: registers Graveler in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GRAVELER",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_golem",
+    "name": "Pokédex: Golem",
+    "description": "Internal: registers Golem in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GOLEM",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_ponyta",
+    "name": "Pokédex: Ponyta",
+    "description": "Internal: registers Ponyta in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PONYTA",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_rapidash",
+    "name": "Pokédex: Rapidash",
+    "description": "Internal: registers Rapidash in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_RAPIDASH",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_slowpoke",
+    "name": "Pokédex: Slowpoke",
+    "description": "Internal: registers Slowpoke in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SLOWPOKE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_slowbro",
+    "name": "Pokédex: Slowbro",
+    "description": "Internal: registers Slowbro in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SLOWBRO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_magnemite",
+    "name": "Pokédex: Magnemite",
+    "description": "Internal: registers Magnemite in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MAGNEMITE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_magneton",
+    "name": "Pokédex: Magneton",
+    "description": "Internal: registers Magneton in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MAGNETON",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_farfetchd",
+    "name": "Pokédex: Farfetch'd",
+    "description": "Internal: registers Farfetch'd in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_FARFETCHD",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_doduo",
+    "name": "Pokédex: Doduo",
+    "description": "Internal: registers Doduo in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DODUO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_dodrio",
+    "name": "Pokédex: Dodrio",
+    "description": "Internal: registers Dodrio in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DODRIO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_seel",
+    "name": "Pokédex: Seel",
+    "description": "Internal: registers Seel in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SEEL",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_dewgong",
+    "name": "Pokédex: Dewgong",
+    "description": "Internal: registers Dewgong in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DEWGONG",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_grimer",
+    "name": "Pokédex: Grimer",
+    "description": "Internal: registers Grimer in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GRIMER",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_muk",
+    "name": "Pokédex: Muk",
+    "description": "Internal: registers Muk in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MUK",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_shellder",
+    "name": "Pokédex: Shellder",
+    "description": "Internal: registers Shellder in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SHELLDER",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_cloyster",
+    "name": "Pokédex: Cloyster",
+    "description": "Internal: registers Cloyster in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_CLOYSTER",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_gastly",
+    "name": "Pokédex: Gastly",
+    "description": "Internal: registers Gastly in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GASTLY",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_haunter",
+    "name": "Pokédex: Haunter",
+    "description": "Internal: registers Haunter in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_HAUNTER",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_gengar",
+    "name": "Pokédex: Gengar",
+    "description": "Internal: registers Gengar in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GENGAR",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_onix",
+    "name": "Pokédex: Onix",
+    "description": "Internal: registers Onix in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ONIX",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_drowzee",
+    "name": "Pokédex: Drowzee",
+    "description": "Internal: registers Drowzee in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DROWZEE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_hypno",
+    "name": "Pokédex: Hypno",
+    "description": "Internal: registers Hypno in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_HYPNO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_krabby",
+    "name": "Pokédex: Krabby",
+    "description": "Internal: registers Krabby in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_KRABBY",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_kingler",
+    "name": "Pokédex: Kingler",
+    "description": "Internal: registers Kingler in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_KINGLER",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_voltorb",
+    "name": "Pokédex: Voltorb",
+    "description": "Internal: registers Voltorb in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_VOLTORB",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_electrode",
+    "name": "Pokédex: Electrode",
+    "description": "Internal: registers Electrode in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ELECTRODE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_exeggcute",
+    "name": "Pokédex: Exeggcute",
+    "description": "Internal: registers Exeggcute in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_EXEGGCUTE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_exeggutor",
+    "name": "Pokédex: Exeggutor",
+    "description": "Internal: registers Exeggutor in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_EXEGGUTOR",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_cubone",
+    "name": "Pokédex: Cubone",
+    "description": "Internal: registers Cubone in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_CUBONE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_marowak",
+    "name": "Pokédex: Marowak",
+    "description": "Internal: registers Marowak in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MAROWAK",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_hitmonlee",
+    "name": "Pokédex: Hitmonlee",
+    "description": "Internal: registers Hitmonlee in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_HITMONLEE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_hitmonchan",
+    "name": "Pokédex: Hitmonchan",
+    "description": "Internal: registers Hitmonchan in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_HITMONCHAN",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_lickitung",
+    "name": "Pokédex: Lickitung",
+    "description": "Internal: registers Lickitung in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_LICKITUNG",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_koffing",
+    "name": "Pokédex: Koffing",
+    "description": "Internal: registers Koffing in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_KOFFING",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_weezing",
+    "name": "Pokédex: Weezing",
+    "description": "Internal: registers Weezing in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_WEEZING",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_rhyhorn",
+    "name": "Pokédex: Rhyhorn",
+    "description": "Internal: registers Rhyhorn in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_RHYHORN",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_rhydon",
+    "name": "Pokédex: Rhydon",
+    "description": "Internal: registers Rhydon in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_RHYDON",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_chansey",
+    "name": "Pokédex: Chansey",
+    "description": "Internal: registers Chansey in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_CHANSEY",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_tangela",
+    "name": "Pokédex: Tangela",
+    "description": "Internal: registers Tangela in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_TANGELA",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_kangaskhan",
+    "name": "Pokédex: Kangaskhan",
+    "description": "Internal: registers Kangaskhan in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_KANGASKHAN",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_horsea",
+    "name": "Pokédex: Horsea",
+    "description": "Internal: registers Horsea in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_HORSEA",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_seadra",
+    "name": "Pokédex: Seadra",
+    "description": "Internal: registers Seadra in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SEADRA",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_goldeen",
+    "name": "Pokédex: Goldeen",
+    "description": "Internal: registers Goldeen in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GOLDEEN",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_seaking",
+    "name": "Pokédex: Seaking",
+    "description": "Internal: registers Seaking in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SEAKING",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_staryu",
+    "name": "Pokédex: Staryu",
+    "description": "Internal: registers Staryu in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_STARYU",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_starmie",
+    "name": "Pokédex: Starmie",
+    "description": "Internal: registers Starmie in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_STARMIE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_mr_mime",
+    "name": "Pokédex: Mr. Mime",
+    "description": "Internal: registers Mr. Mime in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MR_MIME",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_scyther",
+    "name": "Pokédex: Scyther",
+    "description": "Internal: registers Scyther in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SCYTHER",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_jynx",
+    "name": "Pokédex: Jynx",
+    "description": "Internal: registers Jynx in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_JYNX",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_electabuzz",
+    "name": "Pokédex: Electabuzz",
+    "description": "Internal: registers Electabuzz in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ELECTABUZZ",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_magmar",
+    "name": "Pokédex: Magmar",
+    "description": "Internal: registers Magmar in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MAGMAR",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_pinsir",
+    "name": "Pokédex: Pinsir",
+    "description": "Internal: registers Pinsir in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PINSIR",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_tauros",
+    "name": "Pokédex: Tauros",
+    "description": "Internal: registers Tauros in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_TAUROS",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_magikarp",
+    "name": "Pokédex: Magikarp",
+    "description": "Internal: registers Magikarp in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MAGIKARP",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_gyarados",
+    "name": "Pokédex: Gyarados",
+    "description": "Internal: registers Gyarados in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_GYARADOS",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_lapras",
+    "name": "Pokédex: Lapras",
+    "description": "Internal: registers Lapras in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_LAPRAS",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_ditto",
+    "name": "Pokédex: Ditto",
+    "description": "Internal: registers Ditto in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DITTO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_eevee",
+    "name": "Pokédex: Eevee",
+    "description": "Internal: registers Eevee in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_EEVEE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_vaporeon",
+    "name": "Pokédex: Vaporeon",
+    "description": "Internal: registers Vaporeon in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_VAPOREON",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_jolteon",
+    "name": "Pokédex: Jolteon",
+    "description": "Internal: registers Jolteon in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_JOLTEON",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_flareon",
+    "name": "Pokédex: Flareon",
+    "description": "Internal: registers Flareon in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_FLAREON",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_porygon",
+    "name": "Pokédex: Porygon",
+    "description": "Internal: registers Porygon in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_PORYGON",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_omanyte",
+    "name": "Pokédex: Omanyte",
+    "description": "Internal: registers Omanyte in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_OMANYTE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_omastar",
+    "name": "Pokédex: Omastar",
+    "description": "Internal: registers Omastar in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_OMASTAR",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_kabuto",
+    "name": "Pokédex: Kabuto",
+    "description": "Internal: registers Kabuto in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_KABUTO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_kabutops",
+    "name": "Pokédex: Kabutops",
+    "description": "Internal: registers Kabutops in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_KABUTOPS",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_aerodactyl",
+    "name": "Pokédex: Aerodactyl",
+    "description": "Internal: registers Aerodactyl in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_AERODACTYL",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_snorlax",
+    "name": "Pokédex: Snorlax",
+    "description": "Internal: registers Snorlax in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_SNORLAX",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_articuno",
+    "name": "Pokédex: Articuno",
+    "description": "Internal: registers Articuno in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ARTICUNO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_zapdos",
+    "name": "Pokédex: Zapdos",
+    "description": "Internal: registers Zapdos in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_ZAPDOS",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_moltres",
+    "name": "Pokédex: Moltres",
+    "description": "Internal: registers Moltres in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MOLTRES",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_dratini",
+    "name": "Pokédex: Dratini",
+    "description": "Internal: registers Dratini in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DRATINI",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_dragonair",
+    "name": "Pokédex: Dragonair",
+    "description": "Internal: registers Dragonair in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DRAGONAIR",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_dragonite",
+    "name": "Pokédex: Dragonite",
+    "description": "Internal: registers Dragonite in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_DRAGONITE",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_mewtwo",
+    "name": "Pokédex: Mewtwo",
+    "description": "Internal: registers Mewtwo in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MEWTWO",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_dex_mew",
+    "name": "Pokédex: Mew",
+    "description": "Internal: registers Mew in the Pokédex.",
+    "valid_targets": [
+      "self"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_DEX_MEW",
+    "shape": "blast",
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL"
+    ]
+  }
+]

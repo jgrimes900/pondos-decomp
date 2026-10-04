@@ -1,0 +1,2387 @@
+[
+  {
+    "type": "damage_type",
+    "id": "pkmn_normal",
+    "name": "Normal (Pokémon)",
+    "physical": true,
+    "magic_color": "light_gray",
+    "derived_from": [
+      "bash",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_NORMAL"
+    ],
+    "immune_flags": {
+      "monster": [
+        "PKMN_TYPE_GHOST"
+      ]
+    }
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_normal",
+    "info_display": "none",
+    "verb": "normal",
+    "bionic_info": {
+      "order": 2000,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2000,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2000,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2000,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2000,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_NORMAL",
+    "//": "Type effectiveness of normal attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ROCK"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_fire",
+    "name": "Fire (Pokémon)",
+    "physical": false,
+    "magic_color": "light_red",
+    "derived_from": [
+      "heat",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_FIRE"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_fire",
+    "info_display": "none",
+    "verb": "fire",
+    "bionic_info": {
+      "order": 2001,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2001,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2001,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2001,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2001,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_FIRE",
+    "//": "Type effectiveness of fire attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIRE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_WATER"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GRASS"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ICE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_BUG"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ROCK"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_DRAGON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_water",
+    "name": "Water (Pokémon)",
+    "physical": true,
+    "magic_color": "light_blue",
+    "derived_from": [
+      "bash",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_WATER"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_water",
+    "info_display": "none",
+    "verb": "water",
+    "bionic_info": {
+      "order": 2002,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2002,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2002,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2002,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2002,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_WATER",
+    "//": "Type effectiveness of water attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIRE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_WATER"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GRASS"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GROUND"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ROCK"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_DRAGON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_electric",
+    "name": "Electric (Pokémon)",
+    "physical": false,
+    "magic_color": "yellow",
+    "derived_from": [
+      "electric",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_ELECTRIC"
+    ],
+    "immune_flags": {
+      "monster": [
+        "PKMN_TYPE_GROUND"
+      ]
+    }
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_electric",
+    "info_display": "none",
+    "verb": "electric",
+    "bionic_info": {
+      "order": 2003,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2003,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2003,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2003,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2003,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_ELECTRIC",
+    "//": "Type effectiveness of electric attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_WATER"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ELECTRIC"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GRASS"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FLYING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_DRAGON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_grass",
+    "name": "Grass (Pokémon)",
+    "physical": true,
+    "magic_color": "light_green",
+    "derived_from": [
+      "cut",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_GRASS"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_grass",
+    "info_display": "none",
+    "verb": "grass",
+    "bionic_info": {
+      "order": 2004,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2004,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2004,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2004,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2004,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_GRASS",
+    "//": "Type effectiveness of grass attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIRE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_WATER"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GRASS"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_POISON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GROUND"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FLYING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_BUG"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ROCK"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_DRAGON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_ice",
+    "name": "Ice (Pokémon)",
+    "physical": false,
+    "magic_color": "light_cyan",
+    "derived_from": [
+      "cold",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_ICE"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_ice",
+    "info_display": "none",
+    "verb": "ice",
+    "bionic_info": {
+      "order": 2005,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2005,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2005,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2005,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2005,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_ICE",
+    "//": "Type effectiveness of ice attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_WATER"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GRASS"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ICE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GROUND"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FLYING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_DRAGON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_fighting",
+    "name": "Fighting (Pokémon)",
+    "physical": true,
+    "magic_color": "brown",
+    "derived_from": [
+      "bash",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_FIGHTING"
+    ],
+    "immune_flags": {
+      "monster": [
+        "PKMN_TYPE_GHOST"
+      ]
+    }
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_fighting",
+    "info_display": "none",
+    "verb": "fighting",
+    "bionic_info": {
+      "order": 2006,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2006,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2006,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2006,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2006,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_FIGHTING",
+    "//": "Type effectiveness of fighting attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_NORMAL"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ICE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_POISON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FLYING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_PSYCHIC"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_BUG"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ROCK"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_poison",
+    "name": "Poison (Pokémon)",
+    "physical": false,
+    "magic_color": "magenta",
+    "derived_from": [
+      "acid",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_POISON"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_poison",
+    "info_display": "none",
+    "verb": "poison",
+    "bionic_info": {
+      "order": 2007,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2007,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2007,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2007,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2007,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_POISON",
+    "//": "Type effectiveness of poison attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GRASS"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_POISON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GROUND"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_BUG"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ROCK"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GHOST"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_ground",
+    "name": "Ground (Pokémon)",
+    "physical": true,
+    "magic_color": "brown",
+    "derived_from": [
+      "bash",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_GROUND"
+    ],
+    "immune_flags": {
+      "monster": [
+        "PKMN_TYPE_FLYING"
+      ]
+    }
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_ground",
+    "info_display": "none",
+    "verb": "ground",
+    "bionic_info": {
+      "order": 2008,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2008,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2008,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2008,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2008,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_GROUND",
+    "//": "Type effectiveness of ground attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIRE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ELECTRIC"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GRASS"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_POISON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_BUG"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ROCK"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_flying",
+    "name": "Flying (Pokémon)",
+    "physical": true,
+    "magic_color": "white",
+    "derived_from": [
+      "cut",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_FLYING"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_flying",
+    "info_display": "none",
+    "verb": "flying",
+    "bionic_info": {
+      "order": 2009,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2009,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2009,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2009,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2009,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_FLYING",
+    "//": "Type effectiveness of flying attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ELECTRIC"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GRASS"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIGHTING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_BUG"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ROCK"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_psychic",
+    "name": "Psychic (Pokémon)",
+    "physical": true,
+    "magic_color": "pink",
+    "derived_from": [
+      "bash",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_PSYCHIC"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_psychic",
+    "info_display": "none",
+    "verb": "psychic",
+    "bionic_info": {
+      "order": 2010,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2010,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2010,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2010,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2010,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_PSYCHIC",
+    "//": "Type effectiveness of psychic attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIGHTING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_POISON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_PSYCHIC"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_bug",
+    "name": "Bug (Pokémon)",
+    "physical": true,
+    "magic_color": "green",
+    "derived_from": [
+      "stab",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_BUG"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_bug",
+    "info_display": "none",
+    "verb": "bug",
+    "bionic_info": {
+      "order": 2011,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2011,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2011,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2011,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2011,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_BUG",
+    "//": "Type effectiveness of bug attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIRE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GRASS"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIGHTING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_POISON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FLYING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_PSYCHIC"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GHOST"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_rock",
+    "name": "Rock (Pokémon)",
+    "physical": true,
+    "magic_color": "dark_gray",
+    "derived_from": [
+      "bash",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_ROCK"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_rock",
+    "info_display": "none",
+    "verb": "rock",
+    "bionic_info": {
+      "order": 2012,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2012,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2012,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2012,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2012,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_ROCK",
+    "//": "Type effectiveness of rock attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIRE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_ICE"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FIGHTING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GROUND"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 0.5"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_FLYING"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_BUG"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_ghost",
+    "name": "Ghost (Pokémon)",
+    "physical": false,
+    "magic_color": "magenta",
+    "derived_from": [
+      "cold",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_GHOST"
+    ],
+    "immune_flags": {
+      "monster": [
+        "PKMN_TYPE_NORMAL"
+      ]
+    }
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_ghost",
+    "info_display": "none",
+    "verb": "ghost",
+    "bionic_info": {
+      "order": 2013,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2013,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2013,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2013,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2013,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_GHOST",
+    "//": "Type effectiveness of ghost attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_PSYCHIC"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_GHOST"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "damage_type",
+    "id": "pkmn_dragon",
+    "name": "Dragon (Pokémon)",
+    "physical": true,
+    "magic_color": "blue",
+    "derived_from": [
+      "cut",
+      1.0
+    ],
+    "mon_difficulty": true,
+    "ondamage_eocs": [
+      "EOC_PKMN_HIT_DRAGON"
+    ]
+  },
+  {
+    "type": "damage_info_order",
+    "id": "pkmn_dragon",
+    "info_display": "none",
+    "verb": "dragon",
+    "bionic_info": {
+      "order": 2014,
+      "show_type": false
+    },
+    "protection_info": {
+      "order": 2014,
+      "show_type": false
+    },
+    "pet_prot_info": {
+      "order": 2014,
+      "show_type": false
+    },
+    "melee_combat_info": {
+      "order": 2014,
+      "show_type": true
+    },
+    "ablative_info": {
+      "order": 2014,
+      "show_type": false
+    }
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_HIT_DRAGON",
+    "//": "Type effectiveness of dragon attacks.  u = attacker, npc = target.",
+    "condition": {
+      "and": [
+        "has_beta",
+        "npc_is_monster",
+        {
+          "npc_has_species": "POKEMON"
+        },
+        {
+          "math": [
+            "_damage_taken > 0"
+          ]
+        }
+      ]
+    },
+    "effect": [
+      {
+        "math": [
+          "_pkmn_mult = 1"
+        ]
+      },
+      {
+        "if": {
+          "npc_has_species": "PKMN_DRAGON"
+        },
+        "then": {
+          "math": [
+            "_pkmn_mult = _pkmn_mult * 2"
+          ]
+        }
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult > 1.5"
+          ]
+        },
+        "then": [
+          {
+            "npc_deal_damage": "pure",
+            "amount": {
+              "math": [
+                "round(_damage_taken * (_pkmn_mult - 1))"
+              ]
+            }
+          },
+          {
+            "u_message": "It's super effective!",
+            "type": "good"
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_mult < 0.75"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "n_hp('ALL') = n_hp('ALL') + round(_damage_taken * (1 - _pkmn_mult))"
+            ]
+          },
+          {
+            "u_message": "It's not very effective…",
+            "type": "neutral"
+          }
+        ]
+      }
+    ]
+  }
+]

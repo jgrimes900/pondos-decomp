@@ -1,0 +1,10 @@
+[
+  {
+    "type": "MONSTER_FACTION",
+    "name": "pokemon",
+    "base_faction": "animal",
+    "//": "Wild Pokémon leave each other alone and are wary of the dead.",
+    "friendly": [ "pokemon" ],
+    "neutral": [ "animal", "small_animal", "zombie" ]
+  }
+]

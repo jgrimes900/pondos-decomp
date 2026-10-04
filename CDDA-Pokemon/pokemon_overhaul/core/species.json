@@ -1,0 +1,87 @@
+[
+  {
+    "type": "SPECIES",
+    "id": "POKEMON",
+    "description": "a Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_NORMAL",
+    "description": "a Normal-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_FIRE",
+    "description": "a Fire-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_WATER",
+    "description": "a Water-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_ELECTRIC",
+    "description": "a Electric-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_GRASS",
+    "description": "a Grass-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_ICE",
+    "description": "a Ice-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_FIGHTING",
+    "description": "a Fighting-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_POISON",
+    "description": "a Poison-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_GROUND",
+    "description": "a Ground-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_FLYING",
+    "description": "a Flying-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_PSYCHIC",
+    "description": "a Psychic-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_BUG",
+    "description": "a Bug-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_ROCK",
+    "description": "a Rock-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_GHOST",
+    "description": "a Ghost-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_DRAGON",
+    "description": "a Dragon-type Pokémon"
+  },
+  {
+    "type": "SPECIES",
+    "id": "PKMN_TRAINER_OWNED",
+    "description": "a trainer's Pokémon"
+  }
+]

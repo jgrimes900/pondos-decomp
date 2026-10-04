@@ -1,0 +1,5827 @@
+[
+  {
+    "type": "npc",
+    "id": "pkmn_npc_brock",
+    "name_unique": "Brock",
+    "name_suffix": "Pewter Gym Leader",
+    "gender": "male",
+    "class": "NC_PKMN_GYM_LEADER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_BROCK",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BROCK",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_brock_won, 0) == 1"
+      ],
+      "yes": "There are all kinds of trainers in the world.  You appear to be very gifted as a Pokémon trainer.",
+      "no": "I'm Brock, the Pewter City Gym Leader.  The dead tore the city apart, but my rock-hard willpower held.  My Pokémon are as solid as the walls of this gym."
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_brock_won, 0) == 1"
+                ]
+              }
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_geodude_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "14"
+            },
+            "spawn_message": "<npc_name> sent out Geodude!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_onix_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "16"
+            },
+            "spawn_message": "<npc_name> sent out Onix!"
+          }
+        ],
+        "topic": "TALK_PKMN_BROCK_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_brock_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_geodude_trainer', 'pkmn_onix_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_brock_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_badge_boulder"
+          },
+          {
+            "math": [
+              "pkmn_badge_count = value_or(pkmn_badge_count, 0) + 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_rare",
+            "use_item_group": true
+          },
+          {
+            "u_spawn_item": "pkmn_rare_candy",
+            "count": 2
+          },
+          {
+            "u_message": "You received the Boulder Badge!  (<global_val:pkmn_badge_count>/8 badges)",
+            "type": "good"
+          }
+        ],
+        "topic": "TALK_PKMN_BROCK_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_geodude_trainer', 'pkmn_onix_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_BROCK_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_geodude_trainer', 'pkmn_onix_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_BROCK_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_geodude_trainer', 'pkmn_onix_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_BROCK",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_geodude_trainer",
+              "pkmn_onix_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_BROCK_FORFEIT"
+      },
+      {
+        "text": "How about a rematch?  [Training battle]",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_trainer_brock_won, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 1"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_geodude_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "19"
+            },
+            "spawn_message": "<npc_name> sent out Geodude!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_onix_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "21"
+            },
+            "spawn_message": "<npc_name> sent out Onix!"
+          }
+        ],
+        "topic": "TALK_PKMN_BROCK_BATTLE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BROCK_BATTLE",
+    "dynamic_line": "My rock-hard willpower is evident even in my Pokémon!  Go, Geodude!  Go, Onix!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BROCK_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BROCK_WIN",
+    "dynamic_line": "I took you for granted.  As proof of your victory, here's the Boulder Badge.",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_BROCK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BROCK_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_BROCK"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BROCK_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_BROCK"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_misty",
+    "name_unique": "Misty",
+    "name_suffix": "Cerulean Gym Leader",
+    "gender": "female",
+    "class": "NC_PKMN_GYM_LEADER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_MISTY",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_MISTY",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_misty_won, 0) == 1"
+      ],
+      "yes": "The Cascade Badge makes your Pokémon listen a little better.  The pool's still clean, by the way.  Water Pokémon are good at that.",
+      "no": "Hi, you're a new face!  Trainers who want to turn pro have to have a policy about Pokémon.  What's your policy?  Mine is an all-out offensive with Water-type Pokémon!"
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_misty_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "math": [
+                "value_or(pkmn_badge_count, 0) >= 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_staryu_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "18"
+            },
+            "spawn_message": "<npc_name> sent out Staryu!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_starmie_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "21"
+            },
+            "spawn_message": "<npc_name> sent out Starmie!"
+          }
+        ],
+        "topic": "TALK_PKMN_MISTY_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_misty_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_badge_count, 0) >= 1"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_MISTY_NOT_READY"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_misty_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_staryu_trainer', 'pkmn_starmie_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_misty_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_badge_cascade"
+          },
+          {
+            "math": [
+              "pkmn_badge_count = value_or(pkmn_badge_count, 0) + 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_rare",
+            "use_item_group": true
+          },
+          {
+            "u_spawn_item": "pkmn_rare_candy",
+            "count": 2
+          },
+          {
+            "u_message": "You received the Cascade Badge!  (<global_val:pkmn_badge_count>/8 badges)",
+            "type": "good"
+          }
+        ],
+        "topic": "TALK_PKMN_MISTY_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_staryu_trainer', 'pkmn_starmie_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_MISTY_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_staryu_trainer', 'pkmn_starmie_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_MISTY_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_staryu_trainer', 'pkmn_starmie_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_MISTY",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_staryu_trainer",
+              "pkmn_starmie_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_MISTY_FORFEIT"
+      },
+      {
+        "text": "How about a rematch?  [Training battle]",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_trainer_misty_won, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 1"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_staryu_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "23"
+            },
+            "spawn_message": "<npc_name> sent out Staryu!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_starmie_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "26"
+            },
+            "spawn_message": "<npc_name> sent out Starmie!"
+          }
+        ],
+        "topic": "TALK_PKMN_MISTY_BATTLE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_MISTY_BATTLE",
+    "dynamic_line": "Let's see how you handle the tide!  Go, Staryu!  Go, Starmie!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_MISTY_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_MISTY_WIN",
+    "dynamic_line": "Wow!  You're too much!  All right!  You can have the Cascade Badge to show you beat me!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_MISTY"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_MISTY_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_MISTY"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_MISTY_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_MISTY"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_MISTY_NOT_READY",
+    "dynamic_line": "The League's rules haven't changed just because the world ended.  Come back when you have at least 1 badge.",
+    "responses": [
+      {
+        "text": "I understand.",
+        "topic": "TALK_PKMN_MISTY"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_surge",
+    "name_unique": "Lt. Surge",
+    "name_suffix": "Vermilion Gym Leader",
+    "gender": "male",
+    "class": "NC_PKMN_GYM_LEADER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_SURGE",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SURGE",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_surge_won, 0) == 1"
+      ],
+      "yes": "A little word of advice, kid!  Electricity is sure powerful!  But Ground-type Pokémon shrug it off!",
+      "no": "Hey, kid!  What do you think you're doing here?  You won't live long in combat!  That's for sure!  I tell you, kid, electric Pokémon saved me during the war, and they kept the lights on after the end of the world."
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_surge_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "math": [
+                "value_or(pkmn_badge_count, 0) >= 2"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_voltorb_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "21"
+            },
+            "spawn_message": "<npc_name> sent out Voltorb!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_pikachu_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "18"
+            },
+            "spawn_message": "<npc_name> sent out Pikachu!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_raichu_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "24"
+            },
+            "spawn_message": "<npc_name> sent out Raichu!"
+          }
+        ],
+        "topic": "TALK_PKMN_SURGE_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_surge_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_badge_count, 0) >= 2"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_SURGE_NOT_READY"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_surge_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_voltorb_trainer', 'pkmn_pikachu_trainer', 'pkmn_raichu_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_surge_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_badge_thunder"
+          },
+          {
+            "math": [
+              "pkmn_badge_count = value_or(pkmn_badge_count, 0) + 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_rare",
+            "use_item_group": true
+          },
+          {
+            "u_spawn_item": "pkmn_rare_candy",
+            "count": 2
+          },
+          {
+            "u_message": "You received the Thunder Badge!  (<global_val:pkmn_badge_count>/8 badges)",
+            "type": "good"
+          }
+        ],
+        "topic": "TALK_PKMN_SURGE_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_voltorb_trainer', 'pkmn_pikachu_trainer', 'pkmn_raichu_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_SURGE_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_voltorb_trainer', 'pkmn_pikachu_trainer', 'pkmn_raichu_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_SURGE_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_voltorb_trainer', 'pkmn_pikachu_trainer', 'pkmn_raichu_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_SURGE",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_voltorb_trainer",
+              "pkmn_pikachu_trainer",
+              "pkmn_raichu_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_SURGE_FORFEIT"
+      },
+      {
+        "text": "How about a rematch?  [Training battle]",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_trainer_surge_won, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 1"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_voltorb_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "26"
+            },
+            "spawn_message": "<npc_name> sent out Voltorb!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_pikachu_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "23"
+            },
+            "spawn_message": "<npc_name> sent out Pikachu!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_raichu_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "29"
+            },
+            "spawn_message": "<npc_name> sent out Raichu!"
+          }
+        ],
+        "topic": "TALK_PKMN_SURGE_BATTLE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SURGE_BATTLE",
+    "dynamic_line": "I'll zap you just like I do with my enemies in battle!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SURGE_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SURGE_WIN",
+    "dynamic_line": "Whoa!  You're the real deal, kid!  Fine then, take the Thunder Badge!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_SURGE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SURGE_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_SURGE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SURGE_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_SURGE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SURGE_NOT_READY",
+    "dynamic_line": "The League's rules haven't changed just because the world ended.  Come back when you have at least 2 badges.",
+    "responses": [
+      {
+        "text": "I understand.",
+        "topic": "TALK_PKMN_SURGE"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_erika",
+    "name_unique": "Erika",
+    "name_suffix": "Celadon Gym Leader",
+    "gender": "female",
+    "class": "NC_PKMN_GYM_LEADER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_ERIKA",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ERIKA",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_erika_won, 0) == 1"
+      ],
+      "yes": "You are cataloging Pokémon?  I must say I'm impressed.  I would never collect Pokémon if they were unattractive.",
+      "no": "Hello.  Lovely weather, isn't it?  It's so pleasant.  Oh dear, I must have dozed off.  Welcome.  My name is Erika, and I am the leader of Celadon Gym.  I teach the art of flower arranging.  The garden is all that is left of the old city."
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_erika_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "math": [
+                "value_or(pkmn_badge_count, 0) >= 3"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_victreebel_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "29"
+            },
+            "spawn_message": "<npc_name> sent out Victreebel!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_tangela_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "24"
+            },
+            "spawn_message": "<npc_name> sent out Tangela!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_vileplume_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "29"
+            },
+            "spawn_message": "<npc_name> sent out Vileplume!"
+          }
+        ],
+        "topic": "TALK_PKMN_ERIKA_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_erika_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_badge_count, 0) >= 3"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_ERIKA_NOT_READY"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_erika_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_victreebel_trainer', 'pkmn_tangela_trainer', 'pkmn_vileplume_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_erika_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_badge_rainbow"
+          },
+          {
+            "math": [
+              "pkmn_badge_count = value_or(pkmn_badge_count, 0) + 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_rare",
+            "use_item_group": true
+          },
+          {
+            "u_spawn_item": "pkmn_rare_candy",
+            "count": 2
+          },
+          {
+            "u_message": "You received the Rainbow Badge!  (<global_val:pkmn_badge_count>/8 badges)",
+            "type": "good"
+          }
+        ],
+        "topic": "TALK_PKMN_ERIKA_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_victreebel_trainer', 'pkmn_tangela_trainer', 'pkmn_vileplume_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_ERIKA_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_victreebel_trainer', 'pkmn_tangela_trainer', 'pkmn_vileplume_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_ERIKA_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_victreebel_trainer', 'pkmn_tangela_trainer', 'pkmn_vileplume_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_ERIKA",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_victreebel_trainer",
+              "pkmn_tangela_trainer",
+              "pkmn_vileplume_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_ERIKA_FORFEIT"
+      },
+      {
+        "text": "How about a rematch?  [Training battle]",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_trainer_erika_won, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 1"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_victreebel_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "34"
+            },
+            "spawn_message": "<npc_name> sent out Victreebel!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_tangela_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "29"
+            },
+            "spawn_message": "<npc_name> sent out Tangela!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_vileplume_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "34"
+            },
+            "spawn_message": "<npc_name> sent out Vileplume!"
+          }
+        ],
+        "topic": "TALK_PKMN_ERIKA_BATTLE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ERIKA_BATTLE",
+    "dynamic_line": "Oh!  I concede defeat in advance… no, I jest.  Shall we?",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ERIKA_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ERIKA_WIN",
+    "dynamic_line": "Oh!  I concede defeat.  You are remarkably strong.  I must confer on you the Rainbow Badge.",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_ERIKA"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ERIKA_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_ERIKA"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ERIKA_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_ERIKA"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ERIKA_NOT_READY",
+    "dynamic_line": "The League's rules haven't changed just because the world ended.  Come back when you have at least 3 badges.",
+    "responses": [
+      {
+        "text": "I understand.",
+        "topic": "TALK_PKMN_ERIKA"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_koga",
+    "name_unique": "Koga",
+    "name_suffix": "Fuchsia Gym Leader",
+    "gender": "male",
+    "class": "NC_PKMN_GYM_LEADER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_KOGA",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_KOGA",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_koga_won, 0) == 1"
+      ],
+      "yes": "When afflicted by status effects, focus and win at all costs!  Poison spreads quickly among the living.",
+      "no": "Fwahahaha!  A mere child like you dares to challenge me?  The very idea makes me shiver with mirth!  I shall show you true terror as a ninja master!  Poison brings steady doom."
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_koga_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "math": [
+                "value_or(pkmn_badge_count, 0) >= 4"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_koffing_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "37"
+            },
+            "spawn_message": "<npc_name> sent out Koffing!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_muk_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "39"
+            },
+            "spawn_message": "<npc_name> sent out Muk!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_weezing_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "43"
+            },
+            "spawn_message": "<npc_name> sent out Weezing!"
+          }
+        ],
+        "topic": "TALK_PKMN_KOGA_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_koga_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_badge_count, 0) >= 4"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_KOGA_NOT_READY"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_koga_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_koffing_trainer', 'pkmn_muk_trainer', 'pkmn_weezing_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_koga_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_badge_soul"
+          },
+          {
+            "math": [
+              "pkmn_badge_count = value_or(pkmn_badge_count, 0) + 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_rare",
+            "use_item_group": true
+          },
+          {
+            "u_spawn_item": "pkmn_rare_candy",
+            "count": 2
+          },
+          {
+            "u_message": "You received the Soul Badge!  (<global_val:pkmn_badge_count>/8 badges)",
+            "type": "good"
+          }
+        ],
+        "topic": "TALK_PKMN_KOGA_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_koffing_trainer', 'pkmn_muk_trainer', 'pkmn_weezing_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_KOGA_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_koffing_trainer', 'pkmn_muk_trainer', 'pkmn_weezing_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_KOGA_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_koffing_trainer', 'pkmn_muk_trainer', 'pkmn_weezing_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_KOGA",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_koffing_trainer",
+              "pkmn_muk_trainer",
+              "pkmn_weezing_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_KOGA_FORFEIT"
+      },
+      {
+        "text": "How about a rematch?  [Training battle]",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_trainer_koga_won, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 1"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_koffing_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "42"
+            },
+            "spawn_message": "<npc_name> sent out Koffing!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_muk_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "44"
+            },
+            "spawn_message": "<npc_name> sent out Muk!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_weezing_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "48"
+            },
+            "spawn_message": "<npc_name> sent out Weezing!"
+          }
+        ],
+        "topic": "TALK_PKMN_KOGA_BATTLE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_KOGA_BATTLE",
+    "dynamic_line": "Sleep, confusion, poison… Let us see how you deal with it!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_KOGA_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_KOGA_WIN",
+    "dynamic_line": "Humph!  You have proven your worth!  Here!  Take the Soul Badge!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_KOGA"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_KOGA_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_KOGA"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_KOGA_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_KOGA"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_KOGA_NOT_READY",
+    "dynamic_line": "The League's rules haven't changed just because the world ended.  Come back when you have at least 4 badges.",
+    "responses": [
+      {
+        "text": "I understand.",
+        "topic": "TALK_PKMN_KOGA"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_sabrina",
+    "name_unique": "Sabrina",
+    "name_suffix": "Saffron Gym Leader",
+    "gender": "female",
+    "class": "NC_PKMN_GYM_LEADER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_SABRINA",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SABRINA",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_sabrina_won, 0) == 1"
+      ],
+      "yes": "Everyone has psychic power!  People just don't realize it!",
+      "no": "I had a vision of your arrival!  I have had psychic powers since I was a child.  I foresaw the Cataclysm too, though no one would listen."
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_sabrina_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "math": [
+                "value_or(pkmn_badge_count, 0) >= 5"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_kadabra_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "38"
+            },
+            "spawn_message": "<npc_name> sent out Kadabra!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_mr_mime_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "37"
+            },
+            "spawn_message": "<npc_name> sent out Mr. Mime!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_venomoth_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "38"
+            },
+            "spawn_message": "<npc_name> sent out Venomoth!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_alakazam_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "43"
+            },
+            "spawn_message": "<npc_name> sent out Alakazam!"
+          }
+        ],
+        "topic": "TALK_PKMN_SABRINA_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_sabrina_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_badge_count, 0) >= 5"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_SABRINA_NOT_READY"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_sabrina_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_kadabra_trainer', 'pkmn_mr_mime_trainer', 'pkmn_venomoth_trainer', 'pkmn_alakazam_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_sabrina_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_badge_marsh"
+          },
+          {
+            "math": [
+              "pkmn_badge_count = value_or(pkmn_badge_count, 0) + 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_rare",
+            "use_item_group": true
+          },
+          {
+            "u_spawn_item": "pkmn_rare_candy",
+            "count": 2
+          },
+          {
+            "u_message": "You received the Marsh Badge!  (<global_val:pkmn_badge_count>/8 badges)",
+            "type": "good"
+          }
+        ],
+        "topic": "TALK_PKMN_SABRINA_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_kadabra_trainer', 'pkmn_mr_mime_trainer', 'pkmn_venomoth_trainer', 'pkmn_alakazam_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_SABRINA_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_kadabra_trainer', 'pkmn_mr_mime_trainer', 'pkmn_venomoth_trainer', 'pkmn_alakazam_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_SABRINA_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_kadabra_trainer', 'pkmn_mr_mime_trainer', 'pkmn_venomoth_trainer', 'pkmn_alakazam_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_SABRINA",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_kadabra_trainer",
+              "pkmn_mr_mime_trainer",
+              "pkmn_venomoth_trainer",
+              "pkmn_alakazam_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_SABRINA_FORFEIT"
+      },
+      {
+        "text": "How about a rematch?  [Training battle]",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_trainer_sabrina_won, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 1"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_kadabra_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "43"
+            },
+            "spawn_message": "<npc_name> sent out Kadabra!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_mr_mime_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "42"
+            },
+            "spawn_message": "<npc_name> sent out Mr. Mime!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_venomoth_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "43"
+            },
+            "spawn_message": "<npc_name> sent out Venomoth!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_alakazam_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "48"
+            },
+            "spawn_message": "<npc_name> sent out Alakazam!"
+          }
+        ],
+        "topic": "TALK_PKMN_SABRINA_BATTLE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SABRINA_BATTLE",
+    "dynamic_line": "I dislike fighting, but if you wish, I will show you my powers!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SABRINA_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SABRINA_WIN",
+    "dynamic_line": "I'm shocked!  But a loss is a loss.  I admit I didn't work hard enough to win!  You earned the Marsh Badge!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_SABRINA"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SABRINA_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_SABRINA"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SABRINA_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_SABRINA"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_SABRINA_NOT_READY",
+    "dynamic_line": "The League's rules haven't changed just because the world ended.  Come back when you have at least 5 badges.",
+    "responses": [
+      {
+        "text": "I understand.",
+        "topic": "TALK_PKMN_SABRINA"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_blaine",
+    "name_unique": "Blaine",
+    "name_suffix": "Cinnabar Gym Leader",
+    "gender": "male",
+    "class": "NC_PKMN_GYM_LEADER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_BLAINE",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BLAINE",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_blaine_won, 0) == 1"
+      ],
+      "yes": "Fire Pokémon have kept the shamblers away from my island.  Keep that in mind.",
+      "no": "Hah!  I am Blaine!  I am the leader of Cinnabar Gym!  My fiery Pokémon will incinerate all challengers!  Hah!  You better have Burn Heal!"
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_blaine_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "math": [
+                "value_or(pkmn_badge_count, 0) >= 6"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_growlithe_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "42"
+            },
+            "spawn_message": "<npc_name> sent out Growlithe!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_ponyta_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "40"
+            },
+            "spawn_message": "<npc_name> sent out Ponyta!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_rapidash_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "42"
+            },
+            "spawn_message": "<npc_name> sent out Rapidash!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_arcanine_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "47"
+            },
+            "spawn_message": "<npc_name> sent out Arcanine!"
+          }
+        ],
+        "topic": "TALK_PKMN_BLAINE_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_blaine_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_badge_count, 0) >= 6"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_BLAINE_NOT_READY"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_blaine_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_growlithe_trainer', 'pkmn_ponyta_trainer', 'pkmn_rapidash_trainer', 'pkmn_arcanine_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_blaine_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_badge_volcano"
+          },
+          {
+            "math": [
+              "pkmn_badge_count = value_or(pkmn_badge_count, 0) + 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_rare",
+            "use_item_group": true
+          },
+          {
+            "u_spawn_item": "pkmn_rare_candy",
+            "count": 2
+          },
+          {
+            "u_message": "You received the Volcano Badge!  (<global_val:pkmn_badge_count>/8 badges)",
+            "type": "good"
+          }
+        ],
+        "topic": "TALK_PKMN_BLAINE_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_growlithe_trainer', 'pkmn_ponyta_trainer', 'pkmn_rapidash_trainer', 'pkmn_arcanine_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_BLAINE_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_growlithe_trainer', 'pkmn_ponyta_trainer', 'pkmn_rapidash_trainer', 'pkmn_arcanine_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_BLAINE_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_growlithe_trainer', 'pkmn_ponyta_trainer', 'pkmn_rapidash_trainer', 'pkmn_arcanine_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_BLAINE",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_growlithe_trainer",
+              "pkmn_ponyta_trainer",
+              "pkmn_rapidash_trainer",
+              "pkmn_arcanine_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_BLAINE_FORFEIT"
+      },
+      {
+        "text": "How about a rematch?  [Training battle]",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_trainer_blaine_won, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 1"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_growlithe_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "47"
+            },
+            "spawn_message": "<npc_name> sent out Growlithe!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_ponyta_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "45"
+            },
+            "spawn_message": "<npc_name> sent out Ponyta!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_rapidash_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "47"
+            },
+            "spawn_message": "<npc_name> sent out Rapidash!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_arcanine_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "52"
+            },
+            "spawn_message": "<npc_name> sent out Arcanine!"
+          }
+        ],
+        "topic": "TALK_PKMN_BLAINE_BATTLE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BLAINE_BATTLE",
+    "dynamic_line": "My Pokémon are fired up!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BLAINE_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BLAINE_WIN",
+    "dynamic_line": "I have burned down to nothing!  Not even ashes remain!  You have earned the Volcano Badge!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_BLAINE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BLAINE_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_BLAINE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BLAINE_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_BLAINE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_BLAINE_NOT_READY",
+    "dynamic_line": "The League's rules haven't changed just because the world ended.  Come back when you have at least 6 badges.",
+    "responses": [
+      {
+        "text": "I understand.",
+        "topic": "TALK_PKMN_BLAINE"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_giovanni",
+    "name_unique": "Giovanni",
+    "name_suffix": "Viridian Gym Leader",
+    "gender": "male",
+    "class": "NC_PKMN_GYM_LEADER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_GIOVANNI",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_GIOVANNI",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_giovanni_won, 0) == 1"
+      ],
+      "yes": "Having lost, I cannot face my underlings.  Team Rocket is finished forever.  I will dedicate my life to the study of Pokémon.  Let us meet again some day!",
+      "no": "Fwahahaha!  This is my hideout!  I planned to resurrect Team Rocket here, in the ruins of the world.  But you have caught me again!  So be it!  This time, I'm not holding back!"
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_giovanni_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "and": [
+                {
+                  "math": [
+                    "value_or(pkmn_badge_count, 0) >= 7"
+                  ]
+                },
+                {
+                  "math": [
+                    "value_or(pkmn_rocket_hideout_cleared, 0) == 1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_rhyhorn_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "45"
+            },
+            "spawn_message": "<npc_name> sent out Rhyhorn!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_dugtrio_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "42"
+            },
+            "spawn_message": "<npc_name> sent out Dugtrio!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_nidoqueen_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "44"
+            },
+            "spawn_message": "<npc_name> sent out Nidoqueen!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_nidoking_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "45"
+            },
+            "spawn_message": "<npc_name> sent out Nidoking!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_rhydon_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "50"
+            },
+            "spawn_message": "<npc_name> sent out Rhydon!"
+          }
+        ],
+        "topic": "TALK_PKMN_GIOVANNI_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_giovanni_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "and": [
+                  {
+                    "math": [
+                      "value_or(pkmn_badge_count, 0) >= 7"
+                    ]
+                  },
+                  {
+                    "math": [
+                      "value_or(pkmn_rocket_hideout_cleared, 0) == 1"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_GIOVANNI_NOT_READY"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_giovanni_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_rhyhorn_trainer', 'pkmn_dugtrio_trainer', 'pkmn_nidoqueen_trainer', 'pkmn_nidoking_trainer', 'pkmn_rhydon_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_giovanni_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_badge_earth"
+          },
+          {
+            "math": [
+              "pkmn_badge_count = value_or(pkmn_badge_count, 0) + 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_rare",
+            "use_item_group": true
+          },
+          {
+            "u_spawn_item": "pkmn_rare_candy",
+            "count": 2
+          },
+          {
+            "u_message": "You received the Earth Badge!  (<global_val:pkmn_badge_count>/8 badges)",
+            "type": "good"
+          },
+          {
+            "math": [
+              "pkmn_giovanni_defeated = 1"
+            ]
+          }
+        ],
+        "topic": "TALK_PKMN_GIOVANNI_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_rhyhorn_trainer', 'pkmn_dugtrio_trainer', 'pkmn_nidoqueen_trainer', 'pkmn_nidoking_trainer', 'pkmn_rhydon_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_GIOVANNI_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_rhyhorn_trainer', 'pkmn_dugtrio_trainer', 'pkmn_nidoqueen_trainer', 'pkmn_nidoking_trainer', 'pkmn_rhydon_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_GIOVANNI_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_rhyhorn_trainer', 'pkmn_dugtrio_trainer', 'pkmn_nidoqueen_trainer', 'pkmn_nidoking_trainer', 'pkmn_rhydon_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_GIOVANNI",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_rhyhorn_trainer",
+              "pkmn_dugtrio_trainer",
+              "pkmn_nidoqueen_trainer",
+              "pkmn_nidoking_trainer",
+              "pkmn_rhydon_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_GIOVANNI_FORFEIT"
+      },
+      {
+        "text": "How about a rematch?  [Training battle]",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_trainer_giovanni_won, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 1"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_rhyhorn_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "50"
+            },
+            "spawn_message": "<npc_name> sent out Rhyhorn!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_dugtrio_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "47"
+            },
+            "spawn_message": "<npc_name> sent out Dugtrio!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_nidoqueen_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "49"
+            },
+            "spawn_message": "<npc_name> sent out Nidoqueen!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_nidoking_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "50"
+            },
+            "spawn_message": "<npc_name> sent out Nidoking!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_rhydon_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "55"
+            },
+            "spawn_message": "<npc_name> sent out Rhydon!"
+          }
+        ],
+        "topic": "TALK_PKMN_GIOVANNI_BATTLE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_GIOVANNI_BATTLE",
+    "dynamic_line": "Once more, you shall face Giovanni, the greatest trainer!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_GIOVANNI_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_GIOVANNI_WIN",
+    "dynamic_line": "Ha!  That was a truly intense fight!  You have won!  As proof, here is the Earth Badge!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_GIOVANNI"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_GIOVANNI_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_GIOVANNI"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_GIOVANNI_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_GIOVANNI"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_GIOVANNI_NOT_READY",
+    "dynamic_line": "The Viridian Gym is closed.  Its leader is… away on business.  Come back when you have seven badges, and when you have dealt with a certain organization.",
+    "responses": [
+      {
+        "text": "I understand.",
+        "topic": "TALK_PKMN_GIOVANNI"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_rocket_grunt_1",
+    "name_suffix": "Team Rocket Grunt",
+    "class": "NC_PKMN_ROCKET_GRUNT",
+    "attitude": 1,
+    "mission": 7,
+    "chat": "TALK_PKMN_ROCKET_GRUNT_1",
+    "faction": "pkmn_team_rocket"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_1",
+    "dynamic_line": {
+      "math": [
+        "value_or(n_pkmn_trainer_won, 0) == 1"
+      ],
+      "yes": "I'm not talking to you.  The boss is going to kill me.",
+      "no": "Hey!  Team Rocket is taking over this place.  The world ended, so who's going to stop us?  Hand over your Pokémon, or else!"
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_rattata_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "14"
+            },
+            "spawn_message": "<npc_name> sent out Rattata!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_zubat_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "15"
+            },
+            "spawn_message": "<npc_name> sent out Zubat!"
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_1_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_rattata_trainer', 'pkmn_zubat_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_trainer_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_rocket_orders"
+          },
+          {
+            "math": [
+              "pkmn_rockets_defeated = value_or(pkmn_rockets_defeated, 0) + 1"
+            ]
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_1_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_rattata_trainer', 'pkmn_zubat_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_1_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_rattata_trainer', 'pkmn_zubat_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_ROCKET_GRUNT_1_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_rattata_trainer', 'pkmn_zubat_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_ROCKET_GRUNT_1",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_rattata_trainer",
+              "pkmn_zubat_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_1_FORFEIT"
+      },
+      {
+        "text": "I'm not giving you anything.  [Attack]",
+        "effect": "hostile",
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_1_BATTLE",
+    "dynamic_line": "You asked for it!  Get 'em!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_1_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_1_WIN",
+    "dynamic_line": "Urgh!  Team Rocket is blasting off again!  Here, take these stupid orders, I don't care anymore!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_1"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_1_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_1"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_1_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_1"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_rocket_grunt_2",
+    "name_suffix": "Team Rocket Grunt",
+    "class": "NC_PKMN_ROCKET_GRUNT",
+    "attitude": 1,
+    "mission": 7,
+    "chat": "TALK_PKMN_ROCKET_GRUNT_2",
+    "faction": "pkmn_team_rocket"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_2",
+    "dynamic_line": {
+      "math": [
+        "value_or(n_pkmn_trainer_won, 0) == 1"
+      ],
+      "yes": "I'm not talking to you.  The boss is going to kill me.",
+      "no": "Hey!  Team Rocket is taking over this place.  The world ended, so who's going to stop us?  Hand over your Pokémon, or else!"
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_ekans_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "16"
+            },
+            "spawn_message": "<npc_name> sent out Ekans!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_koffing_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "17"
+            },
+            "spawn_message": "<npc_name> sent out Koffing!"
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_2_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_ekans_trainer', 'pkmn_koffing_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_trainer_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_rocket_orders"
+          },
+          {
+            "math": [
+              "pkmn_rockets_defeated = value_or(pkmn_rockets_defeated, 0) + 1"
+            ]
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_2_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_ekans_trainer', 'pkmn_koffing_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_2_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_ekans_trainer', 'pkmn_koffing_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_ROCKET_GRUNT_2_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_ekans_trainer', 'pkmn_koffing_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_ROCKET_GRUNT_2",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_ekans_trainer",
+              "pkmn_koffing_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_2_FORFEIT"
+      },
+      {
+        "text": "I'm not giving you anything.  [Attack]",
+        "effect": "hostile",
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_2_BATTLE",
+    "dynamic_line": "You asked for it!  Get 'em!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_2_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_2_WIN",
+    "dynamic_line": "Urgh!  Team Rocket is blasting off again!  Here, take these stupid orders, I don't care anymore!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_2"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_2_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_2"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_2_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_2"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_rocket_grunt_3",
+    "name_suffix": "Team Rocket Grunt",
+    "class": "NC_PKMN_ROCKET_GRUNT",
+    "attitude": 1,
+    "mission": 7,
+    "chat": "TALK_PKMN_ROCKET_GRUNT_3",
+    "faction": "pkmn_team_rocket"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_3",
+    "dynamic_line": {
+      "math": [
+        "value_or(n_pkmn_trainer_won, 0) == 1"
+      ],
+      "yes": "I'm not talking to you.  The boss is going to kill me.",
+      "no": "Hey!  Team Rocket is taking over this place.  The world ended, so who's going to stop us?  Hand over your Pokémon, or else!"
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_grimer_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "18"
+            },
+            "spawn_message": "<npc_name> sent out Grimer!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_raticate_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "20"
+            },
+            "spawn_message": "<npc_name> sent out Raticate!"
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_3_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_grimer_trainer', 'pkmn_raticate_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_trainer_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_rocket_orders"
+          },
+          {
+            "math": [
+              "pkmn_rockets_defeated = value_or(pkmn_rockets_defeated, 0) + 1"
+            ]
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_3_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_grimer_trainer', 'pkmn_raticate_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_3_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_grimer_trainer', 'pkmn_raticate_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_ROCKET_GRUNT_3_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_grimer_trainer', 'pkmn_raticate_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_ROCKET_GRUNT_3",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_grimer_trainer",
+              "pkmn_raticate_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_3_FORFEIT"
+      },
+      {
+        "text": "I'm not giving you anything.  [Attack]",
+        "effect": "hostile",
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_3_BATTLE",
+    "dynamic_line": "You asked for it!  Get 'em!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_3_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_3_WIN",
+    "dynamic_line": "Urgh!  Team Rocket is blasting off again!  Here, take these stupid orders, I don't care anymore!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_3"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_3_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_3"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_3_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_3"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_rocket_grunt_4",
+    "name_suffix": "Team Rocket Grunt",
+    "class": "NC_PKMN_ROCKET_GRUNT",
+    "attitude": 1,
+    "mission": 7,
+    "chat": "TALK_PKMN_ROCKET_GRUNT_4",
+    "faction": "pkmn_team_rocket"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_4",
+    "dynamic_line": {
+      "math": [
+        "value_or(n_pkmn_trainer_won, 0) == 1"
+      ],
+      "yes": "I'm not talking to you.  The boss is going to kill me.",
+      "no": "Hey!  Team Rocket is taking over this place.  The world ended, so who's going to stop us?  Hand over your Pokémon, or else!"
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_zubat_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "18"
+            },
+            "spawn_message": "<npc_name> sent out Zubat!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_golbat_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "22"
+            },
+            "spawn_message": "<npc_name> sent out Golbat!"
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_4_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_zubat_trainer', 'pkmn_golbat_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_trainer_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_rocket_orders"
+          },
+          {
+            "math": [
+              "pkmn_rockets_defeated = value_or(pkmn_rockets_defeated, 0) + 1"
+            ]
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_4_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_zubat_trainer', 'pkmn_golbat_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_4_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_zubat_trainer', 'pkmn_golbat_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_ROCKET_GRUNT_4_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_zubat_trainer', 'pkmn_golbat_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_ROCKET_GRUNT_4",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_zubat_trainer",
+              "pkmn_golbat_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_4_FORFEIT"
+      },
+      {
+        "text": "I'm not giving you anything.  [Attack]",
+        "effect": "hostile",
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_4_BATTLE",
+    "dynamic_line": "You asked for it!  Get 'em!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_4_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_4_WIN",
+    "dynamic_line": "Urgh!  Team Rocket is blasting off again!  Here, take these stupid orders, I don't care anymore!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_4"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_4_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_4"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_4_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_4"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_rocket_grunt_5",
+    "name_suffix": "Team Rocket Grunt",
+    "class": "NC_PKMN_ROCKET_GRUNT",
+    "attitude": 1,
+    "mission": 7,
+    "chat": "TALK_PKMN_ROCKET_GRUNT_5",
+    "faction": "pkmn_team_rocket"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_5",
+    "dynamic_line": {
+      "math": [
+        "value_or(n_pkmn_trainer_won, 0) == 1"
+      ],
+      "yes": "I'm not talking to you.  The boss is going to kill me.",
+      "no": "Hey!  Team Rocket is taking over this place.  The world ended, so who's going to stop us?  Hand over your Pokémon, or else!"
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_machop_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "20"
+            },
+            "spawn_message": "<npc_name> sent out Machop!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_drowzee_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "21"
+            },
+            "spawn_message": "<npc_name> sent out Drowzee!"
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_5_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(n_pkmn_trainer_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_machop_trainer', 'pkmn_drowzee_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_trainer_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_rocket_orders"
+          },
+          {
+            "math": [
+              "pkmn_rockets_defeated = value_or(pkmn_rockets_defeated, 0) + 1"
+            ]
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_5_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_machop_trainer', 'pkmn_drowzee_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_5_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_machop_trainer', 'pkmn_drowzee_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_ROCKET_GRUNT_5_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_machop_trainer', 'pkmn_drowzee_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_ROCKET_GRUNT_5",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_machop_trainer",
+              "pkmn_drowzee_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_GRUNT_5_FORFEIT"
+      },
+      {
+        "text": "I'm not giving you anything.  [Attack]",
+        "effect": "hostile",
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_5_BATTLE",
+    "dynamic_line": "You asked for it!  Get 'em!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_5_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_5_WIN",
+    "dynamic_line": "Urgh!  Team Rocket is blasting off again!  Here, take these stupid orders, I don't care anymore!",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_5"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_5_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_5"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_GRUNT_5_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_ROCKET_GRUNT_5"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_rocket_admin",
+    "name_unique": "Archer",
+    "name_suffix": "Team Rocket Executive",
+    "class": "NC_PKMN_ROCKET_ADMIN",
+    "attitude": 1,
+    "mission": 7,
+    "chat": "TALK_PKMN_ROCKET_ADMIN",
+    "faction": "pkmn_team_rocket"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_ADMIN",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_rocket_admin_won, 0) == 1"
+      ],
+      "yes": "Leave me alone.  Team Rocket is through.",
+      "no": "So you're the one who has been interfering with our operations.  Team Rocket survived the end of the world and we will rule what's left of it.  Our boss, Giovanni, has gone to Viridian to rebuild.  You'll never reach him."
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_rocket_admin_won, 0) == 1"
+                ]
+              }
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_arbok_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "30"
+            },
+            "spawn_message": "<npc_name> sent out Arbok!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_weezing_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "31"
+            },
+            "spawn_message": "<npc_name> sent out Weezing!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_golbat_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "32"
+            },
+            "spawn_message": "<npc_name> sent out Golbat!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_raticate_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "30"
+            },
+            "spawn_message": "<npc_name> sent out Raticate!"
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_ADMIN_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_rocket_admin_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_arbok_trainer', 'pkmn_weezing_trainer', 'pkmn_golbat_trainer', 'pkmn_raticate_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_rocket_admin_won = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_silph_scope"
+          },
+          {
+            "math": [
+              "pkmn_rocket_hideout_cleared = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_ball_ultra",
+            "count": 3
+          },
+          {
+            "u_message": "Team Rocket's hideout has been cleared!",
+            "type": "good"
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_ADMIN_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_arbok_trainer', 'pkmn_weezing_trainer', 'pkmn_golbat_trainer', 'pkmn_raticate_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_ADMIN_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_arbok_trainer', 'pkmn_weezing_trainer', 'pkmn_golbat_trainer', 'pkmn_raticate_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_ROCKET_ADMIN_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_arbok_trainer', 'pkmn_weezing_trainer', 'pkmn_golbat_trainer', 'pkmn_raticate_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_ROCKET_ADMIN",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_arbok_trainer",
+              "pkmn_weezing_trainer",
+              "pkmn_golbat_trainer",
+              "pkmn_raticate_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_ROCKET_ADMIN_FORFEIT"
+      },
+      {
+        "text": "Enough talk.  [Attack]",
+        "effect": "hostile",
+        "topic": "TALK_DONE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_ADMIN_BATTLE",
+    "dynamic_line": "I'll show you what happens to those who cross Team Rocket!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_ADMIN_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_ADMIN_WIN",
+    "dynamic_line": "I… I lost?  Team Rocket is finished here.  Take the Silph Scope.  We stole it anyway.  The boss is at the Viridian Gym… not that it'll help you.",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_ROCKET_ADMIN"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_ADMIN_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_ROCKET_ADMIN"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_ROCKET_ADMIN_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_ROCKET_ADMIN"
+      }
+    ]
+  },
+  {
+    "type": "npc",
+    "id": "pkmn_npc_rival",
+    "name_unique": "Gary Oak",
+    "name_suffix": "Pokémon League Champion",
+    "gender": "male",
+    "class": "NC_PKMN_GYM_LEADER",
+    "attitude": 0,
+    "mission": 7,
+    "chat": "TALK_PKMN_RIVAL",
+    "faction": "pkmn_league"
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_RIVAL",
+    "dynamic_line": {
+      "math": [
+        "value_or(pkmn_trainer_rival_won, 0) == 1"
+      ],
+      "yes": "Hey.  Gramps was right about you.  You treat your Pokémon like partners, not weapons.  Maybe that's why you won.",
+      "no": "Hey!  I was looking forward to seeing you!  While you were busy scavenging, I took the Indigo Plateau.  My Pokémon are the toughest anywhere, and I'm the Champion of what's left of the League.  Do you know what that means?  I'll tell you.  I am the most powerful trainer in the world!"
+    },
+    "responses": [
+      {
+        "text": "I challenge you to a Pokémon battle!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_rival_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "math": [
+                "value_or(pkmn_badge_count, 0) >= 8"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 0"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_pidgeot_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "61"
+            },
+            "spawn_message": "<npc_name> sent out Pidgeot!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_alakazam_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "59"
+            },
+            "spawn_message": "<npc_name> sent out Alakazam!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_rhydon_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "61"
+            },
+            "spawn_message": "<npc_name> sent out Rhydon!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_exeggutor_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "61"
+            },
+            "spawn_message": "<npc_name> sent out Exeggutor!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_gyarados_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "63"
+            },
+            "spawn_message": "<npc_name> sent out Gyarados!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_charizard_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "65"
+            },
+            "spawn_message": "<npc_name> sent out Charizard!"
+          }
+        ],
+        "topic": "TALK_PKMN_RIVAL_BATTLE"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_rival_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_badge_count, 0) >= 8"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_RIVAL_NOT_READY"
+      },
+      {
+        "text": "I want to battle you.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "not": {
+                "math": [
+                  "value_or(pkmn_trainer_rival_won, 0) == 1"
+                ]
+              }
+            },
+            {
+              "not": {
+                "math": [
+                  "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+                ]
+              }
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_NEED_POKEMON"
+      },
+      {
+        "text": "Your Pokémon are all down.  I win!",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_pidgeot_trainer', 'pkmn_alakazam_trainer', 'pkmn_rhydon_trainer', 'pkmn_exeggutor_trainer', 'pkmn_gyarados_trainer', 'pkmn_charizard_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_trainer_rival_won = 1"
+            ]
+          },
+          {
+            "math": [
+              "pkmn_champion = 1"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_ball_master"
+          },
+          {
+            "u_spawn_item": "pkmn_max_revive",
+            "count": 3
+          },
+          {
+            "u_message": "Congratulations!  You are the new Pokémon League Champion!",
+            "type": "good",
+            "popup": true
+          }
+        ],
+        "topic": "TALK_PKMN_RIVAL_WIN"
+      },
+      {
+        "text": "That was a good rematch.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_pidgeot_trainer', 'pkmn_alakazam_trainer', 'pkmn_rhydon_trainer', 'pkmn_exeggutor_trainer', 'pkmn_gyarados_trainer', 'pkmn_charizard_trainer', 'radius': 40, 'attitude': 'both') == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(n_pkmn_rematch, 0) == 1"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_spawn_item": "pkmn_loot_common",
+            "use_item_group": true
+          }
+        ],
+        "topic": "TALK_PKMN_RIVAL_REMATCH_WON"
+      },
+      {
+        "text": "(The battle is still going.)",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_pidgeot_trainer', 'pkmn_alakazam_trainer', 'pkmn_rhydon_trainer', 'pkmn_exeggutor_trainer', 'pkmn_gyarados_trainer', 'pkmn_charizard_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "topic": "TALK_PKMN_RIVAL_BATTLING"
+      },
+      {
+        "text": "I give up.  Recall your Pokémon.",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_monsters_nearby('pkmn_pidgeot_trainer', 'pkmn_alakazam_trainer', 'pkmn_rhydon_trainer', 'pkmn_exeggutor_trainer', 'pkmn_gyarados_trainer', 'pkmn_charizard_trainer', 'radius': 40, 'attitude': 'both') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 0"
+            ]
+          },
+          {
+            "u_run_monster_eocs": [
+              {
+                "id": "EOC_PKMN_FORFEIT_RIVAL",
+                "effect": "u_die"
+              }
+            ],
+            "mtype_ids": [
+              "pkmn_pidgeot_trainer",
+              "pkmn_alakazam_trainer",
+              "pkmn_rhydon_trainer",
+              "pkmn_exeggutor_trainer",
+              "pkmn_gyarados_trainer",
+              "pkmn_charizard_trainer"
+            ],
+            "monster_range": 40
+          }
+        ],
+        "topic": "TALK_PKMN_RIVAL_FORFEIT"
+      },
+      {
+        "text": "How about a rematch?  [Training battle]",
+        "condition": {
+          "and": [
+            {
+              "math": [
+                "value_or(n_pkmn_battle, 0) == 0"
+              ]
+            },
+            {
+              "math": [
+                "value_or(pkmn_trainer_rival_won, 0) == 1"
+              ]
+            },
+            {
+              "math": [
+                "u_mon_species_nearby('POKEMON', 'radius': 12, 'attitude': 'friendly') > 0"
+              ]
+            }
+          ]
+        },
+        "effect": [
+          {
+            "math": [
+              "n_pkmn_battle = 1"
+            ]
+          },
+          {
+            "math": [
+              "n_pkmn_rematch = 1"
+            ]
+          },
+          {
+            "npc_spawn_monster": "pkmn_pidgeot_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "66"
+            },
+            "spawn_message": "<npc_name> sent out Pidgeot!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_alakazam_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "64"
+            },
+            "spawn_message": "<npc_name> sent out Alakazam!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_rhydon_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "66"
+            },
+            "spawn_message": "<npc_name> sent out Rhydon!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_exeggutor_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "66"
+            },
+            "spawn_message": "<npc_name> sent out Exeggutor!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_gyarados_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "68"
+            },
+            "spawn_message": "<npc_name> sent out Gyarados!"
+          },
+          {
+            "npc_spawn_monster": "pkmn_charizard_trainer",
+            "real_count": 1,
+            "min_radius": 2,
+            "max_radius": 5,
+            "mon_variables": {
+              "pkmn_level": "70"
+            },
+            "spawn_message": "<npc_name> sent out Charizard!"
+          }
+        ],
+        "topic": "TALK_PKMN_RIVAL_BATTLE"
+      },
+      {
+        "text": "See you around.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_RIVAL_BATTLE",
+    "dynamic_line": "Hahaha!  Let's go!  Smell ya later!",
+    "responses": [
+      {
+        "text": "Bring it on!",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_RIVAL_BATTLING",
+    "dynamic_line": "We're in the middle of a battle!  Focus!",
+    "responses": [
+      {
+        "text": "Right.",
+        "topic": "TALK_DONE"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_RIVAL_WIN",
+    "dynamic_line": "NO!  That can't be!  You beat my best!  After all that work to become League Champion?  My reign is over already?  It's not fair!  …Fine.  You're the Champion now.  Gramps is going to love this.",
+    "responses": [
+      {
+        "text": "Thanks!",
+        "topic": "TALK_PKMN_RIVAL"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_RIVAL_REMATCH_WON",
+    "dynamic_line": "Still too strong for me.  Here, take these supplies for your trouble.",
+    "responses": [
+      {
+        "text": "Thanks.",
+        "topic": "TALK_PKMN_RIVAL"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_RIVAL_FORFEIT",
+    "dynamic_line": "Hmph.  Come back when you and your Pokémon are ready.",
+    "responses": [
+      {
+        "text": "I will.",
+        "topic": "TALK_PKMN_RIVAL"
+      }
+    ]
+  },
+  {
+    "type": "talk_topic",
+    "id": "TALK_PKMN_RIVAL_NOT_READY",
+    "dynamic_line": "Ha!  You don't even have all eight badges.  The League has rules.  Come back when you're a real trainer!",
+    "responses": [
+      {
+        "text": "I understand.",
+        "topic": "TALK_PKMN_RIVAL"
+      }
+    ]
+  }
+]

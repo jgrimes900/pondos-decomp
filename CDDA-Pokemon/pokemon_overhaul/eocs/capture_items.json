@@ -1,0 +1,1066 @@
+[
+  {
+    "type": "SPELL",
+    "id": "pkmn_throw_poke_ball",
+    "name": "Throw Poké Ball",
+    "description": "Throw a Poké Ball at a wild Pokémon.  Weaken it first; sleeping, frozen, paralyzed, burned or poisoned Pokémon are easier to catch.",
+    "valid_targets": [
+      "hostile",
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_CAPTURE_POKE",
+    "shape": "blast",
+    "min_range": 6,
+    "max_range": 6,
+    "base_casting_time": 100,
+    "message": "You throw the Poké Ball!",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_CAPTURE_POKE",
+    "//": "u = target Pokémon, npc = thrower.",
+    "effect": [
+      {
+        "math": [
+          "_pkmn_ball = 1.0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_CAPTURE"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_throw_great_ball",
+    "name": "Throw Great Ball",
+    "description": "Throw a Great Ball at a wild Pokémon.  Weaken it first; sleeping, frozen, paralyzed, burned or poisoned Pokémon are easier to catch.",
+    "valid_targets": [
+      "hostile",
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_CAPTURE_GREAT",
+    "shape": "blast",
+    "min_range": 6,
+    "max_range": 6,
+    "base_casting_time": 100,
+    "message": "You throw the Great Ball!",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_CAPTURE_GREAT",
+    "//": "u = target Pokémon, npc = thrower.",
+    "effect": [
+      {
+        "math": [
+          "_pkmn_ball = 1.5"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_CAPTURE"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_throw_ultra_ball",
+    "name": "Throw Ultra Ball",
+    "description": "Throw a Ultra Ball at a wild Pokémon.  Weaken it first; sleeping, frozen, paralyzed, burned or poisoned Pokémon are easier to catch.",
+    "valid_targets": [
+      "hostile",
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_CAPTURE_ULTRA",
+    "shape": "blast",
+    "min_range": 6,
+    "max_range": 6,
+    "base_casting_time": 100,
+    "message": "You throw the Ultra Ball!",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_CAPTURE_ULTRA",
+    "//": "u = target Pokémon, npc = thrower.",
+    "effect": [
+      {
+        "math": [
+          "_pkmn_ball = 2.0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_CAPTURE"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_throw_safari_ball",
+    "name": "Throw Safari Ball",
+    "description": "Throw a Safari Ball at a wild Pokémon.  Weaken it first; sleeping, frozen, paralyzed, burned or poisoned Pokémon are easier to catch.",
+    "valid_targets": [
+      "hostile",
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_CAPTURE_SAFARI",
+    "shape": "blast",
+    "min_range": 6,
+    "max_range": 6,
+    "base_casting_time": 100,
+    "message": "You throw the Safari Ball!",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_CAPTURE_SAFARI",
+    "//": "u = target Pokémon, npc = thrower.",
+    "effect": [
+      {
+        "math": [
+          "_pkmn_ball = 1.5"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_CAPTURE"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_throw_master_ball",
+    "name": "Throw Master Ball",
+    "description": "Throw a Master Ball at a wild Pokémon.  Weaken it first; sleeping, frozen, paralyzed, burned or poisoned Pokémon are easier to catch.",
+    "valid_targets": [
+      "hostile",
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_CAPTURE_MASTER",
+    "shape": "blast",
+    "min_range": 6,
+    "max_range": 6,
+    "base_casting_time": 100,
+    "message": "You throw the Master Ball!",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_CAPTURE_MASTER",
+    "//": "u = target Pokémon, npc = thrower.",
+    "effect": [
+      {
+        "math": [
+          "_pkmn_ball = 1000.0"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_CAPTURE"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_CAPTURE",
+    "//": "u = target Pokémon, npc = thrower, _pkmn_ball = ball multiplier.",
+    "effect": [
+      {
+        "math": [
+          "_pkmn_done = 0"
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "u_val('friendly') != 0"
+          ]
+        },
+        "then": [
+          {
+            "u_message": "<u_name> is already yours.  The ball bounces back and is lost in the brush.",
+            "type": "neutral"
+          },
+          {
+            "math": [
+              "_pkmn_done = 1"
+            ]
+          }
+        ]
+      },
+      {
+        "if": {
+          "and": [
+            {
+              "math": [
+                "_pkmn_done == 0"
+              ]
+            },
+            {
+              "u_has_species": "PKMN_TRAINER_OWNED"
+            }
+          ]
+        },
+        "then": [
+          {
+            "u_message": "The trainer blocked the ball!  Don't be a thief!",
+            "type": "bad"
+          },
+          {
+            "math": [
+              "_pkmn_done = 1"
+            ]
+          }
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "_pkmn_done == 0"
+          ]
+        },
+        "then": [
+          {
+            "math": [
+              "u_pkmn_level = value_or(u_pkmn_level, 5)"
+            ]
+          },
+          {
+            "math": [
+              "_rate = u_has_flag('PKMN_CATCH_1') ? 80 : (u_has_flag('PKMN_CATCH_2') ? 45 : (u_has_flag('PKMN_CATCH_3') ? 22 : 4))"
+            ]
+          },
+          {
+            "math": [
+              "_hp = 1 - 0.75 * u_hp('ALL') / max(1, u_hp_max('torso'))"
+            ]
+          },
+          {
+            "math": [
+              "_status = 1"
+            ]
+          },
+          {
+            "if": {
+              "or": [
+                {
+                  "u_has_effect": "pkmn_paralysis"
+                },
+                {
+                  "u_has_effect": "pkmn_burn"
+                },
+                {
+                  "u_has_effect": "pkmn_poison"
+                },
+                {
+                  "u_has_effect": "stunned"
+                }
+              ]
+            },
+            "then": {
+              "math": [
+                "_status = 1.5"
+              ]
+            }
+          },
+          {
+            "if": {
+              "or": [
+                {
+                  "u_has_effect": "pkmn_sleep"
+                },
+                {
+                  "u_has_effect": "pkmn_freeze"
+                }
+              ]
+            },
+            "then": {
+              "math": [
+                "_status = 2.2"
+              ]
+            }
+          },
+          {
+            "math": [
+              "_chance = clamp(_rate * _hp * _pkmn_ball * _status, 2, 100)"
+            ]
+          },
+          {
+            "if": {
+              "math": [
+                "rng(0, 100) <= _chance"
+              ]
+            },
+            "then": {
+              "run_eocs": "EOC_PKMN_CAPTURE_SUCCESS"
+            },
+            "else": {
+              "run_eocs": "EOC_PKMN_CAPTURE_FAIL"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_CAPTURE_SUCCESS",
+    "effect": [
+      {
+        "math": [
+          "u_val('friendly') = -1"
+        ]
+      },
+      {
+        "u_add_effect": "pet",
+        "duration": "PERMANENT"
+      },
+      {
+        "u_lose_effect": "pkmn_sleep"
+      },
+      {
+        "u_lose_effect": "pkmn_freeze"
+      },
+      {
+        "math": [
+          "u_pkmn_xp = value_or(u_pkmn_xp, 0)"
+        ]
+      },
+      {
+        "run_eocs": "EOC_PKMN_APPLY_LEVEL"
+      },
+      {
+        "run_eocs": {
+          "id": "EOC_PKMN_GIVE_REGISTERED_BALL",
+          "effect": {
+            "u_spawn_item": "pkmn_ball_registered",
+            "suppress_message": true
+          }
+        },
+        "alpha_talker": "avatar"
+      },
+      {
+        "math": [
+          "pkmn_caught_total = value_or(pkmn_caught_total, 0) + 1"
+        ]
+      },
+      {
+        "u_message": "…1…2…3…  Click!  Gotcha!  <u_name> (level <u_val:pkmn_level>) was caught!  You receive its registered Poké Ball, used to recall it and send it back out.",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_CAPTURE_FAIL",
+    "effect": [
+      {
+        "weighted_list_eocs": [
+          [
+            {
+              "id": "EOC_PKMN_CAPTURE_FAIL_1",
+              "effect": {
+                "u_message": "Oh no!  <u_name> broke free!",
+                "type": "bad"
+              }
+            },
+            1
+          ],
+          [
+            {
+              "id": "EOC_PKMN_CAPTURE_FAIL_2",
+              "effect": {
+                "u_message": "Aww!  It appeared to be caught!  <u_name> burst out of the ball.",
+                "type": "bad"
+              }
+            },
+            1
+          ],
+          [
+            {
+              "id": "EOC_PKMN_CAPTURE_FAIL_3",
+              "effect": {
+                "u_message": "Aargh!  Almost had it!  <u_name> escaped the ball.",
+                "type": "bad"
+              }
+            },
+            1
+          ],
+          [
+            {
+              "id": "EOC_PKMN_CAPTURE_FAIL_4",
+              "effect": {
+                "u_message": "Shoot!  It was so close too!  <u_name> broke free.",
+                "type": "bad"
+              }
+            },
+            1
+          ]
+        ]
+      },
+      {
+        "math": [
+          "u_val('anger') = max(u_val('anger'), 20)"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_potion",
+    "name": "Use Potion",
+    "description": "Restores 20 HP to one of your Pokémon.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_USE_POTION",
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_USE_POTION",
+    "effect": [
+      {
+        "if": {
+          "u_has_effect": "pkmn_fainted"
+        },
+        "then": {
+          "u_message": "It has fainted; a Potion won't wake it.  You need a Revive.",
+          "type": "bad"
+        }
+      },
+      {
+        "if": {
+          "not": {
+            "u_has_effect": "pkmn_fainted"
+          }
+        },
+        "then": {
+          "math": [
+            "u_hp('ALL') = min(u_hp_max('torso'), u_hp('ALL') + 20)"
+          ]
+        }
+      },
+      {
+        "u_message": "You use the Potion on <u_name>.",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_super_potion",
+    "name": "Use Super Potion",
+    "description": "Restores 50 HP to one of your Pokémon.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_USE_SUPER_POTION",
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_USE_SUPER_POTION",
+    "effect": [
+      {
+        "if": {
+          "u_has_effect": "pkmn_fainted"
+        },
+        "then": {
+          "u_message": "It has fainted; a Potion won't wake it.  You need a Revive.",
+          "type": "bad"
+        }
+      },
+      {
+        "if": {
+          "not": {
+            "u_has_effect": "pkmn_fainted"
+          }
+        },
+        "then": {
+          "math": [
+            "u_hp('ALL') = min(u_hp_max('torso'), u_hp('ALL') + 50)"
+          ]
+        }
+      },
+      {
+        "u_message": "You use the Super Potion on <u_name>.",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_hyper_potion",
+    "name": "Use Hyper Potion",
+    "description": "Restores 200 HP to one of your Pokémon.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_USE_HYPER_POTION",
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_USE_HYPER_POTION",
+    "effect": [
+      {
+        "if": {
+          "u_has_effect": "pkmn_fainted"
+        },
+        "then": {
+          "u_message": "It has fainted; a Potion won't wake it.  You need a Revive.",
+          "type": "bad"
+        }
+      },
+      {
+        "if": {
+          "not": {
+            "u_has_effect": "pkmn_fainted"
+          }
+        },
+        "then": {
+          "math": [
+            "u_hp('ALL') = min(u_hp_max('torso'), u_hp('ALL') + 200)"
+          ]
+        }
+      },
+      {
+        "u_message": "You use the Hyper Potion on <u_name>.",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_max_potion",
+    "name": "Use Max Potion",
+    "description": "Fully restores the HP of one of your Pokémon.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_USE_MAX_POTION",
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_USE_MAX_POTION",
+    "effect": [
+      {
+        "if": {
+          "u_has_effect": "pkmn_fainted"
+        },
+        "then": {
+          "u_message": "It has fainted; a Potion won't wake it.  You need a Revive.",
+          "type": "bad"
+        }
+      },
+      {
+        "if": {
+          "not": {
+            "u_has_effect": "pkmn_fainted"
+          }
+        },
+        "then": {
+          "math": [
+            "u_hp('ALL') = u_hp_max('torso')"
+          ]
+        }
+      },
+      {
+        "u_message": "You use the Max Potion on <u_name>.",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_revive",
+    "name": "Use Revive",
+    "description": "Revives a fainted Pokémon and restores half of its HP.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_USE_REVIVE",
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_USE_REVIVE",
+    "effect": [
+      {
+        "u_lose_effect": "pkmn_fainted"
+      },
+      {
+        "math": [
+          "u_hp('ALL') = max(u_hp('ALL'), u_hp_max('torso') / 2)"
+        ]
+      },
+      {
+        "u_message": "You use the Revive on <u_name>.",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_max_revive",
+    "name": "Use Max Revive",
+    "description": "Revives a fainted Pokémon and fully restores its HP.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_USE_MAX_REVIVE",
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_USE_MAX_REVIVE",
+    "effect": [
+      {
+        "u_lose_effect": "pkmn_fainted"
+      },
+      {
+        "math": [
+          "u_hp('ALL') = u_hp_max('torso')"
+        ]
+      },
+      {
+        "u_message": "You use the Max Revive on <u_name>.",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_full_heal",
+    "name": "Use Full Heal",
+    "description": "Cures all status problems of one of your Pokémon.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_USE_FULL_HEAL",
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_USE_FULL_HEAL",
+    "effect": [
+      {
+        "if": {
+          "u_has_effect": "pkmn_fainted"
+        },
+        "then": {
+          "u_message": "It has fainted; a Potion won't wake it.  You need a Revive.",
+          "type": "bad"
+        }
+      },
+      {
+        "u_lose_effect": "pkmn_paralysis"
+      },
+      {
+        "u_lose_effect": "pkmn_sleep"
+      },
+      {
+        "u_lose_effect": "pkmn_freeze"
+      },
+      {
+        "u_lose_effect": "pkmn_burn"
+      },
+      {
+        "u_lose_effect": "pkmn_poison"
+      },
+      {
+        "u_lose_effect": "pkmn_slowed"
+      },
+      {
+        "u_lose_effect": "stunned"
+      },
+      {
+        "u_lose_effect": "downed"
+      },
+      {
+        "u_message": "You use the Full Heal on <u_name>.",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_full_restore",
+    "name": "Use Full Restore",
+    "description": "Fully restores HP and cures all status problems of one of your Pokémon.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_USE_FULL_RESTORE",
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_USE_FULL_RESTORE",
+    "effect": [
+      {
+        "if": {
+          "u_has_effect": "pkmn_fainted"
+        },
+        "then": {
+          "u_message": "It has fainted; a Potion won't wake it.  You need a Revive.",
+          "type": "bad"
+        }
+      },
+      {
+        "u_lose_effect": "pkmn_paralysis"
+      },
+      {
+        "u_lose_effect": "pkmn_sleep"
+      },
+      {
+        "u_lose_effect": "pkmn_freeze"
+      },
+      {
+        "u_lose_effect": "pkmn_burn"
+      },
+      {
+        "u_lose_effect": "pkmn_poison"
+      },
+      {
+        "u_lose_effect": "pkmn_slowed"
+      },
+      {
+        "u_lose_effect": "stunned"
+      },
+      {
+        "u_lose_effect": "downed"
+      },
+      {
+        "if": {
+          "not": {
+            "u_has_effect": "pkmn_fainted"
+          }
+        },
+        "then": {
+          "math": [
+            "u_hp('ALL') = u_hp_max('torso')"
+          ]
+        }
+      },
+      {
+        "u_message": "You use the Full Restore on <u_name>.",
+        "type": "good"
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_use_rare_candy",
+    "name": "Use Rare Candy",
+    "description": "Raises the level of one of your Pokémon by one.",
+    "valid_targets": [
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_USE_RARE_CANDY",
+    "shape": "blast",
+    "min_range": 3,
+    "max_range": 3,
+    "base_casting_time": 100,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_USE_RARE_CANDY",
+    "effect": [
+      {
+        "if": {
+          "u_has_effect": "pkmn_fainted"
+        },
+        "then": {
+          "u_message": "It has fainted; a Potion won't wake it.  You need a Revive.",
+          "type": "bad"
+        }
+      },
+      {
+        "math": [
+          "u_pkmn_level = value_or(u_pkmn_level, 5)"
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "u_pkmn_level >= 100"
+          ]
+        },
+        "then": {
+          "u_message": "<u_name> is already at the maximum level.",
+          "type": "neutral"
+        },
+        "else": [
+          {
+            "math": [
+              "u_pkmn_xp = value_or(u_pkmn_xp, 0) + 20 + u_pkmn_level * u_pkmn_level"
+            ]
+          },
+          {
+            "run_eocs": "EOC_PKMN_CHECK_LEVELUP"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "SPELL",
+    "id": "pkmn_pokedex_scan",
+    "name": "Pokédex scan",
+    "description": "Point the Pokédex at a Pokémon to read its data.",
+    "valid_targets": [
+      "hostile",
+      "ally"
+    ],
+    "targeted_monster_species": [
+      "POKEMON"
+    ],
+    "effect": "effect_on_condition",
+    "effect_str": "EOC_PKMN_POKEDEX_SCAN",
+    "shape": "blast",
+    "min_range": 20,
+    "max_range": 20,
+    "base_casting_time": 50,
+    "message": "",
+    "flags": [
+      "SILENT",
+      "NO_EXPLOSION_SFX",
+      "NON_MAGICAL",
+      "NO_FAIL",
+      "NO_HANDS",
+      "NO_LEGS"
+    ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_PKMN_POKEDEX_SCAN",
+    "effect": [
+      {
+        "math": [
+          "_lvl = value_or(u_pkmn_level, 0)"
+        ]
+      },
+      {
+        "math": [
+          "_hp = u_hp('ALL')"
+        ]
+      },
+      {
+        "math": [
+          "_hpmax = u_hp_max('torso')"
+        ]
+      },
+      {
+        "math": [
+          "_xp = round(value_or(u_pkmn_xp, 0))"
+        ]
+      },
+      {
+        "math": [
+          "_next = 20 + _lvl * _lvl"
+        ]
+      },
+      {
+        "if": {
+          "math": [
+            "u_val('friendly') != 0"
+          ]
+        },
+        "then": {
+          "u_message": "Pokédex: <u_name>, level <context_val:lvl>.  HP <context_val:hp>/<context_val:hpmax>.  Experience <context_val:xp>/<context_val:next> to the next level.",
+          "type": "info",
+          "popup": true
+        },
+        "else": {
+          "u_message": "Pokédex: wild <u_name>, about level <context_val:lvl>.  HP <context_val:hp>/<context_val:hpmax>.",
+          "type": "info",
+          "popup": true
+        }
+      }
+    ]
+  }
+]

@@ -112,6 +112,23 @@ python3 tools/generate_world.py  # NPCs, trainer battles, missions, maps, scenar
 * Files ending in `_gen.json` are generated, so edit the scripts rather than these files.
 * The rest of the files are handwritten: capture, items, effects, battle EOCs and the partner dialogue.
 
+## Testing
+
+`tests/pokemon_overhaul_test.cpp` is a Catch2 suite that runs inside the real game engine. Copy it
+into a CDDA 0.I checkout's `tests/` folder, build `cata_test`, symlink the mod into `data/mods/`, and run:
+
+```
+./tests/cata_test --mods=dda,pokemon_overhaul "[pokemon_overhaul]"
+```
+
+It covers: all 151 species loading; capture odds (Master Ball, weakened vs. healthy, trainer
+Pokémon blocked); wild level rolls and Pokédex registration; experience and level-ups from damage;
+Rare Candy; level, stone, Eevee and Link Cable evolutions; the type chart (2×, ½×, 4× and
+immunities); fainting, Revive and death on a second knockout; move power scaling and level-gated
+moves; Oak's starter; a full gym battle from challenge to badge, including badge requirements; and
+Pokémon Center healing. The vanilla `overmap_terrain_coverage` test also passes with the mod loaded.
+That test generates overmaps, checks that every new location spawns, and runs its mapgen.
+
 ## Known limitations
 * Pokémon battles are real-time CDDA combat, not turn-based. Your Pokémon pick their own moves.
 * Gym battles run on the honor system. Nothing stops you from shooting a Gym Leader's Onix.

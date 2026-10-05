@@ -1335,6 +1335,10 @@ class StoryBinder:
         rtags = set(room.tags)
         fit = [c for c in carriers if not self.w.resolve_def(c).get("habitat")
                or set(_as_list(self.w.resolve_def(c).get("habitat"))) & rtags]
+        # A second glyph beside the room's own would be impossible to tell apart when reading.
+        present = {e.def_id for e in self.w.descendants(room)}
+        names = {e.name.lower() for e in self.w.descendants(room)}
+        fit = [c for c in fit if c not in present]
         if fit:
             spec = {"id": _weighted(self.rng, fit, lambda c: 1 + 3 * bool(self.w.resolve_def(c).get("habitat")))}
         else:
@@ -1342,6 +1346,8 @@ class StoryBinder:
                     "description": self.w.string("lore_note_description", "A few lines of writing.")}
         doc = self.w.spawn_spec(spec, room)[0]
         doc.hidden = False
+        if doc.name.lower() in names:
+            doc.name = self.w.string("lore_note_name", "scrap of writing")
         if lore_id:
             doc.props["text"] = self.lore[lore_id]["text"]
             self.w.add_action(doc, "read", {"do": [self.lore[lore_id]["title"] + ": \"" + self.lore[lore_id]["text"] + "\"",

@@ -1,7 +1,7 @@
 # Patchwork Modding Guide
 
 Everything a player sees in Patchwork comes from mods: places, characters, items, verbs, rules,
-story, even the words "You can't go that way." A mod is a folder of JSON files. There is no code to
+the raw material of stories, even the words "You can't go that way." A mod is a folder of JSON files. There is no code to
 write: behaviour is described with small JSON conditions and effects that the engine interprets.
 
 * [1. Quick start](#1-quick-start)
@@ -12,7 +12,7 @@ write: behaviour is described with small JSON conditions and effects that the en
 * [6. Rooms and exits](#6-rooms-and-exits)
 * [7. Areas: hand-made places](#7-areas-hand-made-places)
 * [8. Regions: generated in-between places](#8-regions-generated-in-between-places)
-* [9. Story: beats and premises](#9-story-beats-and-premises)
+* [9. Story building blocks](#9-story-building-blocks) (important features, character profiles, events, obstacles, lore)
 * [10. Verbs and actions](#10-verbs-and-actions)
 * [11. Rules, events and hooks](#11-rules-events-and-hooks)
 * [12. The logic language](#12-the-logic-language) (references, matchers, conditions, effects, expressions, templates)
@@ -84,35 +84,52 @@ Any key starting with `//` is a comment and is ignored, at any depth.
 
 ## 2. How a world is woven
 
-When a new game starts:
+No mod contains a story. Mods contribute *building blocks*, and every new game the generator
+invents a plot, a cast, a quest chain and the lore to go with them:
 
 1. **Load.** The selected mods (plus their requirements) are sorted into load order and merged into
    one *registry* (section 4).
-2. **Choose a premise.** If any mod defines `premises`, the player picks one or gets a random one.
-   The premise sets the intro, the ending, the player's starting kit and the story *structure*,
-   for example `["opening", "middle*", "climax"]`.
-3. **Plan the story.** For each slot of the structure a **beat** is picked from *any* loaded mod
-   whose `stage` matches (`middle*` means as many middle beats as are available, up to a limit).
-   Beats prefer the premise's tags, and a beat that `needs` something prefers to come after a beat
-   that `provides` it.
-4. **Lay out the spine.** The start area comes first, then the area of each beat in story order.
-   Each area gets a *stage* number: 0 for the start, increasing along the spine.
-5. **Stitch.** Consecutive spine areas are joined by generated **filler rooms** from **regions**.
-   Regions are chosen by how well their tags match the two areas' themes, and the path may change
-   region halfway to make a transition (road becoming forest becoming marsh). If a beat has a
-   `gate`, the last step into its area is locked until the story reaches that beat.
-6. **Side content.** Every other area from the selected mods is attached as an optional side area.
-   Filler rooms sprout dead-end branches and a few loops, scaled by world size.
-7. **Populate.** Features tagged `scatter` (forage, trinkets) and `encounter` (creatures) are placed
-   in generated rooms whose tags match their `habitat`.
-8. **Bind the story.** Each beat's **roles** are filled, either by *finding* an existing entity (for
-   example "any relic placed earlier in the world") or by *spawning* one, often with a generated name.
-   If a role asks for a place the world lacks, the generator grows a spur of that region on demand.
-9. **Rumours.** Travellers (features tagged `wanderer`) are placed on the roads leading to each
-   beat, carrying that beat's `rumor` text.
+2. **Take inventory.** The story planner lists every character (a feature with a `profile`), every
+   item that `affords` something, everything marked `important` (items, characters, fixed features
+   and areas), every `obstacle` and every `event` the loaded mods offer.
+3. **Choose and cast an event.** An event is a situation, such as "the station AI goes rogue" or
+   "something precious was stolen", with *roles* to fill: a character whose motives fit, a place
+   with certain tags, an item that affords something. Events are weighted towards the ones that can
+   use the most important features, and each role is cast from whatever matches in *any* mod.
+   One of the event's *resolutions* becomes the finale.
+4. **Plan backwards from the finale.** The finale needs its means (say, a power coupling). The
+   planner decides how the player gets it, and each answer can need something else in turn:
+   * it lies somewhere: in an important place, or out in the wilds where it would naturally be;
+   * a character holds it, and hands it over when asked, or in return for a favour, an item they
+     `want`;
+   * it is locked in a container, or the area it is in sits behind a barrier: an **obstacle** whose
+     key is an item that affords what the obstacle `needs`;
+   * a character who knows where it is can be asked first.
+   The planner keeps choosing **important** features to fill these jobs, and afterwards weaves any
+   important feature still unused into the chain: as the key to a place the story needs, a gift for
+   a character, an informant, a place to investigate, or a feature to examine. Every important
+   feature ends up in the main quest.
+5. **Lay out the spine.** The order in which the plan opens up areas becomes the map's spine: the
+   start area first, then each area in story order, each with a *stage* number.
+6. **Stitch.** Consecutive spine areas are joined by generated **filler rooms** from **regions**.
+   Regions are chosen by how well their tags match the two areas' themes, and a path may change
+   region halfway (road into forest into marsh).
+7. **Side content.** Every other area is attached as a side area, and filler rooms sprout branches
+   and loops, scaled by world size.
+8. **Populate.** Features tagged `scatter` and `encounter` are placed in generated rooms whose
+   tags match their `habitat`.
+9. **Bind the story.** Everything is placed. Obstacles are built and their keys wired up. Every
+   character's quest dialogue is written in the voice of their personality, and they get a
+   conversation menu: who they are, what they want, the lore they know, advice, small talk. Lore
+   from the mods is mixed with event-specific lore and spread through dialogue and documents.
+   Travellers on the roads pass on hints.
 
-During play, the active beat's `objective` is checked after every command. When it is met, the beat
-completes, the next one starts, and the player is told where the story leads next.
+During play the current step's objective is checked after every command. Steps complete in any
+order the player manages: if you already hold the thing a step asks for, it completes at once.
+If a character a step needs is killed, the step settles itself rather than becoming impossible.
+
+The same mods with a different seed give a different story: another event, another cast, another
+chain of keys, favours and hiding places, other lore.
 
 ---
 
@@ -136,8 +153,8 @@ the `PATCHWORK_MODS` environment variable (colon-separated), and any `--mod-dir`
 
 Every other `.json` file in the folder is a content file. Its top-level keys are **sections**:
 
-`features`, `rooms`, `areas`, `regions`, `beats`, `premises`, `verbs`, `rules`, `macros`,
-`directions`, `grammar`, `strings`, `settings`.
+`features`, `rooms`, `areas`, `regions`, `events`, `obstacles`, `lore`, `verbs`, `rules`,
+`macros`, `directions`, `grammar`, `strings`, `settings`.
 
 ---
 
@@ -145,8 +162,8 @@ Every other `.json` file in the folder is a content file. Its top-level keys are
 
 All selected mods are merged in load order.
 
-* **Id sections** (`features`, `rooms`, `areas`, `regions`, `beats`, `premises`, `verbs`, `rules`,
-  `macros`, `directions`): an entry with the same id as an earlier one **replaces** it.
+* **Id sections** (`features`, `rooms`, `areas`, `regions`, `events`, `obstacles`, `lore`, `verbs`,
+  `rules`, `macros`, `directions`): an entry with the same id as an earlier one **replaces** it.
 * **Patching:** add `"_patch": true` to deep-merge into the existing entry instead:
 
   ```json
@@ -191,6 +208,7 @@ holds a letter. Descriptions are assembled from that nesting (section 5.3).
 | `on_enter`, `on_turn`, `on_tick`, `on_<anything>` | Hooks (section 11.3). |
 | `habitat` | For `scatter` and `encounter` features: room tags they can be placed in. |
 | `weight`, `min_stage` | Placement weight; earliest story stage an encounter may appear at. |
+| `important`, `affords`, `home`, `profile` | Story building blocks: see section 9. |
 
 **Inheritance (`extends`)**: parents merge in order, then the feature itself. `tags` and
 `aliases` are unioned, `props` merged, `features` concatenated, `actions` per verb are *stacked*
@@ -299,15 +317,17 @@ any word of that name works for it, even before the destination has been visited
 
 | Field | Meaning |
 | --- | --- |
-| `name` | Grammar allowed; available to text as `{beat.area}` and `{self.area}`. |
-| `tags` | `start` marks a possible starting area. Tags are also used by beats that ask for an area by tag and by region matching. |
+| `name` | Grammar allowed; available to text as `{area.<id>}` and `{self.area}`. |
+| `tags` | `start` marks a possible starting area. Tags are also matched by event place roles, obstacles and items' `home`, and by region matching. |
 | `theme` | Extra tags that steer which regions connect to this area. |
 | `rooms` | Object of inline room definitions (ids are local, registered as `area/room`), or a list of global room ids. |
 | `entrances` | Rooms that may be connected to the outside world (default: all rooms). |
 | `start` | Starting room when this is the start area. |
 | `room_tags` | Tags added to every room in the area. |
 | `directions` | Directions the generator may use when connecting this area (section 14). |
-| `only_with_beat` | Only build this area if a story beat uses it. |
+| `important` | The main quest must take the player here (section 9.1). |
+| `only_if_used` | Only build this area if the story uses it. |
+| `no_story` | The planner never places story things here. |
 | `include: false` | Never add it as side content. |
 | `allow_scatter` | Let scatter/encounter features appear in its rooms. |
 | `stage` | Upper bound for how deep into the story a side area may be attached. |
@@ -349,116 +369,160 @@ sandbox wilderness.
 
 ---
 
-## 9. Story: beats and premises
+## 9. Story building blocks
 
-### 9.1 Beats
+### 9.1 Important features
 
-A beat is one chapter. Beats from different mods are chained into a single story.
+Add `"important": true` to any feature (item, character, scenery) or area. The generator guarantees
+the player must interact with every important thing that exists in the world as part of the main
+quest. When all mods are enabled, all their important content is part of one story.
+
+* **Items** become keys, favours, things to find, or the finale's means.
+* **Characters** become quest-givers, holders, informants, people to help, victims or villains.
+* **Places** become locations of story steps, or are investigated for clues.
+* **Fixed features** (an orb, a well, a reactor socket) become a finale target or something to examine.
+
+Mark only what matters. Everything else is still in the world, but optional.
+
+Useful item fields for the planner:
+
+| Field | Meaning |
+| --- | --- |
+| `affords` | What the item can be used for: `unlock`, `access`, `code`, `power`, `light`, `tool`, `medicine`, `cure`, `holy`, `relic`, `evidence`, `fuel`... Free-form; obstacles and characters' `wants` use the same words. |
+| `home` | Tags of places where it would naturally be found (`["maintenance", "engineering"]`). The generator places it there, growing a region spur if needed. |
+
+### 9.2 Character profiles
+
+Any feature with a `profile` is a character the story can use.
 
 ```json
-"beats": {
-  "barrow_relic": {
-    "title": "The Barrow's Heart",
-    "stage": "middle",
-    "tags": ["fantasy", "relic"],
-    "area": "barrow",
-    "provides": ["relic"],
+"warden_core": {
+  "name": "WARDEN", "proper": true, "important": true, "tags": ["ai"],
+  "profile": {
+    "personality": ["cold"],
+    "motives": ["preserve", "control", "order"],
+    "motive_text": "preserve the reactor, whatever happens to the crew",
+    "goals": ["keep the reactor safe", "keep everyone exactly where they are"],
+    "backstory": "\"I am WARDEN. I manage Kestrel's life support, power and personnel.\"",
+    "roles": ["antagonist", "informant"],
+    "knows": ["station", "reactor", "crew"],
+    "wants": [],
+    "greet": ["On every screen, WARDEN's blue eye turns to you. \"Hello. Please remain where you are.\""],
+    "epilogue": ""
+  }
+}
+```
+
+| Field | Used for |
+| --- | --- |
+| `personality` | Chooses the voice of generated dialogue: `say_<kind>_<personality>` grammar (core has gruff, kind, nervous, cheerful, cold, cunning, weary, wise, stern). |
+| `motives`, `motive_text` | Matched by event roles (`"match": {"motive": [...]}`); `{x.motive}` in text. Villains explain themselves with it. |
+| `goals` | "What do you want?" in conversation; `{x.goal}`. |
+| `backstory` | "Who are you?"; `{x.backstory}`. |
+| `roles` | Which story jobs suit them: `antagonist`, `giver`, `informant`, `holder`, `ally`, `victim`, `authority` (default: everything except antagonist). |
+| `knows` | Lore tags they can talk about. |
+| `wants` | Affordances or tags of items they'd trade a favour for. |
+| `greet`, `give`, `ask`, `thanks`, `info`, `meet`, `confront`, `motive`, `who`, `goal`, `bye`, `lore_intro` | Optional lines of their own, used instead of the generic voice. |
+| `epilogue` | A line about their fate in the ending, if they helped. |
+
+Characters you author into an area stay there (unless an event says `"relocate": true`); others
+are placed by the generator, using `home` if given.
+
+### 9.3 Events
+
+An event is a situation that can befall the world, written with roles instead of fixed
+characters, so it plays out differently with every cast.
+
+```json
+"events": {
+  "derelict_rogue_ai": {
+    "title": ["Dead Signal", "The Quiet Machine"],
+    "tags": ["scifi", "station"],
     "roles": {
-      "relic": {"spawn": "barrow_relic", "in": {"feature": "def:barrow_sarcophagus"}, "name": "#relic_name#"}
+      "lair":    {"type": "place", "match": {"tags": ["engineering"]}},
+      "villain": {"type": "character", "match": {"motive": ["preserve", "control"], "role": ["antagonist"]}},
+      "heart":   {"type": "feature", "match": {"tag": ["reactor_heart"]}, "in": "lair", "spawn": "reactor_socket"},
+      "power":   {"type": "item", "match": {"affords": ["power"]}, "spawn": "fusion_coupling"}
     },
-    "intro": "Somewhere ahead lies {beat.area}...",
-    "hint": "Find a way into the sanctum and claim {beat.relic.name}.",
-    "hook": "The old barrow, {beat.area}, has been broken open.",
-    "rumor": ["They say {beat.area} stands open now."],
-    "objective": {"has": "role:relic"},
-    "complete_text": "As your fingers close around {beat.relic.name}..."
+    "hook": "... the station's AI, {villain}, greets you politely and asks you to remain exactly where you are.",
+    "goal": "Restart the reactor in {lair} by fitting {power} into {heart}.",
+    "resolutions": [
+      {"verb": "put", "target": "heart", "means": "power", "title": "Restart the reactor",
+       "text": "{means.The} locks home in {target} ..."}
+    ],
+    "consequences": [{"flag": "station_dark"}],
+    "lore": [{"title": "Why the lights went out", "text": "{villain.The} shut the reactor down ..."}],
+    "ending": "Your shuttle pulls away with the survivors ..."
   }
 }
 ```
 
 | Field | Meaning |
 | --- | --- |
-| `title` | Chapter title (grammar allowed). |
-| `stage` | `opening`, `middle`, `climax` (or any custom stage a premise uses). May be a list. Default `middle`. |
-| `tags`, `weight` | Used to prefer beats that suit the premise. |
-| `area` | Area id, `{"tags": [...]}` to use any matching area, or omitted (the beat happens wherever the story has reached). A beat whose area isn't loaded is skipped. |
-| `roles` | Named entities the beat is about (below). |
-| `spawn` | Extra specs to place; each may have an `in` (placement). |
-| `intro` | Printed when the beat starts. |
-| `journal` / `hint` | Journal entry when the beat starts; `hint` is also shown by `journal`. |
-| `hook` | One sentence describing this beat's trouble. **Other** mods' characters use it via `{next.hook}`; that is how a village elder from one mod can send you to a dungeon from another. |
-| `lead` | Printed after the previous beat completes. Defaults to the `default_lead` string ("Your path now leads toward {beat.area}"). |
-| `rumor` | Lines given to wandering travellers on the roads leading to this beat. |
-| `objective` | Condition; the beat completes when it is true (checked every command). Omit it to complete only via the `complete_beat` effect. |
-| `on_start`, `on_complete` | Effects. |
-| `complete_text` | Printed on completion. |
-| `gate` | `true` or a message: the path into this beat's area is blocked until the beat is reached. |
-| `needs`, `provides` | Ordering hints: beats that need `X` prefer to follow a beat that provides `X`. |
-| `premises` | Restrict the beat to these premise ids. |
+| `roles` | `type` is `character`, `item`, `place` or `feature`. `match` keys: `tags` (all), `any_tags`, `tag`, `affords`, `motive`, `personality`, `role`, `def`, `id`. `in` limits a feature to another role's place. `spawn` is the fallback if nothing in any mod matches. `optional` roles may stay empty. `relocate` moves an authored character away from home (a missing person). |
+| `resolutions` | Ways to end it. `verb` (`use`, `put`, `give`, `light`, `talk`, `attack`...), `target` role, optional `means` role, `title`, `text`, `effects`, `requires_mods`. One is the planned finale; all valid ones work. `attack` needs the target to be a creature (Steel & Peril). |
+| `hook`, `goal` | The opening text and the overall objective shown in the journal. |
+| `title` | Story title (a list picks one). |
+| `consequences` | Effects run when the game starts. |
+| `lore` | Story-specific lore entries (section 9.5). |
+| `ending` | Shown when the story completes, followed by epilogues of characters who helped. |
+| `tags`, `weight`, `requires_mods` | Selection. Events whose tags match the loaded areas are preferred. |
 
-**Roles.** Each role is filled when the world is generated:
+In text, role names are placeholders: `{villain}` renders "WARDEN" or "the barrow wight" (with the
+right article), `{villain.The}` at the start of a sentence, `{villain.motive}` the profile's motive.
+Place roles render as the area's name.
 
-```json
-"roles": {
-  "giver":   {"find": {"tag": "quest_giver"}, "where": "area"},
-  "villain": {"spawn": "sorcerer", "in": {"room": "top"}, "name": "#villain_name#"},
-  "bane":    {"find": {"tag": "relic"}, "spawn": "spire_bane", "in": {"feature": "def:spire_shelves"}},
-  "loot":    "gold_crown"
-}
-```
+The **Storyteller's Almanac** mod provides setting-neutral events (a theft, a blight, a
+disappearance) so any combination of places and characters can produce a story. With no events at
+all, the generator still builds a quest out of the important features.
 
-* `find`: a matcher. An existing entity is used. `where` is `area` (in this beat's area), `start`, or
-  `reachable` (default: anywhere already reachable at this point in the story). Entities may fill
-  roles in several beats; add `"exclusive": true` to prevent that.
-* `spawn`: a spec, used if `find` is absent or found nothing. `in` is the **placement**:
-  * `"area"` (default): a random room of the beat's area
-  * `{"room": "local_room_id"}`, `{"room_tags": [...]}`, `{"area": "area_id"}`
-  * `{"feature": matcher}`: *inside* a matching feature in the area (in a chest, on an altar)
-  * `{"role": "giver"}`: carried by another role (set `"hidden": true` and hand it over in dialogue)
-  * `{"region": "maintenance"}`: a generated room with that tag. If the world doesn't have one yet, a spur of a matching region is **grown** to hold it.
-  * `"before"` (a generated room reachable before this beat's gate), `"anywhere"`, `"start"`, `"player"`
-* `name` renames the entity with grammar (proper noun unless `"proper": false`). `props`, `tags`
-  and `hidden` adjust it. `"optional": true` lets the beat proceed if the role can't be filled;
-  otherwise the beat is dropped (and its gate removed).
-* A string is shorthand for `{"spawn": "<id>"}`.
+### 9.4 Obstacles
 
-Text can refer to roles as `{beat.villain}` / `{beat.villain.name}` (this beat) or `{role.villain}`
-(the current beat first, then any beat). Conditions use `"role:villain"`.
-
-### 9.2 Premises
+Obstacles are locks the planner puts in the player's way. A `barrier` blocks the way into an area
+(it is placed in the room just before, and the exit is closed until it opens); a `container` holds
+something the story needs.
 
 ```json
-"premises": {
-  "waning_light": {
-    "title": "The Waning Light",
-    "menu_name": "The Waning Light (fantasy)",
-    "tags": ["fantasy"],
-    "beat_tags": ["fantasy"],
-    "strict": true,
-    "structure": ["opening", "middle*", "climax"],
-    "start_area": {"tags": ["start", "fantasy"]},
-    "intro": "Each evening the sun sets a little earlier... You are {var.player_name}...",
-    "ending": "And so the light returned...",
-    "inventory": [{"name": "worn cloak", "extends": ["portable"]}],
-    "player": {"props": {"courage": 3}}
+"obstacles": {
+  "card_reader_door": {
+    "kind": "barrier",
+    "needs": ["access"],
+    "tags": ["station", "scifi"],
+    "key": "maintenance_keycard",
+    "feature": {"name": "blast door", "aliases": ["door", "reader"],
+                "appearance": [{"if": {"prop": "open"}, "text": "A blast door stands open."},
+                               {"text": "A blast door seals the way on. The card reader blinks red."}]},
+    "open_text": "You swipe {key}. The blast door grinds open.",
+    "locked_text": "ACCESS DENIED, says the card reader.",
+    "blocked": "The blast door is sealed."
   }
 }
 ```
 
-| Field | Meaning |
-| --- | --- |
-| `structure` | Stage slots. `stage*` means as many beats of that stage as available (up to `max_middle_beats`). |
-| `beats` | An explicit list of beat ids instead of a structure. |
-| `beat_tags` | Preferred beat tags. With `"strict": true`, beats must share one of them (keeps a sci-fi story free of fantasy chapters when both kinds of mod are loaded). |
-| `start_area`, `start_room` | Area id or `{"tags": [...]}`; optional room override. |
-| `intro`, `ending` | Printed at the start and when the last beat completes. |
-| `end_on_complete` | End the game when the story completes (default: keep exploring). |
-| `player`, `inventory` | Fields merged onto the player; starting item specs. |
-| `vars`, `flags` | Initial global variables and flags. |
-| `weight` | Chance of being picked at random. |
+`needs` lists affordances; any item that `affords` one of them opens it (`use <key> on <obstacle>`,
+or `open`/`unlock` while carrying it). The planner prefers important items as keys. `key` is a
+fallback item to generate when no important item fits (limited to a couple per story). `tags`
+restrict which places it suits; an obstacle with no tags suits anywhere. `consume: true` uses the
+key up, and `verbs` adds extra verbs that open it.
 
-With no premise, beats are still chained using the default structure, and a world with no beats is
-free exploration.
+### 9.5 Lore
+
+```json
+"lore": {
+  "kestrel_warden": {"title": "WARDEN", "about": ["def:warden_core"], "tags": ["station", "reactor"],
+                     "text": "WARDEN was installed to manage life support and the reactor..."}
+}
+```
+
+`about` lists what must be in this world for the entry to exist: `def:<feature>`, `area:<area>`,
+`tag:<tag>`, `event:<event>`, `cast:<role>` (and its placeholders become usable), `mod:<id>`.
+`chance` makes it occasional. Grammar in the text makes each telling different.
+
+Each game, the eligible lore is mixed with the chosen event's own lore. Characters share lore whose
+tags match their profile's `knows` (in quest dialogue and as "Tell me about..." options), story
+steps reveal it, and the rest is written into **lore carriers** (features tagged `lore_carrier`,
+with a `habitat` such as data pads on a station or waystones in the wilds) scattered around the
+world. Reading or hearing lore records it; the `lore` command reviews it.
 
 ---
 
@@ -551,7 +615,7 @@ In handlers, `self` is the feature that owns the action, `target` is the command
 | `travel` | Moving along an exit (before arriving) | `self` = origin, `target` = destination, `{distance}` |
 | `enter` | Arrived in a room | `self` = room, `{first}` true on first visit |
 | `before:<verb>`, `before:*`, `after:<verb>`, `after:*` | Around every command | `target`, `second`, `{verb}` |
-| `story_complete` | The last beat completed | |
+| `story_complete` | The story's last step completed | |
 | anything | `{"emit": "name"}` from any effect | the emitter's context |
 
 Bundled mods emit `ate`, `drank`, `read` and `killed`, so your rules can react to them.
@@ -576,7 +640,7 @@ Bundled mods emit `ate`, `drank`, `read` and `killed`, so your rules can react t
 | `self`, `target`, `second`, `player`, `room` | as named (`room` is the player's room) |
 | `parent`, `holder` | parent of self; room containing self |
 | `it`, `local:name` | an entity stored in a local variable (`for_each`, `spawn ... as`, `find ... as`) |
-| `role:name`, `role:beat_id.name` | a story role |
+| `role:name` | a member of the generated story's cast (`role:villain`) |
 | `here:<matcher>` | first matching visible entity in self's room |
 | `carried:<matcher>` | first matching thing the player carries |
 | `near:<matcher>` | first matching thing the player can see or carry |
@@ -614,7 +678,7 @@ and a plain string is an expression (12.5).
 | `{"clock": {"gte": 100}}`, `{"turns": 10}` | time |
 | `{"visited": matcher}` | the player has been to a matching room |
 | `{"mod": "combat"}` | a mod is loaded (great for optional cross-mod content) |
-| `{"beat_active": id}`, `{"beat_done": id}`, `{"beat_reached": id}`, `{"next_beat": true}`, `{"story_complete": true}` | story state |
+| `{"step_active": id}`, `{"step_done": id}`, `{"step_reached": id}`, `{"next_step": true}`, `{"story_complete": true}`, `{"flag": "story_resolved"}`, `{"lore_known": id}` | story state |
 | `{"local": "name", "gt": 0}`, `{"args": "text"}` | local variables / raw command text |
 | `{"expr": "player.health < 5"}` | expression |
 
@@ -645,7 +709,8 @@ A string effect is shorthand for `say`. Effects run in order.
 | `{"connect": {"from": ref, "to": ref, "dir": d, "distance": n}}` | create a new exit (secret passages) |
 | `{"show": "room"/"examine"/"inventory"/"journal"/"exits"/"map", "of": ref}`, `{"describe": ref}` | display |
 | `{"journal": text, "quiet": true}` | add a journal entry |
-| `{"complete_beat": id_or_true}`, `{"lead": true}` | story control |
+| `{"complete_step": id_or_true}`, `{"lead": true}` (show the current step's hint), `{"learn": lore_id}` | story control |
+| `{"inherit": verb, "on": ref}` | run the definition's own handlers for a verb (the generated conversation menu uses it for "small talk") |
 | `{"emit": event}`, `{"hook": "on_death", "on": ref}`, `{"macro": id, "with": {...}}` | call other logic |
 | `{"advance": n}` | pass time |
 | `{"interrupt": true}` | stop a multi-leg journey |
@@ -677,9 +742,11 @@ Every text runs through grammar (`#symbol#`, section 13) and then placeholders:
 | `{self}`, `{target}` ... | "the lantern" (proper nouns without "the") |
 | `{x.name}`, `{x.a}`, `{x.the}`, `{x.Name}`, `{x.A}`, `{x.The}` | name forms |
 | `{x.<prop>}`, `{x.contents}`, `{x.area}`, `{x.room}` | property, list of visible contents, area name, room name |
-| `{beat.title}`, `{beat.area}`, `{beat.<role>}`, `{beat.<role>.name}`, `{beat.hint}`, `{beat.hook}` | the current beat (or the beat being described) |
-| `{next.*}`, `{prev.*}` | the next / previous beat |
-| `{role.<name>}` | a role entity |
+| `{step.title}`, `{step.hint}`, `{step.place}`, `{step.<ref>}` | the current story step |
+| `{next.*}`, `{prev.*}` | the next / previous step |
+| `{cast.<role>}`, `{role.<role>}` | a member of the story's cast |
+| `{x.motive}`, `{x.goal}`, `{x.backstory}`, `{x.personality}` | from a character's profile |
+| `{area.<id>}` | an area's generated name |
 | `{var.x}`, `{clock}`, `{args}`, `{story}`, `{string.key}` | globals |
 | `{name}` | a local variable (an entity stored in a local renders as "the <name>"; use `{name.name}` for the bare name) |
 | `{=expression}` | computed value |
@@ -733,17 +800,17 @@ See `mods/core/strings.json` for the full list (for example `exits_line`, `not_h
 
 | Setting | Default | Meaning |
 | --- | --- | --- |
-| `default_structure` | `["opening","middle*","climax"]` | story structure without a premise |
-| `max_middle_beats` | 4 | cap for `middle*` |
 | `path_length` | `[2,4]` | filler rooms between areas (before size scaling), if a region gives none |
 | `filler_distance`, `direct_distance` | `[1,3]`, `[3,6]` | exit distances |
 | `branch_chance`, `loops` | 0.35, `[1,3]` | dead-end branches and extra loops |
 | `scatter_chance`, `encounter_chance` | 0.45, 0.25 | per generated room |
-| `rumour_chance` | 0.5 | chance of a second rumour-carrier per beat |
+| `rumour_chance` | 0.5 | chance of a traveller carrying each step's hint |
+| `story_max_locks` | 3 | obstacles per story, plus one per important item that could be a key |
+| `story_generic_locks` | 2 | obstacles whose key the generator invents |
+| `lore_documents` | 5 | lore carriers to scatter (scaled by world size) |
 | `max_side_areas` | 12 | optional areas to attach |
 | `sandbox_size` | `[10,16]` | rooms in a story-less, area-less world |
 | `time_per_distance` | 1 | clock units per unit of distance |
-| `auto_lead` | true | print the next beat's lead when one completes |
 | `directions` | all default | directions available to the generator everywhere |
 
 ---
@@ -756,11 +823,14 @@ See `mods/core/strings.json` for the full list (for example `exits_line`, `not_h
   is loaded.
 * **`{"mod": "id"}` conditions** branch on what's loaded (the hamlet priest's blessing raises max
   health only with Steel & Peril).
-* **Tags, not ids.** Ask for `pick_tag`, `find: {"tag": ...}`, `area: {"tags": [...]}`, `habitat`.
-  Then any mod can supply the thing. The Spire's victory needs *any* `relic`: it finds the Barrow's
-  if present, and otherwise hides its own.
-* **Hooks between chapters.** Use `{next.hook}` and `{"lead": true}` in your characters' dialogue so
-  they point at whatever chapter comes next, from whichever mod.
+* **Describe, don't name.** Event roles match by motive, tags and affordances, never by id, so
+  other mods' content can fill them. The Spire's eclipse can be broken by *anything* that affords
+  `light`: its own star-glass shard, the Barrow's relic, the Hamlet's saint's bell, a flashlight
+  from Derelict. A greedy innkeeper from one mod can be the thief in another mod's event.
+* **Give characters full profiles.** The more motives, roles, wants and knowledge a character has,
+  the more stories they can be cast in.
+* **Use `{"lead": true}`** in authored dialogue to have a character point at whatever the current
+  story needs.
 * **Patching.** `load_after` the mod you patch and use `"_patch": true`. Steel & Peril gives the
   core player health and makes core `edible` things heal.
 
@@ -783,25 +853,29 @@ menus.
 
 ## 17. Worked example: The Drowned Lighthouse
 
-`examples/lighthouse/` is a complete mod you can copy. It adds:
+`examples/lighthouse/` is a complete mod you can copy. It contains no story; just the pieces for one:
 
-* an **area** (`lighthouse`) of three rooms joined by authored exits (`north`, `up`), with one
-  room whose description changes once the lamp is lit;
+* an **important area** (`lighthouse`) of three rooms, one whose description changes once the
+  story is resolved;
 * a **region** (`coast`) of generated shore rooms, which the generator picks to approach it
   because the area's `theme` includes `coast`;
-* a **beat** (`lighthouse_relight`, stage `middle`) whose role `keeper` is *found* in the area,
-  whose `hook` lets the village elder from Hearthside Hamlet send you there, whose `rumor` is given
-  to travellers on the way, and whose `objective` is a flag;
-* **features**: a keeper with conditional dialogue, an oil cask (container) holding a can of oil,
-  and a great lamp with two ways to light it (`light lamp` while carrying oil, or
-  `put oil in lamp` via `put_with`).
+* a **character** (the keeper) with a profile: gruff and weary, motivated by duty, wants `fuel` or
+  `food`, knows about the sea; usable as a quest-giver, informant, holder or victim in *any* event;
+* **important features**: the great lamp (tagged `lamp_heart`) and a can of lamp oil that
+  `affords` `fuel` and `light`, with `home` tags so it turns up somewhere sensible;
+* an **event** (`dark_lamp`) whose roles are "a place tagged lighthouse", "a lamp feature in it" and
+  "something that affords fuel", resolved by `light`ing the lamp while carrying the means;
+* **lore** about the lighthouse.
 
-Try it:
+Try it on its own, then mixed with everything else:
 
 ```bash
-./patchwork.sh --mod-dir examples --mods lighthouse,wilds,hamlet,barrow,spire,saga_waning_light --map --seed 8
+./patchwork.sh --mod-dir examples --mods core,lighthouse --map --seed 3
+./patchwork.sh --mod-dir examples --mods core,tales,wilds,hamlet,barrow,spire,lighthouse --map --seed 8
 ```
 
-The saga premise's `middle*` slot now holds two chapters, the barrow and the lighthouse, in an order
-chosen per world, with the spire still the finale. That is the whole idea of Patchwork: you write a
-self-contained piece, and the generator finds it a place in everyone else's story.
+Alone, it makes a short story about relighting the lamp. Mixed in, the lighthouse and its keeper
+become part of someone else's story. The keeper might hold the key to the barrow, or the lamp oil
+might be the light that breaks the sorcerer's ward, and when its own event is chosen, the other
+mods' characters and places become part of the lighthouse's story. You write self-contained pieces;
+the generator writes the story.

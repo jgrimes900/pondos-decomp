@@ -15,7 +15,7 @@ import os
 # Sections whose entries are keyed by id.  Later mods replace earlier entries
 # with the same id, or deep-merge into them when the entry has "_patch": true.
 ID_SECTIONS = (
-    "features", "rooms", "areas", "regions", "beats", "premises",
+    "features", "rooms", "areas", "regions", "events", "obstacles", "lore",
     "verbs", "rules", "directions", "macros",
 )
 # Sections that are plain key -> value maps merged key by key.

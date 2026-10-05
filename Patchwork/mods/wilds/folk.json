@@ -1,0 +1,208 @@
+{
+  "features": {
+    "hermit": {
+      "extends": [
+        "person"
+      ],
+      "name": "#given# the hermit",
+      "proper": true,
+      "aliases": [
+        "hermit",
+        "old man",
+        "old woman",
+        "recluse"
+      ],
+      "home": [
+        "forest",
+        "hills",
+        "wild"
+      ],
+      "appearance": "{self.Name} sits outside a lean-to of branches, whittling something small.",
+      "description": "Wild-haired, barefoot and entirely unbothered by the weather.",
+      "profile": {
+        "personality": [
+          "wise",
+          "weary"
+        ],
+        "motives": [
+          "solitude",
+          "knowledge"
+        ],
+        "motive_text": "be left alone with the trees",
+        "goals": [
+          "finish carving a bird that looks like it could fly",
+          "outlive the village gossip"
+        ],
+        "backstory": "\"I lived in the village once. Then I met the forest. The forest was better company.\"",
+        "roles": [
+          "informant",
+          "holder",
+          "giver",
+          "ally"
+        ],
+        "knows": [
+          "forest",
+          "history",
+          "barrow",
+          "magic"
+        ],
+        "wants": [
+          "food",
+          "tool"
+        ],
+        "epilogue": "{speaker.The} carves a little wooden figure of you, and sets it on a stump where the birds can see it."
+      }
+    },
+    "herbalist": {
+      "extends": [
+        "person"
+      ],
+      "name": "#given# the herb-wife",
+      "proper": true,
+      "aliases": [
+        "herbalist",
+        "herb-wife",
+        "wise woman",
+        "healer"
+      ],
+      "home": [
+        "forest",
+        "river",
+        "marsh",
+        "road"
+      ],
+      "appearance": "{self.Name} is picking through the undergrowth, a basket of leaves on one arm.",
+      "description": "Brisk, sharp-eyed, and smelling powerfully of mint.",
+      "profile": {
+        "personality": [
+          "kind",
+          "stern"
+        ],
+        "motives": [
+          "heal",
+          "knowledge"
+        ],
+        "motive_text": "find a cure for every ill under the sky",
+        "goals": [
+          "find the last ingredient for a remedy nobody has made in a century"
+        ],
+        "backstory": "\"Somebody has to know which leaf cures and which one kills. It might as well be me.\"",
+        "roles": [
+          "informant",
+          "holder",
+          "giver",
+          "ally",
+          "victim"
+        ],
+        "knows": [
+          "forest",
+          "rumour",
+          "road"
+        ],
+        "wants": [
+          "food",
+          "medicine",
+          "plant"
+        ],
+        "epilogue": "{speaker.The} names a newly found herb after you. It smells awful, but it cures warts."
+      }
+    },
+    "waystone": {
+      "extends": [
+        "scenery",
+        "readable"
+      ],
+      "name": "carved waystone",
+      "aliases": [
+        "waystone",
+        "stone",
+        "carving"
+      ],
+      "tags": [
+        "lore_carrier"
+      ],
+      "habitat": [
+        "outdoor",
+        "forest",
+        "hills",
+        "road",
+        "river",
+        "marsh"
+      ],
+      "appearance": "A waystone stands here, its face covered in carving.",
+      "description": "Someone has carved a long inscription into its face, letter by careful letter."
+    },
+    "journal_page": {
+      "extends": [
+        "portable",
+        "readable"
+      ],
+      "name": "torn journal page",
+      "aliases": [
+        "page",
+        "journal",
+        "paper"
+      ],
+      "tags": [
+        "lore_carrier"
+      ],
+      "habitat": [
+        "outdoor",
+        "settlement",
+        "dungeon",
+        "ancient",
+        "fantasy",
+        "forest",
+        "road"
+      ],
+      "description": "A page torn from somebody's journal, the ink blurred by rain."
+    }
+  },
+  "lore": {
+    "wilds_old_roads": {
+      "title": "The old roads",
+      "about": [
+        "tag:road"
+      ],
+      "tags": [
+        "road",
+        "history"
+      ],
+      "text": "The roads here are older than the kingdoms that claim them. Some say they were laid by people who walked between the stars and the earth."
+    },
+    "wilds_forest_rule": {
+      "title": "The forest's rule",
+      "about": [
+        "tag:forest"
+      ],
+      "tags": [
+        "forest",
+        "rumour"
+      ],
+      "text": "Never take more from the forest than you can carry, and never carry more than you can give back."
+    },
+    "wilds_lights": {
+      "title": "Marsh lights",
+      "about": [
+        "tag:marsh"
+      ],
+      "tags": [
+        "rumour",
+        "forest"
+      ],
+      "chance": 0.8,
+      "text": "The lights over the marsh are the souls of travellers who took the wrong path. Follow them, and you will join them."
+    },
+    "wilds_standing_stones": {
+      "title": "The standing stones",
+      "about": [
+        "def:standing_stone"
+      ],
+      "tags": [
+        "history",
+        "magic"
+      ],
+      "text": "The spiral stones were raised to remember something. Nobody remembers what. The stones, presumably, do."
+    }
+  }
+}

@@ -90,26 +90,23 @@ class Interpreter:
     # References and matchers
     # ------------------------------------------------------------------
     def role(self, name, ctx):
+        """A member of the generated story's cast ("villain", "means"...) or a
+        name referenced by a story step ("step.item")."""
         story = self.world.story
-        beats = story.get("beats", [])
-        if "." in name:
-            bid, rname = name.split(".", 1)
-            for b in beats:
-                if b["id"] == bid:
-                    return self.world.get(b["roles"].get(rname))
-            return None
-        order = []
-        if ctx is not None and ctx.beat is not None and ctx.beat < len(beats):
-            order.append(beats[ctx.beat])
-        cur = story.get("current", 0)
-        if cur < len(beats):
-            order.append(beats[cur])
-        order.extend(beats)
-        for b in order:
-            uid = b["roles"].get(name)
-            if uid:
-                return self.world.get(uid)
-        return None
+        uid = (story.get("cast") or {}).get(name)
+        if uid is None:
+            steps = story.get("steps", [])
+            order = []
+            if ctx is not None and ctx.beat is not None and ctx.beat < len(steps):
+                order.append(steps[ctx.beat])
+            cur = story.get("current", 0)
+            if cur < len(steps):
+                order.append(steps[cur])
+            for st in order:
+                if name in st.get("refs", {}):
+                    uid = st["refs"][name]
+                    break
+        return self.world.get(uid) if uid else None
 
     def ref(self, ref, ctx):
         """Resolve a reference string to an Entity (or None)."""
@@ -286,8 +283,20 @@ class Interpreter:
         if attr == "contents":
             kids = self.world.visible_children(ent)
             return textutil.join_list(textutil.group_names(kids)) if kids else self.world.string("nothing", "nothing")
+        if attr in ("motive", "personality", "goal", "backstory") or attr in (ent.profile or {}):
+            return self.profile_text(ent, attr)
         val = ent.props.get(attr)
         return "" if val is None else val
+
+    def profile_text(self, ent, attr):
+        prof = ent.profile or {}
+        key = {"motive": "motive_text", "goal": "goals"}.get(attr, attr)
+        val = prof.get(key, prof.get(attr))
+        if isinstance(val, list):
+            if attr in ("personality",):
+                return textutil.join_list([str(v) for v in val])
+            return str(val[0]) if val else ""
+        return "" if val is None else str(val)
 
     def _placeholder(self, body, ctx, original):
         body = body.strip()
@@ -311,8 +320,16 @@ class Interpreter:
             if ent is None:
                 return "someone"
             return str(self._entity_attr(ent, parts[2] if len(parts) > 2 else None))
-        if root in ("beat", "next", "prev"):
+        if root in ("step", "beat", "next", "prev"):
             return str(self._beat_attr(root, parts[1:], ctx))
+        if root == "cast" and len(parts) >= 2:
+            ent = self.world.get((w.story.get("cast") or {}).get(parts[1]))
+            if ent is None:
+                return "someone"
+            return str(self._entity_attr(ent, parts[2] if len(parts) > 2 else None))
+        if root == "area" and len(parts) == 2:
+            area = w.areas.get(parts[1])
+            return area["name"] if area else parts[1]
         if root == "var" and len(parts) == 2:
             return str(w.vars.get(parts[1], 0))
         if root == "clock":
@@ -336,30 +353,21 @@ class Interpreter:
         return cur
 
     def _beat_attr(self, which, parts, ctx):
-        beats = self.world.story.get("beats", [])
+        steps = self.world.story.get("steps", [])
         idx = self.beat_index(which, ctx)
-        if idx < 0 or idx >= len(beats):
+        if idx < 0 or idx >= len(steps):
             return ""
-        b = beats[idx]
+        st = steps[idx]
         attr = parts[0] if parts else "title"
-        if attr == "title":
-            return b.get("title", "")
-        if attr == "area":
-            area = self.world.areas.get(b.get("area") or "")
-            return area["name"] if area else "parts unknown"
-        if attr in b["roles"]:
-            ent = self.world.get(b["roles"][attr])
+        if attr in st.get("refs", {}):
+            ent = self.world.get(st["refs"][attr])
             if ent is None:
                 return "something"
             return self._entity_attr(ent, parts[1] if len(parts) > 1 else None)
-        if attr == "id":
-            return b["id"]
-        bdef = self.world.registry["beats"].get(b["id"], {})
-        val = bdef.get(attr)
-        if isinstance(val, list) and val:
-            val = val[0]
-        if val is None:
-            val = self.world.string("default_" + attr) or None
+        if attr == "place":
+            area = self.world.areas.get(st.get("place") or "")
+            return area["name"] if area else self.world.string("somewhere", "somewhere")
+        val = st.get(attr)
         if isinstance(val, str):
             return self.render(val, ctx.derive(beat=idx))
         return ""
@@ -444,24 +452,23 @@ class Interpreter:
             ids = {m["id"] for m in w.registry.mods}
             vals = val if isinstance(val, list) else [val]
             return all(v in ids for v in vals)
-        if key in ("beat_done", "beat_active", "beat_reached"):
-            beats = w.story.get("beats", [])
+        if key in ("step_done", "step_active", "step_reached", "beat_done", "beat_active", "beat_reached"):
+            steps = w.story.get("steps", [])
             cur = w.story.get("current", 0)
-            idx = None
-            for i, b in enumerate(beats):
-                if b["id"] == val or i == val:
-                    idx = i
+            idx = next((i for i, st in enumerate(steps) if st["id"] == val or i == val), None)
             if idx is None:
-                return key == "beat_reached"  # unknown/unused beat: treat as open
-            if key == "beat_done":
-                return beats[idx].get("state") == "done"
-            if key == "beat_active":
-                return idx == cur and beats[idx].get("state") == "active"
+                return key.endswith("reached")
+            if key.endswith("done"):
+                return steps[idx].get("state") == "done"
+            if key.endswith("active"):
+                return idx == cur and steps[idx].get("state") == "active"
             return cur >= idx or w.story.get("complete")
-        if key == "next_beat":
-            beats = w.story.get("beats", [])
+        if key in ("next_step", "next_beat"):
+            steps = w.story.get("steps", [])
             nxt = (ctx.beat if ctx.beat is not None else w.story.get("current", 0)) + 1
-            return (nxt < len(beats)) == bool(val)
+            return (nxt < len(steps)) == bool(val)
+        if key == "lore_known":
+            return val in w.story.get("lore_known", [])
         if key == "story_complete":
             return bool(w.story.get("complete")) == bool(val)
         if key == "expr":
@@ -688,8 +695,14 @@ class Interpreter:
             for item in items:
                 if item.uid in w.entities:
                     self.run(eff.get("do"), ctx.derive(local={"it": item.uid}))
-        elif "complete_beat" in eff:
-            self.engine.complete_beat(eff["complete_beat"])
+        elif "complete_step" in eff or "complete_beat" in eff:
+            self.engine.complete_beat(eff.get("complete_step", eff.get("complete_beat")))
+        elif "learn" in eff:
+            self.engine.learn(self.render(eff["learn"], ctx), quiet=eff.get("quiet", False))
+        elif "inherit" in eff:
+            ent = self.ref(on or "self", ctx)
+            if ent is not None:
+                self.run_handlers(w.handlers(ent, eff["inherit"], "def"), ctx.derive(self_ent=ent))
         elif "lead" in eff:
             self.engine.show_lead(ctx)
         elif "interrupt" in eff:
@@ -738,7 +751,9 @@ class Interpreter:
     # ------------------------------------------------------------------
     def fire(self, event, ctx):
         """Run every rule listening for *event*."""
-        rules = self.world.registry["rules"]
+        rules = dict(self.world.registry["rules"])
+        for idx, rule in enumerate(self.world.dynamic_rules):
+            rules["~story%d" % idx] = rule
         ordered = sorted(rules.items(), key=lambda kv: (kv[1].get("priority", 50), kv[0]))
         for rid, rule in ordered:
             on = rule.get("on")

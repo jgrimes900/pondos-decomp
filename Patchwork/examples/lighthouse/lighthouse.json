@@ -2,123 +2,331 @@
   "areas": {
     "lighthouse": {
       "name": "#cape_name# Light",
-      "tags": ["coast", "fantasy"],
-      "theme": ["coast", "river", "road"],
-      "entrances": ["path"],
+      "tags": [
+        "coast",
+        "fantasy",
+        "lighthouse"
+      ],
+      "theme": [
+        "coast",
+        "river",
+        "road"
+      ],
+      "entrances": [
+        "path"
+      ],
       "rooms": {
         "path": {
           "name": "Cliff Path",
-          "tags": ["outdoor", "coast"],
+          "tags": [
+            "outdoor",
+            "coast"
+          ],
           "description": "A narrow path climbs the cliff toward a white tower. Far below, waves boom against the rocks.",
-          "exits": [{"to": "base", "dir": "north", "distance": 1}]
+          "exits": [
+            {
+              "to": "base",
+              "dir": "north",
+              "distance": 1
+            }
+          ]
         },
         "base": {
           "name": "Lighthouse Base",
-          "tags": ["indoor"],
+          "tags": [
+            "indoor"
+          ],
           "description": "A round room with whitewashed walls. Oilskins hang on pegs, and a spiral stair climbs into the dark.",
-          "features": ["lighthouse_keeper", "oil_cask"],
-          "exits": [{"to": "lantern_room", "dir": "up", "distance": 1}]
+          "features": [
+            "lighthouse_keeper",
+            "oil_cask"
+          ],
+          "exits": [
+            {
+              "to": "lantern_room",
+              "dir": "up",
+              "distance": 1
+            }
+          ]
         },
         "lantern_room": {
           "name": "Lantern Room",
-          "tags": ["indoor"],
-          "description": [
-            {"if": {"flag": "lighthouse_lit"}, "text": "The great lamp blazes, and its beam sweeps out across the black water."},
-            {"text": "Glass on every side, and the sea beyond it. The great lamp in the middle is cold and dark."}
+          "tags": [
+            "indoor"
           ],
-          "features": ["great_lamp"]
+          "description": [
+            {
+              "if": {
+                "flag": "story_resolved"
+              },
+              "text": "The great lamp blazes, and its beam sweeps out across the black water."
+            },
+            {
+              "text": "Glass on every side, and the sea beyond it. The great lamp in the middle is cold and dark."
+            }
+          ],
+          "features": [
+            "great_lamp"
+          ]
         }
-      }
+      },
+      "important": true
     }
   },
-
   "regions": {
     "coast": {
-      "tags": ["coast", "outdoor", "fantasy"],
-      "connects": ["river", "road", "coast"],
-      "length": [1, 2],
-      "distance": [2, 3],
+      "tags": [
+        "coast",
+        "outdoor",
+        "fantasy"
+      ],
+      "connects": [
+        "river",
+        "road",
+        "coast"
+      ],
+      "length": [
+        1,
+        2
+      ],
+      "distance": [
+        2,
+        3
+      ],
       "rooms": [
-        {"name": "#shore_adj.title# Shore", "description": "Shingle crunches underfoot and gulls wheel overhead. The sea smells of salt and weed."},
-        {"name": "Dune Path", "description": "A sandy path winds between dunes held together by marram grass."}
+        {
+          "name": "#shore_adj.title# Shore",
+          "description": "Shingle crunches underfoot and gulls wheel overhead. The sea smells of salt and weed."
+        },
+        {
+          "name": "Dune Path",
+          "description": "A sandy path winds between dunes held together by marram grass."
+        }
       ]
     }
   },
-
-  "beats": {
-    "lighthouse_relight": {
-      "title": "The Dark Lamp",
-      "stage": "middle",
-      "tags": ["fantasy"],
-      "area": "lighthouse",
-      "roles": {
-        "keeper": {"find": {"tag": "lighthouse_keeper"}, "where": "area"}
-      },
-      "hook": "The lamp at {beat.area} has gone dark, and ships are breaking on the rocks.",
-      "intro": "If the lamp at {beat.area} stays dark, more ships will die on the rocks.",
-      "hint": "Help {beat.keeper.name} relight the great lamp at {beat.area}.",
-      "rumor": ["The light at {beat.area} went out a week ago. The keeper's too old to climb the stair with oil."],
-      "objective": {"flag": "lighthouse_lit"},
-      "complete_text": "The beam swings out over the sea. Far off, a ship's bell answers."
-    }
-  },
-
   "features": {
     "lighthouse_keeper": {
-      "extends": ["person"],
+      "extends": [
+        "person"
+      ],
       "name": "Keeper #given#",
       "proper": true,
-      "aliases": ["keeper", "old man", "old woman"],
-      "tags": ["lighthouse_keeper", "quest_giver"],
+      "aliases": [
+        "keeper",
+        "old man",
+        "old woman"
+      ],
+      "tags": [
+        "lighthouse_keeper",
+        "quest_giver"
+      ],
       "appearance": "{self.Name} sits by the stove, rubbing a swollen knee.",
       "description": "Weathered as driftwood.",
       "actions": {
         "talk": [
-          {"if": {"flag": "lighthouse_lit"}, "do": ["\"Bless you,\" says {self.name}. \"The ships will see us now.\""]},
-          {"do": ["\"My knees won't take that stair any more,\" {self.name} says. \"Take a can of oil up to the lamp, would you?\""]}
+          {
+            "do": [
+              "\"Mind the stair,\" says {self.name}. \"Ninety-nine steps, and every one of them hates me.\""
+            ]
+          }
         ]
+      },
+      "important": true,
+      "profile": {
+        "personality": [
+          "gruff",
+          "weary"
+        ],
+        "motives": [
+          "duty",
+          "protect"
+        ],
+        "motive_text": "keep the light burning, the way my father did",
+        "goals": [
+          "see the lamp lit again",
+          "find someone young enough to climb that stair"
+        ],
+        "backstory": "\"Forty years I've kept this light. Never missed a night, till now.\"",
+        "roles": [
+          "giver",
+          "informant",
+          "holder",
+          "ally",
+          "victim",
+          "authority"
+        ],
+        "knows": [
+          "sea",
+          "coast",
+          "lighthouse"
+        ],
+        "wants": [
+          "fuel",
+          "food"
+        ],
+        "epilogue": "{speaker.The} teaches you to trim a wick, and makes you promise to come back when their knees finally give out."
       }
     },
     "oil_cask": {
-      "extends": ["scenery", "container"],
+      "extends": [
+        "scenery",
+        "container"
+      ],
       "name": "oil cask",
-      "aliases": ["cask", "barrel"],
+      "aliases": [
+        "cask",
+        "barrel"
+      ],
       "appearance": "A cask of lamp oil stands by the door.",
       "contents_text": "On top of the cask sits {contents}.",
-      "features": ["oil_can"]
+      "features": []
     },
     "oil_can": {
-      "extends": ["portable"],
+      "extends": [
+        "portable"
+      ],
       "name": "can of lamp oil",
-      "aliases": ["can", "oil", "lamp oil"],
-      "tags": ["lamp_oil"],
-      "description": "A dented tin can, full and sloshing."
+      "aliases": [
+        "can",
+        "oil",
+        "lamp oil"
+      ],
+      "tags": [
+        "lamp_oil"
+      ],
+      "description": "A dented tin can, full and sloshing.",
+      "important": true,
+      "affords": [
+        "fuel",
+        "light"
+      ],
+      "home": [
+        "coast",
+        "lighthouse"
+      ]
     },
     "great_lamp": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "great lamp",
-      "aliases": ["lamp", "light", "lens"],
+      "aliases": [
+        "lamp",
+        "light",
+        "lens"
+      ],
       "appearance": false,
       "description": "A brass lamp the size of a cart wheel, inside a great glass lens.",
-      "actions": {
-        "light": [
-          {"if": {"flag": "lighthouse_lit"}, "do": ["It's already blazing."]},
-          {"if": {"has": "tag:lamp_oil"}, "do": [
-            {"destroy": "carried:tag:lamp_oil"},
-            {"flag": "lighthouse_lit"},
-            "You fill the reservoir, trim the wick and strike a light. The great lamp roars into life."
-          ]},
-          {"do": ["The reservoir is bone dry. It needs oil."]}
-        ],
-        "put_with": [
-          {"if": {"tag": "lamp_oil", "of": "target"}, "do": [{"destroy": "target"}, {"flag": "lighthouse_lit"}, "You pour in the oil and light the wick. The great lamp roars into life."]}
-        ]
-      }
+      "actions": {},
+      "tags": [
+        "lamp_heart",
+        "heart"
+      ],
+      "important": true
     }
   },
-
   "grammar": {
-    "cape_name": ["Gull Point", "Wrecker's Head", "Saint #given#'s", "Blackrock"],
-    "shore_adj": ["shingle", "grey", "windy", "lonely"]
+    "cape_name": [
+      "Gull Point",
+      "Wrecker's Head",
+      "Saint #given#'s",
+      "Blackrock"
+    ],
+    "shore_adj": [
+      "shingle",
+      "grey",
+      "windy",
+      "lonely"
+    ],
+    "given": [
+      "Morwenna",
+      "Jago",
+      "Tressa",
+      "Kitto",
+      "Loveday",
+      "Pascoe"
+    ]
+  },
+  "events": {
+    "dark_lamp": {
+      "title": [
+        "The Dark Lamp",
+        "Wreckers' Night",
+        "The Light at #cape_name#"
+      ],
+      "tags": [
+        "coast"
+      ],
+      "roles": {
+        "lighthouse": {
+          "type": "place",
+          "match": {
+            "tags": [
+              "lighthouse"
+            ]
+          }
+        },
+        "lamp": {
+          "type": "feature",
+          "match": {
+            "tag": [
+              "lamp_heart"
+            ]
+          },
+          "in": "lighthouse"
+        },
+        "fuel": {
+          "type": "item",
+          "match": {
+            "affords": [
+              "fuel"
+            ]
+          },
+          "spawn": "oil_can"
+        },
+        "keeper": {
+          "type": "character",
+          "match": {
+            "tags": [
+              "lighthouse_keeper"
+            ]
+          },
+          "optional": true
+        }
+      },
+      "hook": "The lamp at {lighthouse} has gone dark, and ships are breaking on the rocks. Its keeper is too old to climb the stair with fuel any more.",
+      "goal": "Bring {fuel} to {lamp} at {lighthouse} and light it.",
+      "resolutions": [
+        {
+          "verb": "light",
+          "target": "lamp",
+          "means": "fuel",
+          "title": "Light the lamp",
+          "text": "You fill the reservoir from {means}, trim the wick and strike a light. The great lamp roars into life, and its beam swings out over the sea. Far off, a ship's bell answers."
+        }
+      ],
+      "lore": [
+        {
+          "title": "The wrecks",
+          "text": "Three ships have broken on the rocks below {lighthouse} since the lamp went dark. The wreckers on the shore are doing very well out of it."
+        }
+      ],
+      "ending": "The light at {lighthouse} burns every night after that, and no more ships are lost on the rocks."
+    }
+  },
+  "lore": {
+    "lighthouse_built": {
+      "title": "The lighthouse",
+      "about": [
+        "area:lighthouse"
+      ],
+      "tags": [
+        "coast",
+        "lighthouse",
+        "history"
+      ],
+      "text": "The lighthouse was built after the great wreck, when two hundred souls drowned within sight of the shore."
+    }
   }
 }

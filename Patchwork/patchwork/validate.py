@@ -84,23 +84,38 @@ def check_registry(reg):
                     problems.append("room '%s': exit to unknown room '%s'" % (rid, to))
                 if ex.get("dir") and ex["dir"] not in reg["directions"]:
                     problems.append("room '%s': unknown direction '%s'" % (rid, ex["dir"]))
-    for key, d in reg["beats"].items():
-        area = d.get("area")
-        if isinstance(area, str) and area not in reg["areas"]:
-            problems.append("%s: area '%s' is not loaded (beat will be skipped)" % (where("beats", key), area))
-        for rname, rspec in (d.get("roles") or {}).items():
-            spec = {"spawn": rspec} if isinstance(rspec, str) else rspec
-            if "spawn" in spec:
-                for fid in _spec_ids(spec["spawn"]):
-                    if fid not in feats:
-                        problems.append("%s: role '%s' spawns unknown feature '%s'" % (where("beats", key), rname, fid))
+    for key, d in reg["events"].items():
+        label = where("events", key)
+        roles = d.get("roles") or {}
+        for rname, spec in roles.items():
+            if spec.get("type", "character") not in ("character", "item", "place", "feature"):
+                problems.append("%s: role '%s' has unknown type '%s'" % (label, rname, spec.get("type")))
+            if spec.get("spawn") and spec["spawn"] not in feats:
+                problems.append("note: %s: role '%s' spawns '%s', which is not loaded" % (label, rname, spec["spawn"]))
+            if spec.get("in") and spec["in"] not in roles:
+                problems.append("%s: role '%s' is 'in' unknown role '%s'" % (label, rname, spec["in"]))
+        if not d.get("resolutions"):
+            problems.append("%s: has no resolutions" % label)
+        for r in d.get("resolutions") or []:
+            for k in ("target", "means"):
+                if r.get(k) and r[k] not in roles:
+                    problems.append("%s: resolution %s '%s' is not a role" % (label, k, r[k]))
+    for key, d in reg["obstacles"].items():
+        if not d.get("needs"):
+            problems.append("%s: has no 'needs'" % where("obstacles", key))
+        if d.get("kind", "barrier") not in ("barrier", "container"):
+            problems.append("%s: kind must be barrier or container" % where("obstacles", key))
+        if d.get("key") and d["key"] not in feats:
+            problems.append("note: %s: key '%s' is not loaded" % (where("obstacles", key), d["key"]))
+    for key, d in feats.items():
+        if d.get("profile") and not isinstance(d["profile"], dict):
+            problems.append("%s: profile must be an object" % where("features", key))
+    for section in ("beats", "premises"):
+        if section in reg.sections and reg[section]:
+            problems.append("section '%s' is no longer supported: stories are generated (see events)" % section)
     for key, d in reg["regions"].items():
         if not d.get("rooms") and not d.get("abstract"):
             problems.append("%s: has no room templates" % where("regions", key))
-    for key, d in reg["premises"].items():
-        for bid in d.get("beats") or []:
-            if bid not in reg["beats"]:
-                problems.append("%s: unknown beat '%s'" % (where("premises", key), bid))
     # Grammar symbols referenced anywhere but defined nowhere.
     grammar = reg["grammar"]
     used = set()
@@ -161,8 +176,24 @@ def check_world(world):
         dirs = [ex.get("dir") for ex in r.exits if ex.get("dir")]
         if len(dirs) != len(set(dirs)):
             problems.append("room '%s' has duplicate exit directions %s" % (r.name, dirs))
-    for b in world.story.get("beats", []):
-        for rname, uid in b["roles"].items():
+    involved = set()
+    for st in world.story.get("steps", []):
+        for rname, uid in st.get("refs", {}).items():
             if uid not in world.entities:
-                problems.append("beat %s role %s is missing" % (b["id"], rname))
+                problems.append("step %s ref %s is missing" % (st["id"], rname))
+            involved.add(uid)
+            ent = world.get(uid)
+            if ent is not None:
+                involved.add(world.room_of(ent).uid if world.room_of(ent) else uid)
+    # Every important feature that exists must be part of the main quest.
+    if world.story.get("steps"):
+        involved_areas = {world.get(u).area for u in involved if world.get(u) is not None and world.get(u).is_room}
+        involved_areas |= {st.get("place") for st in world.story["steps"]}
+        for e in world.entities.values():
+            d = world.def_of(e)
+            if d.get("important") and not e.is_room and e.uid not in involved:
+                problems.append("important '%s' is not part of the main quest" % e.name)
+        for aid, adef in world.registry["areas"].items():
+            if adef.get("important") and aid in world.areas and aid not in involved_areas:
+                problems.append("important place '%s' is not part of the main quest" % aid)
     return problems

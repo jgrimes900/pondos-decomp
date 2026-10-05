@@ -3,8 +3,16 @@
   "name": "The Drowned Lighthouse (example)",
   "version": "1.0.0",
   "author": "You",
-  "description": "The worked example from MODDING.md: a lighthouse whose lamp has gone out, with a keeper who needs help relighting it. Adds a small area, a coast region and a middle story beat.",
-  "requires": ["core"],
-  "recommends": ["wilds"],
-  "tags": ["fantasy", "area", "story"]
+  "description": "The worked example from MODDING.md: a lighthouse whose lamp has gone dark. Adds a small important area, a keeper with a profile, important features, a coast region, lore and a 'dark lamp' event for the story generator.",
+  "requires": [
+    "core"
+  ],
+  "recommends": [
+    "wilds"
+  ],
+  "tags": [
+    "fantasy",
+    "area",
+    "story"
+  ]
 }

@@ -5,10 +5,10 @@ import unittest
 
 from helpers import Player, available
 
-ALL = sorted(available())
+ALL = sorted(m for m in available() if m != "lighthouse")
 VERBS = ["look", "x", "take", "drop", "open", "close", "unlock", "search", "use", "talk to", "give",
          "eat", "drink", "read", "light", "extinguish", "push", "pull", "touch", "listen", "smell",
-         "attack", "put", "wait", "rest", "status", "time", "journal", "inventory", "map", "story",
+         "attack", "put", "wait", "rest", "status", "time", "journal", "inventory", "map", "story", "lore",
          "take all", "drop all", "go to", "again", "help", "exits", "brief", "verbose"]
 
 
@@ -16,8 +16,7 @@ class Fuzz(unittest.TestCase):
     def test_random_commands_never_crash(self):
         for seed in range(1, 9):
             rng = random.Random(seed)
-            premise = rng.choice(["waning_light", "dead_signal", "none", None])
-            p = Player(ALL, seed, premise=premise)
+            p = Player(ALL, seed)
             p.io.lines = [str(rng.randint(0, 5)) for _ in range(5000)]  # answers to choice menus
             w = p.world
             for step in range(400):

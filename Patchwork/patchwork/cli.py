@@ -175,16 +175,6 @@ class App:
             return None
         if reg.warnings:
             self.io.write("%d mod warning(s); run with --validate to see them." % len(reg.warnings), "dim")
-        premise = None
-        premises = sorted((k, v) for k, v in reg["premises"].items() if not v.get("abstract"))
-        if len(premises) > 1:
-            labels = ["Surprise me"] + [v.get("menu_name") or v.get("title", k).replace("#", "")
-                                        for k, v in premises] + ["No story - just explore"]
-            idx = self.io.choose("Several mods offer a story. Which tale do you want?", labels)
-            if idx is not None and 1 <= idx <= len(premises):
-                premise = premises[idx - 1][0]
-            elif idx == len(labels) - 1:
-                premise = "none"
         sizes = ["small", "medium", "large", "huge"]
         idx = self.io.choose("How big a world? (Enter for medium)", [
             "Small - quick to cross", "Medium", "Large - more wilderness between places",
@@ -201,7 +191,7 @@ class App:
             seed = int(seed_text) if seed_text.isdigit() else zlib.crc32(seed_text.encode("utf-8")) % (2 ** 31)
         self.io.write("Weaving your world from %d mod(s)..." % len(ordered), "dim")
         try:
-            world, log = generate(reg, seed=seed, premise=premise, player_name=name or None, size=size)
+            world, log = generate(reg, seed=seed, player_name=name or None, size=size)
         except GenerationError as exc:
             self.io.write(str(exc), "error")
             return None
@@ -268,7 +258,7 @@ def run_script(args, ordered, reg):
     with open(args.script, "r", encoding="utf-8") as fh:
         lines = [l.rstrip("\n") for l in fh if not l.startswith("#")]
     io = ScriptIO(lines)
-    world, _log = generate(reg, seed=args.seed, premise=args.premise, player_name=args.name, size=args.size)
+    world, _log = generate(reg, seed=args.seed, player_name=args.name, size=args.size)
     engine = Engine(world, io)
     engine.start()
     try:
@@ -284,10 +274,15 @@ def run_script(args, ordered, reg):
 def print_map(world, log, out=sys.stdout):
     for line in log:
         print("# " + line, file=out)
-    print("Story: %s" % world.story.get("title"), file=out)
-    for b in world.story.get("beats", []):
-        roles = ", ".join("%s=%s" % (k, world.get(v).name if world.get(v) else "?") for k, v in b["roles"].items())
-        print("  beat %-24s area=%-14s stage=%d  %s" % (b["id"], b.get("area"), b.get("stage", 0), roles), file=out)
+    story = world.story
+    print("Story: %s  [event: %s]" % (story.get("title"), story.get("event")), file=out)
+    for role, uid in sorted(story.get("cast", {}).items()):
+        e = world.get(uid)
+        print("  cast %-10s %s" % (role, e.name if e else "?"), file=out)
+    for st in story.get("steps", []):
+        refs = ", ".join("%s=%s" % (k, world.get(v).name if world.get(v) else "?") for k, v in st.get("refs", {}).items())
+        print("  step %-4s %-12s %-40s %s" % (st["id"], st["kind"], st["title"][:40], refs), file=out)
+    print("  lore: %d entries" % len(story.get("lore", {})), file=out)
     for r in sorted(world.rooms(), key=lambda r: (r.stage, r.area or "~", r.uid)):
         where = r.area or ("~" + (r.region or "?"))
         print("[%d] %-22s %-30s" % (r.stage, where, r.name), file=out)
@@ -305,7 +300,6 @@ def main(argv=None):
     p = argparse.ArgumentParser(prog="patchwork", description="A text RPG woven entirely from mods.")
     p.add_argument("--mods", help="comma separated mod ids: skip the menus and start a new game with these")
     p.add_argument("--seed", type=int, help="world seed")
-    p.add_argument("--premise", help="premise id to use ('none' for no story)")
     p.add_argument("--name", help="your character's name")
     p.add_argument("--size", default="medium", choices=["small", "medium", "large", "huge"], help="world size")
     p.add_argument("--mod-dir", action="append", help="extra folder to look for mods in (repeatable)")
@@ -353,7 +347,7 @@ def main(argv=None):
             return 1 if warnings else 0
         try:
             if args.map:
-                world, log = generate(reg, seed=args.seed, premise=args.premise, player_name=args.name, size=args.size)
+                world, log = generate(reg, seed=args.seed, player_name=args.name, size=args.size)
                 print_map(world, log)
                 return 0
             if args.script:
@@ -363,7 +357,7 @@ def main(argv=None):
             return 2
         app = App(args)
         try:
-            world, _log = generate(reg, seed=args.seed, premise=args.premise, player_name=args.name, size=args.size)
+            world, _log = generate(reg, seed=args.seed, player_name=args.name, size=args.size)
         except GenerationError as exc:
             print("error: %s" % exc, file=sys.stderr)
             return 2

@@ -17,7 +17,6 @@
       "entrances": [
         "foot"
       ],
-      "only_with_beat": true,
       "rooms": {
         "foot": {
           "name": "Foot of the Spire",
@@ -96,18 +95,12 @@
           ],
           "description": "The stair spirals up through the heart of the tower. Wind moans through gaps in the glass, though there is no wind outside.",
           "brief": "The winding stair.",
-          "features": [
-            "shadow_ward"
-          ],
+          "features": [],
           "exits": [
             {
               "to": "top",
               "dir": "up",
-              "distance": 2,
-              "if": {
-                "has": "tag:relic"
-              },
-              "blocked": "The ward of shadow pushes you back. You will need a source of true light to pass through it."
+              "distance": 2
             }
           ]
         },
@@ -138,53 +131,9 @@
             "dark_orb"
           ]
         }
-      }
-    }
-  },
-  "beats": {
-    "spire_confrontation": {
-      "title": "The Lightless Crown",
-      "stage": "climax",
-      "tags": [
-        "fantasy",
-        "villain",
-        "finale"
-      ],
-      "area": "spire",
-      "needs": [
-        "relic"
-      ],
-      "gate": "A wall of shifting shadow bars the way. Whatever lies beyond, you are not ready to face it yet.",
-      "roles": {
-        "villain": {
-          "spawn": "sorcerer",
-          "in": {
-            "room": "top"
-          },
-          "name": "#villain_name#"
-        },
-        "bane": {
-          "find": {
-            "tag": "relic"
-          },
-          "spawn": "spire_bane",
-          "in": {
-            "feature": "def:spire_shelves"
-          },
-          "hidden": false
-        }
       },
-      "intro": "Far off, a black spire has risen where none stood before, and the daylight around it is draining away. {beat.villain.Name} is waiting there.",
-      "hint": "Climb {beat.area} and use {beat.bane.name} against {beat.villain.name}.",
-      "hook": "A tower of black glass has risen at {beat.area}. The light dies around it, and the sorcerer {beat.villain.name} sits at its top.",
-      "rumor": [
-        "Have you seen the sky over {beat.area}? Like a bruise. They say a sorcerer called {beat.villain.name} lives there now.",
-        "{beat.villain.Name} wants the light. All of it. Only true light can break that kind of darkness, my mother used to say."
-      ],
-      "objective": {
-        "flag": "sorcerer_defeated"
-      },
-      "complete_text": "The orb shatters. Light floods back into the world all at once, a dawn from every direction, and the black glass of the spire begins to crack and sing."
+      "important": true,
+      "only_if_used": true
     }
   },
   "grammar": {
@@ -322,31 +271,6 @@
         "text": "The handwriting is beautiful and cold. \"...the orb grows. When it has eaten enough light, the world will be still at last, and quiet, and mine. Only one thing troubles me: the old relics of true light. I have burned every one I could find. If one survives, it must not be brought to the summit.\""
       }
     },
-    "shadow_ward": {
-      "extends": [
-        "scenery"
-      ],
-      "name": "ward of shadow",
-      "aliases": [
-        "ward",
-        "shadow",
-        "darkness",
-        "barrier",
-        "wall"
-      ],
-      "appearance": [
-        {
-          "if": {
-            "has": "tag:relic"
-          },
-          "text": "Above you, a ward of living shadow churns across the stair. It recoils from the light you carry."
-        },
-        {
-          "text": "Above you, a ward of living shadow churns across the stair like smoke that has decided to be a wall."
-        }
-      ],
-      "description": "It drinks the light from anything that comes near. Only something brighter than it could pass."
-    },
     "dark_orb": {
       "extends": [
         "scenery"
@@ -363,28 +287,19 @@
       "actions": {
         "touch": [
           "Your hand goes numb inches from its surface and you snatch it back."
-        ],
-        "use_with": [
-          {
-            "if": {
-              "tag": "relic",
-              "of": "target"
-            },
-            "do": [
-              {
-                "macro": "spire_victory"
-              }
-            ]
-          }
         ]
-      }
+      },
+      "tags": [
+        "dark_heart"
+      ],
+      "important": true
     },
     "sorcerer": {
       "extends": [
         "person",
         "hostile"
       ],
-      "name": "sorcerer",
+      "name": "#villain_name#",
       "aliases": [
         "sorcerer",
         "wizard",
@@ -406,9 +321,6 @@
         "death_text": "{self.Name} staggers. \"No,\" they whisper, \"not like this...\" and unravel into smoke."
       },
       "on_death": [
-        {
-          "flag": "sorcerer_defeated"
-        },
         {
           "say": "Without its master the orb shudders, cracks, and bursts like a soap bubble.",
           "style": "story"
@@ -458,35 +370,35 @@
               }
             ]
           }
-        ],
-        "use_with": [
-          {
-            "if": {
-              "tag": "relic",
-              "of": "target"
-            },
-            "do": [
-              {
-                "macro": "spire_victory"
-              }
-            ]
-          }
-        ],
-        "give_with": [
-          {
-            "if": {
-              "tag": "relic",
-              "of": "target"
-            },
-            "do": [
-              "\"How thoughtful,\" {self.name} purrs, reaching for it - and screams as the light touches their hand.",
-              {
-                "macro": "spire_victory"
-              }
-            ]
-          }
         ]
-      }
+      },
+      "profile": {
+        "personality": [
+          "cold",
+          "cunning"
+        ],
+        "motives": [
+          "power",
+          "darkness",
+          "greed"
+        ],
+        "motive_text": "drink the light out of the world and rule whatever is left in the dark",
+        "goals": [
+          "finish the great orb",
+          "never be seen by anyone ever again"
+        ],
+        "backstory": "\"Once I was an apprentice like the ones you passed downstairs. Then I learned what light really costs.\"",
+        "roles": [
+          "antagonist"
+        ],
+        "knows": [
+          "magic",
+          "spire",
+          "darkness"
+        ],
+        "epilogue": ""
+      },
+      "proper": true
     },
     "spire_bane": {
       "extends": [
@@ -502,50 +414,191 @@
         "crystal"
       ],
       "tags": [
-        "relic"
+        "relic",
+        "portable"
       ],
       "props": {
         "lit": true,
         "value": 40
       },
-      "description": "A sliver of crystal that holds a single trapped point of starlight. The one thing in this place the sorcerer failed to burn."
+      "description": "A sliver of crystal that holds a single trapped point of starlight. The one thing in this place the sorcerer failed to burn.",
+      "important": true,
+      "affords": [
+        "light",
+        "relic"
+      ],
+      "home": [
+        "eerie",
+        "ruins",
+        "ancient"
+      ]
     }
   },
-  "macros": {
-    "spire_victory": {
-      "do": [
-        {
-          "if": {
-            "flag": "sorcerer_defeated"
+  "obstacles": {
+    "shadow_ward": {
+      "kind": "barrier",
+      "needs": [
+        "light"
+      ],
+      "tags": [
+        "eerie",
+        "fantasy",
+        "tower",
+        "ruins",
+        "ancient"
+      ],
+      "feature": {
+        "name": "ward of shadow",
+        "aliases": [
+          "ward",
+          "shadow",
+          "darkness",
+          "barrier",
+          "wall"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "Tatters of a shadow-ward cling to the edges of the way, burned through."
           },
-          "then": [
-            {
-              "stop": true
-            }
-          ]
+          {
+            "text": "A ward of living shadow churns across the way like smoke that has decided to be a wall."
+          }
+        ],
+        "description": "It drinks the light from anything that comes near. Only something brighter could pass."
+      },
+      "open_text": "You raise {key}. Its light bites into the ward, which shrieks and shreds into nothing.",
+      "locked_text": "The ward pushes you back. You need a true light to burn through it.",
+      "blocked": "The ward of shadow pushes you back. You will need a source of true light to pass through it."
+    }
+  },
+  "events": {
+    "spire_eclipse": {
+      "title": [
+        "The Waning Light",
+        "Eclipse",
+        "The Lightless Crown"
+      ],
+      "tags": [
+        "fantasy",
+        "villain"
+      ],
+      "roles": {
+        "lair": {
+          "type": "place",
+          "match": {
+            "tags": [
+              "tower"
+            ]
+          }
         },
-        {
-          "say": "You raise {role.bane.name} high. Its light, so small a moment ago, blazes up like a second sun and pours into the orb. The darkness screams.",
-          "style": "story"
-        },
-        {
-          "if": {
-            "exists": "role:villain"
+        "villain": {
+          "type": "character",
+          "match": {
+            "motive": [
+              "darkness",
+              "power"
+            ],
+            "role": [
+              "antagonist"
+            ]
           },
-          "then": [
-            "{role.villain.Name} throws up an arm, too late. The light takes them, and when it fades there is nothing left but a scorched robe.",
-            {
-              "destroy": "role:villain"
-            }
-          ]
+          "spawn": "sorcerer"
         },
-        {
-          "flag": "sorcerer_defeated"
+        "heart": {
+          "type": "feature",
+          "match": {
+            "tag": [
+              "dark_heart"
+            ]
+          },
+          "in": "lair",
+          "spawn": "dark_orb"
         },
-        {
-          "destroy": "any:def:dark_orb"
+        "light": {
+          "type": "item",
+          "match": {
+            "affords": [
+              "light"
+            ]
+          },
+          "spawn": "spire_bane"
         }
-      ]
+      },
+      "hook": "Each evening the sun sets a little earlier than it should. Candles burn low and blue. Far off, {lair} has risen out of the land, and the old folk say {villain} sits at its top, drinking the light out of the world.",
+      "goal": "Bring a true light - {light} - to {lair} and destroy {heart} before the last light goes out.",
+      "resolutions": [
+        {
+          "verb": "use",
+          "target": "heart",
+          "means": "light",
+          "title": "Break the orb",
+          "text": "You raise {means} high. Its light blazes up like a second sun and pours into {target}, which cracks, shrieks, and shatters. Light floods back into the world from every direction."
+        },
+        {
+          "verb": "use",
+          "target": "villain",
+          "means": "light",
+          "title": "Turn the light on its thief",
+          "text": "You turn {means} on {target}. The light takes them like a flood, and when it fades there is only a scorched robe, and {heart} is crumbling to ash."
+        },
+        {
+          "verb": "attack",
+          "target": "villain",
+          "requires_mods": [
+            "combat"
+          ],
+          "text": "{target.The} falls, and the darkness they gathered falls apart with them."
+        }
+      ],
+      "consequences": [
+        {
+          "set_var": {
+            "light_failing": 1
+          }
+        }
+      ],
+      "lore": [
+        {
+          "title": "The waning light",
+          "text": "Every evening the sun sets a little earlier than it should. The old folk say it began when {villain} raised {lair}."
+        },
+        {
+          "title": "The orb",
+          "about": [
+            "cast:heart"
+          ],
+          "text": "{villain.The}'s journal speaks of {heart}: 'When it has eaten enough light, the world will be still at last, and quiet, and mine. Only the old relics of true light trouble me.'"
+        }
+      ],
+      "ending": "And so the light returned. Songs would be sung about {var.player_name}, most of them wrong and all of them loud. But on quiet evenings, when the sun set exactly when it should, you would sit and watch it go down, and smile."
+    }
+  },
+  "lore": {
+    "spire_apprentices": {
+      "title": "The apprentices",
+      "about": [
+        "area:spire"
+      ],
+      "tags": [
+        "magic",
+        "spire"
+      ],
+      "text": "Statues fill the Hall of Echoes: apprentices in scholars' robes, each wearing the same look of surprise. The plaques beneath them all say the same thing: 'Insufficient.'"
+    },
+    "spire_glass": {
+      "title": "Black glass",
+      "about": [
+        "area:spire"
+      ],
+      "tags": [
+        "magic",
+        "spire",
+        "darkness"
+      ],
+      "text": "The spire is made of a single piece of black glass, grown, not built. Light that falls on it does not come back."
     }
   }
 }

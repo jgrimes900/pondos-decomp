@@ -83,6 +83,9 @@ class ScriptIO:
             return None
         if ans.isdigit() and 1 <= int(ans) <= len(options):
             return int(ans) - 1
+        for idx, opt in enumerate(options):     # scripts may also pick an option by its words
+            if ans and ans.lower() in opt.lower():
+                return idx
         return None
 
     def text(self):

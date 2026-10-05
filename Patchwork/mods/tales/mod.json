@@ -1,0 +1,11 @@
+{
+  "id": "tales",
+  "name": "Storyteller's Almanac",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "Setting-neutral story events: a theft, a blight, a disappearance. They cast whatever characters, places and items your other mods provide, so any combination of mods can grow a story. Recommended for every game.",
+  "requires": ["core"],
+  "priority": 5,
+  "default": true,
+  "tags": ["story", "events"]
+}

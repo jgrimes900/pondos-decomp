@@ -136,7 +136,7 @@
       "abstract": true,
       "extends": ["person"],
       "tags": ["wanderer"],
-      "//": "Generated travellers. The generator sets props.rumor to point at the next story beat.",
+      "//": "Generated travellers. The generator sets props.rumor to hint at a step of the story.",
       "actions": {
         "talk": [
           {"if": {"prop": "rumor"}, "do": ["{self.The} leans in. \"{self.rumor}\""]},

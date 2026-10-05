@@ -1,0 +1,446 @@
+{
+  "//": "The words the story generator speaks with. Every symbol can be extended or replaced by other mods (personality-specific lines are say_<kind>_<personality>). Available names: {char} {item} {reward} {about} {where} {place} {villain} {obstacle} {key} {clue} {feature} {target} {means} {speaker} {hook} {goal} {motive} {topic}.",
+  "grammar": {
+    "step_meet_title": [
+      "Hear {char} out",
+      "A word with {char}",
+      "Speak with {char}"
+    ],
+    "step_meet_hint": [
+      "{char.The} in {place} wants a word with you.",
+      "Find {char} in {place} and hear what they have to say."
+    ],
+    "step_find_title": [
+      "Find {item}",
+      "Recover {item}",
+      "Track down {item}",
+      "Seek {item}"
+    ],
+    "step_find_hint": [
+      "{item.The} should be somewhere in {place}.",
+      "Look for {item} in {place}.",
+      "Word is that {item} lies in {place}."
+    ],
+    "step_talkget_title": [
+      "Ask {char} for help",
+      "Win over {char}",
+      "Seek out {char}"
+    ],
+    "step_talkget_hint": [
+      "{char.The} in {place} has {item}. Talk to them.",
+      "Speak to {char} in {place}; they have {item}."
+    ],
+    "step_deliver_title": [
+      "Bring {item} to {char}",
+      "A favour for {char}",
+      "{item.The} for {char}"
+    ],
+    "step_deliver_hint_reward": [
+      "{char.The} in {place} will give you {reward} in exchange for {item}.",
+      "Take {item} to {char} in {place}; in return they'll part with {reward}."
+    ],
+    "step_deliver_hint": [
+      "{char.The} in {place} needs to see {item}.",
+      "Bring {item} to {char} in {place}; it matters to them."
+    ],
+    "step_info_title": [
+      "Question {char}",
+      "Seek out {char}",
+      "Find {char}"
+    ],
+    "step_info_hint": [
+      "{char.The} in {place} knows more than they let on. Talk to them.",
+      "Find {char} in {place}; they may know something."
+    ],
+    "step_open_title": [
+      "Get past {obstacle}",
+      "Open {obstacle}",
+      "Break the way through"
+    ],
+    "step_open_hint": [
+      "{obstacle.The} bars the way. {key.The} should open it.",
+      "Use {key} on {obstacle}."
+    ],
+    "step_investigate_title": [
+      "Investigate {place}",
+      "Search {place} for answers",
+      "Explore {place}"
+    ],
+    "step_investigate_hint": [
+      "Something in {place} may hold answers. Look for {clue.a} and read it.",
+      "Search {place} for {clue.a}; read what it says."
+    ],
+    "step_inspect_title": [
+      "Examine {feature}",
+      "Study {feature}"
+    ],
+    "step_inspect_hint": [
+      "Take a close look at {feature} in {place}.",
+      "Examine {feature} in {place}; it is important."
+    ],
+    "step_confront_title": [
+      "Confront {char}",
+      "Face {char}"
+    ],
+    "step_confront_hint": [
+      "Find {char} in {place} and confront them.",
+      "It is time to face {char}, in {place}."
+    ],
+    "step_resolve_title": [
+      "Put an end to it",
+      "The last act",
+      "Set things right"
+    ],
+    "step_resolve_hint_means": [
+      "Use {means} on {target}.",
+      "Bring {means} to {target} and use it."
+    ],
+    "step_resolve_hint": [
+      "Deal with {target}, once and for all."
+    ],
+    "resolution_text": [
+      "It is done."
+    ],
+    "receive_item": [
+      "{char.The} hands you {item}.",
+      "You receive {item} from {char}."
+    ],
+    "say_greet": [
+      "{speaker.The} looks up as you approach.",
+      "{speaker.The} nods to you."
+    ],
+    "say_greet_gruff": [
+      "\"What?\" grunts {speaker}.",
+      "{speaker.The} eyes you. \"Make it quick.\""
+    ],
+    "say_greet_kind": [
+      "\"Hello, friend,\" says {speaker} warmly.",
+      "{speaker.The} smiles. \"What can I do for you?\""
+    ],
+    "say_greet_nervous": [
+      "{speaker.The} jumps. \"Oh! It's you. Sorry. What is it?\""
+    ],
+    "say_greet_cheerful": [
+      "\"Well hello there!\" beams {speaker}."
+    ],
+    "say_greet_cold": [
+      "{speaker.The} regards you without warmth. \"Yes?\""
+    ],
+    "say_greet_cunning": [
+      "{speaker.The} gives you a measuring look. \"Ah. And what brings you to me?\""
+    ],
+    "say_greet_weary": [
+      "{speaker.The} sighs. \"Another day, another visitor. What is it?\""
+    ],
+    "say_greet_wise": [
+      "\"I wondered when you would come,\" says {speaker}."
+    ],
+    "say_greet_stern": [
+      "\"Speak,\" says {speaker}."
+    ],
+    "say_meet": [
+      "\"{hook}\" {speaker.The} looks at you hard. \"{goal}\"",
+      "{speaker.The} draws you aside. \"{hook} {goal}\""
+    ],
+    "say_meet_gruff": [
+      "\"Listen. {hook} Somebody has to sort it out. {goal}\""
+    ],
+    "say_meet_nervous": [
+      "\"You've heard, haven't you? {hook} Please... {goal}\""
+    ],
+    "say_give": [
+      "\"Take {item}. You'll need it more than I will.\"",
+      "\"Here - {item}. Use it well.\""
+    ],
+    "say_give_gruff": [
+      "\"Take {item} and stop pestering me.\""
+    ],
+    "say_give_kind": [
+      "\"I want you to have {item}. Bring it back if you can.\""
+    ],
+    "say_give_cunning": [
+      "\"Consider {item} an investment. I'll expect a return, one day.\""
+    ],
+    "say_give_nervous": [
+      "\"Take it - take {item}. Just... don't tell anyone where you got it.\""
+    ],
+    "say_ask": [
+      "\"I might help you, but first I need {item}. Bring it to me.\"",
+      "\"Bring me {item}, and we'll talk.\""
+    ],
+    "say_ask_gruff": [
+      "\"Nothing's free. Bring me {item}.\""
+    ],
+    "say_ask_kind": [
+      "\"I hate to ask, but... could you find {item} for me? It would mean so much.\""
+    ],
+    "say_ask_cunning": [
+      "\"Everything has a price. Mine is {item}.\""
+    ],
+    "say_ask_weary": [
+      "\"If you want my help, find me {item}. I'm too tired to go myself.\""
+    ],
+    "say_thanks": [
+      "\"{item.The}! Thank you.\"",
+      "{speaker.The} takes {item} carefully. \"You have my thanks.\""
+    ],
+    "say_thanks_gruff": [
+      "{speaker.The} grunts and takes {item}. \"Fair enough.\""
+    ],
+    "say_thanks_kind": [
+      "\"Oh, {item}! Bless you. Thank you so much.\""
+    ],
+    "say_thanks_cunning": [
+      "\"A pleasure doing business.\""
+    ],
+    "say_info": [
+      "\"If it's {about} you're after, look in {where}.\"",
+      "\"{about.The}? Last I knew, it was in {where}.\""
+    ],
+    "say_info_nervous": [
+      "\"{about.The}... I shouldn't say. But - {where}. Try {where}.\""
+    ],
+    "say_info_wise": [
+      "\"What you seek, {about}, waits in {where}.\""
+    ],
+    "say_info_gruff": [
+      "\"{about.The}? {where}. Now leave me be.\""
+    ],
+    "say_lore_intro": [
+      "\"Let me tell you something.\"",
+      "\"You should know this.\"",
+      "\"Here's what I know.\""
+    ],
+    "say_confront": [
+      "{speaker.The} turns to face you. \"So. You've come.\"",
+      "\"I knew you'd find me,\" says {speaker}."
+    ],
+    "say_confront_cold": [
+      "\"You are a nuisance,\" says {speaker} flatly. \"Nothing more.\""
+    ],
+    "say_motive": [
+      "\"All I ever wanted was to {motive}. Is that so wrong?\"",
+      "\"You don't understand. I must {motive}.\""
+    ],
+    "say_who": [
+      "\"I'm {speaker}.\" {speaker.backstory}",
+      "\"{speaker.The}. That's who.\" {speaker.backstory}"
+    ],
+    "say_goal": [
+      "\"Me? I want to {goal}.\"",
+      "\"Honestly? I'd like to {goal}.\""
+    ],
+    "say_bye": [
+      "{speaker.The} turns back to what they were doing.",
+      "\"Until next time.\""
+    ],
+    "ask_who": [
+      "Who are you?"
+    ],
+    "ask_want": [
+      "What do you want?"
+    ],
+    "ask_about": [
+      "Tell me about {topic}."
+    ],
+    "ask_advice": [
+      "What should I do next?"
+    ],
+    "ask_chat": [
+      "(Make small talk.)"
+    ],
+    "ask_bye": [
+      "Goodbye."
+    ],
+    "obstacle_open": [
+      "You use {key}, and {obstacle} opens."
+    ],
+    "obstacle_locked": [
+      "{obstacle.The} won't open. It needs something you don't have."
+    ],
+    "obstacle_blocked": [
+      "{obstacle.The} bars the way."
+    ],
+    "obstacle_already_open": [
+      "{obstacle.The} is already open."
+    ],
+    "lore_title": [
+      "A story you heard",
+      "Something worth knowing"
+    ],
+    "rumour_frame": [
+      "{hint}",
+      "Word on the road: {hint}",
+      "Folk say this: {hint}"
+    ],
+    "default_story_title": [
+      "A Tale of #place_word.title#s",
+      "Threads",
+      "The Long Road"
+    ],
+    "place_word": [
+      "road",
+      "door",
+      "key",
+      "stranger"
+    ],
+    "default_story_hook": [
+      "Nothing in this world happens by accident, and you have a feeling that something here is waiting for you."
+    ],
+    "default_story_goal": [
+      "Follow the threads wherever they lead."
+    ],
+    "default_story_ending": [
+      "The last thread is tied. Whatever you came here to do, it is done."
+    ],
+    "key_adj": [
+      "brass",
+      "iron",
+      "rusty",
+      "small",
+      "heavy",
+      "notched"
+    ],
+    "note_kind": [
+      "folded note",
+      "scrap of paper",
+      "torn page",
+      "crumpled letter"
+    ],
+    "step_show_title": [
+      "Take {item} to {char}",
+      "Show {char} {item}"
+    ],
+    "dup_adj": [
+      "battered",
+      "second",
+      "grubby",
+      "smaller",
+      "larger",
+      "older",
+      "newer",
+      "stained"
+    ]
+  },
+  "strings": {
+    "lore_learned": "(Lore learned: {title}. Type 'lore' to review it.)",
+    "lore_empty": "You haven't learned anything of note yet.",
+    "somewhere": "somewhere out in the wilds",
+    "lore_note_name": "scrap of writing",
+    "lore_note_description": "A few lines of cramped writing."
+  },
+  "verbs": {
+    "lore": {
+      "aliases": [
+        "learned",
+        "knowledge",
+        "history",
+        "legends"
+      ],
+      "target": "none",
+      "time": 0,
+      "help": "lore",
+      "default": [
+        {
+          "show": "lore"
+        }
+      ]
+    }
+  },
+  "obstacles": {
+    "locked_strongbox": {
+      "kind": "container",
+      "needs": [
+        "unlock"
+      ],
+      "key": "generic_key",
+      "feature": {
+        "name": "iron strongbox",
+        "aliases": [
+          "strongbox",
+          "box",
+          "chest"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "An iron strongbox stands open."
+          },
+          {
+            "text": "A heavy iron strongbox squats here, firmly locked."
+          }
+        ],
+        "description": "Riveted iron with a stubborn lock."
+      },
+      "open_text": "{key.The} turns in the lock with a clunk, and the strongbox swings open.",
+      "locked_text": "The strongbox is locked tight."
+    },
+    "locked_gate": {
+      "kind": "barrier",
+      "needs": [
+        "unlock"
+      ],
+      "key": "generic_key",
+      "feature": {
+        "name": "locked gate",
+        "aliases": [
+          "gate",
+          "lock"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "A heavy gate stands unlocked and open."
+          },
+          {
+            "text": "A heavy gate blocks the way on, locked with a great padlock."
+          }
+        ],
+        "description": "Solid, old, and padlocked."
+      },
+      "open_text": "You unlock the gate with {key}. It swings open with a groan.",
+      "locked_text": "The gate is padlocked. You need a key.",
+      "blocked": "A locked gate bars the way."
+    }
+  },
+  "features": {
+    "generic_key": {
+      "extends": [
+        "portable"
+      ],
+      "name": "#key_adj# key",
+      "aliases": [
+        "key"
+      ],
+      "tags": [
+        "key"
+      ],
+      "affords": [
+        "unlock"
+      ],
+      "description": "A key. Somewhere, there is a lock it fits."
+    },
+    "lore_note": {
+      "extends": [
+        "portable",
+        "readable"
+      ],
+      "name": "#note_kind#",
+      "aliases": [
+        "note",
+        "page",
+        "paper",
+        "writing",
+        "scrap"
+      ],
+      "tags": [
+        "lore_carrier"
+      ],
+      "description": "Covered in hurried writing."
+    }
+  }
+}

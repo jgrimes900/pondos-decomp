@@ -20,7 +20,7 @@ ALL = sorted(m for m in available() if m != "lighthouse")
 
 class ModLoading(unittest.TestCase):
     def test_every_mod_is_discovered(self):
-        for mid in ("core", "wilds", "hamlet", "combat", "barrow", "spire", "saga_waning_light", "derelict"):
+        for mid in ("core", "tales", "wilds", "hamlet", "combat", "barrow", "spire", "derelict", "daycycle"):
             self.assertIn(mid, ALL)
 
     def test_dependencies_are_added_and_ordered(self):
@@ -72,7 +72,7 @@ class Generation(unittest.TestCase):
         ["core", "derelict"],
         ["core", "wilds", "hamlet"],
         ["core", "wilds", "barrow", "combat"],
-        ["core", "wilds", "hamlet", "barrow", "spire", "saga_waning_light", "combat"],
+        ["core", "tales", "wilds", "hamlet", "barrow", "spire", "combat"],
         ["core", "derelict", "combat"],
         ALL,
     ]
@@ -91,28 +91,40 @@ class Generation(unittest.TestCase):
         b, _ = generate(reg, seed=99)
         self.assertEqual(sorted(r.name for r in a.rooms()), sorted(r.name for r in b.rooms()))
 
-    def test_gates_hold_until_beat_reached(self):
-        p = Player(["core", "wilds", "hamlet", "barrow", "spire", "saga_waning_light"], seed=3)
-        top = p.room_by_def("spire/foot")
-        self.assertIsNone(p.path_to(top), "the spire should be gated at the start")
+    def test_obstacles_gate_the_way(self):
+        """Barriers the story places really block the way until opened with their key."""
+        found = 0
+        for seed in range(1, 20):
+            p = Player(["core", "derelict"], seed)
+            w = p.world
+            for r in w.rooms():
+                for ex in r.exits:
+                    cond = ex.get("if") or {}
+                    if isinstance(cond, dict) and str(cond.get("of", "")).startswith("uid:"):
+                        found += 1
+                        self.assertFalse(p.passable(r, ex))
+        self.assertGreater(found, 0)
 
     def test_story_elements_come_from_several_mods(self):
-        p = Player(["core", "wilds", "hamlet", "barrow", "spire", "saga_waning_light"], seed=5)
-        mods = {p.reg.sources[("beats", b["id"])] for b in p.world.story["beats"]}
-        self.assertEqual(mods, {"hamlet", "barrow", "spire"})
-        # The spire's "bane" role re-uses the relic placed by the barrow mod.
-        beats = {b["id"]: b for b in p.world.story["beats"]}
-        self.assertEqual(beats["spire_confrontation"]["roles"]["bane"], beats["barrow_relic"]["roles"]["relic"])
+        p = Player(["core", "tales", "wilds", "hamlet", "barrow", "spire"], seed=5)
+        mods = set()
+        for st in p.world.story["steps"]:
+            for uid in st["refs"].values():
+                e = p.world.get(uid)
+                src = p.reg.sources.get(("features", e.def_id))
+                if src:
+                    mods.add(src)
+        self.assertGreaterEqual(len(mods), 3, mods)
 
     def test_sandbox_without_story(self):
         world, _ = generate(registry(["core", "wilds"]), seed=2)
-        self.assertEqual(world.story["beats"], [])
+        self.assertEqual(world.story["steps"], [])
         self.assertGreaterEqual(len(world.rooms()), 10)
 
     def test_ship_directions_stay_on_the_ship(self):
         reg = registry(ALL)
         for seed in range(1, 10):
-            world, _ = generate(reg, seed=seed, premise="dead_signal")
+            world, _ = generate(reg, seed=seed)
             for r in world.rooms():
                 for ex in r.exits:
                     dest = world.get(ex["to"])
@@ -150,7 +162,7 @@ class Parser(unittest.TestCase):
         self.assertIn("can't go", self.p.do("north"))
 
     def test_dialogue_choice(self):
-        out = self.p.do("talk to innkeeper", answers=["2"])
+        out = self.p.do("talk to innkeeper", answers=["small talk", "something to eat"])
         self.assertIn("On the house", out)
         out = self.p.do("eat bread")
         self.assertIn("You eat", out)
@@ -203,9 +215,9 @@ class SeamExits(unittest.TestCase):
 
 class SaveLoad(unittest.TestCase):
     def test_round_trip(self):
-        p = Player(["core", "wilds", "hamlet", "barrow", "spire", "saga_waning_light", "combat"], seed=12)
-        p.walk_to(p.room_by_def("hamlet/cottage"))
-        p.do("talk to elder")
+        p = Player(["core", "tales", "wilds", "hamlet", "barrow", "spire", "combat"], seed=12)
+        st = p.world.story["steps"][0]
+        p.run_op(tuple(st["solution"][0]), False)
         data = json.loads(json.dumps(p.world.to_dict()))
         w2 = World.from_dict(data)
         self.assertEqual(w2.room.uid, p.world.room.uid)

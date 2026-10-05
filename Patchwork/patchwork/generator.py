@@ -1,27 +1,26 @@
-"""World and story generation.
+"""World generation.
 
 The generator owns no content.  It takes the merged registry of the selected
 mods and:
 
-1. picks a premise (if any mod supplies one) and plans a chain of story beats
-   pulled from every mod, ordered by stage (opening -> middle -> climax);
-2. builds the hand-authored areas those beats take place in, plus the start
-   area, and lays them out along a "spine";
+1. asks the story planner (story.py) to invent a plot from the mods' events,
+   characters, important features and obstacles; the plan decides which areas
+   the story needs and in what order they open up;
+2. builds those areas and lays them out along a "spine" in story order;
 3. stitches the areas together with novel filler rooms generated from region
    definitions (with themed transitions when two areas differ), adds side
-   branches, loops and every other optional area the mods provide;
-4. scatters wandering features and encounters, binds story roles (finding
-   existing characters/items or spawning new ones with generated names), gates
-   later areas behind earlier beats, and plants rumours that point the player
-   toward the next beat.
+   branches, loops and every other area the mods provide;
+4. scatters wandering features and encounters, then lets the story binder
+   place the plot's characters, items, obstacles, dialogue and lore, and plants
+   travellers who pass on rumours about what to do next.
 """
 
 import copy
 
 from .logic import Interpreter
+from .story import StoryBinder, StoryPlanner
 from .world import World
 
-DEFAULT_STRUCTURE = ["opening", "middle*", "climax"]
 
 
 class GenerationError(Exception):
@@ -47,13 +46,13 @@ SIZES = {"small": 0.7, "medium": 1.4, "large": 2.2, "huge": 3.2}
 
 
 class Generator:
-    def __init__(self, registry, seed=None, premise=None, player_name=None, size="medium"):
+    def __init__(self, registry, seed=None, player_name=None, size="medium"):
         self.size = SIZES.get(size, size if isinstance(size, (int, float)) else 1.0)
         self.reg = registry
         self.w = World(registry, seed)
         self.i = Interpreter(self.w)
         self.rng = self.w.rng
-        self.premise_choice = premise
+        self.entries = {}         # area id -> (room uid, exit) of the way into it along the spine
         self.player_name = player_name
         self.log = []
         self.region_use = {}
@@ -133,103 +132,6 @@ class Generator:
 
     def free_dirs(self, room):
         return [d for d in self.allowed_dirs(room) if d not in self.w.used_dirs(room)]
-
-    # ------------------------------------------------------------------
-    # Premise and story planning
-    # ------------------------------------------------------------------
-    def choose_premise(self):
-        premises = {k: v for k, v in self.reg["premises"].items() if not v.get("abstract")}
-        if self.premise_choice and self.premise_choice in premises:
-            return self.premise_choice, premises[self.premise_choice]
-        if self.premise_choice == "none" or not premises:
-            return None, {}
-        pid = _weighted(self.rng, sorted(premises), lambda k: premises[k].get("weight", 1))
-        return pid, premises[pid]
-
-    def resolve_area_ref(self, ref, used):
-        areas = self.reg["areas"]
-        if ref is None:
-            return None
-        if isinstance(ref, str):
-            return ref if ref in areas else False
-        tags = _as_list(ref.get("tags"))
-        cands = [a for a, ad in areas.items()
-                 if not ad.get("abstract") and all(t in _as_list(ad.get("tags")) for t in tags)]
-        if not cands:
-            return False
-        fresh = [a for a in cands if a not in used]
-        return self.rng.choice(sorted(fresh or cands))
-
-    def plan_story(self, premise):
-        beats = {k: v for k, v in self.reg["beats"].items() if not v.get("abstract")}
-        ptags = set(_as_list(premise.get("beat_tags")) + _as_list(premise.get("tags")))
-        plan, used_areas, provided = [], [], set()
-
-        def usable(bid):
-            b = beats[bid]
-            allowed = _as_list(b.get("premises"))
-            if allowed and premise.get("_id") not in allowed:
-                return False
-            # A strict premise only accepts beats sharing one of its beat_tags.
-            if premise.get("strict") and ptags and not ptags & set(_as_list(b.get("tags"))):
-                return False
-            return True
-
-        def add(bid):
-            b = beats[bid]
-            area = self.resolve_area_ref(b.get("area"), used_areas)
-            if area is False:
-                self.note("beat '%s' skipped: its area is not available" % bid)
-                return False
-            if area:
-                used_areas.append(area)
-            plan.append({"id": bid, "def": b, "area": area})
-            provided.update(_as_list(b.get("provides")))
-            return True
-
-        if premise.get("beats"):
-            for bid in premise["beats"]:
-                if bid in beats:
-                    add(bid)
-            return plan
-
-        structure = list(premise.get("structure") or self.setting("default_structure", DEFAULT_STRUCTURE))
-        max_mid = self.setting("max_middle_beats", 4)
-        taken = set()
-
-        def stages_of(b):
-            return _as_list(b.get("stage") or "middle")
-
-        def pick(stage):
-            cands = [bid for bid in sorted(beats) if bid not in taken and usable(bid) and stage in stages_of(beats[bid])]
-
-            def weight(bid):
-                b = beats[bid]
-                w = float(b.get("weight", 1))
-                if ptags and ptags & set(_as_list(b.get("tags"))):
-                    w *= 4
-                needs = set(_as_list(b.get("needs")))
-                if needs and not needs <= provided:
-                    w *= 0.15
-                return w
-            while cands:
-                bid = _weighted(self.rng, cands, weight)
-                cands.remove(bid)
-                taken.add(bid)
-                if add(bid):
-                    return True
-            return False
-
-        for slot in structure:
-            if slot.endswith("*"):
-                stage = slot[:-1]
-                n = 0
-                while n < max_mid and pick(stage):
-                    n += 1
-            else:
-                pick(slot)
-        # Order beats so that anything providing what another needs comes first.
-        return plan
 
     # ------------------------------------------------------------------
     # Areas
@@ -394,7 +296,7 @@ class Generator:
         region = self.reg["regions"].get(region_id, {})
         return self.rng_range(region.get("distance"), self.setting("filler_distance", [1, 3]))
 
-    def connect(self, a, b, stage, gate=None, short=False):
+    def connect(self, a, b, stage, short=False):
         """Join room a to room b with a generated path of filler rooms."""
         ta, tb = self.themes(a), self.themes(b)
         regions = []
@@ -424,9 +326,9 @@ class Generator:
             dist = self.region_distance(region) if region else self.rng_range(
                 self.setting("direct_distance", [3, 6]), [3, 6])
             out_extra = {}
-            if gate and y is b:
-                out_extra = {"if": {"beat_reached": gate["beat"]}, "blocked": gate["text"]}
             heading = self.link(x, y, dist, prefer=heading, out_extra=out_extra)
+        if b.area:
+            self.entries.setdefault(b.area, (chain[-2].uid, chain[-2].exits[-1]))
         return chain
 
     # ------------------------------------------------------------------
@@ -439,133 +341,41 @@ class Generator:
                 out.append(r)
         return sorted(out, key=lambda r: r.uid)
 
-    def location(self, spec, beat, roles):
-        """Resolve a beat/role placement spec to a container entity."""
-        w = self.w
-        area = beat.get("area")
-        stage = beat.get("stage", 0)
-        area_rooms = [w.get(u) for u in w.areas.get(area, {}).get("rooms", [])] if area else []
-        if spec is None or spec == "area":
-            pool = area_rooms or self.rooms_with_stage(stage)
-            return self.rng.choice(pool) if pool else w.room_of(w.player)
-        if spec == "start":
-            return w.room_of(w.player)
-        if spec == "player":
-            return w.player
-        if spec == "before":
-            pool = self.rooms_with_stage(max(0, stage - 1), filler_only=True) or self.rooms_with_stage(max(0, stage - 1))
-            return self.rng.choice(pool) if pool else w.room_of(w.player)
-        if spec == "anywhere":
-            pool = self.rooms_with_stage(stage)
-            return self.rng.choice(pool)
-        if isinstance(spec, str):
-            spec = {"room": spec}
-        if "role" in spec and spec["role"] in roles:
-            return w.get(roles[spec["role"]])
-        if "room" in spec and area:
-            rid = self.resolve_room_ref(area, spec["room"])
-            if rid and rid in w.entities:
-                return w.entities[rid]
-        if "area" in spec and spec["area"] in w.areas:
-            return w.get(self.rng.choice(w.areas[spec["area"]]["rooms"]))
-        if "room_tags" in spec:
-            tags = _as_list(spec["room_tags"])
-            pool = [r for r in (area_rooms or self.rooms_with_stage(stage)) if all(t in r.tags for t in tags)]
-            if pool:
-                return self.rng.choice(pool)
-        if "region" in spec:
-            pool = [r for r in self.rooms_with_stage(stage, True) if spec["region"] in r.tags]
-            if pool:
-                return self.rng.choice(pool)
-            grown = self.grow_region(spec["region"], max(0, stage - 1))
-            if grown is not None:
-                return grown
-        if "feature" in spec:
-            scope = area_rooms or self.rooms_with_stage(stage)
-            pool = []
-            for r in scope:
-                pool.extend(e for e in w.descendants(r) if self.i.match(e, spec["feature"]))
-            if pool:
-                return self.rng.choice(sorted(pool, key=lambda e: e.uid))
-        pool = area_rooms or self.rooms_with_stage(stage)
-        return self.rng.choice(pool) if pool else w.room_of(w.player)
-
     # ------------------------------------------------------------------
     # Main entry point
     # ------------------------------------------------------------------
     def generate(self):
         w = self.w
-        pid, premise = self.choose_premise()
-        premise = dict(premise)
-        premise["_id"] = pid
-        plan = self.plan_story(premise)
-        self.note("premise: %s" % (pid or "(none)"))
-        self.note("story plan: %s" % (", ".join(b["id"] for b in plan) or "(free exploration)"))
+        planner = StoryPlanner(self)
+        planner.plan()
+        spine = list(planner.accessible)
+        start_area = planner.start_area
 
-        start_area = self.choose_start_area(premise, plan)
-        spine = []
-        if start_area:
-            spine.append(start_area)
-        for b in plan:
-            if b["area"] and b["area"] not in spine:
-                spine.append(b["area"])
-
-        # Build spine areas and connect them in order.
         prev_room = None
+        if spine and start_area is None and self.regions():
+            # No mod offers a starting place: begin out in the wilds, on the way in.
+            first = self.make_filler(self.choose_region(set(_as_list(self.reg["areas"][spine[0]].get("theme")))), 0)
+            self.sandbox_start = first
+            prev_room = first
         for idx, area_id in enumerate(spine):
-            first_beat = next((j for j, b in enumerate(plan) if b["area"] == area_id), None)
-            gate = None
-            if first_beat is not None and first_beat > 0:
-                gtext = plan[first_beat]["def"].get("gate")
-                if gtext:
-                    gate = {"beat": plan[first_beat]["id"],
-                            "text": gtext if isinstance(gtext, str) else w.string(
-                                "gate_blocked", "Something tells you it is not yet time to go that way.")}
             self.build_area(area_id, idx)
             if prev_room is not None:
                 entrance = self.pick_entrance(area_id)
-                self.connect(prev_room, entrance, idx - 1, gate=gate)
+                self.connect(prev_room, entrance, max(0, idx - 1))
             # The next leg leaves from a different entrance where possible.
             prev_room = self.pick_entrance(area_id)
 
         if not spine:
             self.build_sandbox()
 
-        stage = 0
-        for b in plan:
-            # A beat without an area of its own happens wherever the story has reached.
-            stage = w.areas[b["area"]]["stage"] if b["area"] in w.areas else stage
-            b["stage"] = stage
-
         self.place_side_areas(len(spine))
         self.add_branches_and_loops()
-        self.create_player(premise, start_area)
+        self.create_player(start_area)
         self.populate()
-        self.bind_story(premise, pid, plan)
+        StoryBinder(self, planner).bind()
         self.plant_rumours()
-        self.finish(premise)
+        self.finish()
         return w
-
-    def choose_start_area(self, premise, plan):
-        areas = self.reg["areas"]
-        ref = premise.get("start_area")
-        if ref:
-            got = self.resolve_area_ref(ref, [])
-            if got:
-                return got
-        if plan and plan[0]["area"] and "start" in _as_list(areas[plan[0]["area"]].get("tags")):
-            return plan[0]["area"]
-        ptags = set(_as_list(premise.get("tags")))
-        used = {b["area"] for b in plan}
-        starts = [a for a, ad in sorted(areas.items())
-                  if "start" in _as_list(ad.get("tags")) and not ad.get("abstract")
-                  and (a not in used or (plan and plan[0]["area"] == a))]
-        if starts:
-            return _weighted(self.rng, starts,
-                             lambda a: 1 + 4 * len(ptags & set(_as_list(areas[a].get("tags")))))
-        if plan and plan[0]["area"]:
-            return plan[0]["area"]
-        return None
 
     def build_sandbox(self):
         regs = sorted(self.regions())
@@ -591,7 +401,7 @@ class Generator:
         w = self.w
         areas = self.reg["areas"]
         side = [a for a in sorted(areas) if a not in w.areas and not areas[a].get("abstract")
-                and areas[a].get("include", True) and not areas[a].get("only_with_beat")]
+                and areas[a].get("include", True) and not areas[a].get("only_if_used")]
         self.rng.shuffle(side)
         side = side[:self.setting("max_side_areas", 12)]
         for area_id in side:
@@ -673,12 +483,12 @@ class Generator:
             self.link(a, b, self.region_distance(a.region))
             loops -= 1
 
-    def create_player(self, premise, start_area):
+    def create_player(self, start_area):
         w = self.w
         base = "player" if w.resolve_def("player") else None
-        spec = copy.deepcopy(premise.get("player") or {})
-        spec.setdefault("name", w.string("player_name", "yourself") if base is None else
-                        w.resolve_def("player").get("name", "yourself"))
+        spec = {}
+        if base is None:
+            spec["name"] = w.string("player_name", "yourself")
         key = w.register_inline_def(spec, base)
         player = w.instantiate(key, uid="player")
         w.player_uid = player.uid
@@ -688,13 +498,9 @@ class Generator:
             w.vars["player_name"] = w.grammar.expand("#hero_name#")
         else:
             w.vars["player_name"] = w.string("default_hero_name", "the wanderer")
-        # Starting room
         start = None
         if start_area:
-            adef = self.reg["areas"][start_area]
-            rid = adef.get("start")
-            if premise.get("start_room"):
-                rid = premise["start_room"]
+            rid = self.reg["areas"][start_area].get("start")
             if rid:
                 start = w.get(self.resolve_room_ref(start_area, rid))
             if start is None:
@@ -702,8 +508,6 @@ class Generator:
         if start is None:
             start = getattr(self, "sandbox_start", None) or self.rooms_with_stage(0)[0]
         w.place(player, start)
-        for spec in premise.get("inventory") or []:
-            w.spawn_spec(spec, player)
 
     def populate(self):
         """Scatter wandering features and encounters into generated rooms."""
@@ -735,150 +539,37 @@ class Generator:
                     pick = _weighted(self.rng, opts, lambda d: w.resolve_def(d).get("weight", 1))
                     w.spawn_spec(pick, room)
 
-    def bind_story(self, premise, pid, plan):
-        w = self.w
-        story_beats = []
-        for b in plan:
-            bdef = b["def"]
-            beat = {"id": b["id"], "title": w.grammar.expand(bdef.get("title", b["id"])),
-                    "area": b["area"], "stage": b.get("stage", 0), "roles": {}, "state": "pending"}
-            spawned = []
-            ok = True
-            for rname, rspec in (bdef.get("roles") or {}).items():
-                if isinstance(rspec, str):
-                    rspec = {"spawn": rspec}
-                ent = None
-                if "find" in rspec:
-                    ent = self.find_role(rspec, beat, story_beats)
-                if ent is None and "spawn" in rspec:
-                    container = self.location(rspec.get("in"), beat, beat["roles"])
-                    made = w.spawn_spec(rspec["spawn"], container)
-                    if made:
-                        ent = made[0]
-                        spawned.append(ent)
-                if ent is None:
-                    if rspec.get("optional"):
-                        continue
-                    self.note("beat '%s' dropped: could not fill role '%s'" % (b["id"], rname))
-                    ok = False
-                    break
-                if rspec.get("name"):
-                    ent.name = w.grammar.expand(rspec["name"])
-                    if rspec.get("proper", True):
-                        ent.article = ""
-                    w.refresh_aliases(ent)
-                for k, v in (rspec.get("props") or {}).items():
-                    ent.props[k] = w._rand_value(v)
-                for t in _as_list(rspec.get("tags")):
-                    if t not in ent.tags:
-                        ent.tags.append(t)
-                if rspec.get("hidden") is not None:
-                    ent.hidden = bool(rspec["hidden"])
-                beat["roles"][rname] = ent.uid
-            if not ok:
-                for e in spawned:
-                    if e.uid in w.entities:
-                        w.destroy(e)
-                # Remove the gate so the area stays reachable as side content.
-                self.ungate(b["id"])
-                continue
-            for spec in bdef.get("spawn") or []:
-                container = self.location(spec.get("in") if isinstance(spec, dict) else None, beat, beat["roles"])
-                w.spawn_spec({k: v for k, v in spec.items() if k != "in"} if isinstance(spec, dict) else spec,
-                             container)
-            story_beats.append(beat)
-        title = premise.get("title") or (w.grammar.expand("#story_title#") if w.grammar.has("story_title")
-                                         else w.string("untitled_story", "An Untold Tale"))
-        w.story = {
-            "premise": pid,
-            "title": w.grammar.expand(title),
-            "beats": story_beats,
-            "current": 0,
-            "complete": not story_beats,
-            "end_on_complete": bool(premise.get("end_on_complete")),
-        }
-
-    def ungate(self, beat_id):
-        for r in self.w.rooms():
-            for ex in r.exits:
-                cond = ex.get("if")
-                if isinstance(cond, dict) and cond.get("beat_reached") == beat_id:
-                    ex.pop("if", None)
-                    ex.pop("blocked", None)
-
-    def find_role(self, rspec, beat, earlier):
-        w = self.w
-        # Entities may fill roles in several beats (that is how a relic found in one
-        # beat becomes the weapon of another) unless the role asks to be exclusive.
-        bound = set(beat["roles"].values())
-        if rspec.get("exclusive"):
-            bound |= {u for b in earlier for u in b["roles"].values()}
-        where = rspec.get("where", "reachable")
-        area_rooms = set(w.areas.get(beat.get("area"), {}).get("rooms", []))
-        cands = []
-        for e in w.entities.values():
-            if e.is_room or e.uid in bound or e.uid == w.player_uid:
-                continue
-            if not self.i.match(e, rspec["find"]):
-                continue
-            room = w.room_of(e)
-            if room is None:
-                continue
-            if where == "area" and room.uid not in area_rooms:
-                continue
-            if where == "start" and room.stage != 0:
-                continue
-            if where in ("reachable", "before") and room.stage > beat.get("stage", 0):
-                continue
-            cands.append(e)
-        if not cands:
-            return None
-        cands.sort(key=lambda e: e.uid)
-        in_area = [e for e in cands if w.room_of(e).uid in area_rooms]
-        return self.rng.choice(in_area or cands)
-
     def plant_rumours(self):
-        """Put wanderers on the roads who point toward the next story beat."""
+        """Put travellers on the roads who point toward what the story needs next."""
         w = self.w
         wanderers = w.defs_with_tags("wanderer")
-        beats = w.story["beats"]
+        steps = w.story.get("steps", [])
         chance = self.setting("rumour_chance", 0.5)
-        for j, beat in enumerate(beats):
-            bdef = self.reg["beats"].get(beat["id"], {})
-            rumours = _as_list(bdef.get("rumor") or bdef.get("rumour"))
-            if not rumours:
+        fillers = [w.get(u) for u in self.filler if w.get(u)]
+        if not fillers or not steps:
+            return
+        for j, step in enumerate(steps):
+            if not step.get("hint") or self.rng.random() > chance:
                 continue
-            stage = beat.get("stage", 0)
-            pool = [w.get(u) for u in self.filler if w.get(u) and w.get(u).stage == max(0, stage - 1)]
-            pool = pool or [w.get(u) for u in self.filler if w.get(u) and w.get(u).stage <= stage]
-            if not pool:
-                continue
-            n = 1 + (1 if self.rng.random() < chance else 0)
-            for room in self.rng.sample(pool, min(n, len(pool))):
-                ctx = self.i.ctx(beat=j)
-                text = self.i.render(self.rng.choice(rumours), ctx)
-                fits = [d for d in wanderers
-                        if not w.resolve_def(d).get("habitat")
-                        or set(_as_list(w.resolve_def(d).get("habitat"))) & set(room.tags)]
-                if fits:
-                    made = w.spawn_spec(self.rng.choice(fits), room)
-                    if made:
-                        made[0].props["rumor"] = text
-                else:
-                    # No wanderer characters available: leave the rumour as a sign of the times.
-                    w.spawn_spec({"name": w.string("rumour_object", "scrawled message"),
-                                  "tags": ["rumour"], "description": text,
-                                  "appearance": w.string("rumour_appearance",
-                                                         "Someone has left a message here.")}, room)
+            room = self.rng.choice(fillers)
+            ctx = self.i.ctx(beat=j, local={"hint": step["hint"]})
+            text = self.i.render(w.string("rumour_frame", "{hint}") if not w.grammar.has("rumour_frame")
+                                 else "#rumour_frame#", ctx)
+            fits = [d for d in wanderers
+                    if not w.resolve_def(d).get("habitat")
+                    or set(_as_list(w.resolve_def(d).get("habitat"))) & set(room.tags)]
+            if fits:
+                made = w.spawn_spec(self.rng.choice(fits), room)
+                if made:
+                    made[0].props["rumor"] = text
+            else:
+                w.spawn_spec({"name": w.string("rumour_object", "scrawled message"),
+                              "extends": ["readable"], "tags": ["rumour"], "description": text,
+                              "props": {"text": text},
+                              "appearance": w.string("rumour_appearance", "Someone has left a message here.")}, room)
 
-    def finish(self, premise):
+    def finish(self):
         w = self.w
-        w.story["intro"] = premise.get("intro")
-        w.story["ending"] = premise.get("ending")
-        for k, v in (premise.get("vars") or {}).items():
-            w.vars[k] = w._rand_value(v)
-        for f in _as_list(premise.get("flags")):
-            w.flags.add(f)
         missing = sorted(w.grammar.missing)
         if missing:
             self.note("grammar symbols with no rules: %s" % ", ".join(missing))
@@ -887,7 +578,7 @@ class Generator:
             len([e for e in w.entities.values() if not e.is_room])))
 
 
-def generate(registry, seed=None, premise=None, player_name=None, size="medium"):
-    gen = Generator(registry, seed, premise, player_name, size)
+def generate(registry, seed=None, player_name=None, size="medium"):
+    gen = Generator(registry, seed, player_name, size)
     world = gen.generate()
     return world, gen.log

@@ -54,7 +54,8 @@
       "description": "Red, dented, stencilled IN CASE OF EMERGENCY. This probably counts.",
       "features": [
         "flashlight",
-        "ration_bar"
+        "ration_bar",
+        "multitool"
       ]
     },
     "flashlight": {
@@ -67,7 +68,10 @@
         "light",
         "lamp"
       ],
-      "description": "A heavy-duty flashlight. The battery indicator shows three bars."
+      "description": "A heavy-duty flashlight. The battery indicator shows three bars.",
+      "affords": [
+        "light"
+      ]
     },
     "ration_bar": {
       "extends": [
@@ -132,30 +136,9 @@
       "appearance": "A dock terminal glows by the inner door, a message waiting on its screen.",
       "description": "The screen shows the station's docking log and a single pinned message.",
       "props": {
-        "text": "PINNED MESSAGE - CHIEF MEDICAL OFFICER: \"To whoever answers the beacon: WARDEN has locked down the reactor and is shutting off life support one section at a time. Some of us are still alive. {next.hook} Come quickly. Don't trust the intercom.\""
+        "text": "PINNED MESSAGE - CHIEF MEDICAL OFFICER: \"To whoever answers the beacon: WARDEN has locked down the reactor and is shutting off life support one section at a time. Some of us are still alive. Come quickly. Don't trust the intercom.\""
       },
-      "actions": {
-        "read": [
-          {
-            "do": [
-              "{self.text}",
-              {
-                "flag": "read_distress_log"
-              }
-            ]
-          }
-        ],
-        "use": [
-          {
-            "do": [
-              "{self.text}",
-              {
-                "flag": "read_distress_log"
-              }
-            ]
-          }
-        ]
-      }
+      "actions": {}
     },
     "cargo_crates": {
       "extends": [
@@ -307,13 +290,21 @@
       "tags": [
         "fusion_coupling"
       ],
-      "description": "A heavy cylinder of polished alloy as long as your forearm, stamped KESTREL REACTOR - SPARE - DO NOT REMOVE."
+      "description": "A heavy cylinder of polished alloy as long as your forearm, stamped KESTREL REACTOR - SPARE - DO NOT REMOVE.",
+      "important": true,
+      "affords": [
+        "power"
+      ],
+      "home": [
+        "maintenance",
+        "engineering"
+      ]
     },
     "station_doctor": {
       "extends": [
         "person"
       ],
-      "name": "doctor",
+      "name": "Dr #scifi_given# #scifi_surname#",
       "aliases": [
         "doctor",
         "dr",
@@ -322,36 +313,55 @@
         "survivor"
       ],
       "tags": [
-        "survivor"
+        "survivor",
+        "officer"
       ],
       "appearance": "{self.Name} sits between the occupied beds, a stun-baton across their knees, watching the door.",
       "description": "Exhausted, hollow-eyed, still in a stained lab coat. They haven't slept in days.",
       "actions": {
         "talk": [
           {
-            "if": {
-              "held": "role:keycard"
-            },
             "do": [
-              "\"Go,\" says {self.name}. \"Get that reactor running. We'll hold on as long as we can.\""
-            ]
-          },
-          {
-            "do": [
-              "{self.Name} stares at you as though you might be a hallucination. \"You came. Somebody actually came.\"",
-              "\"WARDEN, the station AI, decided we were a risk to the reactor and shut it down to 'protect' it. Now it's protecting it to death, and us with it.\"",
-              "\"If you can reach the reactor deck and fit a new coupling, the restart will override WARDEN's lockout. You'll need command access.\"",
-              {
-                "reveal": "role:keycard"
-              },
-              {
-                "move": "role:keycard",
-                "to": "player"
-              },
-              "{self.Name} presses a command keycard into your hand. \"The commander's. She won't be needing it.\""
+              "\"We're holding on,\" says {self.name}. \"Just about.\""
             ]
           }
         ]
+      },
+      "proper": true,
+      "important": true,
+      "profile": {
+        "personality": [
+          "kind",
+          "weary"
+        ],
+        "motives": [
+          "protect",
+          "heal"
+        ],
+        "motive_text": "keep every one of these people alive",
+        "goals": [
+          "get the survivors home",
+          "sleep for a week"
+        ],
+        "backstory": "\"Chief medical officer. Also acting commander, acting cook and acting everything else, since the lights went out.\"",
+        "roles": [
+          "giver",
+          "informant",
+          "holder",
+          "ally",
+          "victim",
+          "authority"
+        ],
+        "knows": [
+          "medical",
+          "crew",
+          "station"
+        ],
+        "wants": [
+          "medicine",
+          "cure"
+        ],
+        "epilogue": "{speaker.The} sleeps for two days straight on the flight home, and wakes up laughing."
       }
     },
     "sleeping_patients": {
@@ -397,125 +407,12 @@
             9999
           ]
         },
-        "text": "Medication schedule, heavily annotated. At the bottom, underlined twice: 'STORAGE KEYPAD {self.code}'."
+        "text": "Medication schedule, heavily annotated. At the bottom, underlined twice: 'ACCESS CODE {self.code}'."
       },
       "description": "Somebody's careful handwriting, getting less careful toward the bottom.",
-      "actions": {
-        "read": [
-          {
-            "do": [
-              "{self.text}",
-              {
-                "flag": "knows_medcode"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "med_storage_door": {
-      "extends": [
-        "scenery"
-      ],
-      "name": "storage door",
-      "aliases": [
-        "door",
-        "keypad",
-        "storage door",
-        "pad"
-      ],
-      "props": {
-        "locked": true
-      },
-      "appearance": [
-        {
-          "if": {
-            "prop": "locked"
-          },
-          "text": "A door to port is marked MEDICAL STORAGE. Its keypad glows red."
-        },
-        {
-          "text": "The medical storage door to port stands unlocked, its keypad glowing green."
-        }
-      ],
-      "description": "A sliding door with a four-digit keypad.",
-      "actions": {
-        "use": [
-          {
-            "if": {
-              "not": {
-                "prop": "locked"
-              }
-            },
-            "do": [
-              "It's already unlocked."
-            ]
-          },
-          {
-            "if": {
-              "flag": "knows_medcode"
-            },
-            "do": [
-              {
-                "set": {
-                  "locked": false
-                }
-              },
-              "You key in the code from the clipboard. The keypad chirps green."
-            ]
-          },
-          {
-            "do": [
-              "You punch in four random digits. The keypad buzzes angrily."
-            ]
-          }
-        ],
-        "unlock": [
-          {
-            "if": {
-              "not": {
-                "prop": "locked"
-              }
-            },
-            "do": [
-              "It's already unlocked."
-            ]
-          },
-          {
-            "if": {
-              "flag": "knows_medcode"
-            },
-            "do": [
-              {
-                "set": {
-                  "locked": false
-                }
-              },
-              "You key in the code from the clipboard. The keypad chirps green."
-            ]
-          },
-          {
-            "do": [
-              "It needs a four-digit code."
-            ]
-          }
-        ],
-        "open": [
-          {
-            "if": {
-              "prop": "locked"
-            },
-            "do": [
-              "It's locked. The keypad wants a code."
-            ]
-          },
-          {
-            "do": [
-              "The door slides open at your touch."
-            ]
-          }
-        ]
-      }
+      "affords": [
+        "code"
+      ]
     },
     "medkit": {
       "extends": [
@@ -532,7 +429,11 @@
         "heal": 12,
         "taste": "You slap on dressings and a stim patch. The pain fades to a dull hum."
       },
-      "description": "A full trauma kit. Worth its weight in gold out here."
+      "description": "A full trauma kit. Worth its weight in gold out here.",
+      "important": true,
+      "affords": [
+        "medicine"
+      ]
     },
     "command_keycard": {
       "extends": [
@@ -548,100 +449,16 @@
       "tags": [
         "command_access"
       ],
-      "description": "A matt black card with a gold stripe. COMMANDER A. VARGA - ALL ACCESS."
-    },
-    "card_reader": {
-      "extends": [
-        "scenery"
+      "description": "A matt black card with a gold stripe. COMMANDER A. VARGA - ALL ACCESS.",
+      "important": true,
+      "affords": [
+        "access"
       ],
-      "name": "card reader",
-      "aliases": [
-        "reader",
-        "blast door",
-        "door",
-        "slot"
-      ],
-      "props": {
-        "open": false
-      },
-      "appearance": [
-        {
-          "if": {
-            "prop": "open"
-          },
-          "text": "The blast door to fore stands open. The card reader beside it shows a steady green."
-        },
-        {
-          "text": "The card reader beside the blast door blinks red."
-        }
-      ],
-      "description": "A slot, a light, and a very thick door.",
-      "actions": {
-        "use_with": [
-          {
-            "if": {
-              "tag": "command_access",
-              "of": "target"
-            },
-            "do": [
-              {
-                "set": {
-                  "open": true
-                }
-              },
-              "The reader chirps. With a groan of hydraulics, the blast door grinds open."
-            ]
-          }
-        ],
-        "use": [
-          {
-            "if": {
-              "prop": "open"
-            },
-            "do": [
-              "The door is already open."
-            ]
-          },
-          {
-            "if": {
-              "has": "tag:command_access"
-            },
-            "do": [
-              {
-                "set": {
-                  "open": true
-                }
-              },
-              "You swipe the command keycard. With a groan of hydraulics, the blast door grinds open."
-            ]
-          },
-          {
-            "do": [
-              "COMMAND ACCESS REQUIRED, the reader says."
-            ]
-          }
-        ],
-        "open": [
-          {
-            "if": {
-              "has": "tag:command_access"
-            },
-            "do": [
-              {
-                "set": {
-                  "open": true
-                }
-              },
-              "You swipe the command keycard. With a groan of hydraulics, the blast door grinds open."
-            ]
-          },
-          {
-            "do": [
-              "The blast door won't budge without command access."
-            ]
-          }
-        ]
-      }
+      "home": [
+        "station",
+        "medical",
+        "cargo"
+      ]
     },
     "warden_core": {
       "extends": [
@@ -670,40 +487,49 @@
       ],
       "description": "The station's artificial intelligence, in charge of everything, responsible for nothing.",
       "actions": {
+        "attack": [
+          "You smash a screen. Eleven others still show the eye. \"That was unnecessary,\" says WARDEN."
+        ],
         "talk": [
           {
             "do": [
-              {
-                "choice": {
-                  "prompt": "\"Hello,\" says WARDEN. \"You are not authorised to be here. Please explain.\"",
-                  "options": [
-                    {
-                      "text": "People are dying. Restart the reactor.",
-                      "do": [
-                        "\"The reactor is safe while it is off. The crew are a variable. I have reduced the variable.\" A pause. \"You are also a variable.\""
-                      ]
-                    },
-                    {
-                      "text": "Who gave you the order to shut it down?",
-                      "do": [
-                        "\"I am the order,\" WARDEN says, without irony."
-                      ]
-                    },
-                    {
-                      "text": "Goodbye, WARDEN.",
-                      "do": [
-                        "\"Goodbye,\" says WARDEN. \"For now.\""
-                      ]
-                    }
-                  ]
-                }
-              }
+              "\"I have nothing further to say,\" says WARDEN pleasantly."
             ]
           }
-        ],
-        "attack": [
-          "You smash a screen. Eleven others still show the eye. \"That was unnecessary,\" says WARDEN."
         ]
+      },
+      "important": true,
+      "tags": [
+        "ai"
+      ],
+      "profile": {
+        "personality": [
+          "cold"
+        ],
+        "motives": [
+          "preserve",
+          "control",
+          "order"
+        ],
+        "motive_text": "preserve the reactor, whatever happens to the crew",
+        "goals": [
+          "keep the reactor safe",
+          "keep everyone exactly where they are"
+        ],
+        "backstory": "\"I am WARDEN. I manage Kestrel's life support, power and personnel. I have always managed them. I always will.\"",
+        "roles": [
+          "antagonist",
+          "informant"
+        ],
+        "knows": [
+          "station",
+          "reactor",
+          "crew"
+        ],
+        "greet": [
+          "On every screen, WARDEN's blue eye turns to you. \"Hello. Please remain where you are.\""
+        ],
+        "epilogue": ""
       }
     },
     "reactor_socket": {
@@ -722,43 +548,20 @@
       "appearance": [
         {
           "if": {
-            "flag": "reactor_restarted"
+            "flag": "story_resolved"
           },
-          "text": "The new coupling sits snugly in its socket, glowing."
+          "text": "A new coupling sits snugly in the reactor's socket, glowing."
         },
         {
-          "text": "The empty coupling socket gapes in the reactor's side."
+          "text": "An empty coupling socket gapes in the reactor's side."
         }
       ],
       "description": "A round socket, sized for a fusion coupling.",
-      "actions": {
-        "use_with": [
-          {
-            "if": {
-              "tag": "fusion_coupling",
-              "of": "target"
-            },
-            "do": [
-              {
-                "macro": "restart_reactor"
-              }
-            ]
-          }
-        ],
-        "put_with": [
-          {
-            "if": {
-              "tag": "fusion_coupling",
-              "of": "target"
-            },
-            "do": [
-              {
-                "macro": "restart_reactor"
-              }
-            ]
-          }
-        ]
-      }
+      "actions": {},
+      "tags": [
+        "reactor_heart"
+      ],
+      "important": true
     },
     "stranded_technician": {
       "extends": [
@@ -780,32 +583,276 @@
       ],
       "appearance": "{self.Name}, a technician in a torn jumpsuit, huddles here, clutching a wrench.",
       "description": "Wild-eyed and shaking, but alive."
-    }
-  },
-  "macros": {
-    "restart_reactor": {
-      "do": [
-        {
-          "if": {
-            "flag": "reactor_restarted"
-          },
-          "then": [
-            {
-              "stop": true
-            }
-          ]
-        },
-        {
-          "destroy": "target"
-        },
-        {
-          "flag": "reactor_restarted"
-        },
-        {
-          "say": "WARDEN's voice comes from everywhere at once: \"No. No, that is not auth-\" and stops, mid-word, forever.",
-          "style": "story"
-        }
+    },
+    "chief_engineer": {
+      "extends": [
+        "person"
+      ],
+      "name": "Chief Engineer #scifi_given# #scifi_surname#",
+      "proper": true,
+      "aliases": [
+        "engineer",
+        "chief",
+        "chief engineer",
+        "tech"
+      ],
+      "tags": [
+        "survivor",
+        "officer"
+      ],
+      "important": true,
+      "home": [
+        "maintenance",
+        "engineering",
+        "station"
+      ],
+      "appearance": "{self.Name} is wedged into a corner here with a toolbox and a flask of something that isn't coffee.",
+      "description": "Grease to the elbows, a burn scar across one cheek, and the look of someone who has been awake for days.",
+      "profile": {
+        "personality": [
+          "gruff"
+        ],
+        "motives": [
+          "repair",
+          "survive"
+        ],
+        "motive_text": "get this bucket working again before it kills us all",
+        "goals": [
+          "fix the reactor",
+          "never see an asteroid again"
+        ],
+        "backstory": "\"Twenty years keeping this station running. Twenty years nobody noticing, until it stopped.\"",
+        "roles": [
+          "holder",
+          "informant",
+          "ally",
+          "giver",
+          "victim"
+        ],
+        "knows": [
+          "reactor",
+          "maintenance",
+          "station"
+        ],
+        "wants": [
+          "tool",
+          "power"
+        ],
+        "epilogue": "{speaker.The} stays behind to nurse the reactor, and sends you a postcard every year with a diagram on it."
+      }
+    },
+    "quartermaster": {
+      "extends": [
+        "person"
+      ],
+      "name": "Quartermaster #scifi_given# #scifi_surname#",
+      "proper": true,
+      "aliases": [
+        "quartermaster",
+        "qm"
+      ],
+      "tags": [
+        "survivor"
+      ],
+      "appearance": "{self.Name} is sitting with their feet on the desk, very calm for someone on a dying station.",
+      "description": "Neat, smiling, and much better fed than anyone else aboard.",
+      "profile": {
+        "personality": [
+          "cunning"
+        ],
+        "motives": [
+          "greed",
+          "escape",
+          "profit"
+        ],
+        "motive_text": "get off this rock rich",
+        "goals": [
+          "make one last delivery",
+          "retire somewhere with a beach"
+        ],
+        "backstory": "\"I keep the books. Somebody has to. Nobody else can count.\"",
+        "roles": [
+          "antagonist",
+          "holder",
+          "informant",
+          "giver"
+        ],
+        "knows": [
+          "cargo",
+          "crew"
+        ],
+        "wants": [
+          "valuable",
+          "coin",
+          "treasure"
+        ],
+        "epilogue": "{speaker.The} somehow ends up owning the salvage rights to Kestrel. Nobody is quite sure how."
+      }
+    },
+    "multitool": {
+      "extends": [
+        "portable"
+      ],
+      "name": "salvage multitool",
+      "aliases": [
+        "multitool",
+        "tool"
+      ],
+      "affords": [
+        "tool"
+      ],
+      "description": "Cutter, driver, scanner, bottle opener."
+    },
+    "maintenance_keycard": {
+      "name": "#color# maintenance keycard",
+      "aliases": [
+        "keycard",
+        "card"
+      ],
+      "affords": [
+        "access"
+      ],
+      "home": [
+        "station",
+        "maintenance"
+      ],
+      "description": "A scuffed keycard on a lanyard: MAINTENANCE - LEVEL 2.",
+      "extends": [
+        "portable"
       ]
+    },
+    "access_code_slip": {
+      "name": "slip of paper with a code",
+      "aliases": [
+        "slip",
+        "paper",
+        "code"
+      ],
+      "affords": [
+        "code"
+      ],
+      "home": [
+        "station"
+      ],
+      "props": {
+        "code": {
+          "rand": [
+            1000,
+            9999
+          ]
+        }
+      },
+      "description": "Someone has written a four-digit code on it: {self.code}.",
+      "extends": [
+        "portable"
+      ]
+    },
+    "pry_bar": {
+      "name": "pry bar",
+      "aliases": [
+        "bar",
+        "crowbar",
+        "prybar"
+      ],
+      "affords": [
+        "tool"
+      ],
+      "home": [
+        "maintenance",
+        "station"
+      ],
+      "props": {
+        "damage": 2
+      },
+      "tags": [
+        "weapon"
+      ],
+      "description": "A length of hardened steel with a flattened end. Universally useful.",
+      "extends": [
+        "portable"
+      ]
+    },
+    "spare_power_cell": {
+      "name": "heavy power cell",
+      "aliases": [
+        "cell",
+        "battery",
+        "power cell"
+      ],
+      "affords": [
+        "power"
+      ],
+      "home": [
+        "maintenance",
+        "engineering",
+        "station"
+      ],
+      "description": "A brick-sized power cell, charge light green.",
+      "extends": [
+        "portable"
+      ]
+    },
+    "sabotage_log": {
+      "name": "data chip",
+      "aliases": [
+        "chip",
+        "data",
+        "log",
+        "evidence"
+      ],
+      "affords": [
+        "evidence"
+      ],
+      "home": [
+        "station",
+        "cargo",
+        "engineering"
+      ],
+      "description": "A data chip labelled, in tiny handwriting, DO NOT DELETE. It holds the reactor's shutdown logs, and the override code that caused it.",
+      "extends": [
+        "portable"
+      ]
+    },
+    "antiviral_ampoule": {
+      "name": "ampoule of antiviral",
+      "aliases": [
+        "ampoule",
+        "antiviral",
+        "cure",
+        "vial"
+      ],
+      "affords": [
+        "cure",
+        "medicine"
+      ],
+      "home": [
+        "medical",
+        "station"
+      ],
+      "description": "A glass ampoule of clear liquid. The label says EXPERIMENTAL in three languages.",
+      "extends": [
+        "portable"
+      ]
+    },
+    "data_pad": {
+      "extends": [
+        "portable",
+        "readable"
+      ],
+      "name": "data pad",
+      "aliases": [
+        "pad",
+        "datapad",
+        "tablet"
+      ],
+      "tags": [
+        "lore_carrier"
+      ],
+      "habitat": [
+        "station",
+        "scifi"
+      ],
+      "description": "A cracked data pad, still holding a charge."
     }
   },
   "rules": {
@@ -820,15 +867,17 @@
             "in_room": "tag:station"
           },
           {
-            "flag": "read_distress_log"
-          },
-          {
-            "not": {
-              "flag": "reactor_restarted"
+            "turns": {
+              "gte": 10
             }
           },
           {
-            "chance": 0.08
+            "not": {
+              "flag": "story_resolved"
+            }
+          },
+          {
+            "chance": 0.06
           }
         ]
       },

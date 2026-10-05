@@ -1,0 +1,318 @@
+{
+  "events": {
+    "tale_theft": {
+      "title": [
+        "The Stolen #treasure_word.title#",
+        "A Thief in the Night",
+        "What Was Taken"
+      ],
+      "weight": 0.7,
+      "roles": {
+        "villain": {
+          "type": "character",
+          "match": {
+            "motive": [
+              "greed",
+              "envy",
+              "profit"
+            ],
+            "role": [
+              "antagonist"
+            ]
+          },
+          "spawn": "tale_thief"
+        },
+        "victim": {
+          "type": "character",
+          "match": {
+            "role": [
+              "victim"
+            ]
+          }
+        },
+        "treasure": {
+          "type": "item",
+          "match": {
+            "any_tags": [
+              "treasure",
+              "relic",
+              "heirloom"
+            ]
+          },
+          "spawn": "tale_heirloom"
+        }
+      },
+      "hook": "Somebody has stolen {treasure} from {victim}, and {victim} has not slept since. Fingers point in every direction, but more than one of them points at {villain}.",
+      "goal": "Recover {treasure} and return it to {victim}.",
+      "resolutions": [
+        {
+          "verb": "give",
+          "target": "victim",
+          "means": "treasure",
+          "title": "Return what was taken",
+          "text": "{target.The} takes {means} in both hands and, for a long moment, says nothing at all. Then: \"Thank you.\""
+        },
+        {
+          "verb": "attack",
+          "target": "villain",
+          "requires_mods": [
+            "combat"
+          ],
+          "text": "{target.The} falls. Whatever they took, they won't be taking anything else."
+        }
+      ],
+      "lore": [
+        {
+          "title": "The theft",
+          "text": "{treasure.The} vanished on a night with no moon. {victim.The} swears they heard footsteps, then nothing."
+        },
+        {
+          "title": "A suspect",
+          "about": [
+            "cast:villain"
+          ],
+          "text": "{villain.The} has been spending money nobody knew they had. They always did want to {villain.motive}."
+        }
+      ],
+      "ending": "{treasure.The} is back where it belongs, and {victim} keeps it closer than ever. As for {villain}, nobody sees them on the roads again."
+    },
+    "tale_blight": {
+      "title": [
+        "The Blight",
+        "Ashes in the Well",
+        "The Sickening"
+      ],
+      "weight": 0.7,
+      "roles": {
+        "place": {
+          "type": "place",
+          "match": {}
+        },
+        "heart": {
+          "type": "feature",
+          "match": {
+            "tag": [
+              "heart"
+            ]
+          },
+          "in": "place",
+          "spawn": "tale_shrine_stone"
+        },
+        "remedy": {
+          "type": "item",
+          "match": {
+            "affords": [
+              "holy",
+              "cure",
+              "light"
+            ]
+          },
+          "spawn": "tale_remedy"
+        },
+        "villain": {
+          "type": "character",
+          "match": {
+            "motive": [
+              "darkness",
+              "vengeance",
+              "power"
+            ],
+            "role": [
+              "antagonist"
+            ]
+          },
+          "optional": true
+        }
+      },
+      "hook": "A blight has crept over {place}. Plants wither, milk sours, and people speak in whispers. It all seems to spread from {heart}.",
+      "goal": "Find {remedy} and use it on {heart} in {place} to lift the blight.",
+      "resolutions": [
+        {
+          "verb": "use",
+          "target": "heart",
+          "means": "remedy",
+          "title": "Lift the blight",
+          "text": "You use {means} on {target}. Something like a long-held breath goes out of the world, and colour creeps back into everything."
+        }
+      ],
+      "lore": [
+        {
+          "title": "Where the blight began",
+          "text": "The blight began at {heart}. First the grass around it died, then the birds stopped singing there."
+        },
+        {
+          "title": "Whose doing?",
+          "about": [
+            "cast:villain"
+          ],
+          "text": "Some say the blight is {villain}'s work. {villain.The} has always wanted to {villain.motive}."
+        }
+      ],
+      "ending": "The blight lifts. By spring you would never know it had been there, except that people smile at you in the street, and you can't quite remember why."
+    },
+    "tale_missing": {
+      "title": [
+        "The Missing",
+        "Gone Without a Word",
+        "Lost"
+      ],
+      "weight": 0.6,
+      "roles": {
+        "missing": {
+          "type": "character",
+          "match": {
+            "role": [
+              "victim"
+            ]
+          },
+          "relocate": true
+        },
+        "seeker": {
+          "type": "character",
+          "match": {
+            "role": [
+              "giver",
+              "ally"
+            ]
+          },
+          "optional": true
+        }
+      },
+      "hook": "{missing.The} has vanished. Nobody saw them go, nobody knows where, and the longer it goes on the worse the guesses get.",
+      "goal": "Find {missing} and make sure they're safe.",
+      "resolutions": [
+        {
+          "verb": "talk",
+          "target": "missing",
+          "title": "Found",
+          "text": "{target.The} stares at you, then laughs with relief. \"I thought nobody would ever come.\""
+        }
+      ],
+      "lore": [
+        {
+          "title": "Last seen",
+          "text": "The last anyone saw of {missing}, they were asking strangers about the road out of town."
+        }
+      ],
+      "ending": "{missing.The} comes home. They don't talk much about where they were, but they leave a candle burning in the window every night after."
+    }
+  },
+  "features": {
+    "tale_thief": {
+      "extends": [
+        "person"
+      ],
+      "name": "#tale_name#",
+      "proper": true,
+      "aliases": [
+        "thief",
+        "stranger"
+      ],
+      "appearance": "{self.Name} is lurking here, trying very hard to look like they belong.",
+      "description": "Quick hands, quick eyes, and an expensive coat that doesn't quite fit.",
+      "profile": {
+        "personality": [
+          "cunning"
+        ],
+        "motives": [
+          "greed"
+        ],
+        "motive_text": "never be poor again",
+        "goals": [
+          "sell what they stole before anyone notices"
+        ],
+        "roles": [
+          "antagonist"
+        ],
+        "backstory": "\"Me? I'm just passing through.\""
+      }
+    },
+    "tale_heirloom": {
+      "extends": [
+        "valuable"
+      ],
+      "name": "#heirloom#",
+      "aliases": [
+        "heirloom",
+        "keepsake"
+      ],
+      "tags": [
+        "heirloom",
+        "treasure"
+      ],
+      "home": [
+        "settlement",
+        "station",
+        "ruins"
+      ],
+      "props": {
+        "value": 20
+      },
+      "description": "Small, old, and worth far more to its owner than to anyone else."
+    },
+    "tale_remedy": {
+      "extends": [
+        "portable"
+      ],
+      "name": "#remedy#",
+      "aliases": [
+        "remedy",
+        "cure"
+      ],
+      "affords": [
+        "cure",
+        "holy"
+      ],
+      "home": [
+        "forest",
+        "holy",
+        "medical"
+      ],
+      "description": "Whatever it is, it is the one thing that can stop the blight."
+    },
+    "tale_shrine_stone": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "blackened stone",
+      "aliases": [
+        "stone",
+        "blackened stone"
+      ],
+      "tags": [
+        "heart"
+      ],
+      "appearance": "A blackened stone sits here, and the ground around it is grey and dead.",
+      "description": "It is cold to the touch, colder than stone should be, and nothing grows within a stride of it."
+    }
+  },
+  "grammar": {
+    "tale_name": [
+      "Corin Vale",
+      "Mara Quill",
+      "Jory Fenn",
+      "Sable Ashe",
+      "Nix Morrow",
+      "Tamsin Rook"
+    ],
+    "treasure_word": [
+      "locket",
+      "ring",
+      "seal",
+      "heirloom"
+    ],
+    "heirloom": [
+      "silver ring",
+      "family locket",
+      "carved music box",
+      "grandmother's brooch",
+      "old signet seal"
+    ],
+    "remedy": [
+      "phial of clear water",
+      "bundle of saint's-wort",
+      "vial of bright salt",
+      "sealed jar of remedy"
+    ]
+  }
+}

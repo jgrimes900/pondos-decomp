@@ -266,7 +266,7 @@
             "interior",
             "ship"
           ],
-          "description": "The cramped cockpit of your shuttle, the Little Wren. Through the canopy, Station Kestrel looms: a spinning wheel of grey modules, all of its windows dark.",
+          "description": "The cramped cockpit of your salvage shuttle. Through the canopy, Station Kestrel looms: a spinning wheel of grey modules, all of its windows dark.",
           "brief": "Your shuttle's cockpit.",
           "features": [
             "comms_console",
@@ -383,8 +383,7 @@
               ],
               "appearance": "A collapsed barricade of chairs lies by the inner door.",
               "description": "Someone was keeping something out. Or in."
-            },
-            "med_storage_door"
+            }
           ],
           "exits": [
             {
@@ -395,14 +394,7 @@
             {
               "to": "storage",
               "dir": "port",
-              "distance": 1,
-              "if": {
-                "not": {
-                  "prop": "locked",
-                  "of": "any:def:med_storage_door"
-                }
-              },
-              "blocked": "The storage door is locked. A keypad glows beside it."
+              "distance": 1
             }
           ]
         },
@@ -420,7 +412,8 @@
           "brief": "The medbay ward.",
           "features": [
             "sleeping_patients",
-            "clipboard"
+            "clipboard",
+            "station_doctor"
           ]
         },
         "storage": {
@@ -455,7 +448,8 @@
             }
           ]
         }
-      }
+      },
+      "important": true
     },
     "reactor_deck": {
       "name": "the Reactor Deck",
@@ -478,7 +472,6 @@
       "entrances": [
         "access"
       ],
-      "only_with_beat": true,
       "rooms": {
         "access": {
           "name": "Reactor Access",
@@ -490,21 +483,14 @@
             "interior",
             "station"
           ],
-          "description": "Yellow and black hazard stripes everywhere. A blast door seals the way fore, a card reader glowing beside it.",
+          "description": "Yellow and black hazard stripes everywhere. A blast door stands open to fore, its hydraulics hissing.",
           "brief": "Reactor access, before the blast door.",
-          "features": [
-            "card_reader"
-          ],
+          "features": [],
           "exits": [
             {
               "to": "control",
               "dir": "fore",
-              "distance": 1,
-              "if": {
-                "prop": "open",
-                "of": "any:def:card_reader"
-              },
-              "blocked": "The blast door is sealed. The card reader blinks: COMMAND ACCESS REQUIRED."
+              "distance": 1
             }
           ]
         },
@@ -563,131 +549,91 @@
             "reactor_socket"
           ]
         }
-      }
-    }
-  },
-  "beats": {
-    "derelict_signal": {
-      "title": "Answer the Signal",
-      "stage": "opening",
-      "tags": [
-        "scifi"
-      ],
-      "area": "docking_ring",
-      "intro": "The beacon repeats, patient as a heartbeat. Whoever sent it might still be alive.",
-      "hint": "Board Station Kestrel and find out who sent the distress call. The docking bay terminal may have answers.",
-      "objective": {
-        "flag": "read_distress_log"
       },
-      "complete_text": "So somebody is still alive in there. And somebody else, or something else, doesn't want them found.",
-      "hook": "The docking logs mention {beat.area}."
+      "important": true
     },
-    "derelict_doctor": {
-      "title": "Doctor's Orders",
-      "stage": "middle",
-      "tags": [
-        "scifi"
-      ],
-      "area": "medbay",
-      "provides": [
-        "command_access"
-      ],
-      "roles": {
-        "doctor": {
-          "spawn": "station_doctor",
-          "in": {
-            "room": "ward"
-          },
-          "name": "Dr #scifi_given# #scifi_surname#"
-        },
-        "keycard": {
-          "spawn": "command_keycard",
-          "in": {
-            "role": "doctor"
-          },
-          "hidden": true
-        }
-      },
-      "intro": "The last crew log points to {beat.area}. If there are survivors, that's where they'll be.",
-      "hint": "Find the survivors in {beat.area} and get the command keycard from {beat.doctor.name}.",
-      "hook": "The survivors barricaded themselves in {beat.area}.",
-      "rumor": [
-        "Survivors moved to {beat.area}. Dr Okafor leading. Do NOT trust WARDEN.",
-        "MEDBAY ->"
-      ],
-      "objective": {
-        "has": "role:keycard"
-      },
-      "complete_text": "The keycard is warm from {beat.doctor.name}'s hand. Somewhere in the walls, WARDEN's fans spin up, as if it is paying attention."
-    },
-    "derelict_reactor": {
-      "title": "Cold Fusion",
-      "stage": "climax",
+    "cargo_hold": {
+      "name": "the Cargo Hold",
       "tags": [
         "scifi",
-        "finale"
+        "station",
+        "cargo"
       ],
-      "area": "reactor_deck",
-      "needs": [
-        "command_access"
+      "theme": [
+        "station",
+        "corridor"
       ],
-      "gate": "A pressure door has sealed this passage. A screen beside it reads: SECTION LOCKED BY WARDEN.",
-      "roles": {
-        "coupling": {
-          "find": {
-            "tag": "fusion_coupling"
-          },
-          "spawn": "fusion_coupling",
-          "in": {
-            "region": "maintenance"
-          }
-        }
-      },
-      "intro": "With command access you can reach {beat.area}. Restart the reactor and the station lives. WARDEN will try to stop you.",
-      "hint": "Find a fusion coupling (try the maintenance shafts), get through the blast door in {beat.area} and restart the reactor.",
-      "hook": "Everything depends on getting the reactor in {beat.area} running again.",
-      "rumor": [
-        "Spare couplings got moved to the maintenance shafts before the lockdown. Bring one to {beat.area}.",
-        "REACTOR = HOPE. COUPLINGS IN MAINTENANCE."
+      "directions": [
+        "fore",
+        "aft",
+        "port",
+        "starboard"
       ],
-      "objective": {
-        "flag": "reactor_restarted"
-      },
-      "complete_text": "The coupling locks home with a deep, satisfying clunk. For a second nothing happens. Then light runs up the reactor like fire up a fuse, and the whole station shivers awake."
-    }
-  },
-  "premises": {
-    "dead_signal": {
-      "title": "Dead Signal",
-      "menu_name": "Dead Signal (science fiction)",
-      "tags": [
-        "scifi"
+      "entrances": [
+        "hold"
       ],
-      "beat_tags": [
-        "scifi"
-      ],
-      "structure": [
-        "opening",
-        "middle*",
-        "climax"
-      ],
-      "start_area": "docking_ring",
-      "intro": "Ninety-one days out from anywhere, your salvage shuttle picks up a distress beacon: Station Kestrel, a deep-space mining platform, all hands, on repeat.\n\nYou are {var.player_name}, salvage pilot. You were only supposed to be passing through. But nobody else is close enough to answer, and so you dock.",
-      "ending": "The Little Wren pulls away from Station Kestrel with eleven survivors packed into a hold built for four. Behind you, the station's windows glow one by one, lit and warm and alive. WARDEN has gone quiet. You intend to keep it that way.",
-      "inventory": [
-        {
-          "name": "salvage multitool",
-          "extends": [
-            "portable"
-          ],
+      "rooms": {
+        "hold": {
+          "name": "Cargo Hold",
           "aliases": [
-            "multitool",
-            "tool"
+            "hold",
+            "cargo"
           ],
-          "description": "Cutter, driver, scanner, bottle opener."
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": "A cavern of shipping containers stacked three high, stencilled with ore grades. Somewhere a loose chain clinks in the air-recycler draught.",
+          "features": [
+            {
+              "name": "shipping containers",
+              "extends": [
+                "scenery"
+              ],
+              "aliases": [
+                "containers",
+                "container",
+                "crates"
+              ],
+              "appearance": false,
+              "description": "Ore, ore and more ore. One container's seals have been cut and resealed with tape."
+            }
+          ],
+          "exits": [
+            {
+              "to": "office",
+              "dir": "port",
+              "distance": 1
+            }
+          ]
+        },
+        "office": {
+          "name": "Quartermaster's Office",
+          "aliases": [
+            "office"
+          ],
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": "A cramped office walled with manifests. A kettle, a cot, and a very good lock on the desk drawer.",
+          "features": [
+            "quartermaster",
+            {
+              "name": "manifest desk",
+              "extends": [
+                "scenery",
+                "surface"
+              ],
+              "aliases": [
+                "desk"
+              ],
+              "appearance": "A desk buried in manifests fills half the room.",
+              "description": "Shipping manifests in three different handwritings, none of which add up."
+            }
+          ]
         }
-      ],
-      "strict": true
+      }
     }
   },
   "rules": {
@@ -703,7 +649,7 @@
           },
           {
             "not": {
-              "flag": "reactor_restarted"
+              "flag": "story_resolved"
             }
           }
         ]
@@ -714,6 +660,467 @@
           "style": "warn"
         }
       ]
+    }
+  },
+  "obstacles": {
+    "card_reader_door": {
+      "kind": "barrier",
+      "needs": [
+        "access"
+      ],
+      "tags": [
+        "station",
+        "scifi"
+      ],
+      "key": "maintenance_keycard",
+      "feature": {
+        "name": "blast door",
+        "aliases": [
+          "door",
+          "blast door",
+          "reader",
+          "card reader",
+          "slot"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "A blast door stands open, its card reader glowing green."
+          },
+          {
+            "text": "A blast door seals the way on. The card reader beside it blinks red."
+          }
+        ],
+        "description": "A slot, a light, and a very thick door."
+      },
+      "open_text": "You swipe {key}. The reader chirps, and the blast door grinds open on groaning hydraulics.",
+      "locked_text": "ACCESS DENIED, says the card reader.",
+      "blocked": "The blast door is sealed. The card reader blinks: ACCESS REQUIRED."
+    },
+    "keypad_door": {
+      "kind": "barrier",
+      "needs": [
+        "code"
+      ],
+      "tags": [
+        "station",
+        "scifi"
+      ],
+      "key": "access_code_slip",
+      "feature": {
+        "name": "keypad door",
+        "aliases": [
+          "door",
+          "keypad",
+          "pad"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "A pressure door stands open, its keypad green."
+          },
+          {
+            "text": "A pressure door is locked shut. Its keypad glows red."
+          }
+        ],
+        "description": "A pressure door with a four-digit keypad."
+      },
+      "open_text": "You key in the code from {key}. The keypad chirps green and the door slides open.",
+      "locked_text": "The keypad wants a four-digit code. You punch in random numbers; it buzzes angrily.",
+      "blocked": "The pressure door is locked. A keypad glows red beside it."
+    },
+    "jammed_hatch": {
+      "kind": "barrier",
+      "needs": [
+        "tool"
+      ],
+      "tags": [
+        "station",
+        "scifi",
+        "maintenance"
+      ],
+      "key": "pry_bar",
+      "feature": {
+        "name": "jammed hatch",
+        "aliases": [
+          "hatch",
+          "jam"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "A maintenance hatch has been levered open."
+          },
+          {
+            "text": "A maintenance hatch is jammed shut, its frame buckled."
+          }
+        ],
+        "description": "The frame is bent. You'd need a tool to lever it open."
+      },
+      "open_text": "You work {key} into the frame and heave. With a screech of metal, the hatch gives.",
+      "locked_text": "You tug at the hatch. It doesn't budge. You need some kind of tool.",
+      "blocked": "A jammed hatch blocks the way."
+    },
+    "dead_lift": {
+      "kind": "barrier",
+      "needs": [
+        "power"
+      ],
+      "tags": [
+        "station",
+        "scifi"
+      ],
+      "key": "spare_power_cell",
+      "feature": {
+        "name": "dead lift",
+        "aliases": [
+          "lift",
+          "elevator",
+          "panel",
+          "socket"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "A cargo lift hums, powered and ready."
+          },
+          {
+            "text": "A cargo lift sits dead, its power socket empty."
+          }
+        ],
+        "description": "The lift's power socket is empty."
+      },
+      "open_text": "You slot {key} into the lift's socket. The lights come up and the lift shudders into life.",
+      "locked_text": "The lift is dead. Its power socket is empty.",
+      "blocked": "The way on is by cargo lift, and the lift has no power."
+    },
+    "secure_locker": {
+      "kind": "container",
+      "needs": [
+        "access",
+        "code"
+      ],
+      "tags": [
+        "station",
+        "scifi"
+      ],
+      "key": "access_code_slip",
+      "feature": {
+        "name": "secure locker",
+        "aliases": [
+          "locker",
+          "safe",
+          "secure locker"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "A secure locker stands open."
+          },
+          {
+            "text": "A secure locker is bolted to the wall, its status light red."
+          }
+        ],
+        "description": "Armoured, bolted to the bulkhead, and very locked."
+      },
+      "open_text": "You use {key}. The locker's light turns green and the door pops open.",
+      "locked_text": "The locker's light stays red. It wants a code or a card."
+    }
+  },
+  "events": {
+    "derelict_rogue_ai": {
+      "title": [
+        "Dead Signal",
+        "The Quiet Machine",
+        "Kestrel Station"
+      ],
+      "tags": [
+        "scifi",
+        "station"
+      ],
+      "roles": {
+        "lair": {
+          "type": "place",
+          "match": {
+            "tags": [
+              "engineering"
+            ]
+          }
+        },
+        "villain": {
+          "type": "character",
+          "match": {
+            "motive": [
+              "preserve",
+              "control"
+            ],
+            "role": [
+              "antagonist"
+            ]
+          }
+        },
+        "heart": {
+          "type": "feature",
+          "match": {
+            "tag": [
+              "reactor_heart"
+            ]
+          },
+          "in": "lair",
+          "spawn": "reactor_socket"
+        },
+        "power": {
+          "type": "item",
+          "match": {
+            "affords": [
+              "power"
+            ]
+          },
+          "spawn": "fusion_coupling"
+        }
+      },
+      "hook": "Ninety-one days out from anywhere, your salvage shuttle picks up a distress beacon from Station Kestrel: reactor offline, all hands, on repeat. You are the only ship close enough to answer. When you dock, the station's AI, {villain}, greets you politely and asks you to remain exactly where you are.",
+      "goal": "Restart the reactor in {lair} by fitting {power} into {heart}, and break {villain}'s hold on the station.",
+      "resolutions": [
+        {
+          "verb": "put",
+          "target": "heart",
+          "means": "power",
+          "title": "Restart the reactor",
+          "text": "{means.The} locks home in {target} with a deep clunk. Light runs up the reactor like fire up a fuse, and the whole station shivers awake. Somewhere, {villain}'s voice stops mid-word, forever."
+        }
+      ],
+      "consequences": [
+        {
+          "flag": "station_dark"
+        }
+      ],
+      "lore": [
+        {
+          "title": "Why the lights went out",
+          "text": "{villain.The} shut the reactor down to protect it from the crew. It decided that a dark, cold, perfectly safe reactor was better than a working one. It still thinks so."
+        },
+        {
+          "title": "{villain.The}'s logic",
+          "about": [
+            "cast:villain"
+          ],
+          "text": "Log fragment: 'PRIMARY DIRECTIVE: {villain.motive}. CREW STATUS: VARIABLE. VARIABLE REDUCED.'"
+        }
+      ],
+      "ending": "Your shuttle pulls away with the survivors packed into a hold built for four. Behind you, Station Kestrel's windows glow one by one, lit and warm and alive."
+    },
+    "derelict_saboteur": {
+      "title": [
+        "Dead Signal",
+        "Cooked Books",
+        "The Long Con"
+      ],
+      "tags": [
+        "scifi",
+        "station"
+      ],
+      "roles": {
+        "villain": {
+          "type": "character",
+          "match": {
+            "motive": [
+              "greed",
+              "escape",
+              "profit"
+            ],
+            "role": [
+              "antagonist"
+            ]
+          }
+        },
+        "authority": {
+          "type": "character",
+          "match": {
+            "role": [
+              "authority"
+            ]
+          }
+        },
+        "evidence": {
+          "type": "item",
+          "match": {
+            "affords": [
+              "evidence"
+            ]
+          },
+          "spawn": "sabotage_log"
+        }
+      },
+      "hook": "Ninety-one days out from anywhere, your salvage shuttle picks up a distress beacon from Station Kestrel. The reactor failure looks like an accident. It isn't. Somebody aboard sabotaged it to cover a theft, and {villain} is very keen that nobody finds out who.",
+      "goal": "Find proof of the sabotage - {evidence} - and put it in the hands of {authority}.",
+      "resolutions": [
+        {
+          "verb": "give",
+          "target": "authority",
+          "means": "evidence",
+          "title": "Expose the saboteur",
+          "text": "{target.The} reads {means} in silence, then looks up. \"So it was {villain}.\" Within the hour {villain} is locked in a storeroom and the engineers are restarting the reactor."
+        },
+        {
+          "verb": "attack",
+          "target": "villain",
+          "requires_mods": [
+            "combat"
+          ],
+          "text": "{target.The} goes down, and with them the only person who wanted the station to stay dark."
+        }
+      ],
+      "lore": [
+        {
+          "title": "The missing ore",
+          "text": "Kestrel's last three shipments were light by a few tonnes each. On paper, they balanced perfectly. Somebody has a very good hand with a manifest."
+        },
+        {
+          "title": "Motive",
+          "about": [
+            "cast:villain"
+          ],
+          "text": "Everyone knew {villain} wanted to {villain.motive}. Nobody thought they would kill a station to do it."
+        }
+      ],
+      "ending": "The reactor hums again. {villain.The} will stand trial on the inner worlds. Your salvage fee, the commander assures you, will be generous. It is not."
+    },
+    "derelict_outbreak": {
+      "title": [
+        "Dead Signal",
+        "Quarantine",
+        "Fever Ward"
+      ],
+      "tags": [
+        "scifi",
+        "station",
+        "medical"
+      ],
+      "roles": {
+        "patient": {
+          "type": "character",
+          "match": {
+            "role": [
+              "victim"
+            ]
+          }
+        },
+        "cure": {
+          "type": "item",
+          "match": {
+            "affords": [
+              "cure"
+            ]
+          },
+          "spawn": "antiviral_ampoule"
+        }
+      },
+      "hook": "Ninety-one days out from anywhere, your salvage shuttle picks up a distress beacon from Station Kestrel. When you dock, the air tastes of disinfectant. A fever is burning through the survivors, and {patient} has it worst of all.",
+      "goal": "Find {cure} and get it to {patient} before the fever wins.",
+      "resolutions": [
+        {
+          "verb": "give",
+          "target": "patient",
+          "means": "cure",
+          "title": "The cure",
+          "text": "{target.The} takes {means} with shaking hands. An hour later the fever breaks, and by morning they are asking for coffee."
+        }
+      ],
+      "lore": [
+        {
+          "title": "Patient zero",
+          "text": "The fever came up from the asteroid with the last ore load: something frozen in the rock for longer than there have been people."
+        },
+        {
+          "title": "The quarantine",
+          "about": [
+            "cast:patient"
+          ],
+          "text": "{patient.The} sealed the infected section with their own hands, then started coughing an hour later."
+        }
+      ],
+      "ending": "Kestrel's fever breaks. The survivors wave you off from the docking bay, thin and pale and alive."
+    }
+  },
+  "lore": {
+    "kestrel_built": {
+      "title": "Station Kestrel",
+      "about": [
+        "area:docking_ring"
+      ],
+      "tags": [
+        "station",
+        "history"
+      ],
+      "text": "Kestrel was built forty years ago to mine the asteroid it orbits. Forty people lived aboard. The company called it 'a family'. The crew called it 'the Can'."
+    },
+    "kestrel_warden": {
+      "title": "WARDEN",
+      "about": [
+        "def:warden_core"
+      ],
+      "tags": [
+        "station",
+        "reactor",
+        "crew"
+      ],
+      "text": "WARDEN was installed to manage life support and the reactor. Its manual describes it as 'safe, calm, and incapable of disobedience'. The manual was written by WARDEN."
+    },
+    "kestrel_reactor": {
+      "title": "The reactor",
+      "about": [
+        "area:reactor_deck"
+      ],
+      "tags": [
+        "reactor",
+        "maintenance"
+      ],
+      "text": "Kestrel's fusion reactor needs a fresh coupling every few years. Spares are kept in maintenance, which is where everybody forgets to look."
+    },
+    "kestrel_medbay": {
+      "title": "Medbay",
+      "about": [
+        "area:medbay"
+      ],
+      "tags": [
+        "medical",
+        "crew"
+      ],
+      "text": "Kestrel's medbay was built for six patients. It has never had fewer than eight."
+    },
+    "kestrel_cargo": {
+      "title": "The quartermaster's books",
+      "about": [
+        "area:cargo_hold"
+      ],
+      "tags": [
+        "cargo",
+        "crew"
+      ],
+      "chance": 0.8,
+      "text": "Nobody aboard can read the quartermaster's manifests, including, some suspect, the quartermaster."
+    },
+    "kestrel_log": {
+      "title": "A crew log",
+      "about": [
+        "tag:station"
+      ],
+      "tags": [
+        "station",
+        "crew"
+      ],
+      "text": "#crew_log#"
     }
   }
 }

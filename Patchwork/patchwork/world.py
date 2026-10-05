@@ -79,7 +79,7 @@ def merge_def(parent, child):
 class Entity:
     __slots__ = ("uid", "def_id", "name", "article", "aliases", "tags", "props",
                  "parent", "children", "hidden", "is_room", "exits", "texts",
-                 "area", "region", "stage", "visited")
+                 "area", "region", "stage", "visited", "actions", "profile")
 
     def __init__(self, uid, def_id):
         self.uid = uid
@@ -99,6 +99,8 @@ class Entity:
         self.region = None
         self.stage = 0
         self.visited = False
+        self.actions = {}     # handlers attached to this one instance by the story generator
+        self.profile = {}     # rendered character profile (personality, motives...)
 
     # -- naming --------------------------------------------------------
     def a(self):
@@ -158,7 +160,9 @@ class World:
         self.vars = {}
         self.fired = set()           # ids of once-only rules that have fired
         self.journal = []
-        self.story = {"premise": None, "title": "", "beats": [], "current": 0, "complete": False}
+        self.story = {"title": "", "steps": [], "current": 0, "complete": False,
+                      "cast": {}, "lore": {}, "lore_known": []}
+        self.dynamic_rules = []      # rules created by the story generator
         self.areas = {}              # area id -> {"name":..., "rooms":[uids], "stage": n}
         self.spawn_counts = {}
         self.game_over = None        # None or {"text":..., "win": bool}
@@ -300,8 +304,22 @@ class World:
                 out.append(fid)
         return out
 
-    def handlers(self, ent, verb):
-        return normalize_handlers((self.def_of(ent).get("actions") or {}).get(verb))
+    def handlers(self, ent, verb, which="all"):
+        """Handlers for *verb* on *ent*: instance (story) handlers first, then the definition's."""
+        out = []
+        if which in ("all", "instance"):
+            out.extend(normalize_handlers((ent.actions or {}).get(verb)))
+        if which in ("all", "def"):
+            out.extend(normalize_handlers((self.def_of(ent).get("actions") or {}).get(verb)))
+        return out
+
+    def add_action(self, ent, verb, handler, first=True):
+        """Attach a handler to one entity instance (used by the story generator)."""
+        cur = ent.actions.setdefault(verb, [])
+        if first:
+            cur.insert(0, handler)
+        else:
+            cur.append(handler)
 
     def hook(self, ent, name):
         val = self.def_of(ent).get(name)
@@ -363,6 +381,8 @@ class World:
             if key in d:
                 ent.texts[key] = self._expand_text(d[key], saved)
         self.refresh_aliases(ent, d)
+        if d.get("profile"):
+            ent.profile = {k: self._expand_text(v, saved) for k, v in d["profile"].items()}
         self.entities[ent.uid] = ent
         self.spawn_counts[def_key] = self.spawn_counts.get(def_key, 0) + 1
         if parent is not None:
@@ -524,6 +544,7 @@ class World:
             "story": self.story,
             "areas": self.areas,
             "spawn_counts": self.spawn_counts,
+            "dynamic_rules": self.dynamic_rules,
             "game_over": self.game_over,
             "next": self._next,
             "verbose": self.verbose,
@@ -546,8 +567,13 @@ class World:
         w.fired = set(data["fired"])
         w.journal = data["journal"]
         w.story = data["story"]
+        if "steps" not in w.story:
+            # A save from before stories were generated: keep the world, retire the old plot.
+            w.story = {"title": w.story.get("title", ""), "steps": [], "current": 0, "complete": True,
+                       "cast": {}, "lore": {}, "lore_known": []}
         w.areas = data["areas"]
         w.spawn_counts = data.get("spawn_counts", {})
+        w.dynamic_rules = data.get("dynamic_rules", [])
         w.game_over = data.get("game_over")
         w._next = data["next"]
         w.verbose = data.get("verbose", False)

@@ -1,21 +1,82 @@
 {
   "directions": {
-    "fore":      {"aliases": ["f", "forward", "bow"],  "opposite": "aft",       "weight": 2, "default": false},
-    "aft":       {"aliases": ["a", "back", "stern"],   "opposite": "fore",      "weight": 2, "default": false},
-    "port":      {"aliases": ["p"],                    "opposite": "starboard", "weight": 2, "default": false},
-    "starboard": {"aliases": ["sb", "stbd"],           "opposite": "port",      "weight": 2, "default": false}
+    "fore": {
+      "aliases": [
+        "f",
+        "forward",
+        "bow"
+      ],
+      "opposite": "aft",
+      "weight": 2,
+      "default": false
+    },
+    "aft": {
+      "aliases": [
+        "a",
+        "back",
+        "stern"
+      ],
+      "opposite": "fore",
+      "weight": 2,
+      "default": false
+    },
+    "port": {
+      "aliases": [
+        "p"
+      ],
+      "opposite": "starboard",
+      "weight": 2,
+      "default": false
+    },
+    "starboard": {
+      "aliases": [
+        "sb",
+        "stbd"
+      ],
+      "opposite": "port",
+      "weight": 2,
+      "default": false
+    }
   },
   "grammar": {
-    "station_name": ["Kestrel"],
-    "deck": ["A", "B", "C", "D", "E"],
-    "num2": ["01", "02", "03", "04", "07", "09", "11", "12", "14", "17", "20", "23"],
+    "station_name": [
+      "Kestrel"
+    ],
+    "deck": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "num2": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "07",
+      "09",
+      "11",
+      "12",
+      "14",
+      "17",
+      "20",
+      "23"
+    ],
     "corridor_desc": [
       "A long #corridor_adj# corridor. #corridor_detail.cap#.",
       "Emergency lights paint the corridor a dull red. #corridor_detail.cap#.",
       "The corridor's ceiling panels hang open, spilling cable. #corridor_detail.cap#.",
       "Frost furs the bulkheads here; the heating has failed. #corridor_detail.cap#."
     ],
-    "corridor_adj": ["silent", "flickering", "cramped", "echoing", "scorched", "frost-rimed"],
+    "corridor_adj": [
+      "silent",
+      "flickering",
+      "cramped",
+      "echoing",
+      "scorched",
+      "frost-rimed"
+    ],
     "corridor_detail": [
       "a pressure door cycles open and shut, open and shut, stuck on a fault",
       "someone has scrawled arrows on the wall in marker pen",
@@ -29,9 +90,34 @@
       "Pipes run in every direction, sweating condensation. #maint_detail.cap#.",
       "Cable trays and junction boxes crowd this narrow service space. #maint_detail.cap#."
     ],
-    "maint_detail": ["steam hisses from a cracked valve", "the only light comes from status LEDs", "something skitters away into the dark", "a coolant leak has left an iridescent puddle"],
-    "scifi_given": ["Ines", "Tomasz", "Aiko", "Dev", "Marguerite", "Kwame", "Sol", "Petra", "Yusuf", "Lin"],
-    "scifi_surname": ["Okafor", "Lindqvist", "Varga", "Haddad", "Moreau", "Tanaka", "Achterberg", "Ruiz"],
+    "maint_detail": [
+      "steam hisses from a cracked valve",
+      "the only light comes from status LEDs",
+      "something skitters away into the dark",
+      "a coolant leak has left an iridescent puddle"
+    ],
+    "scifi_given": [
+      "Ines",
+      "Tomasz",
+      "Aiko",
+      "Dev",
+      "Marguerite",
+      "Kwame",
+      "Sol",
+      "Petra",
+      "Yusuf",
+      "Lin"
+    ],
+    "scifi_surname": [
+      "Okafor",
+      "Lindqvist",
+      "Varga",
+      "Haddad",
+      "Moreau",
+      "Tanaka",
+      "Achterberg",
+      "Ruiz"
+    ],
     "warden_line": [
       "A calm voice speaks from a wall speaker: \"Crew member unidentified. Please remain where you are.\"",
       "The intercom crackles. \"Station Kestrel is operating within normal parameters,\" says WARDEN. Something nearby explodes.",
@@ -42,6 +128,14 @@
       "Log, day 41. WARDEN locked the reactor deck again. Says it's for our safety. Okafor thinks it's lying.",
       "Log, day 43. Lights going out section by section. We've moved everyone to medbay. Somebody needs to get to the coupling store.",
       "Log, day 44. If anyone finds this: the beacon is ours, not WARDEN's. Please. Come."
+    ],
+    "color": [
+      "red",
+      "blue",
+      "green",
+      "grey",
+      "orange",
+      "yellow"
     ]
   }
 }

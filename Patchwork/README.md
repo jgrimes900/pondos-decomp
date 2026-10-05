@@ -1,18 +1,29 @@
 # Patchwork
 
-A mod-oriented text RPG for the terminal. **The game has no world and no story of its own.**
-When you start a new game you pick a collection of mods, and Patchwork weaves a world and a story
-out of everything in them. Hand-made places, characters and plot from different mods are stitched
-together, and novel generated content fills the gaps: wilderness between towns, travellers on the
-road, generated names, scattered items, random encounters and events.
+A mod-oriented text RPG for the terminal. **The game has no world and no story of its own, and
+neither do the mods.** Mods supply building blocks: places built as rooms of nested features,
+characters with personalities, motives, goals and secrets, items and what they can be used for,
+locks and obstacles, events that could befall a world, and snippets of lore. When you start a new
+game you pick a collection of mods, and Patchwork generates a world, a story, its lore and its
+quests out of all of them, filling the gaps with novel content: wilderness between places,
+generated names, travellers with rumours, scattered items, random encounters.
+
+Every feature a mod marks as **important** (an item, a character, a place) is woven into the main
+quest, so with every mod enabled everything is part of the game. Play the same mods twice and you
+get a different story: another event, another cast, another chain of keys, favours and hiding
+places.
 
 ```
-~ The Barrow's Heart ~
-Somewhere ahead lies the Barrow of Eadgar the Grey. Whatever is calling from it,
-the answer lies in its deepest chamber.
+THE QUIET MACHINE
+... When you dock, the station's AI, WARDEN, greets you politely and asks you to
+remain exactly where you are.
 
-> search bones
-Searching the pile of bones, you discover a key of carved bone.
+~ A favour for Chief Engineer Kwame Moreau ~
+Chief Engineer Kwame Moreau in the Cargo Hold will give you the command keycard in
+exchange for the fusion coupling.
+
+> give medkit to dr ines tanaka
+"Oh, the medkit! Bless you. Thank you so much."
 ```
 
 ## Requirements
@@ -32,21 +43,22 @@ From the main menu choose **New game**, then:
 
 1. **Pick your mods.** Toggle them by number. Required dependencies are added for you, and mods
    that work well with your choice are suggested.
-2. **Pick a tale**, if more than one of your mods offers a story premise. You can also pick
-   "No story - just explore".
-3. **Pick a world size.** Bigger worlds have more generated country between places.
-4. Optionally give a **seed**: the same mods and seed always weave the same world.
-5. Optionally name your **character**. Leave it blank to get a generated name.
+2. **Pick a world size.** Bigger worlds have more generated country between places.
+3. Optionally give a **seed**: the same mods and seed always weave the same world and story.
+4. Optionally name your **character**. Leave it blank to get a generated name.
+
+The story is generated from your mods; there is nothing to choose. The opening tells you what has
+happened and what you must do, and `journal` always shows the current step.
 
 Useful command-line options:
 
 | Option | Effect |
 | --- | --- |
 | `--mods core,wilds,hamlet` | skip the menus and start a new game with these mods |
-| `--seed 42` / `--size large` / `--premise waning_light` / `--name Wren` | generation options |
+| `--seed 42` / `--size large` / `--name Wren` | generation options |
 | `--list-mods` | list every mod found |
 | `--validate [--mods ...]` | check mods for mistakes and generate 20 test worlds |
-| `--map --mods ... --seed N` | print a generated world's full layout (a spoiler map for mod authors) |
+| `--map --mods ... --seed N` | print a generated world's story, cast, quest steps and full layout (spoilers, for mod authors) |
 | `--script commands.txt` | play a list of commands non-interactively |
 | `--mod-dir PATH` | look for mods in another folder too (repeatable) |
 | `--no-color` | plain output |
@@ -60,8 +72,10 @@ more), so type `help` in game to see the real list.
 * `north` / `n`, `go ladder`, `go to village green` (multi-leg travel to anywhere you've been)
 * `take all`, `drop knife`, `put coin in box`, `inventory` (`i`)
 * `open chest`, `unlock door with key` (or just `unlock door` if you carry the key), `light torch`
-* `talk to innkeeper` (choose numbered replies), `give apple to pilgrim`, `use horn on sorcerer`
-* `read`, `eat`, `drink`, `push`, `pull`, `listen`, `smell`, `wait`, `journal` (`j`)
+* `talk to innkeeper` (characters tell you what the story needs from them, then offer a menu:
+  who they are, what they want, the lore they know, advice, small talk)
+* `give apple to pilgrim`, `use keycard on blast door`, `put coupling in socket`
+* `read`, `eat`, `drink`, `push`, `pull`, `listen`, `smell`, `wait`, `journal` (`j`), `lore`
 * With **Steel & Peril**: `attack wolf with sword`, `status`, `rest`
 
 Built-in game commands: `save [name]`, `load [name]`, `map`, `story`, `mods`, `verbose`, `brief`,
@@ -77,15 +91,15 @@ loads even if you later change your mods.
 
 | Mod | What it adds |
 | --- | --- |
-| **Core Rules** (`core`) | All the basic verbs, reusable traits (portable, container, door, lockable, person, edible...), compass directions and every line of interface text. No places, no story. |
-| **The Wilds** (`wilds`) | Generated forest, hills, river, marsh and road regions; trees with nests and hollows, streams, berry bushes, signposts; forage and lost trinkets; travellers who pass on rumours; travel events. |
-| **Hearthside Hamlet** (`hamlet`) | A village start area (inn, smithy, chapel, elder's cottage) with dialogue trees, and an opening story beat that hands off to whatever chapter comes next. |
-| **The Barrow of Kings** (`barrow`) | A dungeon with a hidden key, a locked bronze door and a sarcophagus. A middle story beat whose relic gets a generated name. |
-| **The Sorcerer's Spire** (`spire`) | A climactic tower and final story beat. It uses a relic found earlier in your story from *any* mod, or hides its own if none exists. |
-| **Saga: The Waning Light** (`saga_waning_light`) | A fantasy premise: intro, ending and starting kit. Threads the beats above into one tale. |
-| **Steel & Peril** (`combat`) | Health, attacking, death, healing food, resting. Makes creatures from other mods fight back and adds wolves, bandits, bog lurkers (and rogue drones on space stations) to matching regions. |
+| **Core Rules** (`core`) | All the basic verbs, reusable traits (portable, container, door, lockable, person, edible...), compass directions, every line of interface text and the story generator's vocabulary (quest titles, personality-flavoured dialogue). No places, no story. |
+| **Storyteller's Almanac** (`tales`) | Setting-neutral events (a theft, a blight, a disappearance) that cast whatever your other mods provide, so any combination can grow a story. |
+| **The Wilds** (`wilds`) | Generated forest, hills, river, marsh and road regions; nested natural features; forage and trinkets; hermits and herb-wives with profiles; travellers with rumours; travel events; lore on waystones. |
+| **Hearthside Hamlet** (`hamlet`) | A village start area whose villagers each have a personality, motives, goals and wants, so they can be quest-givers, informants, victims or villains. An important holy well and saint's bell, and village lore. |
+| **The Barrow of Kings** (`barrow`) | A dungeon with an important relic (with a generated name) and bone key, a guardian with a profile, a bronze door and rune-sealed coffer as obstacles, barrow lore, and two events: a stolen relic and a restless guardian. |
+| **The Sorcerer's Spire** (`spire`) | A tower that drinks the light, a sorcerer driven by power and darkness, an orb, a star-glass shard, a shadow ward that any light-giving item can break, and an "eclipse" event. Only appears if the story needs it. |
+| **Derelict: Station Kestrel** (`derelict`) | A science-fiction set: station areas and regions with ship directions, the AI WARDEN, a doctor, an engineer and a quartermaster with full profiles, card readers, keypads and dead lifts, station lore, and three events (rogue AI, saboteur, outbreak). |
+| **Steel & Peril** (`combat`) | Health, attacking, death, healing food, resting. Makes creatures from other mods fight back (so some villains can be defeated in battle) and adds wolves, bandits, bog lurkers and rogue drones to matching regions. |
 | **Turning Days** (`daycycle`) | A day/night cycle made entirely of rules, plus a `time` command. |
-| **Derelict: Station Kestrel** (`derelict`) | A complete science-fiction set: its own premise, ship directions (fore/aft/port/starboard), station regions, three areas and a three-part story. Proof that nothing in the engine is fantasy-specific. |
 
 `examples/lighthouse` is the worked example from the modding guide. Try it with
 `./patchwork.sh --mod-dir examples`.
@@ -93,9 +107,10 @@ loads even if you later change your mods.
 Some combinations to try:
 
 * `core, wilds`: an endless generated wilderness, no story.
-* `core, wilds, hamlet, barrow, spire, saga_waning_light, combat, daycycle`: the full fantasy tale.
-* `core, derelict, combat`: the science-fiction tale.
-* Everything at once: the chosen premise drives the story, and every other place is still stitched into the world.
+* `core, derelict`: play it twice, and you may be facing a rogue AI, a saboteur or an outbreak, with
+  the crew in different roles and the keys, codes and couplings in different hands.
+* `core, tales, wilds, hamlet, barrow, spire, combat, daycycle`: fantasy stories built from every piece.
+* Everything at once: one story that uses every important feature of every mod.
 
 ## Writing mods
 
@@ -112,14 +127,16 @@ Patchwork/
     mods.py             mod discovery, dependency ordering, merging and patching
     world.py            entities (rooms and nested features), definitions, save format
     logic.py            the JSON condition / effect / template / expression language
-    generator.py        world and story weaving
+    generator.py        world generation and layout
+    story.py            story generation: events, casting, quest planning, dialogue, lore
     describe.py         builds descriptions from nested features
     engine.py           parser, verb dispatch, travel, turns and story progress
     cli.py, ui.py       menus and terminal I/O
     validate.py         mod checker
   mods/                 the bundled mods
   examples/lighthouse/  the tutorial mod
-  tests/                unit tests and full-story playthroughs on many seeds
+  tests/                unit tests, and an automated player that finishes generated stories
+                        through the text parser on many seeds and mod combinations
 ```
 
 Run the tests with `cd tests && python3 -m unittest`.

@@ -2,267 +2,907 @@
   "areas": {
     "barrow": {
       "name": "the Barrow of #barrow_king#",
-      "tags": ["dungeon", "ancient", "fantasy", "underground"],
-      "theme": ["hills", "ancient", "marsh", "eerie"],
-      "entrances": ["mound"],
+      "tags": [
+        "dungeon",
+        "ancient",
+        "fantasy",
+        "underground"
+      ],
+      "theme": [
+        "hills",
+        "ancient",
+        "marsh",
+        "eerie"
+      ],
+      "entrances": [
+        "mound"
+      ],
       "rooms": {
         "mound": {
           "name": "Barrow Mound",
-          "aliases": ["mound", "barrow"],
-          "tags": ["outdoor", "ancient"],
+          "aliases": [
+            "mound",
+            "barrow"
+          ],
+          "tags": [
+            "outdoor",
+            "ancient"
+          ],
           "description": "A long grassy mound rises from the earth like the back of a sleeping beast. At its near end, the great stones that sealed the entrance have been heaved aside, leaving a black mouth that breathes cold air.",
           "brief": "The broken-open barrow mound.",
-          "features": ["sealing_stones", {"id": "standing_stone"}, "fresh_tracks"],
-          "exits": [{"to": "passage", "dir": "in", "distance": 1, "description": "A dark opening leads into the mound."}]
+          "features": [
+            "sealing_stones",
+            {
+              "id": "standing_stone"
+            },
+            "fresh_tracks"
+          ],
+          "exits": [
+            {
+              "to": "passage",
+              "dir": "in",
+              "distance": 1,
+              "description": "A dark opening leads into the mound."
+            }
+          ]
         },
         "passage": {
           "name": "Entrance Passage",
-          "tags": ["underground", "dark"],
+          "tags": [
+            "underground",
+            "dark"
+          ],
           "description": [
-            {"if": {"near": {"tag": "light", "prop": "lit"}}, "text": "Your light shows a low passage of fitted stone slabs. Every surface is carved with interlocking beasts that seem to writhe as the shadows move."},
-            {"text": "The passage is so dark you feel your way along cold, carved stone. Grey daylight leaks in from the entrance behind you."}
+            {
+              "if": {
+                "near": {
+                  "tag": "light",
+                  "prop": "lit"
+                }
+              },
+              "text": "Your light shows a low passage of fitted stone slabs. Every surface is carved with interlocking beasts that seem to writhe as the shadows move."
+            },
+            {
+              "text": "The passage is so dark you feel your way along cold, carved stone. Grey daylight leaks in from the entrance behind you."
+            }
           ],
           "brief": "The low, carved entrance passage.",
-          "features": ["barrow_carvings", "torch_sconce"],
-          "exits": [{"to": "antechamber", "dir": "north", "distance": 1}]
+          "features": [
+            "barrow_carvings",
+            "torch_sconce"
+          ],
+          "exits": [
+            {
+              "to": "antechamber",
+              "dir": "north",
+              "distance": 1
+            }
+          ]
         },
         "antechamber": {
           "name": "Antechamber",
-          "tags": ["underground", "dark"],
-          "description": "A round chamber with a domed roof. Passages lead off to either side, and the north wall is dominated by a great door of green bronze.",
+          "tags": [
+            "underground",
+            "dark"
+          ],
+          "description": "A round chamber with a domed roof. Passages lead off to either side, and to the north a doorway of green bronze stands open on the dark.",
           "brief": "The domed antechamber.",
-          "features": ["barrow_door", "offering_bowl"],
+          "features": [
+            "offering_bowl"
+          ],
           "exits": [
-            {"to": "ossuary", "dir": "west", "distance": 1},
-            {"to": "flooded_hall", "dir": "east", "distance": 1},
-            {"to": "sanctum", "dir": "north", "distance": 1,
-             "if": {"prop": "open", "of": "here:barrow_door"},
-             "blocked": "The bronze door is shut fast."}
+            {
+              "to": "ossuary",
+              "dir": "west",
+              "distance": 1
+            },
+            {
+              "to": "flooded_hall",
+              "dir": "east",
+              "distance": 1
+            },
+            {
+              "to": "sanctum",
+              "dir": "north",
+              "distance": 1
+            }
           ]
         },
         "ossuary": {
           "name": "Ossuary",
-          "tags": ["underground", "dark"],
+          "tags": [
+            "underground",
+            "dark"
+          ],
           "description": "Niches line the walls from floor to ceiling, and every niche holds a skull. Hundreds of empty eyes watch you come in.",
           "brief": "The ossuary, full of watching skulls.",
-          "features": ["bone_pile", "skull_niches"]
+          "features": [
+            "bone_pile",
+            "skull_niches"
+          ]
         },
         "flooded_hall": {
           "name": "Flooded Hall",
-          "tags": ["underground", "dark", "water"],
+          "tags": [
+            "underground",
+            "dark",
+            "water"
+          ],
           "description": "Black water has seeped in to fill this long hall to the knee. Stone coffins rise from it like islands.",
           "brief": "The flooded hall of coffins.",
-          "features": ["barrow_wight", "warrior_coffin", "dark_water"]
+          "features": [
+            "barrow_wight",
+            "warrior_coffin",
+            "dark_water"
+          ]
         },
         "sanctum": {
           "name": "Sanctum of the King",
-          "aliases": ["sanctum", "tomb"],
-          "tags": ["underground", "holy"],
+          "aliases": [
+            "sanctum",
+            "tomb"
+          ],
+          "tags": [
+            "underground",
+            "holy"
+          ],
           "description": "The heart of the barrow. A faint radiance hangs in the air with no source you can find. Gold glints in every corner, dulled by dust.",
           "brief": "The king's sanctum.",
-          "features": ["barrow_sarcophagus", "kings_effigy", {"id": "copper_coins", "count": 2}]
+          "features": [
+            "barrow_sarcophagus",
+            "kings_effigy",
+            {
+              "id": "copper_coins",
+              "count": 2
+            }
+          ]
         }
-      }
-    }
-  },
-
-  "beats": {
-    "barrow_relic": {
-      "title": "The Barrow's Heart",
-      "stage": "middle",
-      "tags": ["fantasy", "dungeon", "relic"],
-      "area": "barrow",
-      "provides": ["relic"],
-      "roles": {
-        "relic": {"spawn": "barrow_relic", "in": {"feature": "def:barrow_sarcophagus"}, "name": "#relic_name#"}
       },
-      "intro": "Somewhere ahead lies {beat.area}. Whatever is calling from it, the answer lies in its deepest chamber.",
-      "hint": "Find a way into the sealed sanctum of {beat.area} and claim {beat.relic.name}.",
-      "hook": "The old barrow, {beat.area}, has been broken open, and something inside it is calling.",
-      "rumor": [
-        "They say {beat.area} stands open now. Grave-robbers went in. None came out.",
-        "I passed {beat.area} at dusk. There was a light inside. Not a torch. Something older.",
-        "My grandmother said the old king was buried with {beat.relic.name}. Said it should never see daylight."
-      ],
-      "objective": {"has": "role:relic"},
-      "complete_text": "As your fingers close around {beat.relic.name}, a breath of warm air sighs through the barrow, and every skull in the ossuary seems to settle, at peace at last."
+      "important": true
     }
   },
-
   "grammar": {
-    "barrow_king": ["Hrothmund", "Aelfwine", "Sigeric", "Cynewulf", "Eadgar the Grey", "Wulfhere", "Osgar Ringgiver"],
-    "relic_name": ["the #relic_obj# of #relic_owner#"],
-    "relic_obj": ["Lantern", "Crown", "Chalice", "Torc", "Horn", "Mirror", "Seal", "Lamp"],
-    "relic_owner": ["Saint #given#", "King #barrow_king#", "the First Dawn", "the Drowned Queen", "the Morning Star"],
+    "barrow_king": [
+      "Hrothmund",
+      "Aelfwine",
+      "Sigeric",
+      "Cynewulf",
+      "Eadgar the Grey",
+      "Wulfhere",
+      "Osgar Ringgiver"
+    ],
+    "relic_name": [
+      "the #relic_obj# of #relic_owner#"
+    ],
+    "relic_obj": [
+      "Lantern",
+      "Crown",
+      "Chalice",
+      "Torc",
+      "Horn",
+      "Mirror",
+      "Seal",
+      "Lamp"
+    ],
+    "relic_owner": [
+      "Saint #given#",
+      "King #barrow_king#",
+      "the First Dawn",
+      "the Drowned Queen",
+      "the Morning Star"
+    ],
     "barrow_runes": [
       "The runes read: \"Here sleeps #barrow_king#, ring-giver, shield of his people. Let no hand wake him.\"",
       "Most of the carving is beasts devouring beasts. Along the bottom runs a line of runes: \"The light was given to the dark to keep.\"",
       "You trace the runes with a finger: \"Whoso takes the light takes the burden.\""
     ]
   },
-
   "features": {
     "sealing_stones": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "sealing stones",
       "article": "some",
-      "aliases": ["stones", "slabs", "stone"],
+      "aliases": [
+        "stones",
+        "slabs",
+        "stone"
+      ],
       "appearance": false,
       "description": "Each stone must weigh as much as a cart. Something shifted them from the inside: the scrape marks all point outward.",
-      "actions": {"push": ["You might as well push a hill."]}
+      "actions": {
+        "push": [
+          "You might as well push a hill."
+        ]
+      }
     },
     "fresh_tracks": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "tracks",
       "article": "some",
-      "aliases": ["footprints", "prints", "track"],
+      "aliases": [
+        "footprints",
+        "prints",
+        "track"
+      ],
       "appearance": "Footprints in the mud lead into the barrow. None lead out.",
       "description": "Several people, heavy boots, a few days old. They went in. They did not come back."
     },
     "barrow_carvings": {
-      "extends": ["scenery", "readable"],
+      "extends": [
+        "scenery",
+        "readable"
+      ],
       "name": "carvings",
       "article": "some",
-      "aliases": ["carving", "runes", "beasts", "walls"],
+      "aliases": [
+        "carving",
+        "runes",
+        "beasts",
+        "walls"
+      ],
       "appearance": false,
       "description": "Interlocking beasts devour one another in an endless chain. Here and there are lines of runes.",
-      "props": {"text": "#barrow_runes#"}
+      "props": {
+        "text": "#barrow_runes#"
+      }
     },
     "torch_sconce": {
-      "extends": ["scenery", "surface"],
+      "extends": [
+        "scenery",
+        "surface"
+      ],
       "name": "iron sconce",
-      "aliases": ["sconce", "bracket"],
+      "aliases": [
+        "sconce",
+        "bracket"
+      ],
       "appearance": "An iron sconce is fixed to the wall.",
       "contents_text": "In the sconce is {contents}.",
       "description": "A rusted iron bracket for holding a torch.",
-      "features": ["pitch_torch"]
-    },
-    "pitch_torch": {
-      "extends": ["light_source"],
-      "name": "pitch torch",
-      "aliases": ["torch", "brand"],
-      "description": [
-        {"if": {"prop": "lit"}, "text": "The torch burns with a smoky orange flame."},
-        {"text": "A stick wrapped in pitch-soaked rags. You'd need a spark to light it, but someone left a flint wedged in the sconce, so lighting it should be easy enough."}
+      "features": [
+        "pitch_torch"
       ]
     },
-    "barrow_door": {
-      "extends": ["door", "lockable"],
-      "name": "bronze door",
-      "aliases": ["door", "bronze", "green door"],
-      "props": {"lock": "barrow_sanctum"},
-      "appearance": [
-        {"if": {"prop": "open"}, "text": "The great bronze door stands open, revealing a glimmer of gold beyond."},
-        {"if": {"prop": "locked"}, "text": "The great bronze door is shut, its lock shaped like a grinning skull."},
-        {"text": "The great bronze door is closed but unlocked."}
+    "pitch_torch": {
+      "extends": [
+        "light_source"
       ],
-      "description": "Green with age and worked with scenes of a king giving rings to his warriors. The keyhole sits in the mouth of a grinning bronze skull.",
-      "actions": {
-        "push": [
-          {"if": {"prop": "locked"}, "do": ["You put your shoulder to the door. It doesn't so much as tremble."]},
-          {"do": [{"set": {"open": true}}, "The door swings inward with a groan of ancient hinges."]}
-        ]
-      }
+      "name": "pitch torch",
+      "aliases": [
+        "torch",
+        "brand"
+      ],
+      "description": [
+        {
+          "if": {
+            "prop": "lit"
+          },
+          "text": "The torch burns with a smoky orange flame."
+        },
+        {
+          "text": "A stick wrapped in pitch-soaked rags. You'd need a spark to light it, but someone left a flint wedged in the sconce, so lighting it should be easy enough."
+        }
+      ]
     },
     "offering_bowl": {
-      "extends": ["scenery", "surface"],
+      "extends": [
+        "scenery",
+        "surface"
+      ],
       "name": "offering bowl",
-      "aliases": ["bowl", "basin"],
+      "aliases": [
+        "bowl",
+        "basin"
+      ],
       "appearance": "A shallow stone offering bowl sits on a plinth.",
       "contents_text": "In the bowl lies {contents}.",
       "description": "Worn smooth inside by centuries of offerings.",
-      "features": [{"name": "dried flower", "extends": ["portable"], "aliases": ["flower", "posy"], "description": "A small posy, so old it crumbles at a touch."}],
+      "features": [
+        {
+          "name": "dried flower",
+          "extends": [
+            "portable"
+          ],
+          "aliases": [
+            "flower",
+            "posy"
+          ],
+          "description": "A small posy, so old it crumbles at a touch."
+        }
+      ],
       "actions": {
         "put_with": [
-          {"if": {"tag": "treasure", "of": "target"}, "do": [{"move": "target", "to": "self"}, "You lay {target} in the bowl. For a moment the barrow seems to hold its breath, then let it out more easily.", {"flag": "barrow_offering"}]}
+          {
+            "if": {
+              "tag": "treasure",
+              "of": "target"
+            },
+            "do": [
+              {
+                "move": "target",
+                "to": "self"
+              },
+              "You lay {target} in the bowl. For a moment the barrow seems to hold its breath, then let it out more easily.",
+              {
+                "flag": "barrow_offering"
+              }
+            ]
+          }
         ]
       }
     },
     "bone_pile": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "pile of bones",
-      "aliases": ["bones", "pile", "bone"],
+      "aliases": [
+        "bones",
+        "pile",
+        "bone"
+      ],
       "appearance": "A heap of loose bones has collapsed from the lower niches.",
       "description": "Arm bones, leg bones, ribs, all jumbled together. Something glints underneath.",
-      "features": ["bone_key"],
-      "actions": {"take": ["You'd rather leave the dead their bones."]}
+      "features": [
+        "bone_key"
+      ],
+      "actions": {
+        "take": [
+          "You'd rather leave the dead their bones."
+        ]
+      }
     },
     "bone_key": {
-      "extends": ["key"],
+      "extends": [
+        "key"
+      ],
       "name": "key of carved bone",
-      "aliases": ["key", "bone key", "skeleton key"],
+      "aliases": [
+        "key",
+        "bone key",
+        "skeleton key"
+      ],
       "hidden": true,
-      "props": {"opens": "barrow_sanctum"},
-      "description": "A long key carved from a single bone, its bow shaped like a little crowned skull."
+      "props": {
+        "opens": "barrow_sanctum"
+      },
+      "description": "A long key carved from a single bone, its bow shaped like a little crowned skull.",
+      "important": true,
+      "affords": [
+        "unlock"
+      ]
     },
     "skull_niches": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "skulls",
       "article": "some",
-      "aliases": ["skull", "niches", "niche"],
+      "aliases": [
+        "skull",
+        "niches",
+        "niche"
+      ],
       "appearance": false,
       "description": "Hundreds of skulls. Some have coins in their eye sockets. You leave them be.",
-      "actions": {"take": ["The skulls are watching. You leave them be."], "talk": ["The skulls make excellent listeners."]}
+      "actions": {
+        "take": [
+          "The skulls are watching. You leave them be."
+        ],
+        "talk": [
+          "The skulls make excellent listeners."
+        ]
+      }
     },
     "barrow_wight": {
-      "extends": ["scenery", "hostile"],
+      "extends": [
+        "scenery",
+        "hostile"
+      ],
       "name": "barrow wight",
-      "aliases": ["wight", "ghost", "corpse", "undead", "warrior"],
-      "tags": ["undead", "guardian"],
+      "aliases": [
+        "wight",
+        "ghost",
+        "corpse",
+        "undead",
+        "warrior"
+      ],
+      "tags": [
+        "undead",
+        "guardian"
+      ],
       "appearance": "A barrow wight stands knee-deep in the water, its armour green with age and its eyes cold blue fire.",
       "description": "Bone and verdigris and the memory of a man. It guards the coffins of its brothers.",
-      "props": {"health": 12, "max_health": 12, "damage": 3, "armor": 1, "attack_text": "claws at", "death_text": "The wight lets out a long, cold sigh and crumbles into the water."},
-      "on_death": [{"flag": "wight_slain"}]
+      "props": {
+        "health": 12,
+        "max_health": 12,
+        "damage": 3,
+        "armor": 1,
+        "attack_text": "claws at",
+        "death_text": "The wight lets out a long, cold sigh and crumbles into the water."
+      },
+      "profile": {
+        "personality": [
+          "weary",
+          "stern"
+        ],
+        "motives": [
+          "guard",
+          "duty",
+          "vengeance"
+        ],
+        "motive_text": "guard my king's rest until the stars burn out",
+        "goals": [
+          "see the king's light returned to him",
+          "rest, at last"
+        ],
+        "backstory": "It speaks in a voice like wind through a crack in a tomb. \"I was the king's shield-bearer. I am still.\"",
+        "roles": [
+          "antagonist",
+          "informant",
+          "holder"
+        ],
+        "knows": [
+          "barrow",
+          "history",
+          "king"
+        ],
+        "wants": [
+          "relic",
+          "holy"
+        ],
+        "greet": [
+          "The wight's blue eyes flare. \"Who disturbs the king's rest?\""
+        ],
+        "epilogue": "In the barrow, a shield-bearer lays down his shield, and sleeps."
+      }
     },
     "warrior_coffin": {
-      "extends": ["scenery", "container", "openable"],
+      "extends": [
+        "scenery",
+        "container",
+        "openable"
+      ],
       "name": "stone coffin",
-      "aliases": ["coffin", "coffins", "lid"],
+      "aliases": [
+        "coffin",
+        "coffins",
+        "lid"
+      ],
       "appearance": "The largest coffin bears the carving of a warrior with a sword on his breast.",
       "description": "The lid is carved with a sleeping warrior.",
-      "features": [{"name": "barrow blade", "extends": ["portable"], "aliases": ["blade", "sword", "barrow blade"], "tags": ["weapon"], "props": {"damage": 4},
-                    "description": "A long iron sword, pattern-welded, its edge still keen after a thousand years."}],
+      "features": [
+        {
+          "name": "barrow blade",
+          "extends": [
+            "portable"
+          ],
+          "aliases": [
+            "blade",
+            "sword",
+            "barrow blade"
+          ],
+          "tags": [
+            "weapon"
+          ],
+          "props": {
+            "damage": 4
+          },
+          "description": "A long iron sword, pattern-welded, its edge still keen after a thousand years."
+        }
+      ],
       "actions": {
         "open": [
-          {"if": {"all": [{"here": "def:barrow_wight"}, {"mod": "combat"}]}, "do": ["The wight hisses and moves between you and the coffin."]},
-          {"if": {"prop": "open"}, "do": ["It's already open."]},
-          {"do": [{"set": {"open": true}}, "You heave the lid aside. Inside: {self.contents}."]}
+          {
+            "if": {
+              "all": [
+                {
+                  "here": "def:barrow_wight"
+                },
+                {
+                  "mod": "combat"
+                }
+              ]
+            },
+            "do": [
+              "The wight hisses and moves between you and the coffin."
+            ]
+          },
+          {
+            "if": {
+              "prop": "open"
+            },
+            "do": [
+              "It's already open."
+            ]
+          },
+          {
+            "do": [
+              {
+                "set": {
+                  "open": true
+                }
+              },
+              "You heave the lid aside. Inside: {self.contents}."
+            ]
+          }
         ]
       }
     },
     "dark_water": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "black water",
-      "aliases": ["water", "pool"],
+      "aliases": [
+        "water",
+        "pool"
+      ],
       "appearance": false,
       "description": "Still and black and very cold. Things gleam on the bottom.",
-      "features": [{"name": "drowned shield", "extends": ["portable"], "aliases": ["shield"], "hidden": true, "tags": ["armour"], "props": {"armor": 1},
-                    "description": "A round lime-wood shield with an iron boss, waterlogged but sound."}],
-      "actions": {"drink": ["Absolutely not."]}
+      "features": [
+        {
+          "name": "drowned shield",
+          "extends": [
+            "portable"
+          ],
+          "aliases": [
+            "shield"
+          ],
+          "hidden": true,
+          "tags": [
+            "armour"
+          ],
+          "props": {
+            "armor": 1
+          },
+          "description": "A round lime-wood shield with an iron boss, waterlogged but sound."
+        }
+      ],
+      "actions": {
+        "drink": [
+          "Absolutely not."
+        ]
+      }
     },
     "barrow_sarcophagus": {
-      "extends": ["scenery", "container", "openable"],
-      "name": "sarcophagus",
-      "aliases": ["coffin", "tomb", "lid", "sarcophagus"],
-      "appearance": [
-        {"if": {"prop": "open"}, "text": "The king's sarcophagus lies open."},
-        {"text": "In the centre of the chamber stands a great stone sarcophagus, its lid carved with the likeness of a crowned king."}
+      "extends": [
+        "scenery",
+        "container",
+        "openable"
       ],
-      "description": "Granite, carved with ravens and ring-ships. The lid is heavy, but not immovable."
+      "name": "sarcophagus",
+      "aliases": [
+        "coffin",
+        "tomb",
+        "lid",
+        "sarcophagus"
+      ],
+      "appearance": [
+        {
+          "if": {
+            "prop": "open"
+          },
+          "text": "The king's sarcophagus lies open."
+        },
+        {
+          "text": "In the centre of the chamber stands a great stone sarcophagus, its lid carved with the likeness of a crowned king."
+        }
+      ],
+      "description": "Granite, carved with ravens and ring-ships. The lid is heavy, but not immovable.",
+      "tags": [
+        "barrow_tomb",
+        "resting_place"
+      ],
+      "important": true
     },
     "kings_effigy": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "effigy",
-      "aliases": ["king", "likeness", "statue", "carving"],
+      "aliases": [
+        "king",
+        "likeness",
+        "statue",
+        "carving"
+      ],
       "appearance": false,
       "description": "The carved king's hands are folded around... nothing. Whatever he once held has been placed inside the sarcophagus instead."
     },
     "barrow_relic": {
-      "extends": ["valuable", "light_source"],
-      "name": "relic",
-      "tags": ["relic"],
-      "props": {"lit": true, "value": 50},
+      "extends": [
+        "valuable",
+        "light_source"
+      ],
+      "name": "#relic_name#",
+      "proper": true,
+      "aliases": [
+        "relic"
+      ],
+      "tags": [
+        "relic",
+        "holy"
+      ],
+      "important": true,
+      "affords": [
+        "light",
+        "relic",
+        "holy"
+      ],
+      "home": [
+        "ancient",
+        "holy",
+        "dungeon"
+      ],
+      "props": {
+        "lit": true,
+        "value": 50
+      },
       "description": "{self.Name} gives off a soft, steady light that never flickers. It is warm to the touch, like something alive."
+    }
+  },
+  "obstacles": {
+    "bronze_door": {
+      "kind": "barrier",
+      "needs": [
+        "unlock"
+      ],
+      "tags": [
+        "ancient",
+        "dungeon",
+        "fantasy"
+      ],
+      "feature": {
+        "name": "bronze door",
+        "aliases": [
+          "door",
+          "bronze",
+          "skull"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "A great door of green bronze stands open."
+          },
+          {
+            "text": "A great door of green bronze bars the way, its keyhole set in the mouth of a grinning skull."
+          }
+        ],
+        "description": "Green with age and worked with scenes of a king giving rings to his warriors."
+      },
+      "open_text": "{key.The} turns in the skull's mouth with a dry click, and the bronze door swings inward on groaning hinges.",
+      "locked_text": "The bronze door won't budge. The skull-shaped lock grins at you.",
+      "blocked": "A bronze door, shut fast, bars the way."
+    },
+    "rune_sealed_coffer": {
+      "kind": "container",
+      "needs": [
+        "holy",
+        "relic",
+        "light"
+      ],
+      "tags": [
+        "ancient",
+        "fantasy",
+        "holy"
+      ],
+      "feature": {
+        "name": "rune-sealed coffer",
+        "aliases": [
+          "coffer",
+          "chest",
+          "runes",
+          "box"
+        ],
+        "appearance": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "text": "A stone coffer stands open, its runes dark."
+          },
+          {
+            "text": "A stone coffer sits here, sealed by runes that glow a faint, cold blue."
+          }
+        ],
+        "description": "The runes say: only the light may open what the dark has sealed."
+      },
+      "open_text": "You hold {key} to the runes. One by one they flicker and die, and the coffer's lid slides aside.",
+      "locked_text": "The runes flare cold blue when you touch the lid. It will not open for you."
+    }
+  },
+  "events": {
+    "barrow_desecration": {
+      "title": [
+        "The Stolen Light",
+        "Grave Goods",
+        "The King's Lamp"
+      ],
+      "tags": [
+        "fantasy",
+        "ancient"
+      ],
+      "roles": {
+        "tomb": {
+          "type": "place",
+          "match": {
+            "tags": [
+              "dungeon",
+              "ancient"
+            ]
+          }
+        },
+        "resting_place": {
+          "type": "feature",
+          "match": {
+            "tag": [
+              "resting_place"
+            ]
+          },
+          "in": "tomb"
+        },
+        "relic": {
+          "type": "item",
+          "match": {
+            "affords": [
+              "relic"
+            ]
+          },
+          "spawn": "barrow_relic"
+        },
+        "villain": {
+          "type": "character",
+          "match": {
+            "motive": [
+              "greed",
+              "power",
+              "profit"
+            ],
+            "role": [
+              "antagonist"
+            ]
+          },
+          "optional": true
+        }
+      },
+      "hook": "Somebody has broken open {tomb} and stolen {relic} from its resting place. Since that night the dead have not slept easily, and neither has anyone else.",
+      "goal": "Recover {relic} and return it to {resting_place} in {tomb}.",
+      "resolutions": [
+        {
+          "verb": "put",
+          "target": "resting_place",
+          "means": "relic",
+          "title": "Return the light",
+          "text": "You lay {means} back in {target}. A long sigh runs through the stones, and everything that was restless grows still."
+        }
+      ],
+      "lore": [
+        {
+          "title": "The theft",
+          "text": "On a moonless night someone carried {relic} out of {tomb}. They say the skulls in the ossuary turned to watch them go."
+        },
+        {
+          "title": "Who would do such a thing?",
+          "about": [
+            "cast:villain"
+          ],
+          "text": "Folk whisper that {villain} has been seen with more coin than usual. They say {villain} would do anything to {villain.motive}."
+        }
+      ],
+      "ending": "With {relic} returned, the barrow is quiet again. Lights in the village burn a little brighter, and nobody can quite say why."
+    },
+    "barrow_restless_guardian": {
+      "title": [
+        "The Shield-Bearer",
+        "What the Dead Keep"
+      ],
+      "tags": [
+        "fantasy",
+        "ancient"
+      ],
+      "roles": {
+        "tomb": {
+          "type": "place",
+          "match": {
+            "tags": [
+              "dungeon",
+              "ancient"
+            ]
+          }
+        },
+        "villain": {
+          "type": "character",
+          "match": {
+            "motive": [
+              "guard",
+              "duty"
+            ],
+            "role": [
+              "antagonist"
+            ]
+          }
+        },
+        "relic": {
+          "type": "item",
+          "match": {
+            "affords": [
+              "holy",
+              "relic"
+            ]
+          },
+          "spawn": "barrow_relic"
+        }
+      },
+      "hook": "Something has woken in {tomb}: {villain}, an old guardian who now walks the land at night, hunting for a light that was taken from its king long ago.",
+      "goal": "Find {relic} and use it to lay {villain} to rest.",
+      "resolutions": [
+        {
+          "verb": "give",
+          "target": "villain",
+          "means": "relic",
+          "title": "Lay the guardian to rest",
+          "text": "{target.The} takes {means} in hands of bone. For a moment you see a man, young and tired, and then only dust, and a light settling into the dark."
+        },
+        {
+          "verb": "attack",
+          "target": "villain",
+          "requires_mods": [
+            "combat"
+          ],
+          "text": "{target.The} falls, and its long watch ends with it."
+        }
+      ],
+      "lore": [
+        {
+          "title": "The shield-bearer",
+          "text": "When the king was laid in {tomb}, his shield-bearer asked to be buried at the door, so that he could keep guarding him forever."
+        }
+      ],
+      "ending": "The guardian sleeps. The barrow keeps its king, and the night belongs to the living again."
+    }
+  },
+  "lore": {
+    "barrow_king": {
+      "title": "The barrow king",
+      "about": [
+        "area:barrow"
+      ],
+      "tags": [
+        "barrow",
+        "history",
+        "king"
+      ],
+      "text": "#barrow_king# was a ring-giver and a shield to his people. When he died they built {area.barrow} over him and sealed it with stones no living man could move."
+    },
+    "barrow_runes": {
+      "title": "Runes in the barrow",
+      "about": [
+        "area:barrow"
+      ],
+      "tags": [
+        "barrow",
+        "history"
+      ],
+      "text": "The runes on the barrow walls read: 'The light was given to the dark to keep. Whoso takes the light takes the burden.'"
+    },
+    "barrow_tracks": {
+      "title": "Footprints",
+      "about": [
+        "area:barrow"
+      ],
+      "tags": [
+        "barrow",
+        "rumour"
+      ],
+      "chance": 0.6,
+      "text": "Grave-robbers went into the barrow last autumn. Their footprints lead in. None lead out."
     }
   }
 }

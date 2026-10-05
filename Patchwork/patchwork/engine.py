@@ -114,9 +114,15 @@ class Engine:
         if story.get("intro"):
             self.io.write(self.i.render(story["intro"], self.i.ctx(beat=0)), "story")
             self.io.write("")
+        try:
+            self.i.run(story.get("on_start"), self.i.ctx())
+        except StopAction:
+            pass
         self.i.fire("start", self.i.ctx())
-        if story["beats"]:
-            self.activate_beat(0, announce=False)
+        if story.get("goal"):
+            self.io.write(self.i.render(story["goal"], self.i.ctx()), "story")
+        if story.get("steps"):
+            self.activate_beat(0, announce=True)
         room = w.room
         self.enter_room(room, describe=True, travelled=False)
         self.check_story()
@@ -225,11 +231,23 @@ class Engine:
             self.dispatch(vid, vdef, None, None, " ".join(rest))
             return
         # Split off a second object: "put coin in box", "unlock door with key".
+        # Names can contain prepositions too ("slip of paper with a code"), so
+        # prefer the split where both halves name something the player can see.
         tphrase, sphrase = rest, []
-        for idx, word in enumerate(rest):
-            if word in (vdef.get("prepositions") or []) and idx > 0:
-                tphrase, sphrase = rest[:idx], rest[idx + 1:]
-                break
+        splits = [idx for idx, word in enumerate(rest)
+                  if word in (vdef.get("prepositions") or []) and 0 < idx < len(rest) - 1]
+        if splits:
+            tphrase, sphrase = rest[:splits[0]], rest[splits[0] + 1:]
+            whole = " ".join(rest)
+            if self.resolve(whole, vdef.get("scope", "any"), quiet=True) is None:
+                for idx in splits:
+                    a, b = rest[:idx], rest[idx + 1:]
+                    if (self.resolve(" ".join(a), vdef.get("scope", "any"), quiet=True) is not None
+                            and self.resolve(" ".join(b), vdef.get("second_scope", "any"), quiet=True) is not None):
+                        tphrase, sphrase = a, b
+                        break
+            else:
+                tphrase, sphrase = rest, []
         if not tphrase:
             if kind == "entity":
                 self.dispatch(vid, vdef, None, None, "", missing=True)
@@ -278,7 +296,7 @@ class Engine:
             return w.room
         scored = []
         for e in self._candidates(scope_kind):
-            name = e.name.lower()
+            name = " ".join(t for t in _PUNCT.sub(" ", e.name.lower()).split() if t not in self.ignore)
             name_words = name.split()
             explicit = [a.lower() for a in w.def_of(e).get("aliases") or []]
             # The head noun: "lamp" in "great lamp", "can" in "can of lamp oil".
@@ -358,10 +376,15 @@ class Engine:
                     self.io.write(self.s("what", "What do you want to {verb}?", verb=vid))
                     return
             elif target is not None:
-                handled = self.i.run_handlers(w.handlers(target, vid), ctx)
-                if not handled and second is not None:
-                    handled = self.i.run_handlers(w.handlers(second, vid + "_with"),
-                                                  ctx.derive(self_ent=second))
+                # Story handlers attached to these particular things win over generic
+                # definitions, then the target's own definition, then the second object's.
+                for which in ("instance", "def"):
+                    handled = self.i.run_handlers(w.handlers(target, vid, which), ctx)
+                    if not handled and second is not None:
+                        handled = self.i.run_handlers(w.handlers(second, vid + "_with", which),
+                                                      ctx.derive(self_ent=second))
+                    if handled:
+                        break
             else:
                 room = w.room
                 handled = self.i.run_handlers(w.handlers(room, vid), ctx.derive(self_ent=room))
@@ -616,6 +639,8 @@ class Engine:
             self.show_map()
         elif what == "story":
             self.show_story()
+        elif what == "lore":
+            self.show_lore()
         else:
             w.say("[mod error] cannot show '%s'" % what, "error")
 
@@ -643,14 +668,15 @@ class Engine:
         story = w.story
         if story.get("title"):
             self.io.write(story["title"], "title")
+        if story.get("goal") and not story.get("complete"):
+            self.io.write(self.i.render(story["goal"], self.i.ctx()), "story")
         cur = story.get("current", 0)
-        beats = story.get("beats", [])
-        if cur < len(beats):
-            self.io.write(self.s("journal_current", "Current goal: {title}", title=beats[cur]["title"]), "story")
-            bdef = self.reg["beats"].get(beats[cur]["id"], {})
-            if bdef.get("hint"):
-                self.io.write("  " + self.i.render(bdef["hint"], self.i.ctx(beat=cur)), "dim")
-        elif beats:
+        steps = story.get("steps", [])
+        if cur < len(steps):
+            self.io.write(self.s("journal_current", "Current goal: {title}", title=steps[cur]["title"]), "story")
+            if steps[cur].get("hint"):
+                self.io.write("  " + self.i.render(steps[cur]["hint"], self.i.ctx(beat=cur)), "dim")
+        elif steps:
             self.io.write(self.s("journal_done", "Your tale is told, but the world remains to explore."), "story")
         if not w.journal:
             self.io.write(self.s("journal_empty", "Your journal is empty."))
@@ -659,14 +685,37 @@ class Engine:
             self.io.write("- " + entry["text"])
 
     def show_story(self):
-        beats = self.w.story.get("beats", [])
-        if not beats:
+        steps = self.w.story.get("steps", [])
+        if not steps:
             self.io.write(self.s("no_story", "This world has no story; it is yours to explore."))
             return
-        for idx, b in enumerate(beats):
+        for b in steps:
             mark = {"done": "x", "active": ">", "pending": " "}.get(b.get("state"), " ")
             label = b["title"] if b.get("state") != "pending" else self.s("unknown_chapter", "???")
             self.io.write("[%s] %s" % (mark, label))
+
+    def show_lore(self):
+        story = self.w.story
+        known = story.get("lore_known", [])
+        if not known:
+            self.io.write(self.s("lore_empty", "You haven't learned anything of note yet."))
+            return
+        for lid in known:
+            entry = story.get("lore", {}).get(lid)
+            if entry:
+                self.io.write(entry.get("title", ""), "bold")
+                self.io.write("  " + entry.get("text", ""))
+
+    def learn(self, lore_id, quiet=False):
+        """Record a piece of lore as known (from dialogue, documents or quests)."""
+        story = self.w.story
+        entry = story.get("lore", {}).get(lore_id)
+        if entry is None or lore_id in story.setdefault("lore_known", []):
+            return
+        story["lore_known"].append(lore_id)
+        if not quiet:
+            self.io.write(self.s("lore_learned", "(Lore learned: {title}. Type 'lore' to review it.)",
+                                 title=entry.get("title", "")), "dim")
 
     def show_map(self):
         w = self.w
@@ -695,32 +744,32 @@ class Engine:
     # ------------------------------------------------------------------
     def activate_beat(self, idx, announce=True):
         w = self.w
-        beats = w.story["beats"]
-        if idx >= len(beats):
+        steps = w.story["steps"]
+        if idx >= len(steps):
             return
-        beat = beats[idx]
-        beat["state"] = "active"
+        step = steps[idx]
+        step["state"] = "active"
         w.story["current"] = idx
-        bdef = self.reg["beats"].get(beat["id"], {})
         ctx = self.i.ctx(beat=idx)
         if announce:
             self.io.write("")
-            self.io.write(self.s("chapter", "~ {title} ~", ctx=ctx, title=beat["title"]), "title")
-        if bdef.get("intro"):
-            self.io.write(self.i.render(bdef["intro"], ctx), "story")
-        journal = bdef.get("journal") or bdef.get("hint")
-        if journal:
-            w.journal.append({"time": w.clock, "text": self.i.render(journal, ctx)})
+            self.io.write(self.s("chapter", "~ {title} ~", ctx=ctx, title=step["title"]), "title")
+        if step.get("intro"):
+            self.io.write(self.i.render(step["intro"], ctx), "story")
+        if announce and step.get("hint"):
+            self.io.write(self.i.render(step["hint"], ctx), "dim")
+        if step.get("hint"):
+            w.journal.append({"time": w.clock, "text": self.i.render(step["hint"], ctx)})
         try:
-            self.i.run(bdef.get("on_start"), ctx)
+            self.i.run(step.get("on_start"), ctx)
         except StopAction:
             pass
 
     def beat_index(self, which):
-        beats = self.w.story["beats"]
+        steps = self.w.story["steps"]
         if which in (True, "self", "current", None):
             return self.w.story.get("current", 0)
-        for idx, b in enumerate(beats):
+        for idx, b in enumerate(steps):
             if b["id"] == which:
                 return idx
         return None
@@ -728,45 +777,36 @@ class Engine:
     def complete_beat(self, which):
         w = self.w
         idx = self.beat_index(which)
-        beats = w.story["beats"]
-        if idx is None or idx >= len(beats) or beats[idx].get("state") == "done":
+        steps = w.story["steps"]
+        if idx is None or idx >= len(steps) or steps[idx].get("state") == "done":
             return
-        beat = beats[idx]
-        bdef = self.reg["beats"].get(beat["id"], {})
-        beat["state"] = "done"
+        step = steps[idx]
+        step["state"] = "done"
         ctx = self.i.ctx(beat=idx)
         try:
-            self.i.run(bdef.get("on_complete"), ctx)
+            self.i.run(step.get("on_complete"), ctx)
         except StopAction:
             pass
-        if bdef.get("complete_text"):
-            self.io.write(self.i.render(bdef["complete_text"], ctx), "story")
-        w.journal.append({"time": w.clock, "text": self.s("journal_done_entry", "Done: {title}.", title=beat["title"])})
+        if step.get("complete_text"):
+            self.io.write(self.i.render(step["complete_text"], ctx), "story")
+        w.journal.append({"time": w.clock, "text": self.s("journal_done_entry", "Done: {title}.", title=step["title"])})
         if idx == w.story.get("current", 0):
             nxt = idx + 1
-            while nxt < len(beats) and beats[nxt].get("state") == "done":
+            while nxt < len(steps) and steps[nxt].get("state") == "done":
                 nxt += 1
-            if nxt < len(beats):
+            if nxt < len(steps):
                 self.activate_beat(nxt)
-                if self.reg["settings"].get("auto_lead", True):
-                    self.show_lead(self.i.ctx(beat=nxt))
             else:
-                w.story["current"] = len(beats)
+                w.story["current"] = len(steps)
                 self.finish_story()
 
     def show_lead(self, ctx):
-        beats = self.w.story["beats"]
+        steps = self.w.story["steps"]
         idx = ctx.beat if ctx is not None and ctx.beat is not None else self.w.story.get("current", 0)
-        if idx >= len(beats):
+        if idx >= len(steps):
             return
-        bdef = self.reg["beats"].get(beats[idx]["id"], {})
-        lead = bdef.get("lead")
-        area = beats[idx].get("area")
-        here = self.w.room.area if self.w.room is not None else None
-        if lead is None and area and area in self.w.areas and area != here:
-            lead = self.w.string("default_lead", "")
-        if lead:
-            self.io.write(self.i.render(lead, self.i.ctx(beat=idx)), "story")
+        if steps[idx].get("hint"):
+            self.io.write(self.i.render(steps[idx]["hint"], self.i.ctx(beat=idx)), "story")
 
     def finish_story(self):
         w = self.w
@@ -789,18 +829,28 @@ class Engine:
 
     def check_story(self):
         w = self.w
-        for _ in range(len(w.story.get("beats", [])) + 1):
+        for _ in range(len(w.story.get("steps", [])) + 1):
             if w.game_over or w.story.get("complete"):
                 return
             idx = w.story.get("current", 0)
-            beats = w.story["beats"]
-            if idx >= len(beats):
+            steps = w.story["steps"]
+            if idx >= len(steps):
                 return
-            bdef = self.reg["beats"].get(beats[idx]["id"], {})
-            obj = bdef.get("objective")
-            if obj is None or not self.i.check(obj, self.i.ctx(beat=idx)):
+            step = steps[idx]
+            obj = step.get("objective")
+            done = obj is not None and self.i.check(obj, self.i.ctx(beat=idx))
+            if not done:
+                # A character or thing this step needs is gone (killed, destroyed):
+                # the step is settled by events rather than left impossible.
+                gone = [k for k, uid in step.get("refs", {}).items()
+                        if k in ("char", "target", "feature", "obstacle") and uid not in w.entities]
+                if gone:
+                    if step["kind"] == "resolve":
+                        w.flags.add("story_resolved")
+                    done = True
+            if not done:
                 return
-            self.complete_beat(beats[idx]["id"])
+            self.complete_beat(step["id"])
 
 
 def _listify(v):

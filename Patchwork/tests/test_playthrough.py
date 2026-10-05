@@ -1,135 +1,98 @@
-"""End-to-end playthroughs: every bundled story must be completable on many seeds."""
+"""End-to-end: generated stories must be completable, through the text parser, on many seeds.
+
+Every story step records a machine-checkable solution (go here, talk to them, use
+this on that).  The test player follows those solutions with ordinary typed
+commands, so a pass means a human could finish the same story the same way.
+"""
 
 import unittest
 
-from helpers import Player
+from helpers import Player, available
+from patchwork.validate import check_world
 
-FANTASY = ["core", "wilds", "hamlet", "barrow", "spire", "saga_waning_light"]
-SCIFI = ["core", "derelict"]
-SEEDS = range(1, 13)
+ALL = sorted(m for m in available() if m != "lighthouse")
+COMBOS = [
+    ["core", "derelict"],
+    ["core", "tales", "derelict"],
+    ["core", "hamlet"],
+    ["core", "tales", "wilds", "hamlet"],
+    ["core", "tales", "wilds", "hamlet", "barrow", "spire"],
+    ["core", "barrow"],
+    ["core", "spire"],
+    ALL,
+]
+SEEDS = range(1, 16)
 
 
-def relic_word(p):
-    beat = next(b for b in p.world.story["beats"] if b["id"] == "barrow_relic")
-    return p.world.get(beat["roles"]["relic"]).name
-
-
-class FantasyPlaythrough(unittest.TestCase):
-    def play(self, mods, seed, fight=False):
-        p = Player(mods, seed, premise="waning_light")
-        w = p.world
-        ids = [b["id"] for b in w.story["beats"]]
-        self.assertEqual(ids, ["hamlet_call", "barrow_relic", "spire_confrontation"], p.log)
-
-        # Opening: speak with the elder.
-        p.walk_to(p.room_by_def("hamlet/cottage"), fight)
-        p.do("talk to elder")
-        self.assertEqual(w.story["beats"][0]["state"], "done")
-
-        # Middle: get into the barrow sanctum.
-        p.walk_to(p.room_by_def("barrow/ossuary"), fight)
-        p.do("search bones")
-        out = p.do("take key")
-        self.assertIn("key", out)
-        p.walk_to(p.room_by_def("barrow/antechamber"), fight)
-        p.do("unlock door")
-        p.do("open door")
-        p.walk_to(p.room_by_def("barrow/sanctum"), fight)
-        p.do("open sarcophagus")
-        relic = relic_word(p)
-        p.do("take " + relic)
-        self.assertEqual(w.story["beats"][1]["state"], "done", "relic not taken: " + relic)
-
-        # Climax: the spire, gated until now, then the ward that needs the relic.
-        top = p.room_by_def("spire/top")
-        self.assertTrue(p.walk_to(top, fight), "could not reach the top of the spire")
-        villain = w.get(w.story["beats"][2]["roles"]["villain"])
-        if villain is not None:
-            p.do("use %s on %s" % (relic, villain.name))
-        # (With combat loaded the sorcerer may already have fallen in the fight.)
-        self.assertTrue(w.story["complete"], "story not complete")
-        self.assertIsNone(w.game_over)
-
-    def test_story_without_combat(self):
-        for seed in SEEDS:
-            with self.subTest(seed=seed):
-                self.play(FANTASY, seed)
-
-    def test_story_with_combat(self):
-        for seed in SEEDS:
-            with self.subTest(seed=seed):
-                self.play(FANTASY + ["combat"], seed, fight=True)
-
-    def test_spire_fallback_relic_without_barrow(self):
-        """With no barrow mod the spire hides its own relic so the story stays winnable."""
-        for seed in range(1, 6):
-            with self.subTest(seed=seed):
-                p = Player(["core", "wilds", "hamlet", "spire", "saga_waning_light"], seed)
+class GeneratedStoriesAreCompletable(unittest.TestCase):
+    def check(self, mods, seeds, fight=False):
+        for seed in seeds:
+            with self.subTest(mods=",".join(mods), seed=seed):
+                p = Player(mods, seed)
                 w = p.world
-                beat = w.story["beats"][-1]
-                self.assertEqual(beat["id"], "spire_confrontation")
-                bane = w.get(beat["roles"]["bane"])
-                self.assertEqual(bane.def_id, "spire_bane")
-                p.do("talk to innkeeper", answers=["4"])
-                p.walk_to(p.room_by_def("hamlet/cottage"))
-                p.do("talk to elder")
-                p.walk_to(p.world.room_of(bane))
-                p.do("take shard")
-                p.walk_to(p.room_by_def("spire/top"))
-                p.do("use shard on " + w.get(beat["roles"]["villain"]).name)
+                self.assertEqual(check_world(w), [], p.log)
+                self.assertTrue(p.solve(fight=fight), "story did not complete")
                 self.assertTrue(w.story["complete"])
+                self.assertIsNone(w.game_over)
+
+    def test_mod_combinations(self):
+        for mods in COMBOS:
+            self.check([m for m in mods if m != "combat"], SEEDS)
+
+    def test_with_combat(self):
+        self.check(["core", "tales", "wilds", "hamlet", "barrow", "spire", "combat"], SEEDS, fight=True)
+        self.check(["core", "derelict", "combat"], SEEDS, fight=True)
+        self.check(ALL, range(1, 8), fight=True)
+
+    def test_example_mod(self):
+        self.check(["core", "tales", "wilds", "lighthouse"], range(1, 10))
+        self.check(["core", "lighthouse"], range(1, 6))
 
 
-class ExampleModPlaythrough(unittest.TestCase):
-    def test_lighthouse_slots_into_the_saga(self):
-        for seed in range(1, 8):
-            with self.subTest(seed=seed):
-                p = Player(FANTASY + ["lighthouse"], seed, premise="waning_light")
-                ids = [b["id"] for b in p.world.story["beats"]]
-                self.assertIn("lighthouse_relight", ids)
-                self.assertEqual(ids[-1], "spire_confrontation")
-                # Skip ahead: complete the chapters before the lighthouse.
-                for bid in ids[:ids.index("lighthouse_relight")]:
-                    p.engine.complete_beat(bid)
-                self.assertEqual(p.world.story["beats"][ids.index("lighthouse_relight")]["state"], "active")
-                p.walk_to(p.room_by_def("lighthouse/base"))
-                p.do("take can")
-                p.do("up")
-                out = p.do("light lamp")
-                self.assertIn("roars into life", out)
-                self.assertEqual(p.world.story["beats"][ids.index("lighthouse_relight")]["state"], "done")
+class StoriesAreGenerated(unittest.TestCase):
+    def test_no_mod_contains_a_preset_story(self):
+        p = Player(ALL, 1)
+        for section in ("beats", "premises"):
+            self.assertFalse(p.reg.sections.get(section), section)
 
+    def test_same_mods_different_story(self):
+        """Playing Derelict on its own twice should not be the same experience."""
+        plots = set()
+        events = set()
+        for seed in range(1, 13):
+            w = Player(["core", "derelict"], seed).world
+            events.add(w.story["event"])
+            plots.add(tuple((st["kind"], tuple(sorted(w.get(u).def_id for u in st["refs"].values())))
+                            for st in w.story["steps"]))
+        self.assertGreaterEqual(len(events), 2)
+        self.assertEqual(len(plots), 12, "two seeds produced the same quest chain")
 
-class SciFiPlaythrough(unittest.TestCase):
-    def play(self, mods, seed, fight=False):
-        p = Player(mods, seed, premise="dead_signal")
-        w = p.world
-        self.assertEqual([b["id"] for b in w.story["beats"]],
-                         ["derelict_signal", "derelict_doctor", "derelict_reactor"], p.log)
-        p.walk_to(p.room_by_def("docking_ring/bay"), fight)
-        p.do("read terminal")
-        p.walk_to(p.room_by_def("medbay/ward"), fight)
-        p.do("talk to doctor")
-        self.assertEqual(w.story["beats"][1]["state"], "done")
-        coupling = w.get(w.story["beats"][2]["roles"]["coupling"])
-        p.walk_to(w.room_of(coupling), fight)
-        p.do("take coupling")
-        self.assertTrue(w.is_inside(coupling, w.player))
-        p.walk_to(p.room_by_def("reactor_deck/access"), fight)
-        p.do("use keycard on reader")
-        p.walk_to(p.room_by_def("reactor_deck/core"), fight)
-        p.do("put coupling in socket")
-        self.assertTrue(w.story["complete"])
+    def test_characters_take_different_roles(self):
+        roles = set()
+        for seed in range(1, 25):
+            w = Player(["core", "tales", "wilds", "hamlet", "barrow", "spire"], seed).world
+            for name, uid in w.story["cast"].items():
+                roles.add((name, w.get(uid).def_id if w.get(uid) else None))
+        villains = {d for n, d in roles if n == "villain"}
+        self.assertGreaterEqual(len(villains), 3, villains)
 
-    def test_story(self):
-        for seed in SEEDS:
-            with self.subTest(seed=seed):
-                self.play(SCIFI, seed)
+    def test_every_important_feature_is_in_the_main_quest(self):
+        for seed in range(1, 11):
+            w = Player(ALL, seed).world
+            involved = {u for st in w.story["steps"] for u in st["refs"].values()}
+            places = {st.get("place") for st in w.story["steps"]}
+            for e in w.entities.values():
+                if w.def_of(e).get("important") and not e.is_room:
+                    self.assertIn(e.uid, involved, "seed %d: %s left out" % (seed, e.name))
+            for aid in w.areas:
+                if w.registry["areas"][aid].get("important"):
+                    self.assertIn(aid, places, "seed %d: place %s left out" % (seed, aid))
 
-    def test_story_with_combat(self):
-        for seed in SEEDS:
-            with self.subTest(seed=seed):
-                self.play(SCIFI + ["combat"], seed, fight=True)
+    def test_lore_mixes_mod_snippets_and_story_specific_lore(self):
+        w = Player(["core", "derelict"], 2).world
+        lore = w.story["lore"]
+        self.assertTrue(any(k.startswith("kestrel_") for k in lore))
+        self.assertTrue(any(k.startswith(w.story["event"]) for k in lore))
 
 
 if __name__ == "__main__":

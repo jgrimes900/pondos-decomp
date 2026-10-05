@@ -188,33 +188,69 @@
             "village gate"
           ]
         }
-      }
+      },
+      "important": true
     }
   },
-  "beats": {
-    "hamlet_call": {
-      "title": "A Call for Aid",
-      "stage": "opening",
+  "lore": {
+    "hamlet_founding": {
+      "title": "The founding of {area.hamlet}",
+      "about": [
+        "area:hamlet"
+      ],
       "tags": [
-        "fantasy",
+        "village",
+        "history"
+      ],
+      "text": "The village grew up around a holy well. The founders swore it would never run dry, and in three hundred years it never has."
+    },
+    "hamlet_saint": {
+      "title": "The Well-Saint",
+      "about": [
+        "area:hamlet"
+      ],
+      "tags": [
+        "saint",
+        "faith",
+        "history"
+      ],
+      "text": "In the year of the great drought a wandering woman drew water from the dry well, and it has flowed ever since. She told the villagers: when the world grows dark, look to the old places, for they remember."
+    },
+    "hamlet_sealed_door": {
+      "title": "The door in the earth",
+      "about": [
+        "area:hamlet"
+      ],
+      "tags": [
+        "history",
         "village"
       ],
-      "area": "hamlet",
-      "roles": {
-        "elder": {
-          "find": {
-            "tag": "village_elder"
-          },
-          "where": "area"
-        }
-      },
-      "intro": "Word has reached you that the village elder, {beat.elder.name}, has been asking after you.",
-      "hint": "Speak with {beat.elder.name} in the Elder's Cottage.",
-      "objective": {
-        "flag": "hamlet_call_heeded"
-      },
-      "complete_text": "{beat.elder.Name} grips your hand. \"Go carefully. And come back.\"",
-      "hook": "Strange things are stirring in {beat.area}, and the folk there are frightened."
+      "chance": 0.7,
+      "text": "The oldest chronicle tells of a door in the earth beyond the village that the founders sealed, and swore never to open."
+    },
+    "hamlet_smith_oath": {
+      "title": "The smith's oath",
+      "about": [
+        "def:blacksmith"
+      ],
+      "tags": [
+        "craft",
+        "village"
+      ],
+      "chance": 0.7,
+      "text": "Every smith of the village swears on the anvil never to forge a blade for a coward. Nobody remembers who decides who is a coward."
+    },
+    "hamlet_watch": {
+      "title": "The village watch",
+      "about": [
+        "def:watchman"
+      ],
+      "tags": [
+        "road",
+        "village"
+      ],
+      "chance": 0.6,
+      "text": "The village watch is one person, one spear and one lantern, and has been since anyone can remember."
     }
   }
 }

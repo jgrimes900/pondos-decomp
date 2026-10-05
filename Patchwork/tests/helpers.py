@@ -32,9 +32,9 @@ def registry(ids):
 class Player:
     """Drives an Engine through ordinary text commands."""
 
-    def __init__(self, ids, seed, premise=None, name="Tester", answers=None):
+    def __init__(self, ids, seed, name="Tester", answers=None, size="medium"):
         self.reg = registry(ids)
-        self.world, self.log = generate(self.reg, seed=seed, premise=premise, player_name=name)
+        self.world, self.log = generate(self.reg, seed=seed, player_name=name, size=size)
         self.io = ScriptIO(answers or [], echo=False)
         self.engine = Engine(self.world, self.io)
         self.engine.start()
@@ -122,6 +122,75 @@ class Player:
             if not foes or self.world.game_over:
                 return
             foe = foes[0]
-            if self.world.player.props.get("health", 99) < 8:
+            if self.world.player.props.get("health", 99) < 12:
                 self.world.player.props["health"] = self.world.player.props.get("max_health", 20)
             self.do("attack " + foe.name)
+
+    # -- solving generated stories ---------------------------------------
+    def name_of(self, uid):
+        return self.world.get(uid).name.lower()
+
+    def run_op(self, op, fight):
+        w = self.world
+        kind = op[0]
+        if any(isinstance(x, str) and x.startswith(("e", "f", "r")) and w.get(x) is None
+               and x not in w.entities for x in op[1:] if x) and kind != "cmd":
+            self.engine.check_story()   # something it needed was killed; the step settles itself
+            return ""
+        if kind == "goto":
+            ent = w.get(op[1])
+            assert ent is not None, "solution refers to a missing entity"
+            room = ent if ent.is_room else w.room_of(ent)
+            assert self.walk_to(room, fight), "could not reach %s" % room.name
+            return ""
+        if kind == "reveal":
+            ent = w.get(op[1])
+            if ent is None or not ent.hidden:
+                return ""
+            parent = w.get(ent.parent)
+            return self.do("search" if parent.is_room else "search " + parent.name.lower())
+        if kind in ("open", "take", "talk", "read", "examine"):
+            verb = {"talk": "talk to"}.get(kind, kind)
+            if kind == "open" and w.get(op[1]).props.get("open"):
+                return ""
+            return self.do("%s %s" % (verb, self.name_of(op[1])))
+        if kind == "give":
+            return self.do("give %s to %s" % (self.name_of(op[1]), self.name_of(op[2])))
+        if kind == "use":
+            return self.do("use %s on %s" % (self.name_of(op[1]), self.name_of(op[2])))
+        if kind == "cmd":
+            verb, means, target = op[1], op[2], op[3]
+            if verb == "attack":
+                out = ""
+                for _ in range(60):
+                    if w.get(target) is None or w.game_over:
+                        break
+                    if w.player.props.get("health", 99) < 12:
+                        w.player.props["health"] = w.player.props.get("max_health", 20)
+                    out += self.do("attack " + self.name_of(target))
+                return out
+            prep = {"put": "in", "use": "on", "give": "to"}.get(verb)
+            if w.get(target) is None:
+                self.engine.check_story()
+                return ""
+            if means and prep:
+                return self.do("%s %s %s %s" % (verb, self.name_of(means), prep, self.name_of(target)))
+            return self.do("%s %s" % (verb, self.name_of(target)))
+        raise AssertionError("unknown solution op %r" % (op,))
+
+    def solve(self, fight=False):
+        """Play the generated main quest to the end using each step's recorded solution."""
+        w = self.world
+        for _ in range(len(w.story["steps"]) + 2):
+            if w.story.get("complete") or w.game_over:
+                break
+            st = w.story["steps"][w.story["current"]]
+            transcript = []
+            for op in st["solution"]:
+                transcript.append(">> %r" % (op,))
+                transcript.append(self.run_op(tuple(op), fight))
+                if st.get("state") == "done":
+                    break
+            assert st.get("state") == "done", "step %s (%s: %s) not completed:\n%s" % (
+                st["id"], st["kind"], st["title"], "\n".join(t for t in transcript if t)[-3000:])
+        return w.story.get("complete")

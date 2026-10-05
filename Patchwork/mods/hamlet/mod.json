@@ -3,9 +3,18 @@
   "name": "Hearthside Hamlet",
   "version": "1.0.0",
   "author": "Patchwork",
-  "description": "A small village to begin your journey in: an inn, a smithy, a chapel and an elder with a request. Provides a starting area and an opening story beat that hands the story on to whatever comes next.",
-  "requires": ["core"],
-  "recommends": ["wilds"],
+  "description": "A small village to begin your journey in: an inn, a smithy, a chapel, an elder's cottage and a holy well. Its villagers each have a personality, motives, goals and secrets, so the story generator can cast them as quest-givers, informants, victims or even villains, and the village has its own lore and an important relic.",
+  "requires": [
+    "core"
+  ],
+  "recommends": [
+    "wilds"
+  ],
   "priority": 30,
-  "tags": ["fantasy", "area", "start", "story"]
+  "tags": [
+    "fantasy",
+    "area",
+    "start",
+    "story"
+  ]
 }

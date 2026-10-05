@@ -1,313 +1,1106 @@
 {
   "features": {
     "village_well": {
-      "extends": ["scenery", "container"],
+      "extends": [
+        "scenery",
+        "container"
+      ],
       "name": "village well",
-      "aliases": ["well", "bucket", "rope"],
+      "aliases": [
+        "well",
+        "bucket",
+        "rope"
+      ],
       "appearance": "In the middle of the green stands the village well, with a bucket on a fraying rope.",
       "description": "The well is ringed with mossy stones. You can't see the bottom, but you can hear water far below.",
       "contents_text": "Caught in a crack between the stones you notice {contents}.",
-      "features": [{"id": "copper_coins", "hidden": true}, {"name": "wishing penny", "extends": ["valuable"], "aliases": ["penny"], "hidden": true,
-                    "description": "A penny, green with age. Someone's wish, unclaimed.", "props": {"value": 1}}],
+      "features": [
+        {
+          "id": "copper_coins",
+          "hidden": true
+        },
+        {
+          "name": "wishing penny",
+          "extends": [
+            "valuable"
+          ],
+          "aliases": [
+            "penny"
+          ],
+          "hidden": true,
+          "description": "A penny, green with age. Someone's wish, unclaimed.",
+          "props": {
+            "value": 1
+          }
+        }
+      ],
       "actions": {
-        "drink": ["You haul up the bucket and drink. The water is cold enough to make your teeth ache.", {"emit": "drank"}],
-        "use": ["You lower the bucket and haul it up again. Good clean water."],
-        "talk": ["You call down the well. Your voice comes back to you, sounding unsure of itself."]
-      }
+        "drink": [
+          "You haul up the bucket and drink. The water is cold enough to make your teeth ache.",
+          {
+            "emit": "drank"
+          }
+        ],
+        "use": [
+          "You lower the bucket and haul it up again. Good clean water."
+        ],
+        "talk": [
+          "You call down the well. Your voice comes back to you, sounding unsure of itself."
+        ]
+      },
+      "important": true,
+      "tags": [
+        "well",
+        "holy",
+        "heart"
+      ]
     },
     "notice_board": {
-      "extends": ["scenery", "readable"],
+      "extends": [
+        "scenery",
+        "readable"
+      ],
       "name": "notice board",
-      "aliases": ["board", "notices", "notice", "posters"],
+      "aliases": [
+        "board",
+        "notices",
+        "notice",
+        "posters"
+      ],
       "appearance": "A notice board leans beside the well, layered with curling papers.",
       "description": "Lost goats, a reward for a missing ring, a harvest dance. One fresh notice stands out from the rest.",
       "actions": {
         "read": [
-          {"if": {"story_complete": false}, "do": ["You read the newest notice: \"{beat.title}.\"", {"lead": true}]},
-          {"do": ["The notices are all old news now. Someone has drawn a little picture of you, looking heroic."]}
+          {
+            "if": {
+              "story_complete": false
+            },
+            "do": [
+              "You read the newest notice: \"{step.title}.\"",
+              {
+                "lead": true
+              }
+            ]
+          },
+          {
+            "do": [
+              "The notices are all old news now. Someone has drawn a little picture of you, looking heroic."
+            ]
+          }
         ]
       }
     },
     "geese": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "geese",
       "article": "some",
-      "aliases": ["goose", "gaggle"],
+      "aliases": [
+        "goose",
+        "gaggle"
+      ],
       "appearance": false,
       "description": "Five geese, each one convinced it owns the village.",
       "actions": {
-        "take": ["The nearest goose hisses at you with such venom that you reconsider."],
-        "touch": ["You reach toward a goose. It bites you. Of course it does."],
-        "talk": ["\"Honk,\" says a goose, with finality."]
+        "take": [
+          "The nearest goose hisses at you with such venom that you reconsider."
+        ],
+        "touch": [
+          "You reach toward a goose. It bites you. Of course it does."
+        ],
+        "talk": [
+          "\"Honk,\" says a goose, with finality."
+        ]
       }
     },
-
     "innkeeper": {
-      "extends": ["person"],
+      "extends": [
+        "person"
+      ],
       "name": "#given# the innkeeper",
-      "aliases": ["innkeeper", "landlord", "landlady", "keeper", "barkeep"],
+      "aliases": [
+        "innkeeper",
+        "landlord",
+        "landlady",
+        "keeper",
+        "barkeep"
+      ],
       "proper": true,
-      "tags": ["quest_giver", "innkeeper", "villager"],
+      "tags": [
+        "quest_giver",
+        "innkeeper",
+        "villager"
+      ],
       "appearance": "{self.Name} is polishing tankards behind a counter made from an old door.",
       "description": "Broad-shouldered and red-cheeked, with forearms like hams and an eye that misses nothing.",
       "actions": {
-        "talk": [{"do": [{"choice": {
-          "prompt": "\"What'll it be?\" asks {self.name}.",
-          "options": [
-            {"text": "Any news?", "do": ["\"News?\" {self.name} snorts. \"#village_gossip#\"", {"if": {"story_complete": false}, "then": ["\"And folk are saying a lot about '{beat.title}', if you're the sort to go looking for trouble.\"", {"lead": true}]}]},
-            {"text": "Something to eat, please.", "if": {"not": {"flag": "inn_fed"}}, "do": ["{self.Name} slides a plate across the counter. \"On the house. You look like you need it.\"", {"spawn": "inn_bread", "in": "player"}, {"flag": "inn_fed"}]},
-            {"text": "A drink.", "do": ["A brimming tankard appears in front of you.", {"spawn": "ale_tankard", "in": "room"}]},
-            {"text": "Never mind.", "do": ["{self.Name} shrugs and goes back to polishing."]}
-          ]}}]}],
+        "talk": [
+          {
+            "do": [
+              {
+                "choice": {
+                  "prompt": "\"What'll it be?\" asks {self.name}.",
+                  "options": [
+                    {
+                      "text": "Any news?",
+                      "do": [
+                        "\"News?\" {self.name} snorts. \"#village_gossip#\"",
+                        {
+                          "if": {
+                            "story_complete": false
+                          },
+                          "then": [
+                            "\"And folk are saying a lot about '{step.title}', if you're the sort to go looking for trouble.\"",
+                            {
+                              "lead": true
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Something to eat, please.",
+                      "if": {
+                        "not": {
+                          "flag": "inn_fed"
+                        }
+                      },
+                      "do": [
+                        "{self.Name} slides a plate across the counter. \"On the house. You look like you need it.\"",
+                        {
+                          "spawn": "inn_bread",
+                          "in": "player"
+                        },
+                        {
+                          "flag": "inn_fed"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "A drink.",
+                      "do": [
+                        "A brimming tankard appears in front of you.",
+                        {
+                          "spawn": "ale_tankard",
+                          "in": "room"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Never mind.",
+                      "do": [
+                        "{self.Name} shrugs and goes back to polishing."
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
         "give_with": [
-          {"if": {"tag": "coin", "of": "target"}, "do": [{"destroy": "target"}, "{self.Name} pockets the coins with a wink. \"Much obliged.\""]}
+          {
+            "if": {
+              "tag": "coin",
+              "of": "target"
+            },
+            "do": [
+              {
+                "destroy": "target"
+              },
+              "{self.Name} pockets the coins with a wink. \"Much obliged.\""
+            ]
+          }
         ]
+      },
+      "profile": {
+        "personality": [
+          "cheerful",
+          "cunning"
+        ],
+        "motives": [
+          "profit",
+          "gossip",
+          "greed"
+        ],
+        "motive_text": "turn a profit, whatever the weather",
+        "goals": [
+          "fill every bed in the house",
+          "hear every secret on the road before anyone else"
+        ],
+        "backstory": "\"Born behind this bar, I was. Like my mother, and her mother.\"",
+        "roles": [
+          "giver",
+          "informant",
+          "holder",
+          "ally",
+          "antagonist"
+        ],
+        "knows": [
+          "rumour",
+          "road",
+          "village"
+        ],
+        "wants": [
+          "valuable",
+          "coin",
+          "treasure"
+        ],
+        "epilogue": "{speaker.The} names a new ale after you. It is terrible, and it sells out every night."
       }
     },
     "inn_bread": {
-      "extends": ["edible"],
+      "extends": [
+        "edible"
+      ],
       "name": "hunk of bread and cheese",
-      "aliases": ["bread", "cheese", "hunk", "food", "plate"],
-      "props": {"taste": "Simple and very good.", "heal": 5},
+      "aliases": [
+        "bread",
+        "cheese",
+        "hunk",
+        "food",
+        "plate"
+      ],
+      "props": {
+        "taste": "Simple and very good.",
+        "heal": 5
+      },
       "description": "Fresh bread and a wedge of sharp yellow cheese."
     },
     "ale_tankard": {
-      "extends": ["drinkable"],
+      "extends": [
+        "drinkable"
+      ],
       "name": "tankard of ale",
-      "aliases": ["tankard", "ale", "beer", "mug", "drink"],
-      "props": {"taste": "Brown, foamy and faintly nutty.", "heal": 1},
+      "aliases": [
+        "tankard",
+        "ale",
+        "beer",
+        "mug",
+        "drink"
+      ],
+      "props": {
+        "taste": "Brown, foamy and faintly nutty.",
+        "heal": 1
+      },
       "description": "Foam slides down the side of the pewter."
     },
     "inn_hearth": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "hearth",
-      "aliases": ["fire", "fireplace"],
+      "aliases": [
+        "fire",
+        "fireplace"
+      ],
       "appearance": false,
       "description": "A fire big enough to roast a pig, which by the smell of it is exactly what happened earlier.",
-      "actions": {"touch": ["Too hot! You snatch your hand back."], "listen": ["The fire pops and mutters."]}
-    },
-    "inn_table": {
-      "extends": ["scenery", "surface"],
-      "name": "trestle table",
-      "aliases": ["table", "trestle"],
-      "appearance": "A long trestle table runs down the middle of the room, scarred by years of elbows.",
-      "description": "Generations of drinkers have carved their initials into it.",
-      "features": [{"id": "candle_stub"}, {"chance": 0.5, "id": "copper_coins"}]
-    },
-    "candle_stub": {
-      "extends": ["light_source"],
-      "name": "candle stub",
-      "aliases": ["candle", "stub"],
-      "props": {"lit": true},
-      "description": "A stub of tallow candle in a clay dish."
-    },
-    "inn_cat": {
-      "extends": ["scenery"],
-      "name": "ginger cat",
-      "aliases": ["cat", "tom", "moggy"],
-      "appearance": "A ginger cat sleeps on the windowsill in a patch of sun.",
-      "description": "Enormous, battle-scarred, and deeply asleep.",
       "actions": {
-        "touch": ["The cat purrs like a distant thunderstorm without opening its eyes."],
-        "take": ["You try to pick up the cat. The cat declines, and its claws make the point."],
-        "talk": ["One ear twitches. That is all the answer you will get."]
-      }
-    },
-    "inn_bed": {
-      "extends": ["scenery"],
-      "name": "straw pallet",
-      "aliases": ["bed", "pallet", "mattress"],
-      "appearance": "Your straw pallet lies rumpled in the corner where you slept.",
-      "description": "Lumpy, but you've slept on worse.",
-      "features": [{"name": "travel pack", "extends": ["portable", "container"], "aliases": ["pack", "bag", "backpack", "satchel"], "hidden": true,
-                    "description": "Your own battered travel pack.", "contents_text": "In the pack: {contents}.",
-                    "features": [{"id": "inn_bread"}, {"id": "tinderbox"}]}],
-      "actions": {
-        "search": [
-          {"if": {"flag": "found_pack"}, "do": ["Nothing else but straw."]},
-          {"do": [{"reveal": "self", "children": true}, {"flag": "found_pack"}, "You rummage under the pallet and find your travel pack, right where you left it."]}
+        "touch": [
+          "Too hot! You snatch your hand back."
+        ],
+        "listen": [
+          "The fire pops and mutters."
         ]
       }
     },
-
+    "inn_table": {
+      "extends": [
+        "scenery",
+        "surface"
+      ],
+      "name": "trestle table",
+      "aliases": [
+        "table",
+        "trestle"
+      ],
+      "appearance": "A long trestle table runs down the middle of the room, scarred by years of elbows.",
+      "description": "Generations of drinkers have carved their initials into it.",
+      "features": [
+        {
+          "id": "candle_stub"
+        },
+        {
+          "chance": 0.5,
+          "id": "copper_coins"
+        }
+      ]
+    },
+    "candle_stub": {
+      "extends": [
+        "light_source"
+      ],
+      "name": "candle stub",
+      "aliases": [
+        "candle",
+        "stub"
+      ],
+      "props": {
+        "lit": true
+      },
+      "description": "A stub of tallow candle in a clay dish."
+    },
+    "inn_cat": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "ginger cat",
+      "aliases": [
+        "cat",
+        "tom",
+        "moggy"
+      ],
+      "appearance": "A ginger cat sleeps on the windowsill in a patch of sun.",
+      "description": "Enormous, battle-scarred, and deeply asleep.",
+      "actions": {
+        "touch": [
+          "The cat purrs like a distant thunderstorm without opening its eyes."
+        ],
+        "take": [
+          "You try to pick up the cat. The cat declines, and its claws make the point."
+        ],
+        "talk": [
+          "One ear twitches. That is all the answer you will get."
+        ]
+      }
+    },
+    "inn_bed": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "straw pallet",
+      "aliases": [
+        "bed",
+        "pallet",
+        "mattress"
+      ],
+      "appearance": "Your straw pallet lies rumpled in the corner where you slept.",
+      "description": "Lumpy, but you've slept on worse.",
+      "features": [
+        {
+          "name": "travel pack",
+          "extends": [
+            "portable",
+            "container"
+          ],
+          "aliases": [
+            "pack",
+            "bag",
+            "backpack",
+            "satchel"
+          ],
+          "hidden": true,
+          "description": "Your own battered travel pack.",
+          "contents_text": "In the pack: {contents}.",
+          "features": [
+            {
+              "id": "inn_bread"
+            },
+            {
+              "id": "tinderbox"
+            }
+          ]
+        }
+      ],
+      "actions": {
+        "search": [
+          {
+            "if": {
+              "flag": "found_pack"
+            },
+            "do": [
+              "Nothing else but straw."
+            ]
+          },
+          {
+            "do": [
+              {
+                "reveal": "self",
+                "children": true
+              },
+              {
+                "flag": "found_pack"
+              },
+              "You rummage under the pallet and find your travel pack, right where you left it."
+            ]
+          }
+        ]
+      }
+    },
     "blacksmith": {
-      "extends": ["person"],
+      "extends": [
+        "person"
+      ],
       "name": "#given# the smith",
-      "aliases": ["smith", "blacksmith", "smithy"],
+      "aliases": [
+        "smith",
+        "blacksmith",
+        "smithy"
+      ],
       "proper": true,
-      "tags": ["villager", "quest_giver"],
+      "tags": [
+        "villager",
+        "quest_giver"
+      ],
       "appearance": "{self.Name} works the bellows, sparks dancing around a leather apron.",
       "description": "Sooty, muscular and missing the tip of one finger. They watch the forge, not you.",
       "actions": {
-        "talk": [{"do": [{"choice": {
-          "prompt": "{self.Name} doesn't look up. \"Aye?\"",
-          "options": [
-            {"text": "I need a blade for the road.", "if": {"not": {"flag": "smith_gave_knife"}},
-             "do": ["{self.Name} grunts, rummages in a crate, and hands you a hunting knife. \"Keep the edge oiled. And bring it back in one piece.\"", {"spawn": "hunting_knife", "in": "player"}, {"flag": "smith_gave_knife"}]},
-            {"text": "What are you making?", "do": ["\"Horseshoes. Always horseshoes,\" {self.name} sighs. \"One day, a sword. Just once.\""]},
-            {"text": "Have you heard anything strange?", "do": ["\"Iron doesn't lie. My hammer's been ringing wrong all week, like it's afraid of something.\"", {"lead": true}]},
-            {"text": "Never mind.", "do": ["The hammer resumes its rhythm."]}
-          ]}}]}]
+        "talk": [
+          {
+            "do": [
+              {
+                "choice": {
+                  "prompt": "{self.Name} doesn't look up. \"Aye?\"",
+                  "options": [
+                    {
+                      "text": "I need a blade for the road.",
+                      "if": {
+                        "not": {
+                          "flag": "smith_gave_knife"
+                        }
+                      },
+                      "do": [
+                        "{self.Name} grunts, rummages in a crate, and hands you a hunting knife. \"Keep the edge oiled. And bring it back in one piece.\"",
+                        {
+                          "spawn": "hunting_knife",
+                          "in": "player"
+                        },
+                        {
+                          "flag": "smith_gave_knife"
+                        }
+                      ]
+                    },
+                    {
+                      "text": "What are you making?",
+                      "do": [
+                        "\"Horseshoes. Always horseshoes,\" {self.name} sighs. \"One day, a sword. Just once.\""
+                      ]
+                    },
+                    {
+                      "text": "Have you heard anything strange?",
+                      "do": [
+                        "\"Iron doesn't lie. My hammer's been ringing wrong all week, like it's afraid of something.\"",
+                        {
+                          "lead": true
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Never mind.",
+                      "do": [
+                        "The hammer resumes its rhythm."
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "profile": {
+        "personality": [
+          "gruff"
+        ],
+        "motives": [
+          "pride",
+          "craft"
+        ],
+        "motive_text": "make one thing that will outlast me",
+        "goals": [
+          "forge a sword worthy of a song",
+          "get some peace and quiet"
+        ],
+        "backstory": "\"Smith. Like my father. Like his.\"",
+        "roles": [
+          "holder",
+          "informant",
+          "ally",
+          "giver"
+        ],
+        "knows": [
+          "craft",
+          "weapons"
+        ],
+        "wants": [
+          "metal",
+          "tool",
+          "weapon"
+        ],
+        "epilogue": "{speaker.The} forges a sword at last, and hangs it over the forge, and never lets anyone touch it."
       }
     },
     "hunting_knife": {
-      "extends": ["portable"],
+      "extends": [
+        "portable"
+      ],
       "name": "hunting knife",
-      "aliases": ["knife", "blade", "dagger"],
-      "tags": ["weapon"],
-      "props": {"damage": 2},
+      "aliases": [
+        "knife",
+        "blade",
+        "dagger"
+      ],
+      "tags": [
+        "weapon"
+      ],
+      "props": {
+        "damage": 2
+      },
       "description": "A plain, well-balanced knife with a horn handle. Sharp enough to shave with."
     },
     "anvil": {
-      "extends": ["scenery", "surface"],
+      "extends": [
+        "scenery",
+        "surface"
+      ],
       "name": "anvil",
       "appearance": "A great black anvil squats on a stump of oak.",
       "description": "Polished bright on top by years of hammering.",
-      "features": ["horseshoe"],
-      "actions": {"push": ["It weighs more than you do. Considerably."]}
+      "features": [
+        "horseshoe"
+      ],
+      "actions": {
+        "push": [
+          "It weighs more than you do. Considerably."
+        ]
+      }
     },
     "horseshoe": {
-      "extends": ["portable"],
+      "extends": [
+        "portable"
+      ],
       "name": "horseshoe",
-      "aliases": ["shoe"],
-      "tags": ["lucky"],
+      "aliases": [
+        "shoe"
+      ],
+      "tags": [
+        "lucky"
+      ],
       "description": "A new iron horseshoe. Hang it points-up for luck."
     },
     "forge": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "forge",
-      "aliases": ["bellows", "coals"],
+      "aliases": [
+        "bellows",
+        "coals"
+      ],
       "appearance": false,
       "description": "Coals glow white-orange at its heart.",
-      "actions": {"touch": ["You decide against it."], "light": ["It's already roaring."]}
+      "actions": {
+        "touch": [
+          "You decide against it."
+        ],
+        "light": [
+          "It's already roaring."
+        ]
+      }
     },
     "tool_rack": {
-      "extends": ["scenery", "surface"],
+      "extends": [
+        "scenery",
+        "surface"
+      ],
       "name": "tool rack",
-      "aliases": ["rack", "tools"],
+      "aliases": [
+        "rack",
+        "tools"
+      ],
       "appearance": "A rack of tools covers the back wall.",
       "contents_text": "Hanging from the rack: {contents}.",
       "description": "Every tool has its place, and every place has its tool.",
-      "features": [{"name": "pair of tongs", "extends": ["portable"], "aliases": ["tongs"], "description": "Long iron tongs.", "props": {"damage": 1}, "tags": ["weapon"]}]
+      "features": [
+        {
+          "name": "pair of tongs",
+          "extends": [
+            "portable"
+          ],
+          "aliases": [
+            "tongs"
+          ],
+          "description": "Long iron tongs.",
+          "props": {
+            "damage": 1
+          },
+          "tags": [
+            "weapon"
+          ]
+        }
+      ]
     },
-
     "priest": {
-      "extends": ["person"],
+      "extends": [
+        "person"
+      ],
       "name": "Mother #given#",
-      "aliases": ["priest", "priestess", "mother", "cleric"],
+      "aliases": [
+        "priest",
+        "priestess",
+        "mother",
+        "cleric"
+      ],
       "proper": true,
-      "tags": ["villager", "holy"],
+      "tags": [
+        "villager",
+        "holy"
+      ],
       "appearance": "{self.Name}, the village priest, is sweeping the floor with great concentration.",
       "description": "Small, grey-haired and bright-eyed, in a robe the blue of well water.",
       "actions": {
-        "talk": [{"do": [{"choice": {
-          "prompt": "{self.Name} leans on the broom. \"Peace of the Well be with you.\"",
-          "options": [
-            {"text": "Will you bless me before I travel?", "if": {"not": {"flag": "blessed"}},
-             "do": ["{self.Name} sprinkles a few drops of well water on your brow and murmurs a blessing. You feel steadier.", {"flag": "blessed"},
-                    {"if": {"mod": "combat"}, "then": [{"add": {"max_health": 5, "health": 5}, "on": "player"}, "(Your maximum health increases by 5.)"]}]},
-            {"text": "Tell me about the saint.", "do": ["\"She drew water from our well in the year of the great drought, and it has never run dry since. When the world grows dark, she said, look to the old places, for they remember.\""]},
-            {"text": "Have you heard anything strange?", "do": ["\"I pray, and the prayers come back heavier than they went.\"", {"lead": true}]},
-            {"text": "Goodbye.", "do": ["\"Walk in the light.\""]}
-          ]}}]}]
+        "talk": [
+          {
+            "do": [
+              {
+                "choice": {
+                  "prompt": "{self.Name} leans on the broom. \"Peace of the Well be with you.\"",
+                  "options": [
+                    {
+                      "text": "Will you bless me before I travel?",
+                      "if": {
+                        "not": {
+                          "flag": "blessed"
+                        }
+                      },
+                      "do": [
+                        "{self.Name} sprinkles a few drops of well water on your brow and murmurs a blessing. You feel steadier.",
+                        {
+                          "flag": "blessed"
+                        },
+                        {
+                          "if": {
+                            "mod": "combat"
+                          },
+                          "then": [
+                            {
+                              "add": {
+                                "max_health": 5,
+                                "health": 5
+                              },
+                              "on": "player"
+                            },
+                            "(Your maximum health increases by 5.)"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Tell me about the saint.",
+                      "do": [
+                        "\"She drew water from our well in the year of the great drought, and it has never run dry since. When the world grows dark, she said, look to the old places, for they remember.\""
+                      ]
+                    },
+                    {
+                      "text": "Have you heard anything strange?",
+                      "do": [
+                        "\"I pray, and the prayers come back heavier than they went.\"",
+                        {
+                          "lead": true
+                        }
+                      ]
+                    },
+                    {
+                      "text": "Goodbye.",
+                      "do": [
+                        "\"Walk in the light.\""
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "profile": {
+        "personality": [
+          "kind",
+          "wise"
+        ],
+        "motives": [
+          "faith",
+          "mercy"
+        ],
+        "motive_text": "keep the saint's light burning for those who need it",
+        "goals": [
+          "keep the chapel open to anyone who knocks",
+          "learn what the saint meant by 'the old places'"
+        ],
+        "backstory": "\"I came here as a girl to tend the chapel for a summer. That was fifty summers ago.\"",
+        "roles": [
+          "giver",
+          "informant",
+          "holder",
+          "ally",
+          "victim",
+          "authority"
+        ],
+        "knows": [
+          "saint",
+          "faith",
+          "history"
+        ],
+        "wants": [
+          "holy",
+          "relic",
+          "light"
+        ],
+        "epilogue": "{speaker.The} adds a new window to the chapel. The figure in it looks a little like you."
       }
     },
     "altar": {
-      "extends": ["scenery", "surface"],
+      "extends": [
+        "scenery",
+        "surface"
+      ],
       "name": "altar",
       "appearance": "A plain stone altar stands beneath the window.",
       "description": "Plain grey stone, worn smooth at the edges by kneeling hands.",
-      "features": [{"name": "beeswax candle", "extends": ["light_source"], "aliases": ["candle", "beeswax"], "props": {"lit": true}, "description": "A tall candle of honey-coloured beeswax."}]
+      "features": [
+        {
+          "name": "beeswax candle",
+          "extends": [
+            "light_source"
+          ],
+          "aliases": [
+            "candle",
+            "beeswax"
+          ],
+          "props": {
+            "lit": true
+          },
+          "description": "A tall candle of honey-coloured beeswax."
+        },
+        "saints_bell"
+      ]
     },
     "poor_box": {
-      "extends": ["scenery", "container", "openable"],
+      "extends": [
+        "scenery",
+        "container",
+        "openable"
+      ],
       "name": "poor box",
-      "aliases": ["box", "alms box", "collection box"],
+      "aliases": [
+        "box",
+        "alms box",
+        "collection box"
+      ],
       "appearance": "A wooden poor box is fixed to the wall by the door.",
       "description": "\"For the Needy,\" says a painted label.",
       "actions": {
-        "put_with": [{"if": {"tag": "coin", "of": "target"}, "do": [{"destroy": "target"}, "The coins clink into the box. You feel a little lighter, in a good way.", {"flag": "charitable"}]}],
-        "open": [{"do": ["You lift the lid, feel the priest's eyes on the back of your neck, and close it again."]}]
+        "put_with": [
+          {
+            "if": {
+              "tag": "coin",
+              "of": "target"
+            },
+            "do": [
+              {
+                "destroy": "target"
+              },
+              "The coins clink into the box. You feel a little lighter, in a good way.",
+              {
+                "flag": "charitable"
+              }
+            ]
+          }
+        ],
+        "open": [
+          {
+            "do": [
+              "You lift the lid, feel the priest's eyes on the back of your neck, and close it again."
+            ]
+          }
+        ]
       }
     },
     "stained_glass": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "stained-glass window",
-      "aliases": ["window", "glass", "saint"],
+      "aliases": [
+        "window",
+        "glass",
+        "saint"
+      ],
       "appearance": false,
       "description": "The saint's face is serene. In her free hand she holds up a small light, and the light is pointing somewhere far away."
     },
-
     "elder": {
-      "extends": ["person"],
+      "extends": [
+        "person"
+      ],
       "name": "Elder #given#",
-      "aliases": ["elder", "old woman", "old man", "grandmother", "grandfather"],
+      "aliases": [
+        "elder",
+        "old woman",
+        "old man",
+        "grandmother",
+        "grandfather"
+      ],
       "proper": true,
-      "tags": ["village_elder", "quest_giver", "villager"],
+      "tags": [
+        "village_elder",
+        "quest_giver",
+        "villager"
+      ],
       "appearance": "{self.Name} sits by the cold fireplace, wrapped in a shawl.",
       "description": "Ancient and sharp as a tack. Their eyes follow you everywhere.",
       "actions": {
         "talk": [
-          {"if": {"beat_active": "hamlet_call"}, "do": [
-            "\"There you are,\" {self.name} says. \"Sit. No - stand, you've no time to sit.\"",
-            "\"I've lived a long time and I know the signs. The wells taste of iron. The birds fly the wrong way.\"",
-            {"if": {"next_beat": true}, "then": ["They fix you with a look. \"{next.hook}\""]},
-            "\"Someone must go and see. I'm too old, and the rest of them are too sensible. That leaves you.\"",
-            {"flag": "hamlet_call_heeded"}
-          ]},
-          {"if": {"story_complete": true}, "do": ["\"So. You came back.\" For once, {self.name} smiles. \"Sit now. You've earned it.\""]},
-          {"do": ["\"Well? What are you waiting for?\" {self.name} snaps.", {"lead": true}]}
+          {
+            "if": {
+              "story_complete": true
+            },
+            "do": [
+              "\"So. You came back.\" For once, {self.name} smiles. \"Sit now. You've earned it.\""
+            ]
+          },
+          {
+            "do": [
+              "\"In my day we didn't stand about chatting,\" {self.name} snaps, but there's a twinkle in it."
+            ]
+          }
         ]
+      },
+      "important": true,
+      "profile": {
+        "personality": [
+          "wise",
+          "stern"
+        ],
+        "motives": [
+          "protect",
+          "tradition"
+        ],
+        "motive_text": "keep this village safe, as my mother did before me",
+        "goals": [
+          "see the village through these dark days",
+          "find someone worthy to carry on after me"
+        ],
+        "backstory": "\"I've been elder here for forty winters, and I've buried two husbands and one very stubborn goat.\"",
+        "roles": [
+          "giver",
+          "informant",
+          "ally",
+          "victim",
+          "authority"
+        ],
+        "knows": [
+          "village",
+          "history",
+          "saint"
+        ],
+        "wants": [
+          "medicine",
+          "holy"
+        ],
+        "epilogue": "{speaker.The} lives to see another spring, and tells anyone who will listen that they knew you would manage it."
       }
     },
     "rocking_chair": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "rocking chair",
-      "aliases": ["chair"],
+      "aliases": [
+        "chair"
+      ],
       "appearance": false,
       "description": "It creaks gently even when nobody is in it."
     },
     "bookshelf": {
-      "extends": ["scenery", "surface"],
+      "extends": [
+        "scenery",
+        "surface"
+      ],
       "name": "bookshelf",
-      "aliases": ["shelf", "shelves", "books"],
+      "aliases": [
+        "shelf",
+        "shelves",
+        "books"
+      ],
       "appearance": "A sagging bookshelf holds the village's entire library.",
       "contents_text": "On the shelf: {contents}.",
       "description": "Mostly almanacs and ledgers.",
-      "features": [{"id": "lore_book"}]
+      "features": [
+        {
+          "id": "lore_book"
+        }
+      ]
     },
     "lore_book": {
-      "extends": ["portable", "readable"],
+      "extends": [
+        "portable",
+        "readable"
+      ],
       "name": "leather-bound book",
-      "aliases": ["book", "tome", "chronicle"],
+      "aliases": [
+        "book",
+        "tome",
+        "chronicle"
+      ],
       "description": "Its spine reads: \"#lore_title#\".",
-      "props": {"text": "#lore_text#"}
+      "props": {
+        "text": "#lore_text#"
+      }
     },
-
     "orchard_wall": {
-      "extends": ["scenery"],
+      "extends": [
+        "scenery"
+      ],
       "name": "drystone wall",
-      "aliases": ["wall", "orchard", "apple trees", "trees"],
+      "aliases": [
+        "wall",
+        "orchard",
+        "apple trees",
+        "trees"
+      ],
       "appearance": false,
       "description": "Apples hang heavy on the far side of the wall.",
       "actions": {
         "search": [
-          {"if": {"flag": "picked_orchard"}, "do": ["You've already helped yourself."]},
-          {"do": [{"spawn": {"name": "red apple", "extends": ["edible"], "aliases": ["apple"], "props": {"taste": "Sweet and crisp.", "heal": 3}, "description": "A shiny red apple, liberated from the orchard."}, "in": "player"}, {"flag": "picked_orchard"}, "You reach over the wall and help yourself to an apple. Nobody sees. Probably."]}
+          {
+            "if": {
+              "flag": "picked_orchard"
+            },
+            "do": [
+              "You've already helped yourself."
+            ]
+          },
+          {
+            "do": [
+              {
+                "spawn": {
+                  "name": "red apple",
+                  "extends": [
+                    "edible"
+                  ],
+                  "aliases": [
+                    "apple"
+                  ],
+                  "props": {
+                    "taste": "Sweet and crisp.",
+                    "heal": 3
+                  },
+                  "description": "A shiny red apple, liberated from the orchard."
+                },
+                "in": "player"
+              },
+              {
+                "flag": "picked_orchard"
+              },
+              "You reach over the wall and help yourself to an apple. Nobody sees. Probably."
+            ]
+          }
         ]
       }
     },
     "watchman": {
-      "extends": ["person"],
+      "extends": [
+        "person"
+      ],
       "name": "watchman",
-      "aliases": ["guard", "watch"],
-      "tags": ["villager"],
+      "aliases": [
+        "guard",
+        "watch"
+      ],
+      "tags": [
+        "villager"
+      ],
       "appearance": "A watchman leans on a spear by the gate, struggling to stay awake.",
       "description": "Young, bored, and very much hoping nothing happens on their watch.",
       "actions": {
         "talk": [
-          {"if": {"story_complete": false}, "do": ["\"Off somewhere?\" The watchman yawns. \"Mind how you go. Folk say all sorts.\"", {"lead": true}]},
-          {"do": ["\"Quiet day,\" the watchman says, gratefully."]}
+          {
+            "if": {
+              "story_complete": false
+            },
+            "do": [
+              "\"Off somewhere?\" The watchman yawns. \"Mind how you go. Folk say all sorts.\"",
+              {
+                "lead": true
+              }
+            ]
+          },
+          {
+            "do": [
+              "\"Quiet day,\" the watchman says, gratefully."
+            ]
+          }
+        ]
+      },
+      "profile": {
+        "personality": [
+          "nervous"
+        ],
+        "motives": [
+          "duty",
+          "fear"
+        ],
+        "motive_text": "get through one watch without anything happening",
+        "goals": [
+          "see something exciting, from a safe distance",
+          "be promoted to Senior Watchman"
+        ],
+        "backstory": "\"I'm the watch. All of it. They gave me the spear because I was the tallest.\"",
+        "roles": [
+          "informant",
+          "ally",
+          "victim",
+          "holder"
+        ],
+        "knows": [
+          "road",
+          "rumour"
+        ],
+        "wants": [
+          "food",
+          "weapon"
+        ],
+        "epilogue": "{speaker.The} tells the story of your journey every night at the inn, getting braver in each telling."
+      }
+    },
+    "saints_bell": {
+      "extends": [
+        "portable"
+      ],
+      "name": "Well-Saint's bell",
+      "aliases": [
+        "bell",
+        "handbell",
+        "saint's bell"
+      ],
+      "important": true,
+      "tags": [
+        "holy",
+        "relic"
+      ],
+      "affords": [
+        "holy",
+        "light",
+        "relic"
+      ],
+      "home": [
+        "holy",
+        "settlement"
+      ],
+      "description": "A small silver handbell, worn smooth by centuries of hands. When it rings the sound seems to hang in the air like light.",
+      "actions": {
+        "use": [
+          {
+            "if": {
+              "second": null
+            },
+            "do": [
+              "You ring the bell. The note is pure and clear, and for a moment everything seems a little brighter."
+            ]
+          }
         ]
       }
     }

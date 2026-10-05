@@ -39,9 +39,6 @@
     "journal_empty": "Your journal is empty.",
     "journal_done_entry": "Done: {title}.",
     "chapter": "~ {title} ~",
-    "default_hook": "There is trouble at {beat.area}, and someone needs to see to it.",
-    "default_lead": "Your path now leads toward {beat.area}.",
-    "gate_blocked": "Something tells you it is not yet time to go that way.",
     "story_complete": "Your story is complete, but the world remains. You may keep exploring.",
     "no_story": "This world has no story; it is yours to explore.",
     "unknown_chapter": "???",
@@ -54,16 +51,9 @@
     "map_wilds": "Along the way",
     "rumour_object": "scrawled message",
     "rumour_appearance": "Someone has scratched a message here.",
-    "untitled_story": "An Untold Tale",
     "default_hero_name": "the wanderer"
   },
   "settings": {
-    "default_structure": [
-      "opening",
-      "middle*",
-      "climax"
-    ],
-    "max_middle_beats": 4,
     "path_length": [
       2,
       4
@@ -90,6 +80,9 @@
       16
     ],
     "time_per_distance": 1,
-    "auto_lead": true
+    "auto_lead": true,
+    "story_max_locks": 3,
+    "story_generic_locks": 2,
+    "lore_documents": 5
   }
 }

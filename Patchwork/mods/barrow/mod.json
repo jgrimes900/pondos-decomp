@@ -3,9 +3,19 @@
   "name": "The Barrow of Kings",
   "version": "1.0.0",
   "author": "Patchwork",
-  "description": "An ancient burial mound, newly broken open. Explore its dark chambers, find the way into the sealed sanctum and claim the relic within. Adds a dungeon area and a middle story beat. Its guardian fights back if Steel & Peril is loaded.",
-  "requires": ["core"],
-  "recommends": ["combat", "wilds"],
+  "description": "An ancient burial mound, newly broken open: dark chambers, an ossuary, a flooded hall and a king's sanctum. Supplies a guardian with a profile, an important relic and key, a bronze door and a rune-sealed coffer for the story generator to use, lore, and two events (a stolen relic, a restless guardian). Its guardian fights back if Steel & Peril is loaded.",
+  "requires": [
+    "core"
+  ],
+  "recommends": [
+    "combat",
+    "wilds"
+  ],
   "priority": 40,
-  "tags": ["fantasy", "area", "dungeon", "story"]
+  "tags": [
+    "fantasy",
+    "area",
+    "dungeon",
+    "events"
+  ]
 }

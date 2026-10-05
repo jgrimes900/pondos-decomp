@@ -2,6 +2,7 @@
   "areas": {
     "barrow": {
       "name": "the Barrow of #barrow_king#",
+      "start_label": "The Barrow of Kings - a grave-digger at the mouth of an old barrow",
       "tags": [
         "dungeon",
         "ancient",

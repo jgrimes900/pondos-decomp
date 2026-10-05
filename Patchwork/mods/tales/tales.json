@@ -86,7 +86,7 @@
       "roles": {
         "place": {
           "type": "place",
-          "match": {}
+          "match": {"none_tags": ["facility"]}
         },
         "heart": {
           "type": "feature",
@@ -195,6 +195,20 @@
         }
       ],
       "ending": "{missing.The} comes home. They don't talk much about where they were, but they leave a candle burning in the window every night after."
+    }
+  },
+  "regions": {
+    "strange_mile": {
+      "//": "A seam: the generator puts it between places whose settings clash (fantasy and science fiction), so worlds from different mods meet somewhere believable.",
+      "name": "strange mile",
+      "tags": ["seam", "mist", "outdoor", "strange"],
+      "connects": ["road", "outdoor", "fantasy", "scifi"],
+      "length": [1, 2],
+      "distance": [2, 3],
+      "rooms": [
+        {"name": "The Strange Mile", "description": "A road that should not be here runs through a bank of grey mist. The milestones count in numbers you don't recognise, and halfway along, the ground underfoot quietly becomes something else.", "weight": 2},
+        {"name": "Fold in the World", "description": "The land creases here like a badly folded map. One step and the air smells of one place; the next, of somewhere else entirely. Nobody who lives on either side likes to talk about it."}
+      ]
     }
   },
   "features": {

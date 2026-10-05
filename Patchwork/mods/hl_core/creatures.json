@@ -30,7 +30,8 @@
     "maintenance",
     "xen",
     "storage",
-    "transit"
+    "transit",
+    "rift"
    ],
    "weight": 4
   },
@@ -120,7 +121,8 @@
     "surface",
     "xen",
     "storage",
-    "lab"
+    "lab",
+    "rift"
    ],
    "weight": 3
   },
@@ -185,7 +187,8 @@
     "office",
     "surface",
     "xen",
-    "maintenance"
+    "maintenance",
+    "rift"
    ],
    "weight": 2
   },

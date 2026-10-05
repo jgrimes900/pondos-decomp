@@ -266,7 +266,7 @@ def start_choices(reg):
     """Starting areas that offer themselves as a choice (they have a start_label)."""
     out = []
     for aid, adef in sorted(reg["areas"].items()):
-        if adef.get("abstract") or "start" not in (adef.get("tags") or []):
+        if adef.get("abstract"):
             continue
         if adef.get("start_label"):
             out.append((aid, adef["start_label"]))

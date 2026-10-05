@@ -277,7 +277,7 @@ class Registry:
 def build_registry(ordered_mods):
     reg = Registry()
     for mod in ordered_mods:
-        reg.mods.append({"id": mod.id, "name": mod.name, "version": mod.version})
+        reg.mods.append({"id": mod.id, "name": mod.name, "version": mod.version, "tags": list(mod.tags or [])})
         for path in mod.content_files():
             reg.merge_file(mod, path, read_json(path))
     return reg

@@ -234,6 +234,7 @@
   "areas": {
     "docking_ring": {
       "name": "the Docking Ring",
+      "start_label": "Station Kestrel - a salvager answering a distress beacon",
       "tags": [
         "start",
         "scifi",
@@ -839,6 +840,8 @@
   },
   "events": {
     "derelict_rogue_ai": {
+      "//": "Its opening is the shuttle docking, so it begins at the docking ring.",
+      "start_areas": ["docking_ring"],
       "title": [
         "Dead Signal",
         "The Quiet Machine",
@@ -921,6 +924,8 @@
       "ending": "Your shuttle pulls away with the survivors packed into a hold built for four. Behind you, Station Kestrel's windows glow one by one, lit and warm and alive."
     },
     "derelict_saboteur": {
+      "//": "Its opening is the shuttle docking, so it begins at the docking ring.",
+      "start_areas": ["docking_ring"],
       "title": [
         "Dead Signal",
         "Cooked Books",
@@ -997,6 +1002,8 @@
       "ending": "The reactor hums again. {villain.The} will stand trial on the inner worlds. Your salvage fee, the commander assures you, will be generous. It is not."
     },
     "derelict_outbreak": {
+      "//": "Its opening is the shuttle docking, so it begins at the docking ring.",
+      "start_areas": ["docking_ring"],
       "title": [
         "Dead Signal",
         "Quarantine",

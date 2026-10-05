@@ -203,7 +203,8 @@ class SeamExits(unittest.TestCase):
                     dest = w.get(ex["to"])
                     for r in w.rooms():
                         r.visited = False
-                    word = max(dest.name.lower().split(), key=len)  # e.g. "hydroponics"
+                    words = [x for x in dest.name.lower().split() if x not in ("the", "a", "an", "of")]
+                    word = max(words or dest.name.lower().split(), key=len)  # e.g. "hydroponics"
                     for cmd in (word, "go " + word, "go to " + word):
                         w.place(w.player, room)
                         p.do(cmd)

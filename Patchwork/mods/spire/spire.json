@@ -2,6 +2,7 @@
   "areas": {
     "spire": {
       "name": "#tower_name#",
+      "start_label": "The Sorcerer's Spire - a wanderer at the foot of a tower that drinks the light",
       "tags": [
         "tower",
         "fantasy",

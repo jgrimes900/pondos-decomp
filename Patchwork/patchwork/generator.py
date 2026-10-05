@@ -249,14 +249,54 @@ class Generator:
     def regions(self):
         return {k: v for k, v in self.reg["regions"].items() if not v.get("abstract") and v.get("rooms")}
 
+    # -- settings: fantasy next to science fiction needs a seam between them ----
+    def settings_of(self, tags):
+        return set(tags) & set(_as_list(self.setting("setting_tags", ["fantasy", "scifi"])))
+
+    def clash(self, ta, tb):
+        sa, sb = self.settings_of(ta), self.settings_of(tb)
+        return bool(sa and sb and not (sa & sb))
+
+    def def_setting(self, def_key):
+        """A feature's setting: its own "setting" field, else the setting its mod is tagged with."""
+        d = self.w.resolve_def(def_key) or {}
+        if d.get("setting"):
+            return self.settings_of(_as_list(d["setting"]))
+        src = getattr(self.reg, "sources", {}).get(("features", def_key))
+        for m in getattr(self.reg, "mods", []):
+            if m["id"] == src:
+                return self.settings_of(m.get("tags") or [])
+        return set()
+
+    def region_tags(self, rid):
+        return set(_as_list(self.reg["regions"].get(rid, {}).get("tags")))
+
+    def plain_regions(self):
+        """Regions for ordinary country: everything but the seams between settings."""
+        return sorted(r for r in self.regions() if not self.is_seam(r))
+
+    def is_seam(self, rid):
+        return "seam" in self.region_tags(rid)
+
+    def choose_seam(self, ta, tb):
+        seams = [r for r in sorted(self.regions()) if self.is_seam(r)]
+        if not seams:
+            return None
+        return _weighted(self.rng, seams, lambda r: (1 + self.region_score(r, ta | tb)) * self.reg["regions"][r].get("weight", 1)
+                         / (1 + 0.5 * self.region_use.get(r, 0)))
+
     def region_score(self, rid, themes):
         r = self.reg["regions"][rid]
         return len((set(_as_list(r.get("tags"))) | set(_as_list(r.get("connects")))) & themes)
 
-    def choose_region(self, themes, exclude=()):
-        regs = [r for r in sorted(self.regions()) if r not in exclude] or sorted(self.regions())
+    def choose_region(self, themes, exclude=(), context=None):
+        plain = self.plain_regions()
+        regs = [r for r in plain if r not in exclude] or plain
         if not regs:
             return None
+        # Never wander from a fantasy place into science-fiction filler (or back) without a seam.
+        ctx = themes | set(context or ())
+        regs = [r for r in regs if not self.clash(ctx, self.region_tags(r))] or regs
         scores = {r: self.region_score(r, themes) for r in regs}
         top = max(scores.values())
         if top == 0:
@@ -315,11 +355,15 @@ class Generator:
     def connect(self, a, b, stage, short=False):
         """Join room a to room b with a generated path of filler rooms."""
         ta, tb = self.themes(a), self.themes(b)
+        if self.clash(ta, tb):
+            return self.connect_across(a, b, stage, ta, tb)
         regions = []
-        ra = self.choose_region(ta | (tb if self.rng.random() < 0.3 else set()))
+        # Both ends share a setting (or one has none): the whole path keeps to it.
+        both = self.settings_of(ta | tb)
+        ra = self.choose_region(ta | (tb if self.rng.random() < 0.3 else set()), context=both)
         if ra:
             regions.append(ra)
-            rb = self.choose_region(tb)
+            rb = self.choose_region(tb, context=both)
             if rb and rb != ra and self.region_score(rb, tb) > self.region_score(ra, tb):
                 regions.append(rb)
         chain = [a]
@@ -347,6 +391,26 @@ class Generator:
             self.entries.setdefault(b.area, (chain[-2].uid, chain[-2].exits[-1]))
         return chain
 
+    def connect_across(self, a, b, stage, ta, tb):
+        """Two settings meet: each side's own country, and a seam region between them if any mod has one."""
+        legs = [(self.choose_region(ta), 1), (self.choose_seam(ta, tb), self.rng.randint(1, 2)), (self.choose_region(tb), 1)]
+        chain = [a]
+        for rid, n in legs:
+            if rid is None:
+                continue
+            for _ in range(max(1, int(round(n * min(self.size, 1.5))))):
+                chain.append(self.make_filler(rid, stage))
+        chain.append(b)
+        heading = None
+        for x, y in zip(chain, chain[1:]):
+            region = y.region or x.region
+            dist = self.region_distance(region) if region else self.rng_range(
+                self.setting("direct_distance", [3, 6]), [3, 6])
+            heading = self.link(x, y, dist, prefer=heading, out_extra={})
+        if b.area:
+            self.entries.setdefault(b.area, (chain[-2].uid, chain[-2].exits[-1]))
+        return chain
+
     # ------------------------------------------------------------------
     # Placement helpers
     # ------------------------------------------------------------------
@@ -368,7 +432,7 @@ class Generator:
         start_area = planner.start_area
 
         prev_room = None
-        if spine and start_area is None and self.regions():
+        if spine and start_area is None and self.plain_regions():
             # No mod offers a starting place: begin out in the wilds, on the way in.
             first = self.make_filler(self.choose_region(set(_as_list(self.reg["areas"][spine[0]].get("theme")))), 0)
             self.sandbox_start = first
@@ -395,7 +459,7 @@ class Generator:
         return w
 
     def build_sandbox(self):
-        regs = sorted(self.regions())
+        regs = self.plain_regions()
         if not regs:
             raise GenerationError(
                 "The selected mods define no areas and no regions, so there is no world to build. "
@@ -418,7 +482,7 @@ class Generator:
         w = self.w
         areas = self.reg["areas"]
         side = [a for a in sorted(areas) if a not in w.areas and not areas[a].get("abstract")
-                and areas[a].get("include", True) and not areas[a].get("only_if_used")]
+                and areas[a].get("include", True) and not areas[a].get("only_if_used") and not areas[a].get("start_only")]
         self.rng.shuffle(side)
         side = side[:self.setting("max_side_areas", 12)]
         for area_id in side:
@@ -432,12 +496,12 @@ class Generator:
             # Prefer anchors whose surroundings suit the area.
             tags = set(_as_list(adef.get("tags"))) | set(_as_list(adef.get("theme")))
             anchor = _weighted(self.rng, sorted(pool, key=lambda r: r.uid),
-                               lambda r: 1 + 3 * len(self.themes(r) & tags))
+                               lambda r: (1 + 3 * len(self.themes(r) & tags)) * (0.15 if self.clash(self.themes(r), tags) else 1))
             if anchor is None:
                 continue
             info = self.build_area(area_id, anchor.stage)
             entrance = self.pick_entrance(area_id)
-            if self.regions() and self.rng.random() < 0.75:
+            if self.plain_regions() and (self.rng.random() < 0.75 or self.clash(self.themes(anchor), self.themes(entrance))):
                 self.connect(anchor, entrance, anchor.stage, short=True)
             else:
                 self.link(anchor, entrance, self.region_distance(anchor.region) if anchor.region else 2)
@@ -446,7 +510,7 @@ class Generator:
     def grow_region(self, tag, stage):
         """Generate a short spur of rooms from a region with *tag* when a story
         element asks to be placed somewhere the world doesn't have yet."""
-        regs = [r for r in sorted(self.regions())
+        regs = [r for r in self.plain_regions()
                 if tag == r or tag in _as_list(self.reg["regions"][r].get("tags"))]
         if not regs:
             return None
@@ -457,10 +521,18 @@ class Generator:
         anchors = [r for r in self.rooms_with_stage(stage, filler_only=True) if self.free_dirs(r)]
         anchors = anchors or [r for r in self.rooms_with_stage(stage) if self.free_dirs(r)
                               and r.uid in self.w.areas.get(r.area, {}).get("entrances", [])]
+        anchors = [r for r in anchors if not self.clash(self.themes(r), rtags)] or anchors
         if not anchors:
             return None
         anchor = _weighted(self.rng, anchors, lambda r: 1 + 3 * len(self.themes(r) & rtags) + (2 if r.uid in self.filler else 0))
         prev, last = anchor, None
+        if self.clash(self.themes(anchor), rtags):
+            seam = self.choose_seam(self.themes(anchor), rtags)
+            if seam:
+                for _ in range(self.rng.randint(1, 2)):
+                    last = self.make_filler(seam, anchor.stage)
+                    self.link(prev, last, self.region_distance(seam))
+                    prev = last
         for _ in range(self.rng_range(self.reg["regions"][rid].get("length"), [1, 2])):
             last = self.make_filler(rid, anchor.stage)
             self.link(prev, last, self.region_distance(rid))
@@ -483,7 +555,9 @@ class Generator:
     def expand_from(self, room, spec):
         tags = set(_as_list(spec.get("tags")))
         regs = [r for r in sorted(self.regions())
-                if tags & (set(_as_list(self.reg["regions"][r].get("tags"))) | set(_as_list(self.reg["regions"][r].get("connects"))))]
+                if tags & (set(_as_list(self.reg["regions"][r].get("tags"))) | set(_as_list(self.reg["regions"][r].get("connects"))))
+                and not self.is_seam(r)]
+        regs = [r for r in regs if not self.clash(self.themes(room), self.region_tags(r))] or regs
         if not regs:
             return None
         score = lambda r: 1 + len(tags & set(_as_list(self.reg["regions"][r].get("tags"))))
@@ -566,6 +640,7 @@ class Generator:
             a = self.rng.choice(cands)
             same = [r for r in cands if r.uid != a.uid and r.stage == a.stage
                     and not any(x["to"] == r.uid for x in a.exits)
+                    and not self.clash(self.themes(a), self.themes(r))
                     and (r.region == a.region or self.rng.random() < 0.3)]
             if not same:
                 continue
@@ -629,6 +704,8 @@ class Generator:
         start = w.room_of(w.player)
 
         def suits(def_key, room):
+            if self.clash(self.def_setting(def_key), self.themes(room)):
+                return False   # no headcrabs in the hay meadow, no wolves in the server room
             hab = _as_list(w.resolve_def(def_key).get("habitat"))
             return not hab or bool(set(hab) & set(room.tags))
         targets = [w.get(u) for u in self.filler + self.expansion]

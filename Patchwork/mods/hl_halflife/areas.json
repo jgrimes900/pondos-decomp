@@ -2,14 +2,16 @@
  "areas": {
   "hl_blackmesa": {
    "name": "the Black Mesa Research Facility",
-   "start_label": "Half-Life - Gordon Freeman, riding the inbound tram to work",
+   "start_label": "Half-Life - a research associate in Anomalous Materials, riding the inbound tram to work",
    "tags": [
     "blackmesa",
     "start",
     "half-life",
     "scifi",
     "indoor",
-    "lambda"
+    "lambda",
+    "bm_main",
+    "facility"
    ],
    "theme": [
     "blackmesa",
@@ -28,24 +30,18 @@
     "hl/c2a5x_cliffs",
     "hl/c3a1a_yard",
     "hl/c2a2a_tunnels"
-   ],
-   "player": {
-    "name": "Gordon Freeman",
-    "player_name": "Gordon Freeman",
-    "aliases": [
-     "gordon",
-     "freeman"
-    ],
-    "description": "Gordon Freeman: theoretical physicist, MIT graduate, wearer of glasses, and a man who never says a word."
-   }
+   ]
   },
   "hl_hazard": {
    "name": "the Hazard Course",
    "tags": [
     "blackmesa",
     "training",
-    "indoor"
+    "indoor",
+    "scifi",
+    "facility"
    ],
+   "start_label": "Half-Life: Hazard Course - a new HEV suit wearer in training",
    "theme": [
     "blackmesa",
     "office"
@@ -70,7 +66,8 @@
     "half-life"
    ],
    "start_areas": [
-    "hl_blackmesa"
+    "hl_blackmesa",
+    "hl_hazard"
    ],
    "roles": {
     "villain": {
@@ -90,7 +87,7 @@
      }
     }
    },
-   "hook": "It is a normal morning at the Black Mesa Research Facility, and you are late. You are Gordon Freeman, research associate in Anomalous Materials, and today's test pushes an unusually pure sample into the anti-mass spectrometer further than anyone has gone before. What happens next will tear the facility apart, and the one who keeps the rift open waits in another world: {villain}.",
+   "hook": "It is a normal morning at the Black Mesa Research Facility, and you are late. You are {var.player_name}, research associate in Anomalous Materials, and today's test pushes an unusually pure sample into the anti-mass spectrometer further than anyone has gone before. What happens next will tear the facility apart, and the one who keeps the rift open waits in another world: {villain}.",
    "goal": "Survive {facility}, reach the Lambda Complex, cross into Xen, and destroy {villain}.",
    "resolutions": [
     {
@@ -100,7 +97,7 @@
      "text": "{target.The} dies, and with it, the rift begins to close. But someone has been watching all along..."
     }
    ],
-   "ending": "The rift collapses. Black Mesa is in ruins, the Marines are gone, the vortigaunts are free. And you, Gordon Freeman, have been noticed."
+   "ending": "The rift collapses. Black Mesa is in ruins, the Marines are gone, the vortigaunts are free. And you, {var.player_name}, have been noticed."
   },
   "hl_military_cleanup": {
    "title": [
@@ -113,7 +110,8 @@
     "military"
    ],
    "start_areas": [
-    "hl_blackmesa"
+    "hl_blackmesa",
+    "hl_hazard"
    ],
    "weight": 0.6,
    "roles": {
@@ -147,7 +145,7 @@
      }
     }
    },
-   "hook": "The resonance cascade was bad. What came next was worse: the Marines, sent to contain the incident, with orders to silence every witness. You are Gordon Freeman, and you are top of their list. The only way out is through - all the way to {villain}.",
+   "hook": "The resonance cascade was bad. What came next was worse: the Marines, sent to contain the incident, with orders to silence every witness. You are {var.player_name}, the research associate who pushed the sample into the beam, and you are top of their list. The only way out is through - all the way to {villain}.",
    "goal": "Fight through the Marines and the aliens across {facility}, and end the incursion at its source: {villain}.",
    "resolutions": [
     {
@@ -204,7 +202,7 @@
     "rumour"
    ],
    "chance": 0.7,
-   "text": "Gordon Freeman, twenty-seven, PhD in theoretical physics from MIT, research associate in Anomalous Materials. On the morning of the incident his time card shows he was late. Nobody has ever found out why."
+   "text": "Personnel record, Anomalous Materials: {var.player_name}, research associate, theoretical physics. Time card for the morning of the incident: late. Nobody has ever found out why."
   },
   "hl_nihilanth": {
    "title": "The Nihilanth",
@@ -225,7 +223,7 @@
     "hecu",
     "military"
    ],
-   "text": "Intercepted Marine traffic is blunt: secure the facility, neutralise hostiles, and leave no witnesses. Freeman is named specifically."
+   "text": "Intercepted Marine traffic is blunt: secure the facility, neutralise hostiles, and leave no witnesses. {var.player_name} is named specifically."
   }
  },
  "macros": {

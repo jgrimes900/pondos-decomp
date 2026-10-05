@@ -238,7 +238,7 @@
      "text": "The Sector C platform is dark and littered with ceiling tiles. The security booth's glass has been smashed in."
     },
     {
-     "text": "The tram comes to rest at a platform marked SECTOR C: TEST LABS AND CONTROL FACILITIES. A security guard taps on the window and opens the door for you, grinning: morning, Mr. Freeman, running a little late?"
+     "text": "The tram comes to rest at a platform marked SECTOR C: TEST LABS AND CONTROL FACILITIES. A security guard taps on the window and opens the door for you, grinning: morning, {var.player_name}, running a little late?"
     }
    ],
    "aliases": [

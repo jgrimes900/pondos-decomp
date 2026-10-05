@@ -59,7 +59,7 @@
     "talk": [
      {
       "do": [
-       "\"Calhoun! There you are. Some egghead's stuck in the Sector G elevator. Grab your gear and go fix it.\""
+       "\"{var.player_name}! There you are. Some egghead's stuck in the Sector G elevator. Grab your gear and go fix it.\""
       ]
      }
     ]
@@ -84,13 +84,14 @@
     "container",
     "openable"
    ],
-   "name": "locker marked CALHOUN",
+   "name": "your locker",
+   "proper": true,
    "aliases": [
     "locker",
-    "calhoun locker",
-    "my locker"
+    "my locker",
+    "your locker"
    ],
-   "appearance": "Your locker, stencilled CALHOUN, stands in the row.",
+   "appearance": "Your locker, stencilled with your name, stands in the row.",
    "description": "Your locker. Inside, if you remember right, your vest and helmet.",
    "features": [
     "security_vest",
@@ -254,7 +255,7 @@
     "talk": [
      {
       "do": [
-       "\"The relay, Mr. Calhoun. Step on the test pad, set the beacon on the other side, and come back. It's perfectly safe. Statistically.\""
+       "\"The relay, {var.player_name}. Step on the test pad, set the beacon on the other side, and come back. It's perfectly safe. Statistically.\""
       ]
      }
     ]
@@ -371,8 +372,7 @@
    ],
    "important": true,
    "tags": [
-    "bs_teleporter",
-    "heart"
+    "bs_teleporter"
    ],
    "appearance": "The prototype teleporter's ring of emitters surrounds the platform; its battery cradle is empty.",
    "description": "Rosenberg's machine. Fit the battery, set the relay, and it can throw all of you out of Black Mesa. Probably in one piece."

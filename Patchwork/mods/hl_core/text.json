@@ -321,6 +321,100 @@
    ],
    "chance": 0.9,
    "text": "Not everything coming through the rifts is from Xen. A second alien race - shock troopers, pit drones, voltigores - is using the chaos to invade. The soldiers started calling them Race X."
+  },
+  "hl_rifts": {
+   "title": "The rifts",
+   "about": [
+    "tag:rift"
+   ],
+   "tags": [
+    "xen",
+    "science",
+    "rumour"
+   ],
+   "text": "Since the resonance cascade, the walls between worlds have worn thin. Where one world rubs against another, the ground tears open in green lightning, and things cross in both directions."
+  },
+  "hl_x_hamlet": {
+   "title": "The night the sky turned green",
+   "about": [
+    "mod:hamlet",
+    "tag:blackmesa"
+   ],
+   "tags": [
+    "village",
+    "rumour",
+    "xen",
+    "history"
+   ],
+   "text": "Old folk in the village still talk about the night the sky over the hills turned green, and a stooped thing with one red eye and crackling hands came down to drink at the well. By morning it was gone, and so was the miller's dog."
+  },
+  "hl_x_wilds": {
+   "title": "Soldiers in the hills",
+   "about": [
+    "mod:wilds",
+    "tag:blackmesa"
+   ],
+   "tags": [
+    "rumour",
+    "road",
+    "hecu",
+    "military"
+   ],
+   "text": "Travellers on the roads talk of soldiers in gas masks camped up in the hills, who stop every stranger to ask the same question: have you seen a scientist in an orange suit?"
+  },
+  "hl_x_derelict": {
+   "title": "A signal from somewhere else",
+   "about": [
+    "mod:derelict",
+    "tag:blackmesa"
+   ],
+   "tags": [
+    "station",
+    "science",
+    "xen",
+    "comms"
+   ],
+   "text": "Station Kestrel's comms log holds one transmission nobody could explain: a burst on an old Earth research frequency, headed LAMBDA, repeating a single word. The word is 'Xen'."
+  },
+  "hl_x_barrow": {
+   "title": "The carvings below",
+   "about": [
+    "mod:barrow",
+    "tag:xen"
+   ],
+   "tags": [
+    "ancient",
+    "history",
+    "xen"
+   ],
+   "text": "Deep in the barrow, the oldest carvings show something no one has explained: islands floating under a strange sky, and a vast head with a crown of crystals. Whoever cut them had seen it, or dreamed it very clearly."
+  },
+  "hl_x_spire": {
+   "title": "Harmonic coupling",
+   "about": [
+    "mod:spire",
+    "tag:lambda"
+   ],
+   "tags": [
+    "science",
+    "xen",
+    "sorcery",
+    "darkness"
+   ],
+   "text": "A Lambda team memo, found far from any lab: 'Sample resonates with an object of unknown origin at the same frequency. Recommend we do NOT put them in the same room.' Someone has scrawled under it: the sorcerer's orb."
+  },
+  "hl_x_lighthouse": {
+   "title": "The green beam",
+   "about": [
+    "mod:lighthouse",
+    "tag:blackmesa"
+   ],
+   "tags": [
+    "coast",
+    "rumour",
+    "xen"
+   ],
+   "text": "Fishermen swear that one night the lighthouse's beam turned green, swept once across a sea that wasn't there, and went out."
   }
  },
  "rules": {
@@ -331,10 +425,69 @@
    },
    "do": [
     {
-     "say": "(Black Mesa is dangerous. 'attack <enemy> [with <weapon>]', 'status' for your health and suit, and 'use' chargers and batteries.)",
+     "say": "(Things from Black Mesa bite. 'attack <enemy> [with <weapon>]', 'status' or 'suit' for your health and armour, and 'use' chargers and batteries.)",
      "style": "dim"
     }
    ]
+  }
+ },
+ "events": {
+  "hl_incursion": {
+   "//": "Black Mesa's story for worlds that begin somewhere else: the rifts lead back to the source.",
+   "title": [
+    "Incursion",
+    "The Green Sky",
+    "Resonance"
+   ],
+   "tags": [
+    "xen",
+    "incursion",
+    "rift",
+    "crossover"
+   ],
+   "exclude_start_tags": [
+    "blackmesa",
+    "hecu"
+   ],
+   "weight": 1.5,
+   "roles": {
+    "villain": {
+     "type": "character",
+     "match": {
+      "tag": [
+       "rift_lord"
+      ]
+     }
+    },
+    "facility": {
+     "type": "place",
+     "match": {
+      "tag": [
+       "bm_main"
+      ]
+     }
+    }
+   },
+   "hook": "Green lightning splits the sky. Where it strikes, the ground tears open, and things that have no business in this world come crawling out: scuttling parasites, yelping three-legged hounds, worse. Nobody knows what they are. The truth is a long way off, in {facility}, where an experiment went catastrophically wrong, and beyond it waits {villain}, holding the rifts open.",
+   "goal": "Follow the rifts to {facility}, and destroy {villain} to close them.",
+   "resolutions": [
+    {
+     "verb": "attack",
+     "target": "villain",
+     "title": "Close the rifts",
+     "text": "{target.The} dies, and all across the world the green lightning gutters out. The rifts heal over as if they had never been."
+    }
+   ],
+   "lore": [
+    {
+     "title": "Where the rifts lead",
+     "about": [
+      "cast:facility"
+     ],
+     "text": "Every rift, followed far enough, leads to the same place: {facility}, a research complex where someone pushed a crystal into a beam and tore a hole between worlds."
+    }
+   ],
+   "ending": "The sky is the right colour again. In a year people will say the rifts were a story. You will know better."
   }
  },
  "verbs": {

@@ -45,10 +45,12 @@ From the main menu choose **New game**, then:
    that work well with your choice are suggested.
 2. **Pick a world size.** Bigger worlds have more generated country between places.
 3. Optionally give a **seed**: the same mods and seed always weave the same world and story.
-4. If your mods offer named starting points (the Half-Life mods offer three), pick **where you
-   begin**, or press Enter to let the story decide.
-5. Optionally name your **character**. Leave it blank to get a generated name. (Starting points
-   that come with their own protagonist, like Gordon Freeman, skip this.)
+4. Pick **where you begin** from the starting points your mods offer (the village inn, the docking
+   ring, a crossroads in the wilds, the Black Mesa tram...), or press Enter to let the story decide.
+   The story fits the start: begin at the docking ring and you answer the station's distress
+   beacon; begin in the village with Half-Life loaded and the sky may split open in green light.
+5. Optionally name your **character**. Leave it blank to get a generated name. Everyone, Black
+   Mesa's scientists included, calls you by it.
 
 The story is generated from your mods; there is nothing to choose. The opening tells you what has
 happened and what you must do, and `journal` always shows the current step.
@@ -105,9 +107,9 @@ loads even if you later change your mods.
 | **Steel & Peril** (`combat`) | Health, attacking, death, healing food, resting. Makes creatures from other mods fight back (so some villains can be defeated in battle) and adds wolves, bandits, bog lurkers and rogue drones to matching regions. |
 | **Turning Days** (`daycycle`) | A day/night cycle made entirely of rules, plus a `time` command. |
 | **Black Mesa: Core** (`hl_core`) | Shared Half-Life content: every weapon from the crowbar to the displacer cannon, HEV/PCV armour with suit power, batteries, health and HEV chargers, crates, every creature and person from Half-Life, Opposing Force and Blue Shift, generated Black Mesa offices, labs, maintenance and transit, the desert surface, military camps, Xen and Race X hives, and locked doors for the map generator. Adds `where` (map and chapter) and `suit`. |
-| **Half-Life** (`hl_halflife`) | The Half-Life campaign map by map, c0a0 to c5a1 plus the Hazard Course: the tram ride, Anomalous Materials and the resonance cascade, Blast Pit's tentacles, Power Up, On a Rail, Apprehension, Questionable Ethics, Surface Tension, Lambda Core, Xen, the Gonarch, Interloper, the Nihilanth and the G-Man's offer. Spawn: **Gordon Freeman** on the inbound tram. |
-| **Opposing Force** (`hl_opfor`) | Gearbox's expansion, of0a0 to of6a5 plus Boot Camp: the Osprey crash, Otis, the Black Ops, Race X, the barnacle grapple and displacer, the Pit Worm, Foxtrot Uniform, the nuke and the Gene Worm. Spawn: **Corporal Adrian Shephard**. |
-| **Blue Shift** (`hl_blueshift`) | Gearbox's Blue Shift, ba_tram1 to ba_outro plus security training: the falling elevator, the canals, the freight yard and Dr. Rosenberg, the Xen relay and the prototype teleporter. Spawn: **Barney Calhoun**. |
+| **Half-Life** (`hl_halflife`) | The Half-Life campaign map by map, c0a0 to c5a1 plus the Hazard Course: the tram ride, Anomalous Materials and the resonance cascade, Blast Pit's tentacles, Power Up, On a Rail, Apprehension, Questionable Ethics, Surface Tension, Lambda Core, Xen, the Gonarch, Interloper, the Nihilanth and the G-Man's offer. Starts: a research associate on the inbound tram, or the Hazard Course. |
+| **Opposing Force** (`hl_opfor`) | Gearbox's expansion, of0a0 to of6a5 plus Boot Camp: the Osprey crash, Otis, the Black Ops, Race X, the barnacle grapple and displacer, the Pit Worm, Foxtrot Uniform, the nuke and the Gene Worm. Starts: a HECU corporal on the Osprey, or Boot Camp. |
+| **Blue Shift** (`hl_blueshift`) | Gearbox's Blue Shift, ba_tram1 to ba_outro plus security training: the falling elevator, the canals, the freight yard and Dr. Rosenberg, the Xen relay and the prototype teleporter. Starts: a security guard on the outbound tram, or security training. |
 
 `examples/lighthouse` is the worked example from the modding guide. Try it with
 `./patchwork.sh --mod-dir examples`.
@@ -116,7 +118,13 @@ The Half-Life mods follow the original maps closely (each room records its BSP m
 chapter; type `where`), condensing long maps to their memorable spaces. Locked doors and outdoor
 areas grow generated sections, so every Black Mesa is a little bigger than the last, and the
 story generator turns each campaign's set pieces and important gear into quests: load all three
-and Gordon may need something from Barney's freight yard. *Decay*, the PlayStation 2 co-op
+and the scientist may need something from the security guard's freight yard. Black Mesa also
+meshes with other mods' worlds: where its science fiction meets a fantasy mod's country, the
+generator puts a seam between them (a portal storm, a rift scar, a chunk of displaced Black Mesa
+floor, or the Storyteller's Almanac's misty Strange Mile), Xen wildlife only spills out through
+those rifts, crossover lore turns up (the night the village sky turned green), and from any other
+start the *Incursion* story can lead you back through the rifts to the Nihilanth or the Gene
+Worm. *Decay*, the PlayStation 2 co-op
 expansion, is not included. The Half-Life JSON is generated from compact specs in
 `tools/halflife/` (`cd tools/halflife && python3 build.py`).
 
@@ -126,8 +134,9 @@ Some combinations to try:
 * `core, derelict`: play it twice, and you may be facing a rogue AI, a saboteur or an outbreak, with
   the crew in different roles and the keys, codes and couplings in different hands.
 * `core, tales, wilds, hamlet, barrow, spire, combat, daycycle`: fantasy stories built from every piece.
-* `core, tales, hl_halflife, hl_opfor, hl_blueshift`: Black Mesa three ways. Start as Gordon,
-  Adrian or Barney.
+* `core, tales, hl_halflife, hl_opfor, hl_blueshift`: Black Mesa three ways: start as a scientist,
+  a marine or a guard.
+* `core, tales, wilds, hamlet, hl_halflife`: start in the village and follow the rifts.
 * Everything at once: one story that uses every important feature of every mod.
 
 ## Writing mods

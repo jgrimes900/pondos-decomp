@@ -7,20 +7,22 @@ from patchwork.validate import check_world
 
 HL = ["core", "tales", "hl_halflife", "hl_opfor", "hl_blueshift"]
 SPAWNS = {
-    "hl_blackmesa": ("Gordon Freeman", "hl/c0a0_tram", {"hl_cascade_war", "hl_military_cleanup"}),
-    "of_blackmesa": ("Adrian Shephard", "of/of0a0_osprey", {"of_worlds_collide", "of_the_package"}),
-    "bs_blackmesa": ("Barney Calhoun", "bs/ba_tram1", {"bs_leap_of_faith"}),
+    "hl_blackmesa": ("hl/c0a0_tram", {"hl_cascade_war", "hl_military_cleanup"}),
+    "of_blackmesa": ("of/of0a0_osprey", {"of_worlds_collide", "of_the_package"}),
+    "bs_blackmesa": ("bs/ba_tram1", {"bs_leap_of_faith"}),
 }
 
 
 class Spawns(unittest.TestCase):
     def test_each_spawn_is_its_own_game(self):
-        for start, (name, room, events) in SPAWNS.items():
+        for start, (room, events) in SPAWNS.items():
             for seed in range(1, 6):
                 with self.subTest(start=start, seed=seed):
-                    p = Player(HL, seed, start=start)
+                    p = Player(HL, seed, name="Wren Ashdown", start=start)
                     w = p.world
-                    self.assertEqual(w.player.name, name)
+                    # You are whoever you say you are; the campaign calls you by that name.
+                    self.assertEqual(w.vars["player_name"], "Wren Ashdown")
+                    self.assertIn("Wren Ashdown", w.story["intro"])
                     self.assertEqual(w.room.def_id, "room:" + room)
                     self.assertIn(w.story["event"], events)
                     self.assertEqual(check_world(w), [], p.log)
@@ -133,3 +135,14 @@ class SetPieces(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Training(unittest.TestCase):
+    def test_training_courses_are_starts_for_their_campaign(self):
+        for start, events in (("hl_hazard", {"hl_cascade_war", "hl_military_cleanup"}),
+                              ("of_bootcamp", {"of_worlds_collide", "of_the_package"}),
+                              ("bs_training", {"bs_leap_of_faith"})):
+            p = Player(HL, 1, start=start)
+            self.assertEqual(p.world.room.area, start)
+            self.assertIn(p.world.story["event"], events)
+            self.assertTrue(p.solve(fight=True))

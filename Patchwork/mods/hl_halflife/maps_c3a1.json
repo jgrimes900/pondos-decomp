@@ -28,7 +28,7 @@
     "zombie_soldier",
     "medkit"
    ],
-   "description": "A sewer outflow beneath the canyon. Over the radio, a Marine commander orders his men to pull out: forget about Freeman, he says.",
+   "description": "A sewer outflow beneath the canyon. Over the radio, a Marine commander orders his men to pull out: forget about {var.player_name}, he says.",
    "props": {
     "map": "c3a1",
     "chapter": "Forget About Freeman!"

@@ -2,6 +2,7 @@
  "regions": {
   "bm_offices": {
    "tags": [
+    "scifi",
     "blackmesa",
     "office",
     "indoor",
@@ -81,6 +82,7 @@
   },
   "bm_labs": {
    "tags": [
+    "scifi",
     "blackmesa",
     "lab",
     "indoor",
@@ -151,6 +153,7 @@
   },
   "bm_maintenance": {
    "tags": [
+    "scifi",
     "blackmesa",
     "maintenance",
     "indoor",
@@ -225,6 +228,7 @@
   },
   "bm_transit": {
    "tags": [
+    "scifi",
     "blackmesa",
     "transit",
     "indoor",
@@ -269,6 +273,7 @@
   },
   "bm_storage": {
    "tags": [
+    "scifi",
     "blackmesa",
     "storage",
     "indoor",
@@ -328,6 +333,7 @@
   },
   "bm_surface": {
    "tags": [
+    "scifi",
     "surface",
     "outdoor",
     "desert",
@@ -381,6 +387,7 @@
   },
   "bm_military": {
    "tags": [
+    "scifi",
     "military",
     "surface",
     "outdoor"
@@ -429,6 +436,7 @@
   },
   "xen_islands": {
    "tags": [
+    "scifi",
     "xen",
     "alien",
     "outdoor"
@@ -476,8 +484,73 @@
     }
    ]
   },
+  "border_rift": {
+   "tags": [
+    "seam",
+    "rift",
+    "outdoor",
+    "xen"
+   ],
+   "connects": [
+    "rift",
+    "outdoor",
+    "fantasy",
+    "scifi",
+    "road",
+    "surface"
+   ],
+   "//": "A seam: wherever Black Mesa's world meets another mod's, the resonance cascade has torn the gap open.",
+   "length": [
+    1,
+    2
+   ],
+   "distance": [
+    1,
+    2
+   ],
+   "weight": 2,
+   "rooms": [
+    {
+     "name": "Portal Storm",
+     "description": "Green lightning splits the air, and the land changes in mid-stride: behind you one world, ahead another. Somewhere very far away, a resonance cascade is still ringing.",
+     "weight": 2,
+     "features": [
+      {
+       "chance": 0.4,
+       "id": "xen_light"
+      }
+     ]
+    },
+    {
+     "name": "Rift Scar",
+     "description": "A long scar of glassy, scorched ground where something tore through from elsewhere. Alien light-stalks have already taken root along it, and the air hums.",
+     "features": [
+      "xen_light",
+      {
+       "chance": 0.3,
+       "id": "dead_scientist"
+      }
+     ]
+    },
+    {
+     "name": "Displaced Ground",
+     "description": "A chunk of somewhere else, dropped here whole: a slab of concrete floor with a yellow-and-black hazard stripe, a fallen ceiling light, and a door frame with no walls around it, sitting in the middle of nowhere.",
+     "features": [
+      {
+       "chance": 0.5,
+       "id": "supply_crate"
+      },
+      {
+       "chance": 0.3,
+       "id": "bm_memo"
+      }
+     ]
+    }
+   ]
+  },
   "racex_hive": {
    "tags": [
+    "scifi",
     "racex",
     "alien",
     "indoor"

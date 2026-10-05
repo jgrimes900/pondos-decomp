@@ -243,7 +243,7 @@ F.update({
         "actions": {"attack": [{"do": ["You step on it with a satisfying crunch.", {"destroy": "self"}]}],
                     "take": ["It skitters away."]}},
     "xen_light": {"extends": ["scenery"], "name": "xen light stalk", "aliases": ["stalk", "light stalk", "plant", "light"],
-        "tags": ["scatter"], "habitat": ["xen"],
+        "tags": ["scatter"], "habitat": ["xen", "rift"],
         "appearance": "A glowing light-stalk sways here, retracting shyly when you come near.",
         "description": "A bioluminescent stalk with a bulb that pulls back into the ground at the slightest disturbance."},
     "healing_pool": {"extends": ["scenery"], "name": "healing pool", "aliases": ["pool", "healing pool", "water"],
@@ -265,7 +265,7 @@ C = {
     "headcrab": creature("headcrab", ["headcrab", "crab", "parasite"], 12, 6, "leaps at your face and bites",
         "A fleshy, beaked Xen parasite that latches onto heads. You know what happens next.",
         "A headcrab scuttles across the floor, then rears up, ready to leap.",
-        habitat=["blackmesa", "lab", "office", "maintenance", "xen", "storage", "transit"], weight=4),
+        habitat=["blackmesa", "lab", "office", "maintenance", "xen", "storage", "transit", "rift"], weight=4),
     "baby_headcrab": creature("baby headcrab", ["baby headcrab", "baby crab"], 4, 2, "nips at your ankles",
         "A tiny headcrab, fresh from the Gonarch.", "Baby headcrabs swarm over the ground.",
         habitat=["xen"], weight=1),
@@ -277,7 +277,7 @@ C = {
     "houndeye": creature("houndeye", ["houndeye", "hound"], 20, 9, "lets loose a shrieking sonic blast at",
         "A three-legged Xen pack animal with one great eye and a sonic attack. They hunt in packs and chirp to each other.",
         "A houndeye blinks at you with its single huge eye, warbling a warning.",
-        habitat=["blackmesa", "maintenance", "surface", "xen", "storage", "lab"], weight=3),
+        habitat=["blackmesa", "maintenance", "surface", "xen", "storage", "lab", "rift"], weight=3),
     "bullsquid": creature("bullsquid", ["bullsquid", "squid"], 40, 11, "spits burning acid at",
         "A squat, tentacle-mouthed predator that lurks near water and spits acid. It hates headcrabs almost as much as it hates you.",
         "A bullsquid lurches toward you, mouth-tentacles writhing.",
@@ -285,7 +285,7 @@ C = {
     "vortigaunt": creature("vortigaunt", ["vortigaunt", "alien slave", "slave", "vort"], 30, 13, "hurls a crackling green bolt of lightning at",
         "A hunched, one-eyed alien with a collar of shackles, channelling green electricity through its claws. It murmurs in a language you don't know.",
         "A vortigaunt warps in with a crackle of green light, arms already charging.",
-        habitat=["blackmesa", "lab", "office", "surface", "xen", "maintenance"], weight=2),
+        habitat=["blackmesa", "lab", "office", "surface", "xen", "maintenance", "rift"], weight=2),
     "alien_grunt": creature("alien grunt", ["alien grunt", "agrunt", "grunt"], 60, 13, "fires a stream of homing hornets at",
         "A hulking, armoured Xen soldier with a living hivehand bolted to its arm.",
         "An alien grunt lumbers forward, its hivehand buzzing.",
@@ -464,7 +464,7 @@ F.update({
 BM_DIRS = None
 R = B.section("regions")
 R.update({
-    "bm_offices": {"tags": ["blackmesa", "office", "indoor", "interior"], "connects": ["blackmesa", "office", "lab", "transit"],
+    "bm_offices": {"tags": ["scifi", "blackmesa", "office", "indoor", "interior"], "connects": ["blackmesa", "office", "lab", "transit"],
         "length": [2, 3], "distance": [1, 2], "weight": 3,
         "rooms": [
             {"name": "Sector #bm_sector# Office Wing", "description": "#bm_office_desc#", "weight": 3,
@@ -475,7 +475,7 @@ R.update({
              "features": ["vending_machine", {"chance": 0.4, "id": "medkit"}]},
             {"name": "Conference Room #bm_num#", "description": "A long table, a projector screen showing a frozen slide of quarterly results, and coffee cups abandoned mid-meeting.",
              "features": [{"chance": 0.5, "id": "bm_memo"}]}]},
-    "bm_labs": {"tags": ["blackmesa", "lab", "indoor", "interior"], "connects": ["blackmesa", "lab", "office", "maintenance"],
+    "bm_labs": {"tags": ["scifi", "blackmesa", "lab", "indoor", "interior"], "connects": ["blackmesa", "lab", "office", "maintenance"],
         "length": [2, 3], "distance": [1, 2], "weight": 3,
         "rooms": [
             {"name": "#bm_lab_kind# Lab #bm_sector#-#bm_num#", "description": "#bm_lab_desc#", "weight": 3,
@@ -486,7 +486,7 @@ R.update({
              "features": [{"chance": 0.3, "id": "suit_charger"}]},
             {"name": "Isotope Handling Room", "description": "Lead-lined cabinets, remote manipulator arms and a glowing green puddle you decide not to step in.",
              "features": [{"chance": 0.4, "id": "supply_crate"}]}]},
-    "bm_maintenance": {"tags": ["blackmesa", "maintenance", "indoor", "interior"], "connects": ["blackmesa", "maintenance", "storage", "transit", "lab"],
+    "bm_maintenance": {"tags": ["scifi", "blackmesa", "maintenance", "indoor", "interior"], "connects": ["blackmesa", "maintenance", "storage", "transit", "lab"],
         "length": [2, 4], "distance": [1, 2], "weight": 3,
         "rooms": [
             {"name": "Maintenance Corridor #bm_sector#-#bm_num#", "description": "#bm_maint_desc#", "weight": 3,
@@ -499,14 +499,14 @@ R.update({
              "features": [{"chance": 0.4, "id": "suit_charger"}]},
             {"name": "Boiler Room", "description": "Huge boilers roar, gauges trembling in the red. The heat is like a wall.",
              "features": [{"chance": 0.3, "id": "supply_crate"}]}]},
-    "bm_transit": {"tags": ["blackmesa", "transit", "indoor", "interior"], "connects": ["blackmesa", "transit", "storage", "maintenance"],
+    "bm_transit": {"tags": ["scifi", "blackmesa", "transit", "indoor", "interior"], "connects": ["blackmesa", "transit", "storage", "maintenance"],
         "length": [1, 3], "distance": [2, 3], "weight": 2,
         "rooms": [
             {"name": "Tram Platform #bm_sector#", "description": "A tram platform with yellow safety lines and a dead departures board. The rails vanish into the dark either way.", "weight": 2,
              "features": [{"chance": 0.3, "id": "vending_machine"}]},
             {"name": "Service Tunnel #bm_num#", "description": "A long rail service tunnel lit by caged bulbs. A maintenance cart sits abandoned on a siding."},
             {"name": "Freight Elevator Shaft", "description": "A freight elevator stands open, its cage door bent. Cables vanish up into the dark."}]},
-    "bm_storage": {"tags": ["blackmesa", "storage", "indoor", "interior"], "connects": ["blackmesa", "storage", "transit", "military"],
+    "bm_storage": {"tags": ["scifi", "blackmesa", "storage", "indoor", "interior"], "connects": ["blackmesa", "storage", "transit", "military"],
         "length": [1, 3], "distance": [1, 2], "weight": 2,
         "rooms": [
             {"name": "Warehouse #bm_sector#", "description": "Shelving stacked to the roof with crates, a forklift parked askew. Somewhere a pallet creaks.", "weight": 2,
@@ -515,7 +515,7 @@ R.update({
              "features": [{"chance": 0.5, "id": "supply_crate"}]},
             {"name": "Hazardous Materials Store", "description": "Yellow drums marked with radiation trefoils sit in a chain-link cage. Some are leaking.",
              "features": [{"chance": 0.5, "id": "supply_crate"}]}]},
-    "bm_surface": {"tags": ["surface", "outdoor", "desert", "blackmesa"], "connects": ["surface", "military", "outdoor"],
+    "bm_surface": {"tags": ["scifi", "surface", "outdoor", "desert", "blackmesa"], "connects": ["surface", "military", "outdoor"],
         "length": [2, 4], "distance": [2, 4], "weight": 2,
         "rooms": [
             {"name": "#surface_name#", "description": "#surface_desc#", "weight": 3,
@@ -523,14 +523,14 @@ R.update({
             {"name": "Abandoned Checkpoint", "description": "A sandbagged checkpoint on a dusty access road, the barrier arm snapped. A burnt-out humvee smoulders.",
              "features": [{"chance": 0.5, "id": "dead_marine"}]},
             {"name": "Satellite Dish Array", "description": "Huge white dishes stare at the sky on a scrubby ridge, some tilted at mad angles."}]},
-    "bm_military": {"tags": ["military", "surface", "outdoor"], "connects": ["military", "surface", "storage"],
+    "bm_military": {"tags": ["scifi", "military", "surface", "outdoor"], "connects": ["military", "surface", "storage"],
         "length": [1, 2], "distance": [2, 3], "weight": 1,
         "rooms": [
             {"name": "HECU #camp_kind#", "description": "#camp_desc#", "weight": 2,
              "features": [{"chance": 0.6, "id": "supply_crate"}, {"chance": 0.3, "id": "hecu_logbook"}]},
             {"name": "Sandbag Emplacement", "description": "A ring of sandbags around a mounted machine gun, the gunner gone. Brass casings carpet the ground.",
              "features": [{"chance": 0.4, "id": "ammo_box"}]}]},
-    "xen_islands": {"tags": ["xen", "alien", "outdoor"], "connects": ["xen", "alien", "racex"],
+    "xen_islands": {"tags": ["scifi", "xen", "alien", "outdoor"], "connects": ["xen", "alien", "racex"],
         "length": [2, 4], "distance": [1, 3], "weight": 2,
         "rooms": [
             {"name": "#xen_name#", "description": "#xen_desc#", "weight": 3,
@@ -538,7 +538,17 @@ R.update({
             {"name": "Xen Healing Grotto", "description": "A cave of soft violet rock around a pool of luminous water.",
              "features": ["healing_pool"]},
             {"name": "Spore Field", "description": "Pod-plants the size of houses pulse slowly, releasing drifting motes of light."}]},
-    "racex_hive": {"tags": ["racex", "alien", "indoor"], "connects": ["racex", "alien", "xen", "blackmesa"],
+    "border_rift": {"tags": ["seam", "rift", "outdoor", "xen"], "connects": ["rift", "outdoor", "fantasy", "scifi", "road", "surface"],
+        "//": "A seam: wherever Black Mesa's world meets another mod's, the resonance cascade has torn the gap open.",
+        "length": [1, 2], "distance": [1, 2], "weight": 2,
+        "rooms": [
+            {"name": "Portal Storm", "description": "Green lightning splits the air, and the land changes in mid-stride: behind you one world, ahead another. Somewhere very far away, a resonance cascade is still ringing.", "weight": 2,
+             "features": [{"chance": 0.4, "id": "xen_light"}]},
+            {"name": "Rift Scar", "description": "A long scar of glassy, scorched ground where something tore through from elsewhere. Alien light-stalks have already taken root along it, and the air hums.",
+             "features": ["xen_light", {"chance": 0.3, "id": "dead_scientist"}]},
+            {"name": "Displaced Ground", "description": "A chunk of somewhere else, dropped here whole: a slab of concrete floor with a yellow-and-black hazard stripe, a fallen ceiling light, and a door frame with no walls around it, sitting in the middle of nowhere.",
+             "features": [{"chance": 0.5, "id": "supply_crate"}, {"chance": 0.3, "id": "bm_memo"}]}]},
+    "racex_hive": {"tags": ["scifi", "racex", "alien", "indoor"], "connects": ["racex", "alien", "xen", "blackmesa"],
         "length": [1, 3], "distance": [1, 2], "weight": 1,
         "rooms": [
             {"name": "Race X Hive", "description": "#racex_desc#", "weight": 2},
@@ -674,8 +684,43 @@ B.section("lore").update({
         "text": "Not everything coming through the rifts is from Xen. A second alien race - shock troopers, pit drones, voltigores - is using the chaos to invade. The soldiers started calling them Race X."},
 })
 
+# Lore that only exists when Black Mesa shares a world with another mod's places.
+B.section("lore").update({
+    "hl_rifts": {"title": "The rifts", "about": ["tag:rift"], "tags": ["xen", "science", "rumour"],
+        "text": "Since the resonance cascade, the walls between worlds have worn thin. Where one world rubs against another, the ground tears open in green lightning, and things cross in both directions."},
+    "hl_x_hamlet": {"title": "The night the sky turned green", "about": ["mod:hamlet", "tag:blackmesa"], "tags": ["village", "rumour", "xen", "history"],
+        "text": "Old folk in the village still talk about the night the sky over the hills turned green, and a stooped thing with one red eye and crackling hands came down to drink at the well. By morning it was gone, and so was the miller's dog."},
+    "hl_x_wilds": {"title": "Soldiers in the hills", "about": ["mod:wilds", "tag:blackmesa"], "tags": ["rumour", "road", "hecu", "military"],
+        "text": "Travellers on the roads talk of soldiers in gas masks camped up in the hills, who stop every stranger to ask the same question: have you seen a scientist in an orange suit?"},
+    "hl_x_derelict": {"title": "A signal from somewhere else", "about": ["mod:derelict", "tag:blackmesa"], "tags": ["station", "science", "xen", "comms"],
+        "text": "Station Kestrel's comms log holds one transmission nobody could explain: a burst on an old Earth research frequency, headed LAMBDA, repeating a single word. The word is 'Xen'."},
+    "hl_x_barrow": {"title": "The carvings below", "about": ["mod:barrow", "tag:xen"], "tags": ["ancient", "history", "xen"],
+        "text": "Deep in the barrow, the oldest carvings show something no one has explained: islands floating under a strange sky, and a vast head with a crown of crystals. Whoever cut them had seen it, or dreamed it very clearly."},
+    "hl_x_spire": {"title": "Harmonic coupling", "about": ["mod:spire", "tag:lambda"], "tags": ["science", "xen", "sorcery", "darkness"],
+        "text": "A Lambda team memo, found far from any lab: 'Sample resonates with an object of unknown origin at the same frequency. Recommend we do NOT put them in the same room.' Someone has scrawled under it: the sorcerer's orb."},
+    "hl_x_lighthouse": {"title": "The green beam", "about": ["mod:lighthouse", "tag:blackmesa"], "tags": ["coast", "rumour", "xen"],
+        "text": "Fishermen swear that one night the lighthouse's beam turned green, swept once across a sea that wasn't there, and went out."},
+})
+
+B.section("events").update({
+    "hl_incursion": {
+        "//": "Black Mesa's story for worlds that begin somewhere else: the rifts lead back to the source.",
+        "title": ["Incursion", "The Green Sky", "Resonance"],
+        "tags": ["xen", "incursion", "rift", "crossover"], "exclude_start_tags": ["blackmesa", "hecu"], "weight": 1.5,
+        "roles": {
+            "villain": {"type": "character", "match": {"tag": ["rift_lord"]}},
+            "facility": {"type": "place", "match": {"tag": ["bm_main"]}}},
+        "hook": "Green lightning splits the sky. Where it strikes, the ground tears open, and things that have no business in this world come crawling out: scuttling parasites, yelping three-legged hounds, worse. Nobody knows what they are. The truth is a long way off, in {facility}, where an experiment went catastrophically wrong, and beyond it waits {villain}, holding the rifts open.",
+        "goal": "Follow the rifts to {facility}, and destroy {villain} to close them.",
+        "resolutions": [{"verb": "attack", "target": "villain", "title": "Close the rifts",
+                         "text": "{target.The} dies, and all across the world the green lightning gutters out. The rifts heal over as if they had never been."}],
+        "lore": [{"title": "Where the rifts lead", "about": ["cast:facility"],
+                  "text": "Every rift, followed far enough, leads to the same place: {facility}, a research complex where someone pushed a crystal into a beam and tore a hole between worlds."}],
+        "ending": "The sky is the right colour again. In a year people will say the rifts were a story. You will know better."},
+})
+
 B.section("rules").update({
-    "hl_combat_hint": {"on": "start", "if": {"mod": "hl_core"}, "do": [{"say": "(Black Mesa is dangerous. 'attack <enemy> [with <weapon>]', 'status' for your health and suit, and 'use' chargers and batteries.)", "style": "dim"}]},
+    "hl_combat_hint": {"on": "start", "if": {"mod": "hl_core"}, "do": [{"say": "(Things from Black Mesa bite. 'attack <enemy> [with <weapon>]', 'status' or 'suit' for your health and armour, and 'use' chargers and batteries.)", "style": "dim"}]},
 })
 
 B.section("verbs").update({
@@ -704,6 +749,6 @@ def build():
         "items.json": {"features": {k: v for k, v in F.items() if k not in W and k not in C}},
         "creatures.json": {"features": C},
         "regions.json": {"regions": B.sections["regions"], "obstacles": B.sections["obstacles"]},
-        "text.json": {"grammar": B.sections["grammar"], "lore": B.sections["lore"], "rules": B.sections["rules"],
+        "text.json": {"grammar": B.sections["grammar"], "lore": B.sections["lore"], "rules": B.sections["rules"], "events": B.sections["events"],
                       "verbs": B.sections["verbs"], "macros": B.sections["macros"]},
     })

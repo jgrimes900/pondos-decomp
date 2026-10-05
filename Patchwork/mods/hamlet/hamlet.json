@@ -2,6 +2,7 @@
   "areas": {
     "hamlet": {
       "name": "#village_name#",
+      "start_label": "Hearthside Hamlet - a traveller waking at the village inn",
       "tags": [
         "settlement",
         "start",

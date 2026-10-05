@@ -955,7 +955,8 @@
     "scatter"
    ],
    "habitat": [
-    "xen"
+    "xen",
+    "rift"
    ],
    "appearance": "A glowing light-stalk sways here, retracting shyly when you come near.",
    "description": "A bioluminescent stalk with a bulb that pulls back into the ground at the slightest disturbance."

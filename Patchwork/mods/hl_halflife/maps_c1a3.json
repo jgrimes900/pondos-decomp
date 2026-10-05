@@ -27,7 +27,7 @@
     "hecu_marine",
     "dead_scientist"
    ],
-   "description": "Through an office window you see soldiers in gas masks drag a scientist out and shoot him. The radio chatter is clear: no witnesses, and Freeman is priority. Help has arrived, and it isn't for you.",
+   "description": "Through an office window you see soldiers in gas masks drag a scientist out and shoot him. The radio chatter is clear: no witnesses, and {var.player_name} is priority. Help has arrived, and it isn't for you.",
    "props": {
     "map": "c1a3",
     "chapter": "We've Got Hostiles"

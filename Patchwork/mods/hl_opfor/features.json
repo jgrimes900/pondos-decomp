@@ -211,8 +211,7 @@
    ],
    "important": true,
    "tags": [
-    "of_nuke",
-    "heart"
+    "of_nuke"
    ],
    "appearance": [
     {
@@ -478,7 +477,8 @@
    "tags": [
     "gene_worm",
     "villain",
-    "racex"
+    "racex",
+    "rift_lord"
    ],
    "solve": [
     "use left plasma cannon",
@@ -577,14 +577,14 @@
       },
       "do": [
        {
-        "end_game": "\"Corporal Shephard,\" the man in the suit says, with that peculiar rhythm. \"You have... adapted. Survived against all the odds. I can relate. I have recommended your... detainment, in a place where you can do no harm. There's no sense in letting you... speak about what you've seen.\" He smiles thinly as the Osprey's doors slide shut. \"I'm sure you understand.\" Far away, a Black Ops nuke you thought you had disarmed counts down to zero, re-armed by a man with a briefcase.",
+        "end_game": "\"Corporal {var.player_name},\" the man in the suit says, with that peculiar rhythm. \"You have... adapted. Survived against all the odds. I can relate. I have recommended your... detainment, in a place where you can do no harm. There's no sense in letting you... speak about what you've seen.\" He smiles thinly as the Osprey's doors slide shut. \"I'm sure you understand.\" Far away, a Black Ops nuke you thought you had disarmed counts down to zero, re-armed by a man with a briefcase.",
         "win": true
        }
       ]
      },
      {
       "do": [
-       "\"Not yet, {player.name},\" he says. \"There is... unfinished business. Not... yet.\" The Osprey's ramp drops open behind you."
+       "\"Not yet, {var.player_name},\" he says. \"There is... unfinished business. Not... yet.\" The Osprey's ramp drops open behind you."
       ]
      }
     ]

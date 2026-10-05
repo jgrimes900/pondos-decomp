@@ -1,0 +1,34 @@
+{
+  "//": "A place to set out from when you choose to begin in the open country. It is only built when chosen as the starting point.",
+  "areas": {
+    "crossroads": {
+      "name": "the Wayfarers' Crossroads",
+      "start_label": "The Wilds - a traveller at a crossroads, with the whole land ahead",
+      "tags": ["crossroads", "road", "wild", "outdoor", "fantasy"],
+      "theme": ["road", "forest", "hills", "pastoral", "river"],
+      "start_only": true,
+      "include": false,
+      "start": "camp",
+      "entrances": ["crossroads"],
+      "rooms": {
+        "camp": {
+          "name": "Wayfarers' Camp",
+          "tags": ["outdoor", "road"],
+          "description": "A trampled clearing just off the road where travellers have camped for longer than anyone remembers. The ashes of last night's fire are still warm, and your pack lies where you slept.",
+          "brief": "The wayfarers' camp.",
+          "aliases": ["camp", "clearing"],
+          "features": ["campfire_remains", "walking_stick", "stale_bread", "torn_map"],
+          "exits": [{"to": "crossroads", "dir": "north", "distance": 1}]
+        },
+        "crossroads": {
+          "name": "Wayfarers' Crossroads",
+          "tags": ["outdoor", "road"],
+          "description": "Four roads meet at a weathered signpost, each running off toward a horizon you have never seen. Whatever is out there, every road leads to it eventually.",
+          "brief": "The crossroads.",
+          "aliases": ["crossroads", "signpost"],
+          "features": ["signpost", "waystone"]
+        }
+      }
+    }
+  }
+}

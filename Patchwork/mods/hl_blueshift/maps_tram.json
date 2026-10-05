@@ -19,7 +19,7 @@
    "features": [
     "bs_announcer"
    ],
-   "description": "Another morning on the Black Mesa Transit System. You are Barney Calhoun, security, riding in from the dormitories with your coffee going cold. The announcer recites the safety rules you could recite yourself. Out of the window, a crew argues with a broken-down elevator.",
+   "description": "Another morning on the Black Mesa Transit System. You are {var.player_name}, security, riding in from the dormitories with your coffee going cold. The announcer recites the safety rules you could recite yourself. Out of the window, a crew argues with a broken-down elevator.",
    "aliases": [
     "tram"
    ],
@@ -96,7 +96,7 @@
    "features": [
     "platform_guard_bs"
    ],
-   "description": "The tram pulls in at a platform beside the Sector C security station. A colleague leans out of the door: you're late, Calhoun, and they need you on the elevator in Sector G.",
+   "description": "The tram pulls in at a platform beside the Sector C security station. A colleague leans out of the door: you're late, {var.player_name}, and they need you on the elevator in Sector G.",
    "aliases": [
     "platform"
    ],

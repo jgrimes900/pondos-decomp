@@ -71,7 +71,7 @@
     "talk": [
      {
       "do": [
-       "\"Morning, Mr. Freeman. They're waiting for you upstairs in the test lab. Better hurry.\""
+       "\"Morning, {var.player_name}. They're waiting for you upstairs in the test lab. Better hurry.\""
       ]
      }
     ]
@@ -92,12 +92,12 @@
        "flag": "hl_cascade"
       },
       "do": [
-       "\"Freeman? You're alive! Get to the surface, I'll hold the door!\""
+       "\"{var.player_name}? You're alive! Get to the surface, I'll hold the door!\""
       ]
      },
      {
       "do": [
-       "\"Hey, Mr. Freeman. The system's down again, so I'll scan you through. Good luck in there today.\""
+       "\"Hey, {var.player_name}. The system's down again, so I'll scan you through. Good luck in there today.\""
       ]
      }
     ]
@@ -120,7 +120,7 @@
      },
      {
       "do": [
-       "\"Gordon! You're late. The administrator wants the test run before noon. Suit up, quickly.\""
+       "\"{var.player_name}! You're late. The administrator wants the test run before noon. Suit up, quickly.\""
       ]
      }
     ]
@@ -236,13 +236,14 @@
     "container",
     "openable"
    ],
-   "name": "locker marked FREEMAN",
+   "name": "your locker",
+   "proper": true,
    "aliases": [
     "locker",
-    "freeman locker",
-    "my locker"
+    "my locker",
+    "your locker"
    ],
-   "appearance": "Your locker, labelled FREEMAN, stands in the row.",
+   "appearance": "Your locker, labelled with your name, stands in the row.",
    "description": "Your locker. Your name. A dent where you once kicked it.",
    "features": [
     {
@@ -322,12 +323,12 @@
        "flag": "hl_cascade"
       },
       "do": [
-       "\"Gordon! We'll go to the surface and find help. You must make it to the Lambda Complex: they'll know what to do. Hurry!\""
+       "\"{var.player_name}! We'll go to the surface and find help. You must make it to the Lambda Complex: they'll know what to do. Hurry!\""
       ]
      },
      {
       "do": [
-       "\"Ah, Gordon. The sample is in place. Just push it into the beam when we're ready. Nothing to worry about. Probably.\""
+       "\"Ah, {var.player_name}. The sample is in place. Just push it into the beam when we're ready. Nothing to worry about. Probably.\""
       ]
      }
     ]
@@ -359,7 +360,6 @@
    ],
    "important": true,
    "tags": [
-    "heart",
     "cascade_heart"
    ],
    "appearance": [
@@ -861,7 +861,7 @@
     "talk": [
      {
       "do": [
-       "\"You're Freeman? Thank heaven. We need this satellite in orbit for the Lambda team. Arm the launch from here, then get yourself to the Lambda Complex.\""
+       "\"You're {var.player_name}? Thank heaven. We need this satellite in orbit for the Lambda team. Arm the launch from here, then get yourself to the Lambda Complex.\""
       ]
      }
     ]
@@ -993,7 +993,7 @@
     "talk": [
      {
       "do": [
-       "\"Freeman! We've been waiting. The satellite delivered its payload; we can open a portal to the border world. But first we need the reactor coolant running.\""
+       "\"{var.player_name}! We've been waiting. The satellite delivered its payload; we can open a portal to the border world. But first we need the reactor coolant running.\""
       ]
      }
     ]
@@ -1064,8 +1064,7 @@
    ],
    "important": true,
    "tags": [
-    "lambda_heart",
-    "heart"
+    "lambda_heart"
    ],
    "appearance": "The portal churns in the centre of the chamber, showing another world.",
    "description": "Green-white light around a hole in the world. On the other side: Xen."
@@ -1086,7 +1085,7 @@
     "talk": [
      {
       "do": [
-       "\"The portal is stable. We think. Whatever is holding the rift open is on the other side. You have to find it and stop it. Go, Gordon!\""
+       "\"The portal is stable. We think. Whatever is holding the rift open is on the other side. You have to find it and stop it. Go, {var.player_name}!\""
       ]
      }
     ]
@@ -1220,7 +1219,8 @@
    "important": true,
    "tags": [
     "nihilanth",
-    "villain"
+    "villain",
+    "rift_lord"
    ],
    "solve": [
     "attack healing crystal",
@@ -1250,7 +1250,7 @@
      "xen"
     ],
     "greet": [
-     "The Nihilanth's voice rolls through your mind: \"...Freeman... you come... you will not leave...\""
+     "The Nihilanth's voice rolls through your mind: \"...{var.player_name}... you come... you will not leave...\""
     ],
     "confront": [
      "\"...you are man... and I am the last...\" The words fall apart in your head."
@@ -1345,7 +1345,7 @@
       "do": [
        {
         "choice": {
-         "prompt": "\"Mister Freeman,\" the man in the suit says, with that odd rhythm. \"You have done... rather well. My employers have authorised me to offer you a job. I'd advise you... to accept. The alternative is... a battle you have no chance of winning.\"",
+         "prompt": "\"{var.player_name},\" the man in the suit says, with that odd rhythm. \"You have done... rather well. My employers have authorised me to offer you a job. I'd advise you... to accept. The alternative is... a battle you have no chance of winning.\"",
          "options": [
           {
            "text": "Accept the offer.",
@@ -1373,7 +1373,7 @@
      },
      {
       "do": [
-       "He adjusts his tie and regards you with polite interest. \"Not yet, {player.name}. You have... unfinished business. Not... yet.\" Behind you, a way back opens."
+       "He adjusts his tie and regards you with polite interest. \"Not yet, {var.player_name}. You have... unfinished business. Not... yet.\" Behind you, a way back opens."
       ]
      }
     ]

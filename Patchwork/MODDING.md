@@ -356,7 +356,8 @@ any word of that name works for it, even before the destination has been visited
 | `include: false` | Never add it as side content. |
 | `allow_scatter` | Let scatter/encounter features appear in its rooms. |
 | `stage` | Upper bound for how deep into the story a side area may be attached. |
-| `start_label` | Offers this area as a starting point. New games ask "Where do you begin?" and list every area with a label (Enter lets the story decide); `--start <area>` picks one and `--list-starts` lists them. |
+| `start_label` | Offers this area as a starting point. New games ask "Where do you begin?" and list every area with a label (Enter lets the story decide); `--start <area>` picks one and `--list-starts` lists them. An area needs the `start` tag to be picked by the story on its own; a label alone makes it a start only when chosen. |
+| `start_only` | Build this area only when the player chooses to begin here (a crossroads to set out from). |
 | `player` | Who you are when you start here: `name`, `player_name` (skips the name prompt), `aliases`, `description`, `props`, `tags`. |
 | `kit` | Feature specs given to the player when starting here. |
 
@@ -396,6 +397,17 @@ Regions generate the novel country that joins areas together.
   rarely repeat.
 * `features` are added to every room made from the region.
 * `directions` limits exit directions (a space station uses fore/aft/port/starboard).
+
+**Settings and seams.** The tags `fantasy` and `scifi` (the core setting `setting_tags` lists
+them) mark a place's setting. Generated country between two places keeps to their shared setting,
+so a village road never runs straight into a station corridor. Where two settings must meet, the
+generator walks each side's own country up to a **seam**: a region tagged `seam` (Half-Life's
+portal storms, the Almanac's Strange Mile). Seam regions are only used between settings. Without
+any seam the two sides still meet, each in its own country.
+
+Scattered features and encounters also keep to their setting: a feature's `setting` field, or else
+the setting tag in its mod's `mod.json` tags. Story items placed out in generated country prefer
+country of their own setting too.
 
 Only regions are needed for a playable world. With no areas at all, the generator builds a
 sandbox wilderness.
@@ -500,7 +512,7 @@ characters, so it plays out differently with every cast.
 
 | Field | Meaning |
 | --- | --- |
-| `roles` | `type` is `character`, `item`, `place` or `feature`. `match` keys: `tags` (all), `any_tags`, `tag`, `affords`, `motive`, `personality`, `role`, `def`, `id`. `in` limits a feature to another role's place. `spawn` is the fallback if nothing in any mod matches. `optional` roles may stay empty. `relocate` moves an authored character away from home (a missing person). |
+| `roles` | `type` is `character`, `item`, `place` or `feature`. `match` keys: `tags` (all), `any_tags`, `none_tags` (places), `tag`, `affords`, `motive`, `personality`, `role`, `def`, `id`. `in` limits a feature to another role's place. `spawn` is the fallback if nothing in any mod matches. `optional` roles may stay empty. `relocate` moves an authored character away from home (a missing person). |
 | `resolutions` | Ways to end it. `verb` (`use`, `put`, `give`, `light`, `talk`, `attack`...), `target` role, optional `means` role, `title`, `text`, `effects`, `requires_mods`. One is the planned finale; all valid ones work. `attack` needs the target to be a creature (Steel & Peril). |
 | `hook`, `goal` | The opening text and the overall objective shown in the journal. |
 | `title` | Story title (a list picks one). |
@@ -508,6 +520,7 @@ characters, so it plays out differently with every cast.
 | `lore` | Story-specific lore entries (section 9.5). |
 | `ending` | Shown when the story completes, followed by epilogues of characters who helped. |
 | `tags`, `weight`, `requires_mods` | Selection. Events whose tags match the loaded areas are preferred. |
+| `exclude_start_tags` | Never use this event when starting in an area with any of these tags, and never pick such an area as its start (its opening wouldn't make sense there). |
 | `start_areas` | The event belongs to these starting areas: it is only chosen when the game starts in one of them (and is strongly preferred there), and a story-decided start picks one of them. This is how one mod set offers several protagonists, each with their own stories. |
 
 In text, role names are placeholders: `{villain}` renders "WARDEN" or "the barrow wight" (with the

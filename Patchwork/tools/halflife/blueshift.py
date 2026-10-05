@@ -34,11 +34,11 @@ SURF = ["surface", "outdoor", "desert"]
 # Living Quarters Outbound  (ba_tram1 ... ba_tram3)
 # ===========================================================================
 B.set_chapter("Living Quarters Outbound")
-B.room("ba_tram1", "Tram: Living Quarters Outbound", "Another morning on the Black Mesa Transit System. You are Barney Calhoun, security, riding in from the dormitories with your coffee going cold. The announcer recites the safety rules you could recite yourself. Out of the window, a crew argues with a broken-down elevator.",
+B.room("ba_tram1", "Tram: Living Quarters Outbound", "Another morning on the Black Mesa Transit System. You are {var.player_name}, security, riding in from the dormitories with your coffee going cold. The announcer recites the safety rules you could recite yourself. Out of the window, a crew argues with a broken-down elevator.",
        map="ba_tram1", tags=["blackmesa", "transit", "indoor", "tram"], feats=["bs_announcer"], aliases=["tram"])
 B.room("ba_tram2", "Tram Ride: Sector Sweep", "The tram swings past sectors you know by heart. On a parallel line another tram goes by with a bespectacled man in it, reading a magazine, late for something. Further on, a scientist on a gantry seems to be pointing at a man in a blue suit. Then the tram jolts to a halt in a tunnel, and starts again.",
        map="ba_tram2", tags=["blackmesa", "transit", "indoor"], feats=["freeman_tram", "gman_glimpse_bs"])
-B.room("ba_tram3", "Security Station Platform", "The tram pulls in at a platform beside the Sector C security station. A colleague leans out of the door: you're late, Calhoun, and they need you on the elevator in Sector G.",
+B.room("ba_tram3", "Security Station Platform", "The tram pulls in at a platform beside the Sector C security station. A colleague leans out of the door: you're late, {var.player_name}, and they need you on the elevator in Sector G.",
        map="ba_tram3", tags=["blackmesa", "transit", "indoor"], feats=["platform_guard_bs"], aliases=["platform"])
 B.chain(["ba_tram1", "ba_tram2", "ba_tram3"], "east", 3)
 
@@ -49,7 +49,7 @@ B.set_chapter("Insecurity")
 B.room("ba_security1_lobby", "Security Station", "The security station: a counter, a coffee machine on its last legs and a wall of mailboxes. Another guard is arguing with the retinal scanner. It's a perfectly normal morning.",
        map="ba_security1", tags=["blackmesa", "office", "indoor"], feats=["security_desk_bs", "vending_machine", "bm_memo"],
        expand=locked(["office", "blackmesa"], chance=0.6))
-B.room("ba_security1_lockers", "Security Locker Room", "The guards' locker room, smelling of gun oil and somebody's gym bag. Your locker has CALHOUN stencilled on it.",
+B.room("ba_security1_lockers", "Security Locker Room", "The guards' locker room, smelling of gun oil and somebody's gym bag. Your locker has your name stencilled on it.",
        map="ba_security1", tags=["blackmesa", "office", "indoor"], feats=["calhoun_locker", "health_charger"], aliases=["locker room"])
 B.room("ba_security1_armory", "Security Armoury", "A caged armoury counter. The duty officer slides a 9mm pistol across to you and makes you sign for it, in triplicate.",
        map="ba_security1", tags=["blackmesa", "office", "indoor"], feats=["armory_officer", "glock", "ammo_box"], aliases=["armoury", "armory"])
@@ -174,11 +174,11 @@ F.update({
     "gman_glimpse_bs": {"extends": ["scenery"], "name": "man in a blue suit", "aliases": ["man in a blue suit", "suit", "g-man", "gman"], "appearance": False,
         "description": "A thin man in a blue suit on a gantry. When the tram comes round again, he's gone."},
     "platform_guard_bs": {"extends": ["security_guard"], "appearance": "{self.Name} leans out of the security station door.",
-        "actions": {"talk": [{"do": ["\"Calhoun! There you are. Some egghead's stuck in the Sector G elevator. Grab your gear and go fix it.\""]}]}},
+        "actions": {"talk": [{"do": ["\"{var.player_name}! There you are. Some egghead's stuck in the Sector G elevator. Grab your gear and go fix it.\""]}]}},
     "security_desk_bs": {"extends": ["scenery", "surface"], "name": "security counter", "aliases": ["counter", "desk"], "appearance": False,
         "description": "A counter covered with sign-in sheets and a coffee mug that says WORLD'S OKAYEST GUARD."},
-    "calhoun_locker": {"extends": ["scenery", "container", "openable"], "name": "locker marked CALHOUN", "aliases": ["locker", "calhoun locker", "my locker"],
-        "appearance": "Your locker, stencilled CALHOUN, stands in the row.",
+    "calhoun_locker": {"extends": ["scenery", "container", "openable"], "name": "your locker", "proper": True, "aliases": ["locker", "my locker", "your locker"],
+        "appearance": "Your locker, stencilled with your name, stands in the row.",
         "description": "Your locker. Inside, if you remember right, your vest and helmet.",
         "features": ["security_vest", "security_helmet"]},
     "armory_officer": {"extends": ["security_guard"], "appearance": "{self.Name} sits behind the armoury cage, clipboard in hand.",
@@ -206,7 +206,7 @@ F.update({
         "actions": {"talk": [{"do": ["\"You're not with those soldiers? Good. Then you'll help me get to my team, and I'll get us all out of here.\""]}]}},
     "rosenberg_team": {"extends": ["scientist"], "name": "Rosenberg's team", "proper": True, "aliases": ["team", "scientists", "harris", "walter", "simmons"],
         "appearance": "Rosenberg's surviving team huddle around their consoles.",
-        "actions": {"talk": [{"do": ["\"The relay, Mr. Calhoun. Step on the test pad, set the beacon on the other side, and come back. It's perfectly safe. Statistically.\""]}]}},
+        "actions": {"talk": [{"do": ["\"The relay, {var.player_name}. Step on the test pad, set the beacon on the other side, and come back. It's perfectly safe. Statistically.\""]}]}},
     "bs_test_pad": {"extends": ["scenery"], "name": "test teleporter pad", "aliases": ["test pad", "pad"], "appearance": "A small test teleporter pad hums in the corner.",
         "description": "The test pad. It sends one person to Xen, and, the scientists promise, back."},
     "xen_relay": {"extends": ["scenery"], "name": "relay crystal", "aliases": ["relay", "crystal", "beacon", "relay crystal"],
@@ -222,7 +222,7 @@ F.update({
         "important": True, "tags": ["bs_tele_battery"], "affords": ["power"],
         "description": "A huge rechargeable cell on a carry-frame, its gauge full. The one thing the prototype teleporter is missing."},
     "prototype_teleporter": {"extends": ["scenery"], "name": "prototype teleporter", "aliases": ["teleporter", "prototype", "cradle", "battery cradle", "emitters"],
-        "important": True, "tags": ["bs_teleporter", "heart"],
+        "important": True, "tags": ["bs_teleporter"],
         "appearance": "The prototype teleporter's ring of emitters surrounds the platform; its battery cradle is empty.",
         "description": "Rosenberg's machine. Fit the battery, set the relay, and it can throw all of you out of Black Mesa. Probably in one piece."},
     "holo_guard": {"extends": ["scenery"], "name": "holographic instructor", "aliases": ["hologram", "instructor", "guard"],
@@ -251,24 +251,24 @@ RULES = {
 }
 
 B.section("lore").update({
-    "bs_calhoun": {"title": "Barney Calhoun", "about": ["area:bs_blackmesa"], "tags": ["security", "blackmesa"],
-        "text": "Barney Calhoun, Black Mesa security, officer grade. Responsible for checking badges, fixing elevators and getting scientists out of trouble. Today, the job description is about to expand."},
+    "bs_calhoun": {"title": "Security personnel file", "about": ["area:bs_blackmesa"], "tags": ["security", "blackmesa"],
+        "text": "{var.player_name}, Black Mesa security, officer grade. Responsible for checking badges, fixing elevators and getting scientists out of trouble. Today, the job description is about to expand."},
     "bs_teleport": {"title": "Teleport research", "about": ["area:bs_blackmesa"], "tags": ["science", "teleport", "xen"],
         "text": "Before the Lambda team took over, Dr. Rosenberg's group built Black Mesa's first teleporter. It needed a relay on the far side to lock on to, and it needed more power than anyone wanted to give it. It was mothballed. It was never dismantled."},
     "bs_late": {"title": "Late again", "about": ["area:bs_blackmesa"], "tags": ["security", "rumour"], "chance": 0.7,
-        "text": "Security logs show Officer Calhoun arriving late on the morning of the incident, on the same tram line as a research associate who was also late. Neither knew the other's name."},
+        "text": "Security logs show Officer {var.player_name} arriving late on the morning of the incident, on the same tram line as a research associate who was also late. Neither knew the other's name."},
 })
 
 EVENTS = {
     "bs_leap_of_faith": {
         "title": ["Blue Shift", "A Leap of Faith"],
-        "tags": ["blackmesa", "blue-shift", "escape"], "start_areas": ["bs_blackmesa"],
+        "tags": ["blackmesa", "blue-shift", "escape"], "start_areas": ["bs_blackmesa", "bs_training"],
         "roles": {
             "scientist": {"type": "character", "match": {"tag": ["rosenberg"]}},
             "device": {"type": "feature", "match": {"tag": ["bs_teleporter"]}},
             "power": {"type": "item", "match": {"tag": ["bs_tele_battery"]}},
             "facility": {"type": "place", "match": {"id": ["bs_blackmesa"]}}},
-        "hook": "You are Barney Calhoun, Black Mesa security, running late for an ordinary shift. Then an experiment in Anomalous Materials tears the facility open, and the Marines who arrive to help start shooting everyone. Somewhere in the wreckage is {scientist}, whose old team built a machine that might just get you out: {device}.",
+        "hook": "You are {var.player_name}, Black Mesa security, running late for an ordinary shift. Then an experiment in Anomalous Materials tears the facility open, and the Marines who arrive to help start shooting everyone. Somewhere in the wreckage is {scientist}, whose old team built a machine that might just get you out: {device}.",
         "goal": "Find {scientist}, cross {facility}, and power {device} with {power} to escape.",
         "resolutions": [{"verb": "put", "target": "device", "means": "power", "title": "Take the leap",
                          "text": "{means.The} locks into {target}'s cradle. The emitters spin up to a scream, the relay locks on, and Rosenberg yells for everyone to get on the platform. You jump. The world turns blue.",
@@ -279,15 +279,14 @@ EVENTS = {
 AREAS = {
     "bs_blackmesa": {
         "name": "the Black Mesa security sectors",
-        "start_label": "Blue Shift - Barney Calhoun, security guard, late for his shift",
-        "tags": ["blackmesa", "start", "blue-shift", "scifi", "security"], "theme": ["blackmesa", "office", "maintenance", "transit"],
+        "start_label": "Blue Shift - a Black Mesa security guard, late for the shift",
+        "tags": ["blackmesa", "start", "blue-shift", "scifi", "security", "bm_main", "facility"], "theme": ["blackmesa", "office", "maintenance", "transit"],
         "important": True, "start": "bs/ba_tram1",
         "rooms": ["bs/*"],
-        "entrances": ["bs/ba_canal2_canals", "bs/ba_yard2_trains", "bs/ba_power2_cliffs"],
-        "player": {"name": "Barney Calhoun", "player_name": "Barney Calhoun", "aliases": ["barney", "calhoun"],
-                   "description": "Barney Calhoun, Black Mesa security: blue shirt, ID badge, and a strong sense that he is underpaid."}},
+        "entrances": ["bs/ba_canal2_canals", "bs/ba_yard2_trains", "bs/ba_power2_cliffs"]},
     "bs_training": {
-        "name": "the security training course", "tags": ["blackmesa", "training", "indoor"], "theme": ["blackmesa", "office"],
+        "name": "the security training course", "tags": ["blackmesa", "training", "indoor", "scifi", "facility"],
+        "start_label": "Blue Shift: Security Training - a new guard on the training course", "theme": ["blackmesa", "office"],
         "rooms": ["bsh/*"], "entrances": ["bsh/ba_hazard1"]},
 }
 
@@ -305,7 +304,7 @@ def build():
     assert not problems, problems
     manifest = {
         "id": "hl_blueshift", "name": "Half-Life: Blue Shift", "version": "1.0.0", "author": "Patchwork",
-        "description": "Gearbox's Blue Shift campaign map by map (ba_tram1 to ba_outro, plus the security training course): the outbound tram, the security station, the falling elevator, the canals, the freight yard and Dr. Rosenberg, the trip to Xen to set the relay, the battery depot and the prototype teleporter. Locked doors and outdoor areas grow generated sections. Spawn as Barney Calhoun.",
+        "description": "Gearbox's Blue Shift campaign map by map (ba_tram1 to ba_outro, plus the security training course): the outbound tram, the security station, the falling elevator, the canals, the freight yard and Dr. Rosenberg, the trip to Xen to set the relay, the battery depot and the prototype teleporter. Locked doors and outdoor areas grow generated sections. Start as a security guard on the outbound tram.",
         "requires": ["core", "combat", "hl_core"], "load_after": ["hl_core"], "recommends": ["hl_halflife", "hl_opfor"],
         "priority": 66, "tags": ["half-life", "blackmesa", "scifi", "campaign", "blue-shift"]}
     by_chapter = {}

@@ -262,7 +262,7 @@ F.update({
         "props": {"text": "PACKAGE -> GARAGE LEVEL 4. ARM AT T-15. ALL TEAMS EXFIL BY T-5. NO HECU SURVIVORS."},
         "description": "Times, arrows, and a sketch of the facility with an X on it."},
     "nuke": {"extends": ["scenery"], "name": "nuclear device", "aliases": ["nuke", "bomb", "device", "package", "warhead"],
-        "important": True, "tags": ["of_nuke", "heart"],
+        "important": True, "tags": ["of_nuke"],
         "appearance": [{"if": {"flag": "of_nuke_disarmed"}, "text": "The nuclear device sits on its cart, its display dark."},
                        {"text": "The nuclear device squats on its cart, its countdown display glowing red."}],
         "description": "A tactical nuclear device on a wheeled cart: a fat steel cylinder, a keypad, a display counting down, and a stencil that says, unhelpfully, PROPERTY OF U.S. GOVERNMENT.",
@@ -296,7 +296,7 @@ F.update({
                        {"text": "A plasma cannon is mounted on the right-hand walkway."}],
         "description": "A twin of the other cannon.",
         "actions": {"use": [{"macro": "of_cannon", "with": {"which": 2}}], "push": [{"macro": "of_cannon", "with": {"which": 2}}]}},
-    "gene_worm_of": {"extends": ["gene_worm"], "important": True, "tags": ["gene_worm", "villain", "racex"],
+    "gene_worm_of": {"extends": ["gene_worm"], "important": True, "tags": ["gene_worm", "villain", "racex", "rift_lord"],
         "solve": ["use left plasma cannon", "use right plasma cannon"],
         "profile": {"personality": ["cold"], "motives": ["dominion", "hunger", "survive"],
             "motive_text": "remake this world into one where Race X can live",
@@ -309,8 +309,8 @@ F.update({
                      {"say": "The portal implodes around the Gene Worm's corpse, and a flash of green light swallows the coolant bay. When it clears, you are somewhere else...", "style": "story"},
                      {"teleport": "room:of/of6a5_osprey"}]},
     "gman_of": {"extends": ["gman"], "profile": dict(core.F["gman"]["profile"], menu=False),
-        "actions": {"talk": [{"if": {"all": [{"flag": "of_geneworm_dead"}, {"flag": "story_resolved"}]}, "do": [{"end_game": "\"Corporal Shephard,\" the man in the suit says, with that peculiar rhythm. \"You have... adapted. Survived against all the odds. I can relate. I have recommended your... detainment, in a place where you can do no harm. There's no sense in letting you... speak about what you've seen.\" He smiles thinly as the Osprey's doors slide shut. \"I'm sure you understand.\" Far away, a Black Ops nuke you thought you had disarmed counts down to zero, re-armed by a man with a briefcase.", "win": True}]},
-            {"do": ["\"Not yet, {player.name},\" he says. \"There is... unfinished business. Not... yet.\" The Osprey's ramp drops open behind you."]}]}},
+        "actions": {"talk": [{"if": {"all": [{"flag": "of_geneworm_dead"}, {"flag": "story_resolved"}]}, "do": [{"end_game": "\"Corporal {var.player_name},\" the man in the suit says, with that peculiar rhythm. \"You have... adapted. Survived against all the odds. I can relate. I have recommended your... detainment, in a place where you can do no harm. There's no sense in letting you... speak about what you've seen.\" He smiles thinly as the Osprey's doors slide shut. \"I'm sure you understand.\" Far away, a Black Ops nuke you thought you had disarmed counts down to zero, re-armed by a man with a briefcase.", "win": True}]},
+            {"do": ["\"Not yet, {var.player_name},\" he says. \"There is... unfinished business. Not... yet.\" The Osprey's ramp drops open behind you."]}]}},
     "drill_instructor": {"extends": ["person"], "name": "the drill instructor", "proper": True, "aliases": ["drill instructor", "instructor", "sergeant", "di"],
         "appearance": "The drill instructor stands in front of you, face red, campaign hat level.",
         "description": "Every inch a drill sergeant, and he has a lot of inches.",
@@ -346,13 +346,13 @@ RULES = {}
 
 B.section("lore").update({
     "of_mission": {"title": "Mission orders", "about": ["area:of_blackmesa"], "tags": ["hecu", "military"],
-        "text": "Corporal Adrian Shephard's unit was sent into Black Mesa with simple orders: contain the incident, eliminate the alien threat and silence anyone who knows too much, starting with a physicist named Gordon Freeman."},
+        "text": "Corporal {var.player_name}'s unit was sent into Black Mesa with simple orders: contain the incident, eliminate the alien threat and silence anyone who knows too much, starting with a physicist named Gordon Freeman."},
     "of_racex": {"title": "Race X", "about": ["area:of_blackmesa"], "tags": ["racex", "xen", "science"],
         "text": "The second wave of invaders aren't from Xen at all. Shock troopers, pit drones, voltigores: a species from somewhere else entirely, following the rift in. The scientists call them Race X, for lack of anything better."},
     "of_black_ops": {"title": "The Black Ops", "about": ["area:of_blackmesa"], "tags": ["military", "black_ops", "hecu"],
         "text": "When the Marines started losing, someone sent in the Black Ops: silent, black-clad, answering to nobody you know. Their orders cover the Marines too. And they brought a package."},
     "of_shephard": {"title": "Missing in action", "about": ["area:of_blackmesa"], "tags": ["hecu", "rumour"], "chance": 0.7,
-        "text": "Corporal Adrian Shephard: listed missing in action after his Osprey went down over Black Mesa. The listing never gets updated."},
+        "text": "Corporal {var.player_name}: listed missing in action after his Osprey went down over Black Mesa. The listing never gets updated."},
     "of_gene_worm": {"title": "The Gene Worm", "about": ["def:gene_worm_of"], "tags": ["racex"],
         "text": "Race X doesn't conquer a world. It changes it. The Gene Worm is how: a living factory that reshapes the land around it into something Race X can live in."},
 })
@@ -360,22 +360,22 @@ B.section("lore").update({
 EVENTS = {
     "of_worlds_collide": {
         "title": ["Opposing Force", "Worlds Collide", "Race X"],
-        "tags": ["blackmesa", "opposing-force", "racex"], "start_areas": ["of_blackmesa"],
+        "tags": ["blackmesa", "opposing-force", "racex"], "start_areas": ["of_blackmesa", "of_bootcamp"],
         "roles": {
             "villain": {"type": "character", "match": {"tag": ["gene_worm"]}},
             "facility": {"type": "place", "match": {"id": ["of_blackmesa"]}}},
-        "hook": "You are Corporal Adrian Shephard of the Hazardous Environment Combat Unit, dropped into the Black Mesa Research Facility to clean up a mess and silence a physicist. Your Osprey never lands. By the time you wake, your unit has pulled out without you, and something new is coming through the portals: something called {villain}.",
+        "hook": "You are Corporal {var.player_name} of the Hazardous Environment Combat Unit, dropped into the Black Mesa Research Facility to clean up a mess and silence a physicist. Your Osprey never lands. By the time you wake, your unit has pulled out without you, and something new is coming through the portals: something called {villain}.",
         "goal": "Survive {facility} without your unit, and stop {villain} before it remakes the world.",
         "resolutions": [{"verb": "attack", "target": "villain", "title": "Kill the Gene Worm",
                          "text": "{target.The} comes apart in the portal's collapse. Race X's way into the world closes behind it."}],
         "ending": "The Gene Worm is dead and the portal is shut. But you are still in Black Mesa, and somebody very patient has been watching you."},
     "of_the_package": {
-        "title": ["The Package", "Foxtrot Uniform"], "tags": ["blackmesa", "opposing-force", "military"], "start_areas": ["of_blackmesa"],
+        "title": ["The Package", "Foxtrot Uniform"], "tags": ["blackmesa", "opposing-force", "military"], "start_areas": ["of_blackmesa", "of_bootcamp"],
         "weight": 0.6,
         "roles": {
             "device": {"type": "feature", "match": {"tag": ["of_nuke"]}},
             "facility": {"type": "place", "match": {"id": ["of_blackmesa"]}}},
-        "hook": "You are Corporal Adrian Shephard, HECU, left behind at Black Mesa when your unit pulled out. The Marines are losing, the aliens are winning, and the Black Ops have brought in something to end the argument: {device}.",
+        "hook": "You are Corporal {var.player_name}, HECU, left behind at Black Mesa when your unit pulled out. The Marines are losing, the aliens are winning, and the Black Ops have brought in something to end the argument: {device}.",
         "goal": "Cross {facility}, find {device} and stop it before it goes off.",
         "resolutions": [{"verb": "use", "target": "device", "title": "Disarm the package",
                          "text": "You pull the arming key from {target}. The countdown dies. Somewhere very close, someone in a blue suit sighs, and makes a note."}],
@@ -385,16 +385,15 @@ EVENTS = {
 AREAS = {
     "of_blackmesa": {
         "name": "the Black Mesa complex",
-        "start_label": "Opposing Force - Corporal Adrian Shephard, HECU, dropping in by Osprey",
-        "tags": ["blackmesa", "start", "opposing-force", "military", "scifi", "racex"], "theme": ["blackmesa", "military", "surface", "maintenance"],
+        "start_label": "Opposing Force - a HECU corporal, dropping into Black Mesa by Osprey",
+        "tags": ["blackmesa", "start", "opposing-force", "military", "scifi", "racex", "bm_main", "facility"], "theme": ["blackmesa", "military", "surface", "maintenance"],
         "important": True, "start": "of/of0a0_osprey",
         "rooms": ["of/*"],
         "entrances": ["of/of1a2_trench", "of/of2a4_storm", "of/of4a4_canyon", "of/of1a6_dock"],
-        "player": {"name": "Adrian Shephard", "player_name": "Corporal Adrian Shephard", "aliases": ["adrian", "shephard", "corporal"],
-                   "description": "Corporal Adrian Shephard, HECU: gas mask, fatigues, a Powered Combat Vest, and orders that stopped making sense an hour ago."},
         "kit": ["pcv"]},
     "of_bootcamp": {
-        "name": "Santego Military Base", "tags": ["military", "training", "outdoor"], "theme": ["military", "surface"],
+        "name": "Santego Military Base", "tags": ["military", "training", "outdoor", "scifi", "hecu", "facility"],
+        "start_label": "Opposing Force: Boot Camp - a HECU recruit at Santego Military Base", "theme": ["military", "surface"],
         "rooms": ["ofb/*"], "entrances": ["ofb/ofboot0_barracks"]},
 }
 
@@ -406,7 +405,7 @@ def build():
     assert not problems, problems
     manifest = {
         "id": "hl_opfor", "name": "Half-Life: Opposing Force", "version": "1.0.0", "author": "Patchwork",
-        "description": "Gearbox's Opposing Force campaign map by map (of0a0 to of6a5, plus the Boot Camp): the Osprey crash, the Marines pulling out, Otis, the Black Ops, Race X, the barnacle grapple, the displacer cannon, the Pit Worm, Foxtrot Uniform, the Black Ops' package, the Gene Worm and the G-Man's Osprey. Locked and welded doors and outdoor areas grow generated sections. Spawn as Corporal Adrian Shephard.",
+        "description": "Gearbox's Opposing Force campaign map by map (of0a0 to of6a5, plus the Boot Camp): the Osprey crash, the Marines pulling out, Otis, the Black Ops, Race X, the barnacle grapple, the displacer cannon, the Pit Worm, Foxtrot Uniform, the Black Ops' package, the Gene Worm and the G-Man's Osprey. Locked and welded doors and outdoor areas grow generated sections. Start as a HECU corporal on the Osprey.",
         "requires": ["core", "combat", "hl_core"], "load_after": ["hl_core"], "recommends": ["hl_halflife", "hl_blueshift"],
         "priority": 65, "tags": ["half-life", "blackmesa", "scifi", "campaign", "opposing-force"]}
     by_chapter = {}

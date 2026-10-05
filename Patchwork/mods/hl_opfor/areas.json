@@ -2,14 +2,16 @@
  "areas": {
   "of_blackmesa": {
    "name": "the Black Mesa complex",
-   "start_label": "Opposing Force - Corporal Adrian Shephard, HECU, dropping in by Osprey",
+   "start_label": "Opposing Force - a HECU corporal, dropping into Black Mesa by Osprey",
    "tags": [
     "blackmesa",
     "start",
     "opposing-force",
     "military",
     "scifi",
-    "racex"
+    "racex",
+    "bm_main",
+    "facility"
    ],
    "theme": [
     "blackmesa",
@@ -28,16 +30,6 @@
     "of/of4a4_canyon",
     "of/of1a6_dock"
    ],
-   "player": {
-    "name": "Adrian Shephard",
-    "player_name": "Corporal Adrian Shephard",
-    "aliases": [
-     "adrian",
-     "shephard",
-     "corporal"
-    ],
-    "description": "Corporal Adrian Shephard, HECU: gas mask, fatigues, a Powered Combat Vest, and orders that stopped making sense an hour ago."
-   },
    "kit": [
     "pcv"
    ]
@@ -47,8 +39,12 @@
    "tags": [
     "military",
     "training",
-    "outdoor"
+    "outdoor",
+    "scifi",
+    "hecu",
+    "facility"
    ],
+   "start_label": "Opposing Force: Boot Camp - a HECU recruit at Santego Military Base",
    "theme": [
     "military",
     "surface"
@@ -74,7 +70,8 @@
     "racex"
    ],
    "start_areas": [
-    "of_blackmesa"
+    "of_blackmesa",
+    "of_bootcamp"
    ],
    "roles": {
     "villain": {
@@ -94,7 +91,7 @@
      }
     }
    },
-   "hook": "You are Corporal Adrian Shephard of the Hazardous Environment Combat Unit, dropped into the Black Mesa Research Facility to clean up a mess and silence a physicist. Your Osprey never lands. By the time you wake, your unit has pulled out without you, and something new is coming through the portals: something called {villain}.",
+   "hook": "You are Corporal {var.player_name} of the Hazardous Environment Combat Unit, dropped into the Black Mesa Research Facility to clean up a mess and silence a physicist. Your Osprey never lands. By the time you wake, your unit has pulled out without you, and something new is coming through the portals: something called {villain}.",
    "goal": "Survive {facility} without your unit, and stop {villain} before it remakes the world.",
    "resolutions": [
     {
@@ -117,7 +114,8 @@
     "military"
    ],
    "start_areas": [
-    "of_blackmesa"
+    "of_blackmesa",
+    "of_bootcamp"
    ],
    "weight": 0.6,
    "roles": {
@@ -138,7 +136,7 @@
      }
     }
    },
-   "hook": "You are Corporal Adrian Shephard, HECU, left behind at Black Mesa when your unit pulled out. The Marines are losing, the aliens are winning, and the Black Ops have brought in something to end the argument: {device}.",
+   "hook": "You are Corporal {var.player_name}, HECU, left behind at Black Mesa when your unit pulled out. The Marines are losing, the aliens are winning, and the Black Ops have brought in something to end the argument: {device}.",
    "goal": "Cross {facility}, find {device} and stop it before it goes off.",
    "resolutions": [
     {
@@ -161,7 +159,7 @@
     "hecu",
     "military"
    ],
-   "text": "Corporal Adrian Shephard's unit was sent into Black Mesa with simple orders: contain the incident, eliminate the alien threat and silence anyone who knows too much, starting with a physicist named Gordon Freeman."
+   "text": "Corporal {var.player_name}'s unit was sent into Black Mesa with simple orders: contain the incident, eliminate the alien threat and silence anyone who knows too much, starting with a physicist named Gordon Freeman."
   },
   "of_racex": {
    "title": "Race X",
@@ -197,7 +195,7 @@
     "rumour"
    ],
    "chance": 0.7,
-   "text": "Corporal Adrian Shephard: listed missing in action after his Osprey went down over Black Mesa. The listing never gets updated."
+   "text": "Corporal {var.player_name}: listed missing in action after his Osprey went down over Black Mesa. The listing never gets updated."
   },
   "of_gene_worm": {
    "title": "The Gene Worm",

@@ -49,7 +49,7 @@ B.room("c0a0c_hazmat", "Tram Ride: Radioactive Materials Handling", "The tram cr
 B.room("c0a0d_descent", "Tram Ride: Descent", "The rail dips down a long shaft into the deep complex, past giant pipes and a hydroelectric turbine hall. The announcer recites the radiation-safety rules and the dangers of unauthorised experiments.",
        after="Steam billows through the shaft from ruptured pipes. The turbines have stopped.",
        map="c0a0d", tags=["transit", "indoor"])
-B.room("c0a0e_platform", "Sector C Arrival Platform", "The tram comes to rest at a platform marked SECTOR C: TEST LABS AND CONTROL FACILITIES. A security guard taps on the window and opens the door for you, grinning: morning, Mr. Freeman, running a little late?",
+B.room("c0a0e_platform", "Sector C Arrival Platform", "The tram comes to rest at a platform marked SECTOR C: TEST LABS AND CONTROL FACILITIES. A security guard taps on the window and opens the door for you, grinning: morning, {var.player_name}, running a little late?",
        after="The Sector C platform is dark and littered with ceiling tiles. The security booth's glass has been smashed in.",
        map="c0a0e", tags=["transit", "indoor", "blackmesa"], feats=["platform_guard"], aliases=["platform", "sector c platform"])
 B.chain(["c0a0_tram", "c0a0a_loading", "c0a0b_sectors", "c0a0c_hazmat", "c0a0d_descent", "c0a0e_platform"], "east", 3)
@@ -68,7 +68,7 @@ B.room("c1a0_offices", "Sector C Office Corridor", "A corridor of offices and la
 B.room("c1a0_breakroom", "Sector C Break Room", "The staff kitchen. A scientist is heating a casserole in the microwave; the dial says it will be a while. There's a coffee machine, a soda machine and a fridge with someone's name on everything.",
        after="The break room is a ruin. The microwave has exploded, painting the wall with casserole.",
        map="c1a0", tags=["blackmesa", "office", "indoor"], feats=["microwave", "vending_machine"])
-B.room("c1a0_locker", "Sector C Locker Room", "Rows of grey lockers and benches. Yours has your name on it: FREEMAN. Through the far door, a glass-fronted storage room holds HEV suits on their charging racks.",
+B.room("c1a0_locker", "Sector C Locker Room", "Rows of grey lockers and benches. Yours has your name on it. Through the far door, a glass-fronted storage room holds HEV suits on their charging racks.",
        after="Locker doors hang open. The suit storage room's glass is cracked, and an alarm drones overhead.",
        map="c1a0", tags=["blackmesa", "indoor"], feats=["freeman_locker", "hev_rack", "suit_charger", "health_charger"],
        aliases=["locker room", "lockers"])
@@ -157,7 +157,7 @@ B.link("c1a2c_flood", "c1a2d_storage", "east")
 # We've Got Hostiles  (c1a3, c1a3a, c1a3b, c1a3c, c1a3d)
 # ===========================================================================
 B.set_chapter("We've Got Hostiles")
-B.room("c1a3_execution", "Office Corridor: The Marines Arrive", "Through an office window you see soldiers in gas masks drag a scientist out and shoot him. The radio chatter is clear: no witnesses, and Freeman is priority. Help has arrived, and it isn't for you.",
+B.room("c1a3_execution", "Office Corridor: The Marines Arrive", "Through an office window you see soldiers in gas masks drag a scientist out and shoot him. The radio chatter is clear: no witnesses, and {var.player_name} is priority. Help has arrived, and it isn't for you.",
        map="c1a3", tags=["blackmesa", "office", "military", "indoor"] + POST, feats=["hecu_marine", "dead_scientist"])
 B.room("c1a3a_lift", "Freight Lift Shaft", "A huge freight lift, its platform halfway up a shaft lined with laser tripmines. Marines rappel down ropes from above.",
        map="c1a3a", tags=["blackmesa", "transit", "military", "indoor"] + POST, feats=["hecu_marine", "tripmine", "ammo_box"])
@@ -355,7 +355,7 @@ B.link("c2a5f_tunnel", "c2a5g_bridge", "east", 3)
 # Forget About Freeman!  (c3a1, c3a1a, c3a1b)
 # ===========================================================================
 B.set_chapter("Forget About Freeman!")
-B.room("c3a1_sewer", "Sewer Outflow", "A sewer outflow beneath the canyon. Over the radio, a Marine commander orders his men to pull out: forget about Freeman, he says.",
+B.room("c3a1_sewer", "Sewer Outflow", "A sewer outflow beneath the canyon. Over the radio, a Marine commander orders his men to pull out: forget about {var.player_name}, he says.",
        map="c3a1", tags=["blackmesa", "maintenance", "indoor", "water"] + POST, feats=["bullsquid", "zombie_soldier", "medkit"])
 B.room("c3a1a_yard", "Retreat Staging Yard", "A yard of concrete and razor wire where the Marines are trying to withdraw. Alien grunts are cutting them to pieces, and a tank sits burning by the gate.",
        map="c3a1a", tags=["blackmesa"] + SURF + POST + ["military"], feats=["alien_grunt", "hecu_marine", "tank_wreck", "supply_crate"],
@@ -486,15 +486,15 @@ F.update({
         "appearance": False, "description": "He's gone before you can get a proper look. You feel, unreasonably, that he was looking at you."},
     "platform_guard": {"extends": ["security_guard"], "name": "Officer #bm_surname#",
         "description": "A cheerful guard in a blue shirt who seems to know who you are.",
-        "actions": {"talk": [{"do": ["\"Morning, Mr. Freeman. They're waiting for you upstairs in the test lab. Better hurry.\""]}]}},
+        "actions": {"talk": [{"do": ["\"Morning, {var.player_name}. They're waiting for you upstairs in the test lab. Better hurry.\""]}]}},
     "lobby_guard": {"extends": ["security_guard"], "name": "Officer #bm_surname#", "important": False,
         "appearance": "{self.Name} sits behind the security desk, hitting the side of his monitor.",
         "description": "He's been fighting with the computer all morning, he says, and the computer is winning.",
-        "actions": {"talk": [{"if": {"flag": "hl_cascade"}, "do": ["\"Freeman? You're alive! Get to the surface, I'll hold the door!\""]},
-                             {"do": ["\"Hey, Mr. Freeman. The system's down again, so I'll scan you through. Good luck in there today.\""]}]}},
+        "actions": {"talk": [{"if": {"flag": "hl_cascade"}, "do": ["\"{var.player_name}? You're alive! Get to the surface, I'll hold the door!\""]},
+                             {"do": ["\"Hey, {var.player_name}. The system's down again, so I'll scan you through. Good luck in there today.\""]}]}},
     "lobby_scientist": {"extends": ["scientist"], "appearance": "{self.Name} paces by the reception desk, looking at a watch.",
         "actions": {"talk": [{"if": {"flag": "hl_cascade"}, "do": ["\"What have you done? What have we done?\""]},
-                             {"do": ["\"Gordon! You're late. The administrator wants the test run before noon. Suit up, quickly.\""]}]}},
+                             {"do": ["\"{var.player_name}! You're late. The administrator wants the test run before noon. Suit up, quickly.\""]}]}},
     "retinal_scanner": {"extends": ["scenery"], "name": "retinal scanner", "aliases": ["scanner", "retinal scanner"],
         "appearance": False, "description": "A wall-mounted retinal scanner, its lens blinking green.",
         "actions": {"use": ["A beam sweeps your eye. ACCESS GRANTED, says the panel."]}},
@@ -510,8 +510,8 @@ F.update({
         "description": "Somebody's lunch. It has a long way to go.",
         "actions": {"use": [{"if": {"flag": "hl_microwave"}, "do": ["It's beyond help."]},
                             {"do": [{"flag": "hl_microwave"}, "You turn the dial all the way up out of sheer curiosity. After a few seconds there is a muffled bang, and casserole paints the inside of the door. A scientist, somewhere, will be very upset."]}]}},
-    "freeman_locker": {"extends": ["scenery", "container", "openable"], "name": "locker marked FREEMAN", "aliases": ["locker", "freeman locker", "my locker"],
-        "appearance": "Your locker, labelled FREEMAN, stands in the row.",
+    "freeman_locker": {"extends": ["scenery", "container", "openable"], "name": "your locker", "proper": True, "aliases": ["locker", "my locker", "your locker"],
+        "appearance": "Your locker, labelled with your name, stands in the row.",
         "description": "Your locker. Your name. A dent where you once kicked it.",
         "features": [{"name": "photo of a cat", "extends": ["portable"], "aliases": ["photo", "photograph"], "description": "A photo of a cat. You don't remember putting it there."}]},
     "hev_rack": {"extends": ["scenery", "surface"], "name": "HEV suit rack", "aliases": ["rack", "suit rack", "storage"],
@@ -523,12 +523,12 @@ F.update({
         "profile": {"personality": ["wise", "nervous"], "motives": ["knowledge", "survive"], "motive_text": "understand what is on the other side",
                     "goals": ["finish the test", "get to the Lambda Complex"], "roles": ["giver", "informant", "ally"],
                     "knows": ["xen", "lambda", "science"], "backstory": "\"We've been working toward today for a very long time.\""},
-        "actions": {"talk": [{"if": {"flag": "hl_cascade"}, "do": ["\"Gordon! We'll go to the surface and find help. You must make it to the Lambda Complex: they'll know what to do. Hurry!\""]},
-                             {"do": ["\"Ah, Gordon. The sample is in place. Just push it into the beam when we're ready. Nothing to worry about. Probably.\""]}]}},
+        "actions": {"talk": [{"if": {"flag": "hl_cascade"}, "do": ["\"{var.player_name}! We'll go to the surface and find help. You must make it to the Lambda Complex: they'll know what to do. Hurry!\""]},
+                             {"do": ["\"Ah, {var.player_name}. The sample is in place. Just push it into the beam when we're ready. Nothing to worry about. Probably.\""]}]}},
     "control_console": {"extends": ["scenery"], "name": "console", "aliases": ["console", "consoles", "controls"], "appearance": False,
         "description": "Readouts for the anti-mass spectrometer. The numbers are all slightly higher than anyone would like."},
     "anti_mass_spectrometer": {"extends": ["scenery"], "name": "anti-mass spectrometer", "aliases": ["spectrometer", "beam", "anti-mass spectrometer", "emitters"],
-        "important": True, "tags": ["heart", "cascade_heart"],
+        "important": True, "tags": ["cascade_heart"],
         "appearance": [{"if": {"flag": "hl_cascade"}, "text": "The spectrometer's emitters are cracked and dead."},
                        {"text": "The anti-mass spectrometer's beam crackles at the centre of the chamber."}],
         "description": "A machine for analysing exotic matter, pushed well past its design limits."},
@@ -585,7 +585,7 @@ F.update({
                             {"do": [{"flag": "hl_rocket"}, {"say": "You arm the launch. Far below, the rocket's engines ignite; the whole complex shakes as it climbs out of the silo and away. The scientist whoops: the Lambda team will have their satellite.", "style": "story"}]}],
                     "push": [{"do": [{"flag": "hl_rocket"}, "You hit the launch button. The rocket goes."]}]}},
     "launch_scientist": {"extends": ["scientist"], "appearance": "{self.Name} hovers by the launch console.",
-        "actions": {"talk": [{"do": ["\"You're Freeman? Thank heaven. We need this satellite in orbit for the Lambda team. Arm the launch from here, then get yourself to the Lambda Complex.\""]}]}},
+        "actions": {"talk": [{"do": ["\"You're {var.player_name}? Thank heaven. We need this satellite in orbit for the Lambda team. Arm the launch from here, then get yourself to the Lambda Complex.\""]}]}},
     "satellite_rocket": {"extends": ["scenery"], "name": "rocket", "aliases": ["rocket", "satellite"],
         "appearance": [{"if": {"flag": "hl_rocket"}, "text": "The silo is empty and scorched; the rocket is gone."}, {"text": "A slender rocket stands in the silo, ready to launch."}],
         "description": "The payload fairing carries a satellite for the Lambda team."},
@@ -605,7 +605,7 @@ F.update({
         "actions": {"use": [{"macro": "hl_airstrike"}]}},
     "tank_wreck": {"extends": ["scenery"], "name": "burning tank", "aliases": ["tank", "abrams"], "appearance": False, "description": "An M1 Abrams, brewed up."},
     "lambda_scientist": {"extends": ["scientist"], "appearance": "{self.Name}, a Lambda team scientist, waves you through the checkpoint.",
-        "actions": {"talk": [{"do": ["\"Freeman! We've been waiting. The satellite delivered its payload; we can open a portal to the border world. But first we need the reactor coolant running.\""]}]}},
+        "actions": {"talk": [{"do": ["\"{var.player_name}! We've been waiting. The satellite delivered its payload; we can open a portal to the border world. But first we need the reactor coolant running.\""]}]}},
     "lambda_scientist_2": {"extends": ["scientist"], "appearance": "{self.Name} adjusts the long jump harness.",
         "actions": {"talk": [{"do": ["\"Take the module. You'll need it where you're going. The jumps there are... large.\""]}]}},
     "coolant_pump": {"extends": ["scenery"], "name": "coolant pump", "aliases": ["pump", "coolant pump", "switch"],
@@ -613,12 +613,12 @@ F.update({
         "actions": {"use": [{"do": [{"flag": "hl_coolant"}, "You start the pump. The water level begins to fall."]}]}},
     "teleport_pad": {"extends": ["scenery"], "name": "teleport pad", "aliases": ["pad", "teleport", "teleporter"],
         "appearance": "A teleport pad glows on the floor.", "description": "Step on it and you're somewhere else. Which somewhere is the question."},
-    "lambda_portal": {"extends": ["scenery"], "name": "portal", "aliases": ["portal", "rift", "gateway"], "important": True, "tags": ["lambda_heart", "heart"],
+    "lambda_portal": {"extends": ["scenery"], "name": "portal", "aliases": ["portal", "rift", "gateway"], "important": True, "tags": ["lambda_heart"],
         "appearance": "The portal churns in the centre of the chamber, showing another world.",
         "description": "Green-white light around a hole in the world. On the other side: Xen."},
     "portal_scientists": {"extends": ["scientist"], "name": "the Lambda team", "proper": True, "aliases": ["lambda team", "scientists", "team"],
         "appearance": "The Lambda team works frantically at the portal consoles.",
-        "actions": {"talk": [{"do": ["\"The portal is stable. We think. Whatever is holding the rift open is on the other side. You have to find it and stop it. Go, Gordon!\""]}]}},
+        "actions": {"talk": [{"do": ["\"The portal is stable. We think. Whatever is holding the rift open is on the other side. You have to find it and stop it. Go, {var.player_name}!\""]}]}},
     "xen_researcher": {"extends": ["scenery"], "name": "dead researcher", "aliases": ["researcher", "body", "corpse"],
         "appearance": "A researcher in an HEV suit lies dead on the rock.", "description": "Someone sent through before you. Expeditions, it seems, were not new.",
         "features": [{"id": "long_jump_note", "hidden": True}]},
@@ -641,7 +641,7 @@ F.update({
 })
 
 # The Nihilanth and others as story characters
-F["nihilanth_hl"] = {"extends": ["nihilanth"], "important": True, "tags": ["nihilanth", "villain"],
+F["nihilanth_hl"] = {"extends": ["nihilanth"], "important": True, "tags": ["nihilanth", "villain", "rift_lord"],
     # For automated players: what to do before attacking it.
     "solve": ["attack healing crystal", "attack healing crystal", "attack healing crystal"],
     "profile": {"personality": ["cold"], "motives": ["hold_rift", "survive", "dominion", "power"],
@@ -649,7 +649,7 @@ F["nihilanth_hl"] = {"extends": ["nihilanth"], "important": True, "tags": ["nihi
                 "goals": ["keep the rift open", "end the last of the humans who came"],
                 "backstory": "Its voice crawls through your skull: \"...last of them... you are the last... others came... others die...\"",
                 "roles": ["antagonist"], "knows": ["xen"],
-                "greet": ["The Nihilanth's voice rolls through your mind: \"...Freeman... you come... you will not leave...\""],
+                "greet": ["The Nihilanth's voice rolls through your mind: \"...{var.player_name}... you come... you will not leave...\""],
                 "confront": ["\"...you are man... and I am the last...\" The words fall apart in your head."],
                 "epilogue": ""},
     "on_turn": [{"if": {"here": "tag:nihilanth_crystal"}, "do": [
@@ -659,12 +659,12 @@ F["nihilanth_hl"] = {"extends": ["nihilanth"], "important": True, "tags": ["nihi
                  {"teleport": "room:hl/c5a1_gman"}]}
 F["gman_hl"] = {"extends": ["gman"], "profile": dict(core.F["gman"]["profile"], menu=False),
     "actions": {"talk": [{"if": {"all": [{"flag": "hl_nihilanth_dead"}, {"flag": "story_resolved"}]}, "do": [{"choice": {
-        "prompt": "\"Mister Freeman,\" the man in the suit says, with that odd rhythm. \"You have done... rather well. My employers have authorised me to offer you a job. I'd advise you... to accept. The alternative is... a battle you have no chance of winning.\"",
+        "prompt": "\"{var.player_name},\" the man in the suit says, with that odd rhythm. \"You have done... rather well. My employers have authorised me to offer you a job. I'd advise you... to accept. The alternative is... a battle you have no chance of winning.\"",
         "options": [
             {"text": "Accept the offer.", "do": [{"end_game": "\"Excellent,\" he says, and straightens his tie. \"Time to... choose. I'll see you... up ahead.\" The world goes dark around you, and you wait for the next job.", "win": True}]},
             {"text": "Refuse.", "do": [{"end_game": "\"Wise, or not... we shall see.\" He vanishes. You are standing in a cavern surrounded by alien grunts, every one of them turning toward you.", "win": False}]}],
         "cancel": "He waits. He's very good at waiting."}}]},
-        {"do": ["He adjusts his tie and regards you with polite interest. \"Not yet, {player.name}. You have... unfinished business. Not... yet.\" Behind you, a way back opens."]}]}}
+        {"do": ["He adjusts his tie and regards you with polite interest. \"Not yet, {var.player_name}. You have... unfinished business. Not... yet.\" Behind you, a way back opens."]}]}}
 
 ROOM_FIX = {"c4a3_chamber": ("nihilanth", "nihilanth_hl"), "c5a1_gman": ("gman", "gman_hl")}
 for short, (old, new) in ROOM_FIX.items():
@@ -731,33 +731,33 @@ B.section("lore").update({
     "hl_lambda_plan": {"title": "The Lambda team's plan", "about": ["area:hl_blackmesa"], "tags": ["lambda", "science"],
         "text": "The Lambda team believes something on the far side is holding the rift open. A satellite launch from Sector E carries the instruments they need; with it in orbit, they can open a stable portal and send someone through to stop whatever is on the other side."},
     "hl_late": {"title": "Running late", "about": ["area:hl_blackmesa"], "tags": ["blackmesa", "security", "rumour"], "chance": 0.7,
-        "text": "Gordon Freeman, twenty-seven, PhD in theoretical physics from MIT, research associate in Anomalous Materials. On the morning of the incident his time card shows he was late. Nobody has ever found out why."},
+        "text": "Personnel record, Anomalous Materials: {var.player_name}, research associate, theoretical physics. Time card for the morning of the incident: late. Nobody has ever found out why."},
     "hl_nihilanth": {"title": "The Nihilanth", "about": ["def:nihilanth_hl"], "tags": ["xen"],
         "text": "The creature at the heart of Xen is vast, ancient and telepathic. It keeps the vortigaunts enslaved and the rift open. Every expedition before yours was found and destroyed."},
     "hl_hecu_orders": {"title": "HECU orders", "about": ["area:hl_blackmesa"], "tags": ["hecu", "military"],
-        "text": "Intercepted Marine traffic is blunt: secure the facility, neutralise hostiles, and leave no witnesses. Freeman is named specifically."},
+        "text": "Intercepted Marine traffic is blunt: secure the facility, neutralise hostiles, and leave no witnesses. {var.player_name} is named specifically."},
 })
 
 EVENTS = {
     "hl_cascade_war": {
         "title": ["Half-Life", "Black Mesa Incident", "Resonance Cascade"],
-        "tags": ["blackmesa", "half-life"], "start_areas": ["hl_blackmesa"],
+        "tags": ["blackmesa", "half-life"], "start_areas": ["hl_blackmesa", "hl_hazard"],
         "roles": {
             "villain": {"type": "character", "match": {"tag": ["nihilanth"]}},
             "facility": {"type": "place", "match": {"id": ["hl_blackmesa"]}}},
-        "hook": "It is a normal morning at the Black Mesa Research Facility, and you are late. You are Gordon Freeman, research associate in Anomalous Materials, and today's test pushes an unusually pure sample into the anti-mass spectrometer further than anyone has gone before. What happens next will tear the facility apart, and the one who keeps the rift open waits in another world: {villain}.",
+        "hook": "It is a normal morning at the Black Mesa Research Facility, and you are late. You are {var.player_name}, research associate in Anomalous Materials, and today's test pushes an unusually pure sample into the anti-mass spectrometer further than anyone has gone before. What happens next will tear the facility apart, and the one who keeps the rift open waits in another world: {villain}.",
         "goal": "Survive {facility}, reach the Lambda Complex, cross into Xen, and destroy {villain}.",
         "resolutions": [{"verb": "attack", "target": "villain", "title": "Kill the Nihilanth",
                          "text": "{target.The} dies, and with it, the rift begins to close. But someone has been watching all along..."}],
-        "ending": "The rift collapses. Black Mesa is in ruins, the Marines are gone, the vortigaunts are free. And you, Gordon Freeman, have been noticed."},
+        "ending": "The rift collapses. Black Mesa is in ruins, the Marines are gone, the vortigaunts are free. And you, {var.player_name}, have been noticed."},
     "hl_military_cleanup": {
-        "title": ["No Witnesses", "Surface Tension"], "tags": ["blackmesa", "half-life", "military"], "start_areas": ["hl_blackmesa"],
+        "title": ["No Witnesses", "Surface Tension"], "tags": ["blackmesa", "half-life", "military"], "start_areas": ["hl_blackmesa", "hl_hazard"],
         "weight": 0.6,
         "roles": {
             "villain": {"type": "character", "match": {"tag": ["nihilanth"]}},
             "witness": {"type": "character", "match": {"tag": ["scientist"], "role": ["victim", "informant"]}, "optional": True},
             "facility": {"type": "place", "match": {"id": ["hl_blackmesa"]}}},
-        "hook": "The resonance cascade was bad. What came next was worse: the Marines, sent to contain the incident, with orders to silence every witness. You are Gordon Freeman, and you are top of their list. The only way out is through - all the way to {villain}.",
+        "hook": "The resonance cascade was bad. What came next was worse: the Marines, sent to contain the incident, with orders to silence every witness. You are {var.player_name}, the research associate who pushed the sample into the beam, and you are top of their list. The only way out is through - all the way to {villain}.",
         "goal": "Fight through the Marines and the aliens across {facility}, and end the incursion at its source: {villain}.",
         "resolutions": [{"verb": "attack", "target": "villain", "text": "{target.The} falls; Xen's grip on Black Mesa breaks."}],
         "lore": [{"title": "Witness", "about": ["cast:witness"], "text": "{witness.The} watched the Marines execute colleagues in the office wing, and has been hiding ever since."}],
@@ -767,15 +767,14 @@ EVENTS = {
 AREAS = {
     "hl_blackmesa": {
         "name": "the Black Mesa Research Facility",
-        "start_label": "Half-Life - Gordon Freeman, riding the inbound tram to work",
-        "tags": ["blackmesa", "start", "half-life", "scifi", "indoor", "lambda"], "theme": ["blackmesa", "office", "lab", "maintenance", "surface"],
+        "start_label": "Half-Life - a research associate in Anomalous Materials, riding the inbound tram to work",
+        "tags": ["blackmesa", "start", "half-life", "scifi", "indoor", "lambda", "bm_main", "facility"], "theme": ["blackmesa", "office", "lab", "maintenance", "surface"],
         "important": True, "start": "hl/c0a0_tram",
         "rooms": ["hl/*"],
-        "entrances": ["hl/c1a3b_storage", "hl/c2a5x_cliffs", "hl/c3a1a_yard", "hl/c2a2a_tunnels"],
-        "player": {"name": "Gordon Freeman", "player_name": "Gordon Freeman", "aliases": ["gordon", "freeman"],
-                   "description": "Gordon Freeman: theoretical physicist, MIT graduate, wearer of glasses, and a man who never says a word."}},
+        "entrances": ["hl/c1a3b_storage", "hl/c2a5x_cliffs", "hl/c3a1a_yard", "hl/c2a2a_tunnels"]},
     "hl_hazard": {
-        "name": "the Hazard Course", "tags": ["blackmesa", "training", "indoor"], "theme": ["blackmesa", "office"],
+        "name": "the Hazard Course", "tags": ["blackmesa", "training", "indoor", "scifi", "facility"],
+        "start_label": "Half-Life: Hazard Course - a new HEV suit wearer in training", "theme": ["blackmesa", "office"],
         "rooms": ["hlh/*"], "entrances": ["hlh/t0a0_start"]},
 }
 
@@ -785,7 +784,7 @@ def build():
     assert not problems, problems
     manifest = {
         "id": "hl_halflife", "name": "Half-Life: Black Mesa Incident", "version": "1.0.0", "author": "Patchwork",
-        "description": "The Half-Life campaign, chapter by chapter and map by map (c0a0 to c5a1, plus the t0a0 Hazard Course): the inbound tram, the resonance cascade, the office complex, the Marines, Blast Pit's tentacles, Power Up's gargantua, On a Rail, capture and the trash compactor, Questionable Ethics, Surface Tension, Lambda Core, Xen, the Gonarch, the alien factory, the Nihilanth and the G-Man's offer. Locked doors and outdoor areas grow generated sections. Spawn as Gordon Freeman on the tram.",
+        "description": "The Half-Life campaign, chapter by chapter and map by map (c0a0 to c5a1, plus the t0a0 Hazard Course): the inbound tram, the resonance cascade, the office complex, the Marines, Blast Pit's tentacles, Power Up's gargantua, On a Rail, capture and the trash compactor, Questionable Ethics, Surface Tension, Lambda Core, Xen, the Gonarch, the alien factory, the Nihilanth and the G-Man's offer. Locked doors and outdoor areas grow generated sections. Start as a research associate riding the inbound tram.",
         "requires": ["core", "combat", "hl_core"], "load_after": ["hl_core"], "recommends": ["hl_opfor", "hl_blueshift", "daycycle"],
         "priority": 64, "tags": ["half-life", "blackmesa", "scifi", "campaign"]}
     rooms = B.rooms

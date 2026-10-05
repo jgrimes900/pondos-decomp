@@ -127,7 +127,10 @@ class StoryPlanner:
     # ------------------------------------------------------------------
     def collect(self):
         reg, w = self.reg, self.w
-        self.areas = {a: d for a, d in reg["areas"].items() if not d.get("abstract")}
+        forced = getattr(self.gen, "forced_start", None)
+        # A start_only area (a crossroads to set out from) exists only when the player chooses to begin there.
+        self.areas = {a: d for a, d in reg["areas"].items() if not d.get("abstract")
+                      and (not d.get("start_only") or a == forced)}
         authored = {}
         offstage = {}
         for aid in sorted(self.areas):
@@ -229,6 +232,8 @@ class StoryPlanner:
             return False
         if "any_tags" in m and not set(_as_list(m["any_tags"])) & tags:
             return False
+        if "none_tags" in m and set(_as_list(m["none_tags"])) & tags:
+            return False
         return True
 
     # ------------------------------------------------------------------
@@ -284,6 +289,8 @@ class StoryPlanner:
                 continue  # this event belongs to another starting point
             if _as_list(ev.get("start_areas")) and not starts:
                 continue
+            if self.start_area and self.area_tags(self.start_area) & set(_as_list(ev.get("exclude_start_tags"))):
+                continue  # its opening makes no sense from here
             cast = self.try_cast(ev)
             if cast is None:
                 continue
@@ -735,13 +742,17 @@ class StoryPlanner:
     def choose_start(self):
         own = [a for a in _as_list(self.event.get("start_areas")) if a in self.areas]
         if own:
-            self.start_area = self.rng.choice(own)
+            # Prefer the event's real starting points over the optional ones (training courses).
+            main = [a for a in own if "start" in _as_list(self.areas[a].get("tags"))]
+            self.start_area = self.rng.choice(main or own)
             return
         tags = set(_as_list(self.event.get("tags")))
         for kind, val in self.cast.values():
             if kind == "place":
                 tags |= self.area_tags(val)
-        starts = [a for a, d in sorted(self.areas.items()) if "start" in _as_list(d.get("tags"))]
+        avoid = set(_as_list(self.event.get("exclude_start_tags")))
+        starts = [a for a, d in sorted(self.areas.items()) if "start" in _as_list(d.get("tags"))
+                  and not (self.area_tags(a) & avoid)]
         if not starts:
             self.start_area = None
             return
@@ -792,6 +803,10 @@ class StoryBinder:
         frontier = loc[1] if loc and kind == "wild" else 0
         stage = frontier
         fillers = [self.w.get(u) for u in self.gen.filler if self.w.get(u) and self.w.get(u).stage <= stage]
+        if thing is not None:
+            # A sword waits in the woods, a keycard in an office: keep things to country of their own setting.
+            own = self.gen.def_setting(thing.def_id)
+            fillers = [r for r in fillers if not self.gen.clash(own, self.gen.themes(r))] or fillers
         if home:
             homed = [r for r in fillers if home & set(r.tags)]
             if not homed:

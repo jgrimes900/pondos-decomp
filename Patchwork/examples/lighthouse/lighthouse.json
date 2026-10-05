@@ -2,6 +2,7 @@
   "areas": {
     "lighthouse": {
       "name": "#cape_name# Light",
+      "start_label": "The Drowned Lighthouse - a keeper's relief arriving at a dark light",
       "tags": [
         "coast",
         "fantasy",

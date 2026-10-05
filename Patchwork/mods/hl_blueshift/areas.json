@@ -2,13 +2,15 @@
  "areas": {
   "bs_blackmesa": {
    "name": "the Black Mesa security sectors",
-   "start_label": "Blue Shift - Barney Calhoun, security guard, late for his shift",
+   "start_label": "Blue Shift - a Black Mesa security guard, late for the shift",
    "tags": [
     "blackmesa",
     "start",
     "blue-shift",
     "scifi",
-    "security"
+    "security",
+    "bm_main",
+    "facility"
    ],
    "theme": [
     "blackmesa",
@@ -25,24 +27,18 @@
     "bs/ba_canal2_canals",
     "bs/ba_yard2_trains",
     "bs/ba_power2_cliffs"
-   ],
-   "player": {
-    "name": "Barney Calhoun",
-    "player_name": "Barney Calhoun",
-    "aliases": [
-     "barney",
-     "calhoun"
-    ],
-    "description": "Barney Calhoun, Black Mesa security: blue shirt, ID badge, and a strong sense that he is underpaid."
-   }
+   ]
   },
   "bs_training": {
    "name": "the security training course",
    "tags": [
     "blackmesa",
     "training",
-    "indoor"
+    "indoor",
+    "scifi",
+    "facility"
    ],
+   "start_label": "Blue Shift: Security Training - a new guard on the training course",
    "theme": [
     "blackmesa",
     "office"
@@ -67,7 +63,8 @@
     "escape"
    ],
    "start_areas": [
-    "bs_blackmesa"
+    "bs_blackmesa",
+    "bs_training"
    ],
    "roles": {
     "scientist": {
@@ -103,7 +100,7 @@
      }
     }
    },
-   "hook": "You are Barney Calhoun, Black Mesa security, running late for an ordinary shift. Then an experiment in Anomalous Materials tears the facility open, and the Marines who arrive to help start shooting everyone. Somewhere in the wreckage is {scientist}, whose old team built a machine that might just get you out: {device}.",
+   "hook": "You are {var.player_name}, Black Mesa security, running late for an ordinary shift. Then an experiment in Anomalous Materials tears the facility open, and the Marines who arrive to help start shooting everyone. Somewhere in the wreckage is {scientist}, whose old team built a machine that might just get you out: {device}.",
    "goal": "Find {scientist}, cross {facility}, and power {device} with {power} to escape.",
    "resolutions": [
     {
@@ -124,7 +121,7 @@
  },
  "lore": {
   "bs_calhoun": {
-   "title": "Barney Calhoun",
+   "title": "Security personnel file",
    "about": [
     "area:bs_blackmesa"
    ],
@@ -132,7 +129,7 @@
     "security",
     "blackmesa"
    ],
-   "text": "Barney Calhoun, Black Mesa security, officer grade. Responsible for checking badges, fixing elevators and getting scientists out of trouble. Today, the job description is about to expand."
+   "text": "{var.player_name}, Black Mesa security, officer grade. Responsible for checking badges, fixing elevators and getting scientists out of trouble. Today, the job description is about to expand."
   },
   "bs_teleport": {
    "title": "Teleport research",
@@ -156,7 +153,7 @@
     "rumour"
    ],
    "chance": 0.7,
-   "text": "Security logs show Officer Calhoun arriving late on the morning of the incident, on the same tram line as a research associate who was also late. Neither knew the other's name."
+   "text": "Security logs show Officer {var.player_name} arriving late on the morning of the incident, on the same tram line as a research associate who was also late. Neither knew the other's name."
   }
  },
  "macros": {

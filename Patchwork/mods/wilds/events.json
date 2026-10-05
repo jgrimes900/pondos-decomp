@@ -1,0 +1,51 @@
+{
+  "//": "Travel events: rules that may fire on any journey through matching country.",
+  "rules": {
+    "wilds_event_stuck_cart": {
+      "on": "travel",
+      "once": true,
+      "if": {"all": [{"chance": 0.08}, {"in_room": "tag:outdoor"}, {"turns": {"gte": 4}}]},
+      "do": [
+        {"say": "On the way you come upon a carter whose wagon has sunk to its axles in the mud. The ox looks at you as if this is somehow your fault.", "style": "story"},
+        {"choice": {
+          "prompt": "What do you do?",
+          "options": [
+            {"text": "Put your shoulder to the wheel.", "do": [
+              {"advance": 3},
+              "It takes an hour of heaving and swearing, but the wagon lurches free. The carter presses something into your muddy hands.",
+              {"spawn": {"pick": ["apple", "copper_coins", "walking_stick"]}, "in": "player", "as": "gift"},
+              "You receive {gift.a}.",
+              {"journal": "Helped a carter free a stuck wagon.", "quiet": true}
+            ]},
+            {"text": "Wish them luck and walk on.", "do": ["\"Thanks for nothing,\" the carter calls after you."]}
+          ],
+          "cancel": "You leave the carter to it."
+        }}
+      ]
+    },
+    "wilds_event_storm": {
+      "on": "travel",
+      "once": true,
+      "if": {"all": [{"chance": 0.06}, {"in_room": "tag:outdoor"}]},
+      "do": [
+        {"say": "The sky turns the colour of slate and a storm breaks over you, rain coming sideways.", "style": "story"},
+        {"choice": {
+          "prompt": "The storm is fierce.",
+          "options": [
+            {"text": "Find shelter and wait it out.", "do": [{"advance": 6}, "You huddle under an overhang until the worst has passed. You arrive late, but dry."]},
+            {"text": "Press on through it.", "do": [
+              "You put your head down and push through the downpour.",
+              {"if": {"mod": "combat"}, "then": [{"add": {"health": -1}, "on": "player"}, "You arrive soaked and chilled to the bone. (Health: {player.health}/{player.max_health})"]}
+            ]}
+          ],
+          "cancel": "You press on through the rain."
+        }}
+      ]
+    },
+    "wilds_event_hare": {
+      "on": "travel",
+      "if": {"all": [{"chance": 0.05}, {"in_room": "tag:outdoor"}]},
+      "do": [{"say": "A hare bursts from the grass almost under your feet and zigzags away.", "style": "dim"}]
+    }
+  }
+}

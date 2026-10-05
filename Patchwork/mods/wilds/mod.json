@@ -1,0 +1,10 @@
+{
+  "id": "wilds",
+  "name": "The Wilds",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "Forests, hills, rivers, marshes and country roads, generated fresh for every world. Fills the land between other mods' places, and adds natural features, forage, scattered trinkets and wandering travellers who pass on rumours.",
+  "requires": ["core"],
+  "priority": 20,
+  "tags": ["fantasy", "regions", "outdoors"]
+}

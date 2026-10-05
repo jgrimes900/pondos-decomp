@@ -1,0 +1,207 @@
+{
+  "verbs": {
+    "look": {
+      "aliases": ["l", "look around"],
+      "target": "optional",
+      "time": 0,
+      "help": "look [at <thing>]",
+      "no_target": [{"show": "room"}],
+      "default": [{"show": "examine", "of": "target"}]
+    },
+    "examine": {
+      "aliases": ["x", "inspect", "look at", "look in", "look inside", "study", "check", "describe"],
+      "target": "entity",
+      "time": 0,
+      "help": "examine <thing>",
+      "default": [{"show": "examine", "of": "target"}]
+    },
+    "go": {
+      "aliases": ["walk", "move", "travel", "head", "run", "climb", "enter", "cross", "follow", "return"],
+      "target": "text",
+      "bare_exit": true,
+      "time": 0,
+      "help": "go <exit>  or  go to <place you've visited>",
+      "default": [{"travel": "{args}"}]
+    },
+    "exits": {
+      "aliases": ["directions", "ways"],
+      "target": "none",
+      "time": 0,
+      "help": "exits",
+      "default": [{"show": "exits"}]
+    },
+    "take": {
+      "aliases": ["get", "pick up", "grab", "collect", "gather", "pick", "pocket"],
+      "scope": "room",
+      "all": true,
+      "all_if": {"tag": "portable"},
+      "prepositions": ["from", "off", "out"],
+      "help": "take <thing> | take all",
+      "default": ["You can't take {target}."]
+    },
+    "drop": {
+      "aliases": ["put down", "discard", "throw away"],
+      "scope": "held",
+      "all": "direct",
+      "help": "drop <thing> | drop all",
+      "default": ["You can't drop {target}."]
+    },
+    "put": {
+      "aliases": ["place", "insert", "stow", "set"],
+      "scope": "held",
+      "prepositions": ["in", "into", "on", "onto", "inside", "under"],
+      "second": "required",
+      "help": "put <thing> in/on <thing>",
+      "default": [
+        {"if": {"not": {"held": "target"}}, "do": ["You aren't holding {target}."]},
+        {"if": {"same": ["target", "second"]}, "do": ["That would take some doing."]},
+        {"if": {"all": [{"tag": "container", "of": "second"}, {"prop": "open", "of": "second", "eq": false}]},
+         "do": ["{second.The} is closed."]},
+        {"if": {"tag": "container", "of": "second"},
+         "do": [{"move": "target", "to": "second"}, "You put {target} in {second}."]},
+        {"if": {"tag": "surface", "of": "second"},
+         "do": [{"move": "target", "to": "second"}, "You put {target} on {second}."]},
+        {"do": ["You can't put things in or on {second}."]}
+      ]
+    },
+    "inventory": {
+      "aliases": ["i", "inv", "invent", "items", "carrying"],
+      "target": "none",
+      "time": 0,
+      "help": "inventory",
+      "default": [{"show": "inventory", "of": "player"}]
+    },
+    "open": {
+      "aliases": ["unwrap", "uncork"],
+      "help": "open <thing>",
+      "default": ["{target.The} isn't something you can open."]
+    },
+    "close": {
+      "aliases": ["shut"],
+      "help": "close <thing>",
+      "default": ["{target.The} isn't something you can close."]
+    },
+    "unlock": {
+      "prepositions": ["with", "using"],
+      "help": "unlock <thing> [with <key>]",
+      "default": ["{target.The} has no lock."]
+    },
+    "lock": {
+      "prepositions": ["with", "using"],
+      "help": "lock <thing> [with <key>]",
+      "default": ["{target.The} has no lock."]
+    },
+    "search": {
+      "aliases": ["look under", "look behind", "rummage", "rummage through", "dig", "dig in", "feel"],
+      "time": 2,
+      "help": "search [<thing>]",
+      "no_target": [
+        {"reveal": "room", "children": true},
+        {"if": {"local": "revealed", "gt": 0}, "then": ["Searching carefully, you discover {revealed_list}."],
+         "else": ["You search the area but turn up nothing new."]}
+      ],
+      "default": [
+        {"reveal": "target", "children": true},
+        {"if": {"local": "revealed", "gt": 0}, "then": ["Searching {target}, you discover {revealed_list}."],
+         "else": ["You find nothing of interest about {target}."]}
+      ]
+    },
+    "use": {
+      "aliases": ["apply", "operate", "activate", "play", "ring", "wave"],
+      "prepositions": ["on", "with", "in", "at"],
+      "help": "use <thing> [on <thing>]",
+      "default": [
+        {"if": {"second": null}, "do": ["You can't think of a way to use {target} by itself."]},
+        {"do": ["Using {target} on {second} achieves nothing."]}
+      ]
+    },
+    "talk": {
+      "aliases": ["talk to", "talk with", "speak", "speak to", "speak with", "greet", "chat", "chat with", "ask", "hail"],
+      "help": "talk to <someone>",
+      "default": [
+        {"if": {"tag": "person", "of": "target"}, "do": ["{target.The} has nothing to say to you."]},
+        {"do": ["{target.The} is not much of a conversationalist."]}
+      ]
+    },
+    "give": {
+      "aliases": ["offer", "hand", "show"],
+      "scope": "held",
+      "prepositions": ["to"],
+      "second": "required",
+      "help": "give <thing> to <someone>",
+      "default": [
+        {"if": {"not": {"held": "target"}}, "do": ["You aren't holding {target}."]},
+        {"if": {"tag": "person", "of": "second"}, "do": ["{second.The} politely declines {target}."]},
+        {"do": ["{second.The} shows no interest."]}
+      ]
+    },
+    "eat": {
+      "aliases": ["consume", "devour", "taste", "bite"],
+      "help": "eat <thing>",
+      "default": ["You'd rather not eat {target}."]
+    },
+    "drink": {
+      "aliases": ["sip", "quaff", "gulp"],
+      "help": "drink <thing>",
+      "default": ["You can't drink {target}."]
+    },
+    "read": {
+      "aliases": ["peruse", "decipher"],
+      "time": 1,
+      "help": "read <thing>",
+      "default": ["There is nothing written on {target}."]
+    },
+    "light": {
+      "aliases": ["ignite", "kindle", "switch on", "turn on"],
+      "help": "light <thing>",
+      "default": ["You can't light {target}."]
+    },
+    "extinguish": {
+      "aliases": ["douse", "snuff", "put out", "switch off", "turn off", "unlight"],
+      "help": "extinguish <thing>",
+      "default": ["{target.The} isn't lit."]
+    },
+    "push": {
+      "aliases": ["press", "shove"],
+      "help": "push <thing>",
+      "default": ["Pushing {target} achieves nothing."]
+    },
+    "pull": {
+      "aliases": ["tug", "yank", "drag"],
+      "help": "pull <thing>",
+      "default": ["Pulling {target} achieves nothing."]
+    },
+    "touch": {
+      "aliases": ["pat", "stroke", "rub"],
+      "help": "touch <thing>",
+      "default": ["You feel nothing unexpected."]
+    },
+    "listen": {
+      "aliases": ["hear", "listen to"],
+      "target": "optional",
+      "help": "listen [to <thing>]",
+      "no_target": ["You hear nothing out of the ordinary."],
+      "default": ["{target.The} makes no sound."]
+    },
+    "smell": {
+      "aliases": ["sniff"],
+      "target": "optional",
+      "help": "smell [<thing>]",
+      "no_target": ["You smell nothing unusual."],
+      "default": ["{target.The} smells as you would expect."]
+    },
+    "wait": {
+      "aliases": ["z", "rest briefly", "pause"],
+      "target": "none",
+      "help": "wait",
+      "default": ["Time passes."]
+    },
+    "journal": {
+      "aliases": ["j", "quest", "quests", "goals", "goal", "notes"],
+      "target": "none",
+      "time": 0,
+      "help": "journal",
+      "default": [{"show": "journal"}]
+    }
+  }
+}

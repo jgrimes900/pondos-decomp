@@ -1,0 +1,551 @@
+{
+  "areas": {
+    "spire": {
+      "name": "#tower_name#",
+      "tags": [
+        "tower",
+        "fantasy",
+        "eerie",
+        "ruins"
+      ],
+      "theme": [
+        "hills",
+        "marsh",
+        "eerie",
+        "ancient"
+      ],
+      "entrances": [
+        "foot"
+      ],
+      "only_with_beat": true,
+      "rooms": {
+        "foot": {
+          "name": "Foot of the Spire",
+          "aliases": [
+            "spire",
+            "tower",
+            "foot"
+          ],
+          "tags": [
+            "outdoor",
+            "eerie"
+          ],
+          "description": "The tower rises out of the land like a splinter of night: black glass, seamless and impossibly tall. The air around it is cold and the light seems thinner here, as if something is drinking it.",
+          "brief": "The foot of the black spire.",
+          "features": [
+            "dead_garden"
+          ],
+          "exits": [
+            {
+              "to": "hall",
+              "dir": "in",
+              "distance": 1,
+              "description": "An arched doorway gapes in the glass."
+            }
+          ]
+        },
+        "hall": {
+          "name": "Hall of Echoes",
+          "tags": [
+            "indoor",
+            "eerie"
+          ],
+          "description": "Your footsteps come back to you doubled, then tripled, long after you stop moving. Statues stand in alcoves around the walls.",
+          "brief": "The echoing entrance hall.",
+          "features": [
+            "apprentice_statues"
+          ],
+          "exits": [
+            {
+              "to": "library",
+              "dir": "up",
+              "distance": 1,
+              "name": "spiral stair",
+              "aliases": [
+                "stair",
+                "stairs"
+              ]
+            }
+          ]
+        },
+        "library": {
+          "name": "Library of Ash",
+          "tags": [
+            "indoor",
+            "eerie"
+          ],
+          "description": "Shelves climb into darkness. Many of the books have been burned where they stand, and ash drifts in the air like grey snow.",
+          "brief": "The burned library.",
+          "features": [
+            "spire_shelves",
+            "reading_desk"
+          ],
+          "exits": [
+            {
+              "to": "stair",
+              "dir": "up",
+              "distance": 1
+            }
+          ]
+        },
+        "stair": {
+          "name": "Winding Stair",
+          "tags": [
+            "indoor",
+            "eerie"
+          ],
+          "description": "The stair spirals up through the heart of the tower. Wind moans through gaps in the glass, though there is no wind outside.",
+          "brief": "The winding stair.",
+          "features": [
+            "shadow_ward"
+          ],
+          "exits": [
+            {
+              "to": "top",
+              "dir": "up",
+              "distance": 2,
+              "if": {
+                "has": "tag:relic"
+              },
+              "blocked": "The ward of shadow pushes you back. You will need a source of true light to pass through it."
+            }
+          ]
+        },
+        "top": {
+          "name": "The Lightless Crown",
+          "aliases": [
+            "crown",
+            "top",
+            "summit"
+          ],
+          "tags": [
+            "indoor",
+            "eerie"
+          ],
+          "description": [
+            {
+              "if": {
+                "flag": "sorcerer_defeated"
+              },
+              "text": "The top of the spire stands open to a clean blue sky. Where the orb hung there is only a scorch mark on the floor, and cracks run singing through the black glass all around you."
+            },
+            {
+              "text": "The top of the spire is open to a sky that has gone the colour of a bruise. In the centre of the floor a great orb hangs in the air, and light bends toward it from every direction and does not come back."
+            }
+          ],
+          "brief": "The summit of the spire.",
+          "features": [
+            "dark_orb"
+          ]
+        }
+      }
+    }
+  },
+  "beats": {
+    "spire_confrontation": {
+      "title": "The Lightless Crown",
+      "stage": "climax",
+      "tags": [
+        "fantasy",
+        "villain",
+        "finale"
+      ],
+      "area": "spire",
+      "needs": [
+        "relic"
+      ],
+      "gate": "A wall of shifting shadow bars the way. Whatever lies beyond, you are not ready to face it yet.",
+      "roles": {
+        "villain": {
+          "spawn": "sorcerer",
+          "in": {
+            "room": "top"
+          },
+          "name": "#villain_name#"
+        },
+        "bane": {
+          "find": {
+            "tag": "relic"
+          },
+          "spawn": "spire_bane",
+          "in": {
+            "feature": "def:spire_shelves"
+          },
+          "hidden": false
+        }
+      },
+      "intro": "Far off, a black spire has risen where none stood before, and the daylight around it is draining away. {beat.villain.Name} is waiting there.",
+      "hint": "Climb {beat.area} and use {beat.bane.name} against {beat.villain.name}.",
+      "hook": "A tower of black glass has risen at {beat.area}. The light dies around it, and the sorcerer {beat.villain.name} sits at its top.",
+      "rumor": [
+        "Have you seen the sky over {beat.area}? Like a bruise. They say a sorcerer called {beat.villain.name} lives there now.",
+        "{beat.villain.Name} wants the light. All of it. Only true light can break that kind of darkness, my mother used to say."
+      ],
+      "objective": {
+        "flag": "sorcerer_defeated"
+      },
+      "complete_text": "The orb shatters. Light floods back into the world all at once, a dawn from every direction, and the black glass of the spire begins to crack and sing."
+    }
+  },
+  "grammar": {
+    "tower_name": [
+      "the Spire of #villain_epithet#",
+      "the #dark_adj# Spire",
+      "the Tower of #dark_noun#"
+    ],
+    "dark_adj": [
+      "Black",
+      "Lightless",
+      "Hollow",
+      "Starless",
+      "Weeping"
+    ],
+    "dark_noun": [
+      "Dusk",
+      "Ash",
+      "Night",
+      "Silence",
+      "the Long Shadow"
+    ],
+    "villain_epithet": [
+      "Unmaking",
+      "the Eclipse",
+      "Dimming",
+      "Hunger"
+    ],
+    "villain_name": [
+      "#villain_first# #villain_title#"
+    ],
+    "villain_first": [
+      "Malgrave",
+      "Vesper",
+      "Ozymandre",
+      "Corvane",
+      "Nerys",
+      "Sable",
+      "Mordecai",
+      "Ilsabet"
+    ],
+    "villain_title": [
+      "the Unlit",
+      "the Hollow",
+      "of the Eclipse",
+      "the Ash-Crowned",
+      "Nightbinder"
+    ],
+    "villain_taunt": [
+      "\"Light is a lie the world tells itself,\" murmurs {self.name}. \"I am only correcting it.\"",
+      "{self.Name} laughs softly. \"You came all this way to watch the sun go out?\"",
+      "\"Every candle you ever lit, I have swallowed,\" says {self.name}. \"Yours will be no different.\""
+    ]
+  },
+  "features": {
+    "dead_garden": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "dead garden",
+      "aliases": [
+        "garden",
+        "plants",
+        "flowers"
+      ],
+      "appearance": "Around the tower's base, a garden has withered to grey stalks.",
+      "description": "Every plant has died reaching toward the tower, as if it had been pulled."
+    },
+    "apprentice_statues": {
+      "extends": [
+        "scenery",
+        "readable"
+      ],
+      "name": "statues",
+      "article": "some",
+      "aliases": [
+        "statue",
+        "alcoves",
+        "apprentices"
+      ],
+      "appearance": false,
+      "description": "Young men and women in scholars' robes, carved with terrible realism. Every face wears the same look of surprise.",
+      "props": {
+        "text": "A plaque beneath each one. They all say the same thing: \"Apprentice. Insufficient.\""
+      }
+    },
+    "spire_shelves": {
+      "extends": [
+        "scenery",
+        "surface"
+      ],
+      "name": "shelves",
+      "article": "some",
+      "aliases": [
+        "shelf",
+        "books",
+        "bookshelves",
+        "bookshelf"
+      ],
+      "appearance": false,
+      "contents_text": "Among the ruined books, one shelf holds {contents}.",
+      "description": "Burned spines, melted scroll-cases, and the smell of something that wasn't paper."
+    },
+    "reading_desk": {
+      "extends": [
+        "scenery",
+        "surface"
+      ],
+      "name": "reading desk",
+      "aliases": [
+        "desk",
+        "lectern"
+      ],
+      "appearance": "A reading desk stands in a circle of unburned floor.",
+      "contents_text": "Open on the desk is {contents}.",
+      "description": "Untouched by the fire, as if the flames were afraid of it.",
+      "features": [
+        "sorcerer_journal"
+      ]
+    },
+    "sorcerer_journal": {
+      "extends": [
+        "portable",
+        "readable"
+      ],
+      "name": "black journal",
+      "aliases": [
+        "journal",
+        "diary",
+        "book",
+        "notes"
+      ],
+      "description": "Bound in something you hope is leather.",
+      "props": {
+        "text": "The handwriting is beautiful and cold. \"...the orb grows. When it has eaten enough light, the world will be still at last, and quiet, and mine. Only one thing troubles me: the old relics of true light. I have burned every one I could find. If one survives, it must not be brought to the summit.\""
+      }
+    },
+    "shadow_ward": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "ward of shadow",
+      "aliases": [
+        "ward",
+        "shadow",
+        "darkness",
+        "barrier",
+        "wall"
+      ],
+      "appearance": [
+        {
+          "if": {
+            "has": "tag:relic"
+          },
+          "text": "Above you, a ward of living shadow churns across the stair. It recoils from the light you carry."
+        },
+        {
+          "text": "Above you, a ward of living shadow churns across the stair like smoke that has decided to be a wall."
+        }
+      ],
+      "description": "It drinks the light from anything that comes near. Only something brighter than it could pass."
+    },
+    "dark_orb": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "orb of darkness",
+      "aliases": [
+        "orb",
+        "sphere",
+        "darkness",
+        "engine"
+      ],
+      "appearance": "The orb of darkness turns slowly in the air, devouring the light.",
+      "description": "Looking at it is like looking down a well with no bottom.",
+      "actions": {
+        "touch": [
+          "Your hand goes numb inches from its surface and you snatch it back."
+        ],
+        "use_with": [
+          {
+            "if": {
+              "tag": "relic",
+              "of": "target"
+            },
+            "do": [
+              {
+                "macro": "spire_victory"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "sorcerer": {
+      "extends": [
+        "person",
+        "hostile"
+      ],
+      "name": "sorcerer",
+      "aliases": [
+        "sorcerer",
+        "wizard",
+        "mage",
+        "villain",
+        "sorceress"
+      ],
+      "tags": [
+        "villain"
+      ],
+      "appearance": "{self.Name} stands beside the orb, robed in a darkness that moves when nothing else does.",
+      "description": "Tall, pale, and very calm. Their eyes are entirely black, like two smaller orbs.",
+      "props": {
+        "health": 35,
+        "max_health": 35,
+        "damage": 4,
+        "armor": 3,
+        "attack_text": "lashes with shadow at",
+        "death_text": "{self.Name} staggers. \"No,\" they whisper, \"not like this...\" and unravel into smoke."
+      },
+      "on_death": [
+        {
+          "flag": "sorcerer_defeated"
+        },
+        {
+          "say": "Without its master the orb shudders, cracks, and bursts like a soap bubble.",
+          "style": "story"
+        },
+        {
+          "destroy": "any:def:dark_orb"
+        }
+      ],
+      "on_turn": [
+        {
+          "if": {
+            "chance": 0.4
+          },
+          "do": [
+            "#villain_taunt#"
+          ]
+        }
+      ],
+      "actions": {
+        "talk": [
+          {
+            "do": [
+              {
+                "choice": {
+                  "prompt": "{self.Name} turns, unhurried. \"Ah. The hero. Do say something brave.\"",
+                  "options": [
+                    {
+                      "text": "Why are you doing this?",
+                      "do": [
+                        "\"Because light makes everything visible, and I am tired of seeing.\" A small, terrible smile. \"Soon nobody will have to.\""
+                      ]
+                    },
+                    {
+                      "text": "Stop this and I'll let you live.",
+                      "do": [
+                        "{self.Name} laughs, genuinely delighted. \"Oh, I do like you. I'll keep you for last.\""
+                      ]
+                    },
+                    {
+                      "text": "(Say nothing.)",
+                      "do": [
+                        "You meet those black eyes in silence. For a heartbeat, something like doubt crosses the sorcerer's face."
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "use_with": [
+          {
+            "if": {
+              "tag": "relic",
+              "of": "target"
+            },
+            "do": [
+              {
+                "macro": "spire_victory"
+              }
+            ]
+          }
+        ],
+        "give_with": [
+          {
+            "if": {
+              "tag": "relic",
+              "of": "target"
+            },
+            "do": [
+              "\"How thoughtful,\" {self.name} purrs, reaching for it - and screams as the light touches their hand.",
+              {
+                "macro": "spire_victory"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "spire_bane": {
+      "extends": [
+        "valuable",
+        "light_source"
+      ],
+      "name": "shard of star-glass",
+      "aliases": [
+        "shard",
+        "star-glass",
+        "starglass",
+        "glass",
+        "crystal"
+      ],
+      "tags": [
+        "relic"
+      ],
+      "props": {
+        "lit": true,
+        "value": 40
+      },
+      "description": "A sliver of crystal that holds a single trapped point of starlight. The one thing in this place the sorcerer failed to burn."
+    }
+  },
+  "macros": {
+    "spire_victory": {
+      "do": [
+        {
+          "if": {
+            "flag": "sorcerer_defeated"
+          },
+          "then": [
+            {
+              "stop": true
+            }
+          ]
+        },
+        {
+          "say": "You raise {role.bane.name} high. Its light, so small a moment ago, blazes up like a second sun and pours into the orb. The darkness screams.",
+          "style": "story"
+        },
+        {
+          "if": {
+            "exists": "role:villain"
+          },
+          "then": [
+            "{role.villain.Name} throws up an arm, too late. The light takes them, and when it fades there is nothing left but a scorched robe.",
+            {
+              "destroy": "role:villain"
+            }
+          ]
+        },
+        {
+          "flag": "sorcerer_defeated"
+        },
+        {
+          "destroy": "any:def:dark_orb"
+        }
+      ]
+    }
+  }
+}

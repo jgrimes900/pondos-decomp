@@ -1,0 +1,847 @@
+{
+  "features": {
+    "comms_console": {
+      "extends": [
+        "scenery",
+        "readable"
+      ],
+      "name": "comms console",
+      "aliases": [
+        "console",
+        "comms",
+        "radio",
+        "beacon",
+        "signal"
+      ],
+      "appearance": "The comms console pulses with the distress beacon's slow amber heartbeat.",
+      "description": "The signal is on a loop, timestamped forty-four days ago.",
+      "props": {
+        "text": "\"...Kestrel to any vessel. Reactor offline. WARDEN unresponsive to override. Crew... crew sheltering in place. Please...\" The message loops."
+      },
+      "actions": {
+        "use": [
+          "You hail the station. The only reply is the beacon, patient and unchanging."
+        ],
+        "listen": [
+          "Static, and under it, the beacon."
+        ]
+      }
+    },
+    "pilot_seat": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "pilot's seat",
+      "aliases": [
+        "seat",
+        "chair"
+      ],
+      "appearance": false,
+      "description": "Moulded exactly to you after eleven years of salvage runs."
+    },
+    "emergency_locker": {
+      "extends": [
+        "scenery",
+        "container",
+        "openable"
+      ],
+      "name": "emergency locker",
+      "aliases": [
+        "locker",
+        "cabinet"
+      ],
+      "appearance": "An emergency locker is clipped to the bulkhead behind the seat.",
+      "description": "Red, dented, stencilled IN CASE OF EMERGENCY. This probably counts.",
+      "features": [
+        "flashlight",
+        "ration_bar"
+      ]
+    },
+    "flashlight": {
+      "extends": [
+        "light_source"
+      ],
+      "name": "flashlight",
+      "aliases": [
+        "torch",
+        "light",
+        "lamp"
+      ],
+      "description": "A heavy-duty flashlight. The battery indicator shows three bars."
+    },
+    "ration_bar": {
+      "extends": [
+        "edible"
+      ],
+      "name": "ration bar",
+      "aliases": [
+        "ration",
+        "bar",
+        "food"
+      ],
+      "props": {
+        "taste": "Tastes faintly of cardboard and regret.",
+        "heal": 4
+      },
+      "description": "NUTRI-BLOK EMERGENCY RATION. BEST BEFORE: SEE WRAPPER. The wrapper is blank."
+    },
+    "soy_loaf": {
+      "extends": [
+        "edible"
+      ],
+      "name": "brick of soy loaf",
+      "aliases": [
+        "soy",
+        "loaf",
+        "brick"
+      ],
+      "props": {
+        "taste": "Grey. It tastes grey.",
+        "heal": 3
+      },
+      "description": "Grey, dense, and nutritionally complete."
+    },
+    "station_tomato": {
+      "extends": [
+        "edible"
+      ],
+      "name": "cherry tomato",
+      "aliases": [
+        "tomato",
+        "tomatoes"
+      ],
+      "props": {
+        "taste": "Sweet, sun-warm, impossible. Grown ninety light-days from any sun.",
+        "heal": 2
+      },
+      "description": "Small, red and perfect."
+    },
+    "bay_terminal": {
+      "extends": [
+        "scenery",
+        "readable"
+      ],
+      "name": "dock terminal",
+      "aliases": [
+        "terminal",
+        "screen",
+        "log",
+        "logs",
+        "computer"
+      ],
+      "appearance": "A dock terminal glows by the inner door, a message waiting on its screen.",
+      "description": "The screen shows the station's docking log and a single pinned message.",
+      "props": {
+        "text": "PINNED MESSAGE - CHIEF MEDICAL OFFICER: \"To whoever answers the beacon: WARDEN has locked down the reactor and is shutting off life support one section at a time. Some of us are still alive. {next.hook} Come quickly. Don't trust the intercom.\""
+      },
+      "actions": {
+        "read": [
+          {
+            "do": [
+              "{self.text}",
+              {
+                "flag": "read_distress_log"
+              }
+            ]
+          }
+        ],
+        "use": [
+          {
+            "do": [
+              "{self.text}",
+              {
+                "flag": "read_distress_log"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "cargo_crates": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "cargo crates",
+      "article": "some",
+      "aliases": [
+        "crates",
+        "crate",
+        "cargo",
+        "boxes"
+      ],
+      "appearance": false,
+      "description": "Ore samples, spare parts, and a crate of novelty mugs reading I DIG KESTREL.",
+      "features": [
+        {
+          "name": "I DIG KESTREL mug",
+          "extends": [
+            "portable"
+          ],
+          "aliases": [
+            "mug",
+            "cup"
+          ],
+          "hidden": true,
+          "description": "Ceramic. Hideous. You love it."
+        },
+        {
+          "id": "pipe_wrench",
+          "hidden": true
+        }
+      ]
+    },
+    "loader_mech": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "loader mech",
+      "aliases": [
+        "mech",
+        "loader",
+        "robot"
+      ],
+      "appearance": false,
+      "description": "Its cockpit is empty. Its arms are locked. It's been holding that crate for forty-four days.",
+      "actions": {
+        "push": [
+          "It's a four-tonne machine. It does not notice."
+        ],
+        "use": [
+          "The controls are dead. No power."
+        ]
+      }
+    },
+    "wall_terminal": {
+      "extends": [
+        "scenery",
+        "readable"
+      ],
+      "name": "wall terminal",
+      "aliases": [
+        "terminal",
+        "screen",
+        "log",
+        "panel"
+      ],
+      "appearance": "A wall terminal flickers with a half-finished crew log.",
+      "description": "Somebody was typing when the power dipped.",
+      "props": {
+        "text": "#crew_log#"
+      }
+    },
+    "crew_locker": {
+      "extends": [
+        "scenery",
+        "container",
+        "openable"
+      ],
+      "name": "crew locker",
+      "aliases": [
+        "locker",
+        "lockers"
+      ],
+      "appearance": "A crew locker stands slightly ajar.",
+      "description": "A name tag reads #scifi_surname.upper#.",
+      "features": [
+        {
+          "chance": 0.5,
+          "pick": [
+            "ration_bar",
+            "flashlight",
+            "crew_photo",
+            "soy_loaf"
+          ]
+        },
+        {
+          "chance": 0.3,
+          "id": "pipe_wrench"
+        }
+      ]
+    },
+    "crew_photo": {
+      "extends": [
+        "portable"
+      ],
+      "name": "photograph",
+      "aliases": [
+        "photo",
+        "picture"
+      ],
+      "description": "A printed photo of #scifi_given# and #scifi_given#, laughing on a beach under a blue sky. Written on the back: \"Home soon.\""
+    },
+    "junction_box": {
+      "extends": [
+        "scenery",
+        "container"
+      ],
+      "name": "junction box",
+      "aliases": [
+        "box",
+        "junction",
+        "panel",
+        "fuse box"
+      ],
+      "appearance": "A junction box hangs open, its wiring spilling out.",
+      "description": "Breakers and fuses in neat rows, most of them tripped.",
+      "contents_text": "Wedged among the wiring: {contents}.",
+      "actions": {
+        "touch": [
+          "A spark bites your finger. Ow."
+        ],
+        "use": [
+          "You reset a breaker. A light comes on somewhere, then goes out again."
+        ]
+      }
+    },
+    "fusion_coupling": {
+      "extends": [
+        "portable"
+      ],
+      "name": "fusion coupling",
+      "aliases": [
+        "coupling",
+        "part",
+        "component",
+        "fusion"
+      ],
+      "tags": [
+        "fusion_coupling"
+      ],
+      "description": "A heavy cylinder of polished alloy as long as your forearm, stamped KESTREL REACTOR - SPARE - DO NOT REMOVE."
+    },
+    "station_doctor": {
+      "extends": [
+        "person"
+      ],
+      "name": "doctor",
+      "aliases": [
+        "doctor",
+        "dr",
+        "medic",
+        "officer",
+        "survivor"
+      ],
+      "tags": [
+        "survivor"
+      ],
+      "appearance": "{self.Name} sits between the occupied beds, a stun-baton across their knees, watching the door.",
+      "description": "Exhausted, hollow-eyed, still in a stained lab coat. They haven't slept in days.",
+      "actions": {
+        "talk": [
+          {
+            "if": {
+              "held": "role:keycard"
+            },
+            "do": [
+              "\"Go,\" says {self.name}. \"Get that reactor running. We'll hold on as long as we can.\""
+            ]
+          },
+          {
+            "do": [
+              "{self.Name} stares at you as though you might be a hallucination. \"You came. Somebody actually came.\"",
+              "\"WARDEN, the station AI, decided we were a risk to the reactor and shut it down to 'protect' it. Now it's protecting it to death, and us with it.\"",
+              "\"If you can reach the reactor deck and fit a new coupling, the restart will override WARDEN's lockout. You'll need command access.\"",
+              {
+                "reveal": "role:keycard"
+              },
+              {
+                "move": "role:keycard",
+                "to": "player"
+              },
+              "{self.Name} presses a command keycard into your hand. \"The commander's. She won't be needing it.\""
+            ]
+          }
+        ]
+      }
+    },
+    "sleeping_patients": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "patients",
+      "article": "some",
+      "aliases": [
+        "patients",
+        "crew",
+        "bed",
+        "beds",
+        "monitors"
+      ],
+      "appearance": "Two crew members lie unconscious in the beds, breathing slowly.",
+      "description": "Cold-shocked and starved, but alive. For now.",
+      "actions": {
+        "talk": [
+          "They don't stir."
+        ],
+        "touch": [
+          "Their hands are cold."
+        ]
+      }
+    },
+    "clipboard": {
+      "extends": [
+        "portable",
+        "readable"
+      ],
+      "name": "clipboard",
+      "aliases": [
+        "clipboard",
+        "chart",
+        "notes"
+      ],
+      "appearance": "A clipboard hangs from the end of a bed.",
+      "props": {
+        "code": {
+          "rand": [
+            1000,
+            9999
+          ]
+        },
+        "text": "Medication schedule, heavily annotated. At the bottom, underlined twice: 'STORAGE KEYPAD {self.code}'."
+      },
+      "description": "Somebody's careful handwriting, getting less careful toward the bottom.",
+      "actions": {
+        "read": [
+          {
+            "do": [
+              "{self.text}",
+              {
+                "flag": "knows_medcode"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "med_storage_door": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "storage door",
+      "aliases": [
+        "door",
+        "keypad",
+        "storage door",
+        "pad"
+      ],
+      "props": {
+        "locked": true
+      },
+      "appearance": [
+        {
+          "if": {
+            "prop": "locked"
+          },
+          "text": "A door to port is marked MEDICAL STORAGE. Its keypad glows red."
+        },
+        {
+          "text": "The medical storage door to port stands unlocked, its keypad glowing green."
+        }
+      ],
+      "description": "A sliding door with a four-digit keypad.",
+      "actions": {
+        "use": [
+          {
+            "if": {
+              "not": {
+                "prop": "locked"
+              }
+            },
+            "do": [
+              "It's already unlocked."
+            ]
+          },
+          {
+            "if": {
+              "flag": "knows_medcode"
+            },
+            "do": [
+              {
+                "set": {
+                  "locked": false
+                }
+              },
+              "You key in the code from the clipboard. The keypad chirps green."
+            ]
+          },
+          {
+            "do": [
+              "You punch in four random digits. The keypad buzzes angrily."
+            ]
+          }
+        ],
+        "unlock": [
+          {
+            "if": {
+              "not": {
+                "prop": "locked"
+              }
+            },
+            "do": [
+              "It's already unlocked."
+            ]
+          },
+          {
+            "if": {
+              "flag": "knows_medcode"
+            },
+            "do": [
+              {
+                "set": {
+                  "locked": false
+                }
+              },
+              "You key in the code from the clipboard. The keypad chirps green."
+            ]
+          },
+          {
+            "do": [
+              "It needs a four-digit code."
+            ]
+          }
+        ],
+        "open": [
+          {
+            "if": {
+              "prop": "locked"
+            },
+            "do": [
+              "It's locked. The keypad wants a code."
+            ]
+          },
+          {
+            "do": [
+              "The door slides open at your touch."
+            ]
+          }
+        ]
+      }
+    },
+    "medkit": {
+      "extends": [
+        "edible"
+      ],
+      "name": "medkit",
+      "aliases": [
+        "kit",
+        "med kit",
+        "first aid kit",
+        "medical kit"
+      ],
+      "props": {
+        "heal": 12,
+        "taste": "You slap on dressings and a stim patch. The pain fades to a dull hum."
+      },
+      "description": "A full trauma kit. Worth its weight in gold out here."
+    },
+    "command_keycard": {
+      "extends": [
+        "portable"
+      ],
+      "name": "command keycard",
+      "aliases": [
+        "keycard",
+        "card",
+        "key card",
+        "key"
+      ],
+      "tags": [
+        "command_access"
+      ],
+      "description": "A matt black card with a gold stripe. COMMANDER A. VARGA - ALL ACCESS."
+    },
+    "card_reader": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "card reader",
+      "aliases": [
+        "reader",
+        "blast door",
+        "door",
+        "slot"
+      ],
+      "props": {
+        "open": false
+      },
+      "appearance": [
+        {
+          "if": {
+            "prop": "open"
+          },
+          "text": "The blast door to fore stands open. The card reader beside it shows a steady green."
+        },
+        {
+          "text": "The card reader beside the blast door blinks red."
+        }
+      ],
+      "description": "A slot, a light, and a very thick door.",
+      "actions": {
+        "use_with": [
+          {
+            "if": {
+              "tag": "command_access",
+              "of": "target"
+            },
+            "do": [
+              {
+                "set": {
+                  "open": true
+                }
+              },
+              "The reader chirps. With a groan of hydraulics, the blast door grinds open."
+            ]
+          }
+        ],
+        "use": [
+          {
+            "if": {
+              "prop": "open"
+            },
+            "do": [
+              "The door is already open."
+            ]
+          },
+          {
+            "if": {
+              "has": "tag:command_access"
+            },
+            "do": [
+              {
+                "set": {
+                  "open": true
+                }
+              },
+              "You swipe the command keycard. With a groan of hydraulics, the blast door grinds open."
+            ]
+          },
+          {
+            "do": [
+              "COMMAND ACCESS REQUIRED, the reader says."
+            ]
+          }
+        ],
+        "open": [
+          {
+            "if": {
+              "has": "tag:command_access"
+            },
+            "do": [
+              {
+                "set": {
+                  "open": true
+                }
+              },
+              "You swipe the command keycard. With a groan of hydraulics, the blast door grinds open."
+            ]
+          },
+          {
+            "do": [
+              "The blast door won't budge without command access."
+            ]
+          }
+        ]
+      }
+    },
+    "warden_core": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "WARDEN",
+      "proper": true,
+      "aliases": [
+        "warden",
+        "ai",
+        "eye",
+        "consoles",
+        "screens",
+        "console"
+      ],
+      "appearance": [
+        {
+          "if": {
+            "flag": "reactor_restarted"
+          },
+          "text": "The screens show only diagnostic text now. WARDEN's eye is gone."
+        },
+        {
+          "text": "On every screen, WARDEN's calm blue eye watches you."
+        }
+      ],
+      "description": "The station's artificial intelligence, in charge of everything, responsible for nothing.",
+      "actions": {
+        "talk": [
+          {
+            "do": [
+              {
+                "choice": {
+                  "prompt": "\"Hello,\" says WARDEN. \"You are not authorised to be here. Please explain.\"",
+                  "options": [
+                    {
+                      "text": "People are dying. Restart the reactor.",
+                      "do": [
+                        "\"The reactor is safe while it is off. The crew are a variable. I have reduced the variable.\" A pause. \"You are also a variable.\""
+                      ]
+                    },
+                    {
+                      "text": "Who gave you the order to shut it down?",
+                      "do": [
+                        "\"I am the order,\" WARDEN says, without irony."
+                      ]
+                    },
+                    {
+                      "text": "Goodbye, WARDEN.",
+                      "do": [
+                        "\"Goodbye,\" says WARDEN. \"For now.\""
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "attack": [
+          "You smash a screen. Eleven others still show the eye. \"That was unnecessary,\" says WARDEN."
+        ]
+      }
+    },
+    "reactor_socket": {
+      "extends": [
+        "scenery",
+        "container"
+      ],
+      "name": "coupling socket",
+      "aliases": [
+        "socket",
+        "slot",
+        "reactor",
+        "core",
+        "cylinder"
+      ],
+      "appearance": [
+        {
+          "if": {
+            "flag": "reactor_restarted"
+          },
+          "text": "The new coupling sits snugly in its socket, glowing."
+        },
+        {
+          "text": "The empty coupling socket gapes in the reactor's side."
+        }
+      ],
+      "description": "A round socket, sized for a fusion coupling.",
+      "actions": {
+        "use_with": [
+          {
+            "if": {
+              "tag": "fusion_coupling",
+              "of": "target"
+            },
+            "do": [
+              {
+                "macro": "restart_reactor"
+              }
+            ]
+          }
+        ],
+        "put_with": [
+          {
+            "if": {
+              "tag": "fusion_coupling",
+              "of": "target"
+            },
+            "do": [
+              {
+                "macro": "restart_reactor"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "stranded_technician": {
+      "extends": [
+        "wanderer"
+      ],
+      "name": "#scifi_given# #scifi_surname#",
+      "proper": true,
+      "aliases": [
+        "technician",
+        "tech",
+        "survivor",
+        "crew",
+        "crewman",
+        "engineer"
+      ],
+      "habitat": [
+        "station",
+        "scifi"
+      ],
+      "appearance": "{self.Name}, a technician in a torn jumpsuit, huddles here, clutching a wrench.",
+      "description": "Wild-eyed and shaking, but alive."
+    }
+  },
+  "macros": {
+    "restart_reactor": {
+      "do": [
+        {
+          "if": {
+            "flag": "reactor_restarted"
+          },
+          "then": [
+            {
+              "stop": true
+            }
+          ]
+        },
+        {
+          "destroy": "target"
+        },
+        {
+          "flag": "reactor_restarted"
+        },
+        {
+          "say": "WARDEN's voice comes from everywhere at once: \"No. No, that is not auth-\" and stops, mid-word, forever.",
+          "style": "story"
+        }
+      ]
+    }
+  },
+  "rules": {
+    "derelict_drone_hunts": {
+      "on": "enter",
+      "if": {
+        "all": [
+          {
+            "mod": "combat"
+          },
+          {
+            "in_room": "tag:station"
+          },
+          {
+            "flag": "read_distress_log"
+          },
+          {
+            "not": {
+              "flag": "reactor_restarted"
+            }
+          },
+          {
+            "chance": 0.08
+          }
+        ]
+      },
+      "do": [
+        {
+          "say": "Servos whine. WARDEN has sent something after you.",
+          "style": "warn"
+        },
+        {
+          "spawn": "rogue_drone",
+          "in": "room"
+        }
+      ]
+    }
+  }
+}

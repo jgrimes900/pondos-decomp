@@ -1,0 +1,95 @@
+{
+  "strings": {
+    "ignore_words": [
+      "the",
+      "a",
+      "an",
+      "some",
+      "at"
+    ],
+    "also_here": "You also see {contents} here.",
+    "exits_line": "Exits: {exits}.",
+    "exit_format": "{dir} to {dest} ({distance})",
+    "exit_format_unknown": "{dir} ({distance})",
+    "exit_format_named": "to {dest} ({distance})",
+    "no_exits": "There is no obvious way out.",
+    "nothing_special": "You see nothing special about {self}.",
+    "nothing": "nothing",
+    "inventory": "You are carrying {contents}.",
+    "inventory_empty": "You are empty-handed.",
+    "inventory_holding": "holding {contents}",
+    "unknown_verb": "I don't know the word \"{verb}\". Type 'help' for a list of commands.",
+    "not_here": "You see no \"{thing}\" here.",
+    "not_held": "You aren't holding that.",
+    "ambiguous": "Which do you mean: {options}?",
+    "what": "What do you want to {verb}?",
+    "cant": "You can't do that.",
+    "need_second": "{Verb} {target} {prep} what?",
+    "nothing_for_all": "There is nothing here to {verb}.",
+    "go_where": "Where do you want to go?",
+    "no_exit": "You can't go that way.",
+    "blocked": "You can't go that way right now.",
+    "already_here": "You are already there.",
+    "no_route": "You don't know a way there from here.",
+    "journey": "You set out for {dest} ({hops} legs, distance {distance}).",
+    "journey_interrupted": "Your journey is interrupted!",
+    "journal_updated": "(Your journal has been updated.)",
+    "journal_current": "Current goal: {title}",
+    "journal_done": "Your tale is told, but the world remains to explore.",
+    "journal_empty": "Your journal is empty.",
+    "journal_done_entry": "Done: {title}.",
+    "chapter": "~ {title} ~",
+    "default_hook": "There is trouble at {beat.area}, and someone needs to see to it.",
+    "default_lead": "Your path now leads toward {beat.area}.",
+    "gate_blocked": "Something tells you it is not yet time to go that way.",
+    "story_complete": "Your story is complete, but the world remains. You may keep exploring.",
+    "no_story": "This world has no story; it is yours to explore.",
+    "unknown_chapter": "???",
+    "help_header": "Commands:",
+    "help_meta": "Game:",
+    "help_hint": "(Type 'help' for a list of commands.)",
+    "saved": "Game saved as '{name}'.",
+    "nothing_to_repeat": "There is nothing to repeat.",
+    "the_end": "THE END",
+    "map_wilds": "Along the way",
+    "rumour_object": "scrawled message",
+    "rumour_appearance": "Someone has scratched a message here.",
+    "untitled_story": "An Untold Tale",
+    "default_hero_name": "the wanderer"
+  },
+  "settings": {
+    "default_structure": [
+      "opening",
+      "middle*",
+      "climax"
+    ],
+    "max_middle_beats": 4,
+    "path_length": [
+      2,
+      4
+    ],
+    "filler_distance": [
+      1,
+      3
+    ],
+    "direct_distance": [
+      3,
+      6
+    ],
+    "branch_chance": 0.35,
+    "loops": [
+      1,
+      3
+    ],
+    "scatter_chance": 0.45,
+    "encounter_chance": 0.25,
+    "rumour_chance": 0.5,
+    "max_side_areas": 12,
+    "sandbox_size": [
+      10,
+      16
+    ],
+    "time_per_distance": 1,
+    "auto_lead": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "derelict",
+  "name": "Derelict: Station Kestrel",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "Science fiction. A mining station has gone dark and its distress beacon is still calling. Adds a premise, your docked shuttle as a start area, a medical bay and a reactor deck, generated corridors, maintenance shafts and hydroponics, plus a three-part story. Uses ship directions (fore, aft, port, starboard). Pair with Steel & Peril for rogue drones.",
+  "requires": ["core"],
+  "recommends": ["combat"],
+  "priority": 40,
+  "tags": ["scifi", "area", "regions", "premise", "story"]
+}

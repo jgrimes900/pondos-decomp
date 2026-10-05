@@ -1,0 +1,363 @@
+{
+  "grammar": {
+    "tree": [
+      "oak",
+      "ash",
+      "beech",
+      "birch",
+      "elm",
+      "yew",
+      "alder",
+      "hornbeam",
+      "pine",
+      "rowan",
+      "willow",
+      "larch"
+    ],
+    "forest_adj": [
+      "mossy",
+      "shadowed",
+      "silent",
+      "tangled",
+      "dappled",
+      "ancient",
+      "whispering",
+      "green",
+      "deep",
+      "bramble-choked",
+      "fern-hung",
+      "misty"
+    ],
+    "forest_place": [
+      "glade",
+      "thicket",
+      "hollow",
+      "clearing",
+      "grove",
+      "dell",
+      "wood",
+      "copse",
+      "path",
+      "trail"
+    ],
+    "forest_name": [
+      "#forest_adj.title# #forest_place.title#",
+      "#tree.title# #forest_place.title#",
+      "The #forest_adj.title# Wood",
+      "#tree.title#wood #forest_place.title#"
+    ],
+    "forest_desc": [
+      "#tree.s.cap# crowd close on every side, their branches knitting a roof that lets only #light# through.",
+      "The path winds between the trunks of #forest_adj# #tree.s#. #forest_sound.cap#.",
+      "Ferns brush your knees and the air smells of #forest_smell#. #forest_sound.cap#.",
+      "A #forest_adj# stretch of woodland where #tree# and #tree# grow tangled together. #forest_sound.cap#."
+    ],
+    "light": [
+      "a green twilight",
+      "thin coins of sunlight",
+      "a grey and watery light",
+      "slanting golden beams"
+    ],
+    "forest_sound": [
+      "somewhere a woodpecker drums",
+      "the wind hushes through the leaves",
+      "birdsong rises and falls around you",
+      "an uneasy quiet hangs over everything",
+      "a stream chuckles out of sight"
+    ],
+    "forest_smell": [
+      "leaf mould and wet bark",
+      "resin and moss",
+      "rain and mushrooms",
+      "wild garlic"
+    ],
+    "hill_adj": [
+      "windswept",
+      "bare",
+      "heather-clad",
+      "rolling",
+      "rocky",
+      "lonely",
+      "high",
+      "gorse-covered"
+    ],
+    "hill_place": [
+      "ridge",
+      "tor",
+      "fell",
+      "brow",
+      "saddle",
+      "slope",
+      "downs",
+      "crag"
+    ],
+    "hill_name": [
+      "#hill_adj.title# #hill_place.title#",
+      "#color.title# #hill_place.title#",
+      "#beast.title#'s #hill_place.title#"
+    ],
+    "hill_desc": [
+      "The land rises in #hill_adj# folds. Wind tugs at your clothes and the view stretches #view#.",
+      "A #hill_adj# #hill_place# where the turf is short and springy and #hill_detail#.",
+      "Grey stone breaks through the thin soil here like the bones of the hill. #hill_detail.cap#."
+    ],
+    "view": [
+      "for miles in every direction",
+      "toward a hazy blue horizon",
+      "down into a patchwork of valleys"
+    ],
+    "hill_detail": [
+      "sheep tracks crisscross the slope",
+      "a curlew calls mournfully",
+      "clouds race their shadows across the ground",
+      "a cairn of piled stones marks the high point"
+    ],
+    "color": [
+      "grey",
+      "red",
+      "black",
+      "white",
+      "green",
+      "golden"
+    ],
+    "beast": [
+      "raven",
+      "hart",
+      "wolf",
+      "eagle",
+      "hare",
+      "bear",
+      "fox",
+      "boar"
+    ],
+    "river_name": [
+      "#r.title# Ford",
+      "#r.title# Banks",
+      "The #r.title# Crossing",
+      "#willow_word.title# Reach"
+    ],
+    "river": [
+      "Silverrun",
+      "Wend",
+      "Ashbrook",
+      "Mirewater",
+      "Little Sorrow",
+      "Brightwater",
+      "Tumble",
+      "Ouse"
+    ],
+    "willow_word": [
+      "willow",
+      "reed",
+      "heron",
+      "otter",
+      "kingfisher"
+    ],
+    "river_desc": [
+      "The #r# runs broad and #river_adj# here, murmuring over smooth stones. #river_detail.cap#.",
+      "A #river_adj# river bends through the landscape, its banks thick with reeds. #river_detail.cap#.",
+      "Water slides past, #river_adj# and cold. #river_detail.cap#."
+    ],
+    "river_adj": [
+      "slow",
+      "swift",
+      "brown",
+      "clear",
+      "glittering",
+      "sullen"
+    ],
+    "river_detail": [
+      "a heron stands motionless in the shallows",
+      "dragonflies stitch the air above the water",
+      "an old fishing net hangs snagged on a branch",
+      "stepping stones lead across"
+    ],
+    "marsh_name": [
+      "#marsh_adj.title# Fen",
+      "The #marsh_adj.title# Mire",
+      "#bog_thing.title# Bog",
+      "#marsh_adj.title# Moss"
+    ],
+    "marsh_adj": [
+      "drowned",
+      "grey",
+      "reeking",
+      "sodden",
+      "black",
+      "misty",
+      "lost"
+    ],
+    "bog_thing": [
+      "Corpse-candle",
+      "Witchlight",
+      "Hag's",
+      "Bittern",
+      "Sedge"
+    ],
+    "marsh_desc": [
+      "Pools of black water lie between tussocks of coarse grass. #marsh_detail.cap#.",
+      "Mist clings to the #marsh_adj# ground, and every step squelches. #marsh_detail.cap#.",
+      "Dead trees stand in the mire like grey sentinels. #marsh_detail.cap#."
+    ],
+    "marsh_detail": [
+      "bubbles rise from the mud with a foul smell",
+      "faint lights dance far out over the water",
+      "frogs fall silent as you pass",
+      "a bittern booms somewhere in the reeds"
+    ],
+    "road_name": [
+      "The #road_adj.title# Road",
+      "#village_part.title# Lane",
+      "The Old #beast.title# Way",
+      "#field.title# Track"
+    ],
+    "road_adj": [
+      "King's",
+      "Old",
+      "Pilgrim's",
+      "Drovers'",
+      "Salt",
+      "Long",
+      "Low",
+      "Mill"
+    ],
+    "village_part": [
+      "hedge",
+      "cart",
+      "mill",
+      "orchard",
+      "barrow",
+      "church",
+      "well"
+    ],
+    "field": [
+      "barley",
+      "turnip",
+      "hay",
+      "flax",
+      "oat"
+    ],
+    "road_desc": [
+      "A rutted road runs between hedgerows thick with #flower.s#. #road_detail.cap#.",
+      "The track crosses open farmland where #field# fields ripple in the wind. #road_detail.cap#.",
+      "The #road_adj# road is well-trodden by carts and cattle. #road_detail.cap#."
+    ],
+    "road_detail": [
+      "a scarecrow keeps lonely watch over a field",
+      "cartwheel ruts are baked hard in the mud",
+      "a farmhouse chimney smokes in the distance",
+      "a dog barks somewhere beyond the hedges"
+    ],
+    "flower": [
+      "foxglove",
+      "dog rose",
+      "cornflower",
+      "poppy",
+      "cow parsley",
+      "bluebell",
+      "meadowsweet"
+    ],
+    "place_name": [
+      "#forest_name#",
+      "#hill_name#",
+      "#river_name#",
+      "#marsh_name#"
+    ],
+    "milestone_text": [
+      "Carved on it: \"#place_name# - #num# miles\".",
+      "The worn letters read: \"#place_name# #num#\".",
+      "Someone has scratched \"#warning#\" beneath the old carving."
+    ],
+    "num": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "9",
+      "12"
+    ],
+    "warning": [
+      "TURN BACK",
+      "BEWARE THE MIST",
+      "NO SAFE WATER",
+      "HE IS WATCHING",
+      "TRUST NO LIGHTS"
+    ],
+    "wanderer_name": [
+      "Old #given#",
+      "#given# the #trade#",
+      "#given# #surname#"
+    ],
+    "given": [
+      "Agnes",
+      "Bram",
+      "Hild",
+      "Tobin",
+      "Wenna",
+      "Osric",
+      "Mirabel",
+      "Cedd",
+      "Ysolde",
+      "Gareth",
+      "Elowen",
+      "Piers"
+    ],
+    "surname": [
+      "Thatch",
+      "Millward",
+      "Ashdown",
+      "Crane",
+      "Fletcher",
+      "Bracken",
+      "Hollins",
+      "Marsh"
+    ],
+    "trade": [
+      "Peddler",
+      "Tinker",
+      "Shepherd",
+      "Pilgrim",
+      "Hunter",
+      "Drover",
+      "Charcoal-burner"
+    ],
+    "outdoor_ambience": [
+      "A gust of wind carries the smell of #weather_smell#.",
+      "High above, a #bird# wheels against the sky.",
+      "Clouds gather briefly, then break apart.",
+      "The light shifts as a cloud passes over the sun.",
+      "Somewhere far off, a #beast# cries out."
+    ],
+    "weather_smell": [
+      "rain",
+      "woodsmoke",
+      "cut hay",
+      "the sea",
+      "distant thunder"
+    ],
+    "bird": [
+      "hawk",
+      "kestrel",
+      "raven",
+      "buzzard",
+      "crow"
+    ],
+    "berry": [
+      "blackberry",
+      "raspberry",
+      "bilberry",
+      "elderberry",
+      "gooseberry",
+      "sloe"
+    ],
+    "trinket": [
+      "bone button",
+      "carved wooden bird",
+      "tarnished thimble",
+      "cracked spectacle lens",
+      "glass bead",
+      "lead pilgrim badge"
+    ]
+  }
+}

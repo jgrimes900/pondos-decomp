@@ -1,0 +1,11 @@
+{
+  "id": "combat",
+  "name": "Steel & Peril",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "Simple turn-based combat. Gives you health, lets you attack, makes creatures from other mods fight back, adds healing food, resting and death, and puts wolves, bandits and worse into the wild places of any world. Works with any setting.",
+  "requires": ["core"],
+  "load_after": ["wilds", "hamlet", "barrow", "spire", "derelict"],
+  "priority": 60,
+  "tags": ["rules", "combat"]
+}

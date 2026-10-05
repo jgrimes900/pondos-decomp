@@ -1,0 +1,11 @@
+{
+  "id": "saga_waning_light",
+  "name": "Saga: The Waning Light",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "A story premise: the world's light is failing and you are the one who must find out why. Gives the tale its opening and ending and threads together the story beats from your other fantasy mods. Best with Hearthside Hamlet, The Barrow of Kings and The Sorcerer's Spire.",
+  "requires": ["core"],
+  "recommends": ["hamlet", "barrow", "spire", "wilds", "combat"],
+  "priority": 45,
+  "tags": ["fantasy", "premise", "story"]
+}

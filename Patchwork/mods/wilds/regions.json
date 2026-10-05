@@ -1,0 +1,423 @@
+{
+  "regions": {
+    "forest": {
+      "name": "forest",
+      "tags": [
+        "forest",
+        "wild",
+        "outdoor",
+        "fantasy"
+      ],
+      "connects": [
+        "road",
+        "pastoral",
+        "dungeon",
+        "ancient",
+        "hills",
+        "river",
+        "settlement"
+      ],
+      "length": [
+        2,
+        4
+      ],
+      "distance": [
+        1,
+        3
+      ],
+      "weight": 3,
+      "rooms": [
+        {
+          "name": "#forest_name#",
+          "description": "#forest_desc#",
+          "features": [
+            {
+              "chance": 0.6,
+              "id": "tree"
+            },
+            {
+              "chance": 0.3,
+              "id": "fallen_log"
+            },
+            {
+              "chance": 0.3,
+              "id": "berry_bush"
+            }
+          ],
+          "weight": 3
+        },
+        {
+          "name": "#forest_adj.title# Stream",
+          "description": "A stream cuts through the woods here, its banks lined with ferns and #tree.s#.",
+          "features": [
+            "stream",
+            {
+              "chance": 0.4,
+              "id": "tree"
+            },
+            {
+              "chance": 0.3,
+              "id": "boulder"
+            }
+          ]
+        },
+        {
+          "name": "[t:#tree#]#t.title# Grove",
+          "description": "A ring of #t.s# encloses a hushed clearing. #forest_sound.cap#.",
+          "features": [
+            {
+              "id": "tree",
+              "count": [
+                1,
+                2
+              ]
+            },
+            {
+              "chance": 0.5,
+              "id": "wildflowers"
+            },
+            {
+              "chance": 0.25,
+              "id": "standing_stone"
+            }
+          ]
+        },
+        {
+          "name": "Woodcutter's Clearing",
+          "description": "Stumps dot this clearing where trees have been felled. Chips of wood crunch underfoot.",
+          "features": [
+            {
+              "name": "chopping block",
+              "extends": [
+                "scenery",
+                "surface"
+              ],
+              "appearance": "An old chopping block stands in the middle of the clearing.",
+              "description": "Scarred by countless axe blows.",
+              "features": [
+                {
+                  "chance": 0.3,
+                  "id": "walking_stick"
+                }
+              ]
+            },
+            "fallen_log"
+          ]
+        }
+      ]
+    },
+    "hills": {
+      "name": "hills",
+      "tags": [
+        "hills",
+        "highland",
+        "wild",
+        "outdoor",
+        "fantasy"
+      ],
+      "connects": [
+        "mountain",
+        "road",
+        "ancient",
+        "ruins",
+        "dungeon",
+        "forest"
+      ],
+      "length": [
+        1,
+        3
+      ],
+      "distance": [
+        2,
+        4
+      ],
+      "weight": 2,
+      "rooms": [
+        {
+          "name": "#hill_name#",
+          "description": "#hill_desc#",
+          "features": [
+            {
+              "chance": 0.4,
+              "id": "boulder"
+            },
+            {
+              "chance": 0.2,
+              "id": "standing_stone"
+            }
+          ],
+          "weight": 3
+        },
+        {
+          "name": "#hill_adj.title# Cairn",
+          "description": "A great cairn of piled stones crowns the hill. Travellers have added stones to it for centuries.",
+          "features": [
+            {
+              "name": "cairn",
+              "extends": [
+                "scenery"
+              ],
+              "appearance": false,
+              "aliases": [
+                "stones",
+                "pile"
+              ],
+              "description": "Thousands of stones, each one placed by a passing traveller.",
+              "actions": {
+                "put_with": [
+                  "You add a stone of your own to the cairn. It feels like the right thing to do."
+                ]
+              },
+              "features": [
+                {
+                  "chance": 0.5,
+                  "pick_tag": "trinket",
+                  "hidden": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Shepherd's Hut",
+          "description": "A low hut of dry stone and turf crouches out of the wind. Its door hangs open.",
+          "features": [
+            {
+              "name": "hearth",
+              "extends": [
+                "scenery",
+                "container"
+              ],
+              "aliases": [
+                "fireplace",
+                "ashes"
+              ],
+              "appearance": "A cold hearth fills one wall.",
+              "description": "Cold ashes and a blackened pot hook.",
+              "contents_text": "Among the ashes: {contents}.",
+              "features": [
+                {
+                  "chance": 0.5,
+                  "pick": [
+                    "tinderbox",
+                    "stale_bread"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "river": {
+      "name": "river",
+      "tags": [
+        "river",
+        "water",
+        "wild",
+        "outdoor",
+        "fantasy"
+      ],
+      "connects": [
+        "pastoral",
+        "forest",
+        "road",
+        "coast",
+        "marsh",
+        "settlement"
+      ],
+      "length": [
+        1,
+        3
+      ],
+      "distance": [
+        1,
+        3
+      ],
+      "rooms": [
+        {
+          "name": "[r:#river#]#river_name#",
+          "description": "#river_desc#",
+          "features": [
+            {
+              "chance": 0.5,
+              "id": "reeds"
+            },
+            {
+              "chance": 0.3,
+              "id": "tree"
+            }
+          ],
+          "weight": 2
+        },
+        {
+          "name": "[r:#river#]#r.title# Bridge",
+          "description": "An old humpbacked bridge of grey stone carries the way over the #r#.",
+          "features": [
+            {
+              "name": "bridge parapet",
+              "extends": [
+                "scenery"
+              ],
+              "aliases": [
+                "parapet",
+                "bridge",
+                "wall"
+              ],
+              "appearance": false,
+              "description": "Mossy stones, polished by elbows. Initials have been scratched into the top.",
+              "actions": {
+                "read": [
+                  "Among the initials: #given.upper#, #given.upper#... and a crude drawing of a fish."
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "marsh": {
+      "name": "marsh",
+      "tags": [
+        "marsh",
+        "wild",
+        "outdoor",
+        "fantasy",
+        "eerie"
+      ],
+      "connects": [
+        "dungeon",
+        "ruins",
+        "river",
+        "forest",
+        "eerie"
+      ],
+      "length": [
+        1,
+        3
+      ],
+      "distance": [
+        2,
+        3
+      ],
+      "rooms": [
+        {
+          "name": "#marsh_name#",
+          "description": "#marsh_desc#",
+          "features": [
+            {
+              "chance": 0.6,
+              "id": "reeds"
+            },
+            {
+              "chance": 0.4,
+              "id": "will_o_wisp"
+            }
+          ],
+          "weight": 2
+        },
+        {
+          "name": "Drowned Causeway",
+          "description": "Half-sunken stones form a causeway across the mire. Black water laps at your boots.",
+          "features": [
+            {
+              "name": "sunken post",
+              "extends": [
+                "scenery"
+              ],
+              "aliases": [
+                "post"
+              ],
+              "appearance": "A rotten post juts from the water, wound with rusted chain.",
+              "description": "Something was once tied here. You'd rather not think about what."
+            }
+          ]
+        }
+      ]
+    },
+    "road": {
+      "name": "road",
+      "tags": [
+        "road",
+        "pastoral",
+        "outdoor",
+        "fantasy"
+      ],
+      "connects": [
+        "settlement",
+        "pastoral",
+        "forest",
+        "hills",
+        "river"
+      ],
+      "length": [
+        2,
+        4
+      ],
+      "distance": [
+        2,
+        4
+      ],
+      "weight": 3,
+      "rooms": [
+        {
+          "name": "#road_name#",
+          "description": "#road_desc#",
+          "features": [
+            {
+              "chance": 0.3,
+              "id": "milestone"
+            },
+            {
+              "chance": 0.3,
+              "id": "wildflowers"
+            }
+          ],
+          "weight": 3
+        },
+        {
+          "name": "#road_adj.title# Crossroads",
+          "description": "Roads meet here beneath a gibbet-free sky, which is something to be grateful for.",
+          "features": [
+            "signpost"
+          ]
+        },
+        {
+          "name": "[f:#field#]#f.title# Fields",
+          "description": "A track runs along the edge of #f# fields. A hedge of hawthorn shelters it from the wind.",
+          "features": [
+            {
+              "chance": 0.6,
+              "id": "scarecrow"
+            },
+            {
+              "chance": 0.3,
+              "id": "apple"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "rules": {
+    "wilds_ambience": {
+      "on": "travel",
+      "if": {
+        "all": [
+          {
+            "chance": 0.18
+          },
+          {
+            "in_room": "tag:outdoor"
+          }
+        ]
+      },
+      "do": [
+        {
+          "say": "#outdoor_ambience#",
+          "style": "dim"
+        }
+      ]
+    }
+  }
+}

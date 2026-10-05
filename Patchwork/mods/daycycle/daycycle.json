@@ -1,0 +1,50 @@
+{
+  "//": "One clock unit is ten minutes. The day starts at 08:00.",
+  "macros": {
+    "daycycle_compute": {
+      "do": [
+        {"let": {"out_minutes": "=clock * 10 + 8 * 60"}},
+        {"let": {"out_hour": "=int(out_minutes // 60) % 24", "out_day": "=int(out_minutes // 1440) + 1"}},
+        {"let": {"out_part": "='night' if out_hour >= 21 or out_hour < 5 else ('dawn' if out_hour < 7 else ('day' if out_hour < 18 else 'dusk'))"}}
+      ]
+    }
+  },
+  "rules": {
+    "daycycle_track": {
+      "on": ["turn", "travel"],
+      "priority": 90,
+      "do": [
+        {"macro": "daycycle_compute"},
+        {"set_var": {"hour": "=out_hour", "day": "=out_day"}},
+        {"if": "out_part != var.daypart and var.daypart != 0", "then": [
+          {"set_var": {"daypart": "=out_part"}},
+          {"if": {"in_room": "tag:outdoor"}, "then": [
+            {"if": {"local": "out_part", "eq": "dawn"}, "then": [{"say": "#daycycle_dawn#", "style": "dim"}]},
+            {"if": {"local": "out_part", "eq": "day"}, "then": [{"say": "#daycycle_day#", "style": "dim"}]},
+            {"if": {"local": "out_part", "eq": "dusk"}, "then": [{"say": "#daycycle_dusk#", "style": "dim"}]},
+            {"if": {"local": "out_part", "eq": "night"}, "then": [{"say": "#daycycle_night#", "style": "dim"}]}
+          ]}
+        ]},
+        {"if": "var.daypart == 0", "then": [{"set_var": {"daypart": "=out_part"}}]}
+      ]
+    }
+  },
+  "verbs": {
+    "time": {
+      "aliases": ["hour", "clock", "what time"],
+      "target": "none",
+      "time": 0,
+      "help": "time",
+      "default": [
+        {"macro": "daycycle_compute"},
+        "By your reckoning it is about {=out_hour}:00 on day {=out_day}. ({=out_part})"
+      ]
+    }
+  },
+  "grammar": {
+    "daycycle_dawn": ["The sky greys, then pinks. Dawn is coming.", "Birds begin to sing as the first light creeps over the horizon."],
+    "daycycle_day": ["The sun is fully up now.", "The morning mist burns away."],
+    "daycycle_dusk": ["The light turns gold, then amber. Evening is drawing in.", "Long shadows stretch across the land as the sun sinks."],
+    "daycycle_night": ["Night falls. Stars prick out one by one overhead.", "Darkness settles over the land. Somewhere an owl calls."]
+  }
+}

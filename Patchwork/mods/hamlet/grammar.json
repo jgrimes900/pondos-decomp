@@ -1,0 +1,26 @@
+{
+  "grammar": {
+    "village_name": ["#village_pre##village_suf#", "#village_pre##village_suf#", "Little #village_pre##village_suf#", "#village_pre##village_suf#-under-#village_hill#"],
+    "village_pre": ["Thorn", "Ash", "Elm", "Wych", "Brack", "Hol", "Mere", "Sedge", "Wend", "Oak", "Bram", "Stan"],
+    "village_suf": ["bury", "ley", "ford", "wick", "thorpe", "stead", "combe", "ham", "by", "well"],
+    "village_hill": ["Hill", "Edge", "Tor", "Wold"],
+    "inn_name": ["The #inn_adj.title# #inn_noun.title#"],
+    "inn_adj": ["drowsy", "laughing", "crooked", "golden", "drunken", "three-legged", "red", "wandering", "jolly", "sleeping"],
+    "inn_noun": ["badger", "goose", "pilgrim", "crown", "lantern", "stag", "kettle", "harp", "fox", "barrel"],
+    "given": ["Maud", "Alys", "Hamon", "Roger", "Edith", "Walter", "Joan", "Godric", "Isolde", "Tam"],
+    "village_gossip": [
+      "The miller's daughter swears she saw lights out on the hills.",
+      "Prices at market have gone up again. Robbery, it is.",
+      "Old #given# claims his cow gave sour milk three days running. Bad omen, he says.",
+      "There were wolves heard howling closer than usual last week.",
+      "A stranger came through asking about old maps. Paid in strange coin."
+    ],
+    "lore_title": ["A Brief History of #village_name#", "Saints and Wells of the #hill_region# Country", "The Chronicle of #given# the Reeve"],
+    "hill_region": ["Western", "Eastern", "Northern", "Lower", "Upper"],
+    "lore_text": [
+      "It tells how the village was founded around a holy well, and how the well has never once run dry, not even in the year of the long drought.",
+      "Most of it concerns disputes about sheep. One chapter, oddly, describes a 'door in the earth' that the founders sealed and swore never to open.",
+      "The final pages are written in a different, shakier hand: 'When the light wanes, look to the old places. They remember.'"
+    ]
+  }
+}

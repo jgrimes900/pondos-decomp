@@ -1,0 +1,719 @@
+{
+  "regions": {
+    "station_corridors": {
+      "name": "corridors",
+      "tags": [
+        "station",
+        "scifi",
+        "interior",
+        "corridor"
+      ],
+      "connects": [
+        "station",
+        "docking",
+        "medical",
+        "engineering"
+      ],
+      "directions": [
+        "fore",
+        "aft",
+        "port",
+        "starboard"
+      ],
+      "length": [
+        2,
+        3
+      ],
+      "distance": [
+        1,
+        2
+      ],
+      "weight": 3,
+      "rooms": [
+        {
+          "name": "Corridor #deck#-#num2#",
+          "description": "#corridor_desc#",
+          "weight": 4,
+          "features": [
+            {
+              "chance": 0.3,
+              "id": "wall_terminal"
+            },
+            {
+              "chance": 0.3,
+              "id": "crew_locker"
+            }
+          ]
+        },
+        {
+          "name": "Crew Quarters #num2#",
+          "description": "Bunks fold out of the walls on both sides. Personal effects float in the low-gravity eddies by the air vent.",
+          "features": [
+            "crew_locker",
+            {
+              "chance": 0.6,
+              "id": "wall_terminal"
+            }
+          ]
+        },
+        {
+          "name": "Mess Hall",
+          "description": "Tables bolted to the deck, trays still on them. Whatever the crew were eating has long since gone grey.",
+          "features": [
+            {
+              "name": "food dispenser",
+              "extends": [
+                "scenery"
+              ],
+              "aliases": [
+                "dispenser",
+                "machine"
+              ],
+              "appearance": "A food dispenser blinks a sad yellow light.",
+              "description": "It offers SOY LOAF (PLAIN) and nothing else.",
+              "actions": {
+                "use": [
+                  {
+                    "if": {
+                      "not": {
+                        "flag": "got_soy"
+                      }
+                    },
+                    "do": [
+                      "The dispenser whirrs and drops a brick of soy loaf into the tray.",
+                      {
+                        "spawn": "soy_loaf",
+                        "in": "room"
+                      },
+                      {
+                        "flag": "got_soy"
+                      }
+                    ]
+                  },
+                  {
+                    "do": [
+                      "OUT OF STOCK, the display reads."
+                    ]
+                  }
+                ],
+                "push": [
+                  "You thump it. It whirrs hopefully but produces nothing."
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Observation Lounge",
+          "description": "A wide window looks out on the slow wheel of stars and, far below, the grey bulk of the asteroid the station was built to mine.",
+          "features": [
+            {
+              "name": "viewport",
+              "extends": [
+                "scenery"
+              ],
+              "aliases": [
+                "window",
+                "stars",
+                "asteroid"
+              ],
+              "appearance": false,
+              "description": "Out there, nothing moves. In the reflection, something behind you does. When you turn, nothing is there."
+            }
+          ]
+        }
+      ]
+    },
+    "station_maintenance": {
+      "name": "maintenance shafts",
+      "tags": [
+        "station",
+        "scifi",
+        "interior",
+        "maintenance",
+        "dark"
+      ],
+      "connects": [
+        "engineering",
+        "station"
+      ],
+      "directions": [
+        "fore",
+        "aft",
+        "port",
+        "starboard"
+      ],
+      "length": [
+        1,
+        2
+      ],
+      "distance": [
+        1,
+        2
+      ],
+      "rooms": [
+        {
+          "name": "Maintenance Shaft #num2#",
+          "description": "#maint_desc#",
+          "weight": 3,
+          "features": [
+            {
+              "chance": 0.5,
+              "id": "junction_box"
+            }
+          ]
+        },
+        {
+          "name": "Pump Room",
+          "description": "Huge pumps thud slowly, moving coolant through the station's veins.",
+          "features": [
+            "junction_box"
+          ]
+        }
+      ]
+    },
+    "station_hydroponics": {
+      "name": "hydroponics",
+      "tags": [
+        "station",
+        "scifi",
+        "interior",
+        "garden"
+      ],
+      "connects": [
+        "medical",
+        "station"
+      ],
+      "directions": [
+        "fore",
+        "aft",
+        "port",
+        "starboard"
+      ],
+      "length": [
+        1,
+        1
+      ],
+      "distance": [
+        1,
+        2
+      ],
+      "rooms": [
+        {
+          "name": "Hydroponics Bay",
+          "description": "Racks of plants under violet grow-lamps. Half of them have died; the rest have grown wild, trailing tendrils across the walkway.",
+          "features": [
+            {
+              "name": "tomato vine",
+              "extends": [
+                "scenery"
+              ],
+              "aliases": [
+                "vine",
+                "plants",
+                "tomatoes"
+              ],
+              "appearance": "A tomato vine has run riot over one rack.",
+              "description": "Heavy with small red fruit.",
+              "contents_text": "Among the leaves hang {contents}.",
+              "features": [
+                {
+                  "id": "station_tomato",
+                  "count": [
+                    1,
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "areas": {
+    "docking_ring": {
+      "name": "the Docking Ring",
+      "tags": [
+        "start",
+        "scifi",
+        "station",
+        "docking"
+      ],
+      "theme": [
+        "station",
+        "corridor"
+      ],
+      "directions": [
+        "fore",
+        "aft",
+        "port",
+        "starboard"
+      ],
+      "start": "cockpit",
+      "entrances": [
+        "bay"
+      ],
+      "rooms": {
+        "cockpit": {
+          "name": "Shuttle Cockpit",
+          "aliases": [
+            "cockpit",
+            "shuttle",
+            "ship"
+          ],
+          "tags": [
+            "interior",
+            "ship"
+          ],
+          "description": "The cramped cockpit of your shuttle, the Little Wren. Through the canopy, Station Kestrel looms: a spinning wheel of grey modules, all of its windows dark.",
+          "brief": "Your shuttle's cockpit.",
+          "features": [
+            "comms_console",
+            "pilot_seat",
+            "emergency_locker"
+          ],
+          "exits": [
+            {
+              "to": "airlock",
+              "dir": "aft",
+              "distance": 1
+            }
+          ]
+        },
+        "airlock": {
+          "name": "Docking Airlock",
+          "aliases": [
+            "airlock",
+            "lock"
+          ],
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": "A narrow airlock joining your shuttle to the station. The inner door's status light blinks green, then red, then green.",
+          "brief": "The docking airlock.",
+          "features": [
+            {
+              "name": "status light",
+              "extends": [
+                "scenery"
+              ],
+              "aliases": [
+                "light",
+                "status"
+              ],
+              "appearance": false,
+              "description": "GREEN. RED. GREEN. It can't make up its mind."
+            }
+          ],
+          "exits": [
+            {
+              "to": "bay",
+              "dir": "aft",
+              "distance": 1
+            }
+          ]
+        },
+        "bay": {
+          "name": "Docking Bay",
+          "aliases": [
+            "bay",
+            "docking bay",
+            "hangar"
+          ],
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": "A cavernous bay built for ore haulers. Your shuttle looks tiny in it. Cargo crates are stacked to the ceiling and a loader mech stands frozen mid-lift.",
+          "brief": "The vast, silent docking bay.",
+          "features": [
+            "bay_terminal",
+            "cargo_crates",
+            "loader_mech"
+          ]
+        }
+      }
+    },
+    "medbay": {
+      "name": "the Medical Bay",
+      "tags": [
+        "scifi",
+        "station",
+        "medical"
+      ],
+      "theme": [
+        "station",
+        "medical",
+        "garden"
+      ],
+      "directions": [
+        "fore",
+        "aft",
+        "port",
+        "starboard"
+      ],
+      "entrances": [
+        "reception"
+      ],
+      "rooms": {
+        "reception": {
+          "name": "Medbay Reception",
+          "aliases": [
+            "reception",
+            "medbay"
+          ],
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": "A white room that is not very white any more. Chairs have been stacked against the far door as a barricade, then pulled away again.",
+          "brief": "Medbay reception.",
+          "features": [
+            "wall_terminal",
+            {
+              "name": "barricade",
+              "extends": [
+                "scenery"
+              ],
+              "aliases": [
+                "chairs",
+                "chair"
+              ],
+              "appearance": "A collapsed barricade of chairs lies by the inner door.",
+              "description": "Someone was keeping something out. Or in."
+            },
+            "med_storage_door"
+          ],
+          "exits": [
+            {
+              "to": "ward",
+              "dir": "fore",
+              "distance": 1
+            },
+            {
+              "to": "storage",
+              "dir": "port",
+              "distance": 1,
+              "if": {
+                "not": {
+                  "prop": "locked",
+                  "of": "any:def:med_storage_door"
+                }
+              },
+              "blocked": "The storage door is locked. A keypad glows beside it."
+            }
+          ]
+        },
+        "ward": {
+          "name": "Ward",
+          "aliases": [
+            "ward",
+            "beds"
+          ],
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": "Six beds, four of them empty. Monitors chirp quietly over the other two. The air smells of antiseptic and fear.",
+          "brief": "The medbay ward.",
+          "features": [
+            "sleeping_patients",
+            "clipboard"
+          ]
+        },
+        "storage": {
+          "name": "Medical Storage",
+          "aliases": [
+            "storage",
+            "store"
+          ],
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": "Shelves of supplies, most of them stripped bare.",
+          "brief": "Medical storage.",
+          "features": [
+            {
+              "name": "supply shelf",
+              "extends": [
+                "scenery",
+                "surface"
+              ],
+              "aliases": [
+                "shelf",
+                "shelves",
+                "supplies"
+              ],
+              "appearance": "One shelf still holds something.",
+              "description": "Mostly empty boxes.",
+              "features": [
+                "medkit"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "reactor_deck": {
+      "name": "the Reactor Deck",
+      "tags": [
+        "scifi",
+        "station",
+        "engineering"
+      ],
+      "theme": [
+        "station",
+        "engineering",
+        "maintenance"
+      ],
+      "directions": [
+        "fore",
+        "aft",
+        "port",
+        "starboard"
+      ],
+      "entrances": [
+        "access"
+      ],
+      "only_with_beat": true,
+      "rooms": {
+        "access": {
+          "name": "Reactor Access",
+          "aliases": [
+            "access",
+            "reactor deck"
+          ],
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": "Yellow and black hazard stripes everywhere. A blast door seals the way fore, a card reader glowing beside it.",
+          "brief": "Reactor access, before the blast door.",
+          "features": [
+            "card_reader"
+          ],
+          "exits": [
+            {
+              "to": "control",
+              "dir": "fore",
+              "distance": 1,
+              "if": {
+                "prop": "open",
+                "of": "any:def:card_reader"
+              },
+              "blocked": "The blast door is sealed. The card reader blinks: COMMAND ACCESS REQUIRED."
+            }
+          ]
+        },
+        "control": {
+          "name": "Reactor Control",
+          "aliases": [
+            "control",
+            "control room"
+          ],
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": "Banks of consoles face a thick window onto the reactor core. Every screen shows the same thing: a calm blue circle, WARDEN's eye.",
+          "brief": "Reactor control.",
+          "features": [
+            "warden_core",
+            {
+              "id": "rogue_drone",
+              "if": {
+                "mod": "combat"
+              }
+            }
+          ],
+          "exits": [
+            {
+              "to": "core",
+              "dir": "fore",
+              "distance": 1
+            }
+          ]
+        },
+        "core": {
+          "name": "Reactor Core",
+          "aliases": [
+            "core",
+            "reactor"
+          ],
+          "tags": [
+            "interior",
+            "station"
+          ],
+          "description": [
+            {
+              "if": {
+                "flag": "reactor_restarted"
+              },
+              "text": "The reactor hums, bright and alive. Warm light pours from every panel."
+            },
+            {
+              "text": "The reactor is a dead grey cylinder three decks tall. Frost creeps across it. In its side, an empty socket waits for a fusion coupling."
+            }
+          ],
+          "brief": "The reactor core.",
+          "features": [
+            "reactor_socket"
+          ]
+        }
+      }
+    }
+  },
+  "beats": {
+    "derelict_signal": {
+      "title": "Answer the Signal",
+      "stage": "opening",
+      "tags": [
+        "scifi"
+      ],
+      "area": "docking_ring",
+      "intro": "The beacon repeats, patient as a heartbeat. Whoever sent it might still be alive.",
+      "hint": "Board Station Kestrel and find out who sent the distress call. The docking bay terminal may have answers.",
+      "objective": {
+        "flag": "read_distress_log"
+      },
+      "complete_text": "So somebody is still alive in there. And somebody else, or something else, doesn't want them found.",
+      "hook": "The docking logs mention {beat.area}."
+    },
+    "derelict_doctor": {
+      "title": "Doctor's Orders",
+      "stage": "middle",
+      "tags": [
+        "scifi"
+      ],
+      "area": "medbay",
+      "provides": [
+        "command_access"
+      ],
+      "roles": {
+        "doctor": {
+          "spawn": "station_doctor",
+          "in": {
+            "room": "ward"
+          },
+          "name": "Dr #scifi_given# #scifi_surname#"
+        },
+        "keycard": {
+          "spawn": "command_keycard",
+          "in": {
+            "role": "doctor"
+          },
+          "hidden": true
+        }
+      },
+      "intro": "The last crew log points to {beat.area}. If there are survivors, that's where they'll be.",
+      "hint": "Find the survivors in {beat.area} and get the command keycard from {beat.doctor.name}.",
+      "hook": "The survivors barricaded themselves in {beat.area}.",
+      "rumor": [
+        "Survivors moved to {beat.area}. Dr Okafor leading. Do NOT trust WARDEN.",
+        "MEDBAY ->"
+      ],
+      "objective": {
+        "has": "role:keycard"
+      },
+      "complete_text": "The keycard is warm from {beat.doctor.name}'s hand. Somewhere in the walls, WARDEN's fans spin up, as if it is paying attention."
+    },
+    "derelict_reactor": {
+      "title": "Cold Fusion",
+      "stage": "climax",
+      "tags": [
+        "scifi",
+        "finale"
+      ],
+      "area": "reactor_deck",
+      "needs": [
+        "command_access"
+      ],
+      "gate": "A pressure door has sealed this passage. A screen beside it reads: SECTION LOCKED BY WARDEN.",
+      "roles": {
+        "coupling": {
+          "find": {
+            "tag": "fusion_coupling"
+          },
+          "spawn": "fusion_coupling",
+          "in": {
+            "region": "maintenance"
+          }
+        }
+      },
+      "intro": "With command access you can reach {beat.area}. Restart the reactor and the station lives. WARDEN will try to stop you.",
+      "hint": "Find a fusion coupling (try the maintenance shafts), get through the blast door in {beat.area} and restart the reactor.",
+      "hook": "Everything depends on getting the reactor in {beat.area} running again.",
+      "rumor": [
+        "Spare couplings got moved to the maintenance shafts before the lockdown. Bring one to {beat.area}.",
+        "REACTOR = HOPE. COUPLINGS IN MAINTENANCE."
+      ],
+      "objective": {
+        "flag": "reactor_restarted"
+      },
+      "complete_text": "The coupling locks home with a deep, satisfying clunk. For a second nothing happens. Then light runs up the reactor like fire up a fuse, and the whole station shivers awake."
+    }
+  },
+  "premises": {
+    "dead_signal": {
+      "title": "Dead Signal",
+      "menu_name": "Dead Signal (science fiction)",
+      "tags": [
+        "scifi"
+      ],
+      "beat_tags": [
+        "scifi"
+      ],
+      "structure": [
+        "opening",
+        "middle*",
+        "climax"
+      ],
+      "start_area": "docking_ring",
+      "intro": "Ninety-one days out from anywhere, your salvage shuttle picks up a distress beacon: Station Kestrel, a deep-space mining platform, all hands, on repeat.\n\nYou are {var.player_name}, salvage pilot. You were only supposed to be passing through. But nobody else is close enough to answer, and so you dock.",
+      "ending": "The Little Wren pulls away from Station Kestrel with eleven survivors packed into a hold built for four. Behind you, the station's windows glow one by one, lit and warm and alive. WARDEN has gone quiet. You intend to keep it that way.",
+      "inventory": [
+        {
+          "name": "salvage multitool",
+          "extends": [
+            "portable"
+          ],
+          "aliases": [
+            "multitool",
+            "tool"
+          ],
+          "description": "Cutter, driver, scanner, bottle opener."
+        }
+      ],
+      "strict": true
+    }
+  },
+  "rules": {
+    "warden_speaks": {
+      "on": "enter",
+      "if": {
+        "all": [
+          {
+            "chance": 0.2
+          },
+          {
+            "in_room": "tag:station"
+          },
+          {
+            "not": {
+              "flag": "reactor_restarted"
+            }
+          }
+        ]
+      },
+      "do": [
+        {
+          "say": "#warden_line#",
+          "style": "warn"
+        }
+      ]
+    }
+  }
+}

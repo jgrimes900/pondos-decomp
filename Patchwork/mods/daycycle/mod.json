@@ -1,0 +1,10 @@
+{
+  "id": "daycycle",
+  "name": "Turning Days",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "Time of day. Travel and actions pass the hours; dawn, day, dusk and night come and go, you see the changes when you're outdoors, and 'time' tells you the hour. Built from rules alone, with no places, so it works with any other mods.",
+  "requires": ["core"],
+  "priority": 70,
+  "tags": ["rules", "atmosphere"]
+}

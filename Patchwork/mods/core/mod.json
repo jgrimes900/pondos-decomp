@@ -1,0 +1,10 @@
+{
+  "id": "core",
+  "name": "Core Rules",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "The basic verbs (look, take, open, talk...), common traits (portable, container, door, person...), compass directions and interface text. Contains no places or story. Almost every other mod needs it.",
+  "priority": 0,
+  "default": true,
+  "tags": ["rules"]
+}

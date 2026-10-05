@@ -1,0 +1,204 @@
+{
+  "//": "Traits are abstract features. Other mods 'extend' them to inherit behaviour.",
+  "features": {
+    "player": {
+      "name": "yourself",
+      "article": "",
+      "aliases": ["me", "myself", "self"],
+      "tags": ["player", "person"],
+      "description": "You look much as you always have: a little travel-worn, but ready for whatever comes next.",
+      "appearance": false
+    },
+
+    "thing": {
+      "abstract": true,
+      "//": "Plain base for any feature. Adds nothing but makes intent clear."
+    },
+
+    "scenery": {
+      "abstract": true,
+      "tags": ["scenery"],
+      "actions": {
+        "take": ["{self.The} isn't going anywhere."]
+      }
+    },
+
+    "portable": {
+      "abstract": true,
+      "tags": ["portable"],
+      "actions": {
+        "take": [
+          {"if": {"held": "self"}, "do": ["You already have {self}."]},
+          {"do": [{"move": "self", "to": "player"}, "You take {self}."]}
+        ],
+        "drop": [
+          {"if": {"held": "self"}, "do": [{"move": "self", "to": "room"}, "You set down {self}."]},
+          {"do": ["You aren't carrying {self}."]}
+        ]
+      }
+    },
+
+    "surface": {
+      "abstract": true,
+      "tags": ["surface"],
+      "contents_text": "On {self} you see {contents}."
+    },
+
+    "container": {
+      "abstract": true,
+      "tags": ["container"],
+      "contents_text": "In {self} you see {contents}.",
+      "contents_visible": {"not": {"prop": "open", "eq": false}}
+    },
+
+    "openable": {
+      "abstract": true,
+      "props": {"open": false},
+      "actions": {
+        "open": [
+          {"if": {"prop": "open"}, "do": ["{self.The} is already open."]},
+          {"if": {"prop": "locked"}, "do": ["{self.The} is locked."]},
+          {"if": {"tag": "container"}, "do": [{"set": {"open": true}}, "You open {self}. Inside you find {self.contents}."]},
+          {"do": [{"set": {"open": true}}, "You open {self}."]}
+        ],
+        "close": [
+          {"if": {"not": {"prop": "open"}}, "do": ["{self.The} is already closed."]},
+          {"do": [{"set": {"open": false}}, "You close {self}."]}
+        ]
+      }
+    },
+
+    "lockable": {
+      "abstract": true,
+      "//": "Set props.lock to an id; any item whose props.opens equals it is the key.",
+      "props": {"locked": true, "lock": "unknown"},
+      "actions": {
+        "unlock": [
+          {"if": {"not": {"prop": "locked"}}, "do": ["{self.The} isn't locked."]},
+          {"if": {"second": null}, "do": [
+            {"find": {"prop": "opens", "eq": "{self.lock}"}, "in": "player", "as": "key"},
+            {"if": {"exists": "local:key"},
+             "then": [{"set": {"locked": false}}, "You unlock {self} with {key}."],
+             "else": ["You don't have anything that fits the lock."]}
+          ]},
+          {"if": "second.opens == self.lock", "do": [{"set": {"locked": false}}, "You unlock {self} with {second}."]},
+          {"do": ["{second.The} doesn't fit the lock."]}
+        ],
+        "lock": [
+          {"if": {"prop": "locked"}, "do": ["{self.The} is already locked."]},
+          {"if": {"prop": "open"}, "do": ["You'll have to close {self} first."]},
+          {"if": {"has": {"prop": "opens", "eq": "{self.lock}"}}, "do": [{"set": {"locked": true}}, "You lock {self}."]},
+          {"do": ["You have nothing to lock it with."]}
+        ]
+      }
+    },
+
+    "key": {
+      "abstract": true,
+      "extends": ["portable"],
+      "tags": ["key"],
+      "//": "props.opens must match the lockable thing's props.lock",
+      "props": {"opens": "unknown"},
+      "actions": {
+        "use_with": [
+          {"if": "target.lock == self.opens and target.locked", "do": [{"set": {"locked": false}, "on": "target"}, "You unlock {target} with {self}."]}
+        ],
+        "use": [
+          {"if": {"second": null}, "do": ["Use {self} on what?"]},
+          {"if": "second.lock == self.opens and second.locked", "do": [{"set": {"locked": false}, "on": "second"}, "You unlock {second} with {self}."]},
+          {"if": "second.lock == self.opens", "do": ["{second.The} is already unlocked."]},
+          {"do": ["{self.The} doesn't fit {second}."]}
+        ]
+      }
+    },
+
+    "door": {
+      "abstract": true,
+      "extends": ["scenery", "openable"],
+      "tags": ["door"],
+      "//": "Point a room exit at a door with \"if\": {\"prop\": \"open\", \"of\": \"here:<door id>\"}.",
+      "appearance": [
+        {"if": {"prop": "open"}, "text": "{self.A} stands open."},
+        {"text": "{self.A} is shut."}
+      ]
+    },
+
+    "person": {
+      "abstract": true,
+      "tags": ["person", "npc"],
+      "actions": {
+        "take": ["{self.The} would hardly appreciate being picked up."],
+        "talk": ["{self.The} nods at you but has nothing to say."]
+      }
+    },
+
+    "wanderer": {
+      "abstract": true,
+      "extends": ["person"],
+      "tags": ["wanderer"],
+      "//": "Generated travellers. The generator sets props.rumor to point at the next story beat.",
+      "actions": {
+        "talk": [
+          {"if": {"prop": "rumor"}, "do": ["{self.The} leans in. \"{self.rumor}\""]},
+          {"do": ["{self.The} shares a few words about the weather and the road."]}
+        ]
+      }
+    },
+
+    "edible": {
+      "abstract": true,
+      "extends": ["portable"],
+      "tags": ["food"],
+      "actions": {
+        "eat": [{"do": ["You eat {self}. {self.taste}", {"emit": "ate"}, {"destroy": "self"}]}]
+      },
+      "props": {"taste": ""}
+    },
+
+    "drinkable": {
+      "abstract": true,
+      "extends": ["portable"],
+      "tags": ["drink"],
+      "actions": {
+        "drink": [{"do": ["You drink {self}. {self.taste}", {"emit": "drank"}, {"destroy": "self"}]}]
+      },
+      "props": {"taste": ""}
+    },
+
+    "readable": {
+      "abstract": true,
+      "tags": ["readable"],
+      "props": {"text": "The writing has faded beyond reading."},
+      "actions": {
+        "read": [{"do": ["{self.text}", {"emit": "read"}]}]
+      }
+    },
+
+    "light_source": {
+      "abstract": true,
+      "extends": ["portable"],
+      "tags": ["light"],
+      "props": {"lit": false},
+      "actions": {
+        "light": [
+          {"if": {"prop": "lit"}, "do": ["{self.The} is already lit."]},
+          {"do": [{"set": {"lit": true}}, "{self.The} flares into light."]}
+        ],
+        "extinguish": [
+          {"if": {"not": {"prop": "lit"}}, "do": ["{self.The} isn't lit."]},
+          {"do": [{"set": {"lit": false}}, "You put out {self}."]}
+        ],
+        "use": [
+          {"if": {"second": null}, "do": [{"toggle": "lit"}, {"if": {"prop": "lit"}, "then": ["{self.The} is now lit."], "else": ["{self.The} goes dark."]}]}
+        ]
+      }
+    },
+
+    "valuable": {
+      "abstract": true,
+      "extends": ["portable"],
+      "tags": ["treasure"],
+      "props": {"value": 1}
+    }
+  }
+}

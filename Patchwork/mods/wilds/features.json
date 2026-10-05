@@ -1,0 +1,740 @@
+{
+  "features": {
+    "tree": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "#tree# tree",
+      "aliases": [
+        "tree",
+        "trunk",
+        "branches"
+      ],
+      "tags": [
+        "tree",
+        "plant"
+      ],
+      "appearance": "A lone {self.name} stands here, older than anyone living.",
+      "description": "Its bark is deeply furrowed and patched with lichen. The lowest branches are just out of reach.",
+      "features": [
+        {
+          "chance": 0.3,
+          "id": "bird_nest"
+        },
+        {
+          "chance": 0.25,
+          "id": "tree_hollow"
+        }
+      ],
+      "actions": {
+        "touch": [
+          "The bark is rough and cool beneath your palm."
+        ]
+      }
+    },
+    "bird_nest": {
+      "extends": [
+        "scenery",
+        "surface"
+      ],
+      "name": "bird's nest",
+      "aliases": [
+        "nest"
+      ],
+      "appearance": "A bird's nest is wedged in a fork of the branches.",
+      "description": "A neat cup of twigs and moss.",
+      "contents_text": "In the nest lies {contents}.",
+      "features": [
+        {
+          "chance": 0.6,
+          "id": "speckled_egg"
+        },
+        {
+          "chance": 0.15,
+          "pick_tag": "trinket"
+        }
+      ]
+    },
+    "speckled_egg": {
+      "extends": [
+        "edible"
+      ],
+      "name": "speckled egg",
+      "aliases": [
+        "egg"
+      ],
+      "props": {
+        "taste": "Raw, but filling enough.",
+        "heal": 2
+      },
+      "description": "A small blue egg flecked with brown."
+    },
+    "tree_hollow": {
+      "extends": [
+        "scenery",
+        "container"
+      ],
+      "name": "hollow",
+      "aliases": [
+        "hole",
+        "knothole"
+      ],
+      "appearance": false,
+      "hidden": true,
+      "description": "A dark hollow in the trunk, big enough to put an arm into.",
+      "contents_text": "Inside the hollow you find {contents}.",
+      "features": [
+        {
+          "pick_tag": "trinket",
+          "hidden": false
+        },
+        {
+          "chance": 0.4,
+          "id": "copper_coins"
+        }
+      ]
+    },
+    "stream": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "stream",
+      "aliases": [
+        "water",
+        "brook",
+        "creek"
+      ],
+      "tags": [
+        "water"
+      ],
+      "appearance": "A clear stream runs over pebbles, chattering to itself.",
+      "description": "The water is cold and clear. Small fish dart between the stones.",
+      "actions": {
+        "drink": [
+          "You cup your hands and drink. The water is icy and sweet.",
+          {
+            "emit": "drank"
+          }
+        ],
+        "listen": [
+          "The stream chatters endlessly over its stones."
+        ]
+      }
+    },
+    "fallen_log": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "fallen log",
+      "aliases": [
+        "log",
+        "trunk"
+      ],
+      "appearance": "A fallen log lies rotting across the way, furred with moss.",
+      "description": "The log is soft with rot and crawling with beetles. Something might be hidden beneath it.",
+      "features": [
+        {
+          "chance": 0.6,
+          "pick_tag": "trinket",
+          "hidden": true
+        },
+        {
+          "chance": 0.3,
+          "id": "copper_coins",
+          "hidden": true
+        }
+      ],
+      "actions": {
+        "push": [
+          "You heave at the log. It shifts a little, releasing a smell of damp earth."
+        ]
+      }
+    },
+    "boulder": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "#color# boulder",
+      "aliases": [
+        "boulder",
+        "rock",
+        "stone"
+      ],
+      "appearance": "A great boulder squats beside the way, as if dropped by a giant.",
+      "description": "Weathered smooth on top, and deeply undercut at the base where shadows pool.",
+      "features": [
+        {
+          "chance": 0.35,
+          "pick_tag": "trinket",
+          "hidden": true
+        }
+      ],
+      "actions": {
+        "push": [
+          "You push against the boulder. It does not notice."
+        ]
+      }
+    },
+    "berry_bush": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "#berry# bush",
+      "aliases": [
+        "bush",
+        "bramble",
+        "shrub"
+      ],
+      "tags": [
+        "plant"
+      ],
+      "appearance": "A tangled {self.name} grows at the edge of the path.",
+      "description": "Thorny stems arch in every direction.",
+      "contents_text": "Among its leaves hang {contents}.",
+      "empty_text": "It has been picked clean.",
+      "features": [
+        {
+          "id": "wild_berries",
+          "count": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    "wild_berries": {
+      "extends": [
+        "edible"
+      ],
+      "name": "handful of berries",
+      "aliases": [
+        "berries",
+        "berry",
+        "handful"
+      ],
+      "props": {
+        "taste": "Tart and juicy.",
+        "heal": 2
+      },
+      "description": "A handful of ripe berries, staining your fingers purple."
+    },
+    "wildflowers": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "wildflowers",
+      "article": "some",
+      "aliases": [
+        "flowers",
+        "flower",
+        "blooms"
+      ],
+      "appearance": "#flower.s.cap# and #flower.s# nod in the grass.",
+      "description": "Bees bumble lazily from bloom to bloom.",
+      "actions": {
+        "smell": [
+          "They smell of summer."
+        ],
+        "take": [
+          "You pick a few flowers, then let them fall; they'd only wilt."
+        ]
+      }
+    },
+    "standing_stone": {
+      "extends": [
+        "scenery",
+        "readable"
+      ],
+      "name": "standing stone",
+      "aliases": [
+        "stone",
+        "menhir",
+        "monolith"
+      ],
+      "tags": [
+        "ancient"
+      ],
+      "appearance": "A standing stone leans at an angle, carved with spirals.",
+      "description": "The spirals have been worn almost smooth by centuries of rain. Lichen fills the grooves.",
+      "props": {
+        "text": "The spirals seem to turn as you trace them with your eyes. You blink and they are still."
+      },
+      "actions": {
+        "touch": [
+          "The stone is strangely warm, as if it has been sitting in the sun all day. It hasn't."
+        ]
+      }
+    },
+    "milestone": {
+      "extends": [
+        "scenery",
+        "readable"
+      ],
+      "name": "milestone",
+      "aliases": [
+        "marker",
+        "stone"
+      ],
+      "appearance": "A squat milestone stands at the roadside.",
+      "description": "Old letters are carved into its face.",
+      "props": {
+        "text": "#milestone_text#"
+      }
+    },
+    "signpost": {
+      "extends": [
+        "scenery",
+        "readable"
+      ],
+      "name": "signpost",
+      "aliases": [
+        "sign",
+        "post",
+        "fingerpost"
+      ],
+      "appearance": "A crooked signpost points in several directions at once.",
+      "description": "Weathered arms point every which way.",
+      "props": {
+        "text": "The arms read: \"#place_name#\", \"#place_name#\" and, half broken off, \"#place_name#\"."
+      }
+    },
+    "scarecrow": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "scarecrow",
+      "appearance": "A scarecrow in a battered hat stands guard over a field.",
+      "description": "Its sackcloth face has a stitched smile. One straw hand seems to be pointing somewhere.",
+      "features": [
+        "battered_hat"
+      ],
+      "actions": {
+        "talk": [
+          "The scarecrow keeps its counsel."
+        ]
+      }
+    },
+    "battered_hat": {
+      "extends": [
+        "portable"
+      ],
+      "name": "battered hat",
+      "aliases": [
+        "hat"
+      ],
+      "appearance": false,
+      "props": {
+        "armor": 0
+      },
+      "description": "A wide-brimmed straw hat with a hole in the crown. It still keeps the rain off. Mostly."
+    },
+    "reeds": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "reeds",
+      "article": "some",
+      "aliases": [
+        "reed",
+        "rushes"
+      ],
+      "appearance": "Tall reeds rattle in the wind.",
+      "description": "Dense reed beds, taller than you are. Things could hide in there.",
+      "features": [
+        {
+          "chance": 0.4,
+          "pick_tag": "trinket",
+          "hidden": true
+        }
+      ]
+    },
+    "will_o_wisp": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "flickering light",
+      "aliases": [
+        "light",
+        "wisp",
+        "lights"
+      ],
+      "appearance": "A pale light bobs above the water some way off.",
+      "description": "It drifts away whenever you look straight at it.",
+      "actions": {
+        "take": [
+          "You reach out. The light is always a little further away than it seemed."
+        ]
+      }
+    },
+    "campfire_remains": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "old campfire",
+      "aliases": [
+        "campfire",
+        "fire",
+        "ashes",
+        "ring",
+        "firepit"
+      ],
+      "tags": [
+        "scatter"
+      ],
+      "habitat": [
+        "forest",
+        "hills",
+        "road",
+        "river"
+      ],
+      "weight": 2,
+      "appearance": "A ring of blackened stones marks where someone camped.",
+      "description": "The ashes are cold. Whoever was here left in a hurry; the ground is churned.",
+      "features": [
+        {
+          "chance": 0.7,
+          "pick": [
+            "copper_coins",
+            "stale_bread",
+            "tinderbox",
+            "torn_map"
+          ],
+          "hidden": true
+        }
+      ]
+    },
+    "mushrooms": {
+      "extends": [
+        "edible"
+      ],
+      "name": "cluster of mushrooms",
+      "aliases": [
+        "mushrooms",
+        "mushroom",
+        "toadstools",
+        "cluster",
+        "fungi"
+      ],
+      "tags": [
+        "scatter"
+      ],
+      "habitat": [
+        "forest",
+        "marsh"
+      ],
+      "appearance": "A cluster of pale mushrooms sprouts from the leaf litter.",
+      "description": "Pale caps with brownish gills. You think they're the edible kind.",
+      "props": {
+        "taste": "Earthy, and only slightly worrying.",
+        "heal": 3
+      }
+    },
+    "apple": {
+      "extends": [
+        "edible"
+      ],
+      "name": "windfall apple",
+      "aliases": [
+        "apple",
+        "windfall"
+      ],
+      "tags": [
+        "scatter"
+      ],
+      "habitat": [
+        "road",
+        "forest"
+      ],
+      "props": {
+        "taste": "Crisp and sharp.",
+        "heal": 3
+      },
+      "description": "A slightly bruised but perfectly good apple."
+    },
+    "stale_bread": {
+      "extends": [
+        "edible"
+      ],
+      "name": "heel of bread",
+      "aliases": [
+        "bread",
+        "heel",
+        "crust"
+      ],
+      "props": {
+        "taste": "Hard enough to break a tooth, but it fills you.",
+        "heal": 2
+      },
+      "description": "Stale bread, wrapped in a scrap of cloth."
+    },
+    "copper_coins": {
+      "extends": [
+        "valuable"
+      ],
+      "name": "handful of copper coins",
+      "aliases": [
+        "coins",
+        "coin",
+        "copper",
+        "copper coins",
+        "money",
+        "handful"
+      ],
+      "tags": [
+        "coin"
+      ],
+      "props": {
+        "value": {
+          "rand": [
+            2,
+            6
+          ]
+        }
+      },
+      "description": "Worn copper coins, stamped with the faces of forgotten kings. {self.value} of them."
+    },
+    "tinderbox": {
+      "extends": [
+        "portable"
+      ],
+      "name": "tinderbox",
+      "aliases": [
+        "tinder",
+        "box",
+        "flint"
+      ],
+      "tags": [
+        "firestarter"
+      ],
+      "description": "A small tin with flint, steel and dry tinder. Useful for lighting things.",
+      "actions": {
+        "use": [
+          {
+            "if": {
+              "all": [
+                {
+                  "not": {
+                    "second": null
+                  }
+                },
+                {
+                  "tag": "light",
+                  "of": "second"
+                }
+              ]
+            },
+            "do": [
+              {
+                "set": {
+                  "lit": true
+                },
+                "on": "second"
+              },
+              "You strike a spark and {second} catches."
+            ]
+          },
+          {
+            "do": [
+              "You strike a few sparks. They die on the ground."
+            ]
+          }
+        ]
+      }
+    },
+    "torn_map": {
+      "extends": [
+        "portable",
+        "readable"
+      ],
+      "name": "torn map",
+      "aliases": [
+        "map",
+        "scrap"
+      ],
+      "description": "Half of a map, torn diagonally. A dotted line ends at an X.",
+      "props": {
+        "text": "Beside the X someone has written: \"#place_name#. Under the #color# stone.\""
+      }
+    },
+    "walking_stick": {
+      "extends": [
+        "portable"
+      ],
+      "name": "#tree#wood walking stick",
+      "aliases": [
+        "stick",
+        "staff",
+        "cane"
+      ],
+      "tags": [
+        "scatter",
+        "weapon"
+      ],
+      "habitat": [
+        "forest",
+        "hills",
+        "road"
+      ],
+      "props": {
+        "damage": 1
+      },
+      "description": "A sturdy stick, worn smooth where countless hands have gripped it."
+    },
+    "trinket": {
+      "extends": [
+        "valuable"
+      ],
+      "name": "#trinket#",
+      "tags": [
+        "trinket"
+      ],
+      "props": {
+        "value": 1
+      },
+      "description": "A small lost thing. Someone, somewhere, probably misses it."
+    },
+    "lost_locket": {
+      "extends": [
+        "valuable",
+        "readable"
+      ],
+      "name": "silver locket",
+      "aliases": [
+        "locket",
+        "pendant"
+      ],
+      "tags": [
+        "trinket"
+      ],
+      "props": {
+        "value": 8,
+        "text": "Engraved inside: \"For #given#, from #given#. Come home.\""
+      },
+      "description": "A tarnished silver locket on a broken chain. It opens to show a faded portrait."
+    },
+    "wild_deer": {
+      "extends": [
+        "scenery"
+      ],
+      "name": "red deer",
+      "aliases": [
+        "deer",
+        "hind",
+        "stag"
+      ],
+      "tags": [
+        "scatter",
+        "animal"
+      ],
+      "habitat": [
+        "forest",
+        "hills"
+      ],
+      "appearance": "A red deer lifts its head and watches you, ears flicking.",
+      "description": "Sleek and wary, ready to bolt.",
+      "actions": {
+        "take": [
+          "The deer bounds away a few paces and resumes watching you."
+        ],
+        "talk": [
+          "The deer is unimpressed by your conversation."
+        ],
+        "touch": [
+          "It skitters out of reach."
+        ]
+      }
+    },
+    "wanderer_traveller": {
+      "extends": [
+        "wanderer"
+      ],
+      "name": "#wanderer_name#",
+      "proper": true,
+      "aliases": [
+        "traveller",
+        "traveler",
+        "stranger",
+        "wanderer"
+      ],
+      "tags": [
+        "wanderer_npc"
+      ],
+      "appearance": "{self.Name}, a traveller, rests here by the wayside.",
+      "description": "Road-dusty and weather-browned, with a pack slung over one shoulder and sharp, curious eyes.",
+      "features": [
+        {
+          "chance": 0.4,
+          "pick": [
+            "apple",
+            "stale_bread",
+            "tinderbox"
+          ],
+          "hidden": true
+        }
+      ],
+      "actions": {
+        "give_with": [
+          {
+            "if": {
+              "tag": "food",
+              "of": "target"
+            },
+            "do": [
+              {
+                "destroy": "target"
+              },
+              "{self.Name} accepts it gratefully. \"Kind of you. Here, take this for your trouble.\"",
+              {
+                "spawn": {
+                  "pick": [
+                    "copper_coins",
+                    "lost_locket",
+                    "torn_map"
+                  ]
+                },
+                "in": "player",
+                "as": "gift"
+              },
+              "{self.Name} presses {gift.a} into your hand."
+            ]
+          }
+        ]
+      },
+      "habitat": [
+        "outdoor",
+        "road",
+        "forest",
+        "hills",
+        "river",
+        "marsh",
+        "settlement"
+      ]
+    },
+    "wanderer_pilgrim": {
+      "extends": [
+        "wanderer"
+      ],
+      "name": "pilgrim",
+      "aliases": [
+        "pilgrim",
+        "stranger",
+        "traveller",
+        "traveler"
+      ],
+      "tags": [
+        "wanderer_npc"
+      ],
+      "appearance": "A grey-robed pilgrim sits on a stone here, rubbing their tired feet.",
+      "description": "Their robe is patched and their staff hung with little lead badges from distant shrines.",
+      "habitat": [
+        "outdoor",
+        "road",
+        "forest",
+        "hills",
+        "river",
+        "marsh",
+        "settlement"
+      ]
+    }
+  }
+}

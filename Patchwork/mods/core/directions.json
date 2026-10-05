@@ -1,0 +1,16 @@
+{
+  "directions": {
+    "north":     {"aliases": ["n"],  "opposite": "south",     "weight": 2},
+    "south":     {"aliases": ["s"],  "opposite": "north",     "weight": 2},
+    "east":      {"aliases": ["e"],  "opposite": "west",      "weight": 2},
+    "west":      {"aliases": ["w"],  "opposite": "east",      "weight": 2},
+    "northeast": {"aliases": ["ne"], "opposite": "southwest", "weight": 0.7},
+    "northwest": {"aliases": ["nw"], "opposite": "southeast", "weight": 0.7},
+    "southeast": {"aliases": ["se"], "opposite": "northwest", "weight": 0.7},
+    "southwest": {"aliases": ["sw"], "opposite": "northeast", "weight": 0.7},
+    "up":        {"aliases": ["u"],  "opposite": "down", "auto": false},
+    "down":      {"aliases": ["d"],  "opposite": "up",   "auto": false},
+    "in":        {"aliases": ["inside", "enter"],  "opposite": "out", "auto": false},
+    "out":       {"aliases": ["outside", "leave"], "opposite": "in",  "auto": false}
+  }
+}

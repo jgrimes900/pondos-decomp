@@ -1,0 +1,10 @@
+{
+  "id": "lighthouse",
+  "name": "The Drowned Lighthouse (example)",
+  "version": "1.0.0",
+  "author": "You",
+  "description": "The worked example from MODDING.md: a lighthouse whose lamp has gone out, with a keeper who needs help relighting it. Adds a small area, a coast region and a middle story beat.",
+  "requires": ["core"],
+  "recommends": ["wilds"],
+  "tags": ["fantasy", "area", "story"]
+}

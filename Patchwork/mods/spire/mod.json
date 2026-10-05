@@ -1,0 +1,11 @@
+{
+  "id": "spire",
+  "name": "The Sorcerer's Spire",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "A black tower where a sorcerer works to swallow the world's light. Provides a climactic final area and story beat. To win you need a relic of power: it uses one found earlier in your story (for example from The Barrow of Kings), or hides one in its own library if no other mod supplies one.",
+  "requires": ["core"],
+  "recommends": ["barrow", "combat", "wilds"],
+  "priority": 40,
+  "tags": ["fantasy", "area", "story", "climax"]
+}

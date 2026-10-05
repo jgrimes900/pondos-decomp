@@ -1,0 +1,220 @@
+{
+  "areas": {
+    "hamlet": {
+      "name": "#village_name#",
+      "tags": [
+        "settlement",
+        "start",
+        "fantasy",
+        "pastoral"
+      ],
+      "theme": [
+        "road",
+        "pastoral",
+        "settlement"
+      ],
+      "start": "inn",
+      "entrances": [
+        "gate",
+        "lane"
+      ],
+      "rooms": {
+        "green": {
+          "name": "Village Green",
+          "tags": [
+            "outdoor",
+            "settlement"
+          ],
+          "description": "The heart of {self.area}: a sloping green ringed by thatched cottages, their gardens bright with hollyhocks. Geese patrol the grass with the air of tax collectors.",
+          "brief": "The village green, patrolled by geese.",
+          "features": [
+            "village_well",
+            "notice_board",
+            {
+              "id": "tree",
+              "//": "Uses the tree from The Wilds if that mod is loaded."
+            },
+            "geese"
+          ],
+          "exits": [
+            {
+              "to": "inn",
+              "dir": "north",
+              "distance": 1
+            },
+            {
+              "to": "smithy",
+              "dir": "east",
+              "distance": 1
+            },
+            {
+              "to": "chapel",
+              "dir": "west",
+              "distance": 1
+            },
+            {
+              "to": "gate",
+              "dir": "south",
+              "distance": 1
+            },
+            {
+              "to": "cottage",
+              "dir": "northwest",
+              "distance": 1
+            },
+            {
+              "to": "lane",
+              "dir": "northeast",
+              "distance": 1
+            }
+          ],
+          "aliases": [
+            "green",
+            "village",
+            "square"
+          ]
+        },
+        "inn": {
+          "name": "#inn_name#",
+          "tags": [
+            "indoor",
+            "settlement"
+          ],
+          "description": "A low-beamed common room, warm and smoky, smelling of ale and woodsmoke. A fire crackles in a broad hearth and the floorboards complain at every step.",
+          "brief": "The inn's smoky common room.",
+          "features": [
+            "innkeeper",
+            "inn_hearth",
+            "inn_table",
+            "inn_cat",
+            "inn_bed"
+          ],
+          "aliases": [
+            "inn",
+            "tavern",
+            "common room",
+            "pub"
+          ]
+        },
+        "smithy": {
+          "name": "Smithy",
+          "tags": [
+            "indoor",
+            "settlement"
+          ],
+          "description": "Heat rolls out of the forge in waves. Tools hang from every beam: tongs, hammers, and things you can't name.",
+          "brief": "The hot, clanging smithy.",
+          "features": [
+            "blacksmith",
+            "anvil",
+            "forge",
+            "tool_rack"
+          ],
+          "aliases": [
+            "smithy",
+            "forge",
+            "smith"
+          ]
+        },
+        "chapel": {
+          "name": "Chapel of the Well-Saint",
+          "tags": [
+            "indoor",
+            "settlement",
+            "holy"
+          ],
+          "description": "A small, cool chapel of whitewashed stone. Light falls in coloured patches from a single stained-glass window showing a woman drawing water from a well.",
+          "brief": "The quiet chapel.",
+          "features": [
+            "priest",
+            "altar",
+            "poor_box",
+            "stained_glass"
+          ],
+          "aliases": [
+            "chapel",
+            "church",
+            "shrine"
+          ]
+        },
+        "cottage": {
+          "name": "Elder's Cottage",
+          "tags": [
+            "indoor",
+            "settlement"
+          ],
+          "description": "A cramped cottage crowded with a lifetime's belongings. Bundles of herbs hang drying from the rafters.",
+          "brief": "The elder's cluttered cottage.",
+          "features": [
+            "elder",
+            "rocking_chair",
+            "bookshelf"
+          ],
+          "aliases": [
+            "cottage",
+            "elder's",
+            "elders"
+          ]
+        },
+        "lane": {
+          "name": "Orchard Lane",
+          "tags": [
+            "outdoor",
+            "settlement"
+          ],
+          "description": "A lane runs between the village orchards and out toward open country. Apple trees lean over a drystone wall.",
+          "brief": "The orchard lane at the edge of the village.",
+          "features": [
+            "orchard_wall"
+          ],
+          "aliases": [
+            "lane",
+            "orchard"
+          ]
+        },
+        "gate": {
+          "name": "Village Gate",
+          "tags": [
+            "outdoor",
+            "settlement"
+          ],
+          "description": "A gap in the old palisade where the village ends and the wide world begins. The wooden gate stands propped open with a stone.",
+          "brief": "The village gate.",
+          "features": [
+            "watchman"
+          ],
+          "aliases": [
+            "gate",
+            "village gate"
+          ]
+        }
+      }
+    }
+  },
+  "beats": {
+    "hamlet_call": {
+      "title": "A Call for Aid",
+      "stage": "opening",
+      "tags": [
+        "fantasy",
+        "village"
+      ],
+      "area": "hamlet",
+      "roles": {
+        "elder": {
+          "find": {
+            "tag": "village_elder"
+          },
+          "where": "area"
+        }
+      },
+      "intro": "Word has reached you that the village elder, {beat.elder.name}, has been asking after you.",
+      "hint": "Speak with {beat.elder.name} in the Elder's Cottage.",
+      "objective": {
+        "flag": "hamlet_call_heeded"
+      },
+      "complete_text": "{beat.elder.Name} grips your hand. \"Go carefully. And come back.\"",
+      "hook": "Strange things are stirring in {beat.area}, and the folk there are frightened."
+    }
+  }
+}

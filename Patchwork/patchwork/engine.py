@@ -443,7 +443,15 @@ class Engine:
                 return ex
         for ex in visible:
             dest = self.w.get(ex["to"])
-            if dest is not None and (phrase == dest.name.lower() or (dest.visited and phrase in dest.aliases)):
+            if dest is None:
+                continue
+            if phrase == dest.name.lower():
+                return ex
+            # The destination's other names work whenever the player can see them: once
+            # visited, or when the exit is labelled by its destination because it has no
+            # direction or name of its own (for example where two settings' maps meet).
+            shown = dest.visited or ex.get("show_dest") or not (ex.get("dir") or ex.get("name"))
+            if shown and phrase in dest.aliases:
                 return ex
         return None
 

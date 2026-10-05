@@ -277,6 +277,8 @@ A room is a feature with exits. Rooms are defined inside areas (section 7), as r
 
 Players move with `north`, `n`, `go north`, `go trapdoor`, `go to <room name>` (travel by
 pathfinding through visited rooms, stopping if interrupted), or by typing the destination name.
+An exit with neither `dir` nor `name` is labelled by its destination ("to Hydroponics Bay"), and
+any word of that name works for it, even before the destination has been visited.
 
 ---
 

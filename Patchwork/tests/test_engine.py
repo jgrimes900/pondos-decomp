@@ -175,6 +175,32 @@ class Parser(unittest.TestCase):
         self.assertEqual(p.world.get(candle.parent).name, "travel pack")
 
 
+class SeamExits(unittest.TestCase):
+    """Exits with no direction (where two settings' maps meet) must be usable by
+    the destination's name even before the destination has been visited."""
+
+    def test_seam_exit_usable_by_partial_name(self):
+        checked = 0
+        for seed in range(1, 30):
+            p = Player(["core", "wilds", "hamlet", "derelict"], seed)
+            w = p.world
+            for room in w.rooms():
+                for ex in room.exits:
+                    if ex.get("dir") or ex.get("name") or ex.get("hidden") or ex.get("if"):
+                        continue
+                    dest = w.get(ex["to"])
+                    for r in w.rooms():
+                        r.visited = False
+                    word = max(dest.name.lower().split(), key=len)  # e.g. "hydroponics"
+                    for cmd in (word, "go " + word, "go to " + word):
+                        w.place(w.player, room)
+                        p.do(cmd)
+                        self.assertEqual(w.room.uid, dest.uid,
+                                         "seed %d: '%s' from %s" % (seed, cmd, room.name))
+                    checked += 1
+        self.assertGreater(checked, 0, "no seam exits generated; test needs other seeds")
+
+
 class SaveLoad(unittest.TestCase):
     def test_round_trip(self):
         p = Player(["core", "wilds", "hamlet", "barrow", "spire", "saga_waning_light", "combat"], seed=12)

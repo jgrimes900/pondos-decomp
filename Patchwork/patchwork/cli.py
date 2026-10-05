@@ -175,6 +175,13 @@ class App:
             return None
         if reg.warnings:
             self.io.write("%d mod warning(s); run with --validate to see them." % len(reg.warnings), "dim")
+        start = None
+        starts = start_choices(reg)
+        if len(starts) > 1:
+            idx = self.io.choose("Where do you begin? (Enter to let the story decide)",
+                                 [label for _aid, label in starts])
+            if idx is not None:
+                start = starts[idx][0]
         sizes = ["small", "medium", "large", "huge"]
         idx = self.io.choose("How big a world? (Enter for medium)", [
             "Small - quick to cross", "Medium", "Large - more wilderness between places",
@@ -182,7 +189,8 @@ class App:
         size = sizes[idx] if idx is not None else "medium"
         try:
             seed_text = self.io.ask("World seed (Enter for random): ").strip()
-            name = self.io.ask("Your character's name (Enter for a generated one): ").strip()
+            fixed = start and (reg["areas"][start].get("player") or {}).get("player_name")
+            name = "" if fixed else self.io.ask("Your character's name (Enter for a generated one): ").strip()
         except EOFError:
             return None
         seed = None
@@ -191,7 +199,7 @@ class App:
             seed = int(seed_text) if seed_text.isdigit() else zlib.crc32(seed_text.encode("utf-8")) % (2 ** 31)
         self.io.write("Weaving your world from %d mod(s)..." % len(ordered), "dim")
         try:
-            world, log = generate(reg, seed=seed, player_name=name or None, size=size)
+            world, log = generate(reg, seed=seed, player_name=name or None, size=size, start=start)
         except GenerationError as exc:
             self.io.write(str(exc), "error")
             return None
@@ -254,11 +262,22 @@ class App:
             return
 
 
+def start_choices(reg):
+    """Starting areas that offer themselves as a choice (they have a start_label)."""
+    out = []
+    for aid, adef in sorted(reg["areas"].items()):
+        if adef.get("abstract") or "start" not in (adef.get("tags") or []):
+            continue
+        if adef.get("start_label"):
+            out.append((aid, adef["start_label"]))
+    return out
+
+
 def run_script(args, ordered, reg):
     with open(args.script, "r", encoding="utf-8") as fh:
         lines = [l.rstrip("\n") for l in fh if not l.startswith("#")]
     io = ScriptIO(lines)
-    world, _log = generate(reg, seed=args.seed, player_name=args.name, size=args.size)
+    world, _log = generate(reg, seed=args.seed, player_name=args.name, size=args.size, start=args.start)
     engine = Engine(world, io)
     engine.start()
     try:
@@ -301,6 +320,8 @@ def main(argv=None):
     p.add_argument("--mods", help="comma separated mod ids: skip the menus and start a new game with these")
     p.add_argument("--seed", type=int, help="world seed")
     p.add_argument("--name", help="your character's name")
+    p.add_argument("--start", help="starting area id (see --list-starts)")
+    p.add_argument("--list-starts", action="store_true", help="list the starting points the selected mods offer, then exit")
     p.add_argument("--size", default="medium", choices=["small", "medium", "large", "huge"], help="world size")
     p.add_argument("--mod-dir", action="append", help="extra folder to look for mods in (repeatable)")
     p.add_argument("--list-mods", action="store_true", help="list available mods and exit")
@@ -321,7 +342,7 @@ def main(argv=None):
             print("%-14s %-34s %s" % (m.id, m.name, m.description.split(". ")[0]))
         return 0
 
-    if args.mods or args.validate or args.map or args.script:
+    if args.mods or args.validate or args.map or args.script or args.list_starts:
         ids = [m.strip() for m in (args.mods or "").split(",") if m.strip()] or sorted(available)
         ordered, added, problems = resolve_order(ids, available)
         if problems:
@@ -335,6 +356,10 @@ def main(argv=None):
         except ModError as exc:
             print("error: %s" % exc, file=sys.stderr)
             return 2
+        if args.list_starts:
+            for aid, label in start_choices(reg):
+                print("%-24s %s" % (aid, label))
+            return 0
         if args.validate:
             problems = check_registry(reg) + smoke_generate(reg)
             notes = [p for p in problems if p.startswith("note: ")]
@@ -347,7 +372,7 @@ def main(argv=None):
             return 1 if warnings else 0
         try:
             if args.map:
-                world, log = generate(reg, seed=args.seed, player_name=args.name, size=args.size)
+                world, log = generate(reg, seed=args.seed, player_name=args.name, size=args.size, start=args.start)
                 print_map(world, log)
                 return 0
             if args.script:
@@ -357,7 +382,7 @@ def main(argv=None):
             return 2
         app = App(args)
         try:
-            world, _log = generate(reg, seed=args.seed, player_name=args.name, size=args.size)
+            world, _log = generate(reg, seed=args.seed, player_name=args.name, size=args.size, start=args.start)
         except GenerationError as exc:
             print("error: %s" % exc, file=sys.stderr)
             return 2

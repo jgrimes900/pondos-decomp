@@ -1,0 +1,371 @@
+{
+ "rooms": {
+  "hl/c2a4_compactor": {
+   "name": "Trash Compactor",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4a_conveyors",
+     "dir": "up",
+     "distance": 1,
+     "name": "ladder",
+     "aliases": [
+      "ladder"
+     ],
+     "back": false
+    },
+    {
+     "to": "hl/c2a3e_ambush",
+     "dir": "out",
+     "distance": 1,
+     "back": false,
+     "name": "garbage chute"
+    }
+   ],
+   "features": [
+    "confiscated_crate"
+   ],
+   "description": "You wake up in a garbage compactor, head pounding, your weapons gone. The walls grind toward each other. A ladder in the corner is your only hope. Beside it, someone has dumped a crate of confiscated gear.",
+   "aliases": [
+    "compactor"
+   ],
+   "props": {
+    "map": "c2a4",
+    "chapter": "Residue Processing"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "RESIDUE PROCESSING",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c2a4a_conveyors": {
+   "name": "Conveyor Lines",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4_compactor",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a4b_vats",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "headcrab",
+    "battery"
+   ],
+   "description": "Conveyor belts carry refuse past grinding rollers and stamping presses. You have to ride the belts and jump the crushers.",
+   "props": {
+    "map": "c2a4a",
+    "chapter": "Residue Processing"
+   },
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance",
+      "storage"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c2a4b_vats": {
+   "name": "Waste Processing Vats",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4a_conveyors",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a4c_grinders",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "bullsquid",
+    "houndeye",
+    "medkit"
+   ],
+   "description": "Vats of bubbling green sludge under catwalks. A pipe across the room drips something that eats through steel.",
+   "props": {
+    "map": "c2a4b",
+    "chapter": "Residue Processing"
+   }
+  },
+  "hl/c2a4c_grinders": {
+   "name": "Grinder Room",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4b_vats",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a4d_entrance",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie",
+    "health_charger"
+   ],
+   "description": "A room of giant rotating grinders that turn waste into sludge, and anything else into worse. A control booth sits above.",
+   "props": {
+    "map": "c2a4c",
+    "chapter": "Residue Processing"
+   }
+  },
+  "hl/c2a4d_entrance": {
+   "name": "Biological Research Entrance",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4c_grinders",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a4e_laser",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "qe_scientist",
+    "health_charger",
+    "suit_charger"
+   ],
+   "description": "Clean white corridors again, and a sign: ADVANCED BIOLOGICAL RESEARCH. Scientists cower in an office, and one begs you to escort them to safety.",
+   "props": {
+    "map": "c2a4d",
+    "chapter": "Questionable Ethics"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "QUESTIONABLE ETHICS",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c2a4e_laser": {
+   "name": "Laser Laboratory",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4d_entrance",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a4f_specimens",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "big_laser",
+    "hecu_marine",
+    "bm_memo"
+   ],
+   "description": "A lab built around a huge industrial laser on a gantry. The scientists say they can use it to cut through to the next section, if somebody stands very still in the right place, which is you.",
+   "props": {
+    "map": "c2a4e",
+    "chapter": "Questionable Ethics"
+   }
+  },
+  "hl/c2a4f_specimens": {
+   "name": "Specimen Holding",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4e_laser",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a4g_tau",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a4g_surgery",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "alien_grunt",
+    "houndeye",
+    "snark_nest"
+   ],
+   "description": "Holding cells with thick glass, each containing an alien specimen: houndeyes, a bullsquid, and an alien grunt that has just smashed its way out.",
+   "props": {
+    "map": "c2a4f",
+    "chapter": "Questionable Ethics"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "lab"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.7
+    }
+   ]
+  },
+  "hl/c2a4g_tau": {
+   "name": "Prototype Weapons Lab",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4f_specimens",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "gauss",
+    "dead_scientist",
+    "battery"
+   ],
+   "description": "A lab where a prototype weapon sits on a test stand: the tau cannon, still connected to its power supply. A sign reads DO NOT REMOVE.",
+   "props": {
+    "map": "c2a4g",
+    "chapter": "Questionable Ethics"
+   }
+  },
+  "hl/c2a4g_surgery": {
+   "name": "Surgical Laboratory",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4f_specimens",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5_spillway",
+     "dir": "up",
+     "distance": 1,
+     "name": "stairs to the surface",
+     "aliases": [
+      "stairs",
+      "surface"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie",
+    "medkit"
+   ],
+   "description": "An operating theatre where an alien lies strapped to a table, dissected. Instruments still sit on the tray. A scientist says it's for science. You don't believe him.",
+   "props": {
+    "map": "c2a4g",
+    "chapter": "Questionable Ethics"
+   }
+  }
+ }
+}

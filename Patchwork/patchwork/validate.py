@@ -2,7 +2,7 @@
 
 import re
 
-from .generator import GenerationError, generate
+from .generator import GenerationError, expand_room_list, generate
 from .world import normalize_handlers
 
 _SYMBOL = re.compile(r"(?<!\\)#([A-Za-z0-9_\-]+)(?:\.[A-Za-z0-9_]+)*#")
@@ -72,7 +72,7 @@ def check_registry(reg):
         r = d.get("rooms")
         if not r:
             problems.append("%s: has no rooms" % where("areas", key))
-        ids = ["%s/%s" % (key, x) for x in r] if isinstance(r, dict) else list(r or [])
+        ids = ["%s/%s" % (key, x) for x in r] if isinstance(r, dict) else expand_room_list(r or [], rooms)
         for rid in ids:
             rdef = rooms.get(rid)
             if rdef is None:
@@ -169,7 +169,8 @@ def check_world(world):
             if nxt.uid not in seen:
                 seen.add(nxt.uid)
                 stack.append(nxt)
-    unreachable = [r.name for r in rooms if r.uid not in seen]
+    # story_skip rooms are reached only by scripted scenes (an opening, a teleport, an ending).
+    unreachable = [r.name for r in rooms if r.uid not in seen and "story_skip" not in r.tags]
     if unreachable:
         problems.append("unreachable rooms: %s" % ", ".join(sorted(unreachable)[:6]))
     for r in rooms:

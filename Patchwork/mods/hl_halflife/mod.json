@@ -1,0 +1,27 @@
+{
+  "id": "hl_halflife",
+  "name": "Half-Life: Black Mesa Incident",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "The Half-Life campaign, chapter by chapter and map by map (c0a0 to c5a1, plus the t0a0 Hazard Course): the inbound tram, the resonance cascade, the office complex, the Marines, Blast Pit's tentacles, Power Up's gargantua, On a Rail, capture and the trash compactor, Questionable Ethics, Surface Tension, Lambda Core, Xen, the Gonarch, the alien factory, the Nihilanth and the G-Man's offer. Locked doors and outdoor areas grow generated sections. Spawn as Gordon Freeman on the tram.",
+  "requires": [
+    "core",
+    "combat",
+    "hl_core"
+  ],
+  "load_after": [
+    "hl_core"
+  ],
+  "recommends": [
+    "hl_opfor",
+    "hl_blueshift",
+    "daycycle"
+  ],
+  "priority": 64,
+  "tags": [
+    "half-life",
+    "blackmesa",
+    "scifi",
+    "campaign"
+  ]
+}

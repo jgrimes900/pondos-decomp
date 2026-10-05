@@ -1,0 +1,235 @@
+{
+ "rooms": {
+  "bs/ba_security1_lobby": {
+   "name": "Security Station",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_tram3",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_security1_lockers",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_security1_armory",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_security2_monitors",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "security_desk_bs",
+    "vending_machine",
+    "bm_memo"
+   ],
+   "description": "The security station: a counter, a coffee machine on its last legs and a wall of mailboxes. Another guard is arguing with the retinal scanner. It's a perfectly normal morning.",
+   "props": {
+    "map": "ba_security1",
+    "chapter": "Insecurity"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "INSECURITY",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "office",
+      "blackmesa"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "bs/ba_security1_lockers": {
+   "name": "Security Locker Room",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_security1_lobby",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "calhoun_locker",
+    "health_charger"
+   ],
+   "description": "The guards' locker room, smelling of gun oil and somebody's gym bag. Your locker has CALHOUN stencilled on it.",
+   "aliases": [
+    "locker room"
+   ],
+   "props": {
+    "map": "ba_security1",
+    "chapter": "Insecurity"
+   }
+  },
+  "bs/ba_security1_armory": {
+   "name": "Security Armoury",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_security1_lobby",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "armory_officer",
+    "glock",
+    "ammo_box"
+   ],
+   "description": "A caged armoury counter. The duty officer slides a 9mm pistol across to you and makes you sign for it, in triplicate.",
+   "aliases": [
+    "armoury",
+    "armory"
+   ],
+   "props": {
+    "map": "ba_security1",
+    "chapter": "Insecurity"
+   }
+  },
+  "bs/ba_security2_monitors": {
+   "name": "Security Monitoring Room",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_security1_lobby",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_security2_elevator",
+     "dir": "east",
+     "distance": 1,
+     "name": "service elevator",
+     "aliases": [
+      "elevator",
+      "lift"
+     ],
+     "back": false
+    },
+    {
+     "to": "bs/ba_canal1_shaft",
+     "dir": "down",
+     "distance": 1,
+     "back": false,
+     "name": "maintenance hatch"
+    }
+   ],
+   "features": [
+    "bs_monitors",
+    "bm_terminal"
+   ],
+   "description": "A dark room of monitors showing the whole sector. On one screen, in the Anomalous Materials test chamber, a man in an orange HEV suit pushes a cart toward a beam.",
+   "aliases": [
+    "monitors"
+   ],
+   "props": {
+    "map": "ba_security2",
+    "chapter": "Insecurity"
+   }
+  },
+  "bs/ba_security2_elevator": {
+   "name": "Sector G Service Elevator",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "story_skip"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_security2_monitors",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_canal1_shaft",
+     "dir": "down",
+     "distance": 1,
+     "name": "the fall",
+     "aliases": [
+      "fall",
+      "shaft"
+     ],
+     "back": false
+    }
+   ],
+   "features": [],
+   "description": "A service elevator full of scientists who keep telling you it's stuck. You fix the panel with a thump. The car starts down. Then the lights flicker green, the whole shaft shudders, and the cables let go.",
+   "aliases": [
+    "elevator"
+   ],
+   "props": {
+    "map": "ba_security2",
+    "chapter": "Insecurity"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "not": {
+       "flag": "bs_cascade"
+      }
+     },
+     "then": [
+      {
+       "macro": "bs_cascade"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

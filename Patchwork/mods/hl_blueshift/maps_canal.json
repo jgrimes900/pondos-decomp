@@ -1,0 +1,194 @@
+{
+ "rooms": {
+  "bs/ba_canal1_shaft": {
+   "name": "Bottom of the Elevator Shaft",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_canal1_basement",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_security2_monitors",
+     "dir": "up",
+     "distance": 1,
+     "name": "maintenance ladder",
+     "aliases": [
+      "ladder"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "dead_scientist",
+    "headcrab",
+    "battery"
+   ],
+   "description": "You come to in the wreck of the elevator at the bottom of its shaft. The scientists didn't make it. The emergency lights are red, and something is scratching at the doors.",
+   "aliases": [
+    "shaft",
+    "wreck"
+   ],
+   "props": {
+    "map": "ba_canal1",
+    "chapter": "Duty Calls"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "DUTY CALLS",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "bs/ba_canal1_basement": {
+   "name": "Flooded Basement",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "water",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_canal1_shaft",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_canal2_canals",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie_guard",
+    "supply_crate"
+   ],
+   "description": "A flooded basement of pipes and storage cages. The water is rising and the power is sparking on the walls.",
+   "props": {
+    "map": "ba_canal1",
+    "chapter": "Duty Calls"
+   },
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "bs/ba_canal2_canals": {
+   "name": "Drainage Canals",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "water",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_canal1_basement",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_canal3_pumps",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "bullsquid",
+    "leech",
+    "medkit"
+   ],
+   "description": "Wide concrete drainage canals, the water moving fast toward a sluice. Bullsquids nest in the overflow pipes. A guard on the far bank shouts that he's going for help, and doesn't come back.",
+   "props": {
+    "map": "ba_canal2",
+    "chapter": "Duty Calls"
+   }
+  },
+  "bs/ba_canal3_pumps": {
+   "name": "Pump House",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_canal2_canals",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_yard1_gate",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "rosenberg_clipboard",
+    "houndeye",
+    "health_charger"
+   ],
+   "description": "A pump house where the canals meet. A dead scientist clutches a clipboard listing the staff of a team led by a Dr. Rosenberg. The last line says: taken by the soldiers to the freight yard.",
+   "props": {
+    "map": "ba_canal3",
+    "chapter": "Duty Calls"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "maintenance",
+      "storage"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  }
+ }
+}

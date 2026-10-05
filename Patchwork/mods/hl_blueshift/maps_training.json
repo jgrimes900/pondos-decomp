@@ -1,0 +1,156 @@
+{
+ "rooms": {
+  "bsh/ba_hazard1": {
+   "name": "Security Training: Briefing",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bsh/ba_hazard2",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "holo_guard"
+   ],
+   "description": "A training hall for Black Mesa security, with a holographic instructor who looks remarkably like a guard you went to the academy with.",
+   "props": {
+    "map": "ba_hazard1",
+    "chapter": "Security Training Course"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "SECURITY TRAINING COURSE",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "bsh/ba_hazard2": {
+   "name": "Security Training: Movement",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bsh/ba_hazard1",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bsh/ba_hazard3",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "supply_crate"
+   ],
+   "description": "Crates, ladders and a duct, with signs explaining each one.",
+   "props": {
+    "map": "ba_hazard2",
+    "chapter": "Security Training Course"
+   }
+  },
+  "bsh/ba_hazard3": {
+   "name": "Security Training: Swimming",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor",
+    "water"
+   ],
+   "exits": [
+    {
+     "to": "bsh/ba_hazard2",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bsh/ba_hazard4",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [],
+   "description": "A pool with a submerged corridor to swim through.",
+   "props": {
+    "map": "ba_hazard3",
+    "chapter": "Security Training Course"
+   }
+  },
+  "bsh/ba_hazard4": {
+   "name": "Security Training: First Aid",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bsh/ba_hazard3",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bsh/ba_hazard6",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "health_charger",
+    "medkit"
+   ],
+   "description": "A health charger, a first aid kit and a hologram explaining which way round they go.",
+   "props": {
+    "map": "ba_hazard4",
+    "chapter": "Security Training Course"
+   }
+  },
+  "bsh/ba_hazard6": {
+   "name": "Security Training: Firing Range",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bsh/ba_hazard4",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "glock",
+    "training_target_bs"
+   ],
+   "description": "A pistol range, the target at the end already full of holes.",
+   "props": {
+    "map": "ba_hazard6",
+    "chapter": "Security Training Course"
+   }
+  }
+ }
+}

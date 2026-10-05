@@ -32,9 +32,9 @@ def registry(ids):
 class Player:
     """Drives an Engine through ordinary text commands."""
 
-    def __init__(self, ids, seed, name="Tester", answers=None, size="medium"):
+    def __init__(self, ids, seed, name="Tester", answers=None, size="medium", start=None):
         self.reg = registry(ids)
-        self.world, self.log = generate(self.reg, seed=seed, player_name=name, size=size)
+        self.world, self.log = generate(self.reg, seed=seed, player_name=name, size=size, start=start)
         self.io = ScriptIO(answers or [], echo=False)
         self.engine = Engine(self.world, self.io)
         self.engine.start()
@@ -67,7 +67,7 @@ class Player:
             return True
         return self.engine.i.check(cond, self.engine.i.ctx(self_ent=room))
 
-    def path_to(self, dest):
+    def path_to(self, dest, strict=True):
         start = self.room
         prev = {start.uid: None}
         q = collections.deque([start])
@@ -76,7 +76,7 @@ class Player:
             if r.uid == dest.uid:
                 break
             for ex in r.exits:
-                if ex.get("hidden") or not self.passable(r, ex):
+                if ex.get("hidden") or (strict and not self.passable(r, ex)):
                     continue
                 nxt = self.world.get(ex["to"])
                 if nxt is not None and nxt.uid not in prev:
@@ -102,16 +102,64 @@ class Player:
     def walk_to(self, dest, fight=False):
         if dest.is_room is False:
             dest = self.world.room_of(dest)
-        for _ in range(60):
+        for _ in range(500):
             if self.room.uid == dest.uid or self.world.game_over:
                 return True
             path = self.path_to(dest)
-            assert path is not None, "no path from %s to %s" % (self.room.name, dest.name)
+            if path is None:
+                # Blocked by a scripted gate: open it the way its mod says (exit "solve" hints).
+                path = self.path_to(dest, strict=False)
+                assert path is not None, "no path from %s to %s" % (self.room.name, dest.name)
+                gate = next(((r, ex) for r, ex in path if not self.passable(r, ex)), None)
+                assert gate is not None and gate[1].get("solve") and gate[1]["to"] not in self.solving, \
+                    "no way through to %s from %s" % (dest.name, self.room.name)
+                self.open_gate(gate[1], fight)
+                continue
             _r, ex = path[0]
+            self.patch_up()
             self.do(self.exit_command(ex))
             if fight:
                 self.clear_hostiles()
         return self.room.uid == dest.uid
+
+    solving = ()
+
+    def open_gate(self, ex, fight):
+        self.solving = tuple(self.solving) + (ex["to"],)
+        try:
+            for op in ex["solve"]:
+                if op[0] == "goto":
+                    self.walk_to(self.room_by_def(op[1]), fight)
+                else:
+                    self.patch_up()
+                    self.do(op[1])
+        finally:
+            self.solving = self.solving[:-1]
+
+    def ensure_held(self, uid, fight, then=None):
+        """Fetch an item the next command needs if it isn't in hand (taken away by a scripted scene)."""
+        w = self.world
+        ent = w.get(uid)
+        if ent is None or "portable" not in ent.tags or w.is_inside(ent, w.player):
+            return
+        self.walk_to(w.room_of(ent), fight)
+        self.do("take " + self.name_of(uid))
+        back = w.get(then) if then else None
+        if back is not None:
+            self.walk_to(back if back.is_room else w.room_of(back), fight)
+
+    def recover_lost(self, before, op, fight):
+        """Things a scripted scene took off the player (not given or used by this op) are fetched back."""
+        w = self.world
+        for uid in before:
+            ent = w.get(uid)
+            if ent is None or uid in op or w.is_inside(ent, w.player):
+                continue
+            holder = w.get(ent.parent)
+            if holder is not None and ("person" in holder.tags or "creature" in holder.tags):
+                continue
+            here = self.room
+            self.ensure_held(uid, fight, then=here.uid)
 
     def hostiles(self):
         return [e for e in self.world.visible_tree(self.room) if e.props.get("hostile") and e.props.get("health", 0) > 0]
@@ -122,16 +170,22 @@ class Player:
             if not foes or self.world.game_over:
                 return
             foe = foes[0]
-            if self.world.player.props.get("health", 99) < 12:
-                self.world.player.props["health"] = self.world.player.props.get("max_health", 20)
+            self.patch_up()
             self.do("attack " + foe.name)
 
     # -- solving generated stories ---------------------------------------
     def name_of(self, uid):
         return self.world.get(uid).name.lower()
 
+    def patch_up(self):
+        # Stands in for the medkits and chargers a human player would use between fights.
+        w = self.world
+        if w.player.props.get("health", 99) < 40:
+            w.player.props["health"] = w.player.props.get("max_health", 20)
+
     def run_op(self, op, fight):
         w = self.world
+        self.patch_up()
         kind = op[0]
         if any(isinstance(x, str) and x.startswith(("e", "f", "r")) and w.get(x) is None
                and x not in w.entities for x in op[1:] if x) and kind != "cmd":
@@ -154,6 +208,10 @@ class Player:
             if kind == "open" and w.get(op[1]).props.get("open"):
                 return ""
             return self.do("%s %s" % (verb, self.name_of(op[1])))
+        if kind in ("give", "use"):
+            self.ensure_held(op[1], fight, then=op[2])
+        if kind == "cmd" and op[2]:
+            self.ensure_held(op[2], fight, then=op[3])
         if kind == "give":
             return self.do("give %s to %s" % (self.name_of(op[1]), self.name_of(op[2])))
         if kind == "use":
@@ -162,11 +220,14 @@ class Player:
             verb, means, target = op[1], op[2], op[3]
             if verb == "attack":
                 out = ""
+                foe = w.get(target)
+                for command in (w.resolve_def(foe.def_id) or {}).get("solve") or [] if foe else []:
+                    self.patch_up()
+                    out += self.do(command)   # a boss's mod says how to soften it up first
                 for _ in range(60):
                     if w.get(target) is None or w.game_over:
                         break
-                    if w.player.props.get("health", 99) < 12:
-                        w.player.props["health"] = w.player.props.get("max_health", 20)
+                    self.patch_up()
                     out += self.do("attack " + self.name_of(target))
                 return out
             prep = {"put": "in", "use": "on", "give": "to"}.get(verb)
@@ -188,7 +249,9 @@ class Player:
             transcript = []
             for op in st["solution"]:
                 transcript.append(">> %r" % (op,))
+                before = [e.uid for e in w.descendants(w.player) if "portable" in e.tags]
                 transcript.append(self.run_op(tuple(op), fight))
+                self.recover_lost(before, op, fight)
                 if st.get("state") == "done":
                     break
             assert st.get("state") == "done", "step %s (%s: %s) not completed:\n%s" % (

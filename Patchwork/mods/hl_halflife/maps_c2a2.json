@@ -1,0 +1,268 @@
+{
+ "rooms": {
+  "hl/c2a2_rail_yard": {
+   "name": "Rail Switching Yard",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a1_garg",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a2a_tunnels",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "rail_car",
+    "hecu_marine",
+    "ammo_box"
+   ],
+   "description": "A maintenance train on the electrified rail sits waiting, its controls glowing. Tracks fan out into tunnels in every direction, and a signal box controls the points.",
+   "props": {
+    "map": "c2a2",
+    "chapter": "On a Rail"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "ON A RAIL",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c2a2a_tunnels": {
+   "name": "Rail Tunnels",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "military",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a2_rail_yard",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c2a2b_junction",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "sentry_gun",
+    "hecu_marine",
+    "supply_crate"
+   ],
+   "description": "You ride the rail car through long tunnels. Marines have set up sentry guns at the junctions, and the track is blocked by a fallen gate here and there.",
+   "props": {
+    "map": "c2a2a",
+    "chapter": "On a Rail"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "transit",
+      "storage"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c2a2b_junction": {
+   "name": "Track Junction and Signal Box",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a2a_tunnels",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c2a2d_depot",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "houndeye",
+    "houndeye",
+    "health_charger"
+   ],
+   "description": "A junction where you must climb into a signal box and throw the points to send the car down the right line. Houndeyes yap in the dark beneath the track.",
+   "props": {
+    "map": "c2a2b1",
+    "chapter": "On a Rail"
+   }
+  },
+  "hl/c2a2d_depot": {
+   "name": "Rail Depot and Armoury",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "military",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a2b_junction",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c2a2e_launch_ctrl",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a2h_terminus",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "hecu_marine",
+    "supply_crate",
+    "shotgun"
+   ],
+   "description": "A depot of rail cars and cargo containers that the Marines have turned into a fortified position: sandbags, crates and a lot of guns.",
+   "props": {
+    "map": "c2a2d",
+    "chapter": "On a Rail"
+   }
+  },
+  "hl/c2a2e_launch_ctrl": {
+   "name": "Rocket Launch Control",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a2d_depot",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a2f_silo",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "launch_console",
+    "launch_scientist",
+    "suit_charger"
+   ],
+   "description": "A control room overlooking a satellite launch silo. A scientist tells you the Lambda team needs this satellite launched to deliver a payload. The launch console waits for someone to arm it.",
+   "props": {
+    "map": "c2a2e",
+    "chapter": "On a Rail"
+   }
+  },
+  "hl/c2a2f_silo": {
+   "name": "Satellite Launch Silo",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a2e_launch_ctrl",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "satellite_rocket",
+    "battery"
+   ],
+   "description": "The silo floor, where a slender rocket stands under scaffolding, its satellite fairing open at the top.",
+   "props": {
+    "map": "c2a2f",
+    "chapter": "On a Rail"
+   }
+  },
+  "hl/c2a2h_terminus": {
+   "name": "Rail Terminus",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a2d_depot",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c2a3_tank",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie",
+    "medkit"
+   ],
+   "description": "The rail line ends at a buffer stop before a set of doors marked AQUATIC RESEARCH. The tracks behind you are a long way down.",
+   "props": {
+    "map": "c2a2h",
+    "chapter": "On a Rail"
+   }
+  }
+ }
+}

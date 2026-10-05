@@ -1,0 +1,325 @@
+{
+ "rooms": {
+  "hl/c4a1_arrival": {
+   "name": "Xen: Arrival",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c3a2f_portal",
+     "dir": "out",
+     "distance": 1,
+     "back": false,
+     "name": "rift back to Black Mesa"
+    },
+    {
+     "to": "hl/c4a1_pool",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "xen_researcher",
+    "battery",
+    "xen_light"
+   ],
+   "description": "You fall out of the portal onto spongy alien ground. Islands of rock float in a green-violet void, connected by nothing at all. The remains of an HEV-suited researcher lie nearby, along with his equipment.",
+   "aliases": [
+    "xen"
+   ],
+   "props": {
+    "map": "c4a1",
+    "chapter": "Xen"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "XEN",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "tags": [
+      "xen"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9,
+     "name": "drifting rock"
+    }
+   ]
+  },
+  "hl/c4a1_pool": {
+   "name": "Xen: Healing Pool",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a1_arrival",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a1_islands",
+     "dir": "north",
+     "distance": 1,
+     "name": "jump pad",
+     "aliases": [
+      "pad"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "healing_pool",
+    "houndeye",
+    "xen_light"
+   ],
+   "description": "A grotto around a pool of glowing water. Light-stalks retract as you approach. Houndeyes drink at the far edge.",
+   "props": {
+    "map": "c4a1",
+    "chapter": "Xen"
+   }
+  },
+  "hl/c4a1_islands": {
+   "name": "Xen: Island Chain",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a1_pool",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a2_web",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "jump_pad",
+    "headcrab"
+   ],
+   "description": "A chain of islands linked by jump pads, organic launch pads that puff you through the air. Below, the void. Above, the void.",
+   "props": {
+    "map": "c4a1",
+    "chapter": "Xen"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "xen"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9,
+     "name": "far island"
+    }
+   ]
+  },
+  "hl/c4a1a_caves": {
+   "name": "Xen Caverns",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor",
+    "cave"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a2b_exit",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a1b_factory",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "vortigaunt",
+    "vortigaunt",
+    "xen_glyph"
+   ],
+   "description": "Organic tunnels lit by veins of light, where vortigaunts in shackles work on something that pulses.",
+   "props": {
+    "map": "c4a1a",
+    "chapter": "Interloper"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "INTERLOPER",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c4a1b_factory": {
+   "name": "Alien Grunt Factory",
+   "tags": [
+    "xen",
+    "alien",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a1a_caves",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a1c_conveyors",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "alien_grunt",
+    "controller",
+    "hivehand"
+   ],
+   "description": "A vast industrial hive where alien grunts are grown in vats, assembled on conveyors and marched out by the hundred. Controllers float overhead, directing it all.",
+   "aliases": [
+    "factory"
+   ],
+   "props": {
+    "map": "c4a1b",
+    "chapter": "Interloper"
+   }
+  },
+  "hl/c4a1c_conveyors": {
+   "name": "Factory Conveyors",
+   "tags": [
+    "xen",
+    "alien",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a1b_factory",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a1d_tower",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "vortigaunt",
+    "medkit"
+   ],
+   "description": "Conveyors of half-formed bodies, chutes of slime, and crushers. Vortigaunts work the machinery, collars glowing.",
+   "props": {
+    "map": "c4a1c",
+    "chapter": "Interloper"
+   }
+  },
+  "hl/c4a1d_tower": {
+   "name": "Ascent Through the Hive",
+   "tags": [
+    "xen",
+    "alien",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a1c_conveyors",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a1f_teleport",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "controller",
+    "battery"
+   ],
+   "description": "A climb up the hive's interior on ledges and platforms that drift, toward a portal at the top.",
+   "props": {
+    "map": "c4a1d",
+    "chapter": "Interloper"
+   }
+  },
+  "hl/c4a1f_teleport": {
+   "name": "Hive Teleporter",
+   "tags": [
+    "xen",
+    "alien",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a1d_tower",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a3_chamber",
+     "dir": "in",
+     "distance": 1,
+     "name": "the teleporter",
+     "aliases": [
+      "teleporter",
+      "portal"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "xen_glyph",
+    "health_charger_xen"
+   ],
+   "description": "A great teleporter at the top of the hive, powered by Xen crystals, linked to the Nihilanth's lair.",
+   "props": {
+    "map": "c4a1f",
+    "chapter": "Interloper"
+   }
+  }
+ }
+}

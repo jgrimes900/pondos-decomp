@@ -63,6 +63,7 @@ class Thing:
         self.uid = None
         self.spawned = False        # created by the generator rather than authored
         self.relocate = False       # the story moves it away from where its mod put it
+        self.keep = bool(d.get("story_keep"))   # the player must never be asked to give it away
 
     @property
     def profile(self):
@@ -128,13 +129,18 @@ class StoryPlanner:
         reg, w = self.reg, self.w
         self.areas = {a: d for a, d in reg["areas"].items() if not d.get("abstract")}
         authored = {}
+        offstage = {}
         for aid in sorted(self.areas):
             for rid in self.gen.area_room_ids(aid):
                 rdef = w.resolve_def("room:" + rid) or {}
-                self._walk(rdef.get("features") or [], aid, authored, 0)
+                # A story_skip room is a scripted scene; whatever waits there is not the planner's to use.
+                skip = "story_skip" in _as_list(rdef.get("tags"))
+                self._walk(rdef.get("features") or [], aid, offstage if skip else authored, 0)
         for fid in sorted(reg["features"]):
             d = w.resolve_def(fid)
             if not d or d.get("abstract") or fid == "player":
+                continue
+            if fid in offstage and fid not in authored:
                 continue
             if d.get("profile"):
                 kind = "character"
@@ -273,6 +279,11 @@ class StoryPlanner:
         for eid, ev in sorted(self.reg["events"].items()):
             if ev.get("abstract") or not self.mods_loaded(ev.get("requires_mods")):
                 continue
+            starts = [a for a in _as_list(ev.get("start_areas")) if a in self.areas]
+            if self.start_area and _as_list(ev.get("start_areas")) and self.start_area not in starts:
+                continue  # this event belongs to another starting point
+            if _as_list(ev.get("start_areas")) and not starts:
+                continue
             cast = self.try_cast(ev)
             if cast is None:
                 continue
@@ -291,6 +302,10 @@ class StoryPlanner:
             imp = sum(1 for kind, v in cast.values() if kind == "thing" and isinstance(v, Thing) and v.important)
             imp += sum(1 for kind, v in cast.values() if kind == "place" and v in self.pool_places)
             weight = float(ev.get("weight", 1)) * (1 + imp)
+            if self.start_area and self.start_area in starts:
+                weight *= 6
+            elif self.start_area and set(_as_list(ev.get("tags"))) & self.area_tags(self.start_area):
+                weight *= 2
             if set(_as_list(ev.get("tags"))) & loaded_tags:
                 weight *= 2
             options.append((eid, ev, cast, res, weight))
@@ -434,6 +449,17 @@ class StoryPlanner:
                 opts.append(oid)
         return self.rng.choice(opts) if opts else None
 
+    def arm(self):
+        """Before a fight the story depends on, make sure the player has picked up a weapon."""
+        weapons = [t for k, t in sorted(self.things.items())
+                   if t.kind == "item" and "weapon" in t.tags and not t.spawned]
+        if not weapons or any(t.obtained and t.keep for t in weapons):   # one the story will not take back
+            return
+        weapons = [t for t in weapons if self.can_obtain(t) and (t.area or t.loc)]
+        if weapons:
+            dmg = lambda t: (t.d.get("props") or {}).get("damage", 1) or 1
+            self.obtain(_weighted(self.rng, weapons, lambda t: dmg(t) * (3 if t.key in self.pool else 1)))
+
     def can_obtain(self, t):
         return (not t.obtained and t.key not in self.inprogress
                 and (t.area is None or t.area not in self.accessing))
@@ -503,7 +529,7 @@ class StoryPlanner:
             return None
         cands = [t for k, t in sorted(self.things.items())
                  if t.kind == "item" and t is not thing and self.can_obtain(t) and not t.spawned
-                 and k not in self.reserved
+                 and k not in self.reserved and not t.keep
                  and (t.affords & wants or t.tags & wants)]
         if not cands:
             return None
@@ -568,9 +594,13 @@ class StoryPlanner:
     # ------------------------------------------------------------------
     def plan(self):
         self.collect()
+        forced = getattr(self.gen, "forced_start", None)
+        if forced and forced in self.areas:
+            self.start_area = forced
         has_event = self.choose_event()
         self.note("event: %s" % (self.event_id or "(none - the story is built from important features alone)"))
-        self.choose_start()
+        if not (forced and forced in self.areas):
+            self.choose_start()
         if self.start_area:
             self.accessible.append(self.start_area)
             self.pool_places.discard(self.start_area)
@@ -636,6 +666,8 @@ class StoryPlanner:
 
         if self.resolution:
             target = self.cast_thing(self.resolution["target"])
+            if target is not None and self.resolution.get("verb") == "attack":
+                self.arm()
             if target is not None:
                 if target.kind == "character":
                     self.place_character(target)
@@ -674,12 +706,20 @@ class StoryPlanner:
                     self.pool.discard(t.key)
                     return
             self.obtain(t)
+            if t.keep:
+                self.pool.discard(t.key)
+                return
             recipients = [c for c in self.helpers("ally") + self.helpers("informant") if c is not t]
             if recipients:
                 wants = lambda c: (5 if (t.affords | t.tags) & set(_as_list(c.profile.get("wants"))) else 1) + (2 if c.key in self.pool else 0)
                 r = _weighted(self.rng, recipients, wants)
                 self.place_character(r)
                 self.task("deliver", item=t.key, char=r.key, gives=None, place=self.character_area(r))
+        elif t.kind == "character" and "hostile" in t.tags:
+            # A monster with a story of its own: the quest goes through it, not around it.
+            self.place_character(t)
+            self.arm()
+            self.task("defeat", char=t.key, place=self.character_area(t))
         elif t.kind == "character":
             self.place_character(t)
             about = self.villain()
@@ -693,6 +733,10 @@ class StoryPlanner:
         self.pool.discard(t.key)
 
     def choose_start(self):
+        own = [a for a in _as_list(self.event.get("start_areas")) if a in self.areas]
+        if own:
+            self.start_area = self.rng.choice(own)
+            return
         tags = set(_as_list(self.event.get("tags")))
         for kind, val in self.cast.values():
             if kind == "place":
@@ -735,7 +779,9 @@ class StoryBinder:
 
     # -- helpers -------------------------------------------------------
     def area_rooms(self, aid):
-        return [self.w.get(u) for u in self.w.areas.get(aid, {}).get("rooms", []) if self.w.get(u)]
+        rooms = [self.w.get(u) for u in self.w.areas.get(aid, {}).get("rooms", []) if self.w.get(u)]
+        # Rooms a mod marks story_skip (reached only by a one-off scene, or past the ending) never hold quest things.
+        return [r for r in rooms if "story_skip" not in r.tags] or rooms
 
     def room_for(self, thing, loc):
         kind = loc[0] if loc else "wild"
@@ -937,9 +983,13 @@ class StoryBinder:
         return textutil.cap(self.i.render(src, ctx).strip())
 
     def place_name(self, aid, ent=None):
-        if aid and aid in self.w.areas:
-            return self.w.areas[aid]["name"]
         room = self.w.room_of(ent) if ent is not None else None
+        if aid and aid in self.w.areas:
+            area = self.w.areas[aid]
+            if room is not None and room.area == aid and len(area.get("rooms", [])) > 12:
+                # In a sprawling place the area's name alone is no help: name the room too.
+                return "%s (%s)" % (room.name, area["name"])
+            return area["name"]
         if room is not None:
             return room.name
         return self.w.string("somewhere", "somewhere")
@@ -1094,6 +1144,14 @@ class StoryBinder:
             self.w.add_action(c, "talk", {"if": {"not": {"flag": flag}}, "do": lines + [{"flag": flag}]}, first=False)
             step.update(objective={"flag": flag}, solution=[("goto", c.uid), ("talk", c.uid)])
             title_sym, hint_sym = "#step_confront_title#", "#step_confront_hint#"
+        elif kind == "defeat":
+            c = e(task["char"])
+            if c is None:
+                return None
+            refs = {"char": c.uid}
+            self.w.dynamic_rules.append({"on": "killed", "if": {"same": ["self", "uid:" + c.uid]}, "do": [{"flag": flag}]})
+            step.update(objective={"flag": flag}, solution=[("goto", c.uid), ("cmd", "attack", None, c.uid)])
+            title_sym, hint_sym = "#step_defeat_title#", "#step_defeat_hint#"
         elif kind == "resolve":
             target = e(task["target"])
             means = e(task.get("means"))
@@ -1302,6 +1360,8 @@ class StoryBinder:
     # -- conversation menus ---------------------------------------------
     def build_menus(self):
         for c in sorted([e for e in self.w.entities.values() if e.profile], key=lambda e: e.uid):
+            if c.profile.get("menu") is False or "hostile" in c.tags:
+                continue   # scripted speakers and monsters keep their own lines
             opts = [{"text": self.text("#ask_who#"), "do": [self.voice(c.uid, "who", **self.cast_locals())]}]
             goals = c.profile.get("goals")
             if goals:

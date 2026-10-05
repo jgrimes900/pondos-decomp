@@ -1,0 +1,325 @@
+{
+ "rooms": {
+  "hl/c1a1_ruins": {
+   "name": "Ruined Test Lab Corridors",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0e_chamber",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a1_crowbar",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a1_lobby_ruin",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "headcrab",
+    "dead_scientist"
+   ],
+   "description": "Everything is wrong. Lights strobe, alarms bray, fire crawls along cable trays. A scientist stumbles past screaming about the surface. Somewhere in the walls you hear scuttling.",
+   "props": {
+    "map": "c1a1",
+    "chapter": "Unforeseen Consequences"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "UNFORESEEN CONSEQUENCES",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c1a1_crowbar": {
+   "name": "Collapsed Storage Room",
+   "tags": [
+    "blackmesa",
+    "storage",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a1_ruins",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "crowbar",
+    "supply_crate"
+   ],
+   "description": "A storage room half-buried by a fallen ceiling. Shelving has toppled; a toolbox lies spilled across the floor, and among the tools gleams a red crowbar.",
+   "props": {
+    "map": "c1a1",
+    "chapter": "Unforeseen Consequences"
+   },
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance",
+      "storage"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.5
+    }
+   ]
+  },
+  "hl/c1a1_lobby_ruin": {
+   "name": "Sector C Lobby, Ruined",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a1_ruins",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a1a_shaft",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie",
+    "dead_guard_glock",
+    "health_charger"
+   ],
+   "description": "You come back out into what's left of the Sector C lobby. The guard who greeted you lies dead behind the security desk; his 9mm pistol is still in its holster. A zombie in a lab coat groans by the retinal scanner.",
+   "props": {
+    "map": "c1a1",
+    "chapter": "Unforeseen Consequences"
+   }
+  },
+  "hl/c1a1a_shaft": {
+   "name": "Elevator Shaft",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a1_lobby_ruin",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a1b_flooded",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "headcrab"
+   ],
+   "description": "The main elevator shaft. As you watch, an elevator car full of scientists drops past, its cables snapping, and smashes into the bottom. Ladders run down the shaft wall.",
+   "aliases": [
+    "shaft"
+   ],
+   "props": {
+    "map": "c1a1a",
+    "chapter": "Unforeseen Consequences"
+   }
+  },
+  "hl/c1a1b_flooded": {
+   "name": "Flooded Maintenance Level",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "water",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a1a_shaft",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a1f_vents",
+     "dir": "east",
+     "distance": 1,
+     "name": "air duct",
+     "aliases": [
+      "duct",
+      "vent"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "power_junction",
+    "houndeye",
+    "suit_charger"
+   ],
+   "description": "Water ankle-deep floods a maintenance level, and a severed power cable dangles in it, spitting sparks. The water is live. There is a power junction on a catwalk above.",
+   "props": {
+    "map": "c1a1b",
+    "chapter": "Unforeseen Consequences"
+   }
+  },
+  "hl/c1a1f_vents": {
+   "name": "Ventilation Ducts",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a1b_flooded",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a1c_security",
+     "dir": "down",
+     "distance": 1,
+     "name": "grille",
+     "aliases": [
+      "grille"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "headcrab",
+    "battery"
+   ],
+   "description": "You crawl through a tight sheet-metal air duct. Ahead, something chitters. A grille below looks down into a security office.",
+   "props": {
+    "map": "c1a1f",
+    "chapter": "Unforeseen Consequences"
+   }
+  },
+  "hl/c1a1c_security": {
+   "name": "Security Office",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a1f_vents",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a1d_offices",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "uc_guard",
+    "medkit",
+    "ammo_box"
+   ],
+   "description": "A security office with a bank of black-and-white monitors showing chaos from across the sector. A guard crouches behind the desk with a pistol, very glad to see you. A weapons locker stands open.",
+   "props": {
+    "map": "c1a1c",
+    "chapter": "Unforeseen Consequences"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "office",
+      "blackmesa"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c1a1d_offices": {
+   "name": "Darkened Office Wing Entrance",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a1c_security",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a2_reception",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "vortigaunt",
+    "health_charger"
+   ],
+   "description": "A corridor where the lights have died. Vortigaunts flicker in with green crackles. A sign points onward to the administrative offices.",
+   "props": {
+    "map": "c1a1d",
+    "chapter": "Unforeseen Consequences"
+   }
+  }
+ }
+}

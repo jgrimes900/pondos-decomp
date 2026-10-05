@@ -1,0 +1,150 @@
+{
+ "rooms": {
+  "bs/ba_power1_hall": {
+   "name": "Generator Hall",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_xen3_focal",
+     "dir": "out",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_power1_yard",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_power2_cliffs",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "bs_generator",
+    "hecu_marine",
+    "suit_charger"
+   ],
+   "description": "You arrive back in Black Mesa in the wrong place: a generator hall a long way from the lab. The teleporter needs more power than the grid can give. Rosenberg, over the radio, says there's a storage depot with the batteries it needs.",
+   "props": {
+    "map": "ba_power1",
+    "chapter": "Power Struggle"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "POWER STRUGGLE",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.7
+    }
+   ]
+  },
+  "bs/ba_power1_yard": {
+   "name": "Battery Storage Depot",
+   "tags": [
+    "blackmesa",
+    "storage",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_power1_hall",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "sentry_gun",
+    "teleport_battery",
+    "supply_crate"
+   ],
+   "description": "A depot of heavy batteries on racks, half of them dead, guarded by a sentry gun the Marines left behind.",
+   "props": {
+    "map": "ba_power1",
+    "chapter": "Power Struggle"
+   }
+  },
+  "bs/ba_power2_cliffs": {
+   "name": "Cliffside Ducts",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_power1_hall",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_teleport2_chamber",
+     "dir": "in",
+     "distance": 1,
+     "name": "maintenance door",
+     "aliases": [
+      "door"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "apache",
+    "ammo_box"
+   ],
+   "description": "Ducts and pipes that run along a cliff face outside the facility. Below, a canyon. Above, an Apache.",
+   "props": {
+    "map": "ba_power2",
+    "chapter": "Power Struggle"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "surface",
+      "military"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "hl_opfor",
+  "name": "Half-Life: Opposing Force",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "Gearbox's Opposing Force campaign map by map (of0a0 to of6a5, plus the Boot Camp): the Osprey crash, the Marines pulling out, Otis, the Black Ops, Race X, the barnacle grapple, the displacer cannon, the Pit Worm, Foxtrot Uniform, the Black Ops' package, the Gene Worm and the G-Man's Osprey. Locked and welded doors and outdoor areas grow generated sections. Spawn as Corporal Adrian Shephard.",
+  "requires": [
+    "core",
+    "combat",
+    "hl_core"
+  ],
+  "load_after": [
+    "hl_core"
+  ],
+  "recommends": [
+    "hl_halflife",
+    "hl_blueshift"
+  ],
+  "priority": 65,
+  "tags": [
+    "half-life",
+    "blackmesa",
+    "scifi",
+    "campaign",
+    "opposing-force"
+  ]
+}

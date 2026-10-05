@@ -1,0 +1,27 @@
+{
+  "id": "hl_blueshift",
+  "name": "Half-Life: Blue Shift",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "Gearbox's Blue Shift campaign map by map (ba_tram1 to ba_outro, plus the security training course): the outbound tram, the security station, the falling elevator, the canals, the freight yard and Dr. Rosenberg, the trip to Xen to set the relay, the battery depot and the prototype teleporter. Locked doors and outdoor areas grow generated sections. Spawn as Barney Calhoun.",
+  "requires": [
+    "core",
+    "combat",
+    "hl_core"
+  ],
+  "load_after": [
+    "hl_core"
+  ],
+  "recommends": [
+    "hl_halflife",
+    "hl_opfor"
+  ],
+  "priority": 66,
+  "tags": [
+    "half-life",
+    "blackmesa",
+    "scifi",
+    "campaign",
+    "blue-shift"
+  ]
+}

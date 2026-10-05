@@ -1,0 +1,423 @@
+{
+ "features": {
+  "bs_announcer": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "tram announcer",
+   "aliases": [
+    "announcer",
+    "speaker",
+    "voice"
+   ],
+   "appearance": false,
+   "description": "A recorded voice from a speaker grille.",
+   "actions": {
+    "listen": [
+     "#bs_announcement#"
+    ],
+    "talk": [
+     "It's a recording. It doesn't care that you're late."
+    ]
+   }
+  },
+  "freeman_tram": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "other tram",
+   "aliases": [
+    "tram",
+    "other tram",
+    "man",
+    "freeman",
+    "scientist"
+   ],
+   "appearance": false,
+   "description": "A bespectacled, bearded scientist in the other tram, reading a magazine, oblivious. You'll learn his name later."
+  },
+  "gman_glimpse_bs": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "man in a blue suit",
+   "aliases": [
+    "man in a blue suit",
+    "suit",
+    "g-man",
+    "gman"
+   ],
+   "appearance": false,
+   "description": "A thin man in a blue suit on a gantry. When the tram comes round again, he's gone."
+  },
+  "platform_guard_bs": {
+   "extends": [
+    "security_guard"
+   ],
+   "appearance": "{self.Name} leans out of the security station door.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"Calhoun! There you are. Some egghead's stuck in the Sector G elevator. Grab your gear and go fix it.\""
+      ]
+     }
+    ]
+   }
+  },
+  "security_desk_bs": {
+   "extends": [
+    "scenery",
+    "surface"
+   ],
+   "name": "security counter",
+   "aliases": [
+    "counter",
+    "desk"
+   ],
+   "appearance": false,
+   "description": "A counter covered with sign-in sheets and a coffee mug that says WORLD'S OKAYEST GUARD."
+  },
+  "calhoun_locker": {
+   "extends": [
+    "scenery",
+    "container",
+    "openable"
+   ],
+   "name": "locker marked CALHOUN",
+   "aliases": [
+    "locker",
+    "calhoun locker",
+    "my locker"
+   ],
+   "appearance": "Your locker, stencilled CALHOUN, stands in the row.",
+   "description": "Your locker. Inside, if you remember right, your vest and helmet.",
+   "features": [
+    "security_vest",
+    "security_helmet"
+   ]
+  },
+  "armory_officer": {
+   "extends": [
+    "security_guard"
+   ],
+   "appearance": "{self.Name} sits behind the armoury cage, clipboard in hand.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"Sign here. And here. Don't shoot anybody important.\""
+      ]
+     }
+    ]
+   }
+  },
+  "bs_monitors": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "monitors",
+   "aliases": [
+    "monitors",
+    "screens",
+    "screen",
+    "monitor"
+   ],
+   "appearance": "A wall of security monitors flickers with views of the sector.",
+   "description": [
+    {
+     "if": {
+      "flag": "bs_cascade"
+     },
+     "text": "The monitors show static, fire, and things moving that shouldn't be."
+    },
+    {
+     "text": "One monitor shows the Anomalous Materials test chamber, where a man in an orange suit pushes a sample cart toward the beam."
+    }
+   ]
+  },
+  "rosenberg_clipboard": {
+   "extends": [
+    "portable",
+    "readable"
+   ],
+   "name": "clipboard",
+   "aliases": [
+    "clipboard",
+    "list"
+   ],
+   "props": {
+    "text": "TEAM: DR. ROSENBERG (lead), DR. HARRIS, DR. WALTER, DR. SIMMONS. Teleport research, Sector F. Note added in pen: R. taken by HECU to the freight yard holding area."
+   }
+  },
+  "yard_crane": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "crane controls",
+   "aliases": [
+    "crane",
+    "controls",
+    "gantry",
+    "levers"
+   ],
+   "appearance": "The crane's controls are a pair of levers and a big red button.",
+   "description": "You've seen it done. How hard can it be?",
+   "actions": {
+    "use": [
+     "You swing the crane over and drop a boxcar out of the way. The yard shakes. Several Marines below are suddenly very interested in where you are."
+    ]
+   }
+  },
+  "rosenberg": {
+   "extends": [
+    "scientist"
+   ],
+   "name": "Dr. Rosenberg",
+   "proper": true,
+   "aliases": [
+    "rosenberg",
+    "dr rosenberg",
+    "scientist",
+    "doctor"
+   ],
+   "important": true,
+   "tags": [
+    "scientist",
+    "bm_staff",
+    "rosenberg"
+   ],
+   "appearance": "Dr. Rosenberg, grey-haired and sharp-eyed, is here.",
+   "description": "A senior scientist with a soft voice and absolutely no patience for soldiers.",
+   "profile": {
+    "personality": [
+     "wise",
+     "stubborn"
+    ],
+    "motives": [
+     "knowledge",
+     "protect",
+     "survive"
+    ],
+    "motive_text": "get his team out alive, by the one road nobody else would dare",
+    "goals": [
+     "reach the teleportation lab",
+     "save his team",
+     "escape Black Mesa"
+    ],
+    "backstory": "\"We warned them. The teleport work was years ahead of anything else, and we told them the crystal was too pure. And now? Now we'll have to use our own machine to get out.\"",
+    "roles": [
+     "giver",
+     "informant",
+     "ally",
+     "victim",
+     "authority"
+    ],
+    "knows": [
+     "science",
+     "xen",
+     "teleport",
+     "blackmesa"
+    ],
+    "wants": [
+     "power",
+     "access",
+     "medicine"
+    ],
+    "epilogue": "Dr. Rosenberg rides out of Black Mesa in the back of a jeep, already sketching corrections to the teleporter on a napkin."
+   },
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"You're not with those soldiers? Good. Then you'll help me get to my team, and I'll get us all out of here.\""
+      ]
+     }
+    ]
+   }
+  },
+  "rosenberg_team": {
+   "extends": [
+    "scientist"
+   ],
+   "name": "Rosenberg's team",
+   "proper": true,
+   "aliases": [
+    "team",
+    "scientists",
+    "harris",
+    "walter",
+    "simmons"
+   ],
+   "appearance": "Rosenberg's surviving team huddle around their consoles.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"The relay, Mr. Calhoun. Step on the test pad, set the beacon on the other side, and come back. It's perfectly safe. Statistically.\""
+      ]
+     }
+    ]
+   }
+  },
+  "bs_test_pad": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "test teleporter pad",
+   "aliases": [
+    "test pad",
+    "pad"
+   ],
+   "appearance": "A small test teleporter pad hums in the corner.",
+   "description": "The test pad. It sends one person to Xen, and, the scientists promise, back."
+  },
+  "xen_relay": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "relay crystal",
+   "aliases": [
+    "relay",
+    "crystal",
+    "beacon",
+    "relay crystal"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "bs_relay"
+     },
+     "text": "The relay crystal pulses with a steady beacon light."
+    },
+    {
+     "text": "A tall Xen crystal stands in the centre of the island, dark."
+    }
+   ],
+   "description": "The relay the teleporter needs to lock on to.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "flag": "bs_relay"
+      },
+      "do": [
+       "It's already pulsing."
+      ]
+     },
+     {
+      "do": [
+       {
+        "flag": "bs_relay"
+       },
+       {
+        "say": "You fix the beacon to the relay crystal. It hums, catches, and begins to pulse in time with something far away in Black Mesa.",
+        "style": "story"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "bs_generator": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "generator",
+   "aliases": [
+    "generator",
+    "switch",
+    "breaker"
+   ],
+   "appearance": "A generator stands idle in the middle of the hall.",
+   "description": "Not enough for the teleporter alone. It needs batteries too.",
+   "actions": {
+    "use": [
+     "You get the generator turning over. The lights come up; the teleporter will still need its battery."
+    ]
+   }
+  },
+  "teleport_battery": {
+   "extends": [
+    "portable"
+   ],
+   "name": "teleporter battery",
+   "aliases": [
+    "battery",
+    "teleporter battery",
+    "power cell",
+    "cell"
+   ],
+   "important": true,
+   "tags": [
+    "bs_tele_battery"
+   ],
+   "affords": [
+    "power"
+   ],
+   "description": "A huge rechargeable cell on a carry-frame, its gauge full. The one thing the prototype teleporter is missing."
+  },
+  "prototype_teleporter": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "prototype teleporter",
+   "aliases": [
+    "teleporter",
+    "prototype",
+    "cradle",
+    "battery cradle",
+    "emitters"
+   ],
+   "important": true,
+   "tags": [
+    "bs_teleporter",
+    "heart"
+   ],
+   "appearance": "The prototype teleporter's ring of emitters surrounds the platform; its battery cradle is empty.",
+   "description": "Rosenberg's machine. Fit the battery, set the relay, and it can throw all of you out of Black Mesa. Probably in one piece."
+  },
+  "holo_guard": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "holographic instructor",
+   "aliases": [
+    "hologram",
+    "instructor",
+    "guard"
+   ],
+   "appearance": "A flickering hologram of a security guard waits to begin.",
+   "description": "He's patient. More patient than you.",
+   "actions": {
+    "talk": [
+     "\"Welcome to Black Mesa security training. Let's begin with the basics.\""
+    ]
+   }
+  },
+  "training_target_bs": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "target",
+   "aliases": [
+    "target"
+   ],
+   "appearance": "A paper target hangs at the end of the range.",
+   "description": "Mostly holes.",
+   "actions": {
+    "attack": [
+     "You put five rounds through it. The hologram nods approvingly."
+    ]
+   }
+  },
+  "security_vest": {
+   "_patch": true,
+   "important": true
+  },
+  "security_helmet": {
+   "_patch": true,
+   "important": true
+  }
+ }
+}

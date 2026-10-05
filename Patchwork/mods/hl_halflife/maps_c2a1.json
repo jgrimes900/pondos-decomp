@@ -1,0 +1,211 @@
+{
+ "rooms": {
+  "hl/c2a1_tracks": {
+   "name": "Power Facility Rail Yard",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a4j_underpass",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a1_garg",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a1b_substation",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "powerup_guard",
+    "health_charger"
+   ],
+   "description": "Rail tracks lead into a cavernous power facility. A security guard, pinned behind a train car, tells you there's something huge out there, and the electrified rails are dead.",
+   "props": {
+    "map": "c2a1",
+    "chapter": "Power Up"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "POWER UP",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "transit",
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c2a1_garg": {
+   "name": "Gargantua's Hunting Ground",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "garg_trap",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a1_tracks",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a2_rail_yard",
+     "dir": "east",
+     "distance": 1,
+     "name": "the electrified rail",
+     "aliases": [
+      "rail",
+      "rails"
+     ],
+     "if": {
+      "flag": "hl_power_on"
+     },
+     "blocked": "The rail car won't move with the power off. The generator needs to come back on.",
+     "solve": [
+      [
+       "goto",
+       "hl/c2a1a_generator"
+      ],
+      [
+       "do",
+       "use generator switch"
+      ]
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "gargantua",
+    "dead_guard"
+   ],
+   "description": "A huge open yard of rails and catwalks. A gargantua stalks here, flame jets sputtering from its arms, armour shrugging off bullets. In the middle of the yard is a stretch of high-voltage rail, dead for now.",
+   "aliases": [
+    "yard"
+   ],
+   "props": {
+    "map": "c2a1",
+    "chapter": "Power Up"
+   }
+  },
+  "hl/c2a1a_generator": {
+   "name": "Generator Room",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a1b_substation",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "generator_switch",
+    "houndeye",
+    "suit_charger"
+   ],
+   "description": "Up a ladder and through a maze of ducts, the power generator itself: a turbine the size of a house, and on the wall, the switches that would put power back on the rails.",
+   "props": {
+    "map": "c2a1a",
+    "chapter": "Power Up"
+   }
+  },
+  "hl/c2a1b_substation": {
+   "name": "Electrical Substation",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a1_tracks",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a1a_generator",
+     "dir": "up",
+     "distance": 1,
+     "name": "ladder",
+     "aliases": [
+      "ladder"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie",
+    "zombie",
+    "battery",
+    "grenade"
+   ],
+   "description": "A substation of transformers behind chain-link, where cable trays lead to the rail power system. Zombies shamble between the cabinets.",
+   "props": {
+    "map": "c2a1b",
+    "chapter": "Power Up"
+   },
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,639 @@
+{
+ "features": {
+  "of_squad": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "your squad",
+   "proper": true,
+   "aliases": [
+    "squad",
+    "marines",
+    "sergeant",
+    "soldiers"
+   ],
+   "appearance": "Your squadmates sit along the bulkhead, masks on.",
+   "description": "Eight Marines and a sergeant, all as new to this as you are.",
+   "actions": {
+    "talk": [
+     "The sergeant bellows over the rotors: \"Listen up! We're dropping in hot. Freeman is our priority. Anybody gets in the way, you put them down!\""
+    ]
+   }
+  },
+  "osprey_ramp": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "rear ramp",
+   "aliases": [
+    "ramp",
+    "desert",
+    "view"
+   ],
+   "appearance": false,
+   "description": "Through the open ramp, Black Mesa: hangars, chimneys, the dam, and smoke rising from somewhere it shouldn't."
+  },
+  "osprey_wreck_of": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "Osprey wreck",
+   "aliases": [
+    "osprey",
+    "wreck"
+   ],
+   "appearance": false,
+   "description": "Your ride in, folded around a boulder."
+  },
+  "infirmary_scientist": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name} hovers by your cot.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"Easy, Corporal. You took a nasty blow. Your squad? I... I don't know. The Marines are pulling everybody out, I hear. You'd better hurry.\""
+      ]
+     }
+    ]
+   }
+  },
+  "gman_glimpse_of": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "man in a blue suit",
+   "aliases": [
+    "man",
+    "suit",
+    "g-man",
+    "gman"
+   ],
+   "appearance": false,
+   "description": "Through the observation window, the man in the blue suit is talking to a scientist. He looks up at you, and then he isn't there."
+  },
+  "of_radio_set": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "radio set",
+   "aliases": [
+    "radio",
+    "radio set",
+    "map"
+   ],
+   "appearance": "A HECU radio set crackles on the table.",
+   "description": "The radio repeats the order: all units, pull out to the evacuation point.",
+   "actions": {
+    "listen": [
+     "\"...all units, we are pulling out. Repeat, we are pulling out. Proceed to the evac point immediately...\""
+    ],
+    "use": [
+     "You key the handset. Nobody answers you; they're busy leaving."
+    ]
+   }
+  },
+  "suit_charger_pcv": {
+   "extends": [
+    "suit_charger"
+   ],
+   "name": "PCV charger",
+   "aliases": [
+    "charger",
+    "pcv charger",
+    "suit charger"
+   ]
+  },
+  "dead_marine_radio": {
+   "extends": [
+    "dead_marine"
+   ],
+   "features": [
+    "radio"
+   ],
+   "appearance": "A dead Marine is slumped against a desk, his radio still talking."
+  },
+  "otis": {
+   "extends": [
+    "security_guard"
+   ],
+   "name": "Otis",
+   "proper": true,
+   "aliases": [
+    "otis",
+    "guard",
+    "fat guard"
+   ],
+   "important": true,
+   "tags": [
+    "security",
+    "bm_staff",
+    "otis"
+   ],
+   "appearance": "Otis, a heavyset Black Mesa guard, leans in the checkpoint window.",
+   "description": "Big, sweaty, unhurried, with a revolver on his hip and a sandwich in his hand.",
+   "profile": {
+    "personality": [
+     "cheerful",
+     "greedy"
+    ],
+    "motives": [
+     "survive",
+     "comfort",
+     "duty"
+    ],
+    "motive_text": "get out of here alive, preferably with lunch",
+    "goals": [
+     "get out of Black Mesa",
+     "find his cousin",
+     "not get shot by a Marine"
+    ],
+    "backstory": "\"Otis Laurey, Black Mesa security. Fourteen years, never once fired this thing in anger. Today I fired it in panic.\"",
+    "roles": [
+     "giver",
+     "informant",
+     "holder",
+     "ally",
+     "victim"
+    ],
+    "knows": [
+     "blackmesa",
+     "security",
+     "rumour"
+    ],
+    "wants": [
+     "food",
+     "weapon",
+     "medicine"
+    ],
+    "epilogue": "Otis makes it out. Rumour says he still has the sandwich."
+   },
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"Whoa, whoa, Marine! I'm on your side, all right? ...Am I on your side?\""
+      ]
+     }
+    ]
+   }
+  },
+  "black_ops_board": {
+   "extends": [
+    "scenery",
+    "readable"
+   ],
+   "name": "whiteboard",
+   "aliases": [
+    "whiteboard",
+    "board",
+    "countdown"
+   ],
+   "appearance": "A whiteboard on the wall is covered in a Black Ops plan.",
+   "props": {
+    "text": "PACKAGE -> GARAGE LEVEL 4. ARM AT T-15. ALL TEAMS EXFIL BY T-5. NO HECU SURVIVORS."
+   },
+   "description": "Times, arrows, and a sketch of the facility with an X on it."
+  },
+  "nuke": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "nuclear device",
+   "aliases": [
+    "nuke",
+    "bomb",
+    "device",
+    "package",
+    "warhead"
+   ],
+   "important": true,
+   "tags": [
+    "of_nuke",
+    "heart"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "of_nuke_disarmed"
+     },
+     "text": "The nuclear device sits on its cart, its display dark."
+    },
+    {
+     "text": "The nuclear device squats on its cart, its countdown display glowing red."
+    }
+   ],
+   "description": "A tactical nuclear device on a wheeled cart: a fat steel cylinder, a keypad, a display counting down, and a stencil that says, unhelpfully, PROPERTY OF U.S. GOVERNMENT.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "flag": "of_nuke_disarmed"
+      },
+      "do": [
+       "It's off. For now."
+      ]
+     },
+     {
+      "do": [
+       {
+        "flag": "of_nuke_disarmed"
+       },
+       {
+        "say": "You pry off the access panel and pull the arming key. The countdown blinks, stutters and goes dark. For a while, the world is a little less likely to end.",
+        "style": "story"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "pit_worm_of": {
+   "extends": [
+    "pit_worm"
+   ],
+   "important": true,
+   "tags": [
+    "pit_worm_boss"
+   ],
+   "solve": [
+    "turn waste valve",
+    "pull control lever"
+   ],
+   "on_death": [
+    {
+     "flag": "of_pitworm_dead"
+    }
+   ]
+  },
+  "worm_valve": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "waste valve",
+   "aliases": [
+    "valve",
+    "valves",
+    "waste valve",
+    "wheel"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "of_worm_valve"
+     },
+     "text": "The waste valves stand open, venting gas into the pit."
+    },
+    {
+     "text": "Two big waste valves stand on platforms above the pit, closed."
+    }
+   ],
+   "description": "They vent processing gas into the pit. The gas is extremely flammable.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "flag": "of_worm_valve"
+      },
+      "do": [
+       "They're already open."
+      ]
+     },
+     {
+      "do": [
+       {
+        "flag": "of_worm_valve"
+       },
+       "You spin the valves open. Gas hisses down into the pit around the worm."
+      ]
+     }
+    ],
+    "turn": [
+     {
+      "do": [
+       {
+        "flag": "of_worm_valve"
+       },
+       "You spin the valves open. Gas hisses down into the pit."
+      ]
+     }
+    ]
+   }
+  },
+  "worm_lever": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "control lever",
+   "aliases": [
+    "lever",
+    "control lever",
+    "booth",
+    "igniter"
+   ],
+   "appearance": "A heavy control lever marked IGNITION sits in the booth.",
+   "description": "Ignition for the waste-gas burners.",
+   "actions": {
+    "use": [
+     {
+      "macro": "of_burn_worm"
+     }
+    ],
+    "pull": [
+     {
+      "macro": "of_burn_worm"
+     }
+    ],
+    "push": [
+     {
+      "macro": "of_burn_worm"
+     }
+    ]
+   }
+  },
+  "voltigore_corpse": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "voltigore carcass",
+   "aliases": [
+    "carcass",
+    "voltigore",
+    "corpse"
+   ],
+   "appearance": "A dead voltigore lies across the floor, still sparking.",
+   "description": "Even dead, its jaw crackles with purple light."
+  },
+  "displacer_scientist": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name} holds out the displacer cannon proudly.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"Take it. Point it at the floor and squeeze, and it'll put you on the other side, a place we call Xen. Point it at something else and that goes instead. Don't ask where.\""
+      ]
+     }
+    ]
+   }
+  },
+  "alien_slave_of": {
+   "extends": [
+    "vortigaunt"
+   ]
+  },
+  "plasma_cannon": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "left plasma cannon",
+   "aliases": [
+    "left cannon",
+    "cannon",
+    "plasma cannon",
+    "left plasma cannon"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "of_cannon_1"
+     },
+     "text": "The left plasma cannon smokes, spent."
+    },
+    {
+     "text": "A plasma cannon is mounted on the left-hand walkway, aimed at the portal."
+    }
+   ],
+   "description": "Built to keep things from coming through the portal. Its controls are simple: aim, fire.",
+   "actions": {
+    "use": [
+     {
+      "macro": "of_cannon",
+      "with": {
+       "which": 1
+      }
+     }
+    ],
+    "push": [
+     {
+      "macro": "of_cannon",
+      "with": {
+       "which": 1
+      }
+     }
+    ]
+   }
+  },
+  "plasma_cannon_2": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "right plasma cannon",
+   "aliases": [
+    "right cannon",
+    "cannon",
+    "plasma cannon",
+    "right plasma cannon"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "of_cannon_2"
+     },
+     "text": "The right plasma cannon smokes, spent."
+    },
+    {
+     "text": "A plasma cannon is mounted on the right-hand walkway."
+    }
+   ],
+   "description": "A twin of the other cannon.",
+   "actions": {
+    "use": [
+     {
+      "macro": "of_cannon",
+      "with": {
+       "which": 2
+      }
+     }
+    ],
+    "push": [
+     {
+      "macro": "of_cannon",
+      "with": {
+       "which": 2
+      }
+     }
+    ]
+   }
+  },
+  "gene_worm_of": {
+   "extends": [
+    "gene_worm"
+   ],
+   "important": true,
+   "tags": [
+    "gene_worm",
+    "villain",
+    "racex"
+   ],
+   "solve": [
+    "use left plasma cannon",
+    "use right plasma cannon"
+   ],
+   "profile": {
+    "personality": [
+     "cold"
+    ],
+    "motives": [
+     "dominion",
+     "hunger",
+     "survive"
+    ],
+    "motive_text": "remake this world into one where Race X can live",
+    "goals": [
+     "breach the portal",
+     "terraform Black Mesa"
+    ],
+    "backstory": "There is no mind in it you could talk to. It has come to change the air, the water and the ground, and everything that lives on them.",
+    "roles": [
+     "antagonist"
+    ],
+    "knows": [
+     "racex"
+    ],
+    "greet": [
+     "The Gene Worm's eyes swivel toward you, each as big as a truck."
+    ],
+    "confront": [
+     "The Gene Worm opens its mouth, and the air fills with toxin."
+    ],
+    "epilogue": ""
+   },
+   "on_death": [
+    {
+     "flag": "of_geneworm_dead"
+    },
+    {
+     "say": "The portal implodes around the Gene Worm's corpse, and a flash of green light swallows the coolant bay. When it clears, you are somewhere else...",
+     "style": "story"
+    },
+    {
+     "teleport": "room:of/of6a5_osprey"
+    }
+   ]
+  },
+  "gman_of": {
+   "extends": [
+    "gman"
+   ],
+   "profile": {
+    "personality": [
+     "cold",
+     "cunning"
+    ],
+    "motives": [
+     "employer",
+     "order",
+     "control"
+    ],
+    "motive_text": "see that certain events unfold... according to plan",
+    "goals": [
+     "recruit a promising individual",
+     "keep his employers satisfied"
+    ],
+    "backstory": "He smiles thinly. \"Who I am is... not important. What matters is what you do... next.\"",
+    "roles": [
+     "informant",
+     "giver",
+     "antagonist"
+    ],
+    "knows": [
+     "xen",
+     "lambda",
+     "gman"
+    ],
+    "greet": [
+     "The man in the suit straightens his tie and regards you with interest."
+    ],
+    "epilogue": "",
+    "menu": false
+   },
+   "actions": {
+    "talk": [
+     {
+      "if": {
+       "all": [
+        {
+         "flag": "of_geneworm_dead"
+        },
+        {
+         "flag": "story_resolved"
+        }
+       ]
+      },
+      "do": [
+       {
+        "end_game": "\"Corporal Shephard,\" the man in the suit says, with that peculiar rhythm. \"You have... adapted. Survived against all the odds. I can relate. I have recommended your... detainment, in a place where you can do no harm. There's no sense in letting you... speak about what you've seen.\" He smiles thinly as the Osprey's doors slide shut. \"I'm sure you understand.\" Far away, a Black Ops nuke you thought you had disarmed counts down to zero, re-armed by a man with a briefcase.",
+        "win": true
+       }
+      ]
+     },
+     {
+      "do": [
+       "\"Not yet, {player.name},\" he says. \"There is... unfinished business. Not... yet.\" The Osprey's ramp drops open behind you."
+      ]
+     }
+    ]
+   }
+  },
+  "drill_instructor": {
+   "extends": [
+    "person"
+   ],
+   "name": "the drill instructor",
+   "proper": true,
+   "aliases": [
+    "drill instructor",
+    "instructor",
+    "sergeant",
+    "di"
+   ],
+   "appearance": "The drill instructor stands in front of you, face red, campaign hat level.",
+   "description": "Every inch a drill sergeant, and he has a lot of inches.",
+   "actions": {
+    "talk": [
+     "\"Did I say you could talk, maggot? Get out to that course and show me something!\""
+    ]
+   }
+  },
+  "training_target_of": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "pop-up target",
+   "aliases": [
+    "target",
+    "targets"
+   ],
+   "appearance": "Pop-up targets line the range.",
+   "description": "Green silhouettes on spring arms.",
+   "actions": {
+    "attack": [
+     "You drop three targets in a row. The instructor grunts, which is high praise."
+    ]
+   }
+  },
+  "displacer": {
+   "_patch": true,
+   "important": true
+  },
+  "grapple": {
+   "_patch": true,
+   "important": true
+  }
+ }
+}

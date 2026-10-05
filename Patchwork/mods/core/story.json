@@ -86,6 +86,15 @@
       "Find {char} in {place} and confront them.",
       "It is time to face {char}, in {place}."
     ],
+    "step_defeat_title": [
+      "Defeat {char}",
+      "Bring down {char}",
+      "Kill {char}"
+    ],
+    "step_defeat_hint": [
+      "{char.The} stands in your way, in {place}. Fight it, or find something that can.",
+      "Hunt down {char} in {place} and end it."
+    ],
     "step_resolve_title": [
       "Put an end to it",
       "The last act",

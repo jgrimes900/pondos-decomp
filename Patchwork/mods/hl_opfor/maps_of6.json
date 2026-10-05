@@ -1,0 +1,174 @@
+{
+ "rooms": {
+  "of/of6a1_plant": {
+   "name": "Power Plant Approach",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "racex"
+   ],
+   "exits": [
+    {
+     "to": "of/of5a4_garage",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of6a2_cooling",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "shock_trooper",
+    "pit_drone",
+    "battery"
+   ],
+   "description": "A huge power plant complex where Race X has broken through in force. Purple-veined growths cover the walls. Shock troopers hold the walkways.",
+   "props": {
+    "map": "of6a1",
+    "chapter": "Worlds Collide"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "WORLDS COLLIDE",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "maintenance",
+      "racex"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "of/of6a2_cooling": {
+   "name": "Cooling Tower",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "racex"
+   ],
+   "exits": [
+    {
+     "to": "of/of6a1_plant",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of6a3_bay",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "voltigore",
+    "medkit",
+    "suit_charger"
+   ],
+   "description": "The inside of a cooling tower, a great hollow throat of concrete open to the sky. A portal storm crackles at the top.",
+   "props": {
+    "map": "of6a2",
+    "chapter": "Worlds Collide"
+   }
+  },
+  "of/of6a3_bay": {
+   "name": "Coolant Bay: The Gene Worm",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "racex"
+   ],
+   "exits": [
+    {
+     "to": "of/of6a2_cooling",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "gene_worm_of",
+    "plasma_cannon",
+    "plasma_cannon_2"
+   ],
+   "description": "A cavernous coolant bay. At its far end a portal has torn open, and out of it the Gene Worm is pushing its way into the world: a vast slick body, two armoured eyes, and a mouth that sprays poison. Two plasma cannons are mounted on the walkways either side of it.",
+   "aliases": [
+    "coolant bay",
+    "bay"
+   ],
+   "props": {
+    "map": "of6a3",
+    "chapter": "Worlds Collide"
+   }
+  },
+  "of/of6a5_osprey": {
+   "name": "An Osprey, Going Nowhere",
+   "tags": [
+    "osprey",
+    "void",
+    "story_skip"
+   ],
+   "exits": [
+    {
+     "to": "of/of6a3_bay",
+     "dir": "out",
+     "distance": 1,
+     "name": "the ramp",
+     "aliases": [
+      "ramp",
+      "back"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "gman_of"
+   ],
+   "description": "You are sitting in an Osprey's troop bay again. The engines are running, but nobody's flying it. Opposite you, legs crossed, briefcase on his knee, sits the man in the blue suit.",
+   "props": {
+    "map": "of6a5",
+    "chapter": "Conclusion"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "CONCLUSION",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

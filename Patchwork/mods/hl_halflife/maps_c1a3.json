@@ -1,0 +1,227 @@
+{
+ "rooms": {
+  "hl/c1a3_execution": {
+   "name": "Office Corridor: The Marines Arrive",
+   "tags": [
+    "blackmesa",
+    "office",
+    "military",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a2d_storage",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a3a_lift",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "dead_scientist"
+   ],
+   "description": "Through an office window you see soldiers in gas masks drag a scientist out and shoot him. The radio chatter is clear: no witnesses, and Freeman is priority. Help has arrived, and it isn't for you.",
+   "props": {
+    "map": "c1a3",
+    "chapter": "We've Got Hostiles"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "WE'VE GOT HOSTILES",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c1a3a_lift": {
+   "name": "Freight Lift Shaft",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "military",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a3_execution",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a3b_storage",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "tripmine",
+    "ammo_box"
+   ],
+   "description": "A huge freight lift, its platform halfway up a shaft lined with laser tripmines. Marines rappel down ropes from above.",
+   "props": {
+    "map": "c1a3a",
+    "chapter": "We've Got Hostiles"
+   }
+  },
+  "hl/c1a3b_storage": {
+   "name": "Bulk Storage Area",
+   "tags": [
+    "blackmesa",
+    "storage",
+    "military",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a3a_lift",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a3c_pipes",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "sentry_gun",
+    "supply_crate",
+    "supply_crate",
+    "mp5"
+   ],
+   "description": "A cavernous storage hall of crates on steel shelving, with forklifts and an overhead crane. Marines have set up a sentry gun on the catwalk, and one of them shouts that he's found you.",
+   "props": {
+    "map": "c1a3b",
+    "chapter": "We've Got Hostiles"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "storage",
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.8
+    }
+   ]
+  },
+  "hl/c1a3c_pipes": {
+   "name": "Pipe Gallery and Water Tunnels",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "water",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a3b_storage",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a3d_silo_door",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "bullsquid",
+    "grenade",
+    "supply_crate"
+   ],
+   "description": "A tangle of huge pipes over a slow concrete channel. Bullsquids lurk at the water's edge. A grenade crate sits under a gantry.",
+   "props": {
+    "map": "c1a3c",
+    "chapter": "We've Got Hostiles"
+   },
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c1a3d_silo_door": {
+   "name": "Silo Access Blast Doors",
+   "tags": [
+    "blackmesa",
+    "military",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a3c_pipes",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4_catwalk",
+     "dir": "east",
+     "distance": 1,
+     "name": "blast doors",
+     "aliases": [
+      "blast doors",
+      "doors"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "dead_marine",
+    "health_charger"
+   ],
+   "description": "Massive blast doors mark the way to the rocket engine test facility. A warning sign advises that testing is in progress. Soldiers lie dead around a smoking crater.",
+   "props": {
+    "map": "c1a3d",
+    "chapter": "We've Got Hostiles"
+   }
+  }
+ }
+}

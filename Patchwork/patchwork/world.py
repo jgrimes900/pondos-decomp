@@ -369,7 +369,16 @@ class World:
         is_room = def_key.startswith("room:") or bool(d.get("room"))
         ent = Entity(uid or self.new_uid("r" if is_room else "e"), def_key)
         saved = {}
-        ent.name = self.grammar.expand(d.get("name") or def_key.split(":")[-1].replace("_", " "), saved)
+        template = d.get("name") or def_key.split(":")[-1].replace("_", " ")
+        ent.name = self.grammar.expand(template, saved)
+        if d.get("profile") and "#" in template:
+            # Two generated people with the same name would be impossible to tell apart.
+            taken = {e.name for e in self.entities.values() if e.profile}
+            for _ in range(12):
+                if ent.name not in taken:
+                    break
+                saved = {}
+                ent.name = self.grammar.expand(template, saved)
         ent.article = d.get("article")
         if d.get("proper"):
             ent.article = ""

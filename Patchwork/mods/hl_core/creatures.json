@@ -1,0 +1,903 @@
+{
+ "features": {
+  "headcrab": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "headcrab",
+   "aliases": [
+    "headcrab",
+    "crab",
+    "parasite"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 12,
+    "max_health": 12,
+    "damage": 6,
+    "armor": 0,
+    "attack_text": "leaps at your face and bites"
+   },
+   "description": "A fleshy, beaked Xen parasite that latches onto heads. You know what happens next.",
+   "appearance": "A headcrab scuttles across the floor, then rears up, ready to leap.",
+   "habitat": [
+    "blackmesa",
+    "lab",
+    "office",
+    "maintenance",
+    "xen",
+    "storage",
+    "transit"
+   ],
+   "weight": 4
+  },
+  "baby_headcrab": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "baby headcrab",
+   "aliases": [
+    "baby headcrab",
+    "baby crab"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 4,
+    "max_health": 4,
+    "damage": 2,
+    "armor": 0,
+    "attack_text": "nips at your ankles"
+   },
+   "description": "A tiny headcrab, fresh from the Gonarch.",
+   "appearance": "Baby headcrabs swarm over the ground.",
+   "habitat": [
+    "xen"
+   ]
+  },
+  "zombie": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "zombie",
+   "aliases": [
+    "zombie",
+    "zombie scientist",
+    "headcrab zombie"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 35,
+    "max_health": 35,
+    "damage": 12,
+    "armor": 0,
+    "attack_text": "rakes you with its claws",
+    "death_text": "The zombie collapses. The headcrab twitches once and is still."
+   },
+   "description": "A scientist with a headcrab clamped over his head, his ribcage split open into a second mouth. He groans for help.",
+   "appearance": "A zombie in a torn lab coat staggers toward you, moaning.",
+   "habitat": [
+    "blackmesa",
+    "lab",
+    "office",
+    "maintenance"
+   ],
+   "weight": 3
+  },
+  "houndeye": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "houndeye",
+   "aliases": [
+    "houndeye",
+    "hound"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 20,
+    "max_health": 20,
+    "damage": 9,
+    "armor": 0,
+    "attack_text": "lets loose a shrieking sonic blast at"
+   },
+   "description": "A three-legged Xen pack animal with one great eye and a sonic attack. They hunt in packs and chirp to each other.",
+   "appearance": "A houndeye blinks at you with its single huge eye, warbling a warning.",
+   "habitat": [
+    "blackmesa",
+    "maintenance",
+    "surface",
+    "xen",
+    "storage",
+    "lab"
+   ],
+   "weight": 3
+  },
+  "bullsquid": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "bullsquid",
+   "aliases": [
+    "bullsquid",
+    "squid"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 40,
+    "max_health": 40,
+    "damage": 11,
+    "armor": 0,
+    "attack_text": "spits burning acid at"
+   },
+   "description": "A squat, tentacle-mouthed predator that lurks near water and spits acid. It hates headcrabs almost as much as it hates you.",
+   "appearance": "A bullsquid lurches toward you, mouth-tentacles writhing.",
+   "habitat": [
+    "maintenance",
+    "surface",
+    "xen",
+    "water",
+    "sewer"
+   ],
+   "weight": 2
+  },
+  "vortigaunt": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "vortigaunt",
+   "aliases": [
+    "vortigaunt",
+    "alien slave",
+    "slave",
+    "vort"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 30,
+    "max_health": 30,
+    "damage": 13,
+    "armor": 0,
+    "attack_text": "hurls a crackling green bolt of lightning at"
+   },
+   "description": "A hunched, one-eyed alien with a collar of shackles, channelling green electricity through its claws. It murmurs in a language you don't know.",
+   "appearance": "A vortigaunt warps in with a crackle of green light, arms already charging.",
+   "habitat": [
+    "blackmesa",
+    "lab",
+    "office",
+    "surface",
+    "xen",
+    "maintenance"
+   ],
+   "weight": 2
+  },
+  "alien_grunt": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "alien grunt",
+   "aliases": [
+    "alien grunt",
+    "agrunt",
+    "grunt"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 60,
+    "max_health": 60,
+    "damage": 13,
+    "armor": 1,
+    "attack_text": "fires a stream of homing hornets at"
+   },
+   "description": "A hulking, armoured Xen soldier with a living hivehand bolted to its arm.",
+   "appearance": "An alien grunt lumbers forward, its hivehand buzzing.",
+   "habitat": [
+    "xen",
+    "surface",
+    "lab",
+    "alien"
+   ],
+   "weight": 2,
+   "min_stage": 1,
+   "on_death": [
+    {
+     "spawn": {
+      "pick": [
+       "hivehand",
+       "ammo_box"
+      ],
+      "chance": 0.2
+     },
+     "in": "room"
+    }
+   ]
+  },
+  "controller": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "alien controller",
+   "aliases": [
+    "controller",
+    "alien controller"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 40,
+    "max_health": 40,
+    "damage": 14,
+    "armor": 0,
+    "attack_text": "hurls glowing energy balls at"
+   },
+   "description": "A floating, foetal-looking alien with a huge head, psychic and hateful.",
+   "appearance": "An alien controller drifts overhead, its swollen head glowing.",
+   "habitat": [
+    "xen",
+    "alien"
+   ],
+   "min_stage": 1
+  },
+  "ichthyosaur": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "ichthyosaur",
+   "aliases": [
+    "ichthyosaur",
+    "ichy",
+    "fish",
+    "sea creature"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 60,
+    "max_health": 60,
+    "damage": 18,
+    "armor": 0,
+    "attack_text": "lunges out of the water and bites"
+   },
+   "description": "A huge eel-like aquatic predator with too many teeth and a fondness for anything that swims.",
+   "appearance": "Something huge circles in the water. An ichthyosaur breaks the surface, jaws gaping.",
+   "habitat": [
+    "water"
+   ]
+  },
+  "leech": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "leech",
+   "aliases": [
+    "leech",
+    "leeches"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 3,
+    "max_health": 3,
+    "damage": 2,
+    "armor": 0,
+    "attack_text": "fastens onto your leg and sucks"
+   },
+   "description": "A small Xen leech that lives in dark water.",
+   "appearance": "Leeches flicker in the dark water.",
+   "habitat": [
+    "water",
+    "sewer"
+   ]
+  },
+  "snark": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "snark",
+   "aliases": [
+    "snark",
+    "snarks"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 6,
+    "max_health": 6,
+    "damage": 3,
+    "armor": 0,
+    "attack_text": "chitters and bites"
+   },
+   "description": "A small, red, beetle-like Xen creature that explodes when it has done enough biting.",
+   "appearance": "A snark scuttles toward you, chittering.",
+   "habitat": [
+    "xen",
+    "lab"
+   ]
+  },
+  "gargantua": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "gargantua",
+   "aliases": [
+    "gargantua",
+    "garg",
+    "giant"
+   ],
+   "tags": [
+    "hl_creature"
+   ],
+   "props": {
+    "health": 300,
+    "max_health": 300,
+    "damage": 28,
+    "armor": 3,
+    "attack_text": "sweeps a gout of flame over",
+    "death_text": "The gargantua staggers, its armour cracking with light, and explodes in a shower of gore."
+   },
+   "description": "A towering, armoured Xen colossus that breathes fire from its forearms and stomps anything smaller than a tank.",
+   "appearance": "A gargantua towers here, its eye glowing, flame-throwers flaring on its arms."
+  },
+  "gonarch": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "Gonarch",
+   "aliases": [
+    "gonarch",
+    "big mama",
+    "mother"
+   ],
+   "tags": [
+    "hl_creature"
+   ],
+   "props": {
+    "health": 150,
+    "max_health": 150,
+    "damage": 16,
+    "armor": 2,
+    "attack_text": "slams a bony leg into",
+    "death_text": "The Gonarch shrieks, bursts, and falls in on itself."
+   },
+   "description": "The adult form of the headcrab: a huge armoured sac on four long legs, spawning babies as it hunts.",
+   "appearance": "The Gonarch rears up on its four legs, its swollen sac pulsing."
+  },
+  "nihilanth": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "Nihilanth",
+   "aliases": [
+    "nihilanth",
+    "giant",
+    "the nihilanth",
+    "creature"
+   ],
+   "tags": [
+    "hl_creature"
+   ],
+   "props": {
+    "health": 220,
+    "max_health": 220,
+    "damage": 15,
+    "armor": 2,
+    "attack_text": "hurls a storm of electric spheres at",
+    "death_text": "The Nihilanth's skull splits open with light. It screams across every dimension at once."
+   },
+   "description": "A colossal floating foetus with a vast cranium and withered arms, crowned by healing crystals. Its voice fills your skull.",
+   "appearance": "The Nihilanth hangs in the air at the heart of the chamber, enormous, its voice echoing in your head."
+  },
+  "tentacle": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "tentacles",
+   "aliases": [
+    "tentacle",
+    "tentacles",
+    "beak",
+    "monster"
+   ],
+   "tags": [
+    "hl_creature"
+   ],
+   "article": "the",
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_tentacles_dead"
+     },
+     "text": "Charred stumps of the tentacles hang slack in the silo."
+    },
+    {
+     "text": "Three gigantic tentacles rise from the silo floor, beaked tips probing for sound."
+    }
+   ],
+   "description": "They are blind, and hunt by sound. Their beaks punch through steel.",
+   "actions": {
+    "attack": [
+     {
+      "if": {
+       "flag": "hl_tentacles_dead"
+      },
+      "do": [
+       "They're already burned to a crisp."
+      ]
+     },
+     {
+      "do": [
+       "You might as well shoot a building. The tentacles shrug it off and slam toward the sound."
+      ]
+     }
+    ]
+   }
+  },
+  "hecu_marine": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "HECU marine",
+   "aliases": [
+    "marine",
+    "soldier",
+    "grunt",
+    "hecu",
+    "hecu marine"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature",
+    "hecu"
+   ],
+   "props": {
+    "health": 40,
+    "max_health": 40,
+    "damage": 11,
+    "armor": 1,
+    "attack_text": "opens fire on"
+   },
+   "description": "A Hazardous Environment Combat Unit marine in a gas mask and fatigues, sent to clean up the incident. Including witnesses.",
+   "appearance": "A HECU marine shouts to his squad and opens fire.",
+   "habitat": [
+    "military",
+    "surface",
+    "office",
+    "storage",
+    "blackmesa"
+   ],
+   "weight": 3,
+   "min_stage": 1,
+   "on_death": [
+    {
+     "spawn": {
+      "pick": [
+       "mp5",
+       "ammo_box",
+       "grenade",
+       "shotgun",
+       "medkit"
+      ],
+      "chance": 0.5
+     },
+     "in": "room"
+    }
+   ]
+  },
+  "sentry_gun": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "sentry gun",
+   "aliases": [
+    "sentry",
+    "sentry gun",
+    "turret",
+    "gun"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 30,
+    "max_health": 30,
+    "damage": 9,
+    "armor": 1,
+    "attack_text": "sprays bullets at",
+    "death_text": "The sentry gun sparks and topples over."
+   },
+   "description": "An automated tripod gun with a motion sensor and a short temper.",
+   "appearance": "A sentry gun swivels toward you, beeping.",
+   "habitat": [
+    "military",
+    "office",
+    "blackmesa"
+   ],
+   "min_stage": 1
+  },
+  "apache": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "Apache helicopter",
+   "aliases": [
+    "apache",
+    "helicopter",
+    "chopper",
+    "gunship"
+   ],
+   "tags": [
+    "hl_creature"
+   ],
+   "props": {
+    "health": 150,
+    "max_health": 150,
+    "damage": 22,
+    "armor": 3,
+    "attack_text": "strafes",
+    "death_text": "The Apache shudders, trails black smoke and plunges out of sight into the canyon."
+   },
+   "description": "An AH-64 Apache helicopter gunship, rotor thumping, nose gun tracking.",
+   "appearance": "An Apache helicopter thunders overhead, nose gun swinging toward you."
+  },
+  "female_assassin": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "black ops assassin",
+   "aliases": [
+    "assassin",
+    "black ops",
+    "ninja",
+    "female assassin"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature",
+    "black_ops"
+   ],
+   "props": {
+    "health": 40,
+    "max_health": 40,
+    "damage": 13,
+    "armor": 1,
+    "attack_text": "flips past you and fires a silenced pistol at"
+   },
+   "description": "A Black Ops agent in a black catsuit and night-vision goggles, silent and acrobatic.",
+   "appearance": "A black-clad assassin drops from the shadows, silenced pistol raised.",
+   "habitat": [
+    "surface",
+    "military",
+    "blackmesa"
+   ],
+   "min_stage": 2
+  },
+  "male_assassin": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "black ops operative",
+   "aliases": [
+    "operative",
+    "black ops",
+    "male assassin",
+    "assassin"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature",
+    "black_ops"
+   ],
+   "props": {
+    "health": 45,
+    "max_health": 45,
+    "damage": 13,
+    "armor": 1,
+    "attack_text": "fires a burst at"
+   },
+   "description": "A Black Ops operative in a balaclava and night-vision goggles, armed with an MP5 or a sniper rifle.",
+   "appearance": "A Black Ops operative signals to his team and opens fire.",
+   "habitat": [
+    "surface",
+    "military",
+    "blackmesa"
+   ],
+   "min_stage": 1
+  },
+  "zombie_guard": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "zombie security guard",
+   "aliases": [
+    "zombie guard",
+    "zombie",
+    "guard zombie"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 40,
+    "max_health": 40,
+    "damage": 12,
+    "armor": 0,
+    "attack_text": "claws at"
+   },
+   "description": "A security guard taken by a headcrab, kevlar vest and all.",
+   "appearance": "A zombie in a security uniform shambles toward you.",
+   "habitat": [
+    "blackmesa",
+    "office",
+    "maintenance"
+   ]
+  },
+  "zombie_soldier": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "zombie soldier",
+   "aliases": [
+    "zombie soldier",
+    "zombie",
+    "zombie marine"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 45,
+    "max_health": 45,
+    "damage": 13,
+    "armor": 0,
+    "attack_text": "lashes out at"
+   },
+   "description": "A HECU marine taken by a headcrab, gas mask still on under it.",
+   "appearance": "A zombified marine lurches toward you.",
+   "habitat": [
+    "military",
+    "maintenance",
+    "blackmesa"
+   ],
+   "min_stage": 1
+  },
+  "gonome": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "gonome",
+   "aliases": [
+    "gonome",
+    "zombie"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "props": {
+    "health": 60,
+    "max_health": 60,
+    "damage": 15,
+    "armor": 0,
+    "attack_text": "hurls a gob of bile at"
+   },
+   "description": "What a headcrab zombie becomes when left long enough: the headcrab fused into the host, a gaping chest maw full of teeth.",
+   "appearance": "A gonome lurches out of the dark, its chest-maw gaping.",
+   "habitat": [
+    "blackmesa",
+    "maintenance",
+    "lab"
+   ],
+   "min_stage": 1
+  },
+  "pit_drone": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "pit drone",
+   "aliases": [
+    "pit drone",
+    "drone"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature",
+    "racex"
+   ],
+   "props": {
+    "health": 35,
+    "max_health": 35,
+    "damage": 11,
+    "armor": 0,
+    "attack_text": "fires a volley of spikes at"
+   },
+   "description": "A Race X creature with a head full of spikes it can shoot.",
+   "appearance": "A pit drone skitters toward you, head-spikes quivering.",
+   "habitat": [
+    "racex",
+    "alien",
+    "blackmesa",
+    "maintenance"
+   ],
+   "weight": 2,
+   "min_stage": 1
+  },
+  "shock_trooper": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "shock trooper",
+   "aliases": [
+    "shock trooper",
+    "trooper",
+    "race x soldier"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature",
+    "racex"
+   ],
+   "props": {
+    "health": 55,
+    "max_health": 55,
+    "damage": 14,
+    "armor": 1,
+    "attack_text": "fires its shock roach at"
+   },
+   "description": "A tall Race X soldier carrying a living shock roach as a weapon. Its single eye glows.",
+   "appearance": "A shock trooper warps in with a crackle, shock roach raised.",
+   "habitat": [
+    "racex",
+    "alien",
+    "surface",
+    "blackmesa"
+   ],
+   "weight": 2,
+   "min_stage": 1,
+   "on_death": [
+    {
+     "spawn": {
+      "id": "shock_roach",
+      "chance": 0.5
+     },
+     "in": "room"
+    }
+   ]
+  },
+  "voltigore": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "voltigore",
+   "aliases": [
+    "voltigore"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature",
+    "racex"
+   ],
+   "props": {
+    "health": 120,
+    "max_health": 120,
+    "damage": 22,
+    "armor": 2,
+    "attack_text": "hurls a ball of purple lightning at",
+    "death_text": "The voltigore crackles, swells and explodes in a burst of purple light."
+   },
+   "description": "A huge Race X beast with a mouth full of electricity. When it dies, it explodes.",
+   "appearance": "A voltigore crashes through, purple lightning crackling between its jaws.",
+   "habitat": [
+    "racex",
+    "alien"
+   ],
+   "min_stage": 2
+  },
+  "baby_voltigore": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "baby voltigore",
+   "aliases": [
+    "baby voltigore",
+    "voltigore"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature",
+    "racex"
+   ],
+   "props": {
+    "health": 25,
+    "max_health": 25,
+    "damage": 8,
+    "armor": 0,
+    "attack_text": "snaps at"
+   },
+   "description": "A young voltigore, already sparking.",
+   "appearance": "A baby voltigore scrabbles toward you.",
+   "habitat": [
+    "racex",
+    "alien"
+   ]
+  },
+  "pit_worm": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "pit worm",
+   "aliases": [
+    "pit worm",
+    "worm"
+   ],
+   "tags": [
+    "hl_creature"
+   ],
+   "props": {
+    "health": 150,
+    "max_health": 150,
+    "damage": 18,
+    "armor": 3,
+    "attack_text": "lashes out with its laser-eye at",
+    "death_text": "The pit worm sinks screaming into the sludge."
+   },
+   "description": "A vast Race X worm that lives in deep water, with an eye that projects a cutting beam.",
+   "appearance": "The pit worm rises from the waste water, its eye blazing."
+  },
+  "gene_worm": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "Gene Worm",
+   "aliases": [
+    "gene worm",
+    "worm",
+    "gene"
+   ],
+   "tags": [
+    "hl_creature"
+   ],
+   "props": {
+    "health": 260,
+    "max_health": 260,
+    "damage": 20,
+    "armor": 2,
+    "attack_text": "sprays a torrent of corrosive toxin over",
+    "death_text": "The Gene Worm convulses, collapses into the portal and is torn apart as the rift closes."
+   },
+   "description": "A colossal Race X bio-engineer that converts whatever world it reaches into a habitat for its kind. It came through a portal, and it has eyes the size of cars.",
+   "appearance": "The Gene Worm fills the portal, vast and slick, its armoured eyes swivelling."
+  }
+ }
+}

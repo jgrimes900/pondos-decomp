@@ -1,0 +1,47 @@
+{
+ "rooms": {
+  "hl/c4a3_chamber": {
+   "name": "Nihilanth's Chamber",
+   "tags": [
+    "xen",
+    "alien",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a1f_teleport",
+     "dir": "out",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "nihilanth_hl",
+    "healing_crystal",
+    "healing_crystal",
+    "healing_crystal"
+   ],
+   "description": "A cavernous hollow in a floating mountain, its walls lined with teleport portals. The Nihilanth hangs in the centre, colossal, flanked by golden crystals that feed it. Its voice is inside your head.",
+   "aliases": [
+    "chamber"
+   ],
+   "props": {
+    "map": "c4a3",
+    "chapter": "Nihilanth"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "NIHILANTH",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

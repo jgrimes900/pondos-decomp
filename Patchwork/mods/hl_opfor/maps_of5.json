@@ -1,0 +1,167 @@
+{
+ "rooms": {
+  "of/of5a1_tracks": {
+   "name": "Freight Rail Spur",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of4a5_parking",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of5a2_warehouse",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "female_assassin",
+    "ammo_box"
+   ],
+   "description": "A freight spur where a small engine has been abandoned with its doors open. Black Ops agents passed this way with something heavy, and the scrape marks lead into the facility.",
+   "props": {
+    "map": "of5a1",
+    "chapter": "The Package"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "THE PACKAGE",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "transit",
+      "storage"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "of/of5a2_warehouse": {
+   "name": "Black Ops Warehouse",
+   "tags": [
+    "blackmesa",
+    "storage",
+    "military",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of5a1_tracks",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of5a3_tunnel",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "male_assassin",
+    "black_ops_board",
+    "supply_crate",
+    "penguin"
+   ],
+   "description": "A warehouse the Black Ops have been using as a base: crates of their equipment, a whiteboard with a countdown written on it, a table with a radio and a coffee flask.",
+   "props": {
+    "map": "of5a2",
+    "chapter": "The Package"
+   }
+  },
+  "of/of5a3_tunnel": {
+   "name": "Freight Tunnel",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of5a2_warehouse",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of5a4_garage",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "gonome",
+    "medkit"
+   ],
+   "description": "A low freight tunnel with gonomes in the shadows. Ahead, through a gate, the underground garage.",
+   "props": {
+    "map": "of5a3",
+    "chapter": "The Package"
+   }
+  },
+  "of/of5a4_garage": {
+   "name": "Underground Garage: The Package",
+   "tags": [
+    "blackmesa",
+    "military",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of5a3_tunnel",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of6a1_plant",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "nuke",
+    "male_assassin",
+    "health_charger"
+   ],
+   "description": "A parking garage deep in the facility, cars still in their bays. In the middle of the floor, on a wheeled cart, sits the package: a nuclear device with a countdown display. Black Ops agents guard it from behind the pillars.",
+   "aliases": [
+    "garage"
+   ],
+   "props": {
+    "map": "of5a4",
+    "chapter": "The Package"
+   }
+  }
+ }
+}

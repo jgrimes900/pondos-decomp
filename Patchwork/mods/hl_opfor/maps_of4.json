@@ -1,0 +1,250 @@
+{
+ "rooms": {
+  "of/of4a1_waste": {
+   "name": "Waste Processing Approach",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "racex"
+   ],
+   "exits": [
+    {
+     "to": "of/of3a6_return",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of4a2_nest",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "pit_drone",
+    "baby_voltigore",
+    "medkit"
+   ],
+   "description": "The waste processing levels again, but worse: Race X spores have grown over everything, and the air tastes of rust.",
+   "props": {
+    "map": "of4a1",
+    "chapter": "Pit Worm's Nest"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "PIT WORM'S NEST",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance",
+      "racex"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "of/of4a2_nest": {
+   "name": "Pit Worm's Nest",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "racex",
+    "water"
+   ],
+   "exits": [
+    {
+     "to": "of/of4a1_waste",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of4a3_sluice",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "pit_worm_of",
+    "worm_valve",
+    "worm_lever"
+   ],
+   "description": "A huge flooded processing pit. In the middle of it a worm the size of a submarine rears out of the sludge, its single eye tracking you with a cutting beam. Two waste valves stand on platforms above the pit; a big control lever sits in the booth.",
+   "aliases": [
+    "nest",
+    "pit"
+   ],
+   "props": {
+    "map": "of4a2",
+    "chapter": "Pit Worm's Nest"
+   }
+  },
+  "of/of4a3_sluice": {
+   "name": "Sluice Gate Control",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of4a2_nest",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of4a4_canyon",
+     "dir": "up",
+     "distance": 1,
+     "name": "ladder",
+     "aliases": [
+      "ladder"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "voltigore_corpse",
+    "battery",
+    "suit_charger"
+   ],
+   "description": "A control room for the sluice gates, with a window on the pit. Beyond it, a ladder leads up toward daylight.",
+   "props": {
+    "map": "of4a3",
+    "chapter": "Pit Worm's Nest"
+   }
+  },
+  "of/of4a4_canyon": {
+   "name": "Sniper's Canyon",
+   "tags": [
+    "blackmesa",
+    "military",
+    "surface",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "of/of4a3_sluice",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of4a5_parking",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "sniper_rifle",
+    "dead_marine",
+    "male_assassin"
+   ],
+   "description": "A canyon outside the facility where Black Ops snipers hold the high ground. A HECU sniper lies dead behind a rock, his rifle beside him. Over the radio, somebody uses the phrase that names this place: foxtrot uniform.",
+   "props": {
+    "map": "of4a4",
+    "chapter": "Foxtrot Uniform"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "FOXTROT UNIFORM",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "tags": [
+      "surface",
+      "military"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  },
+  "of/of4a5_parking": {
+   "name": "Military Motor Pool",
+   "tags": [
+    "blackmesa",
+    "military",
+    "surface",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "of/of4a4_canyon",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "of/of5a1_tracks",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "voltigore",
+    "hecu_ally",
+    "supply_crate",
+    "night_vision"
+   ],
+   "description": "A motor pool of trucks and Humvees, Marines and Black Ops shooting it out across it. A voltigore wanders into the middle of the firefight, and everybody stops shooting each other for a moment.",
+   "props": {
+    "map": "of4a5",
+    "chapter": "Foxtrot Uniform"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "military",
+      "surface"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  }
+ }
+}

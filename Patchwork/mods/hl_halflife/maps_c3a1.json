@@ -1,0 +1,133 @@
+{
+ "rooms": {
+  "hl/c3a1_sewer": {
+   "name": "Sewer Outflow",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "water",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5g_bridge",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c3a1a_yard",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "bullsquid",
+    "zombie_soldier",
+    "medkit"
+   ],
+   "description": "A sewer outflow beneath the canyon. Over the radio, a Marine commander orders his men to pull out: forget about Freeman, he says.",
+   "props": {
+    "map": "c3a1",
+    "chapter": "Forget About Freeman!"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "FORGET ABOUT FREEMAN!",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c3a1a_yard": {
+   "name": "Retreat Staging Yard",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade",
+    "military"
+   ],
+   "exits": [
+    {
+     "to": "hl/c3a1_sewer",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c3a1b_bunker",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "alien_grunt",
+    "hecu_marine",
+    "tank_wreck",
+    "supply_crate"
+   ],
+   "description": "A yard of concrete and razor wire where the Marines are trying to withdraw. Alien grunts are cutting them to pieces, and a tank sits burning by the gate.",
+   "props": {
+    "map": "c3a1a",
+    "chapter": "Forget About Freeman!"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "surface",
+      "military"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  },
+  "hl/c3a1b_bunker": {
+   "name": "Tank Bunker",
+   "tags": [
+    "blackmesa",
+    "military",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c3a1a_yard",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c3a2_entrance",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "satchel",
+    "battery"
+   ],
+   "description": "A concrete bunker where an Abrams tank still works its turret, firing at anything that moves. A trench leads around behind it. The sign on the bunker door reads LAMBDA COMPLEX.",
+   "props": {
+    "map": "c3a1b",
+    "chapter": "Forget About Freeman!"
+   }
+  }
+ }
+}

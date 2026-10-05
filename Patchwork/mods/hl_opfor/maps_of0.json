@@ -1,0 +1,169 @@
+{
+ "rooms": {
+  "of/of0a0_osprey": {
+   "name": "Osprey: Final Approach",
+   "tags": [
+    "military",
+    "transit",
+    "osprey",
+    "story_skip"
+   ],
+   "exits": [
+    {
+     "to": "of/of0a0_wreck",
+     "dir": "down",
+     "distance": 1,
+     "name": "the crash",
+     "aliases": [
+      "crash",
+      "ramp"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "of_squad",
+    "osprey_ramp"
+   ],
+   "description": "You sit strapped into the troop bay of a V-22 Osprey with the rest of your squad, rifles between your knees. The rear ramp is open on the New Mexico desert; Black Mesa's buildings slide by below. The sergeant shouts the drop orders over the rotors: secure the facility, neutralise the scientist Gordon Freeman. Then something huge and winged screams past the ramp, and the Osprey lurches.",
+   "aliases": [
+    "osprey",
+    "troop bay"
+   ],
+   "props": {
+    "map": "of0a0",
+    "chapter": "Welcome to Black Mesa"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "WELCOME TO BLACK MESA",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "of/of0a0_wreck": {
+   "name": "Osprey Crash Site",
+   "tags": [
+    "blackmesa",
+    "military",
+    "story_skip",
+    "surface",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "of/of0a1_infirmary",
+     "dir": "in",
+     "distance": 1,
+     "name": "stretcher",
+     "aliases": [
+      "stretcher"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "osprey_wreck_of",
+    "dead_marine"
+   ],
+   "description": "The Osprey lies broken-backed in a canyon below the facility, one rotor still turning. Bodies in HECU fatigues are scattered around it. The last thing you remember is a scientist's face leaning over you and a voice saying you'd be fine.",
+   "aliases": [
+    "wreck",
+    "crash site"
+   ],
+   "props": {
+    "map": "of0a0",
+    "chapter": "Welcome to Black Mesa"
+   }
+  },
+  "of/of0a1_infirmary": {
+   "name": "Black Mesa Infirmary",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of0a2_corridor",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "infirmary_scientist",
+    "combat_knife",
+    "medkit",
+    "health_charger"
+   ],
+   "description": "You wake on a cot in a white infirmary, your head ringing. A scientist bends over you: he's waking up, he says, and the security guard at the door says it's a miracle anyone survived that crash. Through the window, the desert is on fire.",
+   "aliases": [
+    "infirmary"
+   ],
+   "props": {
+    "map": "of0a1",
+    "chapter": "Welcome to Black Mesa"
+   }
+  },
+  "of/of0a2_corridor": {
+   "name": "Medical Wing Corridor",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of0a1_infirmary",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of1a1_staging",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "gman_glimpse_of",
+    "vending_machine",
+    "headcrab"
+   ],
+   "description": "A corridor of offices and observation windows. Behind one window a thin man in a blue suit talks with a scientist. When you look again, only the scientist is there.",
+   "props": {
+    "map": "of0a2",
+    "chapter": "Welcome to Black Mesa"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "lab",
+      "office"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  }
+ }
+}

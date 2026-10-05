@@ -1,0 +1,20 @@
+{
+ "rooms": {
+  "bs/ba_outro": {
+   "name": "Desert Road",
+   "tags": [
+    "surface",
+    "outdoor",
+    "desert",
+    "story_skip"
+   ],
+   "exits": [],
+   "features": [],
+   "description": "The teleporter drops you, Rosenberg and his team in a garage near the surface. You find a jeep, and with the sun coming up, you drive out of Black Mesa down a long desert road. Behind you, the facility burns.",
+   "props": {
+    "map": "ba_outro",
+    "chapter": "A Leap of Faith"
+   }
+  }
+ }
+}

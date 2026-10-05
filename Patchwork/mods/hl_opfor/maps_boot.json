@@ -1,0 +1,162 @@
+{
+ "rooms": {
+  "ofb/ofboot0_barracks": {
+   "name": "Santego Military Base: Barracks",
+   "tags": [
+    "military",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "ofb/ofboot1_course",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "drill_instructor"
+   ],
+   "description": "A long barracks of steel bunks and footlockers at Santego Military Base, Arizona. Your drill instructor is standing very close to you and shouting.",
+   "aliases": [
+    "barracks"
+   ],
+   "props": {
+    "map": "ofboot0",
+    "chapter": "Boot Camp"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "BOOT CAMP",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "ofb/ofboot1_course": {
+   "name": "Obstacle Course",
+   "tags": [
+    "military",
+    "training",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "ofb/ofboot0_barracks",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "ofb/ofboot2_climb",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "supply_crate"
+   ],
+   "description": "An obstacle course of walls, crawl nets, ladders and a muddy rope swing. A corporal times you with a stopwatch and an expression of contempt.",
+   "props": {
+    "map": "ofboot1",
+    "chapter": "Boot Camp"
+   }
+  },
+  "ofb/ofboot2_climb": {
+   "name": "Climbing and Rappelling Tower",
+   "tags": [
+    "military",
+    "training",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "ofb/ofboot1_course",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "ofb/ofboot3_range",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [],
+   "description": "A wooden tower with ropes, ladders and a zip line. The instructor says you'll be dropping into worse than this.",
+   "props": {
+    "map": "ofboot2",
+    "chapter": "Boot Camp"
+   }
+  },
+  "ofb/ofboot3_range": {
+   "name": "Firing Range",
+   "tags": [
+    "military",
+    "training",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "ofb/ofboot2_climb",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "ofb/ofboot4_grenades",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "glock",
+    "training_target_of"
+   ],
+   "description": "A firing range of pop-up targets and sandbags. A rack holds a 9mm and a pipe wrench for the melee drills.",
+   "props": {
+    "map": "ofboot3",
+    "chapter": "Boot Camp"
+   }
+  },
+  "ofb/ofboot4_grenades": {
+   "name": "Grenade Pit and Medical Drill",
+   "tags": [
+    "military",
+    "training",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "ofb/ofboot3_range",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "grenade",
+    "medkit"
+   ],
+   "description": "A grenade pit behind a concrete wall, and a medical tent where a corpsman teaches you which end of a syringe to hold. Your graduation is waiting at the end.",
+   "props": {
+    "map": "ofboot4",
+    "chapter": "Boot Camp"
+   }
+  }
+ }
+}

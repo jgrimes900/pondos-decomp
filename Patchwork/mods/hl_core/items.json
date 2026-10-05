@@ -1,0 +1,1404 @@
+{
+ "features": {
+  "player": {
+   "_patch": true,
+   "props": {
+    "health": 100,
+    "max_health": 100,
+    "suit": 0,
+    "max_suit": 100,
+    "attack": 2
+   }
+  },
+  "edible": {
+   "_patch": true,
+   "props": {
+    "heal": 10
+   }
+  },
+  "hev_suit": {
+   "extends": [
+    "portable"
+   ],
+   "name": "HEV suit",
+   "aliases": [
+    "hev",
+    "suit",
+    "hazard suit",
+    "mark iv"
+   ],
+   "story_keep": true,
+   "tags": [
+    "armour"
+   ],
+   "affords": [
+    "hazard"
+   ],
+   "props": {
+    "armor": 1
+   },
+   "description": "The Mark IV Hazardous Environment suit: radiation shielding, a power-armour layer charged by batteries, an injector system and a voice that announces every misfortune in a soothing female tone.",
+   "actions": {
+    "take": [
+     {
+      "if": {
+       "held": "self"
+      },
+      "do": [
+       "You're already wearing it."
+      ]
+     },
+     {
+      "do": [
+       {
+        "move": "self",
+        "to": "player"
+       },
+       {
+        "set": {
+         "max_suit": 100
+        },
+        "on": "player"
+       },
+       {
+        "flag": "hl_hev"
+       },
+       {
+        "say": "You climb into the HEV suit. A calm synthetic voice runs through its start-up checks: power armour, atmospheric contaminant sensors, vital sign monitoring, munition level monitoring, communications. All systems nominal. Have a very safe day.",
+        "style": "story"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "pcv": {
+   "extends": [
+    "portable"
+   ],
+   "name": "Powered Combat Vest",
+   "aliases": [
+    "pcv",
+    "vest",
+    "combat vest"
+   ],
+   "story_keep": true,
+   "tags": [
+    "armour"
+   ],
+   "props": {
+    "armor": 1
+   },
+   "description": "The HECU's Powered Combat Vest: kevlar plates with a battery-charged armour layer.",
+   "actions": {
+    "take": [
+     {
+      "if": {
+       "held": "self"
+      },
+      "do": [
+       "You're already wearing it."
+      ]
+     },
+     {
+      "do": [
+       {
+        "move": "self",
+        "to": "player"
+       },
+       "You strap on the PCV. Its charge indicator glows."
+      ]
+     }
+    ]
+   }
+  },
+  "security_vest": {
+   "extends": [
+    "portable"
+   ],
+   "name": "security vest",
+   "aliases": [
+    "vest",
+    "kevlar",
+    "body armour"
+   ],
+   "story_keep": true,
+   "tags": [
+    "armour"
+   ],
+   "props": {
+    "armor": 1
+   },
+   "description": "A Black Mesa security kevlar vest. Not an HEV suit, but it stops a 9mm round."
+  },
+  "security_helmet": {
+   "extends": [
+    "portable"
+   ],
+   "name": "security helmet",
+   "aliases": [
+    "helmet"
+   ],
+   "story_keep": true,
+   "tags": [
+    "armour"
+   ],
+   "props": {
+    "armor": 1
+   },
+   "description": "A Black Mesa security helmet with a dark visor."
+  },
+  "medkit": {
+   "extends": [
+    "edible"
+   ],
+   "name": "first aid kit",
+   "aliases": [
+    "medkit",
+    "first aid kit",
+    "kit",
+    "health kit"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup"
+   ],
+   "habitat": [
+    "blackmesa",
+    "military",
+    "surface"
+   ],
+   "weight": 3,
+   "affords": [
+    "medicine"
+   ],
+   "props": {
+    "heal": 15,
+    "taste": "You tear open the kit and patch yourself up."
+   },
+   "description": "A white first aid kit with a red cross. Bandages, a stimulant shot, the usual."
+  },
+  "battery": {
+   "extends": [
+    "portable"
+   ],
+   "name": "suit battery",
+   "aliases": [
+    "battery",
+    "suit battery",
+    "hev battery"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup"
+   ],
+   "habitat": [
+    "blackmesa",
+    "military",
+    "surface"
+   ],
+   "weight": 3,
+   "affords": [
+    "power"
+   ],
+   "description": "A Black Mesa suit battery. Snap it into a suit's charging port.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "second": null
+      },
+      "do": [
+       {
+        "macro": "hl_suit_charge",
+        "with": {
+         "amount": 15
+        }
+       },
+       "You snap the battery into your suit. (Suit {player.suit})",
+       {
+        "destroy": "self"
+       }
+      ]
+     }
+    ],
+    "eat": [
+     "You'd rather not."
+    ]
+   }
+  },
+  "ammo_box": {
+   "extends": [
+    "portable"
+   ],
+   "name": "#ammo_kind#",
+   "aliases": [
+    "ammo",
+    "ammunition",
+    "box",
+    "rounds",
+    "magazine"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup"
+   ],
+   "habitat": [
+    "blackmesa",
+    "military",
+    "surface"
+   ],
+   "weight": 3,
+   "description": "Ammunition. In this place, you can never have enough.",
+   "actions": {
+    "use": [
+     "You top up your magazines. It's reassuring to hear them click home."
+    ]
+   }
+  },
+  "long_jump": {
+   "extends": [
+    "portable"
+   ],
+   "name": "long jump module",
+   "aliases": [
+    "long jump",
+    "module",
+    "ljm",
+    "jump module"
+   ],
+   "story_keep": true,
+   "affords": [
+    "jump"
+   ],
+   "description": "An experimental HEV attachment that fires a short thrust for enormous leaps. Crouch, then jump.",
+   "actions": {
+    "take": [
+     {
+      "if": {
+       "held": "self"
+      },
+      "do": [
+       "It's already fitted."
+      ]
+     },
+     {
+      "do": [
+       {
+        "move": "self",
+        "to": "player"
+       },
+       {
+        "say": "You clip the long jump module to the back of your suit. It hums.",
+        "style": "story"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "night_vision": {
+   "extends": [
+    "portable"
+   ],
+   "name": "night vision goggles",
+   "aliases": [
+    "goggles",
+    "night vision",
+    "nvg"
+   ],
+   "story_keep": true,
+   "affords": [
+    "light"
+   ],
+   "description": "HECU night vision goggles, which turn the dark a ghostly green."
+  },
+  "bm_keycard": {
+   "extends": [
+    "portable"
+   ],
+   "name": "#bm_card_colour# security keycard",
+   "aliases": [
+    "keycard",
+    "card",
+    "security card"
+   ],
+   "affords": [
+    "access"
+   ],
+   "home": [
+    "blackmesa",
+    "office"
+   ],
+   "description": "A Black Mesa keycard on a clip. A security clearance stripe runs along the edge."
+  },
+  "blowtorch": {
+   "extends": [
+    "portable"
+   ],
+   "name": "engineer's blowtorch",
+   "aliases": [
+    "blowtorch",
+    "torch",
+    "cutting torch"
+   ],
+   "affords": [
+    "cut"
+   ],
+   "story_keep": true,
+   "description": "A HECU combat engineer's cutting torch. It goes through welded doors like they owe it money."
+  },
+  "radio": {
+   "extends": [
+    "portable"
+   ],
+   "name": "field radio",
+   "aliases": [
+    "radio",
+    "handset"
+   ],
+   "affords": [
+    "radio"
+   ],
+   "description": "A military field radio, tuned to a HECU frequency."
+  },
+  "health_charger": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "health charger",
+   "aliases": [
+    "health charger",
+    "health station",
+    "medical station",
+    "charger"
+   ],
+   "props": {
+    "charge": 50
+   },
+   "appearance": [
+    {
+     "if": {
+      "prop": "charge",
+      "gt": 0
+     },
+     "text": "A wall-mounted health charger glows a steady green."
+    },
+    {
+     "text": "A health charger on the wall has gone dark, its reservoir empty."
+    }
+   ],
+   "description": "A Black Mesa medical station. Press your palm to it and it injects morphine and a coagulant cocktail.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "prop": "charge",
+       "lte": 0
+      },
+      "do": [
+       "The charger buzzes. Empty."
+      ]
+     },
+     {
+      "if": "player.health >= player.max_health",
+      "do": [
+       "You're in no need of it."
+      ]
+     },
+     {
+      "do": [
+       {
+        "let": {
+         "gain": "=min(self.charge, player.max_health - player.health)"
+        }
+       },
+       {
+        "add": {
+         "health": "=gain"
+        },
+        "on": "player"
+       },
+       {
+        "add": {
+         "charge": "=-gain"
+        }
+       },
+       "The charger hums and stings. (Health {player.health})"
+      ]
+     }
+    ]
+   }
+  },
+  "suit_charger": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "HEV charger",
+   "aliases": [
+    "hev charger",
+    "suit charger",
+    "charger",
+    "power station"
+   ],
+   "props": {
+    "charge": 75
+   },
+   "appearance": [
+    {
+     "if": {
+      "prop": "charge",
+      "gt": 0
+     },
+     "text": "An HEV charging station hums on the wall, its readout glowing orange."
+    },
+    {
+     "text": "An HEV charging station on the wall is drained and silent."
+    }
+   ],
+   "description": "A wall unit that recharges a suit's power armour.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "prop": "charge",
+       "lte": 0
+      },
+      "do": [
+       "The charger whines. Drained."
+      ]
+     },
+     {
+      "if": "player.suit >= player.max_suit",
+      "do": [
+       "Your suit is already fully charged."
+      ]
+     },
+     {
+      "do": [
+       {
+        "let": {
+         "gain": "=min(self.charge, player.max_suit - player.suit)"
+        }
+       },
+       {
+        "add": {
+         "suit": "=gain"
+        },
+        "on": "player"
+       },
+       {
+        "add": {
+         "charge": "=-gain"
+        }
+       },
+       "Power crackles into your suit. (Suit {player.suit})"
+      ]
+     }
+    ]
+   }
+  },
+  "supply_crate": {
+   "extends": [
+    "scenery",
+    "container"
+   ],
+   "name": "#crate_kind#",
+   "aliases": [
+    "crate",
+    "box",
+    "supply crate"
+   ],
+   "tags": [
+    "scatter",
+    "crate"
+   ],
+   "habitat": [
+    "blackmesa",
+    "military",
+    "storage",
+    "surface"
+   ],
+   "weight": 4,
+   "props": {
+    "open": false
+   },
+   "contents_visible": {
+    "prop": "open"
+   },
+   "appearance": [
+    {
+     "if": {
+      "prop": "open"
+     },
+     "text": "A smashed crate lies in pieces."
+    },
+    {
+     "text": "A wooden supply crate is stacked here."
+    }
+   ],
+   "description": "A wooden crate stencilled with Black Mesa inventory codes.",
+   "contents_text": "Among the splinters: {contents}.",
+   "features": [
+    {
+     "chance": 0.6,
+     "pick": [
+      "medkit",
+      "battery",
+      "ammo_box",
+      "ammo_box"
+     ]
+    },
+    {
+     "chance": 0.15,
+     "pick": [
+      "grenade",
+      "glock",
+      "satchel"
+     ]
+    }
+   ],
+   "actions": {
+    "open": [
+     {
+      "if": {
+       "prop": "open"
+      },
+      "do": [
+       "It's already been smashed open."
+      ]
+     },
+     {
+      "if": {
+       "has": {
+        "affords": [
+         "pry"
+        ]
+       }
+      },
+      "do": [
+       {
+        "set": {
+         "open": true
+        }
+       },
+       "You lever the lid off. Inside: {self.contents}."
+      ]
+     },
+     {
+      "do": [
+       {
+        "set": {
+         "open": true
+        }
+       },
+       "It's nailed shut, so you stamp on the lid until the planks give. Inside: {self.contents}."
+      ]
+     }
+    ],
+    "attack": [
+     {
+      "if": {
+       "prop": "open"
+      },
+      "do": [
+       "There's nothing left to break."
+      ]
+     },
+     {
+      "do": [
+       {
+        "set": {
+         "open": true
+        }
+       },
+       "The crate splinters apart. Inside: {self.contents}."
+      ]
+     }
+    ],
+    "use_with": [
+     {
+      "if": {
+       "is": {
+        "affords": [
+         "pry"
+        ]
+       },
+       "of": "target"
+      },
+      "do": [
+       {
+        "set": {
+         "open": true
+        }
+       },
+       "You crack the crate open with {target}. Inside: {self.contents}."
+      ]
+     }
+    ]
+   }
+  },
+  "vending_machine": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "soda machine",
+   "aliases": [
+    "vending machine",
+    "soda machine",
+    "machine"
+   ],
+   "appearance": "A soda machine hums against the wall.",
+   "description": "It sells cans of something brightly coloured. The fizzy kind of pick-me-up.",
+   "actions": {
+    "use": [
+     {
+      "do": [
+       {
+        "spawn": "soda_can",
+        "in": "room"
+       },
+       "A can thunks into the tray."
+      ]
+     }
+    ],
+    "attack": [
+     {
+      "do": [
+       {
+        "spawn": "soda_can",
+        "in": "room"
+       },
+       "You give it a whack. A can rattles out."
+      ]
+     }
+    ],
+    "push": [
+     "It rocks, but holds its ground."
+    ]
+   }
+  },
+  "soda_can": {
+   "extends": [
+    "drinkable"
+   ],
+   "name": "can of soda",
+   "aliases": [
+    "can",
+    "soda",
+    "pop"
+   ],
+   "props": {
+    "taste": "Sweet, flat, and somehow exactly what you needed.",
+    "heal": 1
+   },
+   "description": "A cold can of soda."
+  },
+  "bm_terminal": {
+   "extends": [
+    "scenery",
+    "readable"
+   ],
+   "name": "computer terminal",
+   "aliases": [
+    "terminal",
+    "computer",
+    "screen",
+    "monitor"
+   ],
+   "tags": [
+    "lore_carrier"
+   ],
+   "habitat": [
+    "blackmesa",
+    "office",
+    "lab"
+   ],
+   "appearance": "A beige computer terminal flickers on a desk.",
+   "description": "A Black Mesa workstation, its green text scrolling.",
+   "props": {
+    "text": "#bm_terminal_text#"
+   }
+  },
+  "bm_memo": {
+   "extends": [
+    "portable",
+    "readable"
+   ],
+   "name": "#memo_kind#",
+   "aliases": [
+    "memo",
+    "note",
+    "paper",
+    "printout",
+    "clipboard"
+   ],
+   "tags": [
+    "lore_carrier"
+   ],
+   "habitat": [
+    "blackmesa",
+    "office",
+    "lab",
+    "storage"
+   ],
+   "description": "Black Mesa letterhead, coffee-stained."
+  },
+  "hecu_logbook": {
+   "extends": [
+    "portable",
+    "readable"
+   ],
+   "name": "field logbook",
+   "aliases": [
+    "logbook",
+    "log",
+    "book",
+    "notes"
+   ],
+   "tags": [
+    "lore_carrier"
+   ],
+   "habitat": [
+    "military",
+    "surface"
+   ],
+   "description": "A HECU field logbook in a waterproof cover."
+  },
+  "xen_glyph": {
+   "extends": [
+    "scenery",
+    "readable"
+   ],
+   "name": "alien glyph",
+   "aliases": [
+    "glyph",
+    "markings",
+    "symbols"
+   ],
+   "tags": [
+    "lore_carrier"
+   ],
+   "habitat": [
+    "xen",
+    "alien"
+   ],
+   "appearance": "Strange glowing glyphs are etched into the rock.",
+   "description": "They pulse slowly. Looking at them for too long makes your teeth ache."
+  },
+  "dead_scientist": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "dead scientist",
+   "aliases": [
+    "body",
+    "corpse",
+    "scientist",
+    "dead scientist"
+   ],
+   "tags": [
+    "scatter"
+   ],
+   "habitat": [
+    "blackmesa",
+    "lab",
+    "office"
+   ],
+   "weight": 2,
+   "appearance": "A scientist lies dead here, lab coat stained dark.",
+   "description": "Whatever happened, it happened fast.",
+   "features": [
+    {
+     "chance": 0.3,
+     "pick": [
+      "medkit",
+      "bm_keycard",
+      "bm_memo"
+     ],
+     "hidden": true
+    }
+   ],
+   "actions": {
+    "take": [
+     "You leave the dead in peace."
+    ]
+   }
+  },
+  "dead_guard": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "dead security guard",
+   "aliases": [
+    "body",
+    "corpse",
+    "guard",
+    "dead guard"
+   ],
+   "tags": [
+    "scatter"
+   ],
+   "habitat": [
+    "blackmesa",
+    "office",
+    "transit"
+   ],
+   "weight": 1,
+   "appearance": "A security guard lies slumped against the wall, his helmet askew.",
+   "description": "His holster is open.",
+   "features": [
+    {
+     "chance": 0.5,
+     "pick": [
+      "glock",
+      "ammo_box",
+      "battery"
+     ],
+     "hidden": true
+    }
+   ],
+   "actions": {
+    "take": [
+     "You leave the dead in peace."
+    ]
+   }
+  },
+  "dead_marine": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "dead marine",
+   "aliases": [
+    "body",
+    "corpse",
+    "marine",
+    "soldier"
+   ],
+   "tags": [
+    "scatter"
+   ],
+   "habitat": [
+    "military",
+    "surface"
+   ],
+   "weight": 2,
+   "appearance": "A HECU marine lies face-down here in his gas mask.",
+   "description": "His webbing is still full of gear.",
+   "features": [
+    {
+     "chance": 0.6,
+     "pick": [
+      "mp5",
+      "ammo_box",
+      "grenade",
+      "medkit",
+      "hecu_logbook"
+     ],
+     "hidden": true
+    }
+   ],
+   "actions": {
+    "take": [
+     "You leave the dead in peace."
+    ]
+   }
+  },
+  "cockroach": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "cockroach",
+   "aliases": [
+    "roach",
+    "cockroach",
+    "bug"
+   ],
+   "tags": [
+    "scatter"
+   ],
+   "habitat": [
+    "maintenance",
+    "storage",
+    "office"
+   ],
+   "appearance": "A cockroach scuttles along the skirting board.",
+   "description": "Black Mesa's longest-serving employee.",
+   "actions": {
+    "attack": [
+     {
+      "do": [
+       "You step on it with a satisfying crunch.",
+       {
+        "destroy": "self"
+       }
+      ]
+     }
+    ],
+    "take": [
+     "It skitters away."
+    ]
+   }
+  },
+  "xen_light": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "xen light stalk",
+   "aliases": [
+    "stalk",
+    "light stalk",
+    "plant",
+    "light"
+   ],
+   "tags": [
+    "scatter"
+   ],
+   "habitat": [
+    "xen"
+   ],
+   "appearance": "A glowing light-stalk sways here, retracting shyly when you come near.",
+   "description": "A bioluminescent stalk with a bulb that pulls back into the ground at the slightest disturbance."
+  },
+  "healing_pool": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "healing pool",
+   "aliases": [
+    "pool",
+    "healing pool",
+    "water"
+   ],
+   "appearance": "A shallow pool of glowing water ripples here.",
+   "description": "The water is warm and faintly luminous. Wounds close where it touches them.",
+   "actions": {
+    "use": [
+     {
+      "do": [
+       {
+        "set": {
+         "health": "=player.max_health"
+        },
+        "on": "player"
+       },
+       "You wade into the glowing pool. Your wounds knit closed. (Health {player.health})"
+      ]
+     }
+    ],
+    "drink": [
+     {
+      "do": [
+       {
+        "set": {
+         "health": "=player.max_health"
+        },
+        "on": "player"
+       },
+       "You drink the glowing water. Strength floods back. (Health {player.health})"
+      ]
+     }
+    ]
+   }
+  },
+  "barnacle": {
+   "extends": [
+    "hostile"
+   ],
+   "name": "barnacle",
+   "aliases": [
+    "barnacle",
+    "tongue",
+    "ceiling thing"
+   ],
+   "tags": [
+    "encounter",
+    "hl_creature"
+   ],
+   "habitat": [
+    "maintenance",
+    "storage",
+    "xen",
+    "lab",
+    "office"
+   ],
+   "weight": 2,
+   "props": {
+    "health": 25,
+    "max_health": 25,
+    "damage": 5,
+    "armor": 0,
+    "attack_text": "snags you with its tongue and reels",
+    "death_text": "The barnacle shudders and lets go, spitting out a ribcage and something shiny."
+   },
+   "appearance": "A barnacle clings to the ceiling here, its long sticky tongue dangling to the floor.",
+   "description": "A ceiling-dwelling Xen predator. It hauls up whatever touches its tongue and chews.",
+   "on_death": [
+    {
+     "spawn": {
+      "pick": [
+       "battery",
+       "medkit",
+       "ammo_box"
+      ]
+     },
+     "in": "room"
+    }
+   ]
+  },
+  "scientist": {
+   "extends": [
+    "person"
+   ],
+   "name": "Dr. #bm_surname#",
+   "proper": true,
+   "aliases": [
+    "scientist",
+    "doctor",
+    "dr"
+   ],
+   "tags": [
+    "scientist",
+    "bm_staff"
+   ],
+   "appearance": "{self.Name}, a Black Mesa scientist in a white lab coat, is here.",
+   "description": "Lab coat, ID badge, glasses, and the expression of someone whose theories are being tested in the worst possible way.",
+   "profile": {
+    "personality": [
+     "nervous"
+    ],
+    "motives": [
+     "knowledge",
+     "survive"
+    ],
+    "motive_text": "get out of here alive, and maybe write a paper about it",
+    "goals": [
+     "reach the surface",
+     "find out what went wrong with the test",
+     "save the data"
+    ],
+    "backstory": "\"I work in #bm_department#. Worked. Whatever.\"",
+    "roles": [
+     "giver",
+     "informant",
+     "holder",
+     "ally",
+     "victim"
+    ],
+    "knows": [
+     "blackmesa",
+     "science",
+     "xen",
+     "lambda"
+    ],
+    "wants": [
+     "medicine"
+    ],
+    "greet": [
+     "The scientist peers at you over his glasses. \"Oh! I thought you were... never mind.\""
+    ],
+    "epilogue": "{speaker.The} survives, somehow, and never takes another job underground."
+   },
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"#scientist_chatter#\""
+      ]
+     }
+    ]
+   }
+  },
+  "security_guard": {
+   "extends": [
+    "person"
+   ],
+   "name": "Officer #bm_surname#",
+   "proper": true,
+   "aliases": [
+    "guard",
+    "security guard",
+    "officer",
+    "barney"
+   ],
+   "tags": [
+    "security",
+    "bm_staff"
+   ],
+   "appearance": "{self.Name}, a Black Mesa security guard, stands here in his blue shirt and kevlar vest.",
+   "description": "Blue shirt, kevlar vest, helmet pushed back, 9mm on his hip. Every guard here looks a bit alike.",
+   "profile": {
+    "personality": [
+     "cheerful",
+     "weary"
+    ],
+    "motives": [
+     "duty",
+     "survive",
+     "protect"
+    ],
+    "motive_text": "get everybody out who can still walk",
+    "goals": [
+     "get the scientists to the surface",
+     "find a working radio",
+     "have a beer once this is over"
+    ],
+    "backstory": "\"Security. I check badges, unlock doors and get yelled at by scientists. Today I'm getting shot at too.\"",
+    "roles": [
+     "giver",
+     "informant",
+     "holder",
+     "ally",
+     "victim",
+     "authority"
+    ],
+    "knows": [
+     "blackmesa",
+     "security",
+     "rumour"
+    ],
+    "wants": [
+     "weapon",
+     "medicine",
+     "power"
+    ],
+    "epilogue": "{speaker.The} makes it out, and swears the first round's on him."
+   },
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"#guard_chatter#\""
+      ]
+     }
+    ]
+   }
+  },
+  "gman": {
+   "extends": [
+    "person"
+   ],
+   "name": "G-Man",
+   "proper": true,
+   "aliases": [
+    "g-man",
+    "gman",
+    "man in the suit",
+    "man",
+    "suit",
+    "briefcase"
+   ],
+   "tags": [
+    "gman"
+   ],
+   "appearance": "A thin man in a blue suit, briefcase in hand, watches you from a little too far away.",
+   "description": "Pale, gaunt, immaculate. He speaks in strange pauses and stresses the wrong syllables. Nobody on the staff list matches him.",
+   "profile": {
+    "personality": [
+     "cold",
+     "cunning"
+    ],
+    "motives": [
+     "employer",
+     "order",
+     "control"
+    ],
+    "motive_text": "see that certain events unfold... according to plan",
+    "goals": [
+     "recruit a promising individual",
+     "keep his employers satisfied"
+    ],
+    "backstory": "He smiles thinly. \"Who I am is... not important. What matters is what you do... next.\"",
+    "roles": [
+     "informant",
+     "giver",
+     "antagonist"
+    ],
+    "knows": [
+     "xen",
+     "lambda",
+     "gman"
+    ],
+    "greet": [
+     "The man in the suit straightens his tie and regards you with interest."
+    ],
+    "epilogue": ""
+   },
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "He adjusts his tie, looks at you a moment too long, and says nothing at all."
+      ]
+     }
+    ],
+    "attack": [
+     "Your aim slides off him as though he were somewhere else entirely."
+    ]
+   }
+  },
+  "hecu_ally": {
+   "extends": [
+    "person"
+   ],
+   "name": "#hecu_rank# #hecu_surname#",
+   "proper": true,
+   "aliases": [
+    "marine",
+    "soldier",
+    "grunt",
+    "corporal",
+    "private",
+    "sergeant"
+   ],
+   "tags": [
+    "hecu",
+    "ally"
+   ],
+   "appearance": "{self.Name}, a HECU marine of your unit, covers the corners with his rifle.",
+   "description": "Gas mask, fatigues, MP5. He nods at you: one of yours.",
+   "profile": {
+    "personality": [
+     "gruff"
+    ],
+    "motives": [
+     "duty",
+     "survive",
+     "orders"
+    ],
+    "motive_text": "complete the mission and get back to the extraction point",
+    "goals": [
+     "get out on the last Osprey",
+     "find the rest of the squad"
+    ],
+    "backstory": "\"Same as you, Corporal. Dropped into this mess and told to clean it up.\"",
+    "roles": [
+     "giver",
+     "informant",
+     "holder",
+     "ally",
+     "victim"
+    ],
+    "knows": [
+     "hecu",
+     "military"
+    ],
+    "wants": [
+     "weapon",
+     "medicine"
+    ],
+    "epilogue": "{speaker.The} makes it home. He never talks about Black Mesa, not once."
+   },
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"#hecu_chatter#\""
+      ]
+     }
+    ]
+   }
+  },
+  "hecu_medic": {
+   "extends": [
+    "hecu_ally"
+   ],
+   "name": "Medic #hecu_surname#",
+   "proper": true,
+   "aliases": [
+    "medic",
+    "corpsman",
+    "doc"
+   ],
+   "tags": [
+    "hecu",
+    "ally",
+    "medic"
+   ],
+   "appearance": "{self.Name}, a HECU field medic with a white helmet cross, checks his kit here.",
+   "description": "A combat medic, satchel full of morphine and patience.",
+   "actions": {
+    "talk": [
+     {
+      "if": "player.health < player.max_health",
+      "do": [
+       {
+        "set": {
+         "health": "=player.max_health"
+        },
+        "on": "player"
+       },
+       "\"Hold still, Corporal.\" The medic patches you up with a needle and a field dressing. (Health {player.health})"
+      ]
+     },
+     {
+      "do": [
+       "\"You're good, Corporal. Try to stay that way.\""
+      ]
+     }
+    ]
+   }
+  },
+  "hecu_engineer": {
+   "extends": [
+    "hecu_ally"
+   ],
+   "name": "Engineer #hecu_surname#",
+   "proper": true,
+   "aliases": [
+    "engineer",
+    "combat engineer",
+    "sapper"
+   ],
+   "tags": [
+    "hecu",
+    "ally",
+    "engineer"
+   ],
+   "appearance": "{self.Name}, a HECU combat engineer, has a cutting torch slung on his back.",
+   "description": "A combat engineer with a welding mask pushed up on his helmet.",
+   "features": [
+    {
+     "id": "blowtorch",
+     "hidden": true
+    }
+   ],
+   "actions": {
+    "talk": [
+     {
+      "if": {
+       "not": {
+        "flag": "of_torch_given_{self.uid}"
+       }
+      },
+      "do": [
+       "\"Doors giving you grief? Here. Bring it back in one piece.\" He hands you his cutting torch.",
+       {
+        "for_each": "blowtorch",
+        "in": "self",
+        "hidden_too": true,
+        "do": [
+         {
+          "reveal": "it"
+         },
+         {
+          "move": "it",
+          "to": "player"
+         }
+        ]
+       },
+       {
+        "flag": "of_torch_given_{self.uid}"
+       }
+      ]
+     },
+     {
+      "do": [
+       "\"Cut through anything, that torch. Even regulations.\""
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

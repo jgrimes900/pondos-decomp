@@ -1,0 +1,316 @@
+{
+ "areas": {
+  "of_blackmesa": {
+   "name": "the Black Mesa complex",
+   "start_label": "Opposing Force - Corporal Adrian Shephard, HECU, dropping in by Osprey",
+   "tags": [
+    "blackmesa",
+    "start",
+    "opposing-force",
+    "military",
+    "scifi",
+    "racex"
+   ],
+   "theme": [
+    "blackmesa",
+    "military",
+    "surface",
+    "maintenance"
+   ],
+   "important": true,
+   "start": "of/of0a0_osprey",
+   "rooms": [
+    "of/*"
+   ],
+   "entrances": [
+    "of/of1a2_trench",
+    "of/of2a4_storm",
+    "of/of4a4_canyon",
+    "of/of1a6_dock"
+   ],
+   "player": {
+    "name": "Adrian Shephard",
+    "player_name": "Corporal Adrian Shephard",
+    "aliases": [
+     "adrian",
+     "shephard",
+     "corporal"
+    ],
+    "description": "Corporal Adrian Shephard, HECU: gas mask, fatigues, a Powered Combat Vest, and orders that stopped making sense an hour ago."
+   },
+   "kit": [
+    "pcv"
+   ]
+  },
+  "of_bootcamp": {
+   "name": "Santego Military Base",
+   "tags": [
+    "military",
+    "training",
+    "outdoor"
+   ],
+   "theme": [
+    "military",
+    "surface"
+   ],
+   "rooms": [
+    "ofb/*"
+   ],
+   "entrances": [
+    "ofb/ofboot0_barracks"
+   ]
+  }
+ },
+ "events": {
+  "of_worlds_collide": {
+   "title": [
+    "Opposing Force",
+    "Worlds Collide",
+    "Race X"
+   ],
+   "tags": [
+    "blackmesa",
+    "opposing-force",
+    "racex"
+   ],
+   "start_areas": [
+    "of_blackmesa"
+   ],
+   "roles": {
+    "villain": {
+     "type": "character",
+     "match": {
+      "tag": [
+       "gene_worm"
+      ]
+     }
+    },
+    "facility": {
+     "type": "place",
+     "match": {
+      "id": [
+       "of_blackmesa"
+      ]
+     }
+    }
+   },
+   "hook": "You are Corporal Adrian Shephard of the Hazardous Environment Combat Unit, dropped into the Black Mesa Research Facility to clean up a mess and silence a physicist. Your Osprey never lands. By the time you wake, your unit has pulled out without you, and something new is coming through the portals: something called {villain}.",
+   "goal": "Survive {facility} without your unit, and stop {villain} before it remakes the world.",
+   "resolutions": [
+    {
+     "verb": "attack",
+     "target": "villain",
+     "title": "Kill the Gene Worm",
+     "text": "{target.The} comes apart in the portal's collapse. Race X's way into the world closes behind it."
+    }
+   ],
+   "ending": "The Gene Worm is dead and the portal is shut. But you are still in Black Mesa, and somebody very patient has been watching you."
+  },
+  "of_the_package": {
+   "title": [
+    "The Package",
+    "Foxtrot Uniform"
+   ],
+   "tags": [
+    "blackmesa",
+    "opposing-force",
+    "military"
+   ],
+   "start_areas": [
+    "of_blackmesa"
+   ],
+   "weight": 0.6,
+   "roles": {
+    "device": {
+     "type": "feature",
+     "match": {
+      "tag": [
+       "of_nuke"
+      ]
+     }
+    },
+    "facility": {
+     "type": "place",
+     "match": {
+      "id": [
+       "of_blackmesa"
+      ]
+     }
+    }
+   },
+   "hook": "You are Corporal Adrian Shephard, HECU, left behind at Black Mesa when your unit pulled out. The Marines are losing, the aliens are winning, and the Black Ops have brought in something to end the argument: {device}.",
+   "goal": "Cross {facility}, find {device} and stop it before it goes off.",
+   "resolutions": [
+    {
+     "verb": "use",
+     "target": "device",
+     "title": "Disarm the package",
+     "text": "You pull the arming key from {target}. The countdown dies. Somewhere very close, someone in a blue suit sighs, and makes a note."
+    }
+   ],
+   "ending": "The package is disarmed, for now. You don't see the man with the briefcase kneel beside it after you've gone and turn the key back."
+  }
+ },
+ "lore": {
+  "of_mission": {
+   "title": "Mission orders",
+   "about": [
+    "area:of_blackmesa"
+   ],
+   "tags": [
+    "hecu",
+    "military"
+   ],
+   "text": "Corporal Adrian Shephard's unit was sent into Black Mesa with simple orders: contain the incident, eliminate the alien threat and silence anyone who knows too much, starting with a physicist named Gordon Freeman."
+  },
+  "of_racex": {
+   "title": "Race X",
+   "about": [
+    "area:of_blackmesa"
+   ],
+   "tags": [
+    "racex",
+    "xen",
+    "science"
+   ],
+   "text": "The second wave of invaders aren't from Xen at all. Shock troopers, pit drones, voltigores: a species from somewhere else entirely, following the rift in. The scientists call them Race X, for lack of anything better."
+  },
+  "of_black_ops": {
+   "title": "The Black Ops",
+   "about": [
+    "area:of_blackmesa"
+   ],
+   "tags": [
+    "military",
+    "black_ops",
+    "hecu"
+   ],
+   "text": "When the Marines started losing, someone sent in the Black Ops: silent, black-clad, answering to nobody you know. Their orders cover the Marines too. And they brought a package."
+  },
+  "of_shephard": {
+   "title": "Missing in action",
+   "about": [
+    "area:of_blackmesa"
+   ],
+   "tags": [
+    "hecu",
+    "rumour"
+   ],
+   "chance": 0.7,
+   "text": "Corporal Adrian Shephard: listed missing in action after his Osprey went down over Black Mesa. The listing never gets updated."
+  },
+  "of_gene_worm": {
+   "title": "The Gene Worm",
+   "about": [
+    "def:gene_worm_of"
+   ],
+   "tags": [
+    "racex"
+   ],
+   "text": "Race X doesn't conquer a world. It changes it. The Gene Worm is how: a living factory that reshapes the land around it into something Race X can live in."
+  }
+ },
+ "macros": {
+  "of_burn_worm": {
+   "do": [
+    {
+     "if": {
+      "flag": "of_pitworm_dead"
+     },
+     "then": [
+      "The pit is a charred hole now.",
+      {
+       "stop": true
+      }
+     ]
+    },
+    {
+     "if": {
+      "not": {
+       "flag": "of_worm_valve"
+      }
+     },
+     "then": [
+      "You throw the lever. A spark spits from the burners, but there's no gas in the pit to light.",
+      {
+       "stop": true
+      }
+     ]
+    },
+    {
+     "flag": "of_pitworm_dead"
+    },
+    {
+     "say": "You haul the lever down. The burners spark, and the gas in the pit goes up in a single rolling fireball. The pit worm thrashes, screams through the flames, and sinks into the boiling sludge.",
+     "style": "story"
+    },
+    {
+     "find": {
+      "def": "pit_worm_of"
+     },
+     "in": "room:of/of4a2_nest",
+     "as": "worm",
+     "hidden_too": true
+    },
+    {
+     "if": {
+      "exists": "local:worm"
+     },
+     "then": [
+      {
+       "destroy": "local:worm"
+      }
+     ]
+    }
+   ]
+  },
+  "of_cannon": {
+   "do": [
+    {
+     "if": {
+      "flag": "of_cannon_{which}"
+     },
+     "then": [
+      "That cannon is spent.",
+      {
+       "stop": true
+      }
+     ]
+    },
+    {
+     "flag": "of_cannon_{which}"
+    },
+    {
+     "find": {
+      "def": "gene_worm_of"
+     },
+     "in": "room:of/of6a3_bay",
+     "as": "worm",
+     "hidden_too": true
+    },
+    {
+     "if": {
+      "exists": "local:worm"
+     },
+     "then": [
+      {
+       "say": "The plasma cannon thumps a bolt of green fire straight into one of the Gene Worm's eyes. It shrieks, and its armour plates gape around the wound.",
+       "style": "good"
+      },
+      {
+       "set": {
+        "armor": 0
+       },
+       "on": "local:worm"
+      }
+     ],
+     "else": [
+      "The cannon fires into the empty portal."
+     ]
+    }
+   ]
+  }
+ },
+ "rules": {},
+ "grammar": {}
+}

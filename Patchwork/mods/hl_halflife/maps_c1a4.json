@@ -1,0 +1,396 @@
+{
+ "rooms": {
+  "hl/c1a4_catwalk": {
+   "name": "Rocket Test Silo: Upper Catwalk",
+   "tags": [
+    "blackmesa",
+    "indoor",
+    "post_cascade",
+    "tentacle_zone"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a3d_silo_door",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4k_floor",
+     "dir": "down",
+     "distance": 1,
+     "name": "ladder",
+     "aliases": [
+      "ladder"
+     ],
+     "back": false
+    },
+    {
+     "to": "hl/c1a4i_control",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "tentacle",
+    "dying_scientist",
+    "grenade"
+   ],
+   "description": "A circular catwalk around the rim of an immense silo built to test rocket engines. Far below, three gigantic tentacles rise from the pit, beaked heads twitching toward every sound. A dying scientist whispers that the only way to kill them is to fire the engine at the bottom of the silo, and that needs fuel, oxygen and power.",
+   "aliases": [
+    "silo",
+    "catwalk"
+   ],
+   "props": {
+    "map": "c1a4",
+    "chapter": "Blast Pit"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "BLAST PIT",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c1a4k_floor": {
+   "name": "Rocket Test Silo: Floor",
+   "tags": [
+    "blackmesa",
+    "indoor",
+    "post_cascade",
+    "tentacle_zone"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a4_catwalk",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4b_power",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4d_oxygen",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4f_fuel",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4g_exhaust",
+     "dir": "down",
+     "distance": 1,
+     "name": "exhaust shaft",
+     "aliases": [
+      "shaft",
+      "hole"
+     ],
+     "if": {
+      "flag": "hl_tentacles_dead"
+     },
+     "blocked": "The tentacles are rooted down there. Nothing goes down that shaft while they live.",
+     "solve": [
+      [
+       "goto",
+       "hl/c1a4b_power"
+      ],
+      [
+       "do",
+       "use power switch"
+      ],
+      [
+       "goto",
+       "hl/c1a4d_oxygen"
+      ],
+      [
+       "do",
+       "turn valve"
+      ],
+      [
+       "goto",
+       "hl/c1a4f_fuel"
+      ],
+      [
+       "do",
+       "use fuel pump controls"
+      ],
+      [
+       "goto",
+       "hl/c1a4i_control"
+      ],
+      [
+       "do",
+       "push button"
+      ]
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "tentacle",
+    "ammo_box"
+   ],
+   "description": "The bottom of the silo, littered with crushed equipment. The tentacles are right here, hammering the floor wherever they hear a footstep. Doors lead off to the fuel, oxygen and power systems.",
+   "aliases": [
+    "silo floor"
+   ],
+   "props": {
+    "map": "c1a4k",
+    "chapter": "Blast Pit"
+   }
+  },
+  "hl/c1a4b_power": {
+   "name": "Generator Plant",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a4k_floor",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4e_tunnels",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "silo_power_switch",
+    "houndeye",
+    "houndeye",
+    "suit_charger"
+   ],
+   "description": "A generator room reached through a long corridor and a ladder. A huge switch on the wall controls power to the silo. The room is crawling with houndeyes.",
+   "props": {
+    "map": "c1a4b",
+    "chapter": "Blast Pit"
+   }
+  },
+  "hl/c1a4d_oxygen": {
+   "name": "Oxygen Pumping Station",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "water",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a4k_floor",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4e_tunnels",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "oxygen_valve",
+    "bullsquid",
+    "medkit"
+   ],
+   "description": "A pump room of tanks stencilled O2, with a big valve wheel and a ladder from a flooded tunnel. Bullsquids nest in the overflow.",
+   "props": {
+    "map": "c1a4d",
+    "chapter": "Blast Pit"
+   }
+  },
+  "hl/c1a4f_fuel": {
+   "name": "Fuel Pump Room",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a4k_floor",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "fuel_pump_switch",
+    "zombie",
+    "battery"
+   ],
+   "description": "Fuel lines snake into a pump room. The pumps are off; the controls are on a gantry above a pool of something that smells of kerosene. A pipeline duct leads back to the silo.",
+   "props": {
+    "map": "c1a4f",
+    "chapter": "Blast Pit"
+   },
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.5
+    }
+   ]
+  },
+  "hl/c1a4e_tunnels": {
+   "name": "Silo Service Tunnels",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a4b_power",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4d_oxygen",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "headcrab",
+    "supply_crate"
+   ],
+   "description": "Narrow service tunnels ring the silo, with ladders and pipe runs and a train-track underpass. Water drips everywhere.",
+   "props": {
+    "map": "c1a4e",
+    "chapter": "Blast Pit"
+   }
+  },
+  "hl/c1a4i_control": {
+   "name": "Engine Test Control Room",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a4_catwalk",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "engine_fire_button",
+    "health_charger"
+   ],
+   "description": "A control room overlooking the silo through thick glass. A big red button is labelled ENGINE TEST - FIRE. Gauges for fuel, oxygen and power sit beside it.",
+   "aliases": [
+    "control room"
+   ],
+   "props": {
+    "map": "c1a4i",
+    "chapter": "Blast Pit"
+   }
+  },
+  "hl/c1a4g_exhaust": {
+   "name": "Silo Exhaust Shaft",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a4k_floor",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a4j_underpass",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "houndeye"
+   ],
+   "description": "Below the silo floor, the engine's exhaust shaft drops away into the dark. Where the tentacles were rooted there is now a hole into the levels below.",
+   "props": {
+    "map": "c1a4g",
+    "chapter": "Blast Pit"
+   }
+  },
+  "hl/c1a4j_underpass": {
+   "name": "Rail Underpass",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a4g_exhaust",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a1_tracks",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie",
+    "ammo_box"
+   ],
+   "description": "A low tunnel beneath the silo complex, where the track for the power plant's service trains begins. Signs point toward the POWER FACILITY.",
+   "props": {
+    "map": "c1a4j",
+    "chapter": "Blast Pit"
+   }
+  }
+ }
+}

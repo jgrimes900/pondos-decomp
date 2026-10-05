@@ -1,0 +1,262 @@
+{
+ "rooms": {
+  "bs/ba_yard1_gate": {
+   "name": "Freight Yard Gate",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "military",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_canal3_pumps",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_yard2_trains",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "ammo_box"
+   ],
+   "description": "The gate of the underground freight yard, with a guard hut and a barrier arm. Soldiers have strung razor wire across it, and one of them is on the radio about scientists in custody.",
+   "props": {
+    "map": "ba_yard1",
+    "chapter": "Captive Freight"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "CAPTIVE FREIGHT",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "bs/ba_yard2_trains": {
+   "name": "Freight Rail Yard",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "storage",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_yard1_gate",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_yard3_crane",
+     "dir": "up",
+     "distance": 1,
+     "name": "gantry ladder",
+     "aliases": [
+      "ladder",
+      "gantry"
+     ],
+     "back": false
+    },
+    {
+     "to": "bs/ba_yard4_holding",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "houndeye",
+    "supply_crate",
+    "mp5"
+   ],
+   "description": "Rows of boxcars on parallel tracks under a high rock ceiling. A crane gantry spans the yard. Marines move between the cars, and so do things that aren't Marines.",
+   "props": {
+    "map": "ba_yard2",
+    "chapter": "Captive Freight"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "storage",
+      "transit"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.8
+    }
+   ]
+  },
+  "bs/ba_yard3_crane": {
+   "name": "Crane Gantry",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_yard2_trains",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "yard_crane",
+    "battery"
+   ],
+   "description": "The control cab of the gantry crane, high over the yard. From here you can move a boxcar and open a path through the yard.",
+   "props": {
+    "map": "ba_yard3",
+    "chapter": "Captive Freight"
+   }
+  },
+  "bs/ba_yard4_holding": {
+   "name": "Holding Area",
+   "tags": [
+    "blackmesa",
+    "military",
+    "office",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_yard2_trains",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_yard5_warehouse",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "rosenberg",
+    "hecu_marine",
+    "health_charger"
+   ],
+   "description": "A row of offices the Marines turned into holding cells. In one of them sits a grey-haired scientist, hands bound, glaring at the guard. That will be Dr. Rosenberg.",
+   "aliases": [
+    "holding area",
+    "cells"
+   ],
+   "props": {
+    "map": "ba_yard4",
+    "chapter": "Captive Freight"
+   }
+  },
+  "bs/ba_yard5_warehouse": {
+   "name": "Freight Warehouse",
+   "tags": [
+    "blackmesa",
+    "storage",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_yard4_holding",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_yard6_service",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie",
+    "supply_crate",
+    "shotgun"
+   ],
+   "description": "A warehouse of crates stacked to the roof. Rosenberg knows a way through to his old team's lab, he says, if you can keep the two of you alive that far.",
+   "props": {
+    "map": "ba_yard5",
+    "chapter": "Captive Freight"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "storage"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.7
+    }
+   ]
+  },
+  "bs/ba_yard6_service": {
+   "name": "Service Corridor",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_yard5_warehouse",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_teleport1_lab",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "alien_grunt",
+    "medkit"
+   ],
+   "description": "A long service corridor that leads, according to the signs, to the Sector F teleportation labs.",
+   "props": {
+    "map": "ba_yard6",
+    "chapter": "Captive Freight"
+   }
+  }
+ }
+}

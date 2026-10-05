@@ -1,0 +1,1395 @@
+{
+ "features": {
+  "tram_announcer": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "tram announcer",
+   "aliases": [
+    "announcer",
+    "speaker",
+    "voice"
+   ],
+   "appearance": false,
+   "description": "A recorded voice from a speaker grille.",
+   "actions": {
+    "listen": [
+     "#tram_announcement#"
+    ],
+    "talk": [
+     "The announcer is a recording. It carries on regardless."
+    ]
+   }
+  },
+  "tram_window": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "tram window",
+   "aliases": [
+    "window",
+    "windows"
+   ],
+   "appearance": false,
+   "description": "Through the scratched plexiglass, Black Mesa slides past."
+  },
+  "robot_arm": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "robotic arm",
+   "aliases": [
+    "arm",
+    "robot",
+    "robotic arm"
+   ],
+   "appearance": "A yellow robotic arm swings a pallet past the tram.",
+   "description": "Hydraulic, enormous and indifferent."
+  },
+  "gman_glimpse": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "man in a blue suit",
+   "aliases": [
+    "man",
+    "suit",
+    "g-man",
+    "gman",
+    "man in the suit"
+   ],
+   "appearance": false,
+   "description": "He's gone before you can get a proper look. You feel, unreasonably, that he was looking at you."
+  },
+  "platform_guard": {
+   "extends": [
+    "security_guard"
+   ],
+   "name": "Officer #bm_surname#",
+   "description": "A cheerful guard in a blue shirt who seems to know who you are.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"Morning, Mr. Freeman. They're waiting for you upstairs in the test lab. Better hurry.\""
+      ]
+     }
+    ]
+   }
+  },
+  "lobby_guard": {
+   "extends": [
+    "security_guard"
+   ],
+   "name": "Officer #bm_surname#",
+   "important": false,
+   "appearance": "{self.Name} sits behind the security desk, hitting the side of his monitor.",
+   "description": "He's been fighting with the computer all morning, he says, and the computer is winning.",
+   "actions": {
+    "talk": [
+     {
+      "if": {
+       "flag": "hl_cascade"
+      },
+      "do": [
+       "\"Freeman? You're alive! Get to the surface, I'll hold the door!\""
+      ]
+     },
+     {
+      "do": [
+       "\"Hey, Mr. Freeman. The system's down again, so I'll scan you through. Good luck in there today.\""
+      ]
+     }
+    ]
+   }
+  },
+  "lobby_scientist": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name} paces by the reception desk, looking at a watch.",
+   "actions": {
+    "talk": [
+     {
+      "if": {
+       "flag": "hl_cascade"
+      },
+      "do": [
+       "\"What have you done? What have we done?\""
+      ]
+     },
+     {
+      "do": [
+       "\"Gordon! You're late. The administrator wants the test run before noon. Suit up, quickly.\""
+      ]
+     }
+    ]
+   }
+  },
+  "retinal_scanner": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "retinal scanner",
+   "aliases": [
+    "scanner",
+    "retinal scanner"
+   ],
+   "appearance": false,
+   "description": "A wall-mounted retinal scanner, its lens blinking green.",
+   "actions": {
+    "use": [
+     "A beam sweeps your eye. ACCESS GRANTED, says the panel."
+    ]
+   }
+  },
+  "security_desk": {
+   "extends": [
+    "scenery",
+    "surface"
+   ],
+   "name": "security desk",
+   "aliases": [
+    "desk"
+   ],
+   "appearance": false,
+   "description": "A curved reception desk with a monitor, a phone and a sign-in book.",
+   "features": [
+    "bm_memo"
+   ]
+  },
+  "lab_scientist": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name} hurries past with a clipboard.",
+   "actions": {
+    "talk": [
+     {
+      "if": {
+       "flag": "hl_cascade"
+      },
+      "do": [
+       "\"The spectrometer... it was running hot, I said so! Nobody listens!\""
+      ]
+     },
+     {
+      "do": [
+       "\"The spectrometer's running hot, but everything's within tolerance. Probably.\""
+      ]
+     }
+    ]
+   }
+  },
+  "sector_c_scientist": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name} argues with a colleague about a grant proposal."
+  },
+  "microwave": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "microwave",
+   "aliases": [
+    "microwave",
+    "casserole",
+    "oven"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_microwave"
+     },
+     "text": "The microwave's door is blown off, and casserole covers the wall."
+    },
+    {
+     "text": "A microwave hums on the counter, a casserole turning inside."
+    }
+   ],
+   "description": "Somebody's lunch. It has a long way to go.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "flag": "hl_microwave"
+      },
+      "do": [
+       "It's beyond help."
+      ]
+     },
+     {
+      "do": [
+       {
+        "flag": "hl_microwave"
+       },
+       "You turn the dial all the way up out of sheer curiosity. After a few seconds there is a muffled bang, and casserole paints the inside of the door. A scientist, somewhere, will be very upset."
+      ]
+     }
+    ]
+   }
+  },
+  "freeman_locker": {
+   "extends": [
+    "scenery",
+    "container",
+    "openable"
+   ],
+   "name": "locker marked FREEMAN",
+   "aliases": [
+    "locker",
+    "freeman locker",
+    "my locker"
+   ],
+   "appearance": "Your locker, labelled FREEMAN, stands in the row.",
+   "description": "Your locker. Your name. A dent where you once kicked it.",
+   "features": [
+    {
+     "name": "photo of a cat",
+     "extends": [
+      "portable"
+     ],
+     "aliases": [
+      "photo",
+      "photograph"
+     ],
+     "description": "A photo of a cat. You don't remember putting it there."
+    }
+   ]
+  },
+  "hev_rack": {
+   "extends": [
+    "scenery",
+    "surface"
+   ],
+   "name": "HEV suit rack",
+   "aliases": [
+    "rack",
+    "suit rack",
+    "storage"
+   ],
+   "appearance": "Behind the glass, HEV suits hang on charging frames.",
+   "description": "Charging frames for HEV suits. One has your size on it.",
+   "contents_text": "Hanging on the rack: {contents}.",
+   "features": [
+    "hev_suit"
+   ]
+  },
+  "senior_scientists": {
+   "extends": [
+    "scientist"
+   ],
+   "name": "the senior scientists",
+   "proper": true,
+   "aliases": [
+    "senior scientists",
+    "scientists",
+    "scientist"
+   ],
+   "appearance": "The two senior scientists bend over their consoles.",
+   "description": "One is balding with glasses and a lab coat that's seen better years; the other has a grey beard and a calm voice.",
+   "profile": {
+    "personality": [
+     "wise",
+     "nervous"
+    ],
+    "motives": [
+     "knowledge",
+     "survive"
+    ],
+    "motive_text": "understand what is on the other side",
+    "goals": [
+     "finish the test",
+     "get to the Lambda Complex"
+    ],
+    "roles": [
+     "giver",
+     "informant",
+     "ally"
+    ],
+    "knows": [
+     "xen",
+     "lambda",
+     "science"
+    ],
+    "backstory": "\"We've been working toward today for a very long time.\""
+   },
+   "actions": {
+    "talk": [
+     {
+      "if": {
+       "flag": "hl_cascade"
+      },
+      "do": [
+       "\"Gordon! We'll go to the surface and find help. You must make it to the Lambda Complex: they'll know what to do. Hurry!\""
+      ]
+     },
+     {
+      "do": [
+       "\"Ah, Gordon. The sample is in place. Just push it into the beam when we're ready. Nothing to worry about. Probably.\""
+      ]
+     }
+    ]
+   }
+  },
+  "control_console": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "console",
+   "aliases": [
+    "console",
+    "consoles",
+    "controls"
+   ],
+   "appearance": false,
+   "description": "Readouts for the anti-mass spectrometer. The numbers are all slightly higher than anyone would like."
+  },
+  "anti_mass_spectrometer": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "anti-mass spectrometer",
+   "aliases": [
+    "spectrometer",
+    "beam",
+    "anti-mass spectrometer",
+    "emitters"
+   ],
+   "important": true,
+   "tags": [
+    "heart",
+    "cascade_heart"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "The spectrometer's emitters are cracked and dead."
+    },
+    {
+     "text": "The anti-mass spectrometer's beam crackles at the centre of the chamber."
+    }
+   ],
+   "description": "A machine for analysing exotic matter, pushed well past its design limits."
+  },
+  "sample_cart": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "sample cart",
+   "aliases": [
+    "cart",
+    "sample",
+    "crystal",
+    "sample cart"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "What's left of the sample cart lies twisted against the wall."
+    },
+    {
+     "text": "The sample cart waits on its rail, a yellowish crystal glowing in its holder."
+    }
+   ],
+   "description": "A wheeled cart carrying a crystal sample of unprecedented purity.",
+   "actions": {
+    "push": [
+     {
+      "if": {
+       "flag": "hl_cascade"
+      },
+      "do": [
+       "It's wreckage now."
+      ]
+     },
+     {
+      "do": [
+       {
+        "macro": "hl_cascade",
+        "with": {
+         "here": 1
+        }
+       }
+      ]
+     }
+    ],
+    "use": [
+     {
+      "if": {
+       "flag": "hl_cascade"
+      },
+      "do": [
+       "It's wreckage now."
+      ]
+     },
+     {
+      "do": [
+       {
+        "macro": "hl_cascade",
+        "with": {
+         "here": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "dead_guard_glock": {
+   "extends": [
+    "dead_guard"
+   ],
+   "features": [
+    "glock",
+    "ammo_box"
+   ],
+   "appearance": "The guard who greeted you lies dead behind the desk, his pistol still holstered."
+  },
+  "power_junction": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "power junction",
+   "aliases": [
+    "junction",
+    "switch",
+    "breaker",
+    "panel"
+   ],
+   "appearance": "A power junction box sits on a catwalk above the water.",
+   "description": "A breaker for this section's power. It's on, and so is the water.",
+   "actions": {
+    "use": [
+     "You throw the breaker. The sparks in the water die. Safe to wade, now."
+    ],
+    "push": [
+     "You throw the breaker. The sparks die."
+    ]
+   }
+  },
+  "uc_guard": {
+   "extends": [
+    "security_guard"
+   ],
+   "appearance": "{self.Name} crouches behind the desk, pistol up."
+  },
+  "office_guard": {
+   "extends": [
+    "security_guard"
+   ],
+   "appearance": "{self.Name} has barricaded himself behind a stack of toner boxes."
+  },
+  "tripmine": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "laser tripmine",
+   "aliases": [
+    "tripmine",
+    "laser",
+    "mine",
+    "beam"
+   ],
+   "appearance": "A tripmine's red laser line crosses the shaft.",
+   "description": "Step through the beam and the mine goes off.",
+   "actions": {
+    "attack": [
+     {
+      "do": [
+       "You shoot the mine. It goes off with a deafening crack, taking a chunk of wall with it.",
+       {
+        "destroy": "self"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "dying_scientist": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name} lies wounded against the railing.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"They... the tentacles... you have to fire the engine. Fuel, oxygen, power. Get them all running, then fire it from the control room.\""
+      ]
+     }
+    ]
+   }
+  },
+  "silo_power_switch": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "power switch",
+   "aliases": [
+    "switch",
+    "power switch",
+    "lever"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_bp_power"
+     },
+     "text": "The silo power switch is thrown, its lamp green."
+    },
+    {
+     "text": "A huge power switch for the silo sits in the off position."
+    }
+   ],
+   "description": "SILO POWER, says the plate.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "flag": "hl_bp_power"
+      },
+      "do": [
+       "It's already on."
+      ]
+     },
+     {
+      "do": [
+       {
+        "flag": "hl_bp_power"
+       },
+       "You haul the switch over. Generators roar into life, and somewhere above, lights come on in the silo."
+      ]
+     }
+    ],
+    "push": [
+     {
+      "do": [
+       {
+        "flag": "hl_bp_power"
+       },
+       "You haul the switch over. Generators roar into life."
+      ]
+     }
+    ],
+    "pull": [
+     {
+      "do": [
+       {
+        "flag": "hl_bp_power"
+       },
+       "You haul the switch over. Generators roar into life."
+      ]
+     }
+    ]
+   }
+  },
+  "oxygen_valve": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "oxygen valve",
+   "aliases": [
+    "valve",
+    "wheel",
+    "oxygen valve"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_bp_oxygen"
+     },
+     "text": "The oxygen valve is open; the pumps thrum."
+    },
+    {
+     "text": "A big red valve wheel controls the oxygen pumps."
+    }
+   ],
+   "description": "OXYGEN SUPPLY: ENGINE TEST.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "flag": "hl_bp_oxygen"
+      },
+      "do": [
+       "It's already open."
+      ]
+     },
+     {
+      "do": [
+       {
+        "flag": "hl_bp_oxygen"
+       },
+       "You spin the wheel. The oxygen pumps start up with a deep thrum."
+      ]
+     }
+    ],
+    "turn": [
+     {
+      "do": [
+       {
+        "flag": "hl_bp_oxygen"
+       },
+       "You spin the wheel. The pumps start up."
+      ]
+     }
+    ]
+   }
+  },
+  "fuel_pump_switch": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "fuel pump controls",
+   "aliases": [
+    "controls",
+    "fuel pumps",
+    "pump",
+    "switch"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_bp_fuel"
+     },
+     "text": "The fuel pumps are running."
+    },
+    {
+     "text": "The fuel pump controls sit on a gantry, all lights red."
+    }
+   ],
+   "description": "FUEL: ENGINE TEST.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "flag": "hl_bp_fuel"
+      },
+      "do": [
+       "They're already running."
+      ]
+     },
+     {
+      "do": [
+       {
+        "flag": "hl_bp_fuel"
+       },
+       "You start the fuel pumps. Kerosene surges through the lines toward the silo."
+      ]
+     }
+    ],
+    "push": [
+     {
+      "do": [
+       {
+        "flag": "hl_bp_fuel"
+       },
+       "You start the fuel pumps."
+      ]
+     }
+    ]
+   }
+  },
+  "engine_fire_button": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "engine test button",
+   "aliases": [
+    "button",
+    "red button",
+    "fire button"
+   ],
+   "appearance": "A big red button reads ENGINE TEST - FIRE.",
+   "description": "Gauges beside it show fuel, oxygen and power.",
+   "actions": {
+    "push": [
+     {
+      "macro": "hl_fire_engine"
+     }
+    ],
+    "use": [
+     {
+      "macro": "hl_fire_engine"
+     }
+    ]
+   }
+  },
+  "powerup_guard": {
+   "extends": [
+    "security_guard"
+   ],
+   "appearance": "{self.Name} is pinned behind an overturned rail car.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"There's something out there, big as a house, breathes fire. Bullets don't do a thing. If we could get power back to those rails...\""
+      ]
+     }
+    ]
+   }
+  },
+  "generator_switch": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "generator switch",
+   "aliases": [
+    "switch",
+    "generator",
+    "lever",
+    "controls"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_power_on"
+     },
+     "text": "The generator roars; the rail power indicator glows."
+    },
+    {
+     "text": "The generator's master switch is in the off position."
+    }
+   ],
+   "description": "RAIL POWER, reads the plate. Also: KEEP CLEAR OF TRACKS WHEN ENERGISED.",
+   "actions": {
+    "use": [
+     {
+      "macro": "hl_power_up"
+     }
+    ],
+    "push": [
+     {
+      "macro": "hl_power_up"
+     }
+    ],
+    "pull": [
+     {
+      "macro": "hl_power_up"
+     }
+    ]
+   }
+  },
+  "rail_car": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "rail car",
+   "aliases": [
+    "car",
+    "train",
+    "rail car",
+    "controls"
+   ],
+   "appearance": "A small maintenance rail car waits on the track.",
+   "description": "Throttle forward, throttle back, a horn. You'll manage.",
+   "actions": {
+    "use": [
+     "You nudge the throttle. The car hums along a few metres and stops."
+    ]
+   }
+  },
+  "launch_console": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "launch console",
+   "aliases": [
+    "console",
+    "launch console",
+    "button"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_rocket"
+     },
+     "text": "The launch console reads: LAUNCH SUCCESSFUL."
+    },
+    {
+     "text": "The launch console blinks: AWAITING AUTHORISATION."
+    }
+   ],
+   "description": "The controls for the satellite launch.",
+   "actions": {
+    "use": [
+     {
+      "if": {
+       "flag": "hl_rocket"
+      },
+      "do": [
+       "The satellite's already on its way."
+      ]
+     },
+     {
+      "do": [
+       {
+        "flag": "hl_rocket"
+       },
+       {
+        "say": "You arm the launch. Far below, the rocket's engines ignite; the whole complex shakes as it climbs out of the silo and away. The scientist whoops: the Lambda team will have their satellite.",
+        "style": "story"
+       }
+      ]
+     }
+    ],
+    "push": [
+     {
+      "do": [
+       {
+        "flag": "hl_rocket"
+       },
+       "You hit the launch button. The rocket goes."
+      ]
+     }
+    ]
+   }
+  },
+  "launch_scientist": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name} hovers by the launch console.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"You're Freeman? Thank heaven. We need this satellite in orbit for the Lambda team. Arm the launch from here, then get yourself to the Lambda Complex.\""
+      ]
+     }
+    ]
+   }
+  },
+  "satellite_rocket": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "rocket",
+   "aliases": [
+    "rocket",
+    "satellite"
+   ],
+   "appearance": [
+    {
+     "if": {
+      "flag": "hl_rocket"
+     },
+     "text": "The silo is empty and scorched; the rocket is gone."
+    },
+    {
+     "text": "A slender rocket stands in the silo, ready to launch."
+    }
+   ],
+   "description": "The payload fairing carries a satellite for the Lambda team."
+  },
+  "confiscated_crate": {
+   "extends": [
+    "scenery",
+    "container"
+   ],
+   "name": "crate of confiscated gear",
+   "aliases": [
+    "crate",
+    "gear",
+    "confiscated gear"
+   ],
+   "tags": [
+    "hl_confiscated"
+   ],
+   "appearance": "A crate of confiscated gear sits by the ladder.",
+   "description": "Your things, dumped in a box by somebody who expected you to be dead.",
+   "contents_text": "In the crate: {contents}.",
+   "empty_text": "It's empty now."
+  },
+  "qe_scientist": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name} peers out of an office doorway."
+  },
+  "big_laser": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "industrial laser",
+   "aliases": [
+    "laser",
+    "gantry"
+   ],
+   "appearance": "A huge industrial laser hangs from a gantry.",
+   "description": "It cuts through steel. It would cut through you faster."
+  },
+  "osprey_wreck": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "Osprey wreck",
+   "aliases": [
+    "osprey",
+    "wreck",
+    "plane"
+   ],
+   "appearance": false,
+   "description": "A V-22 tiltrotor, nose crumpled, still burning."
+  },
+  "minefield": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "minefield",
+   "aliases": [
+    "mines",
+    "minefield",
+    "signs"
+   ],
+   "appearance": "Signs warn: DANGER - MINES.",
+   "description": "Walk where the craters are. They've already gone off."
+  },
+  "airstrike_radio": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "field radio",
+   "aliases": [
+    "radio",
+    "radio post",
+    "field radio"
+   ],
+   "appearance": "A field radio sits on a table in the command tent.",
+   "description": "Tuned to the HECU's artillery net.",
+   "actions": {
+    "use": [
+     {
+      "macro": "hl_airstrike"
+     }
+    ]
+   }
+  },
+  "tank_wreck": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "burning tank",
+   "aliases": [
+    "tank",
+    "abrams"
+   ],
+   "appearance": false,
+   "description": "An M1 Abrams, brewed up."
+  },
+  "lambda_scientist": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name}, a Lambda team scientist, waves you through the checkpoint.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"Freeman! We've been waiting. The satellite delivered its payload; we can open a portal to the border world. But first we need the reactor coolant running.\""
+      ]
+     }
+    ]
+   }
+  },
+  "lambda_scientist_2": {
+   "extends": [
+    "scientist"
+   ],
+   "appearance": "{self.Name} adjusts the long jump harness.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"Take the module. You'll need it where you're going. The jumps there are... large.\""
+      ]
+     }
+    ]
+   }
+  },
+  "coolant_pump": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "coolant pump",
+   "aliases": [
+    "pump",
+    "coolant pump",
+    "switch"
+   ],
+   "appearance": "A coolant pump control panel sits by the waterline.",
+   "description": "PRIMARY COOLANT. Its lamps are red.",
+   "actions": {
+    "use": [
+     {
+      "do": [
+       {
+        "flag": "hl_coolant"
+       },
+       "You start the pump. The water level begins to fall."
+      ]
+     }
+    ]
+   }
+  },
+  "teleport_pad": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "teleport pad",
+   "aliases": [
+    "pad",
+    "teleport",
+    "teleporter"
+   ],
+   "appearance": "A teleport pad glows on the floor.",
+   "description": "Step on it and you're somewhere else. Which somewhere is the question."
+  },
+  "lambda_portal": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "portal",
+   "aliases": [
+    "portal",
+    "rift",
+    "gateway"
+   ],
+   "important": true,
+   "tags": [
+    "lambda_heart",
+    "heart"
+   ],
+   "appearance": "The portal churns in the centre of the chamber, showing another world.",
+   "description": "Green-white light around a hole in the world. On the other side: Xen."
+  },
+  "portal_scientists": {
+   "extends": [
+    "scientist"
+   ],
+   "name": "the Lambda team",
+   "proper": true,
+   "aliases": [
+    "lambda team",
+    "scientists",
+    "team"
+   ],
+   "appearance": "The Lambda team works frantically at the portal consoles.",
+   "actions": {
+    "talk": [
+     {
+      "do": [
+       "\"The portal is stable. We think. Whatever is holding the rift open is on the other side. You have to find it and stop it. Go, Gordon!\""
+      ]
+     }
+    ]
+   }
+  },
+  "xen_researcher": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "dead researcher",
+   "aliases": [
+    "researcher",
+    "body",
+    "corpse"
+   ],
+   "appearance": "A researcher in an HEV suit lies dead on the rock.",
+   "description": "Someone sent through before you. Expeditions, it seems, were not new.",
+   "features": [
+    {
+     "id": "long_jump_note",
+     "hidden": true
+    }
+   ]
+  },
+  "long_jump_note": {
+   "extends": [
+    "portable",
+    "readable"
+   ],
+   "name": "expedition notebook",
+   "aliases": [
+    "notebook",
+    "notes"
+   ],
+   "props": {
+    "text": "Survey notes on Xen: low gravity, healing pools, vast fauna. The last page just says THEY KNOW WE'RE HERE."
+   }
+  },
+  "jump_pad": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "jump pad",
+   "aliases": [
+    "pad",
+    "jump pad"
+   ],
+   "appearance": "An organic jump pad pulses on the rock.",
+   "description": "Step on it, and it flings you across the void.",
+   "actions": {
+    "use": [
+     "You step on the pad. It puffs, and you sail across to the next island and back again. Exhilarating."
+    ]
+   }
+  },
+  "health_charger_xen": {
+   "extends": [
+    "healing_pool"
+   ],
+   "name": "luminous pool",
+   "aliases": [
+    "pool"
+   ]
+  },
+  "healing_crystal": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "healing crystal",
+   "aliases": [
+    "crystal",
+    "crystals",
+    "healing crystal"
+   ],
+   "tags": [
+    "nihilanth_crystal"
+   ],
+   "appearance": "A golden healing crystal glows on its pillar, feeding the Nihilanth.",
+   "description": "While these glow, the Nihilanth heals.",
+   "actions": {
+    "attack": [
+     {
+      "do": [
+       "You shoot the crystal. It cracks, flares, and goes dark, and the Nihilanth screams.",
+       {
+        "destroy": "self"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "holo_instructor": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "holographic instructor",
+   "aliases": [
+    "hologram",
+    "instructor",
+    "scientist"
+   ],
+   "appearance": "A flickering hologram of a balding scientist stands here.",
+   "description": "He gestures at things you are about to do, with great patience.",
+   "actions": {
+    "talk": [
+     "The hologram explains, again, how to crouch."
+    ]
+   }
+  },
+  "training_target": {
+   "extends": [
+    "scenery"
+   ],
+   "name": "paper target",
+   "aliases": [
+    "target"
+   ],
+   "appearance": "A paper target hangs at the end of the range.",
+   "description": "A silhouette with bullseye rings.",
+   "actions": {
+    "attack": [
+     "You put a few rounds through the centre ring. The hologram applauds."
+    ]
+   }
+  },
+  "nihilanth_hl": {
+   "extends": [
+    "nihilanth"
+   ],
+   "important": true,
+   "tags": [
+    "nihilanth",
+    "villain"
+   ],
+   "solve": [
+    "attack healing crystal",
+    "attack healing crystal",
+    "attack healing crystal"
+   ],
+   "profile": {
+    "personality": [
+     "cold"
+    ],
+    "motives": [
+     "hold_rift",
+     "survive",
+     "dominion",
+     "power"
+    ],
+    "motive_text": "hold the rift open, and never again be caged",
+    "goals": [
+     "keep the rift open",
+     "end the last of the humans who came"
+    ],
+    "backstory": "Its voice crawls through your skull: \"...last of them... you are the last... others came... others die...\"",
+    "roles": [
+     "antagonist"
+    ],
+    "knows": [
+     "xen"
+    ],
+    "greet": [
+     "The Nihilanth's voice rolls through your mind: \"...Freeman... you come... you will not leave...\""
+    ],
+    "confront": [
+     "\"...you are man... and I am the last...\" The words fall apart in your head."
+    ],
+    "epilogue": ""
+   },
+   "on_turn": [
+    {
+     "if": {
+      "here": "tag:nihilanth_crystal"
+     },
+     "do": [
+      {
+       "if": "self.health < self.max_health",
+       "then": [
+        {
+         "add": {
+          "health": "=min(15, self.max_health - self.health)"
+         }
+        },
+        {
+         "say": "The healing crystals pulse; the Nihilanth's wounds close. ({self.health}/{self.max_health})",
+         "style": "dim"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "on_death": [
+    {
+     "flag": "hl_nihilanth_dead"
+    },
+    {
+     "say": "Light pours out of the Nihilanth's split skull. Every portal in the chamber flares, and the world tilts away from under you...",
+     "style": "story"
+    },
+    {
+     "teleport": "room:hl/c5a1_gman"
+    }
+   ]
+  },
+  "gman_hl": {
+   "extends": [
+    "gman"
+   ],
+   "profile": {
+    "personality": [
+     "cold",
+     "cunning"
+    ],
+    "motives": [
+     "employer",
+     "order",
+     "control"
+    ],
+    "motive_text": "see that certain events unfold... according to plan",
+    "goals": [
+     "recruit a promising individual",
+     "keep his employers satisfied"
+    ],
+    "backstory": "He smiles thinly. \"Who I am is... not important. What matters is what you do... next.\"",
+    "roles": [
+     "informant",
+     "giver",
+     "antagonist"
+    ],
+    "knows": [
+     "xen",
+     "lambda",
+     "gman"
+    ],
+    "greet": [
+     "The man in the suit straightens his tie and regards you with interest."
+    ],
+    "epilogue": "",
+    "menu": false
+   },
+   "actions": {
+    "talk": [
+     {
+      "if": {
+       "all": [
+        {
+         "flag": "hl_nihilanth_dead"
+        },
+        {
+         "flag": "story_resolved"
+        }
+       ]
+      },
+      "do": [
+       {
+        "choice": {
+         "prompt": "\"Mister Freeman,\" the man in the suit says, with that odd rhythm. \"You have done... rather well. My employers have authorised me to offer you a job. I'd advise you... to accept. The alternative is... a battle you have no chance of winning.\"",
+         "options": [
+          {
+           "text": "Accept the offer.",
+           "do": [
+            {
+             "end_game": "\"Excellent,\" he says, and straightens his tie. \"Time to... choose. I'll see you... up ahead.\" The world goes dark around you, and you wait for the next job.",
+             "win": true
+            }
+           ]
+          },
+          {
+           "text": "Refuse.",
+           "do": [
+            {
+             "end_game": "\"Wise, or not... we shall see.\" He vanishes. You are standing in a cavern surrounded by alien grunts, every one of them turning toward you.",
+             "win": false
+            }
+           ]
+          }
+         ],
+         "cancel": "He waits. He's very good at waiting."
+        }
+       }
+      ]
+     },
+     {
+      "do": [
+       "He adjusts his tie and regards you with polite interest. \"Not yet, {player.name}. You have... unfinished business. Not... yet.\" Behind you, a way back opens."
+      ]
+     }
+    ]
+   }
+  },
+  "crowbar": {
+   "_patch": true,
+   "important": true
+  },
+  "hev_suit": {
+   "_patch": true,
+   "important": true
+  },
+  "long_jump": {
+   "_patch": true,
+   "important": true
+  }
+ }
+}

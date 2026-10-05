@@ -1,0 +1,125 @@
+{
+ "rooms": {
+  "bs/ba_xen1_arrival": {
+   "name": "Xen: Relay Island",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_teleport1_lab",
+     "dir": "out",
+     "distance": 1,
+     "back": false,
+     "name": "portal home"
+    },
+    {
+     "to": "bs/ba_xen2_pools",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "xen_relay",
+    "xen_light",
+    "houndeye"
+   ],
+   "description": "You land on a floating island under a violet sky. A cluster of light-stalks shrinks from you, and in the middle of the island the Xen relay crystal waits for its beacon.",
+   "props": {
+    "map": "ba_xen1",
+    "chapter": "Focal Point"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "xen"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9,
+     "name": "drifting rock"
+    }
+   ]
+  },
+  "bs/ba_xen2_pools": {
+   "name": "Xen: Pools and Jump Pads",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_xen1_arrival",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_xen3_focal",
+     "dir": "up",
+     "distance": 1,
+     "name": "jump pad",
+     "aliases": [
+      "pad",
+      "jump pad"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "healing_pool",
+    "alien_grunt",
+    "xen_glyph"
+   ],
+   "description": "Pools of glowing water and organic jump pads that launch you across the void. Something big moves on a far island.",
+   "props": {
+    "map": "ba_xen3",
+    "chapter": "Focal Point"
+   }
+  },
+  "bs/ba_xen3_focal": {
+   "name": "Xen: Focal Point",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_xen2_pools",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_power1_hall",
+     "dir": "in",
+     "distance": 1,
+     "name": "flickering portal",
+     "aliases": [
+      "portal"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "controller",
+    "battery"
+   ],
+   "description": "A high spire of rock where the relay's signal gathers. You can see the whole archipelago from here, and the Nihilanth's mountain far away. A portal back to Black Mesa flickers at the edge.",
+   "aliases": [
+    "focal point"
+   ],
+   "props": {
+    "map": "ba_xen6",
+    "chapter": "Focal Point"
+   }
+  }
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "rooms": {
+  "hl/c5a1_gman": {
+   "name": "Between Worlds",
+   "tags": [
+    "indoor",
+    "void",
+    "story_skip"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a1_arrival",
+     "dir": "out",
+     "distance": 1,
+     "name": "the way back",
+     "aliases": [
+      "back",
+      "way back"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "gman_hl"
+   ],
+   "description": "Darkness, then flickers of places: Xen, Black Mesa, somewhere else. And the man in the suit, standing in front of you, completely at ease.",
+   "aliases": [
+    "void"
+   ],
+   "props": {
+    "map": "c5a1",
+    "chapter": "Endgame"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "ENDGAME",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

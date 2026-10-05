@@ -1,0 +1,463 @@
+{
+ "grammar": {
+  "bm_sector": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E",
+   "F",
+   "G"
+  ],
+  "bm_num": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "7",
+   "9",
+   "12",
+   "14",
+   "21"
+  ],
+  "bm_surname": [
+   "Abrams",
+   "Cross",
+   "Green",
+   "Harding",
+   "Keller",
+   "Lorenz",
+   "Marsh",
+   "Okada",
+   "Peralta",
+   "Quill",
+   "Ritter",
+   "Sato",
+   "Thorne",
+   "Underwood",
+   "Vasquez",
+   "Wexler",
+   "Yates",
+   "Zhou",
+   "Pagliacci",
+   "Brannigan"
+  ],
+  "bm_department": [
+   "Anomalous Materials",
+   "Advanced Biology",
+   "High Energy Research",
+   "Lambda Complex administration",
+   "Hazardous Environment testing",
+   "Applied Physics",
+   "Biological Research",
+   "Materials Science"
+  ],
+  "bm_lab_kind": [
+   "Spectroscopy",
+   "Biology",
+   "Laser",
+   "Isotope",
+   "Teleportation",
+   "Materials"
+  ],
+  "bm_lab_desc": [
+   "Lab benches crowded with oscilloscopes and coffee cups. A sample tray lies smashed on the floor. #bm_office_detail.cap#.",
+   "A clean room gone filthy: a centrifuge spins down, a fume hood whines and a whiteboard is covered in equations and a frantic X.",
+   "A long lab under strip lights, with glass-fronted cabinets and a sign that reads AUTHORISED PERSONNEL ONLY."
+  ],
+  "bm_office_desc": [
+   "A corridor of offices with nameplates and frosted glass. Ceiling panels hang down and a light flickers. #bm_office_detail.cap#.",
+   "An open-plan office in beige and grey. Papers drift across the carpet in the breeze of a broken vent. #bm_office_detail.cap#."
+  ],
+  "bm_office_detail": [
+   "a phone on a desk rings and rings",
+   "a fluorescent tube buzzes and stutters",
+   "the sprinklers have been going for hours",
+   "a coffee pot has boiled dry on its hotplate",
+   "a radio somewhere plays muzak to nobody",
+   "there are scorch marks where something warped in"
+  ],
+  "bm_maint_desc": [
+   "A narrow service corridor of exposed pipes and conduit, lit by caged red lamps. Steam vents from a cracked valve.",
+   "Concrete walls stencilled with sector codes, a catwalk over a sump, and a lot of noise from machinery you can't see.",
+   "A cramped access way where ladders and pipe runs meet. Somewhere water drips in a steady, maddening rhythm."
+  ],
+  "bm_card_colour": [
+   "blue",
+   "red",
+   "yellow",
+   "green",
+   "orange"
+  ],
+  "ammo_kind": [
+   "box of 9mm rounds",
+   "box of buckshot",
+   "pack of .357 rounds",
+   "box of MP5 magazines",
+   "crate of crossbow bolts",
+   "box of uranium cells",
+   "pack of rifle grenades"
+  ],
+  "crate_kind": [
+   "supply crate",
+   "wooden crate",
+   "equipment crate"
+  ],
+  "memo_kind": [
+   "memo",
+   "clipboard",
+   "printout",
+   "staff memo"
+  ],
+  "bm_terminal_text": [
+   "SYSTEM ERROR: CONTACT IT SUPPORT. IT SUPPORT HAS BEEN CONTACTED. IT SUPPORT IS NOT RESPONDING.",
+   "SECURITY ADVISORY: ALL PERSONNEL REPORT TO THE NEAREST SURFACE EXIT. THIS IS NOT A DRILL.",
+   "Inventory: 1 x sample cart, 1 x crystal sample (GG-3883). Notes: purity unprecedented. Handle with care."
+  ],
+  "scientist_chatter": [
+   "We have to get to the surface! Someone must have called for help by now.",
+   "I knew this would happen. I said it, at the meeting, and nobody listened.",
+   "Have you seen my colleague? Short, glasses, terrified? No? Of course not.",
+   "If you're going that way, I'm not."
+  ],
+  "guard_chatter": [
+   "Stay behind me. Or in front of me. Actually, just stay close.",
+   "Whatever you do, don't go back the way I came.",
+   "I'm supposed to be on a break right now.",
+   "Catch me later, I'll buy you a beer."
+  ],
+  "hecu_rank": [
+   "Private",
+   "Corporal",
+   "Sergeant",
+   "Lance Corporal"
+  ],
+  "hecu_surname": [
+   "Brady",
+   "Cutter",
+   "Diaz",
+   "Fisk",
+   "Garrity",
+   "Hollis",
+   "Kowalski",
+   "Mendez",
+   "Nash",
+   "Price",
+   "Reyes",
+   "Stone"
+  ],
+  "hecu_chatter": [
+   "Stay frosty, Corporal.",
+   "Where's that Osprey? Anyone? Anyone?",
+   "Black Ops? Here? That's not good.",
+   "I didn't sign up for aliens.",
+   "Watch your corners."
+  ],
+  "surface_name": [
+   "#canyon_adj.title# Canyon",
+   "Mesa Ridge",
+   "Dry Wash",
+   "#canyon_adj.title# Overlook",
+   "Access Road #bm_num#"
+  ],
+  "canyon_adj": [
+   "red",
+   "dusty",
+   "sun-baked",
+   "narrow",
+   "windswept",
+   "scrubby"
+  ],
+  "surface_desc": [
+   "Red rock walls rise on either side of a dusty wash. The sky is an enormous, merciless blue. Somewhere, helicopters.",
+   "A scrubby mesa top with a view across the desert to the facility's chimneys and dishes. Smoke rises from several of them.",
+   "A dirt road winding between boulders, tyre tracks everywhere, and the smell of cordite."
+  ],
+  "camp_kind": [
+   "Encampment",
+   "Supply Depot",
+   "Command Post",
+   "Motor Pool"
+  ],
+  "camp_desc": [
+   "Olive-drab tents, crates of ammunition and a radio table. Somebody left a pot of coffee on a field stove.",
+   "Sandbags, razor wire and a parked humvee. A whiteboard lists grid references and the word CONTAIN, underlined."
+  ],
+  "xen_name": [
+   "Floating Island",
+   "Xen Outcrop",
+   "Crystal Shelf",
+   "Drifting Rock",
+   "Violet Hollow"
+  ],
+  "xen_desc": [
+   "A chunk of rock hangs in a swirling green-violet void, other islands drifting at impossible distances. Gravity feels negotiable.",
+   "Spongy alien ground crusted with glowing crystals. Below, there is no below.",
+   "A cliff of pale, porous rock where light-stalks sway. Something enormous moves in the far haze."
+  ],
+  "racex_desc": [
+   "Walls of glossy organic resin, ribbed like the inside of an animal. Pods twitch and drip.",
+   "A cavern grown rather than built, lit by bioluminescent veins that pulse in time with something huge."
+  ]
+ },
+ "lore": {
+  "bm_facility": {
+   "title": "The Black Mesa Research Facility",
+   "about": [
+    "tag:blackmesa"
+   ],
+   "tags": [
+    "blackmesa",
+    "history",
+    "security"
+   ],
+   "text": "Black Mesa is a decommissioned missile base in the New Mexico desert, rebuilt as a sprawling research complex. Most of it is underground, sector after sector, connected by an automated tram system."
+  },
+  "bm_hev": {
+   "title": "The HEV suit",
+   "about": [
+    "def:hev_suit"
+   ],
+   "tags": [
+    "science",
+    "blackmesa",
+    "hazard"
+   ],
+   "text": "The Hazardous Environment suit was designed for work around radiation and toxic materials. The Mark IV adds power armour, an injector system and a talkative computer. Nobody designed it for combat. It turned out to be very good at it anyway."
+  },
+  "bm_xen": {
+   "title": "Xen",
+   "about": [
+    "tag:xen"
+   ],
+   "tags": [
+    "xen",
+    "science",
+    "lambda"
+   ],
+   "text": "Black Mesa's teleportation research had made contact with another world: a borderworld scientists called Xen, made of floating islands, strange fauna and crystals. Samples were brought back. Some of them were very pure."
+  },
+  "bm_lambda": {
+   "title": "The Lambda Complex",
+   "about": [
+    "tag:blackmesa"
+   ],
+   "tags": [
+    "lambda",
+    "science",
+    "blackmesa"
+   ],
+   "text": "The Lambda Complex is Black Mesa's teleportation research centre, built around a reactor big enough to hold a doorway between worlds open."
+  },
+  "bm_hecu": {
+   "title": "The HECU",
+   "about": [
+    "tag:military"
+   ],
+   "tags": [
+    "hecu",
+    "military",
+    "security"
+   ],
+   "text": "The Hazardous Environment Combat Unit is a Marine Corps formation trained for chemical, biological and other unusual battlefields. Their orders at Black Mesa were to contain the incident. Their orders said nothing about survivors."
+  },
+  "bm_black_ops": {
+   "title": "The Black Ops",
+   "about": [
+    "mod:hl_core"
+   ],
+   "tags": [
+    "hecu",
+    "military",
+    "black_ops"
+   ],
+   "chance": 0.8,
+   "text": "Black-clad operatives arrived after the Marines: silent, acrobatic, answering to nobody anyone can name. They didn't come to contain. They came to erase."
+  },
+  "bm_tram": {
+   "title": "The tram system",
+   "about": [
+    "tag:transit"
+   ],
+   "tags": [
+    "blackmesa",
+    "transit",
+    "security"
+   ],
+   "text": "The Black Mesa Transit System runs automated trams between sectors. Its recorded announcer is cheerful about everything, including the facility's mandatory radiation safety training."
+  },
+  "bm_headcrab": {
+   "title": "Headcrabs",
+   "about": [
+    "def:headcrab"
+   ],
+   "tags": [
+    "xen",
+    "science"
+   ],
+   "text": "Headcrabs are Xen parasites. They leap for the head of a host and take over its nervous system. The result is a zombie. The host may still be aware. Nobody wants to think about that."
+  },
+  "bm_vortigaunt": {
+   "title": "Vortigaunts",
+   "about": [
+    "def:vortigaunt"
+   ],
+   "tags": [
+    "xen",
+    "science"
+   ],
+   "text": "The vortigaunts wear collars and shackles. Whoever is sending them through, they are not volunteers."
+  },
+  "bm_racex": {
+   "title": "Race X",
+   "about": [
+    "tag:racex"
+   ],
+   "tags": [
+    "racex",
+    "xen",
+    "hecu"
+   ],
+   "chance": 0.9,
+   "text": "Not everything coming through the rifts is from Xen. A second alien race - shock troopers, pit drones, voltigores - is using the chaos to invade. The soldiers started calling them Race X."
+  }
+ },
+ "rules": {
+  "hl_combat_hint": {
+   "on": "start",
+   "if": {
+    "mod": "hl_core"
+   },
+   "do": [
+    {
+     "say": "(Black Mesa is dangerous. 'attack <enemy> [with <weapon>]', 'status' for your health and suit, and 'use' chargers and batteries.)",
+     "style": "dim"
+    }
+   ]
+  }
+ },
+ "verbs": {
+  "turn": {
+   "aliases": [
+    "spin",
+    "rotate",
+    "twist",
+    "crank"
+   ],
+   "help": "turn <thing>",
+   "default": [
+    "Turning {target} achieves nothing."
+   ]
+  },
+  "where": {
+   "aliases": [
+    "chapter",
+    "mapinfo",
+    "which map",
+    "location"
+   ],
+   "target": "none",
+   "time": 0,
+   "help": "where",
+   "default": [
+    {
+     "if": {
+      "prop": "map",
+      "of": "room",
+      "ne": ""
+     },
+     "then": [
+      "{room.name}: {room.chapter} (map {room.map})."
+     ],
+     "else": [
+      "{room.name}. Not on any map you know."
+     ]
+    }
+   ]
+  },
+  "suit": {
+   "aliases": [
+    "hev",
+    "armour",
+    "armor"
+   ],
+   "target": "none",
+   "time": 0,
+   "help": "suit",
+   "default": [
+    "Health {player.health}/{player.max_health}. Suit {player.suit}/{player.max_suit}."
+   ]
+  }
+ },
+ "macros": {
+  "creature_attacks": {
+   "do": [
+    {
+     "let": {
+      "hit": "=max(0, self.damage + rand(-2, 2) - player.armor - best(player, 'armor'))"
+     }
+    },
+    {
+     "let": {
+      "soak": "=min(player.suit, int(hit * 2 / 3))"
+     }
+    },
+    {
+     "if": {
+      "local": "hit",
+      "gt": 0
+     },
+     "then": [
+      {
+       "add": {
+        "suit": "=-soak",
+        "health": "=-(hit - soak)"
+       },
+       "on": "player"
+      },
+      {
+       "if": {
+        "local": "soak",
+        "gt": 0
+       },
+       "then": [
+        {
+         "say": "{self.The} {self.attack_text} you for {hit} damage; your suit soaks up {soak}. (Health {player.health}, suit {player.suit})",
+         "style": "warn"
+        }
+       ],
+       "else": [
+        {
+         "say": "{self.The} {self.attack_text} you for {hit} damage. (Health {player.health})",
+         "style": "warn"
+        }
+       ]
+      }
+     ],
+     "else": [
+      "{self.The} {self.attack_text} you, but you avoid harm."
+     ]
+    },
+    {
+     "macro": "check_player_death"
+    }
+   ]
+  },
+  "hl_suit_charge": {
+   "do": [
+    {
+     "let": {
+      "gain": "=min(amount, player.max_suit - player.suit)"
+     }
+    },
+    {
+     "add": {
+      "suit": "=gain"
+     },
+     "on": "player"
+    }
+   ]
+  }
+ }
+}

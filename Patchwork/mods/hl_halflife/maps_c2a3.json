@@ -1,0 +1,223 @@
+{
+ "rooms": {
+  "hl/c2a3_tank": {
+   "name": "Aquatic Research Tank",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "water",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a2h_terminus",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a3a_cage",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a3b_labs",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "ichthyosaur",
+    "medkit"
+   ],
+   "description": "An enormous water tank with a catwalk across it and a submerged cage. Something huge circles in the water: an ichthyosaur, released from its pen.",
+   "aliases": [
+    "tank"
+   ],
+   "props": {
+    "map": "c2a3",
+    "chapter": "Apprehension"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "APPREHENSION",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c2a3a_cage": {
+   "name": "Submerged Cage and Research Platform",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "water",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a3_tank",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "crossbow",
+    "dead_scientist"
+   ],
+   "description": "A research platform over the tank with a shark cage hanging by a cable. Lab equipment and fish food on the bench. Somebody was very brave or very stupid here.",
+   "props": {
+    "map": "c2a3a",
+    "chapter": "Apprehension"
+   }
+  },
+  "hl/c2a3b_labs": {
+   "name": "Aquatic Research Laboratories",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "military",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a3_tank",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a3d_maintenance",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a3e_ambush",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "vending_machine",
+    "bm_terminal"
+   ],
+   "description": "Labs full of empty aquariums, sample freezers and a vending machine. Marines are sweeping the corridors.",
+   "props": {
+    "map": "c2a3b",
+    "chapter": "Apprehension"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "lab"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c2a3d_maintenance": {
+   "name": "Water Treatment Maintenance",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "water",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a3b_labs",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "bullsquid",
+    "leech",
+    "supply_crate"
+   ],
+   "description": "Pump rooms and settling tanks, where bullsquids bob in the scum and leeches swirl in the deep water.",
+   "props": {
+    "map": "c2a3d",
+    "chapter": "Apprehension"
+   }
+  },
+  "hl/c2a3e_ambush": {
+   "name": "Dark Corridor",
+   "tags": [
+    "blackmesa",
+    "military",
+    "indoor",
+    "story_skip",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a3b_labs",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a4_compactor",
+     "dir": "down",
+     "distance": 1,
+     "name": "garbage chute",
+     "aliases": [
+      "chute"
+     ],
+     "back": false
+    }
+   ],
+   "features": [],
+   "description": "A dark corridor that ends at a door. As you reach for it the lights snap on, and soldiers step out of the shadows on every side.",
+   "aliases": [
+    "corridor"
+   ],
+   "props": {
+    "map": "c2a3e",
+    "chapter": "Apprehension"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "not": {
+       "flag": "hl_captured"
+      }
+     },
+     "then": [
+      {
+       "macro": "hl_capture"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

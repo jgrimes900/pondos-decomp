@@ -16,6 +16,7 @@ mods and:
 """
 
 import copy
+import fnmatch
 
 from .logic import Interpreter
 from .story import StoryBinder, StoryPlanner
@@ -25,6 +26,17 @@ from .world import World
 
 class GenerationError(Exception):
     pass
+
+
+def expand_room_list(rooms, all_rooms):
+    """An area's room list may use glob patterns: "hl/c1a0*" or "hl/*"."""
+    out = []
+    for r in _as_list(rooms):
+        if any(ch in r for ch in "*?["):
+            out.extend(k for k in sorted(all_rooms) if fnmatch.fnmatchcase(k, r) and k not in out)
+        elif r not in out:
+            out.append(r)
+    return out
 
 
 def _as_list(v):
@@ -46,17 +58,19 @@ SIZES = {"small": 0.7, "medium": 1.4, "large": 2.2, "huge": 3.2}
 
 
 class Generator:
-    def __init__(self, registry, seed=None, player_name=None, size="medium"):
+    def __init__(self, registry, seed=None, player_name=None, size="medium", start=None):
         self.size = SIZES.get(size, size if isinstance(size, (int, float)) else 1.0)
         self.reg = registry
         self.w = World(registry, seed)
         self.i = Interpreter(self.w)
         self.rng = self.w.rng
         self.entries = {}         # area id -> (room uid, exit) of the way into it along the spine
+        self.forced_start = start
         self.player_name = player_name
         self.log = []
         self.region_use = {}
         self.filler = []          # uids of generated filler rooms
+        self.expansion = []       # uids of rooms grown from expansion points (behind doors etc.)
         self.placed_areas = []    # area ids in placement order
 
     # ------------------------------------------------------------------
@@ -131,6 +145,8 @@ class Generator:
         return chosen
 
     def free_dirs(self, room):
+        if "story_skip" in room.tags:
+            return []   # a scripted scene (an opening, an ending) never grows new exits
         return [d for d in self.allowed_dirs(room) if d not in self.w.used_dirs(room)]
 
     # ------------------------------------------------------------------
@@ -141,7 +157,7 @@ class Generator:
         rooms = adef.get("rooms") or {}
         if isinstance(rooms, dict):
             return ["%s/%s" % (area_id, rid) for rid in rooms]
-        return list(rooms)
+        return expand_room_list(rooms, self.reg["rooms"])
 
     def resolve_room_ref(self, area_id, ref):
         local = "%s/%s" % (area_id, ref)
@@ -187,7 +203,7 @@ class Generator:
                 if any(x["to"] == dest.uid and x.get("dir") == ex.get("dir") for x in ent.exits):
                     continue
                 extra = {k: ex[k] for k in ("name", "aliases", "description", "if", "blocked", "hidden",
-                                            "visible_if", "show_dest", "on_use") if k in ex}
+                                            "visible_if", "show_dest", "on_use", "solve") if k in ex}
                 self.w.add_exit(ent, dest, ex.get("dir"), ex.get("distance", 1), **extra)
                 if not ex.get("oneway") and ex.get("back") is not False:
                     back = ex.get("back") or self.opposite(ex.get("dir"))
@@ -249,7 +265,7 @@ class Generator:
         return _weighted(self.rng, best, lambda r: (scores[r] + 1) ** 2 * self.reg["regions"][r].get("weight", 1)
                          / (1 + 0.5 * self.region_use.get(r, 0)))
 
-    def make_filler(self, region_id, stage):
+    def make_filler(self, region_id, stage, expansion=False):
         region = self.reg["regions"][region_id]
         templates = region.get("rooms") or []
         use = self.region_use.setdefault(("tpl", region_id), {})
@@ -289,7 +305,7 @@ class Generator:
         for spec in region.get("features") or []:
             self.w.spawn_spec(spec, ent)
         self.region_use[region_id] = self.region_use.get(region_id, 0) + 1
-        self.filler.append(ent.uid)
+        (self.expansion if expansion else self.filler).append(ent.uid)
         return ent
 
     def region_distance(self, region_id):
@@ -370,6 +386,7 @@ class Generator:
 
         self.place_side_areas(len(spine))
         self.add_branches_and_loops()
+        self.build_expansions()
         self.create_player(start_area)
         self.populate()
         StoryBinder(self, planner).bind()
@@ -408,7 +425,7 @@ class Generator:
             adef = areas[area_id]
             max_stage = max(0, spine_len - 1)
             want = adef.get("stage")
-            pool = [w.get(u) for u in self.filler] or [r for r in w.rooms()]
+            pool = [w.get(u) for u in self.filler] or [r for r in w.rooms() if "story_skip" not in r.tags]
             if want is not None:
                 pool = [r for r in pool if r.stage <= int(want)] or pool
             pool = [r for r in pool if r.stage <= max_stage and self.free_dirs(r)] or pool
@@ -450,6 +467,81 @@ class Generator:
             prev = last
         self.note("grew region '%s' off %s for a story element" % (rid, anchor.name))
         return last
+
+    # ------------------------------------------------------------------
+    # Expansion points: generated sections behind locked doors, off open ground...
+    # ------------------------------------------------------------------
+    def build_expansions(self):
+        w = self.w
+        for room in sorted(w.rooms(), key=lambda r: r.uid):
+            if room.uid in self.filler or room.uid in self.expansion:
+                continue
+            for spec in _as_list(w.def_of(room).get("expansions")):
+                if self.rng.random() < float(spec.get("chance", 1)):
+                    self.expand_from(room, spec)
+
+    def expand_from(self, room, spec):
+        tags = set(_as_list(spec.get("tags")))
+        regs = [r for r in sorted(self.regions())
+                if tags & (set(_as_list(self.reg["regions"][r].get("tags"))) | set(_as_list(self.reg["regions"][r].get("connects"))))]
+        if not regs:
+            return None
+        score = lambda r: 1 + len(tags & set(_as_list(self.reg["regions"][r].get("tags"))))
+        rid = _weighted(self.rng, regs, lambda r: score(r) ** 2 * self.reg["regions"][r].get("weight", 1))
+        n = max(1, int(round(self.rng_range(spec.get("length"), [2, 4]) * self.size)))
+        first = self.make_filler(rid, room.stage, expansion=True)
+        out_extra = {k: spec[k] for k in ("name", "aliases", "description") if k in spec}
+        self.link(room, first, self.rng_range(spec.get("distance"), [1, 2]), prefer=spec.get("dir"), out_extra=out_extra)
+        exit_ = next(ex for ex in reversed(room.exits) if ex["to"] == first.uid)
+        if spec.get("door"):
+            self.make_door(room, exit_, spec["door"])
+        nodes = [first]
+        for _ in range(n - 1):
+            anchors = [x for x in nodes if self.free_dirs(x)] or nodes
+            anchor = self.rng.choice(anchors)
+            rid2 = rid if self.rng.random() < 0.75 else _weighted(self.rng, regs, score)
+            new = self.make_filler(rid2, room.stage, expansion=True)
+            self.link(anchor, new, self.region_distance(rid2))
+            nodes.append(new)
+        if len(nodes) > 3 and self.rng.random() < 0.5:
+            a, b = self.rng.sample(nodes, 2)
+            if not any(x["to"] == b.uid for x in a.exits) and self.free_dirs(a) and self.free_dirs(b):
+                self.link(a, b, self.region_distance(b.region))
+        return nodes
+
+    def make_door(self, room, exit_, door):
+        """A door on an expansion exit, opened by anything that affords what it needs."""
+        w = self.w
+        if isinstance(door, str):
+            od = self.reg["obstacles"].get(door) or {}
+        else:
+            od = door
+        spec = copy.deepcopy(od.get("feature") or {"name": "door"})
+        spec["extends"] = _as_list(spec.get("extends")) + ["scenery"]
+        spec["tags"] = _as_list(spec.get("tags")) + ["expansion_door"]
+        spec["props"] = dict(spec.get("props") or {}, open=False, locked=True)
+        e = w.spawn_spec(spec, room)[0]
+        needs = _as_list(od.get("needs"))
+        ctx = self.i.ctx(self_ent=e)
+        opened = [{"set": {"open": True, "locked": False}},
+                  self.i.render(od.get("open_text") or "{self.The} opens.", ctx)]
+        locked = self.i.render(od.get("locked_text") or "{self.The} won't open.", ctx)
+        already = {"if": {"prop": "open"}, "do": [self.i.render(od.get("open_already") or "{self.The} is already open.", ctx)]}
+        if needs:
+            holds = {"has": {"affords": needs}}
+            for verb in ["open", "unlock", "use", "push"] + _as_list(od.get("verbs")):
+                w.add_action(e, verb, already, first=False)
+                w.add_action(e, verb, {"if": holds, "do": opened}, first=False)
+                w.add_action(e, verb, {"do": [locked]}, first=False)
+            for verb in ["use", "put"] + _as_list(od.get("verbs")):
+                w.add_action(e, verb + "_with", {"if": {"is": {"affords": needs}, "of": "target"}, "do": opened}, first=False)
+        else:
+            for verb in ["open", "use", "push"]:
+                w.add_action(e, verb, already, first=False)
+                w.add_action(e, verb, {"do": opened}, first=False)
+        exit_["if"] = {"prop": "open", "of": "uid:" + e.uid}
+        exit_["blocked"] = self.i.render(od.get("blocked") or "{self.The} is shut.", ctx)
+        return e
 
     def add_branches_and_loops(self):
         w = self.w
@@ -508,6 +600,25 @@ class Generator:
         if start is None:
             start = getattr(self, "sandbox_start", None) or self.rooms_with_stage(0)[0]
         w.place(player, start)
+        # A starting area can say who you are and what you carry (one game, several protagonists).
+        adef = self.reg["areas"].get(start_area, {}) if start_area else {}
+        if adef.get("player"):
+            pd = adef["player"]
+            if pd.get("name"):
+                player.name = w.grammar.expand(pd["name"])
+                player.article = "" if pd.get("proper", True) else None
+                w.refresh_aliases(player, {"aliases": ["me", "myself", "self"] + _as_list(pd.get("aliases"))})
+            for key in ("description",):
+                if pd.get(key):
+                    player.texts[key] = pd[key]
+            player.props.update({k: w._rand_value(v) for k, v in (pd.get("props") or {}).items()})
+            for t in _as_list(pd.get("tags")):
+                if t not in player.tags:
+                    player.tags.append(t)
+            if pd.get("player_name") and not self.player_name:
+                w.vars["player_name"] = pd["player_name"]
+        for spec in _as_list(adef.get("kit")):
+            w.spawn_spec(spec, player)
 
     def populate(self):
         """Scatter wandering features and encounters into generated rooms."""
@@ -520,7 +631,7 @@ class Generator:
         def suits(def_key, room):
             hab = _as_list(w.resolve_def(def_key).get("habitat"))
             return not hab or bool(set(hab) & set(room.tags))
-        targets = [w.get(u) for u in self.filler]
+        targets = [w.get(u) for u in self.filler + self.expansion]
         for area_id, info in w.areas.items():
             if self.reg["areas"].get(area_id, {}).get("allow_scatter"):
                 targets.extend(w.get(u) for u in info["rooms"])
@@ -578,7 +689,7 @@ class Generator:
             len([e for e in w.entities.values() if not e.is_room])))
 
 
-def generate(registry, seed=None, player_name=None, size="medium"):
-    gen = Generator(registry, seed, player_name, size)
+def generate(registry, seed=None, player_name=None, size="medium", start=None):
+    gen = Generator(registry, seed, player_name, size, start)
     world = gen.generate()
     return world, gen.log

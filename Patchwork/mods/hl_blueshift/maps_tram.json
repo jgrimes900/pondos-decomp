@@ -1,0 +1,109 @@
+{
+ "rooms": {
+  "bs/ba_tram1": {
+   "name": "Tram: Living Quarters Outbound",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "tram"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_tram2",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "bs_announcer"
+   ],
+   "description": "Another morning on the Black Mesa Transit System. You are Barney Calhoun, security, riding in from the dormitories with your coffee going cold. The announcer recites the safety rules you could recite yourself. Out of the window, a crew argues with a broken-down elevator.",
+   "aliases": [
+    "tram"
+   ],
+   "props": {
+    "map": "ba_tram1",
+    "chapter": "Living Quarters Outbound"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "LIVING QUARTERS OUTBOUND",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "bs/ba_tram2": {
+   "name": "Tram Ride: Sector Sweep",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_tram1",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "bs/ba_tram3",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "freeman_tram",
+    "gman_glimpse_bs"
+   ],
+   "description": "The tram swings past sectors you know by heart. On a parallel line another tram goes by with a bespectacled man in it, reading a magazine, late for something. Further on, a scientist on a gantry seems to be pointing at a man in a blue suit. Then the tram jolts to a halt in a tunnel, and starts again.",
+   "props": {
+    "map": "ba_tram2",
+    "chapter": "Living Quarters Outbound"
+   }
+  },
+  "bs/ba_tram3": {
+   "name": "Security Station Platform",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_tram2",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "bs/ba_security1_lobby",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "platform_guard_bs"
+   ],
+   "description": "The tram pulls in at a platform beside the Sector C security station. A colleague leans out of the door: you're late, Calhoun, and they need you on the elevator in Sector G.",
+   "aliases": [
+    "platform"
+   ],
+   "props": {
+    "map": "ba_tram3",
+    "chapter": "Living Quarters Outbound"
+   }
+  }
+ }
+}

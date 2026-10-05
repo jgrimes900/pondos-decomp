@@ -1,0 +1,433 @@
+{
+ "rooms": {
+  "of/of1a1_staging": {
+   "name": "HECU Staging Room",
+   "tags": [
+    "blackmesa",
+    "military",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of0a2_corridor",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of1a1_lockers",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of1a2_trench",
+     "dir": "up",
+     "distance": 1,
+     "name": "stairs to the surface",
+     "aliases": [
+      "stairs",
+      "surface"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "of_radio_set",
+    "ammo_box",
+    "supply_crate"
+   ],
+   "description": "A storage room the Marines turned into a staging post: ammo crates, a radio on a folding table, a map pinned to the wall with red pins all over Sector C. The radio crackles: all units, we are pulling out. Repeat, we are pulling out.",
+   "props": {
+    "map": "of1a1",
+    "chapter": "We Are Pulling Out"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "WE ARE PULLING OUT",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "of/of1a1_lockers": {
+   "name": "Maintenance Lockers",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of1a1_staging",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "pipe_wrench",
+    "suit_charger_pcv"
+   ],
+   "description": "A row of maintenance lockers, one bent open. On the floor, a big pipe wrench.",
+   "props": {
+    "map": "of1a1",
+    "chapter": "We Are Pulling Out"
+   },
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "of/of1a2_trench": {
+   "name": "Desert Trenches",
+   "tags": [
+    "blackmesa",
+    "military",
+    "surface",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "of/of1a1_staging",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of1a3_lz",
+     "dir": "north",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "houndeye",
+    "houndeye",
+    "dead_marine",
+    "grenade"
+   ],
+   "description": "Back out in the sun. A network of sandbagged trenches runs across the desert toward a landing zone; dead Marines and dead aliens share the sand. A houndeye pack yips somewhere over the berm.",
+   "props": {
+    "map": "of1a2",
+    "chapter": "We Are Pulling Out"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "surface",
+      "military"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  },
+  "of/of1a3_lz": {
+   "name": "Evacuation Landing Zone",
+   "tags": [
+    "blackmesa",
+    "military",
+    "surface",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "of/of1a2_trench",
+     "dir": "south",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "of/of1a4_cliffs",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "dead_marine",
+    "ammo_box"
+   ],
+   "description": "The landing zone, a flat shelf of rock above the canyon. The last Osprey is lifting off without you, ramp closing. As you watch, an alien flier dives out of the sun and rakes it; it banks away trailing smoke, and is gone.",
+   "aliases": [
+    "lz",
+    "landing zone"
+   ],
+   "props": {
+    "map": "of1a3",
+    "chapter": "We Are Pulling Out"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "surface"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  },
+  "of/of1a4_cliffs": {
+   "name": "Cliffside Pipeline",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "of/of1a3_lz",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "of/of1a5_offices",
+     "dir": "in",
+     "distance": 1,
+     "name": "maintenance door",
+     "aliases": [
+      "door"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "bullsquid",
+    "battery"
+   ],
+   "description": "A huge pipeline clings to the cliff face above a drop to the river. You'll have to walk along the top of it. A bullsquid watches from a ledge.",
+   "props": {
+    "map": "of1a4",
+    "chapter": "We Are Pulling Out"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "surface"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "of/of1a5_offices": {
+   "name": "Abandoned Offices",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of1a4_cliffs",
+     "dir": "out",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of1a5_checkpoint",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie_guard",
+    "dead_marine_radio",
+    "bm_memo"
+   ],
+   "description": "Back inside, a wing of offices that the Marines swept and left. Desks are overturned into barricades, and the walls are pocked with bullet holes. A radio on a dead Marine's belt says your unit is listed as missing in action.",
+   "props": {
+    "map": "of1a5",
+    "chapter": "Missing in Action"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "MISSING IN ACTION",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "office"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.7
+    }
+   ]
+  },
+  "of/of1a5_checkpoint": {
+   "name": "Security Checkpoint",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of1a5_offices",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of1a6_vents",
+     "dir": "north",
+     "distance": 1,
+     "name": "air vent",
+     "aliases": [
+      "vent",
+      "duct"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "otis",
+    "health_charger",
+    "desert_eagle"
+   ],
+   "description": "A security checkpoint where a heavyset guard has holed up behind the window, eating a sandwich. Otis, his name tag says. He's not keen on Marines, but he's less keen on headcrabs.",
+   "props": {
+    "map": "of1a5",
+    "chapter": "Missing in Action"
+   }
+  },
+  "of/of1a6_vents": {
+   "name": "Ventilation System",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of1a5_checkpoint",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of1a6_dock",
+     "dir": "down",
+     "distance": 1,
+     "name": "drop",
+     "aliases": [
+      "drop"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "headcrab",
+    "battery"
+   ],
+   "description": "A cramped ventilation network. Fans turn behind grilles; somewhere ahead, a vent drops into darkness.",
+   "props": {
+    "map": "of1a6",
+    "chapter": "Missing in Action"
+   }
+  },
+  "of/of1a6_dock": {
+   "name": "Loading Dock",
+   "tags": [
+    "blackmesa",
+    "storage",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of1a6_vents",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of2a1_rail",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "gonome",
+    "supply_crate",
+    "supply_crate"
+   ],
+   "description": "A loading dock at the bottom of a freight shaft, with trucks backed up to the bays and a forklift on its side. Gonomes lurch among the pallets.",
+   "props": {
+    "map": "of1a6",
+    "chapter": "Missing in Action"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "storage",
+      "transit"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.7
+    }
+   ]
+  }
+ }
+}

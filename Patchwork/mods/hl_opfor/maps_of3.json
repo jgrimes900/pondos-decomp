@@ -1,0 +1,288 @@
+{
+ "rooms": {
+  "of/of3a1_reservoir": {
+   "name": "Underground Reservoir",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "water"
+   ],
+   "exits": [
+    {
+     "to": "of/of2a6_gorge",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of3a2_pumps",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "ichthyosaur",
+    "supply_crate"
+   ],
+   "description": "A vast reservoir under the facility, its surface glassy and black. Catwalks run along the walls above the water, and something long moves below the surface.",
+   "props": {
+    "map": "of3a1",
+    "chapter": "Crush Depth"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "CRUSH DEPTH",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_jammed_hatch",
+     "name": "jammed hatch",
+     "aliases": [
+      "hatch"
+     ],
+     "tags": [
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "of/of3a2_pumps": {
+   "name": "Deep Pump Station",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "military"
+   ],
+   "exits": [
+    {
+     "to": "of/of3a1_reservoir",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of3a3_lift",
+     "dir": "up",
+     "distance": 1,
+     "name": "cargo lift",
+     "aliases": [
+      "lift"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "male_assassin",
+    "female_assassin",
+    "satchel",
+    "battery"
+   ],
+   "description": "A pump station so far down the walls sweat. Gauges read pressures nobody should be under. Black Ops agents are planting charges on the pumps.",
+   "props": {
+    "map": "of3a2",
+    "chapter": "Crush Depth"
+   }
+  },
+  "of/of3a3_lift": {
+   "name": "Cargo Lift Shaft",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of3a2_pumps",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of3a4_lab",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "shock_trooper",
+    "shock_roach",
+    "ammo_box"
+   ],
+   "description": "A huge cargo lift that rises through the rock, past level after level of Black Mesa. Shock troopers warp in on the landings as you pass.",
+   "props": {
+    "map": "of3a3",
+    "chapter": "Crush Depth"
+   }
+  },
+  "of/of3a4_lab": {
+   "name": "Displacer Research Lab",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of3a3_lift",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of3a5_xen",
+     "dir": "in",
+     "distance": 1,
+     "name": "the displacer field",
+     "aliases": [
+      "field",
+      "portal",
+      "displacer field"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "displacer_scientist",
+    "displacer",
+    "health_charger",
+    "suit_charger"
+   ],
+   "description": "A teleport research lab where the scientists are still at work, mostly from denial. One of them presents you with a bulky weapon wired to a backpack: the displacer cannon. It fires a portal, he explains, and if you shoot it at your own feet it takes you somewhere else entirely.",
+   "props": {
+    "map": "of3a4",
+    "chapter": "Vicarious Reality"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "VICARIOUS REALITY",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "of/of3a5_xen": {
+   "name": "Xen: Displaced",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of3a4_lab",
+     "dir": "out",
+     "distance": 1,
+     "back": false,
+     "name": "the portal home"
+    },
+    {
+     "to": "of/of3a6_return",
+     "dir": "east",
+     "distance": 1,
+     "name": "flickering portal",
+     "aliases": [
+      "portal"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "xen_light",
+    "healing_pool",
+    "houndeye",
+    "xen_glyph"
+   ],
+   "description": "A step through green light and you're somewhere else: a spongy island floating in a violet void, light-stalks shrinking from you. A portal flickers on the rock where you landed.",
+   "props": {
+    "map": "of3a5",
+    "chapter": "Vicarious Reality"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "xen"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9,
+     "name": "drifting rock"
+    }
+   ]
+  },
+  "of/of3a6_return": {
+   "name": "Teleport Return Lab",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of3a5_xen",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of4a1_waste",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "alien_slave_of",
+    "battery"
+   ],
+   "description": "You spill out of a portal into another of the teleport labs, back in Black Mesa. The scientists here seem pleased with the result, and terrified of what came through after you.",
+   "props": {
+    "map": "of3a6",
+    "chapter": "Vicarious Reality"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "lab"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  }
+ }
+}

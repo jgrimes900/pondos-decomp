@@ -185,6 +185,11 @@ class Interpreter:
                     return False
             if "name" in m and m["name"].lower() not in ent.aliases:
                 return False
+            if "affords" in m:
+                want = m["affords"] if isinstance(m["affords"], list) else [m["affords"]]
+                have = self.world.def_of(ent).get("affords") or []
+                if not set(want) & set(have if isinstance(have, list) else [have]):
+                    return False
             if "prop" in m:
                 if not _compare(ent.props.get(m["prop"]), self.cmp_spec(m, ctx) if ctx else m):
                     return False
@@ -208,6 +213,9 @@ class Interpreter:
                 return val.lower() in ent.aliases
             if kind == "area":
                 return ent.area == val or (self.world.room_of(ent) or ent).area == val
+            if kind == "affords":
+                have = self.world.def_of(ent).get("affords") or []
+                return val in (have if isinstance(have, list) else [have])
             if kind == "room":
                 return ent.def_id == m
         return ent.def_id == m or ent.def_id == "room:" + m or m in ent.tags

@@ -1,0 +1,186 @@
+{
+ "rooms": {
+  "hlh/t0a0_start": {
+   "name": "Hazard Course: Welcome",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hlh/t0a0a_moving",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "holo_instructor"
+   ],
+   "description": "A grey training hall. A holographic projection of a balding scientist welcomes you to the Hazardous Environment Course and explains that he will teach you the HEV suit's basic functions.",
+   "props": {
+    "map": "t0a0",
+    "chapter": "Hazard Course"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "HAZARD COURSE",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hlh/t0a0a_moving": {
+   "name": "Hazard Course: Movement",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hlh/t0a0_start",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hlh/t0a0b_jumps",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "supply_crate"
+   ],
+   "description": "Ramps, crates and a low duct to crawl through, each with a hologram demonstrating how.",
+   "props": {
+    "map": "t0a0a",
+    "chapter": "Hazard Course"
+   }
+  },
+  "hlh/t0a0b_jumps": {
+   "name": "Hazard Course: Jumping and Ladders",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hlh/t0a0a_moving",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hlh/t0a0b1_water",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [],
+   "description": "Platforms over a padded pit, a ladder up a wall, and a long jump you'll make on the third try.",
+   "props": {
+    "map": "t0a0b",
+    "chapter": "Hazard Course"
+   }
+  },
+  "hlh/t0a0b1_water": {
+   "name": "Hazard Course: Swimming",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor",
+    "water"
+   ],
+   "exits": [
+    {
+     "to": "hlh/t0a0b_jumps",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hlh/t0a0c_charge",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [],
+   "description": "A deep pool with a submerged tunnel and a timer: hold your breath and swim.",
+   "props": {
+    "map": "t0a0b1",
+    "chapter": "Hazard Course"
+   }
+  },
+  "hlh/t0a0c_charge": {
+   "name": "Hazard Course: Health and Suit",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hlh/t0a0b1_water",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hlh/t0a0d_range",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "health_charger",
+    "suit_charger",
+    "battery",
+    "medkit"
+   ],
+   "description": "A room with a health charger, an HEV charger and a battery on a stand, and a hologram explaining all three.",
+   "props": {
+    "map": "t0a0c",
+    "chapter": "Hazard Course"
+   }
+  },
+  "hlh/t0a0d_range": {
+   "name": "Hazard Course: Firing Range",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hlh/t0a0c_charge",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "glock",
+    "training_target"
+   ],
+   "description": "A shooting range with paper targets and a rack of training weapons. At the end, a hologram congratulates you on completing the course.",
+   "props": {
+    "map": "t0a0d",
+    "chapter": "Hazard Course"
+   }
+  }
+ }
+}

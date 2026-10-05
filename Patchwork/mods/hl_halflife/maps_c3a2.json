@@ -1,0 +1,258 @@
+{
+ "rooms": {
+  "hl/c3a2_entrance": {
+   "name": "Lambda Complex Entrance",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "lambda",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c3a1b_bunker",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c3a2a_coolant",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "lambda_scientist",
+    "health_charger",
+    "suit_charger"
+   ],
+   "description": "The Lambda Complex: a huge white lambda symbol over a security checkpoint. Scientists inside wave you through. They've been waiting for you.",
+   "aliases": [
+    "lambda complex"
+   ],
+   "props": {
+    "map": "c3a2",
+    "chapter": "Lambda Core"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "LAMBDA CORE",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c3a2a_coolant": {
+   "name": "Reactor Coolant Tunnels",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "water",
+    "lambda",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c3a2_entrance",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c3a2b_teleports",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "coolant_pump",
+    "leech",
+    "ichthyosaur"
+   ],
+   "description": "The reactor's coolant tunnels are flooded to the ceiling. Pumps on two levels have to be started to drain them, and things live in the water.",
+   "props": {
+    "map": "c3a2a",
+    "chapter": "Lambda Core"
+   }
+  },
+  "hl/c3a2b_teleports": {
+   "name": "Teleport Test Labs",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "lambda",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c3a2a_coolant",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c3a2c_longjump",
+     "dir": "north",
+     "distance": 1,
+     "name": "teleport pad",
+     "aliases": [
+      "pad",
+      "teleport"
+     ],
+     "back": false
+    },
+    {
+     "to": "hl/c3a2d_reactor",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "teleport_pad",
+    "vortigaunt",
+    "controller"
+   ],
+   "description": "A warren of teleport labs, each with a glowing pad that flings you somewhere else in the complex. Only one sequence leads where you want to go.",
+   "props": {
+    "map": "c3a2b",
+    "chapter": "Lambda Core"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "lab"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.7
+    }
+   ]
+  },
+  "hl/c3a2c_longjump": {
+   "name": "Advanced Mobility Lab",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "lambda",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c3a2b_teleports",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "long_jump",
+    "lambda_scientist_2"
+   ],
+   "description": "A lab with a test track, a padded wall and an HEV harness on a stand. Fitted to it is a long jump module.",
+   "props": {
+    "map": "c3a2c",
+    "chapter": "Lambda Core"
+   }
+  },
+  "hl/c3a2d_reactor": {
+   "name": "Lambda Reactor Core",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "lambda",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c3a2b_teleports",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c3a2f_portal",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "controller",
+    "alien_grunt",
+    "health_charger"
+   ],
+   "description": "The reactor itself: a towering cylinder of humming machinery in a vast shaft, with walkways spiralling up its sides and the crackle of teleport fields at every level.",
+   "aliases": [
+    "reactor",
+    "core"
+   ],
+   "props": {
+    "map": "c3a2d",
+    "chapter": "Lambda Core"
+   }
+  },
+  "hl/c3a2f_portal": {
+   "name": "Portal Chamber",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "lambda",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c3a2d_reactor",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a1_arrival",
+     "dir": "in",
+     "distance": 1,
+     "name": "the portal",
+     "aliases": [
+      "portal",
+      "rift"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "lambda_portal",
+    "portal_scientists"
+   ],
+   "description": "At the top of the reactor, scientists stand at consoles around a chamber where a portal swirls open: green-white light, and beyond it, a landscape of floating islands. They tell you their satellite delivery made this possible, and that you must go through.",
+   "aliases": [
+    "portal chamber"
+   ],
+   "props": {
+    "map": "c3a2f",
+    "chapter": "Lambda Core"
+   }
+  }
+ }
+}

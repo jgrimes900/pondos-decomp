@@ -292,6 +292,31 @@ A room is a feature with exits. Rooms are defined inside areas (section 7), as r
 | `back_<field>` | Fields for the return exit only, for example `back_blocked`. |
 | `on_use` | Effects run when the exit is taken. |
 | `show_dest` | Show the destination name before it has been visited. |
+| `solve` | Ignored by the engine. For a scripted gate (an `if` that a set piece opens), the steps an automated player takes to open it: `[["goto", "room id"], ["do", "push button"], ...]`. The test suite's player uses it. |
+
+### 6.1 Expansions: the map generator off hand-built rooms
+
+A hand-built room can grow generated sections of its own: a corridor of offices behind a locked
+door, a canyon trail off a desert road. Each entry in a room's `expansions` list may (by `chance`)
+add a spur of rooms from regions whose `tags` or `connects` match:
+
+```json
+"expansions": [
+  {"tags": ["office", "lab"], "length": [2, 4], "chance": 0.8,
+   "door": "bm_locked_door", "name": "locked door", "aliases": ["door"]},
+  {"tags": ["surface"], "length": [2, 3], "name": "canyon trail"}
+]
+```
+
+| Field | Meaning |
+| --- | --- |
+| `tags` | Region tags to grow from (section 8). |
+| `length`, `distance` | How many rooms, and the distance of the first exit. Scaled by world size. |
+| `chance` | Probability the expansion is built (default 1). |
+| `dir`, `name`, `aliases`, `description` | The new exit. |
+| `door` | An obstacle id (section 9.4) or an inline obstacle. Its `feature` is placed in the room and the exit stays shut until it opens. If the obstacle has `needs`, it opens for anyone carrying (or using on it) an item that `affords` one of them, so any crowbar opens any jammed hatch; without `needs` it just opens. |
+
+Expansion rooms are side content: the story never puts quest steps behind these doors.
 
 Players move with `north`, `n`, `go north`, `go trapdoor`, `go to <room name>` (travel by
 pathfinding through visited rooms, stopping if interrupted), or by typing the destination name.
@@ -320,7 +345,7 @@ any word of that name works for it, even before the destination has been visited
 | `name` | Grammar allowed; available to text as `{area.<id>}` and `{self.area}`. |
 | `tags` | `start` marks a possible starting area. Tags are also matched by event place roles, obstacles and items' `home`, and by region matching. |
 | `theme` | Extra tags that steer which regions connect to this area. |
-| `rooms` | Object of inline room definitions (ids are local, registered as `area/room`), or a list of global room ids. |
+| `rooms` | Object of inline room definitions (ids are local, registered as `area/room`), or a list of global room ids. The list may use globs: `["hl/*"]` takes every room in the `rooms` section whose id starts with `hl/`. |
 | `entrances` | Rooms that may be connected to the outside world (default: all rooms). |
 | `start` | Starting room when this is the start area. |
 | `room_tags` | Tags added to every room in the area. |
@@ -331,6 +356,14 @@ any word of that name works for it, even before the destination has been visited
 | `include: false` | Never add it as side content. |
 | `allow_scatter` | Let scatter/encounter features appear in its rooms. |
 | `stage` | Upper bound for how deep into the story a side area may be attached. |
+| `start_label` | Offers this area as a starting point. New games ask "Where do you begin?" and list every area with a label (Enter lets the story decide); `--start <area>` picks one and `--list-starts` lists them. |
+| `player` | Who you are when you start here: `name`, `player_name` (skips the name prompt), `aliases`, `description`, `props`, `tags`. |
+| `kit` | Feature specs given to the player when starting here. |
+
+Rooms tagged `story_skip` are scripted scenes (a crash you wake up from, a void before the
+credits). The planner never places quest things in them, never uses characters authored in them,
+the generator never attaches new exits to them, and the validator doesn't flag them as
+unreachable.
 
 ---
 
@@ -390,6 +423,14 @@ Useful item fields for the planner:
 | --- | --- |
 | `affords` | What the item can be used for: `unlock`, `access`, `code`, `power`, `light`, `tool`, `medicine`, `cure`, `holy`, `relic`, `evidence`, `fuel`... Free-form; obstacles and characters' `wants` use the same words. |
 | `home` | Tags of places where it would naturally be found (`["maintenance", "engineering"]`). The generator places it there, growing a region spur if needed. |
+| `story_keep` | The player keeps it: the planner never asks you to give it away as a favour (weapons, suits). |
+
+Important **monsters** (a character with a profile that is also `hostile`, from Steel & Peril)
+are not questioned: unless they are the finale they become "defeat" steps, and before any fight
+the story depends on, the planner makes sure you have picked up a weapon (an item tagged `weapon`).
+A monster's `solve` list (commands such as `"attack healing crystal"`) tells automated players how
+to soften it up first. Characters whose profile has `"menu": false` (and all hostile ones) get no
+conversation menu; their own `talk` handlers speak for them.
 
 ### 9.2 Character profiles
 
@@ -467,6 +508,7 @@ characters, so it plays out differently with every cast.
 | `lore` | Story-specific lore entries (section 9.5). |
 | `ending` | Shown when the story completes, followed by epilogues of characters who helped. |
 | `tags`, `weight`, `requires_mods` | Selection. Events whose tags match the loaded areas are preferred. |
+| `start_areas` | The event belongs to these starting areas: it is only chosen when the game starts in one of them (and is strongly preferred there), and a story-decided start picks one of them. This is how one mod set offers several protagonists, each with their own stories. |
 
 In text, role names are placeholders: `{villain}` renders "WARDEN" or "the barrow wight" (with the
 right article), `{villain.The}` at the start of a sentence, `{villain.motive}` the profile's motive.
@@ -651,7 +693,8 @@ Bundled mods emit `ate`, `drank`, `read` and `killed`, so your rules can react t
 
 * `"tag:key"`, `"def:barrow_key"`, `"role:relic"`, `"name:lantern"`, `"area:hamlet"`
 * a bare word: a feature id **or** a tag
-* an object combining tests: `{"tag": ["weapon"], "prop": "damage", "gte": 3, "not": "tag:cursed"}`
+* `"affords:pry"`: an item that affords something
+* an object combining tests: `{"tag": ["weapon"], "affords": ["pry"], "prop": "damage", "gte": 3, "not": "tag:cursed"}`
 * a list: any of them
 
 ### 12.3 Conditions

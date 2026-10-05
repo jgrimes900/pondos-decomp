@@ -1,0 +1,567 @@
+{
+ "features": {
+  "crowbar": {
+   "extends": [
+    "portable"
+   ],
+   "name": "crowbar",
+   "aliases": [
+    "crowbar",
+    "bar"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 10
+   },
+   "description": "A red-handled crowbar, heavy and reassuring. Good for crates, headcrabs and stuck hatches.",
+   "story_keep": true,
+   "affords": [
+    "pry",
+    "fight"
+   ]
+  },
+  "glock": {
+   "extends": [
+    "portable"
+   ],
+   "name": "9mm pistol",
+   "aliases": [
+    "pistol",
+    "glock",
+    "9mm",
+    "handgun"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 8
+   },
+   "description": "A standard-issue 9mm security sidearm. Seventeen rounds and a lot of faith.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "python": {
+   "extends": [
+    "portable"
+   ],
+   "name": ".357 Magnum revolver",
+   "aliases": [
+    "magnum",
+    "revolver",
+    "python",
+    "357"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 25
+   },
+   "description": "A six-shot .357 revolver that kicks like a mule and hits harder.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "mp5": {
+   "extends": [
+    "portable"
+   ],
+   "name": "MP5 submachine gun",
+   "aliases": [
+    "mp5",
+    "smg",
+    "submachine gun",
+    "grenade launcher"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 13
+   },
+   "description": "A 9mm submachine gun with an under-barrel grenade launcher.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "shotgun": {
+   "extends": [
+    "portable"
+   ],
+   "name": "SPAS-12 shotgun",
+   "aliases": [
+    "shotgun",
+    "spas",
+    "spas-12"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 22
+   },
+   "description": "A pump-action combat shotgun. Fire it twice as fast if you don't mind the recoil.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "crossbow": {
+   "extends": [
+    "portable"
+   ],
+   "name": "crossbow",
+   "aliases": [
+    "crossbow",
+    "bow"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 28
+   },
+   "description": "A scoped crossbow with explosive-tipped bolts. Works underwater too.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "rpg": {
+   "extends": [
+    "portable"
+   ],
+   "name": "rocket launcher",
+   "aliases": [
+    "rpg",
+    "rocket launcher",
+    "launcher"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 45
+   },
+   "description": "A laser-guided rocket launcher. Point the dot, and the rocket follows.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "gauss": {
+   "extends": [
+    "portable"
+   ],
+   "name": "tau cannon",
+   "aliases": [
+    "tau cannon",
+    "gauss gun",
+    "gauss",
+    "tau"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 32
+   },
+   "description": "An experimental prototype that fires charged particle bursts. Charge it too long and it bites you.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "egon": {
+   "extends": [
+    "portable"
+   ],
+   "name": "gluon gun",
+   "aliases": [
+    "gluon gun",
+    "egon",
+    "gluon"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 36
+   },
+   "description": "A heavy backpack-mounted gluon beam projector. It eats depleted uranium like nobody's business.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "hivehand": {
+   "extends": [
+    "portable"
+   ],
+   "name": "hivehand",
+   "aliases": [
+    "hivehand",
+    "hornet gun",
+    "hive"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon",
+    "alien"
+   ],
+   "props": {
+    "damage": 10
+   },
+   "description": "A living alien weapon that grows homing hornets. It squirms when you hold it.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "snark_nest": {
+   "extends": [
+    "portable"
+   ],
+   "name": "snark nest",
+   "aliases": [
+    "snarks",
+    "snark nest",
+    "nest"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 9
+   },
+   "description": "A twitching pod of snarks. Throw one, and it hunts whatever is nearest. Usually.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "grenade": {
+   "extends": [
+    "portable"
+   ],
+   "name": "hand grenade",
+   "aliases": [
+    "grenade",
+    "grenades",
+    "frag"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 30
+   },
+   "description": "A fragmentation grenade. Pull the pin and count.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "satchel": {
+   "extends": [
+    "portable"
+   ],
+   "name": "satchel charge",
+   "aliases": [
+    "satchel",
+    "satchel charge",
+    "charge"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 40
+   },
+   "description": "A remote-detonated satchel charge.",
+   "story_keep": true,
+   "affords": [
+    "explosive",
+    "fight"
+   ]
+  },
+  "tripmine": {
+   "extends": [
+    "portable"
+   ],
+   "name": "laser tripmine",
+   "aliases": [
+    "tripmine",
+    "laser tripmine",
+    "mine"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 30
+   },
+   "description": "A laser-triggered mine for walls.",
+   "story_keep": true,
+   "affords": [
+    "explosive",
+    "fight"
+   ]
+  },
+  "pipe_wrench": {
+   "extends": [
+    "portable"
+   ],
+   "name": "pipe wrench",
+   "aliases": [
+    "pipe wrench",
+    "wrench"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 12
+   },
+   "description": "A heavy pipe wrench. Slower than a crowbar, and it hits harder.",
+   "story_keep": true,
+   "affords": [
+    "pry",
+    "fight"
+   ]
+  },
+  "combat_knife": {
+   "extends": [
+    "portable"
+   ],
+   "name": "combat knife",
+   "aliases": [
+    "knife",
+    "combat knife"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 9
+   },
+   "description": "A standard Marine combat knife. Quick and quiet.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "desert_eagle": {
+   "extends": [
+    "portable"
+   ],
+   "name": "Desert Eagle",
+   "aliases": [
+    "desert eagle",
+    "deagle",
+    "eagle",
+    ".50"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 20
+   },
+   "description": "A .50 calibre handgun with a laser sight.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "m249": {
+   "extends": [
+    "portable"
+   ],
+   "name": "M249 squad automatic weapon",
+   "aliases": [
+    "m249",
+    "saw",
+    "machine gun",
+    "squad automatic weapon"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 18
+   },
+   "description": "A belt-fed light machine gun. Fires until the belt runs out or you fall over.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "sniper_rifle": {
+   "extends": [
+    "portable"
+   ],
+   "name": "M40A1 sniper rifle",
+   "aliases": [
+    "sniper rifle",
+    "sniper",
+    "m40a1",
+    "rifle"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 35
+   },
+   "description": "A bolt-action sniper rifle with a long-range scope.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "shock_roach": {
+   "extends": [
+    "portable"
+   ],
+   "name": "shock roach",
+   "aliases": [
+    "shock roach",
+    "roach"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon",
+    "alien"
+   ],
+   "props": {
+    "damage": 14
+   },
+   "description": "A Race X creature that spits bolts of electricity and recharges itself. It is, apparently, happy to see you.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "spore_launcher": {
+   "extends": [
+    "portable"
+   ],
+   "name": "spore launcher",
+   "aliases": [
+    "spore launcher",
+    "spore",
+    "launcher"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon",
+    "alien"
+   ],
+   "props": {
+    "damage": 26
+   },
+   "description": "A living alien launcher that hurls explosive spore pods. It chirps when fed.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  },
+  "displacer": {
+   "extends": [
+    "portable"
+   ],
+   "name": "displacer cannon",
+   "aliases": [
+    "displacer",
+    "displacer cannon",
+    "cannon"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon"
+   ],
+   "props": {
+    "damage": 48
+   },
+   "description": "An experimental portal weapon. It sends whatever it hits somewhere else, or sends you somewhere else.",
+   "story_keep": true,
+   "affords": [
+    "teleport",
+    "fight"
+   ]
+  },
+  "grapple": {
+   "extends": [
+    "portable"
+   ],
+   "name": "barnacle grapple",
+   "aliases": [
+    "grapple",
+    "barnacle",
+    "barnacle grapple"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon",
+    "alien"
+   ],
+   "props": {
+    "damage": 6
+   },
+   "description": "A captured barnacle that shoots its tongue at anything organic and hauls you after it.",
+   "story_keep": true,
+   "affords": [
+    "grapple",
+    "fight"
+   ]
+  },
+  "penguin": {
+   "extends": [
+    "portable"
+   ],
+   "name": "penguin",
+   "aliases": [
+    "penguin"
+   ],
+   "tags": [
+    "weapon",
+    "hl_weapon",
+    "alien"
+   ],
+   "props": {
+    "damage": 9
+   },
+   "description": "An explosive penguin. A multiplayer joke from the Opposing Force era that nobody has ever explained.",
+   "story_keep": true,
+   "affords": [
+    "fight"
+   ]
+  }
+ }
+}

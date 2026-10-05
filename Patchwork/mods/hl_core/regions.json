@@ -1,0 +1,695 @@
+{
+ "regions": {
+  "bm_offices": {
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor",
+    "interior"
+   ],
+   "connects": [
+    "blackmesa",
+    "office",
+    "lab",
+    "transit"
+   ],
+   "length": [
+    2,
+    3
+   ],
+   "distance": [
+    1,
+    2
+   ],
+   "weight": 3,
+   "rooms": [
+    {
+     "name": "Sector #bm_sector# Office Wing",
+     "description": "#bm_office_desc#",
+     "weight": 3,
+     "features": [
+      {
+       "chance": 0.5,
+       "id": "bm_terminal"
+      },
+      {
+       "chance": 0.3,
+       "id": "vending_machine"
+      },
+      {
+       "chance": 0.4,
+       "id": "bm_memo"
+      }
+     ]
+    },
+    {
+     "name": "#bm_department# Offices",
+     "description": "Cubicles in grey fabric run in rows, chairs overturned, monitors still glowing. #bm_office_detail.cap#.",
+     "features": [
+      {
+       "chance": 0.6,
+       "id": "bm_terminal"
+      },
+      {
+       "chance": 0.3,
+       "id": "bm_memo"
+      }
+     ]
+    },
+    {
+     "name": "Break Room #bm_num#",
+     "description": "A small staff kitchen: a fridge, a microwave, a coffee machine with a burnt pot, a notice about washing your own mug.",
+     "features": [
+      "vending_machine",
+      {
+       "chance": 0.4,
+       "id": "medkit"
+      }
+     ]
+    },
+    {
+     "name": "Conference Room #bm_num#",
+     "description": "A long table, a projector screen showing a frozen slide of quarterly results, and coffee cups abandoned mid-meeting.",
+     "features": [
+      {
+       "chance": 0.5,
+       "id": "bm_memo"
+      }
+     ]
+    }
+   ]
+  },
+  "bm_labs": {
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "interior"
+   ],
+   "connects": [
+    "blackmesa",
+    "lab",
+    "office",
+    "maintenance"
+   ],
+   "length": [
+    2,
+    3
+   ],
+   "distance": [
+    1,
+    2
+   ],
+   "weight": 3,
+   "rooms": [
+    {
+     "name": "#bm_lab_kind# Lab #bm_sector#-#bm_num#",
+     "description": "#bm_lab_desc#",
+     "weight": 3,
+     "features": [
+      {
+       "chance": 0.5,
+       "id": "bm_terminal"
+      },
+      {
+       "chance": 0.3,
+       "id": "health_charger"
+      }
+     ]
+    },
+    {
+     "name": "Specimen Storage",
+     "description": "Glass tanks line the walls, some cracked and drained. Labels read XEN SAMPLE, DO NOT AGITATE.",
+     "features": [
+      {
+       "chance": 0.4,
+       "id": "bm_memo"
+      }
+     ]
+    },
+    {
+     "name": "Decontamination Bay #bm_num#",
+     "description": "Shower nozzles in a white-tiled booth, a radiation sign and a warning klaxon that has long since given up.",
+     "features": [
+      {
+       "chance": 0.3,
+       "id": "suit_charger"
+      }
+     ]
+    },
+    {
+     "name": "Isotope Handling Room",
+     "description": "Lead-lined cabinets, remote manipulator arms and a glowing green puddle you decide not to step in.",
+     "features": [
+      {
+       "chance": 0.4,
+       "id": "supply_crate"
+      }
+     ]
+    }
+   ]
+  },
+  "bm_maintenance": {
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "interior"
+   ],
+   "connects": [
+    "blackmesa",
+    "maintenance",
+    "storage",
+    "transit",
+    "lab"
+   ],
+   "length": [
+    2,
+    4
+   ],
+   "distance": [
+    1,
+    2
+   ],
+   "weight": 3,
+   "rooms": [
+    {
+     "name": "Maintenance Corridor #bm_sector#-#bm_num#",
+     "description": "#bm_maint_desc#",
+     "weight": 3,
+     "features": [
+      {
+       "chance": 0.3,
+       "id": "supply_crate"
+      }
+     ]
+    },
+    {
+     "name": "Pump Station #bm_num#",
+     "description": "Big green pumps thump in a concrete room ankle-deep in water. Pipes sweat overhead.",
+     "tags": [
+      "water"
+     ]
+    },
+    {
+     "name": "Ventilation Shaft",
+     "description": "A cramped sheet-metal duct. You crawl on your elbows; the fan somewhere ahead goes round and round.",
+     "features": [
+      {
+       "chance": 0.4,
+       "id": "battery"
+      }
+     ]
+    },
+    {
+     "name": "Electrical Substation",
+     "description": "Transformers hum behind chain-link. A sign warns DANGER: HIGH VOLTAGE in three languages.",
+     "features": [
+      {
+       "chance": 0.4,
+       "id": "suit_charger"
+      }
+     ]
+    },
+    {
+     "name": "Boiler Room",
+     "description": "Huge boilers roar, gauges trembling in the red. The heat is like a wall.",
+     "features": [
+      {
+       "chance": 0.3,
+       "id": "supply_crate"
+      }
+     ]
+    }
+   ]
+  },
+  "bm_transit": {
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor",
+    "interior"
+   ],
+   "connects": [
+    "blackmesa",
+    "transit",
+    "storage",
+    "maintenance"
+   ],
+   "length": [
+    1,
+    3
+   ],
+   "distance": [
+    2,
+    3
+   ],
+   "weight": 2,
+   "rooms": [
+    {
+     "name": "Tram Platform #bm_sector#",
+     "description": "A tram platform with yellow safety lines and a dead departures board. The rails vanish into the dark either way.",
+     "weight": 2,
+     "features": [
+      {
+       "chance": 0.3,
+       "id": "vending_machine"
+      }
+     ]
+    },
+    {
+     "name": "Service Tunnel #bm_num#",
+     "description": "A long rail service tunnel lit by caged bulbs. A maintenance cart sits abandoned on a siding."
+    },
+    {
+     "name": "Freight Elevator Shaft",
+     "description": "A freight elevator stands open, its cage door bent. Cables vanish up into the dark."
+    }
+   ]
+  },
+  "bm_storage": {
+   "tags": [
+    "blackmesa",
+    "storage",
+    "indoor",
+    "interior"
+   ],
+   "connects": [
+    "blackmesa",
+    "storage",
+    "transit",
+    "military"
+   ],
+   "length": [
+    1,
+    3
+   ],
+   "distance": [
+    1,
+    2
+   ],
+   "weight": 2,
+   "rooms": [
+    {
+     "name": "Warehouse #bm_sector#",
+     "description": "Shelving stacked to the roof with crates, a forklift parked askew. Somewhere a pallet creaks.",
+     "weight": 2,
+     "features": [
+      {
+       "id": "supply_crate",
+       "count": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Loading Dock",
+     "description": "Roller doors, yellow bollards and a ramp down to a truck bay. Everything smells of diesel.",
+     "features": [
+      {
+       "chance": 0.5,
+       "id": "supply_crate"
+      }
+     ]
+    },
+    {
+     "name": "Hazardous Materials Store",
+     "description": "Yellow drums marked with radiation trefoils sit in a chain-link cage. Some are leaking.",
+     "features": [
+      {
+       "chance": 0.5,
+       "id": "supply_crate"
+      }
+     ]
+    }
+   ]
+  },
+  "bm_surface": {
+   "tags": [
+    "surface",
+    "outdoor",
+    "desert",
+    "blackmesa"
+   ],
+   "connects": [
+    "surface",
+    "military",
+    "outdoor"
+   ],
+   "length": [
+    2,
+    4
+   ],
+   "distance": [
+    2,
+    4
+   ],
+   "weight": 2,
+   "rooms": [
+    {
+     "name": "#surface_name#",
+     "description": "#surface_desc#",
+     "weight": 3,
+     "features": [
+      {
+       "chance": 0.3,
+       "id": "supply_crate"
+      },
+      {
+       "chance": 0.3,
+       "id": "dead_marine"
+      }
+     ]
+    },
+    {
+     "name": "Abandoned Checkpoint",
+     "description": "A sandbagged checkpoint on a dusty access road, the barrier arm snapped. A burnt-out humvee smoulders.",
+     "features": [
+      {
+       "chance": 0.5,
+       "id": "dead_marine"
+      }
+     ]
+    },
+    {
+     "name": "Satellite Dish Array",
+     "description": "Huge white dishes stare at the sky on a scrubby ridge, some tilted at mad angles."
+    }
+   ]
+  },
+  "bm_military": {
+   "tags": [
+    "military",
+    "surface",
+    "outdoor"
+   ],
+   "connects": [
+    "military",
+    "surface",
+    "storage"
+   ],
+   "length": [
+    1,
+    2
+   ],
+   "distance": [
+    2,
+    3
+   ],
+   "weight": 1,
+   "rooms": [
+    {
+     "name": "HECU #camp_kind#",
+     "description": "#camp_desc#",
+     "weight": 2,
+     "features": [
+      {
+       "chance": 0.6,
+       "id": "supply_crate"
+      },
+      {
+       "chance": 0.3,
+       "id": "hecu_logbook"
+      }
+     ]
+    },
+    {
+     "name": "Sandbag Emplacement",
+     "description": "A ring of sandbags around a mounted machine gun, the gunner gone. Brass casings carpet the ground.",
+     "features": [
+      {
+       "chance": 0.4,
+       "id": "ammo_box"
+      }
+     ]
+    }
+   ]
+  },
+  "xen_islands": {
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor"
+   ],
+   "connects": [
+    "xen",
+    "alien",
+    "racex"
+   ],
+   "length": [
+    2,
+    4
+   ],
+   "distance": [
+    1,
+    3
+   ],
+   "weight": 2,
+   "rooms": [
+    {
+     "name": "#xen_name#",
+     "description": "#xen_desc#",
+     "weight": 3,
+     "features": [
+      {
+       "chance": 0.4,
+       "id": "xen_light"
+      },
+      {
+       "chance": 0.2,
+       "id": "xen_glyph"
+      }
+     ]
+    },
+    {
+     "name": "Xen Healing Grotto",
+     "description": "A cave of soft violet rock around a pool of luminous water.",
+     "features": [
+      "healing_pool"
+     ]
+    },
+    {
+     "name": "Spore Field",
+     "description": "Pod-plants the size of houses pulse slowly, releasing drifting motes of light."
+    }
+   ]
+  },
+  "racex_hive": {
+   "tags": [
+    "racex",
+    "alien",
+    "indoor"
+   ],
+   "connects": [
+    "racex",
+    "alien",
+    "xen",
+    "blackmesa"
+   ],
+   "length": [
+    1,
+    3
+   ],
+   "distance": [
+    1,
+    2
+   ],
+   "weight": 1,
+   "rooms": [
+    {
+     "name": "Race X Hive",
+     "description": "#racex_desc#",
+     "weight": 2
+    },
+    {
+     "name": "Infested Corridor",
+     "description": "A Black Mesa corridor half-swallowed by Race X growth: ribbed, wet, faintly glowing, and humming like a struck wire."
+    }
+   ]
+  }
+ },
+ "obstacles": {
+  "bm_locked_door": {
+   "kind": "barrier",
+   "needs": [
+    "pry",
+    "access"
+   ],
+   "tags": [
+    "blackmesa",
+    "indoor",
+    "office",
+    "lab",
+    "maintenance",
+    "storage",
+    "transit"
+   ],
+   "key": "bm_keycard",
+   "feature": {
+    "name": "locked security door",
+    "aliases": [
+     "door",
+     "locked door",
+     "security door"
+    ],
+    "appearance": [
+     {
+      "if": {
+       "prop": "open"
+      },
+      "text": "A security door stands open, its lock smashed."
+     },
+     {
+      "text": "A heavy security door is locked here, its keycard reader blinking red."
+     }
+    ],
+    "description": "Standard Black Mesa blast-rated door. The reader wants a keycard, but the frame looks prisable."
+   },
+   "open_text": "You force the lock with {key}. The door grinds open.",
+   "locked_text": "It's locked. A keycard, or something to lever it with, would do it.",
+   "blocked": "A locked security door bars the way."
+  },
+  "bm_jammed_hatch": {
+   "kind": "barrier",
+   "needs": [
+    "pry",
+    "cut"
+   ],
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "storage"
+   ],
+   "feature": {
+    "name": "jammed hatch",
+    "aliases": [
+     "hatch",
+     "jammed hatch"
+    ],
+    "appearance": [
+     {
+      "if": {
+       "prop": "open"
+      },
+      "text": "A maintenance hatch hangs open on bent hinges."
+     },
+     {
+      "text": "A maintenance hatch is jammed in its frame."
+     }
+    ],
+    "description": "Warped by heat or impact. It needs persuading."
+   },
+   "open_text": "You wrench the hatch open with {key}.",
+   "locked_text": "It's jammed solid. You need a crowbar or something like it.",
+   "blocked": "A jammed hatch blocks the way."
+  },
+  "of_welded_door": {
+   "kind": "barrier",
+   "needs": [
+    "cut"
+   ],
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "military"
+   ],
+   "feature": {
+    "name": "welded door",
+    "aliases": [
+     "door",
+     "welded door",
+     "weld"
+    ],
+    "appearance": [
+     {
+      "if": {
+       "prop": "open"
+      },
+      "text": "A door has been cut open; its edges still glow."
+     },
+     {
+      "text": "A steel door has been welded shut, the bead still shiny."
+     }
+    ],
+    "description": "Someone sealed this from the other side. Only a cutting torch is getting through."
+   },
+   "open_text": "You cut a doorway with {key}. The panel falls inward with a clang.",
+   "locked_text": "Welded shut. A combat engineer's torch could cut it.",
+   "blocked": "A welded door blocks the way."
+  },
+  "bm_supply_locker": {
+   "kind": "container",
+   "needs": [
+    "pry",
+    "access"
+   ],
+   "tags": [
+    "blackmesa",
+    "military",
+    "storage",
+    "office"
+   ],
+   "key": "bm_keycard",
+   "feature": {
+    "name": "supply locker",
+    "aliases": [
+     "locker",
+     "supply locker",
+     "cabinet"
+    ],
+    "appearance": [
+     {
+      "if": {
+       "prop": "open"
+      },
+      "text": "A supply locker hangs open."
+     },
+     {
+      "text": "A steel supply locker is padlocked here."
+     }
+    ],
+    "description": "A steel locker with a cheap padlock and a security stencil."
+   },
+   "open_text": "You snap the padlock with {key}. The locker swings open.",
+   "locked_text": "Padlocked."
+  },
+  "xen_chasm": {
+   "kind": "barrier",
+   "needs": [
+    "jump",
+    "grapple"
+   ],
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor"
+   ],
+   "feature": {
+    "name": "chasm",
+    "aliases": [
+     "chasm",
+     "gap",
+     "void",
+     "edge"
+    ],
+    "appearance": [
+     {
+      "if": {
+       "prop": "open"
+      },
+      "text": "You've marked a way across the chasm."
+     },
+     {
+      "text": "A gulf of empty violet sky separates this island from the next."
+     }
+    ],
+    "description": "Far too wide to jump. Unaided."
+   },
+   "open_text": "You use {key} to cross the gap, and land rolling on the far side.",
+   "locked_text": "It's far too wide to jump without help.",
+   "blocked": "The chasm is too wide to cross."
+  }
+ }
+}

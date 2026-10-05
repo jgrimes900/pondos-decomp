@@ -1,0 +1,297 @@
+{
+ "rooms": {
+  "of/of2a1_rail": {
+   "name": "Supply Rail Tunnels",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "military",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of1a6_dock",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "of/of2a2_ambush",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_ally",
+    "zombie_soldier",
+    "ammo_box"
+   ],
+   "description": "Long service-rail tunnels, lit by the occasional caged bulb. A HECU fireteam is pinned at a junction ahead: they wave you in, glad of another gun.",
+   "props": {
+    "map": "of2a1",
+    "chapter": "Friendly Fire"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "FRIENDLY FIRE",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "of/of2a2_ambush": {
+   "name": "Black Ops Ambush",
+   "tags": [
+    "blackmesa",
+    "storage",
+    "military",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of2a1_rail",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "of/of2a3_medbay",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "male_assassin",
+    "dead_marine",
+    "m249"
+   ],
+   "description": "A storage yard where the Marines walked into an ambush. Black-clad agents dropped from the catwalks and cut them down. The killers aren't aliens. They're people on your own side, and they aren't taking prisoners either.",
+   "props": {
+    "map": "of2a2",
+    "chapter": "Friendly Fire"
+   }
+  },
+  "of/of2a3_medbay": {
+   "name": "Field Aid Station",
+   "tags": [
+    "blackmesa",
+    "office",
+    "military",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of2a2_ambush",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of2a4_storm",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_medic",
+    "hecu_engineer",
+    "medkit"
+   ],
+   "description": "A makeshift aid station in an office, red crosses taped to the doors. A HECU medic is still here, out of morphine and patience, and a combat engineer is trying to cut through a welded door.",
+   "props": {
+    "map": "of2a3",
+    "chapter": "Friendly Fire"
+   },
+   "expansions": [
+    {
+     "door": "of_welded_door",
+     "name": "welded door",
+     "aliases": [
+      "door",
+      "welded door"
+     ],
+     "tags": [
+      "office",
+      "storage"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  },
+  "of/of2a4_storm": {
+   "name": "Portal Storm Courtyard",
+   "tags": [
+    "blackmesa",
+    "racex",
+    "surface",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "of/of2a3_medbay",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of2a5_barnacles",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "shock_trooper",
+    "pit_drone",
+    "dead_marine"
+   ],
+   "description": "An enclosed courtyard where the air keeps splitting open in green light. Out of the portals step creatures nobody has a name for: tall one-eyed soldiers carrying living weapons, and spiny things that spit needles. These are not Xen's aliens. Something else is coming through.",
+   "props": {
+    "map": "of2a4",
+    "chapter": "We Are Not Alone"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "WE ARE NOT ALONE",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "tags": [
+      "surface",
+      "racex"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  },
+  "of/of2a5_barnacles": {
+   "name": "Biology Lab: Barnacle Research",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "of/of2a4_storm",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of2a6_gorge",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "grapple",
+    "barnacle",
+    "dead_scientist",
+    "bm_terminal"
+   ],
+   "description": "A biology lab full of tanks of Xen fauna, most of them broken. Barnacles hang from the ceiling, tongues dangling. On a bench sits a barnacle in a harness: someone has turned one into a tool.",
+   "props": {
+    "map": "of2a5",
+    "chapter": "We Are Not Alone"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "lab"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "of/of2a6_gorge": {
+   "name": "Grapple Gorge",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert"
+   ],
+   "exits": [
+    {
+     "to": "of/of2a5_barnacles",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "of/of3a1_reservoir",
+     "dir": "down",
+     "distance": 1,
+     "name": "swing across the gorge",
+     "aliases": [
+      "gorge",
+      "overhang"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "barnacle",
+    "pit_drone",
+    "spore_launcher"
+   ],
+   "description": "A gorge between two cliffs, with barnacles clinging under an overhang on the far side. There is no bridge. There is, however, something to swing from.",
+   "props": {
+    "map": "of2a6",
+    "chapter": "We Are Not Alone"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "surface",
+      "racex"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  }
+ }
+}

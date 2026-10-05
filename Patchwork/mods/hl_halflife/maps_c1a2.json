@@ -1,0 +1,260 @@
+{
+ "rooms": {
+  "hl/c1a2_reception": {
+   "name": "Office Complex Reception",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a1d_offices",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a2_cubicles",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie",
+    "vending_machine",
+    "bm_terminal"
+   ],
+   "description": "The administrative wing's reception, with potted plants, a waiting area and a framed photo of the facility administrator. Water pours from a broken sprinkler.",
+   "props": {
+    "map": "c1a2",
+    "chapter": "Office Complex"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "OFFICE COMPLEX",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "office"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.7
+    }
+   ]
+  },
+  "hl/c1a2_cubicles": {
+   "name": "Cubicle Farm",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a2_reception",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a2a_kitchen",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a2b_sentries",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "headcrab",
+    "headcrab",
+    "bm_memo",
+    "supply_crate"
+   ],
+   "description": "A maze of grey cubicle partitions. Monitors glow, phones ring with nobody to answer. Headcrabs move between the desks, and a sentry gun ticks somewhere ahead.",
+   "props": {
+    "map": "c1a2",
+    "chapter": "Office Complex"
+   }
+  },
+  "hl/c1a2a_kitchen": {
+   "name": "Cafeteria and Kitchen",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a2_cubicles",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "zombie",
+    "zombie",
+    "vending_machine",
+    "medkit"
+   ],
+   "description": "A staff cafeteria with plastic trays still on the tables. Through the kitchen, a walk-in freezer stands ajar, frost spilling out, and something inside is moving among the hanging meat.",
+   "props": {
+    "map": "c1a2a",
+    "chapter": "Office Complex"
+   }
+  },
+  "hl/c1a2b_sentries": {
+   "name": "Sentry Gun Corridor",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a2_cubicles",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a2c_flood",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "sentry_gun",
+    "dead_scientist",
+    "battery"
+   ],
+   "description": "A long office corridor guarded by an automated sentry gun behind a tripwire laser. A scientist's body lies just past the beam: he didn't see it either.",
+   "props": {
+    "map": "c1a2b",
+    "chapter": "Office Complex"
+   }
+  },
+  "hl/c1a2c_flood": {
+   "name": "Flooded Office Basement",
+   "tags": [
+    "blackmesa",
+    "office",
+    "maintenance",
+    "indoor",
+    "water",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a2b_sentries",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a2d_storage",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "power_junction",
+    "houndeye",
+    "houndeye"
+   ],
+   "description": "Stairs down to a basement of offices, knee-deep in water with live wiring trailing in it. A circuit breaker panel sits on a dry landing.",
+   "props": {
+    "map": "c1a2c",
+    "chapter": "Office Complex"
+   }
+  },
+  "hl/c1a2d_storage": {
+   "name": "Office Supply Storage",
+   "tags": [
+    "blackmesa",
+    "storage",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a2c_flood",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a3_execution",
+     "dir": "down",
+     "distance": 1,
+     "name": "freight lift",
+     "aliases": [
+      "lift"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "office_guard",
+    "supply_crate",
+    "health_charger"
+   ],
+   "description": "Shelves of paper, toner and folding chairs. A guard has barricaded himself in, and gratefully joins you. A freight lift leads down toward the storage and loading areas.",
+   "props": {
+    "map": "c1a2d",
+    "chapter": "Office Complex"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "storage",
+      "office"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  }
+ }
+}

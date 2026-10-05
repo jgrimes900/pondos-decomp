@@ -1,0 +1,489 @@
+{
+ "rooms": {
+  "hl/c1a0_lobby": {
+   "name": "Sector C Lobby",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c0a0e_platform",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a0_offices",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "lobby_guard",
+    "lobby_scientist",
+    "retinal_scanner",
+    "security_desk"
+   ],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "The lobby is wrecked. Ceiling tiles hang from their frames, the security desk is splashed with something dark, and the retinal scanner sparks uselessly. Somewhere, a scientist is screaming for help."
+    },
+    {
+     "text": "The Sector C reception area: a curved security desk, a retinal scanner beside a heavy door, a Black Mesa logo on the wall and a computer system that, the guard complains, keeps crashing. Scientists drift past with coffee and clipboards and tell you you're late."
+    }
+   ],
+   "aliases": [
+    "lobby",
+    "reception"
+   ],
+   "props": {
+    "map": "c1a0",
+    "chapter": "Anomalous Materials"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "ANOMALOUS MATERIALS",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "office",
+      "blackmesa"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c1a0_offices": {
+   "name": "Sector C Office Corridor",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0_lobby",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a0_breakroom",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a0_locker",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a0c_dorms",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "sector_c_scientist",
+    "bm_terminal"
+   ],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "Bodies lie in the corridor. A vortigaunt's crackling green light flickers at one end."
+    },
+    {
+     "text": "A corridor of offices and labs. Doors open onto rooms of whirring equipment; two scientists argue about a grant; a man in a lab coat pushes a cart of samples past you."
+    }
+   ],
+   "props": {
+    "map": "c1a0",
+    "chapter": "Anomalous Materials"
+   }
+  },
+  "hl/c1a0_breakroom": {
+   "name": "Sector C Break Room",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0_offices",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "microwave",
+    "vending_machine"
+   ],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "The break room is a ruin. The microwave has exploded, painting the wall with casserole."
+    },
+    {
+     "text": "The staff kitchen. A scientist is heating a casserole in the microwave; the dial says it will be a while. There's a coffee machine, a soda machine and a fridge with someone's name on everything."
+    }
+   ],
+   "props": {
+    "map": "c1a0",
+    "chapter": "Anomalous Materials"
+   }
+  },
+  "hl/c1a0_locker": {
+   "name": "Sector C Locker Room",
+   "tags": [
+    "blackmesa",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0_offices",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a0d_elevator",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "freeman_locker",
+    "hev_rack",
+    "suit_charger",
+    "health_charger"
+   ],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "Locker doors hang open. The suit storage room's glass is cracked, and an alarm drones overhead."
+    },
+    {
+     "text": "Rows of grey lockers and benches. Yours has your name on it: FREEMAN. Through the far door, a glass-fronted storage room holds HEV suits on their charging racks."
+    }
+   ],
+   "aliases": [
+    "locker room",
+    "lockers"
+   ],
+   "props": {
+    "map": "c1a0",
+    "chapter": "Anomalous Materials"
+   }
+  },
+  "hl/c1a0d_elevator": {
+   "name": "Freight Elevator to the Test Labs",
+   "tags": [
+    "blackmesa",
+    "transit",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0_locker",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a0a_labs",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "The elevator's cage is twisted; the cables groan with every movement."
+    },
+    {
+     "text": "A big caged freight elevator descends to the Anomalous Materials test labs. A guard rides down with you, chatting about the experiment everybody's nervous about."
+    }
+   ],
+   "aliases": [
+    "elevator",
+    "freight elevator"
+   ],
+   "props": {
+    "map": "c1a0d",
+    "chapter": "Anomalous Materials"
+   }
+  },
+  "hl/c1a0a_labs": {
+   "name": "Anomalous Materials Laboratories",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0d_elevator",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a0b_decon",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "lab_scientist",
+    "bm_terminal"
+   ],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "Lab windows have shattered outward. Something green and wet crawls in one of the clean rooms."
+    },
+    {
+     "text": "Lab corridors with windows onto clean rooms where scientists work behind glass. A sign points to the TEST CHAMBER. A scientist hurries past: the spectrometer's running hot, he says, but everything's within tolerance."
+    }
+   ],
+   "props": {
+    "map": "c1a0a",
+    "chapter": "Anomalous Materials"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "lab",
+      "blackmesa"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c1a0c_dorms": {
+   "name": "Sector C Staff Corridor",
+   "tags": [
+    "blackmesa",
+    "office",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0_offices",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "vending_machine"
+   ],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "The staff corridor is dark, the television showing static. Something moves in the lounge."
+    },
+    {
+     "text": "A side corridor of offices and a small staff lounge, where a television plays to an empty sofa."
+    }
+   ],
+   "props": {
+    "map": "c1a0c",
+    "chapter": "Anomalous Materials"
+   }
+  },
+  "hl/c1a0b_decon": {
+   "name": "Decontamination and Test Lab Approach",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0a_labs",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a0e_control",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "The decontamination doors are jammed half open, sparking."
+    },
+    {
+     "text": "A white decontamination corridor with blast doors and warning lights. Signs warn that the anti-mass spectrometer is in operation. The doors cycle open as you approach."
+    }
+   ],
+   "props": {
+    "map": "c1a0b",
+    "chapter": "Anomalous Materials"
+   }
+  },
+  "hl/c1a0e_control": {
+   "name": "Test Chamber Control Room",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0b_decon",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a0e_chamber",
+     "dir": "down",
+     "distance": 1,
+     "name": "stairs to the chamber",
+     "aliases": [
+      "stairs"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "senior_scientists",
+    "control_console"
+   ],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "The control room window has blown out. Consoles spark and smoke; a scientist lies under a fallen panel, pleading for someone to get help from the surface."
+    },
+    {
+     "text": "Two senior scientists hunch over consoles, one balding and bespectacled, the other bearded. A big window overlooks the test chamber below. They assure you the sample is unusually pure and the system has never been pushed this far, and that nothing can possibly go wrong. Through the speaker, a colleague reports the beam is at one hundred and five percent."
+    }
+   ],
+   "aliases": [
+    "control room"
+   ],
+   "props": {
+    "map": "c1a0e",
+    "chapter": "Anomalous Materials"
+   }
+  },
+  "hl/c1a0e_chamber": {
+   "name": "Anti-Mass Spectrometer Test Chamber",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor"
+   ],
+   "exits": [
+    {
+     "to": "hl/c1a0e_control",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c1a1_ruins",
+     "dir": "north",
+     "distance": 1,
+     "name": "wrecked blast door",
+     "aliases": [
+      "blast door",
+      "door"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "anti_mass_spectrometer",
+    "sample_cart"
+   ],
+   "description": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "text": "The test chamber is a smoking ruin. The spectrometer's emitters are cracked and dead, and the floor is scorched in strange concentric rings."
+    },
+    {
+     "text": "A vast cylindrical chamber. The anti-mass spectrometer's emitters crackle with energy around a central beam. A sample cart sits on its track, ready to be pushed into the beam. The scientists talk you through it over the intercom: you have to push the sample in yourself."
+    }
+   ],
+   "aliases": [
+    "test chamber",
+    "chamber"
+   ],
+   "props": {
+    "map": "c1a0e",
+    "chapter": "Anomalous Materials"
+   }
+  }
+ }
+}

@@ -1,0 +1,566 @@
+{
+ "areas": {
+  "hl_blackmesa": {
+   "name": "the Black Mesa Research Facility",
+   "start_label": "Half-Life - Gordon Freeman, riding the inbound tram to work",
+   "tags": [
+    "blackmesa",
+    "start",
+    "half-life",
+    "scifi",
+    "indoor",
+    "lambda"
+   ],
+   "theme": [
+    "blackmesa",
+    "office",
+    "lab",
+    "maintenance",
+    "surface"
+   ],
+   "important": true,
+   "start": "hl/c0a0_tram",
+   "rooms": [
+    "hl/*"
+   ],
+   "entrances": [
+    "hl/c1a3b_storage",
+    "hl/c2a5x_cliffs",
+    "hl/c3a1a_yard",
+    "hl/c2a2a_tunnels"
+   ],
+   "player": {
+    "name": "Gordon Freeman",
+    "player_name": "Gordon Freeman",
+    "aliases": [
+     "gordon",
+     "freeman"
+    ],
+    "description": "Gordon Freeman: theoretical physicist, MIT graduate, wearer of glasses, and a man who never says a word."
+   }
+  },
+  "hl_hazard": {
+   "name": "the Hazard Course",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "theme": [
+    "blackmesa",
+    "office"
+   ],
+   "rooms": [
+    "hlh/*"
+   ],
+   "entrances": [
+    "hlh/t0a0_start"
+   ]
+  }
+ },
+ "events": {
+  "hl_cascade_war": {
+   "title": [
+    "Half-Life",
+    "Black Mesa Incident",
+    "Resonance Cascade"
+   ],
+   "tags": [
+    "blackmesa",
+    "half-life"
+   ],
+   "start_areas": [
+    "hl_blackmesa"
+   ],
+   "roles": {
+    "villain": {
+     "type": "character",
+     "match": {
+      "tag": [
+       "nihilanth"
+      ]
+     }
+    },
+    "facility": {
+     "type": "place",
+     "match": {
+      "id": [
+       "hl_blackmesa"
+      ]
+     }
+    }
+   },
+   "hook": "It is a normal morning at the Black Mesa Research Facility, and you are late. You are Gordon Freeman, research associate in Anomalous Materials, and today's test pushes an unusually pure sample into the anti-mass spectrometer further than anyone has gone before. What happens next will tear the facility apart, and the one who keeps the rift open waits in another world: {villain}.",
+   "goal": "Survive {facility}, reach the Lambda Complex, cross into Xen, and destroy {villain}.",
+   "resolutions": [
+    {
+     "verb": "attack",
+     "target": "villain",
+     "title": "Kill the Nihilanth",
+     "text": "{target.The} dies, and with it, the rift begins to close. But someone has been watching all along..."
+    }
+   ],
+   "ending": "The rift collapses. Black Mesa is in ruins, the Marines are gone, the vortigaunts are free. And you, Gordon Freeman, have been noticed."
+  },
+  "hl_military_cleanup": {
+   "title": [
+    "No Witnesses",
+    "Surface Tension"
+   ],
+   "tags": [
+    "blackmesa",
+    "half-life",
+    "military"
+   ],
+   "start_areas": [
+    "hl_blackmesa"
+   ],
+   "weight": 0.6,
+   "roles": {
+    "villain": {
+     "type": "character",
+     "match": {
+      "tag": [
+       "nihilanth"
+      ]
+     }
+    },
+    "witness": {
+     "type": "character",
+     "match": {
+      "tag": [
+       "scientist"
+      ],
+      "role": [
+       "victim",
+       "informant"
+      ]
+     },
+     "optional": true
+    },
+    "facility": {
+     "type": "place",
+     "match": {
+      "id": [
+       "hl_blackmesa"
+      ]
+     }
+    }
+   },
+   "hook": "The resonance cascade was bad. What came next was worse: the Marines, sent to contain the incident, with orders to silence every witness. You are Gordon Freeman, and you are top of their list. The only way out is through - all the way to {villain}.",
+   "goal": "Fight through the Marines and the aliens across {facility}, and end the incursion at its source: {villain}.",
+   "resolutions": [
+    {
+     "verb": "attack",
+     "target": "villain",
+     "text": "{target.The} falls; Xen's grip on Black Mesa breaks."
+    }
+   ],
+   "lore": [
+    {
+     "title": "Witness",
+     "about": [
+      "cast:witness"
+     ],
+     "text": "{witness.The} watched the Marines execute colleagues in the office wing, and has been hiding ever since."
+    }
+   ],
+   "ending": "The incursion ends. Somewhere, a report is filed that says nobody survived Black Mesa. It is wrong about you."
+  }
+ },
+ "lore": {
+  "hl_cascade": {
+   "title": "The resonance cascade",
+   "about": [
+    "area:hl_blackmesa"
+   ],
+   "tags": [
+    "science",
+    "xen",
+    "lambda",
+    "blackmesa"
+   ],
+   "text": "A crystal sample of extraordinary purity, pushed into the anti-mass spectrometer at over a hundred percent. The beam tore a hole between worlds, and the creatures of Xen began pouring through. The scientists call it a resonance cascade. They also said it was impossible."
+  },
+  "hl_lambda_plan": {
+   "title": "The Lambda team's plan",
+   "about": [
+    "area:hl_blackmesa"
+   ],
+   "tags": [
+    "lambda",
+    "science"
+   ],
+   "text": "The Lambda team believes something on the far side is holding the rift open. A satellite launch from Sector E carries the instruments they need; with it in orbit, they can open a stable portal and send someone through to stop whatever is on the other side."
+  },
+  "hl_late": {
+   "title": "Running late",
+   "about": [
+    "area:hl_blackmesa"
+   ],
+   "tags": [
+    "blackmesa",
+    "security",
+    "rumour"
+   ],
+   "chance": 0.7,
+   "text": "Gordon Freeman, twenty-seven, PhD in theoretical physics from MIT, research associate in Anomalous Materials. On the morning of the incident his time card shows he was late. Nobody has ever found out why."
+  },
+  "hl_nihilanth": {
+   "title": "The Nihilanth",
+   "about": [
+    "def:nihilanth_hl"
+   ],
+   "tags": [
+    "xen"
+   ],
+   "text": "The creature at the heart of Xen is vast, ancient and telepathic. It keeps the vortigaunts enslaved and the rift open. Every expedition before yours was found and destroyed."
+  },
+  "hl_hecu_orders": {
+   "title": "HECU orders",
+   "about": [
+    "area:hl_blackmesa"
+   ],
+   "tags": [
+    "hecu",
+    "military"
+   ],
+   "text": "Intercepted Marine traffic is blunt: secure the facility, neutralise hostiles, and leave no witnesses. Freeman is named specifically."
+  }
+ },
+ "macros": {
+  "hl_cascade": {
+   "do": [
+    {
+     "if": {
+      "flag": "hl_cascade"
+     },
+     "then": [
+      {
+       "stop": true
+      }
+     ]
+    },
+    {
+     "flag": "hl_cascade"
+    },
+    {
+     "if": {
+      "local": "here",
+      "eq": 1
+     },
+     "then": [
+      {
+       "say": "You shove the cart into the beam. For a moment nothing happens. Then the beam bends, turns green, and splits into a dozen crackling arcs. The scientists' voices rise in panic over the intercom; the chamber shakes; the world flickers - concrete, then violet sky and floating rock and huge alien shapes, then concrete again - and everything goes white.",
+       "style": "story"
+      }
+     ],
+     "else": [
+      {
+       "say": "A tremor runs through the floor, then a deep, rolling boom far below. The lights die and come back red. Somewhere in the depths of Black Mesa, the Anomalous Materials test has gone catastrophically wrong.",
+       "style": "story"
+      }
+     ]
+    },
+    {
+     "spawn": "headcrab",
+     "in": "room:hl/c1a0_lobby"
+    },
+    {
+     "spawn": "zombie",
+     "in": "room:hl/c1a0_offices"
+    },
+    {
+     "spawn": "headcrab",
+     "in": "room:hl/c1a0_breakroom"
+    },
+    {
+     "spawn": "vortigaunt",
+     "in": "room:hl/c1a0a_labs"
+    },
+    {
+     "spawn": "houndeye",
+     "in": "room:hl/c1a0c_dorms"
+    },
+    {
+     "say": "Resonance cascade. Nobody will ever be sure who said it first.",
+     "style": "dim"
+    }
+   ]
+  },
+  "hl_fire_engine": {
+   "do": [
+    {
+     "if": {
+      "flag": "hl_tentacles_dead"
+     },
+     "then": [
+      "The engine's already been fired. There's nothing left down there but charcoal.",
+      {
+       "stop": true
+      }
+     ]
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "hl_bp_power"
+       },
+       {
+        "flag": "hl_bp_oxygen"
+       },
+       {
+        "flag": "hl_bp_fuel"
+       }
+      ]
+     },
+     "then": [
+      {
+       "flag": "hl_tentacles_dead"
+      },
+      {
+       "say": "You slam the button. The rocket engine at the bottom of the silo ignites with a roar that shakes your teeth. A pillar of fire fills the pit; the tentacles thrash, shriek and burn. When the smoke clears there is nothing left of them but charred stumps.",
+       "style": "story"
+      }
+     ],
+     "else": [
+      "The button clicks. ENGINE NOT READY, says the display: it needs fuel, oxygen and power all running.",
+      {
+       "if": {
+        "not": {
+         "flag": "hl_bp_fuel"
+        }
+       },
+       "then": [
+        "The FUEL gauge reads empty."
+       ]
+      },
+      {
+       "if": {
+        "not": {
+         "flag": "hl_bp_oxygen"
+        }
+       },
+       "then": [
+        "The OXYGEN gauge reads empty."
+       ]
+      },
+      {
+       "if": {
+        "not": {
+         "flag": "hl_bp_power"
+        }
+       },
+       "then": [
+        "The POWER lamp is dark."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "hl_power_up": {
+   "do": [
+    {
+     "if": {
+      "flag": "hl_power_on"
+     },
+     "then": [
+      "The generator is already running.",
+      {
+       "stop": true
+      }
+     ]
+    },
+    {
+     "flag": "hl_power_on"
+    },
+    {
+     "say": "You throw the generator's master switch. The turbine spools up with a scream, and power floods into the rails.",
+     "style": "story"
+    },
+    {
+     "find": {
+      "def": "gargantua"
+     },
+     "in": "room:hl/c2a1_garg",
+     "as": "garg",
+     "hidden_too": true
+    },
+    {
+     "if": {
+      "exists": "local:garg"
+     },
+     "then": [
+      {
+       "say": "Down in the yard, the gargantua is standing on the high-voltage rail. Lightning crawls over it; it roars, staggers, and bursts apart in a shower of sparks.",
+       "style": "good"
+      },
+      {
+       "destroy": "local:garg"
+      }
+     ]
+    }
+   ]
+  },
+  "hl_airstrike": {
+   "do": [
+    {
+     "if": {
+      "flag": "hl_airstrike"
+     },
+     "then": [
+      "The radio hisses. Nobody's answering now.",
+      {
+       "stop": true
+      }
+     ]
+    },
+    {
+     "flag": "hl_airstrike"
+    },
+    {
+     "say": "You key the radio and read off the grid reference the Marines scrawled on the map. A voice confirms. Seconds later, jets scream over the canyon.",
+     "style": "story"
+    },
+    {
+     "find": {
+      "def": "gargantua"
+     },
+     "in": "room:hl/c2a5d_courtyard",
+     "as": "garg",
+     "hidden_too": true
+    },
+    {
+     "if": {
+      "exists": "local:garg"
+     },
+     "then": [
+      {
+       "say": "The airstrike falls squarely on the courtyard. When the dust settles, the gargantua is in pieces.",
+       "style": "good"
+      },
+      {
+       "destroy": "local:garg"
+      }
+     ]
+    }
+   ]
+  },
+  "hl_capture": {
+   "do": [
+    {
+     "flag": "hl_captured"
+    },
+    {
+     "say": "A rifle butt comes out of nowhere. The last thing you hear is a soldier laughing, and someone saying to take you to the compactor.",
+     "style": "story"
+    },
+    {
+     "for_each": {
+      "tag": "hl_weapon"
+     },
+     "in": "player",
+     "hidden_too": true,
+     "direct": true,
+     "do": [
+      {
+       "move": "it",
+       "to": "any:tag:hl_confiscated"
+      }
+     ]
+    },
+    {
+     "teleport": "room:hl/c2a4_compactor"
+    }
+   ]
+  },
+  "hl_take_damage": {
+   "do": [
+    {
+     "let": {
+      "soak": "=min(player.suit, int(amount * 2 / 3))"
+     }
+    },
+    {
+     "add": {
+      "suit": "=-soak",
+      "health": "=-(amount - soak)"
+     },
+     "on": "player"
+    },
+    {
+     "macro": "check_player_death"
+    }
+   ]
+  }
+ },
+ "rules": {
+  "hl_cascade_catchup": {
+   "on": "enter",
+   "if": {
+    "all": [
+     {
+      "in_room": "tag:post_cascade"
+     },
+     {
+      "not": {
+       "flag": "hl_cascade"
+      }
+     }
+    ]
+   },
+   "do": [
+    {
+     "macro": "hl_cascade",
+     "with": {
+      "here": 0
+     }
+    }
+   ]
+  },
+  "hl_tentacle_strike": {
+   "on": [
+    "turn",
+    "enter"
+   ],
+   "if": {
+    "all": [
+     {
+      "in_room": "tag:tentacle_zone"
+     },
+     {
+      "not": {
+       "flag": "hl_tentacles_dead"
+      }
+     },
+     {
+      "chance": 0.35
+     }
+    ]
+   },
+   "do": [
+    {
+     "say": "A tentacle hears you. Its beak slams down a few feet away, then again, closer.",
+     "style": "warn"
+    },
+    {
+     "macro": "hl_take_damage",
+     "with": {
+      "amount": 12
+     }
+    }
+   ]
+  }
+ },
+ "grammar": {
+  "tram_announcement": [
+   "\"Good morning, and welcome to the Black Mesa Transit System. This automated train is provided for the security and convenience of the Black Mesa Research Facility personnel.\"",
+   "\"The time is 8:47 a.m. Current outside temperature is 93 degrees.\"",
+   "\"This train is inbound from Black Mesa Topside to Sector C Test Labs and Control Facilities.\"",
+   "\"Please keep your arms and legs inside the train at all times.\"",
+   "\"A reminder: radioactive and biological hazards are a part of life at Black Mesa. Please report any contamination to your supervisor.\""
+  ]
+ }
+}

@@ -1,0 +1,438 @@
+{
+ "rooms": {
+  "hl/c2a5_spillway": {
+   "name": "Dam Spillway",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade",
+    "water"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a4g_surgery",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5w_dam",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "ichthyosaur",
+    "supply_crate"
+   ],
+   "description": "Daylight. You emerge onto a concrete spillway below a huge dam. The desert sun is blinding after so long underground, and an ichthyosaur thrashes in the reservoir behind.",
+   "props": {
+    "map": "c2a5",
+    "chapter": "Surface Tension"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "SURFACE TENSION",
+       "style": "title"
+      }
+     ]
+    }
+   ],
+   "expansions": [
+    {
+     "tags": [
+      "surface"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c2a5w_dam": {
+   "name": "Top of the Dam",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5_spillway",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5x_cliffs",
+     "dir": "north",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "apache",
+    "dead_marine"
+   ],
+   "description": "The dam's crest road, with a view over the canyons and the facility's smoking chimneys. A Marine helicopter swings around the cliffs.",
+   "props": {
+    "map": "c2a5w",
+    "chapter": "Surface Tension"
+   }
+  },
+  "hl/c2a5x_cliffs": {
+   "name": "Canyon Cliffs",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade",
+    "military"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5w_dam",
+     "dir": "south",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5a_crash",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "hecu_marine",
+    "ammo_box"
+   ],
+   "description": "A trail along sheer red cliffs, with snipers in the rocks above and Marines moving in pairs below. The wind smells of hot stone and jet fuel.",
+   "props": {
+    "map": "c2a5x",
+    "chapter": "Surface Tension"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "surface",
+      "military"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  },
+  "hl/c2a5a_crash": {
+   "name": "Osprey Crash Site",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade",
+    "military"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5x_cliffs",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5b_minefield",
+     "dir": "north",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "osprey_wreck",
+    "rpg",
+    "dead_marine"
+   ],
+   "description": "The burning wreck of a V-22 Osprey lies in a canyon, its rotors folded like broken wings. Bodies and cargo are scattered around it, and so are rockets.",
+   "props": {
+    "map": "c2a5a",
+    "chapter": "Surface Tension"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "surface"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  },
+  "hl/c2a5b_minefield": {
+   "name": "Minefield",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade",
+    "military"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5a_crash",
+     "dir": "south",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5c_compound",
+     "dir": "north",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "sentry_gun",
+    "minefield"
+   ],
+   "description": "A flat stretch of sand marked with warning signs, and craters where others found the mines. A sentry gun watches from a sandbagged post.",
+   "props": {
+    "map": "c2a5b",
+    "chapter": "Surface Tension"
+   }
+  },
+  "hl/c2a5c_compound": {
+   "name": "HECU Command Compound",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade",
+    "military"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5b_minefield",
+     "dir": "south",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5d_courtyard",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5e_garage",
+     "dir": "north",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "airstrike_radio",
+    "hecu_marine",
+    "supply_crate",
+    "supply_crate"
+   ],
+   "description": "A fenced military compound of tents and trucks around a radio post. A gargantua has broken in through the fence, and the Marines are losing.",
+   "props": {
+    "map": "c2a5c",
+    "chapter": "Surface Tension"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "military",
+      "surface"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  },
+  "hl/c2a5d_courtyard": {
+   "name": "Facility Courtyard",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade",
+    "garg_courtyard"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5c_compound",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "gargantua"
+   ],
+   "description": "A walled courtyard between facility buildings. The gargantua stalks here among wrecked trucks, setting everything alight.",
+   "props": {
+    "map": "c2a5d",
+    "chapter": "Surface Tension"
+   }
+  },
+  "hl/c2a5e_garage": {
+   "name": "Parking Garage",
+   "tags": [
+    "blackmesa",
+    "indoor",
+    "military",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5c_compound",
+     "dir": "south",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5f_tunnel",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "medkit",
+    "battery"
+   ],
+   "description": "A multi-storey car park cut into the cliff. Cars sit abandoned; one's alarm wails endlessly. Marines hold the ramps.",
+   "props": {
+    "map": "c2a5e",
+    "chapter": "Surface Tension"
+   },
+   "expansions": [
+    {
+     "door": "bm_locked_door",
+     "name": "locked door",
+     "aliases": [
+      "door",
+      "locked door"
+     ],
+     "tags": [
+      "storage",
+      "maintenance"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.6
+    }
+   ]
+  },
+  "hl/c2a5f_tunnel": {
+   "name": "Drainage Tunnel",
+   "tags": [
+    "blackmesa",
+    "maintenance",
+    "indoor",
+    "post_cascade"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5e_garage",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c2a5g_bridge",
+     "dir": "east",
+     "distance": 3,
+     "back": false
+    }
+   ],
+   "features": [
+    "bullsquid",
+    "ammo_box"
+   ],
+   "description": "A storm drain big enough for a truck, leading back underground. Graffiti on the wall says, in Marine shorthand, that someone owes someone twenty bucks.",
+   "props": {
+    "map": "c2a5f",
+    "chapter": "Surface Tension"
+   }
+  },
+  "hl/c2a5g_bridge": {
+   "name": "Canyon Bridge",
+   "tags": [
+    "blackmesa",
+    "surface",
+    "outdoor",
+    "desert",
+    "post_cascade",
+    "military"
+   ],
+   "exits": [
+    {
+     "to": "hl/c2a5f_tunnel",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c3a1_sewer",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "hecu_marine",
+    "grenade"
+   ],
+   "description": "A rickety bridge across a gorge. Tanks rumble on the far side and an Apache patrols the gap. The way forward leads down into the earth again.",
+   "props": {
+    "map": "c2a5g",
+    "chapter": "Surface Tension"
+   },
+   "expansions": [
+    {
+     "tags": [
+      "surface",
+      "military"
+     ],
+     "length": [
+      2,
+      4
+     ],
+     "chance": 0.9
+    }
+   ]
+  }
+ }
+}

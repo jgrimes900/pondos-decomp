@@ -1,0 +1,26 @@
+{
+  "id": "hl_core",
+  "name": "Black Mesa: Core",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "Shared content for the Half-Life, Opposing Force and Blue Shift mods: every weapon (crowbar to displacer cannon), item, creature and person from the three games, suit armour, health and HEV chargers, breakable crates, procedurally generated Black Mesa offices, labs, maintenance tunnels, transit, the desert surface, military camps, Xen and Race X hives, locked doors for the map generator, and Black Mesa lore.",
+  "requires": [
+    "core",
+    "combat"
+  ],
+  "load_after": [
+    "combat"
+  ],
+  "recommends": [
+    "hl_halflife",
+    "hl_opfor",
+    "hl_blueshift"
+  ],
+  "priority": 62,
+  "tags": [
+    "half-life",
+    "blackmesa",
+    "scifi",
+    "content"
+  ]
+}

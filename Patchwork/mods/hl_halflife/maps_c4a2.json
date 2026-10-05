@@ -1,0 +1,117 @@
+{
+ "rooms": {
+  "hl/c4a2_web": {
+   "name": "Gonarch's Web",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor",
+    "cave"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a1_islands",
+     "dir": "west",
+     "distance": 3,
+     "back": false
+    },
+    {
+     "to": "hl/c4a2a_pit",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "gonarch",
+    "baby_headcrab"
+   ],
+   "description": "A cavern strung with sticky webbing, littered with bones and egg cases. Something enormous stalks above, dropping baby headcrabs as it moves.",
+   "props": {
+    "map": "c4a2",
+    "chapter": "Gonarch's Lair"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "GONARCH'S LAIR",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "hl/c4a2a_pit": {
+   "name": "The Long Fall",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor",
+    "cave"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a2_web",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a2b_exit",
+     "dir": "down",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "baby_headcrab",
+    "medkit"
+   ],
+   "description": "The web gives way and you plunge down a shaft of fleshy rock into a lower chamber. The Gonarch comes after you.",
+   "props": {
+    "map": "c4a2a",
+    "chapter": "Gonarch's Lair"
+   }
+  },
+  "hl/c4a2b_exit": {
+   "name": "Gonarch's Pit",
+   "tags": [
+    "xen",
+    "alien",
+    "outdoor",
+    "cave"
+   ],
+   "exits": [
+    {
+     "to": "hl/c4a2a_pit",
+     "dir": "up",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "hl/c4a1a_caves",
+     "dir": "east",
+     "distance": 1,
+     "name": "glowing crack",
+     "aliases": [
+      "crack"
+     ],
+     "back": false
+    }
+   ],
+   "features": [
+    "xen_light",
+    "battery"
+   ],
+   "description": "The bottom of the lair, a bowl of rock where the Gonarch makes its last stand. A crack in the wall glows with teleport light.",
+   "props": {
+    "map": "c4a2b",
+    "chapter": "Gonarch's Lair"
+   }
+  }
+ }
+}

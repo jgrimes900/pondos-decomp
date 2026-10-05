@@ -1,0 +1,118 @@
+{
+ "rooms": {
+  "bs/ba_teleport1_lab": {
+   "name": "Teleportation Lab",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "bs_lab",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_yard6_service",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_xen1_arrival",
+     "dir": "in",
+     "distance": 1,
+     "name": "the test teleporter",
+     "aliases": [
+      "teleporter",
+      "pad",
+      "test pad"
+     ],
+     "back": false
+    },
+    {
+     "to": "bs/ba_teleport2_chamber",
+     "dir": "east",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "rosenberg_team",
+    "bs_test_pad",
+    "suit_charger",
+    "health_charger"
+   ],
+   "description": "Rosenberg's old teleport lab. Two of his team are still alive, barricaded in with the equipment. The prototype teleporter can get you all out, Rosenberg says, but first somebody has to go to Xen and set up a relay, so the jump has something to lock on to. He looks at you. You look at the security badge on your chest.",
+   "aliases": [
+    "teleport lab"
+   ],
+   "props": {
+    "map": "ba_teleport1",
+    "chapter": "Focal Point"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "FOCAL POINT",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  },
+  "bs/ba_teleport2_chamber": {
+   "name": "Prototype Teleporter Chamber",
+   "tags": [
+    "blackmesa",
+    "lab",
+    "indoor",
+    "bs_lab",
+    "post_cascade_bs"
+   ],
+   "exits": [
+    {
+     "to": "bs/ba_power2_cliffs",
+     "dir": "out",
+     "distance": 1,
+     "back": false
+    },
+    {
+     "to": "bs/ba_teleport1_lab",
+     "dir": "west",
+     "distance": 1,
+     "back": false
+    }
+   ],
+   "features": [
+    "prototype_teleporter",
+    "health_charger",
+    "hecu_marine"
+   ],
+   "description": "The prototype teleporter fills the chamber: a ring of emitters around a platform, cables as thick as your arm running to an empty battery cradle. Rosenberg's team are at the controls. The Marines are at the door.",
+   "aliases": [
+    "teleporter chamber",
+    "chamber"
+   ],
+   "props": {
+    "map": "ba_teleport2",
+    "chapter": "A Leap of Faith"
+   },
+   "on_enter": [
+    {
+     "if": {
+      "local": "first"
+     },
+     "then": [
+      {
+       "say": "A LEAP OF FAITH",
+       "style": "title"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

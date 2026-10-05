@@ -1,0 +1,224 @@
+{
+ "areas": {
+  "bs_blackmesa": {
+   "name": "the Black Mesa security sectors",
+   "start_label": "Blue Shift - Barney Calhoun, security guard, late for his shift",
+   "tags": [
+    "blackmesa",
+    "start",
+    "blue-shift",
+    "scifi",
+    "security"
+   ],
+   "theme": [
+    "blackmesa",
+    "office",
+    "maintenance",
+    "transit"
+   ],
+   "important": true,
+   "start": "bs/ba_tram1",
+   "rooms": [
+    "bs/*"
+   ],
+   "entrances": [
+    "bs/ba_canal2_canals",
+    "bs/ba_yard2_trains",
+    "bs/ba_power2_cliffs"
+   ],
+   "player": {
+    "name": "Barney Calhoun",
+    "player_name": "Barney Calhoun",
+    "aliases": [
+     "barney",
+     "calhoun"
+    ],
+    "description": "Barney Calhoun, Black Mesa security: blue shirt, ID badge, and a strong sense that he is underpaid."
+   }
+  },
+  "bs_training": {
+   "name": "the security training course",
+   "tags": [
+    "blackmesa",
+    "training",
+    "indoor"
+   ],
+   "theme": [
+    "blackmesa",
+    "office"
+   ],
+   "rooms": [
+    "bsh/*"
+   ],
+   "entrances": [
+    "bsh/ba_hazard1"
+   ]
+  }
+ },
+ "events": {
+  "bs_leap_of_faith": {
+   "title": [
+    "Blue Shift",
+    "A Leap of Faith"
+   ],
+   "tags": [
+    "blackmesa",
+    "blue-shift",
+    "escape"
+   ],
+   "start_areas": [
+    "bs_blackmesa"
+   ],
+   "roles": {
+    "scientist": {
+     "type": "character",
+     "match": {
+      "tag": [
+       "rosenberg"
+      ]
+     }
+    },
+    "device": {
+     "type": "feature",
+     "match": {
+      "tag": [
+       "bs_teleporter"
+      ]
+     }
+    },
+    "power": {
+     "type": "item",
+     "match": {
+      "tag": [
+       "bs_tele_battery"
+      ]
+     }
+    },
+    "facility": {
+     "type": "place",
+     "match": {
+      "id": [
+       "bs_blackmesa"
+      ]
+     }
+    }
+   },
+   "hook": "You are Barney Calhoun, Black Mesa security, running late for an ordinary shift. Then an experiment in Anomalous Materials tears the facility open, and the Marines who arrive to help start shooting everyone. Somewhere in the wreckage is {scientist}, whose old team built a machine that might just get you out: {device}.",
+   "goal": "Find {scientist}, cross {facility}, and power {device} with {power} to escape.",
+   "resolutions": [
+    {
+     "verb": "put",
+     "target": "device",
+     "means": "power",
+     "title": "Take the leap",
+     "text": "{means.The} locks into {target}'s cradle. The emitters spin up to a scream, the relay locks on, and Rosenberg yells for everyone to get on the platform. You jump. The world turns blue.",
+     "effects": [
+      {
+       "teleport": "room:bs/ba_outro"
+      }
+     ]
+    }
+   ],
+   "ending": "You drive out of Black Mesa with Rosenberg and his team, into the dawn. Nobody is ever going to believe a word of this."
+  }
+ },
+ "lore": {
+  "bs_calhoun": {
+   "title": "Barney Calhoun",
+   "about": [
+    "area:bs_blackmesa"
+   ],
+   "tags": [
+    "security",
+    "blackmesa"
+   ],
+   "text": "Barney Calhoun, Black Mesa security, officer grade. Responsible for checking badges, fixing elevators and getting scientists out of trouble. Today, the job description is about to expand."
+  },
+  "bs_teleport": {
+   "title": "Teleport research",
+   "about": [
+    "area:bs_blackmesa"
+   ],
+   "tags": [
+    "science",
+    "teleport",
+    "xen"
+   ],
+   "text": "Before the Lambda team took over, Dr. Rosenberg's group built Black Mesa's first teleporter. It needed a relay on the far side to lock on to, and it needed more power than anyone wanted to give it. It was mothballed. It was never dismantled."
+  },
+  "bs_late": {
+   "title": "Late again",
+   "about": [
+    "area:bs_blackmesa"
+   ],
+   "tags": [
+    "security",
+    "rumour"
+   ],
+   "chance": 0.7,
+   "text": "Security logs show Officer Calhoun arriving late on the morning of the incident, on the same tram line as a research associate who was also late. Neither knew the other's name."
+  }
+ },
+ "macros": {
+  "bs_cascade": {
+   "do": [
+    {
+     "if": {
+      "flag": "bs_cascade"
+     },
+     "then": [
+      {
+       "stop": true
+      }
+     ]
+    },
+    {
+     "flag": "bs_cascade"
+    },
+    {
+     "say": "The elevator lurches. Green light flickers through the shaft, and the world shudders, once, twice: somewhere above, an experiment has gone horribly wrong. The cables snap. The car drops.",
+     "style": "story"
+    },
+    {
+     "macro": "hl_take_damage",
+     "with": {
+      "amount": 15
+     }
+    },
+    {
+     "teleport": "room:bs/ba_canal1_shaft"
+    }
+   ]
+  }
+ },
+ "rules": {
+  "bs_cascade_catchup": {
+   "on": "enter",
+   "if": {
+    "all": [
+     {
+      "in_room": "tag:post_cascade_bs"
+     },
+     {
+      "not": {
+       "flag": "bs_cascade"
+      }
+     }
+    ]
+   },
+   "do": [
+    {
+     "flag": "bs_cascade"
+    }
+   ]
+  }
+ },
+ "grammar": {
+  "bs_announcement": [
+   "\"Good morning, and welcome to the Black Mesa Transit System. This automated train is provided for the security and convenience of Black Mesa Research Facility personnel.\"",
+   "\"This train is outbound from Living Quarters to Sector C.\"",
+   "\"Security personnel are reminded that their sidearms must be signed for at the beginning of each shift.\"",
+   "\"Black Mesa: working to make a better tomorrow for all mankind.\""
+  ]
+ }
+}

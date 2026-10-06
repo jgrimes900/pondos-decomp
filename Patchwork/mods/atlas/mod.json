@@ -1,0 +1,21 @@
+{
+  "id": "atlas",
+  "name": "Atlas of Places",
+  "version": "1.0.0",
+  "author": "Patchwork",
+  "description": "Reusable world-building parts: style biomes (medieval, fairytale, modern, Soviet, sci-fi), regional biomes (UK, Mexico, Washington, China, the tropics, New Mexico), quality biomes (luxurious, humble, derelict), dry and tropical terrain (mesa, desert, jungle, tundra, beach), layouts that change with their biomes (a hotel that becomes an inn, a resort or an apartment block; towns, houses, dungeons), and highways, canyons and rail lines. It sprinkles lodgings, towns and old dungeons into the world.",
+  "requires": [
+    "core"
+  ],
+  "recommends": [
+    "wilds"
+  ],
+  "load_after": [
+    "wilds"
+  ],
+  "priority": 21,
+  "tags": [
+    "regions",
+    "worldgen"
+  ]
+}

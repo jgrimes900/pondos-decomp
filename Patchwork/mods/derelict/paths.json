@@ -1,0 +1,72 @@
+{
+  "//": "How you get around Station Kestrel: the main corridors and maintenance spines are the station's paths.",
+  "paths": {
+    "station_corridor": {
+      "name": "the #ring_word# Corridor",
+      "tags": [
+        "station",
+        "corridor",
+        "interior",
+        "scifi"
+      ],
+      "connects": [
+        "station",
+        "docking",
+        "medical",
+        "engineering",
+        "cargo",
+        "corridor"
+      ],
+      "weight": 3,
+      "spacing": 8,
+      "directions": [
+        "fore",
+        "aft",
+        "port",
+        "starboard"
+      ],
+      "fork_text": "A junction here: {branch} branches off toward {toward}.",
+      "waypoints": [
+        {
+          "name": "Junction #junction_no#",
+          "description": "A pressure-door junction where the corridor meets a cross-passage. Status lights blink amber on every frame.",
+          "weight": 2
+        },
+        {
+          "name": "Observation Gallery",
+          "description": "A long window looks out on the slow wheel of stars. Someone has left a coffee bulb on the rail."
+        },
+        {
+          "name": "Bulkhead #junction_no#",
+          "description": "A heavy bulkhead stands open, its seals scorched. Emergency strips light the deck."
+        },
+        {
+          "name": "Crew Lounge",
+          "description": "Bolted-down chairs around a dead entertainment screen. A game of cards was abandoned mid-hand.",
+          "features": [
+            {
+              "chance": 0.3,
+              "id": "rogue_drone"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "grammar": {
+    "ring_word": [
+      "Spinward",
+      "Trailing",
+      "Main",
+      "Outer Ring",
+      "Inner Ring"
+    ],
+    "junction_no": [
+      "A-3",
+      "B-7",
+      "C-2",
+      "D-9",
+      "E-4"
+    ]
+  }
+}

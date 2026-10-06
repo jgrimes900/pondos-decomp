@@ -114,6 +114,10 @@ class Describer:
         label = ex.get("name") or dirdef.get("name") or ex.get("dir")
         known = dest is not None and (dest.visited or ex.get("show_dest"))
         dest_name = dest.name if known else None
+        if ex.get("via") and label:
+            # Following a path: "north along the Old Fox Way".
+            label = self.i.render(self.w.string("exit_via", "{dir} along {via}"),
+                                  self.i.ctx(local={"dir": label, "via": ex["via"]}))
         ctx = self.i.ctx(self_ent=room, local={
             "dir": label or (dest.name if dest else "?"),
             "dest": dest_name or self.w.string("unknown_dest", "unexplored"),

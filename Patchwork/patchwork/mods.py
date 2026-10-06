@@ -16,7 +16,7 @@ import os
 # with the same id, or deep-merge into them when the entry has "_patch": true.
 ID_SECTIONS = (
     "features", "rooms", "areas", "regions", "events", "obstacles", "lore",
-    "verbs", "rules", "directions", "macros",
+    "verbs", "rules", "directions", "macros", "biomes", "paths", "layouts",
 )
 # Sections that are plain key -> value maps merged key by key.
 MAP_SECTIONS = ("strings", "settings")

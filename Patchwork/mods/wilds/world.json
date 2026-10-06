@@ -1,0 +1,710 @@
+{
+  "//": "The Wilds as a world map: terrain biomes that spread across the land in patches and blend at their edges, the paths travellers follow between places, and places the world can generate along the way (villages, a lost wood).",
+  "biomes": {
+    "forest": {
+      "kind": "terrain",
+      "tags": [
+        "forest",
+        "wild",
+        "outdoor"
+      ],
+      "gradient": 4,
+      "grammar": {
+        "terrain_view": [
+          "#tree.s.cap# crowd close on either side, their branches knitting a roof overhead.",
+          "The way runs under #forest_adj# #tree.s#, and #forest_sound#.",
+          "Ferns brush your knees and the air smells of #forest_smell#."
+        ],
+        "landmark": [
+          "old #tree#",
+          "woodcutter's stack",
+          "fallen #tree#",
+          "charcoal burner's mound",
+          "moss-grown stone",
+          "hollow #tree#"
+        ],
+        "ground": [
+          "leaf litter",
+          "moss",
+          "pine needles"
+        ],
+        "vista": [
+          "dim green aisles of trees"
+        ],
+        "glade_desc": [
+          "A clearing among #forest_adj# #tree.s#. #forest_sound.cap#.",
+          "Trunks stand all round, every one alike. Light falls in slanting columns.",
+          "Ferns grow waist-high between the #tree.s#, and the path you came by is already hard to see."
+        ]
+      },
+      "features": [
+        {
+          "chance": 0.6,
+          "id": "tree"
+        },
+        {
+          "chance": 0.25,
+          "id": "berry_bush"
+        },
+        {
+          "chance": 0.2,
+          "id": "fallen_log"
+        }
+      ],
+      "details": [
+        "Somewhere in the trees a #bird# calls.",
+        "The air smells of #forest_smell#."
+      ]
+    },
+    "plains": {
+      "kind": "terrain",
+      "tags": [
+        "plains",
+        "pastoral",
+        "outdoor"
+      ],
+      "gradient": 4,
+      "grammar": {
+        "terrain_view": [
+          "Open country rolls away #view#, all #field# fields and hedgerows.",
+          "Wide fields of #field# ripple in the wind, broken by hedges and the odd copse.",
+          "Grassland runs to the horizon under an enormous sky."
+        ],
+        "landmark": [
+          "haystack",
+          "lone windmill",
+          "field gate",
+          "scarecrow",
+          "boundary stone",
+          "lone #tree#"
+        ],
+        "ground": [
+          "short grass",
+          "dry earth",
+          "stubble"
+        ],
+        "vista": [
+          "open fields"
+        ]
+      },
+      "features": [
+        {
+          "chance": 0.35,
+          "id": "wildflowers"
+        },
+        {
+          "chance": 0.2,
+          "id": "scarecrow"
+        }
+      ],
+      "details": [
+        "Larks rise singing out of the grass.",
+        "Cattle watch you pass with mild interest."
+      ]
+    },
+    "hills": {
+      "kind": "terrain",
+      "tags": [
+        "hills",
+        "highland",
+        "outdoor"
+      ],
+      "gradient": 3,
+      "grammar": {
+        "terrain_view": [
+          "The land rises in #hill_adj# folds, and the view stretches #view#.",
+          "Grey stone breaks through the thin turf. #hill_detail.cap#.",
+          "Sheep-cropped hillsides climb on either hand."
+        ],
+        "landmark": [
+          "cairn",
+          "shepherd's hut",
+          "standing stone",
+          "sheepfold",
+          "hilltop beacon"
+        ],
+        "ground": [
+          "springy turf",
+          "scree"
+        ],
+        "vista": [
+          "rolling hills"
+        ]
+      },
+      "features": [
+        {
+          "chance": 0.35,
+          "id": "boulder"
+        },
+        {
+          "chance": 0.15,
+          "id": "standing_stone"
+        }
+      ],
+      "details": [
+        "A buzzard turns slow circles overhead.",
+        "The wind never quite stops up here."
+      ]
+    },
+    "mountains": {
+      "kind": "terrain",
+      "tags": [
+        "mountain",
+        "highland",
+        "outdoor"
+      ],
+      "gradient": 2,
+      "grammar": {
+        "terrain_view": [
+          "Peaks stand all round, snow on their shoulders, and the air is thin and cold.",
+          "The way clings to a mountainside above a long drop into cloud.",
+          "Bare rock and old snow, and a wind that cuts."
+        ],
+        "landmark": [
+          "frozen waterfall",
+          "rope bridge",
+          "rock shelter",
+          "pass marker",
+          "avalanche scar"
+        ],
+        "ground": [
+          "bare rock",
+          "old snow"
+        ],
+        "vista": [
+          "snowy peaks"
+        ]
+      },
+      "features": [
+        {
+          "chance": 0.4,
+          "id": "boulder"
+        }
+      ],
+      "details": [
+        "Somewhere above, stones clatter down a gully.",
+        "Your breath smokes in the cold."
+      ]
+    },
+    "marsh": {
+      "kind": "terrain",
+      "tags": [
+        "marsh",
+        "wet",
+        "eerie",
+        "outdoor"
+      ],
+      "gradient": 2,
+      "grammar": {
+        "terrain_view": [
+          "Pools of black water lie between tussocks of coarse grass. #marsh_detail.cap#.",
+          "Mist clings to the #marsh_adj# ground, and every step squelches.",
+          "Dead trees stand in the mire like grey sentinels."
+        ],
+        "landmark": [
+          "drowned causeway",
+          "sunken boat",
+          "heron rookery",
+          "bog oak",
+          "rotten jetty"
+        ],
+        "ground": [
+          "black mud",
+          "sphagnum moss"
+        ],
+        "vista": [
+          "reed beds and mist"
+        ]
+      },
+      "features": [
+        {
+          "chance": 0.5,
+          "id": "reeds"
+        },
+        {
+          "chance": 0.12,
+          "id": "will_o_wisp"
+        }
+      ],
+      "details": [
+        "Something plops into the water nearby.",
+        "Marsh gas glimmers faintly over the pools."
+      ]
+    },
+    "riverlands": {
+      "kind": "terrain",
+      "tags": [
+        "river",
+        "water",
+        "outdoor",
+        "pastoral"
+      ],
+      "gradient": 2,
+      "grammar": {
+        "terrain_view": [
+          "Water meadows lie flat and green along the river, and willows lean over the water.",
+          "The river runs wide and slow here between muddy banks."
+        ],
+        "landmark": [
+          "water mill",
+          "ferry landing",
+          "eel trap",
+          "old weir",
+          "willow island"
+        ],
+        "ground": [
+          "wet grass",
+          "river mud"
+        ],
+        "vista": [
+          "the shining river"
+        ]
+      },
+      "features": [
+        {
+          "chance": 0.4,
+          "id": "reeds"
+        },
+        {
+          "chance": 0.3,
+          "id": "tree"
+        }
+      ],
+      "details": [
+        "A kingfisher flashes blue across the water.",
+        "The river chuckles over stones."
+      ]
+    }
+  },
+  "paths": {
+    "road": {
+      "name": "#road_name#",
+      "tags": [
+        "road",
+        "outdoor"
+      ],
+      "connects": [
+        "settlement",
+        "road",
+        "pastoral",
+        "town",
+        "village"
+      ],
+      "weight": 3,
+      "spacing": 9,
+      "fork_text": "A side road branches off here: {branch}, toward {toward}.",
+      "waypoints": [
+        {
+          "name": "[l:#landmark#]#l.title#",
+          "description": "#road_surface.cap# passes #l.a#. #terrain_view#",
+          "weight": 3
+        },
+        {
+          "name": "#road_adj.title# Crossroads",
+          "description": "Roads meet here by #signpost_kind.a#. #terrain_view#",
+          "features": [
+            "signpost"
+          ]
+        },
+        {
+          "name": "[l:#road_stop#]#l.title#",
+          "description": "#road_surface.cap# runs past #l.a#, a place travellers stop. #terrain_view#"
+        },
+        {
+          "name": "#road_adj.title# Bridge",
+          "description": "#road_surface.cap# crosses a stream on #bridge_kind.a#. #terrain_view#",
+          "features": [
+            "stream"
+          ]
+        }
+      ]
+    },
+    "river": {
+      "name": "the River #river#",
+      "tags": [
+        "river",
+        "water",
+        "outdoor"
+      ],
+      "connects": [
+        "river",
+        "water",
+        "coast",
+        "pastoral"
+      ],
+      "weight": 2,
+      "spacing": 10,
+      "biomes": {
+        "terrain": [
+          "forest",
+          "plains",
+          "riverlands",
+          "marsh",
+          "hills"
+        ]
+      },
+      "fork_text": "A tributary joins the river here: {branch}, which leads toward {toward}.",
+      "waypoints": [
+        {
+          "name": "[r:#river#]#r.title# Ford",
+          "description": "The river runs shallow over gravel here, easy to wade. #terrain_view#",
+          "features": [
+            "reeds"
+          ]
+        },
+        {
+          "name": "[l:#landmark#]#l.title#",
+          "description": "You follow the riverbank past #l.a#. #terrain_view#",
+          "weight": 2
+        },
+        {
+          "name": "#river_adj.title# Rapids",
+          "description": "The river breaks white over rocks, loud enough to drown out your thoughts. #terrain_view#"
+        },
+        {
+          "name": "#willow_word.title# Reach",
+          "description": "A long, slow reach of river under leaning willows. #terrain_view#",
+          "features": [
+            {
+              "chance": 0.6,
+              "id": "tree"
+            }
+          ]
+        }
+      ]
+    },
+    "forest_trail": {
+      "name": "the #forest_adj.title# Trail",
+      "tags": [
+        "trail",
+        "forest",
+        "outdoor"
+      ],
+      "connects": [
+        "forest",
+        "dungeon",
+        "eerie",
+        "ancient"
+      ],
+      "weight": 2,
+      "spacing": 8,
+      "biomes": {
+        "terrain": [
+          "forest",
+          "hills"
+        ]
+      },
+      "fork_text": "A narrower path branches off between the trees here: {branch}, toward {toward}.",
+      "waypoints": [
+        {
+          "name": "[l:#landmark#]#l.title#",
+          "description": "The trail winds past #l.a#. #terrain_view#",
+          "weight": 3
+        },
+        {
+          "name": "#forest_name#",
+          "description": "#forest_desc#"
+        },
+        {
+          "name": "Woodcutter's Clearing",
+          "description": "A clearing of stumps and sawdust where the trail widens. #terrain_view#",
+          "features": [
+            "fallen_log"
+          ]
+        }
+      ]
+    },
+    "mountain_pass": {
+      "name": "the #hill_adj.title# Pass",
+      "tags": [
+        "pass",
+        "mountain",
+        "outdoor"
+      ],
+      "connects": [
+        "mountain",
+        "highland",
+        "dungeon",
+        "ancient",
+        "ruins"
+      ],
+      "weight": 1,
+      "spacing": 10,
+      "stretch": [
+        3,
+        9
+      ],
+      "biomes": {
+        "terrain": [
+          "mountains",
+          "hills"
+        ]
+      },
+      "waypoints": [
+        {
+          "name": "[l:#landmark#]#l.title#",
+          "description": "The pass climbs past #l.a#. #terrain_view#",
+          "weight": 2
+        },
+        {
+          "name": "#hill_adj.title# Saddle",
+          "description": "The highest point of the pass, a windy saddle between two peaks. #terrain_view#"
+        },
+        {
+          "name": "Switchbacks",
+          "description": "The path zigzags up a steep slope of scree. #terrain_view#",
+          "features": [
+            "boulder"
+          ]
+        }
+      ]
+    }
+  },
+  "layouts": {
+    "lost_woods": {
+      "type": "grid",
+      "size": [
+        3,
+        4
+      ],
+      "role": "glade",
+      "lost": 0.35,
+      "goal": "heart",
+      "tags": [
+        "forest",
+        "eerie",
+        "outdoor",
+        "lost_woods"
+      ],
+      "rooms": {
+        "glade": [
+          {
+            "name": "[t:#tree#]#t.title# Glade",
+            "description": "#glade_desc#"
+          },
+          {
+            "name": "#forest_adj.title# Hollow",
+            "description": "#glade_desc# The trees here look very like the trees you just left."
+          },
+          {
+            "name": "Tangled Path",
+            "description": "#glade_desc# Brambles snag at you, and the path forks and forks again."
+          }
+        ],
+        "heart": [
+          {
+            "name": "Heart of the Wood",
+            "description": "The trees open on a still glade around an ancient #tree#, wider than a house. Whatever kept turning you round, it was guarding this.",
+            "features": [
+              "standing_stone",
+              {
+                "chance": 0.5,
+                "id": "tree_hollow"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "village": {
+      "tags": [
+        "settlement",
+        "village",
+        "outdoor"
+      ],
+      "plan": [
+        {
+          "role": "green",
+          "entrance": true
+        },
+        {
+          "role": "lane",
+          "from": "green",
+          "count": [
+            1,
+            2
+          ]
+        },
+        {
+          "role": "cottage",
+          "from": "lane",
+          "per": true,
+          "dir": "in",
+          "chance": 0.8
+        },
+        {
+          "layout": "hotel",
+          "role": "tavern",
+          "from": "green",
+          "dir": "in",
+          "biomes": {
+            "quality": [
+              "humble",
+              "humble",
+              "luxurious"
+            ]
+          }
+        },
+        {
+          "role": "smithy",
+          "from": "lane",
+          "chance": 0.6
+        },
+        {
+          "role": "shrine",
+          "from": "green",
+          "chance": 0.5
+        }
+      ],
+      "rooms": {
+        "green": [
+          {
+            "name": "#town_name.title# Green",
+            "description": "A village green with a well and a bench, cottages all round. #terrain_view#",
+            "features": [
+              {
+                "chance": 0.5,
+                "id": "wildflowers"
+              }
+            ]
+          }
+        ],
+        "lane": [
+          {
+            "name": "#village_part.title# Lane",
+            "description": "A narrow lane between cottage gardens, hens scratching in the dust."
+          },
+          {
+            "name": "Back Lane",
+            "description": "A muddy back lane of sheds, woodpiles and nettles."
+          }
+        ],
+        "cottage": [
+          {
+            "name": "[s:#surname#]#s#'s Cottage",
+            "description": "A low cottage room: a hearth, a table, a dresser of mismatched plates. Nobody's home.",
+            "tags": [
+              "indoor"
+            ]
+          },
+          {
+            "name": "Weaver's Cottage",
+            "description": "A loom fills most of this cottage, a half-finished cloth stretched on it.",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "tavern": [
+          {
+            "name": "The Village Alehouse",
+            "description": "A smoky little alehouse: two benches, a barrel and a fire.",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "smithy": [
+          {
+            "name": "The Smithy",
+            "description": "A forge glows under an open-sided roof, and the anvil rings.",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "shrine": [
+          {
+            "name": "Wayside Shrine",
+            "description": "A little roofed shrine with a weathered figure inside and fresh flowers at its feet."
+          }
+        ]
+      }
+    }
+  },
+  "areas": {
+    "village": {
+      "name": "#town_name.title#",
+      "layout": "village",
+      "copies": [
+        0,
+        2
+      ],
+      "weight": 3,
+      "tags": [
+        "settlement",
+        "village",
+        "fantasy",
+        "pastoral"
+      ],
+      "biomes": {
+        "terrain": [
+          "plains",
+          "riverlands",
+          "forest",
+          "hills"
+        ]
+      }
+    },
+    "lost_woods": {
+      "name": "the #forest_adj.title# Wood",
+      "layout": "lost_woods",
+      "copies": [
+        0,
+        1
+      ],
+      "weight": 2,
+      "tags": [
+        "forest",
+        "eerie",
+        "fantasy"
+      ],
+      "biomes": {
+        "terrain": "forest"
+      }
+    }
+  },
+  "grammar": {
+    "road_surface": [
+      "the road",
+      "the rutted track",
+      "the old road"
+    ],
+    "road_stop": [
+      "drovers' pond",
+      "milestone",
+      "stone trough",
+      "wayside cross",
+      "hollow oak"
+    ],
+    "signpost_kind": [
+      "weathered signpost",
+      "fingerpost",
+      "carved waystone"
+    ],
+    "bridge_kind": [
+      "humpbacked stone bridge",
+      "plank bridge",
+      "packhorse bridge"
+    ],
+    "town_name": [
+      "Ashford",
+      "Wickham",
+      "Thornby",
+      "Little Hale",
+      "Elderbrook",
+      "Marrowby",
+      "Fennick",
+      "Holloway",
+      "Brackenfold"
+    ],
+    "terrain_view": [
+      "The country stretches away #view#."
+    ],
+    "landmark": [
+      "milestone",
+      "lone #tree#",
+      "boundary stone"
+    ]
+  }
+}

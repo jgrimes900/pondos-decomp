@@ -1,0 +1,538 @@
+{
+  "//": "Layouts (generators of clusters of rooms), the generated places that use them, and paths.",
+  "layouts": {
+    "hotel": {
+      "//": "A place to stay. Its biomes decide what it is: a medieval inn, a tropical resort, a Soviet apartment block, an orbital hotel.",
+      "tags": [
+        "lodging",
+        "indoor",
+        "building"
+      ],
+      "indoor": true,
+      "plan": [
+        {
+          "role": "entrance",
+          "entrance": true
+        },
+        {
+          "role": "lobby",
+          "from": "entrance",
+          "dir": "in"
+        },
+        {
+          "role": "dining",
+          "from": "lobby",
+          "chance": 0.8
+        },
+        {
+          "role": "kitchen",
+          "from": "dining",
+          "chance": 0.6
+        },
+        {
+          "role": "stairs",
+          "from": "lobby",
+          "dir": "up"
+        },
+        {
+          "role": "corridor",
+          "from": "stairs",
+          "count": [
+            1,
+            2
+          ],
+          "chain": true
+        },
+        {
+          "role": "guest_room",
+          "from": "corridor",
+          "per": true,
+          "count": [
+            1,
+            2
+          ]
+        },
+        {
+          "role": "special",
+          "from": "lobby",
+          "chance": 0.6
+        }
+      ],
+      "rooms": {
+        "entrance": [
+          {
+            "name": "#lodging_name#",
+            "description": "#lodging_front# #building_view_line#",
+            "tags": [
+              "outdoor"
+            ],
+            "aliases": [
+              "entrance",
+              "front",
+              "door"
+            ]
+          }
+        ],
+        "lobby": [
+          {
+            "name": "[n:#lobby_noun#]#n.title#",
+            "description": "#lobby_desc# #floor_line# #decor_line# #staff_line#",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "dining": [
+          {
+            "name": "[n:#dining_noun#]#n.title#",
+            "description": "#dining_desc# #food_line#",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "kitchen": [
+          {
+            "name": "Kitchen",
+            "description": "#kitchen_desc#",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "stairs": [
+          {
+            "name": "[n:#stair_noun#]#n.title#",
+            "description": "#stair_desc# #light_line#",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "corridor": [
+          {
+            "name": "[n:#corridor_noun#]#n.title#",
+            "description": "#corridor_desc# #light_line#",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "guest_room": [
+          {
+            "name": "#room_name#",
+            "description": "#guest_room_desc# #bed_line# #window_line#",
+            "tags": [
+              "indoor"
+            ],
+            "features": [
+              {
+                "chance": 0.4,
+                "id": "lost_locket"
+              }
+            ]
+          }
+        ],
+        "special": [
+          {
+            "name": "Swimming Pool",
+            "description": "A pool of blue water under #pool_roof#, loungers in a row. #decor_line#",
+            "requires": {
+              "tags": [
+                "tropical",
+                "luxurious",
+                "modern",
+                "futuristic"
+              ]
+            },
+            "tags": [
+              "indoor"
+            ]
+          },
+          {
+            "name": "Bar",
+            "description": "A long bar of #bar_wood# with a mirror behind it and a barman polishing glasses. #decor_line#",
+            "requires": {
+              "tags": [
+                "modern",
+                "luxurious",
+                "futuristic"
+              ]
+            },
+            "tags": [
+              "indoor"
+            ]
+          },
+          {
+            "name": "Stable Yard",
+            "description": "A cobbled yard of stables and a pump, ostlers rubbing down a horse.",
+            "requires": {
+              "tags": [
+                "medieval",
+                "fairytale"
+              ]
+            },
+            "tags": [
+              "outdoor"
+            ]
+          },
+          {
+            "name": "Laundry Room",
+            "description": "Washing machines rattle in a row, and someone's socks hang on a radiator.",
+            "requires": {
+              "tags": [
+                "soviet",
+                "modern"
+              ]
+            },
+            "tags": [
+              "indoor"
+            ]
+          },
+          {
+            "name": "Garden Courtyard",
+            "description": "A walled courtyard with a fountain and #courtyard_plants#. #decor_line#",
+            "tags": [
+              "outdoor"
+            ]
+          }
+        ]
+      }
+    },
+    "house": {
+      "tags": [
+        "house",
+        "indoor",
+        "building"
+      ],
+      "indoor": true,
+      "plan": [
+        {
+          "role": "front_room",
+          "entrance": true
+        },
+        {
+          "role": "back_room",
+          "from": "front_room",
+          "count": [
+            0,
+            2
+          ]
+        }
+      ],
+      "rooms": {
+        "front_room": [
+          {
+            "name": "#house_name#",
+            "description": "#house_desc# #decor_line#",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "back_room": [
+          {
+            "name": "Back Room",
+            "description": "A cramped back room of storage and odds and ends.",
+            "tags": [
+              "indoor"
+            ],
+            "features": [
+              {
+                "chance": 0.3,
+                "id": "lost_locket"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "town": {
+      "tags": [
+        "settlement",
+        "town",
+        "outdoor"
+      ],
+      "plan": [
+        {
+          "role": "square",
+          "entrance": true
+        },
+        {
+          "role": "street",
+          "from": "square",
+          "count": [
+            2,
+            3
+          ]
+        },
+        {
+          "role": "shop",
+          "from": "street",
+          "per": true,
+          "chance": 0.7,
+          "dir": "in"
+        },
+        {
+          "layout": "hotel",
+          "from": "street",
+          "dir": "in",
+          "biomes": {
+            "quality": [
+              "humble",
+              "humble",
+              "luxurious"
+            ]
+          }
+        },
+        {
+          "layout": "house",
+          "from": "street",
+          "count": [
+            1,
+            2
+          ],
+          "dir": "in"
+        },
+        {
+          "role": "temple",
+          "from": "square",
+          "chance": 0.7
+        }
+      ],
+      "rooms": {
+        "square": [
+          {
+            "name": "#town_name# #square_word#",
+            "description": "#square_desc# #building_view_line#"
+          }
+        ],
+        "street": [
+          {
+            "name": "#street_word.title#",
+            "description": "#street_desc#"
+          }
+        ],
+        "shop": [
+          {
+            "name": "#shop_name#",
+            "description": "#shop_desc#",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "temple": [
+          {
+            "name": "#temple_name.title#",
+            "description": "#temple_desc#",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ]
+      }
+    },
+    "dungeon": {
+      "type": "grid",
+      "size": [
+        2,
+        4
+      ],
+      "role": "cell",
+      "goal": "vault",
+      "tags": [
+        "dungeon",
+        "underground",
+        "indoor"
+      ],
+      "indoor": true,
+      "rooms": {
+        "cell": [
+          {
+            "name": "#dungeon_cell#",
+            "description": "#dungeon_desc#",
+            "tags": [
+              "indoor"
+            ]
+          }
+        ],
+        "vault": [
+          {
+            "name": "Vault",
+            "description": "#vault_desc#",
+            "tags": [
+              "indoor"
+            ],
+            "features": [
+              {
+                "chance": 0.6,
+                "id": "lost_locket"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "areas": {
+    "lodging": {
+      "name": "#lodging_name#",
+      "layout": "hotel",
+      "copies": [
+        0,
+        2
+      ],
+      "weight": 2,
+      "tags": [
+        "lodging",
+        "settlement"
+      ],
+      "biomes": {
+        "quality": [
+          "humble",
+          "humble",
+          "luxurious",
+          "derelict"
+        ]
+      }
+    },
+    "town": {
+      "name": "#town_name#",
+      "layout": "town",
+      "copies": [
+        0,
+        1
+      ],
+      "weight": 2,
+      "tags": [
+        "settlement",
+        "town"
+      ]
+    },
+    "old_dungeon": {
+      "name": "#dungeon_name#",
+      "layout": "dungeon",
+      "copies": [
+        0,
+        1
+      ],
+      "weight": 1,
+      "tags": [
+        "dungeon",
+        "underground",
+        "ancient"
+      ]
+    }
+  },
+  "paths": {
+    "highway": {
+      "name": "#highway_name#",
+      "tags": [
+        "road",
+        "outdoor",
+        "highway"
+      ],
+      "connects": [
+        "town",
+        "settlement",
+        "modern",
+        "lodging"
+      ],
+      "weight": 2,
+      "spacing": 11,
+      "biomes": {
+        "style": [
+          "modern",
+          "soviet",
+          "scifi"
+        ]
+      },
+      "fork_text": "A turnoff here: {branch}, toward {toward}.",
+      "waypoints": [
+        {
+          "name": "[l:#road_stop#]#l.title#",
+          "description": "#road_surface.cap# runs past #l.a#. #terrain_view#",
+          "weight": 3
+        },
+        {
+          "name": "[l:#landmark#]#l.title# Junction",
+          "description": "#road_surface.cap# meets a side road by #l.a#. #terrain_view#"
+        }
+      ]
+    },
+    "canyon": {
+      "name": "#canyon_name#",
+      "tags": [
+        "canyon",
+        "outdoor"
+      ],
+      "connects": [
+        "desert",
+        "mesa",
+        "surface",
+        "military"
+      ],
+      "weight": 2,
+      "spacing": 10,
+      "stretch": [
+        3,
+        10
+      ],
+      "biomes": {
+        "terrain": [
+          "mesa",
+          "desert"
+        ]
+      },
+      "fork_text": "A side canyon opens here: {branch}, toward {toward}.",
+      "waypoints": [
+        {
+          "name": "[l:#landmark#]#l.title#",
+          "description": "The canyon floor winds past #l.a#, red walls climbing on either side. #terrain_view#",
+          "weight": 2
+        },
+        {
+          "name": "Canyon Narrows",
+          "description": "The walls close in until you can touch both. Flood debris is jammed high above your head."
+        },
+        {
+          "name": "Slot Canyon Bend",
+          "description": "Sunlight slants down a slot canyon in a single gold blade."
+        }
+      ]
+    },
+    "rail_line": {
+      "name": "the #town_stem# Line",
+      "tags": [
+        "rail",
+        "outdoor"
+      ],
+      "connects": [
+        "town",
+        "settlement",
+        "industrial",
+        "modern"
+      ],
+      "weight": 1,
+      "spacing": 12,
+      "stretch": [
+        4,
+        12
+      ],
+      "biomes": {
+        "style": [
+          "modern",
+          "soviet",
+          "scifi"
+        ]
+      },
+      "waypoints": [
+        {
+          "name": "[l:#rail_stop#]#l.title#",
+          "description": "The tracks run past #l.a#. #terrain_view#"
+        }
+      ]
+    }
+  }
+}

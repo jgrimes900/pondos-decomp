@@ -13,7 +13,8 @@ def setting(p, room):
     reg = p.reg
     tags = set(room.tags)
     if room.area:
-        tags |= set(reg["areas"][room.area].get("tags") or []) | set(reg["areas"][room.area].get("theme") or [])
+        adef = reg["areas"].get(room.area) or reg["areas"][room.area.split("~")[0]]
+        tags |= set(adef.get("tags") or []) | set(adef.get("theme") or [])
     if room.region:
         tags |= set(reg["regions"][room.region].get("tags") or [])
     return tags & SETTINGS

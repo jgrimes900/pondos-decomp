@@ -85,6 +85,15 @@ def check_registry(reg):
                     problems.append("%s: empty action '%s'" % (label, verb))
     for key, d in reg["areas"].items():
         r = d.get("rooms")
+        if d.get("layout"):
+            lay = d["layout"]
+            if isinstance(lay, str) and lay not in reg["layouts"]:
+                problems.append("%s: unknown layout '%s'" % (where("areas", key), lay))
+            for kind, ids in (d.get("biomes") or {}).items():
+                for b in (ids.get("any", []) if isinstance(ids, dict) else ids if isinstance(ids, list) else [ids]):
+                    if b not in reg["biomes"]:
+                        problems.append("note: %s: biome '%s' is not loaded" % (where("areas", key), b))
+            continue
         if not r:
             problems.append("%s: has no rooms" % where("areas", key))
         ids = ["%s/%s" % (key, x) for x in r] if isinstance(r, dict) else expand_room_list(r or [], rooms)
@@ -99,6 +108,29 @@ def check_registry(reg):
                     problems.append("room '%s': exit to unknown room '%s'" % (rid, to))
                 if ex.get("dir") and ex["dir"] not in reg["directions"]:
                     problems.append("room '%s': unknown direction '%s'" % (rid, ex["dir"]))
+    for key, d in reg["layouts"].items():
+        roles = set((d.get("rooms") or {}).keys())
+        for step in d.get("plan") or []:
+            if step.get("layout"):
+                if step["layout"] not in reg["layouts"] and not step.get("role"):
+                    problems.append("note: %s: layout '%s' is not loaded" % (where("layouts", key), step["layout"]))
+                continue
+            if step.get("role") and step["role"] not in roles:
+                problems.append("%s: plan uses role '%s' with no room templates" % (where("layouts", key), step["role"]))
+        if d.get("type") == "grid":
+            for role in [d.get("role", "cell")] + ([d["goal"]] if d.get("goal") else []):
+                if role not in roles:
+                    problems.append("%s: grid role '%s' has no room templates" % (where("layouts", key), role))
+    for key, d in reg["paths"].items():
+        if not d.get("waypoints"):
+            problems.append("%s: has no waypoints" % where("paths", key))
+        for kind, ids in (d.get("biomes") or {}).items():
+            for b in ids if isinstance(ids, list) else []:
+                if b not in reg["biomes"]:
+                    problems.append("note: %s: biome '%s' is not loaded" % (where("paths", key), b))
+    for key, d in reg["biomes"].items():
+        if not d.get("kind"):
+            problems.append("note: %s: no kind (assumed terrain)" % where("biomes", key))
     for key, d in reg["events"].items():
         label = where("events", key)
         roles = d.get("roles") or {}
@@ -139,7 +171,9 @@ def check_registry(reg):
         for s in _walk_strings(entries):
             used.update(_SYMBOL.findall(s))
             saved.update(_ACTION.findall(s))
-    for sym in sorted(used - set(grammar) - saved):
+    # Biomes define words for the tiles they furnish.
+    biome_words = {sym for b in reg["biomes"].values() if isinstance(b, dict) for sym in (b.get("grammar") or {})}
+    for sym in sorted(used - set(grammar) - saved - biome_words):
         problems.append("grammar symbol '#%s#' is used but never defined" % sym)
     for rule_id, rule in reg["rules"].items():
         if "on" not in rule:

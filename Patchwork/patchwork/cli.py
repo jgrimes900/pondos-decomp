@@ -303,13 +303,15 @@ def print_map(world, log, out=sys.stdout):
         print("  step %-4s %-12s %-40s %s" % (st["id"], st["kind"], st["title"][:40], refs), file=out)
     print("  lore: %d entries" % len(story.get("lore", {})), file=out)
     for r in sorted(world.rooms(), key=lambda r: (r.stage, r.area or "~", r.uid)):
-        where = r.area or ("~" + (r.region or "?"))
-        print("[%d] %-22s %-30s" % (r.stage, where, r.name), file=out)
+        where = r.area or ("~" + (r.region or r.props.get("path") or "?"))
+        biomes = " {%s}" % ", ".join(r.props["biomes"]) if r.props.get("biomes") else ""
+        print("[%d] %-22s %-30s%s" % (r.stage, where, r.name, biomes), file=out)
         for ex in r.exits:
             dest = world.get(ex["to"])
             gate = " (gated)" if ex.get("if") else ""
-            print("      %-10s -> %s [%s]%s" % (ex.get("dir") or ex.get("name") or "-", dest.name if dest else "?",
-                                                ex.get("distance", 1), gate), file=out)
+            via = " along %s" % ex["via"] if ex.get("via") else ""
+            print("      %-10s -> %s [%s]%s%s" % (ex.get("dir") or ex.get("name") or "-", dest.name if dest else "?",
+                                                  ex.get("distance", 1), via, gate), file=out)
         for e in world.descendants(r):
             depth = len(world.ancestors(e)) - len(world.ancestors(r))
             print("      %s%s%s" % ("  " * depth, e.name, " (hidden)" if e.hidden else ""), file=out)

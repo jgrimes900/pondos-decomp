@@ -1,0 +1,1201 @@
+{
+  "//": "Biomes: what tiles are made of. Style, region and quality decide what a building is; terrain decides the land.",
+  "biomes": {
+    "medieval": {
+      "kind": "style",
+      "tags": [
+        "medieval",
+        "fantasy"
+      ],
+      "setting": [
+        "fantasy"
+      ],
+      "pin_tags": [
+        "fantasy",
+        "medieval"
+      ],
+      "gradient": 3,
+      "grammar": {
+        "lodging_name": [
+          "The #inn_colour.cap# #inn_beast.cap#",
+          "The #inn_beast.cap# and #inn_thing.cap#",
+          "The #inn_thing.cap# Inn"
+        ],
+        "lodging_front": [
+          "A timbered inn with a painted sign creaking on its bracket. Smoke curls from the chimney and the door stands open on a warm, loud room."
+        ],
+        "lobby_noun": [
+          "common room",
+          "taproom"
+        ],
+        "lobby_desc": [
+          "Long trestle tables, benches worn smooth, and a fire big enough to roast an ox.",
+          "A low, smoky room of settles and tables, a barrel tapped behind the counter."
+        ],
+        "floor_line": [
+          "Fresh rushes are strewn over the flagstones.",
+          "The floorboards are scrubbed pale and creak at every step."
+        ],
+        "dining_noun": [
+          "dining hall",
+          "snug"
+        ],
+        "dining_desc": [
+          "A smaller room off the common room, with a table under the window."
+        ],
+        "food_line": [
+          "The smell of #local_food# drifts from the kitchen."
+        ],
+        "kitchen_desc": [
+          "A hot kitchen of copper pots, a spit over the fire and a cook who doesn't want you here."
+        ],
+        "stair_noun": [
+          "creaking stair"
+        ],
+        "stair_desc": [
+          "A narrow wooden stair climbs to the guest rooms, each step complaining."
+        ],
+        "corridor_noun": [
+          "upper gallery",
+          "landing"
+        ],
+        "corridor_desc": [
+          "A low-beamed landing with doors on either side."
+        ],
+        "light_line": [
+          "Rushlights gutter in iron brackets.",
+          "A single candle burns in a niche."
+        ],
+        "room_name": [
+          "The #inn_colour.cap# Room",
+          "The Garret",
+          "The Long Room",
+          "The Bishop's Room"
+        ],
+        "guest_room_desc": [
+          "A small room under the eaves with a washstand and a chest."
+        ],
+        "bed_line": [
+          "The bed is stuffed with straw and fairly free of fleas."
+        ],
+        "window_line": [
+          "A shuttered window looks out over #view#."
+        ],
+        "town_name": [
+          "#town_stem#ford",
+          "#town_stem#bury",
+          "#town_stem# Market",
+          "King's #town_stem#"
+        ],
+        "square_desc": [
+          "A cobbled market square around a stone cross. Stalls sell #local_food# and cheap knives."
+        ],
+        "street_desc": [
+          "A crooked street of overhanging timber houses, the gutter running down its middle."
+        ],
+        "shop_name": [
+          "Chandler's",
+          "Cooper's Yard",
+          "Apothecary",
+          "Saddler's"
+        ],
+        "shop_desc": [
+          "A shop open to the street, its wares hanging from the beams."
+        ],
+        "temple_name": [
+          "Chapel of Saint #saint#",
+          "the Minster"
+        ],
+        "temple_desc": [
+          "Cool stone, candles, and a smell of old incense."
+        ],
+        "house_name": [
+          "Townhouse",
+          "Merchant's House"
+        ],
+        "house_desc": [
+          "A narrow room with a bed, a table, a chest and a crucifix."
+        ],
+        "dungeon_name": [
+          "the #dungeon_adj.cap# Vaults",
+          "the Old Keep's Dungeon"
+        ],
+        "dungeon_desc": [
+          "A vaulted cell of dripping stone, rusted chains bolted to the wall.",
+          "A passage of rough-cut stone, torch brackets empty."
+        ],
+        "vault_desc": [
+          "A strongroom behind an iron-bound door, where something was kept that someone wanted kept."
+        ],
+        "road_surface": [
+          "the rutted cart track",
+          "the cobbled road",
+          "the old road"
+        ],
+        "road_stop": [
+          "coaching inn sign",
+          "wayside shrine",
+          "toll house",
+          "gallows tree"
+        ],
+        "building_view": [
+          "the thatched roofs of the town"
+        ]
+      }
+    },
+    "fairytale": {
+      "kind": "style",
+      "tags": [
+        "fairytale",
+        "fantasy",
+        "whimsical"
+      ],
+      "setting": [
+        "fantasy"
+      ],
+      "pin_tags": [
+        "fairytale",
+        "eerie"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "lodging_name": [
+          "The Gingerbread #inn_thing.cap#",
+          "The Sleeping #inn_beast.cap#",
+          "The Inn at the World's End"
+        ],
+        "lodging_front": [
+          "A crooked little inn with a roof like a pointed hat and windows that seem to wink."
+        ],
+        "lobby_noun": [
+          "parlour"
+        ],
+        "lobby_desc": [
+          "A parlour where the chairs are slightly too small and the clock runs backwards."
+        ],
+        "floor_line": [
+          "The floor is a patchwork of painted tiles, each one a different flower."
+        ],
+        "food_line": [
+          "A pie on the sill smells of #local_food# and honey."
+        ],
+        "light_line": [
+          "Fireflies drift about in a glass jar, giving a soft green light."
+        ],
+        "room_name": [
+          "The Rose Room",
+          "The Room of Seven Doors",
+          "The Owl's Nest"
+        ],
+        "bed_line": [
+          "The bed is piled with twenty mattresses. There may be a pea."
+        ],
+        "dungeon_name": [
+          "the Witch's Cellars",
+          "the Goblin Warrens"
+        ],
+        "dungeon_desc": [
+          "A twisting burrow lined with roots and stolen teaspoons."
+        ],
+        "road_surface": [
+          "the path of yellow stones",
+          "the winding lane"
+        ],
+        "road_stop": [
+          "toadstool ring",
+          "talking milestone",
+          "gingerbread cottage"
+        ],
+        "dining_noun": [
+          "supper room"
+        ],
+        "dining_desc": [
+          "A round table set for exactly as many guests as there are, however many that is."
+        ],
+        "kitchen_desc": [
+          "A kitchen where the spoons stir by themselves and a kettle sings real songs."
+        ],
+        "stair_noun": [
+          "spiral stair"
+        ],
+        "stair_desc": [
+          "A spiral stair that seems to have more steps going up than coming down."
+        ],
+        "corridor_noun": [
+          "crooked passage"
+        ],
+        "corridor_desc": [
+          "A crooked passage of little round doors, each painted a different colour."
+        ],
+        "guest_room_desc": [
+          "A tiny room with a round window and a patchwork quilt."
+        ],
+        "window_line": [
+          "The round window looks out on #view#, which may be painted on."
+        ],
+        "town_name": [
+          "#town_stem#-under-the-Hill",
+          "Little #town_stem#",
+          "#town_stem# Hollow"
+        ],
+        "square_desc": [
+          "A crooked square around a wishing well, the houses leaning in to listen."
+        ],
+        "street_desc": [
+          "A street of gingerbread houses with candy-cane railings, slightly sticky underfoot."
+        ],
+        "shop_name": [
+          "Cobbler's",
+          "Toymaker's",
+          "Witch's Sundries"
+        ],
+        "shop_desc": [
+          "A shop crammed to the rafters with curious things, some of which are watching you."
+        ],
+        "temple_name": [
+          "the Wishing Chapel"
+        ],
+        "temple_desc": [
+          "A chapel lit by a single star that hangs in the rafters."
+        ],
+        "house_name": [
+          "Cottage",
+          "Woodcutter's House"
+        ],
+        "house_desc": [
+          "A cosy room of rag rugs and a fire with a cat who seems to be in charge."
+        ]
+      }
+    },
+    "modern": {
+      "kind": "style",
+      "tags": [
+        "modern",
+        "scifi"
+      ],
+      "setting": [
+        "scifi"
+      ],
+      "pin_tags": [
+        "modern",
+        "blackmesa",
+        "scifi"
+      ],
+      "gradient": 3,
+      "grammar": {
+        "lodging_name": [
+          "#town_name# Motor Inn",
+          "Hotel #town_name#",
+          "The #town_name# Suites",
+          "#town_name# Lodge"
+        ],
+        "lodging_front": [
+          "A #lodging_storeys#-storey hotel with a lit sign, a glass door and a row of parked cars."
+        ],
+        "lobby_noun": [
+          "lobby",
+          "reception"
+        ],
+        "lobby_desc": [
+          "A reception desk with a bell and a bored clerk, a rack of tourist leaflets, a coffee machine."
+        ],
+        "floor_line": [
+          "The carpet is patterned to hide stains.",
+          "The floor is polished tile that squeaks underfoot."
+        ],
+        "dining_noun": [
+          "breakfast room",
+          "restaurant"
+        ],
+        "dining_desc": [
+          "Small tables, a buffet counter, a television on the wall showing the news."
+        ],
+        "food_line": [
+          "There's a smell of coffee and #local_food#."
+        ],
+        "kitchen_desc": [
+          "Steel counters, extractor fans, a walk-in fridge humming."
+        ],
+        "stair_noun": [
+          "stairwell",
+          "elevator lobby"
+        ],
+        "stair_desc": [
+          "A stairwell with fire doors, and an elevator with an OUT OF ORDER sign."
+        ],
+        "corridor_noun": [
+          "corridor"
+        ],
+        "corridor_desc": [
+          "A long corridor of numbered doors and an ice machine."
+        ],
+        "light_line": [
+          "Fluorescent tubes buzz overhead.",
+          "Recessed lights hum softly."
+        ],
+        "room_name": [
+          "Room #room_no#"
+        ],
+        "guest_room_desc": [
+          "A hotel room: a desk, a television, a print of a sailing boat."
+        ],
+        "bed_line": [
+          "The bed is made with hospital corners."
+        ],
+        "window_line": [
+          "The window looks out over #view#.",
+          "Blackout curtains hide a view of the car park."
+        ],
+        "town_name": [
+          "#town_stem# Springs",
+          "#town_stem#ville",
+          "Port #town_stem#",
+          "#town_stem# City"
+        ],
+        "square_desc": [
+          "A main street of shops with plate-glass windows, traffic lights and parked cars."
+        ],
+        "street_desc": [
+          "A street of low buildings, telephone poles and a diner with a neon sign."
+        ],
+        "shop_name": [
+          "Hardware Store",
+          "Diner",
+          "Pharmacy",
+          "Gas Station"
+        ],
+        "shop_desc": [
+          "A shop with a buzzing sign, a counter, and shelves of everything."
+        ],
+        "temple_name": [
+          "the First Church",
+          "the Community Hall"
+        ],
+        "temple_desc": [
+          "Plastic chairs in rows and a noticeboard of bake sales."
+        ],
+        "house_name": [
+          "Apartment",
+          "Bungalow"
+        ],
+        "house_desc": [
+          "A living room of a sofa, a television and family photographs."
+        ],
+        "dungeon_name": [
+          "the Old Bunker",
+          "the Service Tunnels"
+        ],
+        "dungeon_desc": [
+          "A concrete corridor stained with rust, a caged bulb overhead.",
+          "A utility tunnel of pipes and cable trays."
+        ],
+        "vault_desc": [
+          "A sealed room behind a blast door, its shelves still stocked."
+        ],
+        "road_surface": [
+          "the two-lane blacktop",
+          "the highway",
+          "the county road"
+        ],
+        "road_stop": [
+          "gas station",
+          "billboard",
+          "rest stop",
+          "diner",
+          "rusting pickup"
+        ],
+        "lodging_storeys": [
+          "two",
+          "three",
+          "four"
+        ]
+      }
+    },
+    "soviet": {
+      "kind": "style",
+      "tags": [
+        "soviet",
+        "brutalist",
+        "modern",
+        "scifi"
+      ],
+      "setting": [
+        "scifi"
+      ],
+      "pin_tags": [
+        "soviet"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "lodging_name": [
+          "Apartment Block #block_no#",
+          "Workers' Hostel No. #block_no#",
+          "Residential Complex '#soviet_word#'"
+        ],
+        "lodging_front": [
+          "A nine-storey concrete slab of identical balconies, laundry strung across half of them. The entrance is a steel door with a broken intercom."
+        ],
+        "lobby_noun": [
+          "entrance hall"
+        ],
+        "lobby_desc": [
+          "Rows of dented metal mailboxes, a noticeboard of stern announcements, and the concierge's window."
+        ],
+        "floor_line": [
+          "The linoleum is cracked and patched with more linoleum.",
+          "Terrazzo floors, chipped and grey."
+        ],
+        "dining_noun": [
+          "canteen"
+        ],
+        "dining_desc": [
+          "Formica tables, a serving hatch, a portrait of somebody important."
+        ],
+        "food_line": [
+          "The canteen smells of #local_food# and boiled cabbage."
+        ],
+        "kitchen_desc": [
+          "Huge aluminium pots on a gas range that has seen a lot."
+        ],
+        "stair_noun": [
+          "stairwell"
+        ],
+        "stair_desc": [
+          "A concrete stairwell that echoes. The lift is broken, as it has been for years."
+        ],
+        "corridor_noun": [
+          "landing"
+        ],
+        "corridor_desc": [
+          "A landing of padded doors, each with a peephole."
+        ],
+        "light_line": [
+          "A single bare bulb lights the whole landing.",
+          "The light is on a timer that runs out halfway up."
+        ],
+        "room_name": [
+          "Flat #room_no#"
+        ],
+        "guest_room_desc": [
+          "A flat of one room and a kitchenette, a carpet hung on the wall for warmth."
+        ],
+        "bed_line": [
+          "A fold-out sofa serves as the bed."
+        ],
+        "window_line": [
+          "The window looks out on the identical block opposite."
+        ],
+        "town_name": [
+          "#town_stem#grad",
+          "#town_stem#sk",
+          "Novy #town_stem#"
+        ],
+        "square_desc": [
+          "A vast windy square around a concrete monument, flower beds in regimented rows."
+        ],
+        "street_desc": [
+          "A broad avenue of apartment blocks and a trolleybus line."
+        ],
+        "shop_name": [
+          "Gastronom",
+          "Univermag",
+          "Kiosk"
+        ],
+        "shop_desc": [
+          "A state shop with a queue and not much on the shelves."
+        ],
+        "temple_name": [
+          "the House of Culture"
+        ],
+        "temple_desc": [
+          "A hall with a stage, red curtains and folding seats."
+        ],
+        "house_name": [
+          "Flat"
+        ],
+        "house_desc": [
+          "A neat flat: a glass cabinet of china, a samovar, a rug on the wall."
+        ],
+        "dungeon_name": [
+          "the Civil Defence Shelter",
+          "Object #block_no#"
+        ],
+        "dungeon_desc": [
+          "A shelter corridor of gas masks in crates and faded posters on what to do if."
+        ],
+        "road_surface": [
+          "the potholed road",
+          "the concrete highway"
+        ],
+        "road_stop": [
+          "bus shelter",
+          "war memorial",
+          "collective farm gate"
+        ],
+        "block_no": [
+          "4",
+          "7",
+          "12",
+          "19",
+          "23"
+        ],
+        "soviet_word": [
+          "Progress",
+          "Dawn",
+          "Victory",
+          "Cosmos"
+        ]
+      }
+    },
+    "scifi": {
+      "kind": "style",
+      "tags": [
+        "futuristic",
+        "scifi"
+      ],
+      "setting": [
+        "scifi"
+      ],
+      "pin_tags": [
+        "station",
+        "starship",
+        "futuristic"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "lodging_name": [
+          "Habitation Ring #greek#",
+          "Transit Hotel #greek#",
+          "The Orbital Suites"
+        ],
+        "lodging_front": [
+          "An airlock-style entrance under a holographic sign that cycles through six languages."
+        ],
+        "lobby_noun": [
+          "concourse"
+        ],
+        "lobby_desc": [
+          "A curved concourse of white panels, a check-in terminal and a robot porter powered down in its alcove."
+        ],
+        "floor_line": [
+          "The floor is a grip-mesh of brushed steel.",
+          "Light strips run along the floor."
+        ],
+        "dining_noun": [
+          "galley"
+        ],
+        "dining_desc": [
+          "A galley of dispensers and bolted-down tables."
+        ],
+        "food_line": [
+          "The dispensers smell faintly of #local_food# and ozone."
+        ],
+        "kitchen_desc": [
+          "Food synthesisers in a row, one blinking an error."
+        ],
+        "stair_noun": [
+          "lift shaft"
+        ],
+        "stair_desc": [
+          "A lift tube hums, ready to carry you up."
+        ],
+        "corridor_noun": [
+          "passage"
+        ],
+        "corridor_desc": [
+          "A curving passage of numbered hatches."
+        ],
+        "light_line": [
+          "Soft blue light comes from nowhere in particular."
+        ],
+        "room_name": [
+          "Cabin #room_no#"
+        ],
+        "guest_room_desc": [
+          "A sleeping cabin: a bunk, a wall screen and a porthole."
+        ],
+        "bed_line": [
+          "The bunk adjusts to your weight with a sigh."
+        ],
+        "window_line": [
+          "The porthole shows #view#."
+        ],
+        "town_name": [
+          "#town_stem# Colony",
+          "New #town_stem#",
+          "#town_stem# Prime"
+        ],
+        "square_desc": [
+          "A domed plaza of hydroponic planters under an artificial sky."
+        ],
+        "street_desc": [
+          "A slidewalk passage between modular habitats."
+        ],
+        "shop_name": [
+          "Fabricator Shop",
+          "Ration Depot"
+        ],
+        "shop_desc": [
+          "A counter, a scanner and racks of sealed goods."
+        ],
+        "dungeon_name": [
+          "the Containment Level",
+          "the Abandoned Decks"
+        ],
+        "dungeon_desc": [
+          "A dark deck of sealed bulkheads and failing emergency lights."
+        ],
+        "road_surface": [
+          "the maglev guideway",
+          "the transit tube"
+        ],
+        "road_stop": [
+          "charging pylon",
+          "transit beacon",
+          "relay mast"
+        ],
+        "greek": [
+          "Alpha",
+          "Delta",
+          "Sigma",
+          "Omega"
+        ]
+      }
+    },
+    "luxurious": {
+      "kind": "quality",
+      "tags": [
+        "luxurious",
+        "wealthy"
+      ],
+      "gradient": false,
+      "grammar": {
+        "lodging_name": [
+          "The Grand #town_name#",
+          "The #town_name# Palace",
+          "The Royal #town_name#"
+        ],
+        "lodging_front": [
+          "An imposing frontage of polished stone and brass, a doorman under the awning."
+        ],
+        "decor_line": [
+          "Gilded mirrors double the room, and fresh flowers stand in every corner.",
+          "Everything that could be marble is marble."
+        ],
+        "bed_line": [
+          "The bed is vast and soft, the linen crisp as paper."
+        ],
+        "staff_line": [
+          "A uniformed attendant bows as you pass."
+        ]
+      },
+      "furnish": {
+        "lobby": [
+          {
+            "chance": 0.5,
+            "name": "chandelier",
+            "extends": [
+              "scenery"
+            ],
+            "aliases": [
+              "chandelier"
+            ],
+            "appearance": "A chandelier glitters overhead.",
+            "description": "A cascade of crystal drops. It would cost a lifetime's wages."
+          }
+        ]
+      }
+    },
+    "humble": {
+      "kind": "quality",
+      "tags": [
+        "humble",
+        "poor"
+      ],
+      "gradient": false,
+      "grammar": {
+        "decor_line": [
+          "Everything is mended, nothing matches, and all of it is clean.",
+          "The furniture has seen several owners."
+        ],
+        "bed_line": [
+          "The mattress sags in the middle."
+        ],
+        "staff_line": [
+          "The owner does everything here, and looks tired."
+        ]
+      }
+    },
+    "derelict": {
+      "kind": "quality",
+      "tags": [
+        "derelict",
+        "ruined",
+        "abandoned"
+      ],
+      "gradient": false,
+      "grammar": {
+        "!lodging_name": [
+          "The Ruins of the Old #lodging_name_old.title#",
+          "The Abandoned #lodging_name_old.title#"
+        ],
+        "lodging_name_old": [
+          "inn",
+          "hotel",
+          "lodge"
+        ],
+        "!lodging_front": [
+          "A boarded-up building, its sign hanging by one bolt and its windows smashed. The door has been kicked in.",
+          "What is left of a place that once took guests: sagging roof, empty windows, a weed-choked yard."
+        ],
+        "!lobby_desc": [
+          "A gutted entrance hall. The counter is overturned and papers drift in the corners."
+        ],
+        "!food_line": [
+          "Nothing has been cooked here in years."
+        ],
+        "!light_line": [
+          "No lights work; daylight comes in through the holes."
+        ],
+        "!kitchen_desc": [
+          "A kitchen stripped of everything worth taking, its pots rusting where they fell."
+        ],
+        "decor_line": [
+          "Everything is thick with dust, and something has been nesting in the curtains.",
+          "Half the ceiling is down, and weeds push up through the floor."
+        ],
+        "bed_line": [
+          "The bed has collapsed into a heap of mildew."
+        ],
+        "staff_line": [
+          "Nobody has worked here for years."
+        ]
+      },
+      "furnish": {
+        "indoor": [
+          {
+            "chance": 0.3,
+            "id": "giant_rat"
+          }
+        ]
+      }
+    },
+    "uk": {
+      "kind": "region",
+      "tags": [
+        "british",
+        "temperate"
+      ],
+      "gradient": 2,
+      "grammar": {
+        "town_stem": [
+          "Ash",
+          "Brad",
+          "Mel",
+          "Wick",
+          "Thorn",
+          "Kings",
+          "Hart",
+          "Stan"
+        ],
+        "local_food": [
+          "mutton stew",
+          "fresh bread",
+          "pies",
+          "fish and chips"
+        ],
+        "decor_line": [
+          "A framed print of a hunting scene hangs crooked above the fireplace.",
+          "Rain streaks the windows."
+        ],
+        "view": [
+          "a wet green hillside",
+          "grey slate roofs in the drizzle"
+        ],
+        "inn_beast": [
+          "Hart",
+          "Fox",
+          "Swan",
+          "Bull"
+        ],
+        "saint": [
+          "Cuthbert",
+          "Swithun"
+        ]
+      }
+    },
+    "mexico": {
+      "kind": "region",
+      "tags": [
+        "mexican",
+        "hot"
+      ],
+      "gradient": 2,
+      "grammar": {
+        "town_stem": [
+          "Palomas",
+          "Isidro",
+          "Verde",
+          "Clara"
+        ],
+        "town_name": [
+          "San Isidro",
+          "Las Palomas",
+          "Santa Clara",
+          "Valle Verde"
+        ],
+        "local_food": [
+          "tamales",
+          "chiles rellenos",
+          "fresh tortillas"
+        ],
+        "decor_line": [
+          "Painted Talavera tiles frame the doorway.",
+          "A string of papel picado flutters overhead."
+        ],
+        "view": [
+          "a dusty plaza and a white church",
+          "agave fields under a hard sun"
+        ],
+        "inn_beast": [
+          "Eagle",
+          "Jaguar"
+        ],
+        "saint": [
+          "Guadalupe",
+          "Isidro"
+        ]
+      }
+    },
+    "washington": {
+      "kind": "region",
+      "tags": [
+        "pacific_northwest",
+        "rainy"
+      ],
+      "setting": [
+        "scifi"
+      ],
+      "gradient": 2,
+      "grammar": {
+        "town_stem": [
+          "Cedar",
+          "Hoh",
+          "Snoqual",
+          "Skagit",
+          "Elk"
+        ],
+        "local_food": [
+          "smoked salmon",
+          "clam chowder",
+          "strong coffee"
+        ],
+        "decor_line": [
+          "A stuffed salmon is mounted over the counter.",
+          "Flannel cushions, and a framed map of the logging roads."
+        ],
+        "view": [
+          "rain-dark firs",
+          "mist rolling off the mountains"
+        ],
+        "inn_beast": [
+          "Bear",
+          "Elk",
+          "Raven"
+        ]
+      }
+    },
+    "china": {
+      "kind": "region",
+      "tags": [
+        "chinese"
+      ],
+      "gradient": 2,
+      "grammar": {
+        "town_stem": [
+          "Jade",
+          "Lotus",
+          "Crane",
+          "Plum"
+        ],
+        "town_name": [
+          "Golden Crane",
+          "Plum Blossom Town",
+          "Jade River"
+        ],
+        "local_food": [
+          "dumplings",
+          "noodles",
+          "jasmine tea"
+        ],
+        "decor_line": [
+          "Red paper lanterns hang in rows.",
+          "A scroll of calligraphy hangs on the wall."
+        ],
+        "view": [
+          "tiled roofs climbing a hillside",
+          "rice terraces in the mist"
+        ],
+        "inn_beast": [
+          "Crane",
+          "Dragon",
+          "Tiger"
+        ]
+      }
+    },
+    "tropics": {
+      "kind": "region",
+      "tags": [
+        "tropical",
+        "hot",
+        "coast"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "town_stem": [
+          "Palm",
+          "Coral",
+          "Turtle",
+          "Mango"
+        ],
+        "local_food": [
+          "grilled fish",
+          "coconut",
+          "mango"
+        ],
+        "lodging_name": [
+          "the #town_stem# Bay Resort",
+          "the #town_stem# Cove Resort"
+        ],
+        "lodging_front": [
+          "Low white buildings among leaning palms, a sandy path leading down to the sea."
+        ],
+        "decor_line": [
+          "Rattan furniture, slowly turning ceiling fans, and an orchid in every alcove.",
+          "Sea air blows through the open louvres."
+        ],
+        "view": [
+          "a turquoise lagoon",
+          "white sand and leaning palms"
+        ],
+        "inn_beast": [
+          "Parrot",
+          "Turtle"
+        ]
+      }
+    },
+    "new_mexico": {
+      "kind": "region",
+      "tags": [
+        "southwest",
+        "desert"
+      ],
+      "setting": [
+        "scifi"
+      ],
+      "pin_tags": [
+        "blackmesa"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "town_stem": [
+          "Socorro",
+          "Mesa",
+          "Alamo",
+          "Cimarron"
+        ],
+        "town_name": [
+          "Truth or Consequences",
+          "Los Alamos",
+          "Socorro"
+        ],
+        "local_food": [
+          "green chile stew",
+          "sopapillas"
+        ],
+        "decor_line": [
+          "A Navajo rug hangs on the wall beside a faded Route 66 map.",
+          "Cow skulls and dried chiles decorate the doorframe."
+        ],
+        "view": [
+          "red mesas under a vast sky",
+          "a dust devil spinning across the scrub"
+        ]
+      }
+    },
+    "mesa": {
+      "kind": "terrain",
+      "tags": [
+        "mesa",
+        "desert",
+        "outdoor",
+        "arid"
+      ],
+      "pin_tags": [
+        "blackmesa",
+        "mesa"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "terrain_view": [
+          "Red mesas stand on the horizon like ships, and the scrub shimmers in the heat.",
+          "The land is red rock and sagebrush under an enormous sky."
+        ],
+        "landmark": [
+          "red butte",
+          "dry wash",
+          "abandoned windpump",
+          "rock arch",
+          "petroglyph boulder"
+        ],
+        "ground": [
+          "red dust",
+          "slickrock"
+        ]
+      },
+      "details": [
+        "A lizard watches you from a hot rock.",
+        "The heat comes up off the ground in waves."
+      ]
+    },
+    "desert": {
+      "kind": "terrain",
+      "tags": [
+        "desert",
+        "outdoor",
+        "arid",
+        "sand"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "terrain_view": [
+          "Dunes roll away in every direction, rippled by the wind.",
+          "Flat stony desert, empty to the horizon."
+        ],
+        "landmark": [
+          "dry well",
+          "sun-bleached skeleton",
+          "lonely oasis palm",
+          "half-buried ruin"
+        ],
+        "ground": [
+          "sand",
+          "gravel"
+        ]
+      },
+      "details": [
+        "The wind hisses sand against your legs."
+      ]
+    },
+    "jungle": {
+      "kind": "terrain",
+      "tags": [
+        "jungle",
+        "tropical",
+        "outdoor",
+        "wet"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "terrain_view": [
+          "Jungle presses in, green and dripping and loud with insects.",
+          "Vines hang from trees so tall you can't see their tops."
+        ],
+        "landmark": [
+          "strangler fig",
+          "vine-choked statue",
+          "waterfall pool",
+          "giant buttress root"
+        ],
+        "ground": [
+          "rotting leaves",
+          "red mud"
+        ]
+      },
+      "details": [
+        "Something large moves in the canopy.",
+        "The air is like a wet cloth."
+      ]
+    },
+    "tundra": {
+      "kind": "terrain",
+      "tags": [
+        "tundra",
+        "cold",
+        "outdoor"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "terrain_view": [
+          "Frozen plains under a white sky, wind-scoured and silent.",
+          "Lichen and snow, and the low sun casting long blue shadows."
+        ],
+        "landmark": [
+          "stone cairn",
+          "frozen lake",
+          "reindeer bones",
+          "lonely weather mast"
+        ],
+        "ground": [
+          "frozen moss",
+          "packed snow"
+        ]
+      },
+      "details": [
+        "Your breath freezes on your collar."
+      ]
+    },
+    "beach": {
+      "kind": "terrain",
+      "tags": [
+        "beach",
+        "coast",
+        "outdoor"
+      ],
+      "gradient": 1,
+      "grammar": {
+        "terrain_view": [
+          "Surf rolls up a long beach, and gulls wheel overhead.",
+          "Dunes give way to a wide strand and a grey-green sea."
+        ],
+        "landmark": [
+          "beached boat",
+          "driftwood heap",
+          "tide pool",
+          "old lighthouse"
+        ],
+        "ground": [
+          "sand",
+          "shingle"
+        ]
+      },
+      "details": [
+        "The tide hisses on the shingle."
+      ]
+    }
+  },
+  "settings": {
+    "biome_kinds": {
+      "terrain": {
+        "gradient": true,
+        "cell": 14,
+        "blend": 0.3
+      },
+      "style": {
+        "gradient": true,
+        "cell": 30,
+        "blend": 0.2
+      },
+      "region": {
+        "gradient": true,
+        "cell": 40,
+        "blend": 0.15,
+        "grammar_weight": 2
+      },
+      "quality": {
+        "gradient": false,
+        "grammar_weight": 3
+      }
+    }
+  }
+}

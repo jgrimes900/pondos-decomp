@@ -1,0 +1,233 @@
+{
+  "grammar": {
+    "lodging_name": [
+      "the Travellers' Rest",
+      "the Wayfarer"
+    ],
+    "lodging_front": [
+      "A building with a sign promising rooms."
+    ],
+    "lobby_noun": [
+      "entrance hall"
+    ],
+    "lobby_desc": [
+      "A plain entrance hall with a counter."
+    ],
+    "floor_line": [
+      ""
+    ],
+    "decor_line": [
+      ""
+    ],
+    "staff_line": [
+      ""
+    ],
+    "dining_noun": [
+      "dining room"
+    ],
+    "dining_desc": [
+      "Tables and chairs."
+    ],
+    "food_line": [
+      ""
+    ],
+    "kitchen_desc": [
+      "A working kitchen."
+    ],
+    "stair_noun": [
+      "stairs"
+    ],
+    "stair_desc": [
+      "Stairs lead up."
+    ],
+    "corridor_noun": [
+      "corridor"
+    ],
+    "corridor_desc": [
+      "A corridor of doors."
+    ],
+    "light_line": [
+      ""
+    ],
+    "room_name": [
+      "Guest Room"
+    ],
+    "guest_room_desc": [
+      "A plain room for the night."
+    ],
+    "bed_line": [
+      ""
+    ],
+    "window_line": [
+      ""
+    ],
+    "town_name": [
+      "#town_stem#ton"
+    ],
+    "town_stem": [
+      "Ash",
+      "Mill",
+      "Stone",
+      "Brook",
+      "Hollow"
+    ],
+    "square_word": [
+      "Square",
+      "Market",
+      "Plaza"
+    ],
+    "square_desc": [
+      "The middle of town, where everyone passes sooner or later."
+    ],
+    "street_word": [
+      "high street",
+      "market street",
+      "back street",
+      "station road"
+    ],
+    "street_desc": [
+      "A street of shops and houses."
+    ],
+    "shop_name": [
+      "Shop"
+    ],
+    "shop_desc": [
+      "A shop."
+    ],
+    "temple_name": [
+      "meeting hall"
+    ],
+    "temple_desc": [
+      "A quiet hall."
+    ],
+    "house_name": [
+      "House"
+    ],
+    "house_desc": [
+      "Somebody's home."
+    ],
+    "dungeon_name": [
+      "the Deep Cellars"
+    ],
+    "dungeon_cell": [
+      "#dungeon_adj.title# Passage",
+      "#dungeon_adj.title# Cell",
+      "Collapsed Chamber"
+    ],
+    "dungeon_adj": [
+      "dank",
+      "echoing",
+      "narrow",
+      "flooded",
+      "silent"
+    ],
+    "dungeon_desc": [
+      "A dark underground passage."
+    ],
+    "vault_desc": [
+      "A locked room at the bottom of everything."
+    ],
+    "local_food": [
+      "stew",
+      "bread"
+    ],
+    "view": [
+      "the street outside"
+    ],
+    "inn_colour": [
+      "Red",
+      "Green",
+      "Golden",
+      "Black",
+      "White"
+    ],
+    "inn_beast": [
+      "Lion",
+      "Stag",
+      "Boar",
+      "Dragon",
+      "Unicorn",
+      "Swan"
+    ],
+    "inn_thing": [
+      "Crown",
+      "Anchor",
+      "Plough",
+      "Lantern",
+      "Bell",
+      "Key"
+    ],
+    "saint": [
+      "Agnes",
+      "Martin",
+      "Brigid"
+    ],
+    "room_no": [
+      "3",
+      "7",
+      "12",
+      "14",
+      "21",
+      "33"
+    ],
+    "pool_roof": [
+      "a glass roof",
+      "the open sky"
+    ],
+    "bar_wood": [
+      "mahogany",
+      "zinc",
+      "pale ash"
+    ],
+    "courtyard_plants": [
+      "potted lemon trees",
+      "climbing roses",
+      "bamboo"
+    ],
+    "building_view_line": [
+      ""
+    ],
+    "highway_name": [
+      "Route #route_no#",
+      "the #town_stem# Highway",
+      "State Road #route_no#"
+    ],
+    "route_no": [
+      "9",
+      "12",
+      "36",
+      "66",
+      "101"
+    ],
+    "canyon_name": [
+      "#canyon_adj.title# Canyon"
+    ],
+    "canyon_adj": [
+      "red",
+      "echo",
+      "dry",
+      "dead man's",
+      "painted"
+    ],
+    "rail_stop": [
+      "level crossing",
+      "signal box",
+      "freight siding",
+      "water tower",
+      "halt"
+    ],
+    "terrain_view": [
+      "The country stretches away on every side."
+    ],
+    "landmark": [
+      "lone tree",
+      "boundary stone"
+    ],
+    "road_surface": [
+      "the road"
+    ],
+    "road_stop": [
+      "milestone"
+    ]
+  }
+}

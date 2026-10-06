@@ -130,7 +130,7 @@ class StoryPlanner:
         forced = getattr(self.gen, "forced_start", None)
         # A start_only area (a crossroads to set out from) exists only when the player chooses to begin there.
         self.areas = {a: d for a, d in reg["areas"].items() if not d.get("abstract")
-                      and (not d.get("start_only") or a == forced)}
+                      and (not d.get("start_only") or a == forced) and not d.get("copies")}
         authored = {}
         offstage = {}
         for aid in sorted(self.areas):

@@ -204,7 +204,13 @@ class SeamExits(unittest.TestCase):
                     for r in w.rooms():
                         r.visited = False
                     words = [x for x in dest.name.lower().split() if x not in ("the", "a", "an", "of")]
-                    word = max(words or dest.name.lower().split(), key=len)  # e.g. "hydroponics"
+                    # A word only this exit's destination has (two unlabelled ways to "Junction A-3"
+                    # and "Junction B-7" share "junction").
+                    others = [w.get(x["to"]).name.lower() for x in room.exits if x is not ex and w.get(x["to"])]
+                    words = [x for x in words if not any(x in o.split() for o in others)]
+                    if not words:
+                        continue
+                    word = max(words, key=len)  # e.g. "hydroponics"
                     for cmd in (word, "go " + word, "go to " + word):
                         w.place(w.player, room)
                         p.do(cmd)

@@ -85,7 +85,7 @@ class StoriesAreGenerated(unittest.TestCase):
                 if w.def_of(e).get("important") and not e.is_room:
                     self.assertIn(e.uid, involved, "seed %d: %s left out" % (seed, e.name))
             for aid in w.areas:
-                if w.registry["areas"][aid].get("important"):
+                if w.registry["areas"].get(aid, {}).get("important"):
                     self.assertIn(aid, places, "seed %d: place %s left out" % (seed, aid))
 
     def test_lore_mixes_mod_snippets_and_story_specific_lore(self):

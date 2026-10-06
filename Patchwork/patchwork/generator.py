@@ -6,10 +6,11 @@ mods and:
 1. asks the story planner (story.py) to invent a plot from the mods' events,
    characters, important features and obstacles; the plan decides which areas
    the story needs and in what order they open up;
-2. builds those areas and lays them out along a "spine" in story order;
-3. stitches the areas together with novel filler rooms generated from region
-   definitions (with themed transitions when two areas differ), adds side
-   branches, loops and every other area the mods provide;
+2. builds those areas (hand-made, or generated from a layout and furnished by
+   biomes) and lays them out along a "spine" in story order;
+3. joins them: with paths across a biome map when mods define paths (see
+   atlas.py), otherwise with filler rooms generated from region definitions;
+   then adds side areas, generated places, branches and loops;
 4. scatters wandering features and encounters, then lets the story binder
    place the plot's characters, items, obstacles, dialogue and lore, and plants
    travellers who pass on rumours about what to do next.
@@ -18,6 +19,7 @@ mods and:
 import copy
 import fnmatch
 
+from .atlas import Atlas
 from .logic import Interpreter
 from .story import StoryBinder, StoryPlanner
 from .world import World
@@ -72,6 +74,7 @@ class Generator:
         self.filler = []          # uids of generated filler rooms
         self.expansion = []       # uids of rooms grown from expansion points (behind doors etc.)
         self.placed_areas = []    # area ids in placement order
+        self.atlas = Atlas(self)
 
     # ------------------------------------------------------------------
     def note(self, msg):
@@ -106,7 +109,9 @@ class Generator:
         if room is not None and room.region:
             listed = self.reg["regions"].get(room.region, {}).get("directions")
         if listed is None and room is not None and room.area:
-            listed = self.reg["areas"].get(room.area, {}).get("directions")
+            listed = self.area_def(room.area).get("directions")
+        if listed is None and room is not None and room.props.get("path"):
+            listed = self.reg["paths"].get(room.props["path"], {}).get("directions")
         if listed is None:
             listed = self.reg["settings"].get("directions")
         if listed is None:
@@ -152,8 +157,19 @@ class Generator:
     # ------------------------------------------------------------------
     # Areas
     # ------------------------------------------------------------------
+    def area_def(self, area_id):
+        """An area's definition; generated copies ("village~2") share their template's."""
+        if not area_id:
+            return {}
+        adef = self.reg["areas"].get(area_id)
+        if adef is None and "~" in area_id:
+            adef = self.reg["areas"].get(area_id.split("~")[0])
+        return adef or {}
+
     def area_room_ids(self, area_id):
-        adef = self.reg["areas"][area_id]
+        adef = self.area_def(area_id)
+        if adef.get("layout"):
+            return []
         rooms = adef.get("rooms") or {}
         if isinstance(rooms, dict):
             return ["%s/%s" % (area_id, rid) for rid in rooms]
@@ -168,7 +184,9 @@ class Generator:
         return None
 
     def build_area(self, area_id, stage):
-        adef = self.reg["areas"][area_id]
+        adef = self.area_def(area_id)
+        if adef.get("layout"):
+            return self.build_layout_area(area_id, stage)
         uids = {}
         for rid in self.area_room_ids(area_id):
             if rid not in self.reg["rooms"]:
@@ -226,12 +244,39 @@ class Generator:
         self.note("area '%s' (%s) placed at stage %d with %d rooms" % (area_id, name, stage, len(uids)))
         return self.w.areas[area_id]
 
+    def build_layout_area(self, area_id, stage):
+        """A generated area: its layout builds the rooms, its biomes furnish them."""
+        adef = self.area_def(area_id)
+        atlas = self.atlas
+        biomes = atlas.area_biomes(area_id)
+        pos = atlas.positions.get(area_id)
+        rooms, entrances = atlas.build_layout(adef["layout"], biomes, stage, area_id, pos)
+        for ent in rooms:
+            for t in _as_list(adef.get("room_tags")) + _as_list(adef.get("tags")):
+                if t not in ent.tags and t != "start":
+                    ent.tags.append(t)
+        with self.w.grammar.scoped(atlas.overlay(biomes)):
+            name = self.w.grammar.expand(adef.get("name") or area_id.split("~")[0].replace("_", " "))
+        self.w.areas[area_id] = {
+            "name": name,
+            "rooms": [e.uid for e in rooms],
+            "entrances": [e.uid for e in entrances],
+            "stage": stage,
+            "tags": _as_list(adef.get("tags")),
+            "biomes": atlas.flat(biomes),
+            "generated": True,
+        }
+        self.placed_areas.append(area_id)
+        self.note("area '%s' (%s) generated at stage %d with %d rooms, biomes %s"
+                  % (area_id, name, stage, len(rooms), ", ".join(atlas.flat(biomes)) or "none"))
+        return self.w.areas[area_id]
+
     def themes(self, room):
         if room is None:
             return set()
         tags = set(room.tags)
         if room.area:
-            adef = self.reg["areas"].get(room.area, {})
+            adef = self.area_def(room.area)
             tags |= set(_as_list(adef.get("tags"))) | set(_as_list(adef.get("theme")))
         if room.region:
             tags |= set(_as_list(self.reg["regions"].get(room.region, {}).get("tags")))
@@ -431,6 +476,19 @@ class Generator:
         spine = list(planner.accessible)
         start_area = planner.start_area
 
+        if self.atlas.paths():
+            # Areas on a biome map, joined by paths.
+            self.atlas.build(spine, start_area)
+            if not spine and not self.atlas.nodes:
+                self.build_sandbox()
+            self.build_expansions()
+            self.create_player(start_area)
+            self.populate()
+            StoryBinder(self, planner).bind()
+            self.plant_rumours()
+            self.finish()
+            return w
+
         prev_room = None
         if spine and start_area is None and self.plain_regions():
             # No mod offers a starting place: begin out in the wilds, on the way in.
@@ -478,13 +536,19 @@ class Generator:
             rooms.append(new)
         self.sandbox_start = first
 
+    def side_area_ids(self, spine):
+        """Every other area the mods offer (not generated copies), in a random order, up to the cap."""
+        areas = self.reg["areas"]
+        side = [a for a in sorted(areas) if a not in self.w.areas and a not in spine and not areas[a].get("abstract")
+                and areas[a].get("include", True) and not areas[a].get("only_if_used") and not areas[a].get("start_only")
+                and not areas[a].get("copies")]
+        self.rng.shuffle(side)
+        return side[:self.setting("max_side_areas", 12)]
+
     def place_side_areas(self, spine_len):
         w = self.w
         areas = self.reg["areas"]
-        side = [a for a in sorted(areas) if a not in w.areas and not areas[a].get("abstract")
-                and areas[a].get("include", True) and not areas[a].get("only_if_used") and not areas[a].get("start_only")]
-        self.rng.shuffle(side)
-        side = side[:self.setting("max_side_areas", 12)]
+        side = self.side_area_ids([])
         for area_id in side:
             adef = areas[area_id]
             max_stage = max(0, spine_len - 1)
@@ -596,7 +660,8 @@ class Generator:
         spec["props"] = dict(spec.get("props") or {}, open=False, locked=True)
         e = w.spawn_spec(spec, room)[0]
         needs = _as_list(od.get("needs"))
-        ctx = self.i.ctx(self_ent=e)
+        # Obstacle texts written for the story name the key; a generated door opens to whatever fits.
+        ctx = self.i.ctx(self_ent=e, local={"key": w.string("door_any_key", "the right tool")})
         opened = [{"set": {"open": True, "locked": False}},
                   self.i.render(od.get("open_text") or "{self.The} opens.", ctx)]
         locked = self.i.render(od.get("locked_text") or "{self.The} won't open.", ctx)
@@ -710,7 +775,7 @@ class Generator:
             return not hab or bool(set(hab) & set(room.tags))
         targets = [w.get(u) for u in self.filler + self.expansion]
         for area_id, info in w.areas.items():
-            if self.reg["areas"].get(area_id, {}).get("allow_scatter"):
+            if self.area_def(area_id).get("allow_scatter"):
                 targets.extend(w.get(u) for u in info["rooms"])
         for room in targets:
             if room is None:
@@ -756,8 +821,26 @@ class Generator:
                               "props": {"text": text},
                               "appearance": w.string("rumour_appearance", "Someone has left a message here.")}, room)
 
+    def tell_doors_apart(self):
+        """Two doors with one name in a room (a story's locked door beside a generated one) can't be
+        told apart by the parser: name the generated ones by where they lead."""
+        w = self.w
+        for room in w.rooms():
+            kids = [w.get(c) for c in room.children if w.get(c) is not None]
+            names = [k.name for k in kids]
+            for k in kids:
+                if "expansion_door" not in k.tags or names.count(k.name) < 2:
+                    continue
+                ex = next((x for x in room.exits if (x.get("if") or {}).get("of") == "uid:" + k.uid), None)
+                if ex and ex.get("dir"):
+                    label = self.reg["directions"].get(ex["dir"], {}).get("name") or ex["dir"]
+                    names.remove(k.name)
+                    k.name = "%s to the %s" % (k.name, label)
+                    names.append(k.name)
+
     def finish(self):
         w = self.w
+        self.tell_doors_apart()
         missing = sorted(w.grammar.missing)
         if missing:
             self.note("grammar symbols with no rules: %s" % ", ".join(missing))

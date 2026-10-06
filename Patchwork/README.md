@@ -89,7 +89,8 @@ more), so type `help` in game to see the real list.
 Built-in game commands: `save [name]`, `load [name]`, `map`, `story`, `mods`, `verbose`, `brief`,
 `again` (`g`), `help`, `quit`.
 
-Exits list a **distance**. Travelling takes time in proportion to distance, and mods hook into
+Places are joined by **paths**, a road or a river or a canyon, condensed to their landmarks
+and forks: "north along the River Wend (6)" is a six-mile stretch with nothing on it. Exits list a **distance**. Travelling takes time in proportion to distance, and mods hook into
 travel: ambient events, healing on the road, random encounters, the day/night cycle.
 
 Saves are stored in `~/.local/share/patchwork/saves/`. A save holds the whole woven world, so it
@@ -101,7 +102,8 @@ loads even if you later change your mods.
 | --- | --- |
 | **Core Rules** (`core`) | All the basic verbs, reusable traits (portable, container, door, lockable, person, edible...), compass directions, every line of interface text and the story generator's vocabulary (quest titles, personality-flavoured dialogue). No places, no story. |
 | **Storyteller's Almanac** (`tales`) | Setting-neutral events (a theft, a blight, a disappearance) that cast whatever your other mods provide, so any combination can grow a story. |
-| **The Wilds** (`wilds`) | Generated forest, hills, river, marsh and road regions; nested natural features; forage and trinkets; hermits and herb-wives with profiles; travellers with rumours; travel events; lore on waystones. |
+| **The Wilds** (`wilds`) | The outdoors as a world map: terrain biomes (forest, plains, hills, mountains, marsh, riverlands) that spread in patches and blend at their edges, and the roads, rivers, forest trails and mountain passes travellers follow between places, condensed to their landmarks and forks. Generates villages and a lost wood that turns you round. Nested natural features, forage and trinkets, hermits and herb-wives with profiles, travellers with rumours, travel events, lore on waystones. |
+| **Atlas of Places** (`atlas`) | Reusable world-building parts. Style biomes (medieval, fairytale, modern, Soviet, sci-fi), regions (UK, Mexico, Washington, China, the tropics, New Mexico), qualities (luxurious, humble, derelict) and more terrain (mesa, desert, jungle, tundra, beach). Layouts that change with their biomes: one hotel layout is a medieval inn, a tropical resort, a Soviet apartment block or a ruined motel; towns, houses and dungeons too. Highways, canyons and rail lines. |
 | **Hearthside Hamlet** (`hamlet`) | A village start area whose villagers each have a personality, motives, goals and wants, so they can be quest-givers, informants, victims or villains. An important holy well and saint's bell, and village lore. |
 | **The Barrow of Kings** (`barrow`) | A dungeon with an important relic (with a generated name) and bone key, a guardian with a profile, a bronze door and rune-sealed coffer as obstacles, barrow lore, and two events: a stolen relic and a restless guardian. |
 | **The Sorcerer's Spire** (`spire`) | A tower that drinks the light, a sorcerer driven by power and darkness, an orb, a star-glass shard, an ember wand that burns mana from crystals, a scroll of thunder good for one casting, a shadow ward that any light-giving item can break, and an "eclipse" event. Only appears if the story needs it. |
@@ -157,6 +159,7 @@ Patchwork/
     world.py            entities (rooms and nested features), definitions, save format
     logic.py            the JSON condition / effect / template / expression language
     generator.py        world generation and layout
+    atlas.py            the world map: biomes, generated areas (layouts) and paths
     story.py            story generation: events, casting, quest planning, dialogue, lore
     describe.py         builds descriptions from nested features
     engine.py           parser, verb dispatch, travel, turns and story progress

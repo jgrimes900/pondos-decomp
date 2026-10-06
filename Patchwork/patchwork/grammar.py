@@ -10,8 +10,14 @@ Syntax inside any text:
 
 Rules from every loaded mod are merged, so one mod can add words to another
 mod's vocabulary simply by defining the same symbol.
+
+A scope (see Grammar.scoped) lays extra rules over the global ones for a while:
+the world generator uses it so a tile's biomes decide what #floor# or #tree#
+means there.  A blended tile (the edge of a forest and a plain) gets the rules of
+both, so its descriptions mix them.
 """
 
+import contextlib
 import re
 
 from . import textutil
@@ -49,9 +55,26 @@ class Grammar:
             self.rules[key] = list(val)
         self.rng = rng
         self.missing = set()
+        self.overlay = {}
+
+    @contextlib.contextmanager
+    def scoped(self, rules):
+        """Lay *rules* ({symbol: [options]}) over the global grammar inside a with-block."""
+        saved = self.overlay
+        merged = dict(saved)
+        for key, val in (rules or {}).items():
+            merged[key] = list(val) if isinstance(val, list) else [val]
+        self.overlay = merged
+        try:
+            yield self
+        finally:
+            self.overlay = saved
+
+    def options(self, symbol):
+        return self.overlay.get(symbol) or self.rules.get(symbol)
 
     def has(self, symbol):
-        return bool(self.rules.get(symbol))
+        return bool(self.options(symbol))
 
     def expand(self, text, saved=None, depth=0):
         if not isinstance(text, str) or ("#" not in text and "[" not in text):
@@ -73,7 +96,7 @@ class Grammar:
             if name in saved:
                 value = saved[name]
             else:
-                options = self.rules.get(name)
+                options = self.options(name)
                 if not options:
                     self.missing.add(name)
                     value = name.replace("_", " ")

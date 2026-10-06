@@ -145,13 +145,33 @@ class ModBuilder:
                 fh.write("\n")
 
 
-def weapon(name, aliases, damage, desc, tags=(), affords=(), extra=None):
+def weapon(name, aliases, damage, desc, tags=(), affords=(), extra=None, ammo=None):
+    """ammo: consumer props (core's consumer trait), e.g. gun("9mm", 17) or throwable("grenades")."""
     d = {"extends": ["portable"], "name": name, "aliases": aliases, "tags": ["weapon", "hl_weapon"] + list(tags),
          "props": {"damage": damage}, "description": desc, "story_keep": True}
+    if ammo:
+        d["extends"] = ["portable", "consumer"]
+        d["props"].update(ammo)
     d["affords"] = list(affords) + ["fight"]   # so the story planner can arm you before a boss
     if extra:
         d.update(extra)
     return d
+
+
+def gun(kind, capacity, label="rounds"):
+    """A magazine of `capacity`, reloaded (automatically when it runs dry) from carried ammo of `kind`."""
+    return {"resource": "ammo", "resource_type": kind, "capacity": capacity, "feed": "auto", "label": label}
+
+
+def direct(kind, cost, label):
+    """No magazine: every shot draws `cost` straight from the carried ammo of `kind`."""
+    return {"resource": "ammo", "resource_type": kind, "cost": cost, "feed": "direct", "label": label}
+
+
+def throwable(label, capacity=1, empty="{self.The} is gone."):
+    """Thrown or planted: used up when the last one goes."""
+    return {"resource": "ammo", "resource_type": "none", "capacity": capacity, "reloadable": False,
+            "on_empty": "consume", "label": label, "depleted_text": empty}
 
 
 def creature(name, aliases, health, damage, attack, desc, appearance, *, habitat=(), encounter=True,

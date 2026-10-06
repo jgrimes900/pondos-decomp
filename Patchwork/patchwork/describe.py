@@ -7,7 +7,7 @@ things on it, an open chest) add a "contents" sentence via their
 description plus the appearance of everything nested in it.
 """
 
-from . import textutil
+from . import consumables, textutil
 
 
 class Describer:
@@ -154,6 +154,10 @@ class Describer:
             desc = self.i.render(self.w.string("nothing_special", "You see nothing special about {self}."),
                                  self.i.ctx(self_ent=ent))
         lines.append(desc)
+        gauge = self.gauge(ent)
+        if gauge:
+            lines.append(self.i.render(self.w.string("consumer_examine", "({gauge})"),
+                                       self.i.ctx(self_ent=ent, local={"gauge": gauge})))
         kids = self.w.visible_children(ent)
         if self.has_text(ent, "contents_text"):
             lines.extend(self.contents_sentence(ent, 0))
@@ -164,6 +168,22 @@ class Describer:
                                   self.i.ctx(self_ent=k, local={"parent": ent.uid}))])
         return self._paragraph(lines)
 
+    def gauge(self, ent):
+        """How much a consumer has left ("12/17 rounds"), or a supply holds ("34 9mm ammo")."""
+        p = ent.props
+        if consumables.is_consumer(ent):
+            if consumables.capacity(ent):
+                return "%s/%s %s" % (consumables.stored(ent), consumables.capacity(ent), consumables.label(ent))
+            return "%s %s to draw on" % (consumables.available(self.w, ent), consumables.label(ent)) if ent.uid in \
+                {e.uid for e in self.w.descendants(self.w.player)} else ""
+        if "supply" in ent.tags:
+            skip = {"default_max_health", "value", "weight", "armor", "damage", "heal", "health", "max_health"}
+            for k, v in sorted(p.items()):
+                if k not in skip and isinstance(v, (int, float)) and not isinstance(v, bool):
+                    kind = p.get(k + "_type")
+                    return "%s %s%s" % (v, kind + " " if kind else "", k)
+        return ""
+
     def inventory(self, holder):
         items = self.w.visible_children(holder)
         if not items:
@@ -173,6 +193,9 @@ class Describer:
         for it in items:
             label = it.a()
             inner = self.w.visible_children(it)
+            gauge = self.gauge(it)
+            if gauge:
+                label += " (" + gauge + ")"
             if inner:
                 label += " (" + self.i.render(self.w.string("inventory_holding", "holding {contents}"),
                                               self.i.ctx(local={"contents": textutil.join_list(textutil.group_names(inner))})) + ")"

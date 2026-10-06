@@ -53,7 +53,8 @@
           "description": "Your footsteps come back to you doubled, then tripled, long after you stop moving. Statues stand in alcoves around the walls.",
           "brief": "The echoing entrance hall.",
           "features": [
-            "apprentice_statues"
+            "apprentice_statues",
+            "mana_crystal"
           ],
           "exits": [
             {
@@ -78,7 +79,9 @@
           "brief": "The burned library.",
           "features": [
             "spire_shelves",
-            "reading_desk"
+            "reading_desk",
+            "ember_wand",
+            "scroll_of_thunder"
           ],
           "exits": [
             {
@@ -434,6 +437,105 @@
         "ruins",
         "ancient"
       ]
+    },
+    "ember_wand": {
+      "extends": [
+        "portable",
+        "consumer"
+      ],
+      "name": "ember wand",
+      "aliases": [
+        "wand",
+        "ember wand"
+      ],
+      "tags": [
+        "weapon",
+        "magic"
+      ],
+      "props": {
+        "default_max_health": 20,
+        "damage": 6,
+        "resource": "mana",
+        "cost": 3,
+        "feed": "direct",
+        "label": "mana",
+        "empty_text": "You point the ember wand and it only smoulders: it needs mana, and you have none to give it."
+      },
+      "description": "A wand of black wood tipped with a coal that never cools. It burns mana, not wood: each blast draws on whatever mana you carry."
+    },
+    "mana_crystal": {
+      "extends": [
+        "supply"
+      ],
+      "name": "mana crystal",
+      "aliases": [
+        "crystal",
+        "mana crystal",
+        "mana"
+      ],
+      "tags": [
+        "scatter",
+        "magic"
+      ],
+      "habitat": [
+        "eerie",
+        "ruins",
+        "ancient",
+        "marsh"
+      ],
+      "props": {
+        "mana": 9
+      },
+      "description": "A shard of violet crystal humming with stored power. Spells can drink from it until it goes dull and crumbles."
+    },
+    "scroll_of_thunder": {
+      "extends": [
+        "portable",
+        "consumer",
+        "readable"
+      ],
+      "name": "scroll of thunder",
+      "aliases": [
+        "scroll",
+        "scroll of thunder",
+        "thunder scroll"
+      ],
+      "tags": [
+        "weapon",
+        "magic"
+      ],
+      "props": {
+        "default_max_health": 20,
+        "damage": 9,
+        "capacity": 1,
+        "reloadable": false,
+        "on_empty": "transmute",
+        "empty_into": "blank_scroll",
+        "label": "charge",
+        "spend_on": [
+          "attack",
+          "read"
+        ],
+        "text": "You read the words aloud. The air cracks like a whip, and thunder rolls away into the distance.",
+        "depleted_text": "The words of power burn off the scroll, line by line, until the parchment is blank."
+      },
+      "description": "A scroll of thick vellum, the letters on it crackling faintly. A spell like this can be loosed once: read it, or turn it on a foe."
+    },
+    "blank_scroll": {
+      "extends": [
+        "portable",
+        "readable"
+      ],
+      "name": "blank scroll",
+      "aliases": [
+        "scroll",
+        "blank scroll",
+        "parchment"
+      ],
+      "props": {
+        "text": "Nothing. The spell has gone out of it."
+      },
+      "description": "A scorched, empty sheet of vellum."
     }
   },
   "obstacles": {

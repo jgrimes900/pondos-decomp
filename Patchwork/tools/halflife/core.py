@@ -7,7 +7,7 @@ the surface, military camps, Xen, Race X hives) for the map generator; the
 obstacles it puts on locked doors; and general lore.
 """
 
-from common import ModBuilder, creature, weapon
+from common import direct, gun, throwable, ModBuilder, creature, weapon
 
 B = ModBuilder("hl_core", "hlcore/")
 F = B.section("features")
@@ -15,7 +15,7 @@ F = B.section("features")
 # ---------------------------------------------------------------------------
 # The player: HL scale health, suit charge, and suit damage absorption
 # ---------------------------------------------------------------------------
-F["player"] = {"_patch": True, "props": {"health": 100, "max_health": 100, "suit": 0, "max_suit": 100, "attack": 2}}
+F["player"] = {"_patch": True, "props": {"health": 100, "max_health": 100, "suit": 0, "max_suit": 100, "attack": 5}}
 F["edible"] = {"_patch": True, "props": {"heal": 10}}
 
 MACROS = {
@@ -43,60 +43,96 @@ W = {
         "A red-handled crowbar, heavy and reassuring. Good for crates, headcrabs and stuck hatches.",
         affords=["pry"]),
     "glock": weapon("9mm pistol", ["pistol", "glock", "9mm", "handgun"], 8,
-        "A standard-issue 9mm security sidearm. Seventeen rounds and a lot of faith."),
+        "A standard-issue 9mm security sidearm. Seventeen rounds and a lot of faith.", ammo=gun("9mm", 17)),
     "python": weapon(".357 Magnum revolver", ["magnum", "revolver", "python", "357"], 25,
-        "A six-shot .357 revolver that kicks like a mule and hits harder."),
+        "A six-shot .357 revolver that kicks like a mule and hits harder.", ammo=gun("357", 6)),
     "mp5": weapon("MP5 submachine gun", ["mp5", "smg", "submachine gun", "grenade launcher"], 13,
-        "A 9mm submachine gun with an under-barrel grenade launcher."),
+        "A 9mm submachine gun with an under-barrel grenade launcher.", ammo=gun("9mm", 50)),
     "shotgun": weapon("SPAS-12 shotgun", ["shotgun", "spas", "spas-12"], 22,
-        "A pump-action combat shotgun. Fire it twice as fast if you don't mind the recoil."),
+        "A pump-action combat shotgun. Fire it twice as fast if you don't mind the recoil.", ammo=gun("buckshot", 8, "shells")),
     "crossbow": weapon("crossbow", ["crossbow", "bow"], 28,
-        "A scoped crossbow with explosive-tipped bolts. Works underwater too."),
+        "A scoped crossbow with explosive-tipped bolts. Works underwater too.", ammo=gun("bolt", 5, "bolts")),
     "rpg": weapon("rocket launcher", ["rpg", "rocket launcher", "launcher"], 45,
-        "A laser-guided rocket launcher. Point the dot, and the rocket follows."),
+        "A laser-guided rocket launcher. Point the dot, and the rocket follows.", ammo=gun("rocket", 1, "rockets")),
     "gauss": weapon("tau cannon", ["tau cannon", "gauss gun", "gauss", "tau"], 32,
-        "An experimental prototype that fires charged particle bursts. Charge it too long and it bites you."),
+        "An experimental prototype that fires charged particle bursts. Charge it too long and it bites you.", ammo=direct("uranium", 2, "uranium")),
     "egon": weapon("gluon gun", ["gluon gun", "egon", "gluon"], 36,
-        "A heavy backpack-mounted gluon beam projector. It eats depleted uranium like nobody's business."),
+        "A heavy backpack-mounted gluon beam projector. It eats depleted uranium like nobody's business.", ammo=direct("uranium", 1, "uranium")),
     "hivehand": weapon("hivehand", ["hivehand", "hornet gun", "hive"], 10,
         "A living alien weapon that grows homing hornets. It squirms when you hold it.",
         tags=["alien"]),
     "snark_nest": weapon("snark nest", ["snarks", "snark nest", "nest"], 9,
-        "A twitching pod of snarks. Throw one, and it hunts whatever is nearest. Usually."),
+        "A twitching pod of snarks. Throw one, and it hunts whatever is nearest. Usually.", ammo=throwable("snarks", 5, "The last snark scuttles off; the nest is empty.")),
     "grenade": weapon("hand grenade", ["grenade", "grenades", "frag"], 30,
-        "A fragmentation grenade. Pull the pin and count."),
+        "A fragmentation grenade. Pull the pin and count.", ammo=throwable("grenades", 1, "The grenade goes off with a flat crack.")),
     "satchel": weapon("satchel charge", ["satchel", "satchel charge", "charge"], 40,
-        "A remote-detonated satchel charge.", affords=["explosive"]),
+        "A remote-detonated satchel charge.", affords=["explosive"], ammo=throwable("charges", 1, "The satchel charge goes up with a roar.")),
     "tripmine": weapon("laser tripmine", ["tripmine", "laser tripmine", "mine"], 30,
-        "A laser-triggered mine for walls.", affords=["explosive"]),
+        "A laser-triggered mine for walls.", affords=["explosive"], ammo=throwable("mines", 1, "The tripmine detonates.")),
     # Opposing Force
     "pipe_wrench": weapon("pipe wrench", ["pipe wrench", "wrench"], 12,
         "A heavy pipe wrench. Slower than a crowbar, and it hits harder.", affords=["pry"]),
     "combat_knife": weapon("combat knife", ["knife", "combat knife"], 9,
         "A standard Marine combat knife. Quick and quiet."),
     "desert_eagle": weapon("Desert Eagle", ["desert eagle", "deagle", "eagle", ".50"], 20,
-        "A .50 calibre handgun with a laser sight."),
+        "A .50 calibre handgun with a laser sight.", ammo=gun("357", 7)),
     "m249": weapon("M249 squad automatic weapon", ["m249", "saw", "machine gun", "squad automatic weapon"], 18,
-        "A belt-fed light machine gun. Fires until the belt runs out or you fall over."),
+        "A belt-fed light machine gun. Fires until the belt runs out or you fall over.", ammo=gun("556", 50)),
     "sniper_rifle": weapon("M40A1 sniper rifle", ["sniper rifle", "sniper", "m40a1", "rifle"], 35,
-        "A bolt-action sniper rifle with a long-range scope."),
+        "A bolt-action sniper rifle with a long-range scope.", ammo=gun("762", 5)),
     "shock_roach": weapon("shock roach", ["shock roach", "roach"], 14,
         "A Race X creature that spits bolts of electricity and recharges itself. It is, apparently, happy to see you.",
         tags=["alien"]),
     "spore_launcher": weapon("spore launcher", ["spore launcher", "spore", "launcher"], 26,
         "A living alien launcher that hurls explosive spore pods. It chirps when fed.",
-        tags=["alien"]),
+        tags=["alien"], ammo=gun("spore", 5, "spores")),
     "displacer": weapon("displacer cannon", ["displacer", "displacer cannon", "cannon"], 48,
         "An experimental portal weapon. It sends whatever it hits somewhere else, or sends you somewhere else.",
-        affords=["teleport"]),
+        affords=["teleport"], ammo=direct("uranium", 20, "uranium")),
     "grapple": weapon("barnacle grapple", ["grapple", "barnacle", "barnacle grapple"], 6,
         "A captured barnacle that shoots its tongue at anything organic and hauls you after it.",
         tags=["alien"], affords=["grapple"]),
     "penguin": weapon("penguin", ["penguin"], 9,
         "An explosive penguin. A multiplayer joke from the Opposing Force era that nobody has ever explained.",
-        tags=["alien"]),
+        tags=["alien"], ammo=throwable("penguins", 3, "The last penguin waddles off to meet its destiny.")),
 }
 F.update(W)
+
+
+# ---------------------------------------------------------------------------
+# Ammunition: supplies (core's supply trait) for the consumer weapons above.
+# Use one by itself to load whatever you carry that takes it, or 'reload <gun>'.
+# ---------------------------------------------------------------------------
+def ammo(name, aliases, kind, amount, desc, habitat=("blackmesa", "military", "surface"), weight=2):
+    return {"extends": ["supply"], "name": name, "aliases": aliases + ["ammo", "ammunition"],
+            "tags": ["scatter", "hl_pickup", "hl_ammo"], "habitat": list(habitat), "weight": weight,
+            "props": {"ammo": amount, "ammo_type": kind}, "description": desc}
+
+
+AMMO = {
+    "ammo_9mm": ammo("box of 9mm rounds", ["9mm", "9mm rounds", "rounds", "box", "clip"], "9mm", 34,
+        "Two magazines' worth of 9mm. Fits the pistol and the MP5.", weight=4),
+    "ammo_357": ammo("pack of .357 rounds", [".357", "357", ".357 rounds", "magnum rounds"], "357", 12,
+        "Six-shooter rounds, also good for a Desert Eagle."),
+    "ammo_buckshot": ammo("box of buckshot", ["buckshot", "shells", "shotgun shells"], "buckshot", 12,
+        "Twelve-gauge shells, red and brass.", weight=3),
+    "ammo_bolts": ammo("bundle of crossbow bolts", ["bolts", "crossbow bolts", "bundle"], "bolt", 5,
+        "Explosive-tipped bolts for the crossbow.", weight=1),
+    "ammo_rocket": ammo("rocket", ["rocket", "rockets", "rpg round"], "rocket", 1,
+        "A single laser-guided rocket.", habitat=("military", "surface"), weight=1),
+    "ammo_uranium": ammo("depleted uranium cell", ["uranium", "uranium cell", "cell", "du cell"], "uranium", 20,
+        "A glowing canister of depleted uranium. The tau cannon, the gluon gun and the displacer all drink it.",
+        habitat=("blackmesa", "lab"), weight=1),
+    "ammo_556": ammo("5.56mm ammunition belt", ["5.56", "556", "belt", "ammunition belt"], "556", 50,
+        "A belt of 5.56mm for the M249.", habitat=("military", "surface"), weight=1),
+    "ammo_762": ammo("box of 7.62mm rounds", ["7.62", "762", "sniper rounds"], "762", 5,
+        "Match-grade rounds for a sniper rifle.", habitat=("military", "surface"), weight=1),
+    "ammo_spore": ammo("spore pod", ["spore pod", "pod", "spores"], "spore", 2,
+        "A Race X spore pod, warm and faintly twitching. The spore launcher eats them.", habitat=("racex", "alien"), weight=1),
+}
+AMMO_COMMON = ["ammo_9mm", "ammo_9mm", "ammo_buckshot", "ammo_357"]
+AMMO_RARE = ["ammo_bolts", "ammo_rocket", "ammo_uranium", "ammo_556", "ammo_762"]
+F.update(AMMO)
 
 # ---------------------------------------------------------------------------
 # Items and pickups
@@ -131,10 +167,12 @@ F.update({
         "actions": {"use": [{"if": {"second": None}, "do": [{"macro": "hl_suit_charge", "with": {"amount": 15}},
             "You snap the battery into your suit. (Suit {player.suit})", {"destroy": "self"}]}],
                     "eat": ["You'd rather not."]}},
-    "ammo_box": {"extends": ["portable"], "name": "#ammo_kind#", "aliases": ["ammo", "ammunition", "box", "rounds", "magazine"],
+    "ammo_box": {"extends": ["scenery", "container"], "name": "ammunition cache", "aliases": ["cache", "ammunition cache", "ammo cache"],
         "tags": ["scatter", "hl_pickup"], "habitat": ["blackmesa", "military", "surface"], "weight": 3,
-        "description": "Ammunition. In this place, you can never have enough.",
-        "actions": {"use": ["You top up your magazines. It's reassuring to hear them click home."]}},
+        "appearance": "A stash of ammunition has been left here.",
+        "description": "Somebody's ammunition, stacked where they dropped it. In this place, you can never have enough.",
+        "contents_text": "In the cache: {contents}.", "empty_text": "The cache has been picked clean.",
+        "features": [{"pick": AMMO_COMMON}, {"chance": 0.4, "pick": AMMO_COMMON + AMMO_RARE}]},
     "long_jump": {"extends": ["portable"], "name": "long jump module", "aliases": ["long jump", "module", "ljm", "jump module"],
         "story_keep": True, "affords": ["jump"],
         "description": "An experimental HEV attachment that fires a short thrust for enormous leaps. Crouch, then jump.",
@@ -186,7 +224,7 @@ F.update({
         "appearance": [{"if": {"prop": "open"}, "text": "A smashed crate lies in pieces."}, {"text": "A wooden supply crate is stacked here."}],
         "description": "A wooden crate stencilled with Black Mesa inventory codes.",
         "contents_text": "Among the splinters: {contents}.",
-        "features": [{"chance": 0.6, "pick": ["medkit", "battery", "ammo_box", "ammo_box"]}, {"chance": 0.15, "pick": ["grenade", "glock", "satchel"]}],
+        "features": [{"chance": 0.6, "pick": ["medkit", "battery", "ammo_9mm", "ammo_buckshot", "ammo_357"]}, {"chance": 0.15, "pick": ["grenade", "glock", "satchel"]}],
         "actions": {
             "open": [{"if": {"prop": "open"}, "do": ["It's already been smashed open."]},
                      {"if": {"has": {"affords": ["pry"]}}, "do": [{"set": {"open": True}}, "You lever the lid off. Inside: {self.contents}."]},
@@ -228,13 +266,13 @@ F.update({
         "tags": ["scatter"], "habitat": ["blackmesa", "office", "transit"], "weight": 1,
         "appearance": "A security guard lies slumped against the wall, his helmet askew.",
         "description": "His holster is open.",
-        "features": [{"chance": 0.5, "pick": ["glock", "ammo_box", "battery"], "hidden": True}],
+        "features": [{"chance": 0.5, "pick": ["glock", "ammo_9mm", "battery"], "hidden": True}],
         "actions": {"take": ["You leave the dead in peace."]}},
     "dead_marine": {"extends": ["scenery"], "name": "dead marine", "aliases": ["body", "corpse", "marine", "soldier"],
         "tags": ["scatter"], "habitat": ["military", "surface"], "weight": 2,
         "appearance": "A HECU marine lies face-down here in his gas mask.",
         "description": "His webbing is still full of gear.",
-        "features": [{"chance": 0.6, "pick": ["mp5", "ammo_box", "grenade", "medkit", "hecu_logbook"], "hidden": True}],
+        "features": [{"chance": 0.6, "pick": ["mp5", "ammo_9mm", "ammo_556", "grenade", "medkit", "hecu_logbook"], "hidden": True}],
         "actions": {"take": ["You leave the dead in peace."]}},
     "cockroach": {"extends": ["scenery"], "name": "cockroach", "aliases": ["roach", "cockroach", "bug"],
         "tags": ["scatter"], "habitat": ["maintenance", "storage", "office"],
@@ -257,7 +295,7 @@ F.update({
                   "death_text": "The barnacle shudders and lets go, spitting out a ribcage and something shiny."},
         "appearance": "A barnacle clings to the ceiling here, its long sticky tongue dangling to the floor.",
         "description": "A ceiling-dwelling Xen predator. It hauls up whatever touches its tongue and chews.",
-        "on_death": [{"spawn": {"pick": ["battery", "medkit", "ammo_box"]}, "in": "room"}]},
+        "on_death": [{"spawn": {"pick": ["battery", "medkit", "ammo_9mm"]}, "in": "room"}]},
 })
 
 C = {
@@ -290,7 +328,7 @@ C = {
         "A hulking, armoured Xen soldier with a living hivehand bolted to its arm.",
         "An alien grunt lumbers forward, its hivehand buzzing.",
         habitat=["xen", "surface", "lab", "alien"], weight=2, min_stage=1, armor=1,
-        extra={"on_death": [{"spawn": {"pick": ["hivehand", "ammo_box"], "chance": 0.2}, "in": "room"}]}),
+        extra={"on_death": [{"spawn": {"pick": ["hivehand", "ammo_uranium"], "chance": 0.2}, "in": "room"}]}),
     "controller": creature("alien controller", ["controller", "alien controller"], 40, 14, "hurls glowing energy balls at",
         "A floating, foetal-looking alien with a huge head, psychic and hateful.",
         "An alien controller drifts overhead, its swollen head glowing.",
@@ -328,7 +366,7 @@ C = {
         "A Hazardous Environment Combat Unit marine in a gas mask and fatigues, sent to clean up the incident. Including witnesses.",
         "A HECU marine shouts to his squad and opens fire.",
         habitat=["military", "surface", "office", "storage", "blackmesa"], weight=3, min_stage=1, armor=1, tags=["hecu"],
-        extra={"on_death": [{"spawn": {"pick": ["mp5", "ammo_box", "grenade", "shotgun", "medkit"], "chance": 0.5}, "in": "room"}]}),
+        extra={"on_death": [{"spawn": {"pick": ["mp5", "ammo_9mm", "ammo_9mm", "ammo_buckshot", "grenade", "shotgun", "medkit"], "chance": 0.5}, "in": "room"}]}),
     "sentry_gun": creature("sentry gun", ["sentry", "sentry gun", "turret", "gun"], 30, 9, "sprays bullets at",
         "An automated tripod gun with a motion sensor and a short temper.",
         "A sentry gun swivels toward you, beeping.", habitat=["military", "office", "blackmesa"], weight=1, min_stage=1, armor=1,

@@ -448,7 +448,8 @@ class Engine:
         if ex.get("name"):
             words.append(ex["name"].lower())
         words.extend(a.lower() for a in ex.get("aliases") or [])
-        return words
+        # Players' words lose their punctuation ("Hazard Course: Welcome"), so names must too.
+        return words + [w for w in (" ".join(self.normalize(x)) for x in words) if w not in words]
 
     def is_direction(self, phrase):
         for did, dd in self.reg["directions"].items():
@@ -468,13 +469,13 @@ class Engine:
             dest = self.w.get(ex["to"])
             if dest is None:
                 continue
-            if phrase == dest.name.lower():
+            if phrase in (dest.name.lower(), " ".join(self.normalize(dest.name))):
                 return ex
             # The destination's other names work whenever the player can see them: once
             # visited, or when the exit is labelled by its destination because it has no
             # direction or name of its own (for example where two settings' maps meet).
             shown = dest.visited or ex.get("show_dest") or not (ex.get("dir") or ex.get("name"))
-            if shown and phrase in dest.aliases:
+            if shown and (phrase in dest.aliases or phrase in {" ".join(self.normalize(a)) for a in dest.aliases}):
                 return ex
         return None
 
@@ -521,9 +522,10 @@ class Engine:
         for r in self.w.rooms():
             if not r.visited:
                 continue
-            if phrase == r.name.lower():
+            name = " ".join(self.normalize(r.name))
+            if phrase in (r.name.lower(), name):
                 return r
-            if best is None and (phrase in r.aliases or all(x in r.name.lower().split() for x in phrase.split())):
+            if best is None and (phrase in r.aliases or all(x in name.split() for x in phrase.split())):
                 best = r
         return best
 

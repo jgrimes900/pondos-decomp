@@ -8,7 +8,7 @@ import ast
 import operator
 import re
 
-from . import textutil
+from . import consumables, textutil
 from .world import normalize_handlers
 
 
@@ -82,6 +82,7 @@ class Interpreter:
         self.world = world
         self.engine = engine
         world.logic = self
+        self.consumables = consumables.Consumables(self)
 
     def ctx(self, **kw):
         return Ctx(self.world, **kw)
@@ -448,6 +449,19 @@ class Interpreter:
             return a is not None and b is not None and a.uid == b.uid
         if key == "exists":
             return self.ref(val, ctx) is not None
+        if key == "ready":
+            ent = self.ref(val, ctx)
+            return ent is not None and consumables.ready(w, ent)
+        if key == "consumer":
+            return consumables.is_consumer(self.ref(val, ctx))
+        if key == "feeds":
+            return consumables.feeds(w, self.ref(cond.get("of", "target"), ctx), self.ref(val, ctx))
+        if key == "spends":
+            # Does this verb (the one being run) cost *val* something? Attacks are paid for by the fight itself.
+            ent = self.ref(val, ctx)
+            verb = ctx.local.get("verb")
+            return (consumables.is_consumer(ent) and verb != "attack"
+                    and verb in (ent.props.get("spend_on") or ["attack"]))
         if key == "chance":
             return w.rng.random() < float(val)
         if key == "clock":
@@ -715,6 +729,29 @@ class Interpreter:
             self.engine.show_lead(ctx)
         elif "interrupt" in eff:
             w.interrupt = bool(eff["interrupt"])
+        elif "spend" in eff:
+            # Pay for one use of a consumer (gun, spell, blade); sets local <as> to whether it could.
+            ent = self.ref(eff["spend"], ctx)
+            ok = ent is None or self.consumables.spend(ent, ctx)
+            if eff.get("as"):
+                ctx.local[eff["as"]] = ok
+            if not ok and eff.get("or_stop"):
+                raise StopAction()
+        elif "reload" in eff:
+            ent = self.ref(eff["reload"], ctx)
+            src = self.ref(eff["from"], ctx) if eff.get("from") else None
+            if ent is not None:
+                got = self.consumables.reload(ent, ctx, source=src, quiet=bool(eff.get("quiet")))
+                if eff.get("as"):
+                    ctx.local[eff["as"]] = got
+        elif "reload_all" in eff:
+            self.consumables.reload_all(ctx)
+        elif "supply" in eff:
+            ent = self.ref(eff["supply"], ctx)
+            if ent is not None:
+                self.consumables.supply(ent, ctx)
+        elif "deplete" in eff:
+            self.consumables.deplete(self.ref(eff["deplete"], ctx), ctx)
         elif "stop" in eff:
             raise StopAction()
         elif "nothing" in eff:
@@ -934,6 +971,13 @@ class _Eval(ast.NodeVisitor):
             return round(*args)
         if name == "rand":
             return w.rng.randint(int(args[0]), int(args[1]))
+        if name == "best_weapon":
+            view = args[0] if args else None
+            return consumables.best_weapon(w, view._e) if isinstance(view, _EntityView) else ""
+        if name == "ready_damage":
+            view = args[0] if args else None
+            uid = consumables.best_weapon(w, view._e) if isinstance(view, _EntityView) else ""
+            return w.get(uid).props.get("damage", 0) if uid else 0
         if name == "scaled":
             # scaled(n[, base]): n written for a player with `base` max health, in this world's terms.
             cfg = w.stat_scaling()

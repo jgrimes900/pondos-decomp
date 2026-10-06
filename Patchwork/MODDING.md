@@ -261,6 +261,57 @@ Any text field may be a list of **variants**, the first whose condition passes i
 
 Rooms may also have a `brief` text, used when revisiting (unless the player typed `verbose`).
 
+### 5.4 Consumers: guns, grenades, spells, blades that wear out
+
+Extend the core **`consumer`** trait for anything that spends something each time it's used. A
+consumer either keeps its own store (a magazine, charges, durability) or draws straight from
+**supplies**: anything carrying a matching resource prop (an ammo box, a quiver, a mana crystal,
+the player's own `mana`, a whetstone). The core **`supply`** trait is a convenience for supplies:
+using one by itself loads whatever you carry that it fits.
+
+```json
+"glock":  {"extends": ["portable", "consumer"], "tags": ["weapon"],
+           "props": {"damage": 8, "resource": "ammo", "resource_type": "9mm", "capacity": 17, "feed": "auto", "label": "rounds"}},
+"ammo_9mm": {"extends": ["supply"], "name": "box of 9mm rounds", "props": {"ammo": 34, "ammo_type": "9mm"}},
+
+"ember_wand": {"extends": ["portable", "consumer"], "tags": ["weapon"],
+               "props": {"damage": 6, "resource": "mana", "cost": 3, "feed": "direct", "label": "mana"}},
+"rusty_sword": {"extends": ["portable", "consumer"], "tags": ["weapon"],
+                "props": {"damage": 3, "resource": "repair", "capacity": 12, "label": "edge",
+                          "on_empty": "transmute", "empty_into": "broken_sword"}},
+"grenade": {"extends": ["portable", "consumer"], "tags": ["weapon"],
+            "props": {"damage": 30, "capacity": 1, "reloadable": false, "on_empty": "consume"}}
+```
+
+| Prop | Meaning |
+| --- | --- |
+| `resource` | The prop its supplies carry: `ammo`, `mana`, `repair`, `arrows`, `oil`... Any name works. |
+| `resource_type` | Optional. Supplies must have `<resource>_type` equal to it (`"ammo_type": "9mm"`), so shells don't fit a pistol. |
+| `cost` | How much one use takes (default 1). |
+| `capacity`, `stored` | Internal storage and how much is in it (starts full). Leave `capacity` out to keep no store. |
+| `feed` | `internal`: uses only what's stored; reload by hand. `auto`: uses what's stored and refills itself from carried supplies when it runs dry. `direct`: no store; every use draws straight from supplies. Default: `internal` with a capacity, else `direct`. |
+| `reloadable` | `false`: what it holds is all it will ever have (a grenade, a scroll). |
+| `on_empty` | `keep` (default), `consume` (gone when the last charge is used), or `transmute` into `empty_into` (a feature id or spec: a broken sword, a blank scroll, an empty bottle). |
+| `spend_on` | Verbs that spend it. Default `["attack"]` (Steel & Peril pays for the blow). Add any verb: a scroll with `["attack", "read"]` is spent when read, a lantern with `["light"]` burns oil. If it can't pay, the action doesn't happen. |
+| `draw_from` | `carried` (default: the player and everything they carry) or `nearby` (also what's in the room). |
+| `label` | What to call the resource in messages ("rounds", "edge"). |
+| `empty_text`, `reload_text`, `depleted_text` | Message overrides (`{self}`, `{label}`, `{stored}`, `{capacity}`, `{source}`). |
+
+A supply is drawn on nearest first (the player's own pool, then what they carry). A portable
+supply that runs dry is thrown away unless it has `keep_when_empty`.
+
+Players type `reload pistol`, `reload pistol with 9mm rounds`, `repair sword with whetstone`,
+`sharpen sword`, `use rounds on pistol`, `use rounds` (load everything they fit), or just `reload`
+(top up everything). Examining a consumer or the inventory shows what's left (`17/17 rounds`).
+In a fight, Steel & Peril uses the weapon you name or the best one you carry that can be used
+right now, so an empty gun is passed over for the crowbar.
+
+In logic: the effects `{"spend": ref, "as": "ok"}` (add `"or_stop": true` to abandon the action),
+`{"reload": ref, "from": ref}`, `{"reload_all": true}`, `{"supply": ref}` and `{"deplete": ref}`
+(settle a consumer that ran dry); the conditions `{"ready": ref}`, `{"consumer": ref}`,
+`{"feeds": item, "of": supply}` and `{"spends": ref}`; and the expressions `best_weapon(player)`
+and `ready_damage(player)`.
+
 ---
 
 ## 6. Rooms and exits

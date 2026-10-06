@@ -26,7 +26,8 @@
   },
   "glock": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "9mm pistol",
    "aliases": [
@@ -41,7 +42,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 8
+    "damage": 8,
+    "resource": "ammo",
+    "resource_type": "9mm",
+    "capacity": 17,
+    "feed": "auto",
+    "label": "rounds"
    },
    "description": "A standard-issue 9mm security sidearm. Seventeen rounds and a lot of faith.",
    "story_keep": true,
@@ -51,7 +57,8 @@
   },
   "python": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": ".357 Magnum revolver",
    "aliases": [
@@ -66,7 +73,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 25
+    "damage": 25,
+    "resource": "ammo",
+    "resource_type": "357",
+    "capacity": 6,
+    "feed": "auto",
+    "label": "rounds"
    },
    "description": "A six-shot .357 revolver that kicks like a mule and hits harder.",
    "story_keep": true,
@@ -76,7 +88,8 @@
   },
   "mp5": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "MP5 submachine gun",
    "aliases": [
@@ -91,7 +104,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 13
+    "damage": 13,
+    "resource": "ammo",
+    "resource_type": "9mm",
+    "capacity": 50,
+    "feed": "auto",
+    "label": "rounds"
    },
    "description": "A 9mm submachine gun with an under-barrel grenade launcher.",
    "story_keep": true,
@@ -101,7 +119,8 @@
   },
   "shotgun": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "SPAS-12 shotgun",
    "aliases": [
@@ -115,7 +134,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 22
+    "damage": 22,
+    "resource": "ammo",
+    "resource_type": "buckshot",
+    "capacity": 8,
+    "feed": "auto",
+    "label": "shells"
    },
    "description": "A pump-action combat shotgun. Fire it twice as fast if you don't mind the recoil.",
    "story_keep": true,
@@ -125,7 +149,8 @@
   },
   "crossbow": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "crossbow",
    "aliases": [
@@ -138,7 +163,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 28
+    "damage": 28,
+    "resource": "ammo",
+    "resource_type": "bolt",
+    "capacity": 5,
+    "feed": "auto",
+    "label": "bolts"
    },
    "description": "A scoped crossbow with explosive-tipped bolts. Works underwater too.",
    "story_keep": true,
@@ -148,7 +178,8 @@
   },
   "rpg": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "rocket launcher",
    "aliases": [
@@ -162,7 +193,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 45
+    "damage": 45,
+    "resource": "ammo",
+    "resource_type": "rocket",
+    "capacity": 1,
+    "feed": "auto",
+    "label": "rockets"
    },
    "description": "A laser-guided rocket launcher. Point the dot, and the rocket follows.",
    "story_keep": true,
@@ -172,7 +208,8 @@
   },
   "gauss": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "tau cannon",
    "aliases": [
@@ -187,7 +224,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 32
+    "damage": 32,
+    "resource": "ammo",
+    "resource_type": "uranium",
+    "cost": 2,
+    "feed": "direct",
+    "label": "uranium"
    },
    "description": "An experimental prototype that fires charged particle bursts. Charge it too long and it bites you.",
    "story_keep": true,
@@ -197,7 +239,8 @@
   },
   "egon": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "gluon gun",
    "aliases": [
@@ -211,7 +254,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 36
+    "damage": 36,
+    "resource": "ammo",
+    "resource_type": "uranium",
+    "cost": 1,
+    "feed": "direct",
+    "label": "uranium"
    },
    "description": "A heavy backpack-mounted gluon beam projector. It eats depleted uranium like nobody's business.",
    "story_keep": true,
@@ -246,7 +294,8 @@
   },
   "snark_nest": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "snark nest",
    "aliases": [
@@ -260,7 +309,14 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 9
+    "damage": 9,
+    "resource": "ammo",
+    "resource_type": "none",
+    "capacity": 5,
+    "reloadable": false,
+    "on_empty": "consume",
+    "label": "snarks",
+    "depleted_text": "The last snark scuttles off; the nest is empty."
    },
    "description": "A twitching pod of snarks. Throw one, and it hunts whatever is nearest. Usually.",
    "story_keep": true,
@@ -270,7 +326,8 @@
   },
   "grenade": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "hand grenade",
    "aliases": [
@@ -284,7 +341,14 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 30
+    "damage": 30,
+    "resource": "ammo",
+    "resource_type": "none",
+    "capacity": 1,
+    "reloadable": false,
+    "on_empty": "consume",
+    "label": "grenades",
+    "depleted_text": "The grenade goes off with a flat crack."
    },
    "description": "A fragmentation grenade. Pull the pin and count.",
    "story_keep": true,
@@ -294,7 +358,8 @@
   },
   "satchel": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "satchel charge",
    "aliases": [
@@ -308,7 +373,14 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 40
+    "damage": 40,
+    "resource": "ammo",
+    "resource_type": "none",
+    "capacity": 1,
+    "reloadable": false,
+    "on_empty": "consume",
+    "label": "charges",
+    "depleted_text": "The satchel charge goes up with a roar."
    },
    "description": "A remote-detonated satchel charge.",
    "story_keep": true,
@@ -319,7 +391,8 @@
   },
   "tripmine": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "laser tripmine",
    "aliases": [
@@ -333,7 +406,14 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 30
+    "damage": 30,
+    "resource": "ammo",
+    "resource_type": "none",
+    "capacity": 1,
+    "reloadable": false,
+    "on_empty": "consume",
+    "label": "mines",
+    "depleted_text": "The tripmine detonates."
    },
    "description": "A laser-triggered mine for walls.",
    "story_keep": true,
@@ -391,7 +471,8 @@
   },
   "desert_eagle": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "Desert Eagle",
    "aliases": [
@@ -406,7 +487,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 20
+    "damage": 20,
+    "resource": "ammo",
+    "resource_type": "357",
+    "capacity": 7,
+    "feed": "auto",
+    "label": "rounds"
    },
    "description": "A .50 calibre handgun with a laser sight.",
    "story_keep": true,
@@ -416,7 +502,8 @@
   },
   "m249": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "M249 squad automatic weapon",
    "aliases": [
@@ -431,7 +518,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 18
+    "damage": 18,
+    "resource": "ammo",
+    "resource_type": "556",
+    "capacity": 50,
+    "feed": "auto",
+    "label": "rounds"
    },
    "description": "A belt-fed light machine gun. Fires until the belt runs out or you fall over.",
    "story_keep": true,
@@ -441,7 +533,8 @@
   },
   "sniper_rifle": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "M40A1 sniper rifle",
    "aliases": [
@@ -456,7 +549,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 35
+    "damage": 35,
+    "resource": "ammo",
+    "resource_type": "762",
+    "capacity": 5,
+    "feed": "auto",
+    "label": "rounds"
    },
    "description": "A bolt-action sniper rifle with a long-range scope.",
    "story_keep": true,
@@ -490,7 +588,8 @@
   },
   "spore_launcher": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "spore launcher",
    "aliases": [
@@ -505,7 +604,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 26
+    "damage": 26,
+    "resource": "ammo",
+    "resource_type": "spore",
+    "capacity": 5,
+    "feed": "auto",
+    "label": "spores"
    },
    "description": "A living alien launcher that hurls explosive spore pods. It chirps when fed.",
    "story_keep": true,
@@ -515,7 +619,8 @@
   },
   "displacer": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "displacer cannon",
    "aliases": [
@@ -529,7 +634,12 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 48
+    "damage": 48,
+    "resource": "ammo",
+    "resource_type": "uranium",
+    "cost": 20,
+    "feed": "direct",
+    "label": "uranium"
    },
    "description": "An experimental portal weapon. It sends whatever it hits somewhere else, or sends you somewhere else.",
    "story_keep": true,
@@ -566,7 +676,8 @@
   },
   "penguin": {
    "extends": [
-    "portable"
+    "portable",
+    "consumer"
    ],
    "name": "penguin",
    "aliases": [
@@ -579,7 +690,14 @@
    ],
    "props": {
     "default_max_health": 100,
-    "damage": 9
+    "damage": 9,
+    "resource": "ammo",
+    "resource_type": "none",
+    "capacity": 3,
+    "reloadable": false,
+    "on_empty": "consume",
+    "label": "penguins",
+    "depleted_text": "The last penguin waddles off to meet its destiny."
    },
    "description": "An explosive penguin. A multiplayer joke from the Opposing Force era that nobody has ever explained.",
    "story_keep": true,

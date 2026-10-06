@@ -8,7 +8,7 @@
     "max_health": 100,
     "suit": 0,
     "max_suit": 100,
-    "attack": 2
+    "attack": 5
    }
   },
   "edible": {
@@ -17,6 +17,267 @@
     "default_max_health": 100,
     "heal": 10
    }
+  },
+  "ammo_9mm": {
+   "extends": [
+    "supply"
+   ],
+   "name": "box of 9mm rounds",
+   "aliases": [
+    "9mm",
+    "9mm rounds",
+    "rounds",
+    "box",
+    "clip",
+    "ammo",
+    "ammunition"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup",
+    "hl_ammo"
+   ],
+   "habitat": [
+    "blackmesa",
+    "military",
+    "surface"
+   ],
+   "weight": 4,
+   "props": {
+    "ammo": 34,
+    "ammo_type": "9mm"
+   },
+   "description": "Two magazines' worth of 9mm. Fits the pistol and the MP5."
+  },
+  "ammo_357": {
+   "extends": [
+    "supply"
+   ],
+   "name": "pack of .357 rounds",
+   "aliases": [
+    ".357",
+    "357",
+    ".357 rounds",
+    "magnum rounds",
+    "ammo",
+    "ammunition"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup",
+    "hl_ammo"
+   ],
+   "habitat": [
+    "blackmesa",
+    "military",
+    "surface"
+   ],
+   "weight": 2,
+   "props": {
+    "ammo": 12,
+    "ammo_type": "357"
+   },
+   "description": "Six-shooter rounds, also good for a Desert Eagle."
+  },
+  "ammo_buckshot": {
+   "extends": [
+    "supply"
+   ],
+   "name": "box of buckshot",
+   "aliases": [
+    "buckshot",
+    "shells",
+    "shotgun shells",
+    "ammo",
+    "ammunition"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup",
+    "hl_ammo"
+   ],
+   "habitat": [
+    "blackmesa",
+    "military",
+    "surface"
+   ],
+   "weight": 3,
+   "props": {
+    "ammo": 12,
+    "ammo_type": "buckshot"
+   },
+   "description": "Twelve-gauge shells, red and brass."
+  },
+  "ammo_bolts": {
+   "extends": [
+    "supply"
+   ],
+   "name": "bundle of crossbow bolts",
+   "aliases": [
+    "bolts",
+    "crossbow bolts",
+    "bundle",
+    "ammo",
+    "ammunition"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup",
+    "hl_ammo"
+   ],
+   "habitat": [
+    "blackmesa",
+    "military",
+    "surface"
+   ],
+   "weight": 1,
+   "props": {
+    "ammo": 5,
+    "ammo_type": "bolt"
+   },
+   "description": "Explosive-tipped bolts for the crossbow."
+  },
+  "ammo_rocket": {
+   "extends": [
+    "supply"
+   ],
+   "name": "rocket",
+   "aliases": [
+    "rocket",
+    "rockets",
+    "rpg round",
+    "ammo",
+    "ammunition"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup",
+    "hl_ammo"
+   ],
+   "habitat": [
+    "military",
+    "surface"
+   ],
+   "weight": 1,
+   "props": {
+    "ammo": 1,
+    "ammo_type": "rocket"
+   },
+   "description": "A single laser-guided rocket."
+  },
+  "ammo_uranium": {
+   "extends": [
+    "supply"
+   ],
+   "name": "depleted uranium cell",
+   "aliases": [
+    "uranium",
+    "uranium cell",
+    "cell",
+    "du cell",
+    "ammo",
+    "ammunition"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup",
+    "hl_ammo"
+   ],
+   "habitat": [
+    "blackmesa",
+    "lab"
+   ],
+   "weight": 1,
+   "props": {
+    "ammo": 20,
+    "ammo_type": "uranium"
+   },
+   "description": "A glowing canister of depleted uranium. The tau cannon, the gluon gun and the displacer all drink it."
+  },
+  "ammo_556": {
+   "extends": [
+    "supply"
+   ],
+   "name": "5.56mm ammunition belt",
+   "aliases": [
+    "5.56",
+    "556",
+    "belt",
+    "ammunition belt",
+    "ammo",
+    "ammunition"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup",
+    "hl_ammo"
+   ],
+   "habitat": [
+    "military",
+    "surface"
+   ],
+   "weight": 1,
+   "props": {
+    "ammo": 50,
+    "ammo_type": "556"
+   },
+   "description": "A belt of 5.56mm for the M249."
+  },
+  "ammo_762": {
+   "extends": [
+    "supply"
+   ],
+   "name": "box of 7.62mm rounds",
+   "aliases": [
+    "7.62",
+    "762",
+    "sniper rounds",
+    "ammo",
+    "ammunition"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup",
+    "hl_ammo"
+   ],
+   "habitat": [
+    "military",
+    "surface"
+   ],
+   "weight": 1,
+   "props": {
+    "ammo": 5,
+    "ammo_type": "762"
+   },
+   "description": "Match-grade rounds for a sniper rifle."
+  },
+  "ammo_spore": {
+   "extends": [
+    "supply"
+   ],
+   "name": "spore pod",
+   "aliases": [
+    "spore pod",
+    "pod",
+    "spores",
+    "ammo",
+    "ammunition"
+   ],
+   "tags": [
+    "scatter",
+    "hl_pickup",
+    "hl_ammo"
+   ],
+   "habitat": [
+    "racex",
+    "alien"
+   ],
+   "weight": 1,
+   "props": {
+    "ammo": 2,
+    "ammo_type": "spore"
+   },
+   "description": "A Race X spore pod, warm and faintly twitching. The spore launcher eats them."
   },
   "hev_suit": {
    "extends": [
@@ -236,15 +497,14 @@
   },
   "ammo_box": {
    "extends": [
-    "portable"
+    "scenery",
+    "container"
    ],
-   "name": "#ammo_kind#",
+   "name": "ammunition cache",
    "aliases": [
-    "ammo",
-    "ammunition",
-    "box",
-    "rounds",
-    "magazine"
+    "cache",
+    "ammunition cache",
+    "ammo cache"
    ],
    "tags": [
     "scatter",
@@ -256,12 +516,34 @@
     "surface"
    ],
    "weight": 3,
-   "description": "Ammunition. In this place, you can never have enough.",
-   "actions": {
-    "use": [
-     "You top up your magazines. It's reassuring to hear them click home."
-    ]
-   }
+   "appearance": "A stash of ammunition has been left here.",
+   "description": "Somebody's ammunition, stacked where they dropped it. In this place, you can never have enough.",
+   "contents_text": "In the cache: {contents}.",
+   "empty_text": "The cache has been picked clean.",
+   "features": [
+    {
+     "pick": [
+      "ammo_9mm",
+      "ammo_9mm",
+      "ammo_buckshot",
+      "ammo_357"
+     ]
+    },
+    {
+     "chance": 0.4,
+     "pick": [
+      "ammo_9mm",
+      "ammo_9mm",
+      "ammo_buckshot",
+      "ammo_357",
+      "ammo_bolts",
+      "ammo_rocket",
+      "ammo_uranium",
+      "ammo_556",
+      "ammo_762"
+     ]
+    }
+   ]
   },
   "long_jump": {
    "extends": [
@@ -554,8 +836,9 @@
      "pick": [
       "medkit",
       "battery",
-      "ammo_box",
-      "ammo_box"
+      "ammo_9mm",
+      "ammo_buckshot",
+      "ammo_357"
      ]
     },
     {
@@ -862,7 +1145,7 @@
      "chance": 0.5,
      "pick": [
       "glock",
-      "ammo_box",
+      "ammo_9mm",
       "battery"
      ],
      "hidden": true
@@ -900,7 +1183,8 @@
      "chance": 0.6,
      "pick": [
       "mp5",
-      "ammo_box",
+      "ammo_9mm",
+      "ammo_556",
       "grenade",
       "medkit",
       "hecu_logbook"
@@ -1051,7 +1335,7 @@
       "pick": [
        "battery",
        "medkit",
-       "ammo_box"
+       "ammo_9mm"
       ]
      },
      "in": "room"

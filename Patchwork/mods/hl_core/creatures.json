@@ -235,7 +235,7 @@
      "spawn": {
       "pick": [
        "hivehand",
-       "ammo_box"
+       "ammo_uranium"
       ],
       "chance": 0.2
      },
@@ -519,7 +519,9 @@
      "spawn": {
       "pick": [
        "mp5",
-       "ammo_box",
+       "ammo_9mm",
+       "ammo_9mm",
+       "ammo_buckshot",
        "grenade",
        "shotgun",
        "medkit"

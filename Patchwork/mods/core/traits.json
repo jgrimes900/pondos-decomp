@@ -174,6 +174,27 @@
       }
     },
 
+    "consumer": {
+      "//": "Spends a resource each time it is used: a gun and its rounds, a grenade, a spell and the caster's mana, a blade and its edge. Props: resource (the prop its supplies carry: ammo, mana, repair...), resource_type (supplies must match <resource>_type), cost (per use, default 1), capacity and stored (internal storage; omit capacity to draw straight from supplies), feed (internal | auto | direct), reloadable (false: never refilled), on_empty (keep | consume | transmute) and empty_into, spend_on (verbs that spend it, default [attack]), draw_from (carried | nearby), label. See MODDING.md, Consumers.",
+      "abstract": true,
+      "tags": ["consumer"],
+      "props": {"cost": 1, "reloadable": true, "on_empty": "keep", "spend_on": ["attack"]},
+      "actions": {
+        "use_with": [{"if": {"feeds": "self", "of": "target"}, "do": [{"reload": "self", "from": "target"}]}],
+        "put_with": [{"if": {"feeds": "self", "of": "target"}, "do": [{"reload": "self", "from": "target"}]}]
+      }
+    },
+
+    "supply": {
+      "//": "Something that refills consumers: give it the resource prop they draw on (ammo, mana, repair...) and, if they ask for one, <resource>_type. Using it by itself loads whatever you carry that it fits.",
+      "abstract": true,
+      "extends": ["portable"],
+      "tags": ["supply"],
+      "actions": {
+        "use": [{"if": {"second": null}, "do": [{"supply": "self"}]}]
+      }
+    },
+
     "light_source": {
       "abstract": true,
       "extends": ["portable"],
@@ -199,6 +220,19 @@
       "extends": ["portable"],
       "tags": ["treasure"],
       "props": {"value": 1}
+    }
+  },
+
+  "rules": {
+    "consumer_spend": {
+      "//": "Using a consumer for one of its spend_on verbs costs it a charge first; if it has none, the action doesn't happen.",
+      "on": "before:*", "if": {"spends": "target"},
+      "do": [{"spend": "target", "or_stop": true}]
+    },
+    "consumer_settle": {
+      "//": "After the action, a consumer that ran dry is used up or turns into its empty form.",
+      "on": "after:*", "if": {"consumer": "target"},
+      "do": [{"deplete": "target"}]
     }
   }
 }

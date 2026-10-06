@@ -460,6 +460,10 @@ class StoryPlanner:
         """Before a fight the story depends on, make sure the player has picked up a weapon."""
         weapons = [t for k, t in sorted(self.things.items())
                    if t.kind == "item" and "weapon" in t.tags and not t.spawned]
+        # Something that never runs dry: a gun can be empty and a grenade spent by the time the fight comes.
+        lasting = [t for t in weapons if not (t.d.get("props") or {}).get("resource")
+                   and not (t.d.get("props") or {}).get("capacity")]
+        weapons = lasting or weapons
         if not weapons or any(t.obtained and t.keep for t in weapons):   # one the story will not take back
             return
         weapons = [t for t in weapons if self.can_obtain(t) and (t.area or t.loc)]

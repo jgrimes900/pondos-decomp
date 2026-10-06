@@ -147,13 +147,61 @@
     },
 
     "rusty_sword": {
-      "extends": ["portable"],
+      "extends": ["portable", "consumer"],
       "name": "rusty sword",
       "aliases": ["sword", "blade"],
       "tags": ["weapon", "scatter"],
       "habitat": ["dungeon", "ruins", "road", "ancient"],
-      "props": {"default_max_health": 20, "damage": 3},
-      "description": "Pitted with rust, but the edge will still bite."
+      "props": {"default_max_health": 20, "damage": 3,
+                "resource": "repair", "capacity": 12, "label": "edge", "on_empty": "transmute", "empty_into": "broken_sword",
+                "depleted_text": "With a dull crack, the rusty sword's blade snaps off at the hilt."},
+      "description": "Pitted with rust, but the edge will still bite. It won't for ever: a whetstone would help."
+    },
+    "broken_sword": {
+      "extends": ["portable"],
+      "name": "broken sword",
+      "aliases": ["sword", "hilt", "broken sword"],
+      "tags": ["weapon"],
+      "props": {"default_max_health": 20, "damage": 1},
+      "description": "A hilt and a hand's breadth of rusty blade. Better than your fists. Barely."
+    },
+    "whetstone": {
+      "extends": ["supply"],
+      "name": "whetstone",
+      "aliases": ["whetstone", "stone", "hone"],
+      "tags": ["scatter"],
+      "habitat": ["road", "settlement", "ruins", "dungeon"],
+      "props": {"repair": 8},
+      "description": "A grey whetstone worn hollow in the middle. A few passes restore an edge (repair a blade with it)."
+    },
+    "short_bow": {
+      "extends": ["portable", "consumer"],
+      "name": "short bow",
+      "aliases": ["bow", "short bow"],
+      "tags": ["weapon", "scatter"],
+      "habitat": ["forest", "hills", "road"],
+      "props": {"default_max_health": 20, "damage": 4, "resource": "arrows", "feed": "direct", "label": "arrows",
+                "empty_text": "You reach for an arrow and find none."},
+      "description": "A hunter's bow of yew. It shoots arrows straight from whatever quiver you carry."
+    },
+    "quiver": {
+      "extends": ["supply"],
+      "name": "quiver of arrows",
+      "aliases": ["quiver", "arrows", "arrow"],
+      "tags": ["scatter"],
+      "habitat": ["forest", "hills", "road", "settlement"],
+      "props": {"arrows": 8},
+      "description": "A leather quiver of goose-fletched arrows."
+    },
+    "firepot": {
+      "extends": ["portable", "consumer"],
+      "name": "firepot",
+      "aliases": ["firepot", "pot", "fire pot", "bomb"],
+      "tags": ["weapon", "scatter"],
+      "habitat": ["ruins", "dungeon", "settlement", "station"],
+      "props": {"default_max_health": 20, "damage": 7, "capacity": 1, "reloadable": false, "on_empty": "consume", "label": "throw",
+                "depleted_text": "The firepot shatters in a sheet of flame."},
+      "description": "A clay pot of pitch and oil with a rag fuse. You only get to throw it once."
     },
     "leather_jerkin": {
       "extends": ["portable"],
@@ -210,15 +258,19 @@
       "target": "none",
       "time": 0,
       "help": "status",
-      "default": ["Health: {player.health}/{player.max_health}. Attack: {=player.attack + best(player, 'damage')}. Armour: {=player.armor + best(player, 'armor')}."]
+      "default": ["Health: {player.health}/{player.max_health}. Attack: {=player.attack + ready_damage(player)}. Armour: {=player.armor + best(player, 'armor')}."]
     }
   },
 
   "macros": {
     "player_attacks": {
       "do": [
-        {"let": {"dmg": "=max(1, player.attack + (second.damage if second else best(player, 'damage')) + rand(0, scaled(2)) - self.armor)"}},
+        {"let": {"wpn": "=second.uid if second else best_weapon(player)"}},
+        {"let": {"wdmg": "=wpn.damage if wpn else 0"}},
+        {"if": {"exists": "local:wpn"}, "then": [{"spend": "local:wpn", "or_stop": true}]},
+        {"let": {"dmg": "=max(1, player.attack + wdmg + rand(0, scaled(2)) - self.armor)"}},
         {"add": {"health": "=-dmg"}},
+        {"if": {"exists": "local:wpn"}, "then": [{"deplete": "local:wpn"}]},
         {"set": {"hostile": true}},
         {"if": {"prop": "health", "lte": 0},
          "then": [

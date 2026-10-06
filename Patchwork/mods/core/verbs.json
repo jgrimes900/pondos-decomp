@@ -106,6 +106,17 @@
          "else": ["You find nothing of interest about {target}."]}
       ]
     },
+    "reload": {
+      "aliases": ["load", "refill", "recharge", "repair", "refuel", "replenish", "sharpen"],
+      "prepositions": ["with", "from", "using"],
+      "target": "optional",
+      "help": "reload [<thing> [with <supply>]]",
+      "no_target": [{"reload_all": true}],
+      "default": [
+        {"if": {"consumer": "target"}, "do": [{"reload": "target", "from": "second"}]},
+        {"do": ["{target.The} doesn't take anything."]}
+      ]
+    },
     "use": {
       "aliases": ["apply", "operate", "activate", "play", "ring", "wave"],
       "prepositions": ["on", "with", "in", "at"],

@@ -785,7 +785,7 @@ Any value written as a string starting with `=` is an expression:
   (missing = 0), `x.name` the name; `role.villain.health`
 * `var.gold`, `clock`, `turns`, local variables, `true`/`false`/`none`, numbers, strings
 * `+ - * / // %`, comparisons, `and`/`or`/`not`, `a if cond else b`
-* `min`, `max`, `abs`, `int`, `round`, `rand(lo, hi)`, `chance(p)`,
+* `min`, `max`, `abs`, `int`, `round`, `rand(lo, hi)`, `chance(p)`, `scaled(n[, base])` (a stat amount converted to this world's player; see section 15),
   `best(entity, 'prop')` (highest value among carried things), `total(entity, 'prop')`,
   `count(entity, 'tag:coin')`, `has(entity, 'tag:key')`
 
@@ -889,6 +889,27 @@ See `mods/core/strings.json` for the full list (for example `exits_line`, `not_h
   story needs.
 * **Patching.** `load_after` the mod you patch and use `"_patch": true`. Steel & Peril gives the
   core player health and makes core `edible` things heal.
+* **Declare your scale.** Combat numbers only mean something next to the player's health: a wolf
+  that bites for 3 is fierce against Steel & Peril's 20-health player and a mosquito against
+  Half-Life's 100. So every stat block says what player it was written for:
+
+  ```json
+  "props": {"default_max_health": 20, "health": 8, "max_health": 8, "damage": 3}
+  ```
+
+  When a feature is created, Steel & Peril's `stat_scaling` setting converts its `health`,
+  `max_health`, `damage`, `armor`, `heal` and `charge` to the world's player, whose own
+  `default_max_health` is the base every other mod is measured against (20 from Steel & Peril, 100
+  when Half-Life's core makes the player tougher). With both loaded, a wolf has 40 health and bites
+  for 15: the same fight, in the same proportion. Put it on your traits (Steel & Peril's `creature`
+  and `edible` already declare 20) or on each stat block; stats that declare nothing are assumed to
+  be written for 20, and `--validate` notes them. A mod that changes the player's base max health
+  patches the player's `default_max_health` along with `health` and `max_health`.
+
+  For literal amounts in effects, use the `scaled()` expression: `"=scaled(1)"` is 1 health at the
+  20-health default, 5 beside Half-Life; `"=scaled(12, 100)"` is 12 for a 100-health player. The
+  Hamlet priest's blessing (`+scaled(5)` max health) and the Wilds' chilly river crossing
+  (`-scaled(1)`) use it.
 
 ---
 

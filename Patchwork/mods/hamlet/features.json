@@ -263,6 +263,7 @@
         "plate"
       ],
       "props": {
+        "default_max_health": 20,
         "taste": "Simple and very good.",
         "heal": 5
       },
@@ -281,6 +282,7 @@
         "drink"
       ],
       "props": {
+        "default_max_health": 20,
         "taste": "Brown, foamy and faintly nutty.",
         "heal": 1
       },
@@ -546,6 +548,7 @@
         "weapon"
       ],
       "props": {
+        "default_max_health": 20,
         "damage": 2
       },
       "description": "A plain, well-balanced knife with a horn handle. Sharp enough to shave with."
@@ -624,6 +627,7 @@
           ],
           "description": "Long iron tongs.",
           "props": {
+            "default_max_health": 20,
             "damage": 1
           },
           "tags": [
@@ -677,12 +681,12 @@
                           "then": [
                             {
                               "add": {
-                                "max_health": 5,
-                                "health": 5
+                                "max_health": "=scaled(5)",
+                                "health": "=scaled(5)"
                               },
                               "on": "player"
                             },
-                            "(Your maximum health increases by 5.)"
+                            "(Your maximum health increases by {=scaled(5)}.)"
                           ]
                         }
                       ]
@@ -985,6 +989,7 @@
                     "apple"
                   ],
                   "props": {
+                    "default_max_health": 20,
                     "taste": "Sweet and crisp.",
                     "heal": 3
                   },

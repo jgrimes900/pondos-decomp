@@ -14,6 +14,26 @@ OPPOSITE = {"north": "south", "south": "north", "east": "west", "west": "east",
             "southeast": "northwest", "up": "down", "down": "up", "in": "out", "out": "in"}
 
 
+STATS = ("health", "max_health", "damage", "armor", "heal", "charge")
+HL_SCALE = 100   # every Half-Life number is written for a player with 100 health
+
+
+def declare_scale(obj, base=HL_SCALE):
+    """Stamp default_max_health on every stat block, so Steel & Peril can convert Half-Life's
+    numbers when the world's player has a different base max health (and convert other mods'
+    numbers to Half-Life's)."""
+    if isinstance(obj, dict):
+        props = obj.get("props")
+        if isinstance(props, dict) and any(k in props for k in STATS) and "default_max_health" not in props:
+            obj["props"] = dict({"default_max_health": base}, **props)
+        for v in obj.values():
+            declare_scale(v, base)
+    elif isinstance(obj, list):
+        for v in obj:
+            declare_scale(v, base)
+    return obj
+
+
 class ModBuilder:
     def __init__(self, mod_id, prefix):
         self.mod_id = mod_id
@@ -119,6 +139,7 @@ class ModBuilder:
             json.dump(manifest, fh, indent=2, ensure_ascii=False)
             fh.write("\n")
         for fname, content in files.items():
+            declare_scale(content)
             with open(os.path.join(out, fname), "w", encoding="utf-8") as fh:
                 json.dump(content, fh, indent=1, ensure_ascii=False)
                 fh.write("\n")

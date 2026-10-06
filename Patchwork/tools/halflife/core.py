@@ -20,7 +20,7 @@ F["edible"] = {"_patch": True, "props": {"heal": 10}}
 
 MACROS = {
     "creature_attacks": {"do": [
-        {"let": {"hit": "=max(0, self.damage + rand(-2, 2) - player.armor - best(player, 'armor'))"}},
+        {"let": {"hit": "=max(0, self.damage + rand(-scaled(2, 100), scaled(2, 100)) - player.armor - best(player, 'armor'))"}},
         {"let": {"soak": "=min(player.suit, int(hit * 2 / 3))"}},
         {"if": {"local": "hit", "gt": 0},
          "then": [{"add": {"suit": "=-soak", "health": "=-(hit - soak)"}, "on": "player"},

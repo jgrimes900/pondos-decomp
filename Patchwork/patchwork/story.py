@@ -464,7 +464,8 @@ class StoryPlanner:
             return
         weapons = [t for t in weapons if self.can_obtain(t) and (t.area or t.loc)]
         if weapons:
-            dmg = lambda t: (t.d.get("props") or {}).get("damage", 1) or 1
+            # Weapons from different mods are written for different player toughness: compare like with like.
+            dmg = lambda t: ((t.d.get("props") or {}).get("damage", 1) or 1) * self.w.stat_factor(t.d)
             self.obtain(_weighted(self.rng, weapons, lambda t: dmg(t) * (3 if t.key in self.pool else 1)))
 
     def can_obtain(self, t):

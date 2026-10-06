@@ -548,7 +548,7 @@
    "do": [
     {
      "let": {
-      "hit": "=max(0, self.damage + rand(-2, 2) - player.armor - best(player, 'armor'))"
+      "hit": "=max(0, self.damage + rand(-scaled(2, 100), scaled(2, 100)) - player.armor - best(player, 'armor'))"
      }
     },
     {

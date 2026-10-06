@@ -934,6 +934,14 @@ class _Eval(ast.NodeVisitor):
             return round(*args)
         if name == "rand":
             return w.rng.randint(int(args[0]), int(args[1]))
+        if name == "scaled":
+            # scaled(n[, base]): n written for a player with `base` max health, in this world's terms.
+            cfg = w.stat_scaling()
+            base = args[1] if len(args) > 1 else (cfg or {}).get("default")
+            world = w.world_scale()
+            if not base or not world:
+                return args[0]
+            return w.scale_number(args[0], float(world) / float(base))
         if name == "chance":
             return w.rng.random() < float(args[0])
         if name in ("best", "total", "count", "has"):

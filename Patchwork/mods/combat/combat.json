@@ -1,18 +1,24 @@
 {
+  "settings": {
+    "//": "Stat scaling: every creature, weapon, armour and healing item says (default_max_health) what player max health its numbers were written for; when it is created, these props are converted to this world's player (the player's own default_max_health). So a mod that makes the player tougher doesn't leave everyone else's wolves toothless. Use scaled(n) or scaled(n, base) in expressions for literal amounts.",
+    "stat_scaling": {"prop": "default_max_health", "default": 20, "props": ["health", "max_health", "damage", "armor", "heal", "charge"]}
+  },
+
   "features": {
     "player": {
       "_patch": true,
-      "props": {"health": 20, "max_health": 20, "attack": 1, "armor": 0}
+      "props": {"default_max_health": 20, "health": 20, "max_health": 20, "attack": 1, "armor": 0}
     },
     "edible": {
       "_patch": true,
-      "props": {"heal": 2}
+      "props": {"default_max_health": 20, "heal": 2}
     },
 
     "creature": {
       "abstract": true,
       "tags": ["creature"],
       "props": {
+        "default_max_health": 20,
         "health": 6, "max_health": 6, "damage": 2, "armor": 0, "hostile": false,
         "attack_text": "attacks",
         "death_text": "{self.The} collapses and moves no more."
@@ -51,14 +57,14 @@
       "weight": 3,
       "appearance": "A grey wolf stands with its hackles raised, lips peeled back from yellow teeth.",
       "description": "Lean and hungry, all ribs and sinew. Its eyes never leave you.",
-      "props": {"health": 8, "max_health": 8, "damage": 3, "attack_text": "bites", "death_text": "The wolf yelps once and lies still."},
+      "props": {"default_max_health": 20, "health": 8, "max_health": 8, "damage": 3, "attack_text": "bites", "death_text": "The wolf yelps once and lies still."},
       "on_death": [{"spawn": "wolf_pelt", "in": "room"}]
     },
     "wolf_pelt": {
       "extends": ["valuable"],
       "name": "wolf pelt",
       "aliases": ["pelt", "fur", "hide"],
-      "props": {"value": 4, "armor": 1},
+      "props": {"default_max_health": 20, "value": 4, "armor": 1},
       "description": "A thick grey pelt. Worn over the shoulders it would turn a blow or two."
     },
     "bandit": {
@@ -70,7 +76,7 @@
       "min_stage": 1,
       "appearance": "A {self.name} blocks the way, cudgel in hand. \"Your purse or your teeth!\"",
       "description": "Unwashed, unshaven and unfriendly.",
-      "props": {"health": 10, "max_health": 10, "damage": 3, "armor": 1, "attack_text": "clubs", "death_text": "The bandit drops, groaning, and does not get up."},
+      "props": {"default_max_health": 20, "health": 10, "max_health": 10, "damage": 3, "armor": 1, "attack_text": "clubs", "death_text": "The bandit drops, groaning, and does not get up."},
       "features": [
         {"id": "cudgel"},
         {"id": "copper_coins", "chance": 0.7}
@@ -86,7 +92,7 @@
       "name": "knotted cudgel",
       "aliases": ["cudgel", "club"],
       "tags": ["weapon"],
-      "props": {"damage": 2},
+      "props": {"default_max_health": 20, "damage": 2},
       "description": "A heavy length of blackthorn, studded with nails."
     },
     "adder": {
@@ -97,7 +103,7 @@
       "habitat": ["hills", "marsh"],
       "appearance": "An adder lies coiled in the sun, tasting the air.",
       "description": "Zigzag markings along its back. It is not happy to see you.",
-      "props": {"health": 3, "max_health": 3, "damage": 2, "attack_text": "strikes at"}
+      "props": {"default_max_health": 20, "health": 3, "max_health": 3, "damage": 2, "attack_text": "strikes at"}
     },
     "bog_lurker": {
       "extends": ["hostile"],
@@ -108,7 +114,7 @@
       "min_stage": 1,
       "appearance": "Something heaves itself out of the mire: a bog lurker, dripping weed and black water.",
       "description": "A man-shaped heap of peat and roots with two pale lights for eyes.",
-      "props": {"health": 14, "max_health": 14, "damage": 4, "armor": 1, "attack_text": "lashes", "death_text": "The bog lurker slumps back into the mire with a long sigh."},
+      "props": {"default_max_health": 20, "health": 14, "max_health": 14, "damage": 4, "armor": 1, "attack_text": "lashes", "death_text": "The bog lurker slumps back into the mire with a long sigh."},
       "on_death": [{"spawn": {"pick": ["lost_locket", "copper_coins", "rusty_sword"]}, "in": "room"}]
     },
     "giant_rat": {
@@ -119,7 +125,7 @@
       "habitat": ["dungeon", "ruins", "underground", "station", "interior"],
       "appearance": "A rat the size of a dog squeaks furiously at you.",
       "description": "Mangy, red-eyed and absolutely fearless.",
-      "props": {"health": 4, "max_health": 4, "damage": 1, "attack_text": "gnaws"}
+      "props": {"default_max_health": 20, "health": 4, "max_health": 4, "damage": 1, "attack_text": "gnaws"}
     },
     "rogue_drone": {
       "extends": ["hostile"],
@@ -129,7 +135,7 @@
       "habitat": ["station", "scifi"],
       "appearance": "A maintenance drone hovers here, its welding arm sparking erratically. Its sensor light flicks red as it turns toward you.",
       "description": "A battered utility drone. Something has scrambled its safety protocols.",
-      "props": {"health": 8, "max_health": 8, "damage": 3, "armor": 2, "attack_text": "zaps", "death_text": "The drone shudders, spits sparks, and clatters to the deck."},
+      "props": {"default_max_health": 20, "health": 8, "max_health": 8, "damage": 3, "armor": 2, "attack_text": "zaps", "death_text": "The drone shudders, spits sparks, and clatters to the deck."},
       "on_death": [{"spawn": "power_cell", "in": "room"}]
     },
     "power_cell": {
@@ -146,7 +152,7 @@
       "aliases": ["sword", "blade"],
       "tags": ["weapon", "scatter"],
       "habitat": ["dungeon", "ruins", "road", "ancient"],
-      "props": {"damage": 3},
+      "props": {"default_max_health": 20, "damage": 3},
       "description": "Pitted with rust, but the edge will still bite."
     },
     "leather_jerkin": {
@@ -155,7 +161,7 @@
       "aliases": ["jerkin", "armour", "armor", "leather"],
       "tags": ["scatter", "armour"],
       "habitat": ["road", "settlement", "ruins"],
-      "props": {"armor": 1},
+      "props": {"default_max_health": 20, "armor": 1},
       "description": "Boiled leather, stiff and scuffed. It will turn a glancing blow."
     },
     "pipe_wrench": {
@@ -164,7 +170,7 @@
       "aliases": ["wrench", "spanner", "pipe"],
       "tags": ["weapon", "scatter"],
       "habitat": ["station", "scifi"],
-      "props": {"damage": 3},
+      "props": {"default_max_health": 20, "damage": 3},
       "description": "Half a metre of steel. Built for bolts, good for a lot else."
     },
     "healing_salve": {
@@ -173,7 +179,7 @@
       "aliases": ["salve", "pot", "ointment", "balm"],
       "tags": ["scatter", "healing"],
       "habitat": ["settlement", "road", "ruins", "dungeon", "forest"],
-      "props": {"heal": 10, "taste": "You smear it on your hurts rather than eating it, and feel the sting fade."},
+      "props": {"default_max_health": 20, "heal": 10, "taste": "You smear it on your hurts rather than eating it, and feel the sting fade."},
       "description": "A little clay pot of green, herb-smelling salve."
     }
   },
@@ -211,7 +217,7 @@
   "macros": {
     "player_attacks": {
       "do": [
-        {"let": {"dmg": "=max(1, player.attack + (second.damage if second else best(player, 'damage')) + rand(0, 2) - self.armor)"}},
+        {"let": {"dmg": "=max(1, player.attack + (second.damage if second else best(player, 'damage')) + rand(0, scaled(2)) - self.armor)"}},
         {"add": {"health": "=-dmg"}},
         {"set": {"hostile": true}},
         {"if": {"prop": "health", "lte": 0},
@@ -228,7 +234,7 @@
     },
     "creature_attacks": {
       "do": [
-        {"let": {"hit": "=max(0, self.damage + rand(-1, 1) - player.armor - best(player, 'armor'))"}},
+        {"let": {"hit": "=max(0, self.damage + rand(-scaled(1), scaled(1)) - player.armor - best(player, 'armor'))"}},
         {"if": {"local": "hit", "gt": 0},
          "then": [{"add": {"health": "=-hit"}, "on": "player"},
                   {"say": "{self.The} {self.attack_text} you for {hit} damage. (Health: {player.health}/{player.max_health})", "style": "warn"}],
@@ -256,7 +262,7 @@
     "combat_travel_regen": {
       "on": "travel",
       "if": "player.health < player.max_health and player.health > 0",
-      "do": [{"add": {"health": 1}, "on": "player"}]
+      "do": [{"add": {"health": "=min(scaled(1), player.max_health - player.health)"}, "on": "player"}]
     },
     "combat_count_kills": {
       "on": "killed",

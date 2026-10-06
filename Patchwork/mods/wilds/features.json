@@ -64,6 +64,7 @@
         "egg"
       ],
       "props": {
+        "default_max_health": 20,
         "taste": "Raw, but filling enough.",
         "heal": 2
       },
@@ -213,6 +214,7 @@
         "handful"
       ],
       "props": {
+        "default_max_health": 20,
         "taste": "Tart and juicy.",
         "heal": 2
       },
@@ -324,6 +326,7 @@
       ],
       "appearance": false,
       "props": {
+        "default_max_health": 20,
         "armor": 0
       },
       "description": "A wide-brimmed straw hat with a hole in the crown. It still keeps the rain off. Mostly."
@@ -425,6 +428,7 @@
       "appearance": "A cluster of pale mushrooms sprouts from the leaf litter.",
       "description": "Pale caps with brownish gills. You think they're the edible kind.",
       "props": {
+        "default_max_health": 20,
         "taste": "Earthy, and only slightly worrying.",
         "heal": 3
       }
@@ -446,6 +450,7 @@
         "forest"
       ],
       "props": {
+        "default_max_health": 20,
         "taste": "Crisp and sharp.",
         "heal": 3
       },
@@ -462,6 +467,7 @@
         "crust"
       ],
       "props": {
+        "default_max_health": 20,
         "taste": "Hard enough to break a tooth, but it fills you.",
         "heal": 2
       },
@@ -576,6 +582,7 @@
         "road"
       ],
       "props": {
+        "default_max_health": 20,
         "damage": 1
       },
       "description": "A sturdy stick, worn smooth where countless hands have gripped it."

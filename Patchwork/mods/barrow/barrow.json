@@ -419,6 +419,7 @@
       "appearance": "A barrow wight stands knee-deep in the water, its armour green with age and its eyes cold blue fire.",
       "description": "Bone and verdigris and the memory of a man. It guards the coffins of its brothers.",
       "props": {
+        "default_max_health": 20,
         "health": 12,
         "max_health": 12,
         "damage": 3,
@@ -491,6 +492,7 @@
             "weapon"
           ],
           "props": {
+            "default_max_health": 20,
             "damage": 4
           },
           "description": "A long iron sword, pattern-welded, its edge still keen after a thousand years."
@@ -559,6 +561,7 @@
             "armour"
           ],
           "props": {
+            "default_max_health": 20,
             "armor": 1
           },
           "description": "A round lime-wood shield with an iron boss, waterlogged but sound."

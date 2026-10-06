@@ -102,5 +102,60 @@ class Crossover(unittest.TestCase):
         self.assertGreater(done, 0)
 
 
+class StatScaling(unittest.TestCase):
+    """Stats are written for a player of some base max health (default_max_health) and converted to the
+    world's player, so mixing a 20-health fantasy mod with 100-health Half-Life keeps both fair."""
+
+    def spawn(self, w, fid):
+        return w.spawn_spec({"id": fid}, w.room)[0]
+
+    def test_fantasy_creatures_scale_up_beside_half_life(self):
+        plain = Player(["core", "combat", "wilds"], 1).world
+        mixed = Player(["core", "wilds", "hl_core"], 1).world
+        self.assertEqual(plain.player.props["max_health"], 20)
+        self.assertEqual(mixed.player.props["max_health"], 100)
+        for fid in ("grey_wolf", "bandit", "bog_lurker", "rusty_sword", "healing_salve", "leather_jerkin"):
+            a, b = self.spawn(plain, fid), self.spawn(mixed, fid)
+            for k in ("health", "max_health", "damage", "armor", "heal"):
+                if a.props.get(k):
+                    self.assertEqual(b.props[k], a.props[k] * 5, "%s %s" % (fid, k))
+            # The same share of the player's health either way.
+            if a.props.get("damage") and "creature" in a.tags:
+                self.assertAlmostEqual(a.props["damage"] / plain.player.props["max_health"],
+                                       b.props["damage"] / mixed.player.props["max_health"])
+
+    def test_half_life_stats_stay_put(self):
+        w = Player(["core", "wilds", "hl_core"], 1).world
+        self.assertEqual(self.spawn(w, "headcrab").props["damage"], 6)
+        self.assertEqual(self.spawn(w, "crowbar").props["damage"], 10)
+        self.assertEqual(self.spawn(w, "medkit").props["heal"], 15)
+
+    def test_scaled_expression(self):
+        p = Player(["core", "wilds", "hl_core"], 1)
+        w = p.world
+        i = p.engine.i
+        self.assertEqual(i.value("=scaled(1)", i.ctx()), 5)
+        self.assertEqual(i.value("=scaled(12, 100)", i.ctx()), 12)
+        w2 = Player(["core", "combat", "wilds"], 1).world
+        self.assertEqual(w2.player.props["default_max_health"], 20)
+
+    def test_wolf_fight_is_a_fight_in_black_mesa_worlds(self):
+        p = Player(["core", "wilds", "hl_core"], 2)
+        w = p.world
+        wolf = self.spawn(w, "grey_wolf")
+        start = w.player.props["health"]
+        for _ in range(3):
+            p.do("attack grey wolf")
+        self.assertIn(wolf.uid, w.entities, "an unarmed player should not flatten a wolf in three blows")
+        self.assertLess(w.player.props["health"], start)
+
+    def test_validator_notes_undeclared_stats(self):
+        from patchwork.validate import check_registry
+        reg = Player(["core", "combat", "wilds"], 1).reg
+        reg["features"]["test_beast"] = {"extends": ["thing"], "props": {"health": 9}}
+        notes = [n for n in check_registry(reg) if "test_beast" in n]
+        self.assertTrue(notes and "default_max_health" in notes[0], notes)
+
+
 if __name__ == "__main__":
     unittest.main()

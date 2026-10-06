@@ -35,7 +35,7 @@
             {"text": "Find shelter and wait it out.", "do": [{"advance": 6}, "You huddle under an overhang until the worst has passed. You arrive late, but dry."]},
             {"text": "Press on through it.", "do": [
               "You put your head down and push through the downpour.",
-              {"if": {"mod": "combat"}, "then": [{"add": {"health": -1}, "on": "player"}, "You arrive soaked and chilled to the bone. (Health: {player.health}/{player.max_health})"]}
+              {"if": {"mod": "combat"}, "then": [{"add": {"health": "=-scaled(1)"}, "on": "player"}, "You arrive soaked and chilled to the bone. (Health: {player.health}/{player.max_health})"]}
             ]}
           ],
           "cancel": "You press on through the rain."

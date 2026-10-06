@@ -653,7 +653,7 @@ F["nihilanth_hl"] = {"extends": ["nihilanth"], "important": True, "tags": ["nihi
                 "confront": ["\"...you are man... and I am the last...\" The words fall apart in your head."],
                 "epilogue": ""},
     "on_turn": [{"if": {"here": "tag:nihilanth_crystal"}, "do": [
-        {"if": "self.health < self.max_health", "then": [{"add": {"health": "=min(15, self.max_health - self.health)"}},
+        {"if": "self.health < self.max_health", "then": [{"add": {"health": "=min(scaled(15, 100), self.max_health - self.health)"}},
          {"say": "The healing crystals pulse; the Nihilanth's wounds close. ({self.health}/{self.max_health})", "style": "dim"}]}]}],
     "on_death": [{"flag": "hl_nihilanth_dead"}, {"say": "Light pours out of the Nihilanth's split skull. Every portal in the chamber flares, and the world tilts away from under you...", "style": "story"},
                  {"teleport": "room:hl/c5a1_gman"}]}
@@ -713,6 +713,7 @@ MACROS = {
         {"for_each": {"tag": "hl_weapon"}, "in": "player", "hidden_too": True, "direct": True, "do": [{"move": "it", "to": "any:tag:hl_confiscated"}]},
         {"teleport": "room:hl/c2a4_compactor"}]},
     "hl_take_damage": {"do": [
+        {"let": {"amount": "=scaled(amount, 100)"}},   # amounts here are written for a 100-health player
         {"let": {"soak": "=min(player.suit, int(amount * 2 / 3))"}},
         {"add": {"suit": "=-soak", "health": "=-(amount - soak)"}, "on": "player"},
         {"macro": "check_player_death"}]},

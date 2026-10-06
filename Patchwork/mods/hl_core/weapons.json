@@ -14,6 +14,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 10
    },
    "description": "A red-handled crowbar, heavy and reassuring. Good for crates, headcrabs and stuck hatches.",
@@ -39,6 +40,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 8
    },
    "description": "A standard-issue 9mm security sidearm. Seventeen rounds and a lot of faith.",
@@ -63,6 +65,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 25
    },
    "description": "A six-shot .357 revolver that kicks like a mule and hits harder.",
@@ -87,6 +90,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 13
    },
    "description": "A 9mm submachine gun with an under-barrel grenade launcher.",
@@ -110,6 +114,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 22
    },
    "description": "A pump-action combat shotgun. Fire it twice as fast if you don't mind the recoil.",
@@ -132,6 +137,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 28
    },
    "description": "A scoped crossbow with explosive-tipped bolts. Works underwater too.",
@@ -155,6 +161,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 45
    },
    "description": "A laser-guided rocket launcher. Point the dot, and the rocket follows.",
@@ -179,6 +186,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 32
    },
    "description": "An experimental prototype that fires charged particle bursts. Charge it too long and it bites you.",
@@ -202,6 +210,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 36
    },
    "description": "A heavy backpack-mounted gluon beam projector. It eats depleted uranium like nobody's business.",
@@ -226,6 +235,7 @@
     "alien"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 10
    },
    "description": "A living alien weapon that grows homing hornets. It squirms when you hold it.",
@@ -249,6 +259,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 9
    },
    "description": "A twitching pod of snarks. Throw one, and it hunts whatever is nearest. Usually.",
@@ -272,6 +283,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 30
    },
    "description": "A fragmentation grenade. Pull the pin and count.",
@@ -295,6 +307,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 40
    },
    "description": "A remote-detonated satchel charge.",
@@ -319,6 +332,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 30
    },
    "description": "A laser-triggered mine for walls.",
@@ -342,6 +356,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 12
    },
    "description": "A heavy pipe wrench. Slower than a crowbar, and it hits harder.",
@@ -365,6 +380,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 9
    },
    "description": "A standard Marine combat knife. Quick and quiet.",
@@ -389,6 +405,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 20
    },
    "description": "A .50 calibre handgun with a laser sight.",
@@ -413,6 +430,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 18
    },
    "description": "A belt-fed light machine gun. Fires until the belt runs out or you fall over.",
@@ -437,6 +455,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 35
    },
    "description": "A bolt-action sniper rifle with a long-range scope.",
@@ -460,6 +479,7 @@
     "alien"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 14
    },
    "description": "A Race X creature that spits bolts of electricity and recharges itself. It is, apparently, happy to see you.",
@@ -484,6 +504,7 @@
     "alien"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 26
    },
    "description": "A living alien launcher that hurls explosive spore pods. It chirps when fed.",
@@ -507,6 +528,7 @@
     "hl_weapon"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 48
    },
    "description": "An experimental portal weapon. It sends whatever it hits somewhere else, or sends you somewhere else.",
@@ -532,6 +554,7 @@
     "alien"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 6
    },
    "description": "A captured barnacle that shoots its tongue at anything organic and hauls you after it.",
@@ -555,6 +578,7 @@
     "alien"
    ],
    "props": {
+    "default_max_health": 100,
     "damage": 9
    },
    "description": "An explosive penguin. A multiplayer joke from the Opposing Force era that nobody has ever explained.",

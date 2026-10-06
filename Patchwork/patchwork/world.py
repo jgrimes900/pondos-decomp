@@ -177,6 +177,40 @@ class World:
     def setting(self, key, default=None):
         return self.registry["settings"].get(key, default)
 
+    # -- stat scaling: content written for one player toughness, played with another ----
+    def stat_scaling(self):
+        """The world's stat-scaling setup (a mod such as Steel & Peril provides it), or None."""
+        cfg = self.setting("stat_scaling")
+        return cfg if isinstance(cfg, dict) and cfg.get("props") else None
+
+    def world_scale(self):
+        """The player's base max health in this world: what every stat is converted to."""
+        cfg = self.stat_scaling()
+        if not cfg:
+            return None
+        pd = self.resolve_def("player") or {}
+        return (pd.get("props") or {}).get(cfg.get("prop", "default_max_health")) or cfg.get("default")
+
+    def stat_factor(self, d):
+        """How much to multiply a feature's stats by: the world's player base max health over the
+        one the feature's numbers were written for (its default_max_health)."""
+        cfg = self.stat_scaling()
+        base = self.world_scale()
+        if not cfg or not base:
+            return 1.0
+        own = (d.get("props") or {}).get(cfg.get("prop", "default_max_health")) or cfg.get("default")
+        return float(base) / float(own) if own else 1.0
+
+    def scale_number(self, value, factor):
+        if factor == 1 or isinstance(value, bool) or not isinstance(value, (int, float)):
+            return value
+        out = value * factor
+        if isinstance(value, int):
+            out = int(round(out))
+            if value and not out:
+                out = 1 if value > 0 else -1   # a scratch is still a scratch
+        return out
+
     def string(self, key, default=""):
         return self.registry["strings"].get(key, default)
 
@@ -384,6 +418,14 @@ class World:
             ent.article = ""
         ent.tags = list(d.get("tags") or [])
         ent.props = {k: self._rand_value(v) for k, v in (d.get("props") or {}).items()}
+        cfg = self.stat_scaling()
+        if cfg and not def_key == "player" and uid != "player":
+            factor = self.stat_factor(d)
+            for k in cfg["props"]:
+                if k in ent.props:
+                    ent.props[k] = self.scale_number(ent.props[k], factor)
+            if factor != 1:
+                ent.props[cfg.get("prop", "default_max_health")] = self.world_scale()
         ent.hidden = bool(d.get("hidden"))
         ent.is_room = is_room
         for key in self.TEXT_KEYS:

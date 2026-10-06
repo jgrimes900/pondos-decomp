@@ -314,6 +314,7 @@
       "appearance": "{self.Name} stands beside the orb, robed in a darkness that moves when nothing else does.",
       "description": "Tall, pale, and very calm. Their eyes are entirely black, like two smaller orbs.",
       "props": {
+        "default_max_health": 20,
         "health": 35,
         "max_health": 35,
         "damage": 4,

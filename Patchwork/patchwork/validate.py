@@ -53,9 +53,24 @@ def check_registry(reg):
             if fid not in feats and not soft:
                 problems.append("note: %s: feature '%s' is not loaded (skipped unless its mod is selected)" % (label, fid))
 
+    scaling = reg["settings"].get("stat_scaling")
+    scale_prop = scaling.get("prop", "default_max_health") if isinstance(scaling, dict) else None
+
+    def declares_scale(d, depth=0):
+        if scale_prop in (d.get("props") or {}):
+            return True
+        ext = d.get("extends") or []
+        return depth < 8 and any(declares_scale(feats[p], depth + 1) for p in (ext if isinstance(ext, list) else [ext])
+                                 if p in feats)
+
     for section in ("features", "rooms"):
         for key, d in reg[section].items():
             label = where(section, key)
+            if scaling and section == "features" and key != "player":
+                stats = [k for k in scaling.get("props", []) if k in (d.get("props") or {})]
+                if stats and not declares_scale(d):
+                    problems.append("note: %s: has %s but no '%s' (assumed %s)"
+                                    % (label, "/".join(stats), scale_prop, scaling.get("default")))
             ext = d.get("extends") or []
             for parent in ext if isinstance(ext, list) else [ext]:
                 if parent not in feats and parent not in rooms and not d.get("soft_extends"):

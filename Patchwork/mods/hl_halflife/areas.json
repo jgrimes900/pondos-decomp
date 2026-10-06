@@ -478,6 +478,11 @@
    "do": [
     {
      "let": {
+      "amount": "=scaled(amount, 100)"
+     }
+    },
+    {
+     "let": {
       "soak": "=min(player.suit, int(amount * 2 / 3))"
      }
     },

@@ -1268,7 +1268,7 @@
        "then": [
         {
          "add": {
-          "health": "=min(15, self.max_health - self.health)"
+          "health": "=min(scaled(15, 100), self.max_health - self.health)"
          }
         },
         {

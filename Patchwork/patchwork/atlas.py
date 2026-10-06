@@ -270,6 +270,12 @@ class Atlas:
         while ent.name in names and tries < 6 and "#" in (d.get("name") or ""):
             ent.name = w.grammar.expand(d["name"])
             tries += 1
+        if ent.name in names:
+            # Two rooms with one name can't be told apart by "go to": number the later ones.
+            base, n = ent.name, 2
+            while ent.name in names:
+                ent.name = "%s %s" % (base, ["II", "III", "IV", "V", "VI", "VII", "VIII"][min(n - 2, 6)] if n < 9 else n)
+                n += 1
 
     def furnish(self, ent, biomes, role):
         """Each biome adds its features (and those for this role); a blended tile shares the space."""
@@ -474,8 +480,13 @@ class Atlas:
         if not pool:
             pool = [{"name": "#%s_name#" % pid, "description": "#%s_desc#" % pid}]
         use = self.path_use.setdefault(("wp", pid), {})
-        i = _weighted(self.rng, list(range(len(pool))),
-                      lambda k: (pool[k].get("weight", 1) if isinstance(pool[k], dict) else 1) / (1 + use.get(k, 0) * 2))
+        def wt(k):
+            t = pool[k]
+            base = t.get("weight", 1) if isinstance(t, dict) else 1
+            if use.get(k) and "#" not in ((t.get("name") if isinstance(t, dict) else "") or ""):
+                return base * 0.05   # a place with a fixed name should rarely appear twice
+            return base / (1 + use.get(k, 0) * 2)
+        i = _weighted(self.rng, list(range(len(pool))), wt)
         use[i] = use.get(i, 0) + 1
         ent = self.make_room(pool[i], biomes, role=role, pos=pos)
         ent.stage = stage
